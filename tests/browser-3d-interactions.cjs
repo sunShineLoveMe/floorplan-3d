@@ -1,0 +1,24 @@
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+const fs=require('node:fs'),assert=require('node:assert/strict'),path=require('node:path');
+(async()=>{const b=await chromium.launch({headless:true,...(process.env.CHROMIUM_EXECUTABLE?{executablePath:process.env.CHROMIUM_EXECUTABLE}:{})}),c=await b.newContext({viewport:{width:1440,height:1000}}),p=await c.newPage(),errors=[],checks=[];p.on('pageerror',e=>errors.push(e.message));const OUT=path.resolve('docs/verification/T01.1');
+try{
+ await p.goto(process.env.TEST_URL||'http://127.0.0.1:8086');await p.locator('#gFurn [data-fid]').first().waitFor();await p.setInputFiles('#fileIn','tests/fixtures/custom-project.json');await p.waitForFunction(()=>document.querySelectorAll('#gRooms polygon.room').length===1);await p.waitForTimeout(100);await p.locator('[data-view="3d"]').click();await p.waitForFunction(()=>document.querySelector('#stage').classList.contains('is3d')&&!document.body.classList.contains('busy'));
+ const saved=()=>p.evaluate(()=>JSON.parse(localStorage.getItem('floorplan-project-v1')));
+ // Coordinates from the inspected custom-room isometric screenshot at 1440 x 1000.
+ await p.mouse.click(690,460);await p.locator('#fW').waitFor();const before=await saved();await p.mouse.move(690,460);await p.mouse.down();await p.mouse.move(725,480,{steps:10});await p.mouse.up();const after=await saved();assert.notDeepEqual(after.furniture,before.furniture);await p.locator('#undo').click();assert.deepEqual((await saved()).furniture,before.furniture);await p.locator('#redo').click();assert.deepEqual((await saved()).furniture,after.furniture);checks.push('3D mouse furniture movement and one undo/redo');
+ await p.waitForTimeout(150);const beforeCancelImage=await p.locator('#view3d canvas').evaluate(c=>c.toDataURL());
+ await p.mouse.move(715,475);await p.mouse.down();await p.mouse.move(735,485,{steps:8});await p.waitForTimeout(100);assert.notEqual(await p.locator('#view3d canvas').evaluate(c=>c.toDataURL()),beforeCancelImage);await p.keyboard.press('Escape');await p.mouse.up();await p.waitForTimeout(150);assert.equal(await p.locator('#view3d canvas').evaluate(c=>c.toDataURL()),beforeCancelImage);assert.deepEqual((await saved()).furniture,after.furniture);checks.push('3D Escape drag cancellation');
+ await p.locator('[data-view="2d"]').click();await p.waitForFunction(()=>!document.body.classList.contains('busy'));assert.deepEqual((await saved()).furniture,after.furniture);assert.equal(await p.locator('#fW').count(),1);checks.push('3D furniture and selection survive return to 2D');
+ await p.setInputFiles('#fileIn','tests/fixtures/custom-project.json');await p.waitForFunction(()=>document.querySelectorAll('#gRooms polygon.room').length===1);await p.waitForTimeout(100);await p.locator('[data-view="3d"]').click();await p.waitForFunction(()=>document.querySelector('#stage').classList.contains('is3d')&&!document.body.classList.contains('busy'));await p.waitForTimeout(300);
+ await p.screenshot({path:path.join(OUT,'door-open.png')});await p.mouse.click(500,412);await p.waitForTimeout(900);await p.screenshot({path:path.join(OUT,'door-closed.png')});checks.push('door clicked at inspected visible leaf; screenshots retained for visual confirmation');
+ await p.locator('#fullscreen').click();await p.waitForFunction(()=>!!document.fullscreenElement);await p.locator('#fullscreen').click();await p.waitForFunction(()=>!document.fullscreenElement);checks.push('Chromium fullscreen enter/exit');
+ await p.locator('[data-view="2d"]').click();await p.waitForFunction(()=>!document.body.classList.contains('busy'));
+ const mm=async(x,y)=>p.evaluate(({x,y})=>{const svg=document.querySelector('#plan'),pt=svg.createSVGPoint();pt.x=x;pt.y=y;const q=pt.matrixTransform(svg.getScreenCTM());return {x:q.x,y:q.y}},{x,y});
+ let q=await mm(1200,1200);await p.mouse.click(q.x,q.y);
+ const field=async(id,v)=>{await p.locator('#'+id).fill(String(v));await p.locator('#'+id).press('Tab')};
+ for(const [id,value] of [['fR',0],['fW',600],['fD',600],['fX',1000],['fY',1000]])await field(id,value);
+ const dragTo=async()=>{const a=await mm(1000,1000),z=await mm(315,1000);await p.mouse.move(a.x,a.y);await p.mouse.down();await p.mouse.move(z.x,z.y,{steps:12});await p.mouse.up()};
+ await dragTo();assert.equal((await saved()).furniture[0].cx,300);
+ await field('fX',1000);await p.locator('[data-layer="wallSnap"]').click();await dragTo();const freeX=(await saved()).furniture[0].cx;assert.notEqual(freeX,300);assert.ok(Math.abs(freeX-315)<=10);checks.push('wall snap reaches exact wall face; disabling snap keeps only 10mm grid');
+ assert.deepEqual(errors,[]);fs.writeFileSync(path.join(OUT,'3d-interaction-results.json'),JSON.stringify({browser:b.version(),checks,errors},null,2));console.log(checks);
+}catch(e){await p.screenshot({path:path.join(OUT,'3d-interaction-failure.png')});throw e}finally{await b.close()}})().catch(e=>{console.error(e);process.exitCode=1});

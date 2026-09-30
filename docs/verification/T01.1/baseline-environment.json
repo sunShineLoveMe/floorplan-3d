@@ -1,0 +1,9 @@
+{
+  "browser": "149.0.7827.55",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "errors": [],
+  "storage": "Fresh isolated Playwright context; existing user storage untouched"
+}

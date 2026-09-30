@@ -1,0 +1,82 @@
+{
+  "browser": "149.0.7827.55",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "checks": [
+    {
+      "name": "sample geometry, 46 furniture and area match baseline"
+    },
+    {
+      "name": "sample 2D / 3D transition"
+    },
+    {
+      "name": "library click adds one item"
+    },
+    {
+      "name": "dimensions, decimal position, rotation, duplicate and delete"
+    },
+    {
+      "name": "custom import clears original geometry; undo and redo"
+    },
+    {
+      "name": "real pointer drag creates one undo / redo step"
+    },
+    {
+      "name": "Escape cancels a drag without saving its preview"
+    },
+    {
+      "name": "input focus protects shortcuts and language preserves selection"
+    },
+    {
+      "name": "layer and snap controls"
+    },
+    {
+      "name": "zoom, fit and pan"
+    },
+    {
+      "name": "measurement"
+    },
+    {
+      "name": "room name, material and language preserve custom names"
+    },
+    {
+      "name": "2D PNG downloaded"
+    },
+    {
+      "name": "3D room views, cut/full walls, sun and night"
+    },
+    {
+      "name": "walk enters, moves and exits (door key exercised; visual door check separate)"
+    },
+    {
+      "name": "3D PNG and JSON downloaded; fixture fields preserved"
+    },
+    {
+      "name": "refresh restores custom geometry and 3D mode"
+    },
+    {
+      "name": "future/broken files and cancelled legacy migration preserve saved project"
+    },
+    {
+      "name": "legacy confirmation downloads original bytes before migration"
+    },
+    {
+      "name": "dispose / repeated mount removes canvas and duplicate listeners"
+    },
+    {
+      "name": "narrow viewport drawers and floating toolbar"
+    },
+    {
+      "name": "no uncaught page errors"
+    }
+  ],
+  "timings": {
+    "initial2D": 100,
+    "sampleEnter3D": 3842,
+    "sampleExit3D": 1794,
+    "customEnter3D": 2159
+  },
+  "errors": []
+}

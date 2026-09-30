@@ -1,0 +1,128 @@
+
+> test
+> node --test tests/*.test.js
+
+TAP version 13
+# Subtest: disposing a component removes listeners and pending work before remount
+ok 1 - disposing a component removes listeners and pending work before remount
+  ---
+  duration_ms: 0.447083
+  type: 'test'
+  ...
+# Subtest: complete sample round trip retains all geometry, settings and furniture
+ok 2 - complete sample round trip retains all geometry, settings and furniture
+  ---
+  duration_ms: 1.575875
+  type: 'test'
+  ...
+# Subtest: edited geometry, decimal units and furniture are independent of template
+ok 3 - edited geometry, decimal units and furniture are independent of template
+  ---
+  duration_ms: 1.83775
+  type: 'test'
+  ...
+# Subtest: legacy import requires explicit template confirmation
+ok 4 - legacy import requires explicit template confirmation
+  ---
+  duration_ms: 1.067542
+  type: 'test'
+  ...
+# Subtest: legacy foreign rooms cannot silently acquire the sample geometry
+ok 5 - legacy foreign rooms cannot silently acquire the sample geometry
+  ---
+  duration_ms: 0.194417
+  type: 'test'
+  ...
+# Subtest: bad JSON, future versions and unknown formats are distinguished
+ok 6 - bad JSON, future versions and unknown formats are distinguished
+  ---
+  duration_ms: 0.276
+  type: 'test'
+  ...
+# Subtest: reject broken references, invalid dimensions and unsafe render attributes
+ok 7 - reject broken references, invalid dimensions and unsafe render attributes
+  ---
+  duration_ms: 2.964417
+  type: 'test'
+  ...
+# Subtest: standalone custom project fixture validates and does not depend on sample rooms
+ok 8 - standalone custom project fixture validates and does not depend on sample rooms
+  ---
+  duration_ms: 0.437083
+  type: 'test'
+  ...
+# Subtest: legacy edits to removable external/low walls remain importable
+ok 9 - legacy edits to removable external/low walls remain importable
+  ---
+  duration_ms: 0.312417
+  type: 'test'
+  ...
+# Subtest: file rejection and legacy cancellation leave memory and saved data unchanged
+ok 10 - file rejection and legacy cancellation leave memory and saved data unchanged
+  ---
+  duration_ms: 3.45225
+  type: 'test'
+  ...
+# Subtest: legacy backup happens before replacement and failed backup prevents replacement
+ok 11 - legacy backup happens before replacement and failed backup prevents replacement
+  ---
+  duration_ms: 0.876708
+  type: 'test'
+  ...
+# Subtest: unreadable storage is backed up before overwrite, and legacy key is untouched
+ok 12 - unreadable storage is backed up before overwrite, and legacy key is untouched
+  ---
+  duration_ms: 0.296709
+  type: 'test'
+  ...
+# Subtest: backup failure blocks overwrite; quota failure is returned without false success
+ok 13 - backup failure blocks overwrite; quota failure is returned without false success
+  ---
+  duration_ms: 1.170333
+  type: 'test'
+  ...
+# Subtest: existing recovery keys are not overwritten and serialization preserves decimals
+ok 14 - existing recovery keys are not overwritten and serialization preserves decimals
+  ---
+  duration_ms: 0.973167
+  type: 'test'
+  ...
+# Subtest: mutation notifies once with the current project; unchanged operations do not commit
+ok 15 - mutation notifies once with the current project; unchanged operations do not commit
+  ---
+  duration_ms: 1.783708
+  type: 'test'
+  ...
+# Subtest: drag previews have one history entry, cancellation restores without committing
+ok 16 - drag previews have one history entry, cancellation restores without committing
+  ---
+  duration_ms: 2.205833
+  type: 'test'
+  ...
+# Subtest: import undo/redo restores complete geometry and new edits clear redo
+ok 17 - import undo/redo restores complete geometry and new edits clear redo
+  ---
+  duration_ms: 0.69575
+  type: 'test'
+  ...
+# Subtest: subscriptions can be removed; failed mutations roll back; render reads do not alter timestamps
+ok 18 - subscriptions can be removed; failed mutations roll back; render reads do not alter timestamps
+  ---
+  duration_ms: 1.115916
+  type: 'test'
+  ...
+# Subtest: stored 3D mode survives pending engine initialization and layer changes
+ok 19 - stored 3D mode survives pending engine initialization and layer changes
+  ---
+  duration_ms: 0.310875
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 50.72575

@@ -1,0 +1,32 @@
+{
+  "browser": "149.0.7827.55",
+  "results": [
+    {
+      "name": "baseline",
+      "initial2D": 1300,
+      "sampleFirst3D": 2389,
+      "sampleExit3D": 1803,
+      "sampleWarm3D": 2230,
+      "sampleDrag20Steps": 169,
+      "customFirst3D": 2156,
+      "bedPick": 0,
+      "customExit3D": 1780,
+      "customWarm3D": 2159,
+      "customDrag20Steps": 164
+    },
+    {
+      "name": "modular",
+      "initial2D": 99,
+      "sampleFirst3D": 3381,
+      "sampleExit3D": 1807,
+      "sampleWarm3D": 2230,
+      "sampleDrag20Steps": 170,
+      "customFirst3D": 2160,
+      "bedPick": 1,
+      "customExit3D": 1785,
+      "customWarm3D": 2159,
+      "customDrag20Steps": 170
+    }
+  ],
+  "notes": "One run each, same device/viewport. Includes browser automation and network latency. Baseline served from complete original working-tree backup, not HEAD."
+}
