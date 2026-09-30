@@ -1,0 +1,243 @@
+{
+  "format": "floorplan-3d",
+  "version": 2,
+  "id": "p-munmu4z7-9hray62o",
+  "name": "T02 bedroom",
+  "createdAt": "2026-09-30T04:55:59.923Z",
+  "updatedAt": "2026-09-30T04:56:12.206Z",
+  "units": {
+    "internal": "mm",
+    "display": "metric"
+  },
+  "layout": {
+    "id": "layout-p-munmu4z7-9hray62o",
+    "name": "Layout A"
+  },
+  "view": {
+    "mode": "2d",
+    "layers": {
+      "dims": true,
+      "labels": true,
+      "furn": true,
+      "grid": false,
+      "bearing": false,
+      "wallSnap": true
+    }
+  },
+  "roomEditor": {
+    "kind": "rectangle",
+    "roomId": "room-1",
+    "width": 4500,
+    "depth": 3200,
+    "height": 3000,
+    "wallThickness": 120,
+    "openings": [
+      {
+        "id": "opening-fmunmu56l47",
+        "type": "door",
+        "wallId": "top",
+        "offset": 500,
+        "width": 900,
+        "height": 2100,
+        "hinge": "start",
+        "swing": "inward"
+      },
+      {
+        "id": "opening-fmunmu58748",
+        "type": "window",
+        "wallId": "right",
+        "offset": 900,
+        "width": 1200,
+        "height": 1200,
+        "sill": 900
+      }
+    ]
+  },
+  "geometry": {
+    "height": 3000,
+    "origin": [
+      2250,
+      1600
+    ],
+    "bounds": {
+      "x": -720,
+      "y": -720,
+      "w": 5940,
+      "h": 4640
+    },
+    "rooms": [
+      {
+        "id": "room-1",
+        "name": "T02 bedroom",
+        "mat": "walnut",
+        "poly": [
+          [
+            0,
+            0
+          ],
+          [
+            4500,
+            0
+          ],
+          [
+            4500,
+            3200
+          ],
+          [
+            0,
+            3200
+          ]
+        ],
+        "at": [
+          2250,
+          1600
+        ]
+      }
+    ],
+    "walls": [
+      [
+        -120,
+        -120,
+        500,
+        0,
+        "n"
+      ],
+      [
+        1400,
+        -120,
+        4620,
+        0,
+        "n"
+      ],
+      [
+        4500,
+        0,
+        4620,
+        900,
+        "n"
+      ],
+      [
+        4500,
+        2100,
+        4620,
+        3200,
+        "n"
+      ],
+      [
+        -120,
+        3200,
+        4620,
+        3320,
+        "n"
+      ],
+      [
+        -120,
+        0,
+        0,
+        3200,
+        "n"
+      ]
+    ],
+    "wallIds": [
+      "top",
+      "top",
+      "right",
+      "right",
+      "bottom",
+      "left"
+    ],
+    "doors": [
+      {
+        "id": "opening-fmunmu56l47",
+        "wallId": "top",
+        "rect": [
+          500,
+          -120,
+          1400,
+          0
+        ],
+        "h": [
+          500,
+          0
+        ],
+        "c": [
+          1,
+          0
+        ],
+        "o": [
+          0,
+          1
+        ],
+        "len": 900,
+        "height": 2100,
+        "name": "opening-fmunmu56l47"
+      }
+    ],
+    "windows": [
+      {
+        "id": "opening-fmunmu58748",
+        "wallId": "right",
+        "rect": [
+          4500,
+          900,
+          4620,
+          2100
+        ],
+        "sill": 900,
+        "head": 2100
+      }
+    ],
+    "slides": [],
+    "lintels": [],
+    "dimensions": [
+      {
+        "horizontal": true,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          4500
+        ]
+      },
+      {
+        "horizontal": false,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          3200
+        ]
+      }
+    ],
+    "walkStart": {
+      "position": [
+        2250,
+        2240
+      ],
+      "target": [
+        2250,
+        960
+      ]
+    },
+    "entry": null
+  },
+  "furniture": [
+    {
+      "id": "fmunmu5ab49",
+      "type": "bed",
+      "name": "双人床 1.8m",
+      "cx": 2000,
+      "cy": 1500,
+      "w": 1800,
+      "d": 2000,
+      "rot": 0,
+      "color": "#c9d6df"
+    }
+  ],
+  "rooms": {
+    "room-1": {
+      "name": "T02 bedroom",
+      "mat": "walnut"
+    }
+  },
+  "demolished": [],
+  "measures": []
+}

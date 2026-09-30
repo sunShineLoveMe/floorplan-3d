@@ -1,14 +1,19 @@
+import {formatLengthMm,formatAreaM2} from '../core/units.js';
+import {lengthField,bindLengthField} from './length-field.js';
 import {clone,validate,updateRectangleProject} from '../data/project-data.js';
 import {$} from '../ui/dom.js';
 import {COARSE,esc} from '../ui/dom.js';
 import {tr,nm} from '../ui/i18n.js';
-import {area,perim,bbox,fmt,norm} from '../core/geometry.js';
+import {area,perim,bbox,norm} from '../core/geometry.js';
 import {MATS,CATALOGS} from '../data/catalogs.js';
 export function createPropertyPanel({store,ui,actions,drawers,is3D,flyToRoom,toast}){
 const {select,rotateSel,deleteSel,duplicateSel,clearLayout,getF}=actions;
 const {drawer,closeDrawers}=drawers;
 const mutate=fn=>store.mutate(fn);
+const length=(mm,style='feet')=>formatLengthMm(mm,store.getProject().units.display,{style});
+const surface=m2=>formatAreaM2(m2,store.getProject().units.display);
 function renderPanel(){
+  if(!document.querySelector('dialog[open]')){$('#projectUnits').disabled=false;$('#unitLock').textContent='';}
   renderFab();
   const p = $('#panel');
   if (ui.sel?.kind === 'furn'){ const f = getF(ui.sel.id); if (f){ p.innerHTML = furnPanel(f); bindFurnPanel(f); return; } }
@@ -20,27 +25,27 @@ function overviewPanel(){
   const rows = store.getProject().geometry.rooms.map(r => {
     const st = store.getProject().rooms[r.id];
     return `<tr class="click" data-room="${r.id}"><td><span class="sw" style="background:${MATS[st.mat].sw}"></span>${esc(nm(st.name))}${r.counted===false?' <span class="muted">*</span>':''}</td>
-      <td class="r">${fmt(area(r.poly))} m²</td></tr>`;
+      <td class="r">${surface(area(r.poly))}</td></tr>`;
   }).join('');
   const tot = store.getProject().geometry.rooms.filter(r => r.counted !== false).reduce((a,r) => a + area(r.poly), 0);
   const byMat = {};
   store.getProject().geometry.rooms.forEach(r => { const m = store.getProject().rooms[r.id].mat; byMat[m] = (byMat[m]||0) + area(r.poly); });
   let cost = 0;
   const matRows = Object.entries(byMat).map(([m,a]) => { const c = a*MATS[m].price*1.05; cost += c;
-    return `<tr><td><span class="sw" style="background:${MATS[m].sw}"></span>${nm(MATS[m].name)}</td><td class="r">${fmt(a,1)} m²</td><td class="r">¥${Math.round(c).toLocaleString()}</td></tr>`; }).join('');
+    return `<tr><td><span class="sw" style="background:${MATS[m].sw}"></span>${nm(MATS[m].name)}</td><td class="r">${surface(a)}</td><td class="r">¥${Math.round(c).toLocaleString()}</td></tr>`; }).join('');
   const dem = store.getProject().demolished.map(id => store.getProject().geometry.walls[+id.slice(1)]);
   const demLen = dem.reduce((a,w) => a + Math.max(w[2]-w[0], w[3]-w[1]), 0) / 1000;
   return `
   <section><h3>${tr('房间面积','Room Areas')} <small>${tr('点击查看 / 更换地面','Click to view / change flooring')}</small></h3>
     <table>${rows}</table>
-    <div class="total"><span>${tr('套内使用面积','Net floor area')}</span><b>${fmt(tot)} m²</b></div>
+    <div class="total"><span>${tr('套内使用面积','Net floor area')}</span><b>${surface(tot)}</b></div>
     <div class="muted" style="font-size:11px;margin-top:4px">${tr('* 飘窗不计入使用面积；面积按墙体内净尺寸计算','* Bay windows are excluded; areas use net inner wall dimensions')}</div></section>
-  <section><h3>${tr('地面材料估算','Flooring Estimate')} <small>${tr('含 5% 损耗','incl. 5% waste')}</small></h3>
+  <section><h3>${tr('地面材料估算','Flooring Estimate')} <small>${tr('含 5% 损耗，示例价：人民币/平方米','incl. 5% waste; example prices: CNY/m²')}</small></h3>
     <table>${matRows}</table>
     <div class="total"><span>${tr('地面材料合计','Flooring total')}</span><b>¥${Math.round(cost).toLocaleString()}</b></div></section>
   <section><h3>${tr('方案统计','Plan Stats')}</h3>
     <div class="stats"><div><small>${tr('家具数量','Furniture')}</small><span class="big">${store.getProject().furniture.length}</span></div>
-      <div><small>${tr('拆除墙体','Walls removed')}</small><span class="big">${fmt(demLen,1)}</span> m</div></div>
+      <div><small>${tr('拆除墙体','Walls removed')}</small><span class="big">${length(demLen*1000)}</span></div></div>
     <div class="actions"><button class="btn" id="clearMeasure">${tr('清除测量','Clear measures')} (${store.getProject().measures.length})</button>
       <button class="btn danger" id="clearFurn">${tr('清空布置','Clear layout')}</button></div></section>
   ${COARSE ? tr(`<section><h3>触屏操作</h3><div class="kbd">
@@ -60,11 +65,11 @@ function overviewPanel(){
   </div></section>`) : ''}
   ${tr(`<section><h3>键盘快捷键</h3><div class="kbd">
     <kbd>拖拽</kbd><span>左侧家具拖入平面图</span><kbd>V</kbd><span>选择 / 移动</span><kbd>M</kbd><span>测量（Shift 水平/垂直）</span>
-    <kbd>X</kbd><span>拆改非承重墙（黑色为承重墙）</span><kbd>R</kbd><span>旋转 90°（Shift 反向）</span><kbd>方向键</kbd><span>微调 10mm（Shift 100mm）</span>
+    <kbd>X</kbd><span>拆改非承重墙（黑色为承重墙）</span><kbd>R</kbd><span>旋转 90°（Shift 反向）</span><kbd>方向键</kbd><span>微调 ${store.getProject().units.display==='imperial'?'1/4 in（Shift 1 in）':'10 mm（Shift 100 mm）'}</span>
     <kbd>⌘/Ctrl D</kbd><span>复制</span><kbd>Delete</kbd><span>删除</span><kbd>⌘/Ctrl Z</kbd><span>撤销</span><kbd>T</kbd><span>切换 2D / 3D</span><kbd>F</kbd><span>适应窗口</span><kbd>Esc</kbd><span>取消选择</span>
   </div></section>`, `<section><h3>Keyboard Shortcuts</h3><div class="kbd">
     <kbd>Drag</kbd><span>Drag furniture onto the plan</span><kbd>V</kbd><span>Select / move</span><kbd>M</kbd><span>Measure (Shift: horizontal/vertical)</span>
-    <kbd>X</kbd><span>Demolish non-bearing walls (black = bearing)</span><kbd>R</kbd><span>Rotate 90° (Shift reverses)</span><kbd>Arrows</kbd><span>Nudge 10mm (Shift 100mm)</span>
+    <kbd>X</kbd><span>Demolish non-bearing walls (black = bearing)</span><kbd>R</kbd><span>Rotate 90° (Shift reverses)</span><kbd>Arrows</kbd><span>Nudge ${store.getProject().units.display==='imperial'?'1/4 in (Shift 1 in)':'10 mm (Shift 100 mm)'}</span>
     <kbd>⌘/Ctrl D</kbd><span>Duplicate</span><kbd>Delete</kbd><span>Delete</span><kbd>⌘/Ctrl Z</kbd><span>Undo</span><kbd>T</kbd><span>Toggle 2D / 3D</span><kbd>F</kbd><span>Fit to window</span><kbd>Esc</kbd><span>Deselect</span>
   </div></section>`)}`;
 }
@@ -95,15 +100,15 @@ function roomPanel(r){
   return `<section><h3>${tr('房间','Room')}</h3>
     <div class="form"><label class="full">${tr('名称','Name')}<input id="rName" maxlength="500" value="${esc(nm(st.name))}"></label></div>
     <div class="stats" style="margin-top:10px">
-      <div><small>${tr('使用面积','Floor area')}</small><span class="big">${fmt(a)}</span> m²</div>
-      <div><small>${tr('周长','Perimeter')}</small><span class="big">${fmt(perim(r.poly),1)}</span> m</div>
-      <div><small>${tr('开间','Width')}</small><span class="big">${x1-x0}</span> mm</div>
-      <div><small>${tr('进深','Depth')}</small><span class="big">${y1-y0}</span> mm</div></div>
-    <div class="muted">${tr(`墙面面积（层高 ${store.getProject().geometry.height/1000}m，未扣门窗）约 ${fmt(perim(r.poly)*store.getProject().geometry.height/1000,1)} m²`, `Wall area (${store.getProject().geometry.height/1000}m ceiling, openings not deducted) ≈ ${fmt(perim(r.poly)*store.getProject().geometry.height/1000,1)} m²`)}</div></section>
+      <div><small>${tr('使用面积','Floor area')}</small><span class="big">${surface(a)}</span></div>
+      <div><small>${tr('周长','Perimeter')}</small><span class="big">${length(perim(r.poly)*1000)}</span></div>
+      <div><small>${tr('开间','Width')}</small><span class="big">${length(x1-x0)}</span></div>
+      <div><small>${tr('进深','Depth')}</small><span class="big">${length(y1-y0)}</span></div></div>
+    <div class="muted">${tr(`墙面面积（层高 ${length(store.getProject().geometry.height)}，未扣门窗）约 ${surface(perim(r.poly)*store.getProject().geometry.height/1000)}`, `Wall area (${length(store.getProject().geometry.height)} ceiling, openings not deducted) ≈ ${surface(perim(r.poly)*store.getProject().geometry.height/1000)}`)}</div></section>
   <section><h3>${tr('地面材料','Flooring')}</h3><div class="mats">${mats}</div>
     <div class="total"><span>${tr('材料估价','Estimated cost')}</span><b>¥${Math.round(a*MATS[st.mat].price*1.05).toLocaleString()}</b></div></section>
   <section><h3>${tr('房间内家具','Furniture in room')} <small>${tr(`${inside.length} 件`, `${inside.length} items`)}</small></h3>
-    <table>${inside.map(f => `<tr class="click" data-fid="${f.id}"><td>${esc(nm(f.name))}</td><td class="r muted">${f.w}×${f.d}</td></tr>`).join('') || `<tr><td class="muted">${tr('暂无','None')}</td></tr>`}</table>
+    <table>${inside.map(f => `<tr class="click" data-fid="${f.id}"><td>${esc(nm(f.name))}</td><td class="r muted">${length(f.w,'inches')} × ${length(f.d,'inches')}</td></tr>`).join('') || `<tr><td class="muted">${tr('暂无','None')}</td></tr>`}</table>
     <div class="actions"><button class="btn" id="back">${tr('← 返回总览','← Back to overview')}</button></div></section>`;
 }
 function bindRoomPanel(){
@@ -124,14 +129,14 @@ function furnPanel(f){
   return `<section><h3>${tr('家具属性','Furniture')}</h3>
     <div class="form">
       <label class="full">${tr('名称','Name')}<input id="fName" value="${esc(nm(f.name))}"></label>
-      <label>${tr('宽','Width')} (mm)<input type="number" id="fW" value="${f.w}" min="50" step="10"></label>
-      <label>${tr('深','Depth')} (mm)<input type="number" id="fD" value="${f.d}" min="50" step="10"></label>
-      <label>${tr('中心','Center')} X (mm)<input type="number" id="fX" value="${Math.round(f.cx)}" step="10"></label>
-      <label>${tr('中心','Center')} Y (mm)<input type="number" id="fY" value="${Math.round(f.cy)}" step="10"></label>
+      ${lengthField('fW',tr('宽','Width'),f.w,store.getProject().units.display)}
+      ${lengthField('fD',tr('深','Depth'),f.d,store.getProject().units.display)}
+      ${lengthField('fX',tr('中心','Center')+' X',f.cx,store.getProject().units.display)}
+      ${lengthField('fY',tr('中心','Center')+' Y',f.cy,store.getProject().units.display)}
       <label>${tr('旋转','Rotation')} (°)<input type="number" id="fR" value="${f.rot}" step="15"></label>
       <label>${tr('颜色','Color')}<input type="color" id="fC" value="${f.color}"></label>
     </div>
-    <div class="muted" style="margin-top:8px">${tr('占地面积','Footprint')} ${fmt(f.w*f.d/1e6)} m²</div>
+    <div class="muted" style="margin-top:8px">${tr('占地面积','Footprint')} ${surface(f.w*f.d/1e6)}</div>
     <div class="actions">
       <button class="btn" id="aRot">${tr('旋转 90°','Rotate 90°')}</button><button class="btn" id="aDup">${tr('复制','Duplicate')}</button>
       <button class="btn" id="aTop">${tr('置于顶层','Bring to front')}</button><button class="btn" id="aBot">${tr('置于底层','Send to back')}</button>
@@ -141,11 +146,15 @@ function furnPanel(f){
 }
 function bindFurnPanel(f){
   const upd = (fn) => mutate(() => { const g = getF(f.id); if (g) fn(g); });
-  const num = (id, fn) => $(id).onchange = e => { const v = parseFloat(e.target.value); if (!isNaN(v)) upd(g => fn(g, v)); };
   $('#fName').onchange = e => upd(g => g.name = e.target.value.trim() || g.name);
-  num('#fW', (g,v) => g.w = Math.max(50, Math.round(v)));
-  num('#fD', (g,v) => g.d = Math.max(50, Math.round(v)));
-  num('#fX', (g,v) => g.cx = v); num('#fY', (g,v) => g.cy = v); num('#fR', (g,v) => g.rot = norm(v));
+  for(const [id,key] of [['fW','w'],['fD','d'],['fX','cx'],['fY','cy']]){
+    const input=$('#'+id),binding=bindLengthField(input,f[key],store.getProject().units.display,()=>['w','d'].includes(key)?[50,1e7]:[-1e7,1e7]);
+    input.onfocus=()=>{ $('#projectUnits').disabled=true;$('#unitLock').textContent=tr('结束尺寸编辑后可切换','Finish dimension editing to change units'); };
+    input.onblur=()=>{ $('#projectUnits').disabled=false;$('#unitLock').textContent=''; };
+    input.onchange=()=>{const result=binding.read();if(result.ok)upd(g=>g[key]=result.mm);};
+    input.onkeydown=e=>{if(e.key==='Escape'){e.preventDefault();binding.reset();input.blur();}if(e.key==='Enter'){e.preventDefault();input.blur();}};
+  }
+  $('#fR').onchange=e=>{const v=Number(e.target.value);if(e.target.value.trim()&&Number.isFinite(v))upd(g=>g.rot=norm(v));};
   $('#fC').onchange = e => upd(g => g.color = e.target.value);
   $('#aRot').onclick = () => rotateSel(90);
   $('#aDup').onclick = duplicateSel;

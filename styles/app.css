@@ -220,3 +220,14 @@ main.drawer-panel #fab{opacity:0;visibility:hidden}
 .room-dialog .form label{min-width:0}
 .room-dialog input{width:100%;min-width:0}
 @media(max-width:480px){.room-dialog{padding:16px}.room-dialog .form{grid-template-columns:1fr}.room-dialog .actions{bottom:-16px}}
+
+/* Unit controls and length feedback must remain usable in narrow drawers. */
+.unit-control{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:12px}
+.unit-control select{max-width:145px;padding:6px;border:1px solid var(--line);border-radius:6px;background:#fff}
+#unitLock{max-width:150px;color:var(--muted)}
+.length-feedback{display:block;font-size:11px;line-height:1.5;overflow-wrap:anywhere;color:var(--muted)}
+input[aria-invalid=true]{border-color:#b8412c}
+input[aria-invalid=true]+.length-feedback{color:#b8412c}
+.lib-grid .item small{white-space:normal;overflow-wrap:anywhere;font-size:10px}
+.form label{min-width:0}
+.stats .big{overflow-wrap:anywhere;font-size:20px}

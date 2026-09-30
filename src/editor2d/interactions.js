@@ -1,6 +1,7 @@
 import {$} from '../ui/dom.js';
-import {TAP,esc} from '../ui/dom.js';
-import {area,fmt,norm} from '../core/geometry.js';
+import {TAP} from '../ui/dom.js';
+import {formatLengthMm,formatAreaM2,unitStepMm} from '../core/units.js';
+import {area,norm} from '../core/geometry.js';
 import {createScope} from '../ui/lifecycle.js';
 export function createInteractions({store,ui,svg,viewport,renderer,snapping,actions,drawers,mode,setTool,toggleFullscreen,undo,redo}){
 const scope=createScope();
@@ -10,7 +11,12 @@ const {snapMove,snapPoint}=snapping;
 const {getF,select,rotateSel,deleteSel,duplicateSel,toggleWall}=actions;
 const {drawer,closeDrawers}=drawers;
 const snap=()=>store.begin(),commit=b=>store.commit(b),mutate=fn=>store.mutate(fn);
-let drag = null, pinch = null;
+let drag = null, pinch = null, lastPoint=null, hoverRoom=null;
+function updateStatus(){
+ if(lastPoint){$('#cx').textContent=formatLengthMm(lastPoint.x,store.getProject().units.display);$('#cy').textContent=formatLengthMm(lastPoint.y,store.getProject().units.display);}
+ const room=store.getProject().geometry.rooms.find(r=>r.id===hoverRoom);
+ $('#hover').textContent=room?store.getProject().rooms[room.id].name+' '+formatAreaM2(area(room.poly),store.getProject().units.display):'';
+}
 const touches = new Map();                     // 当前按在平面图上的手指
 const svgXY = (x, y) => { const r = svg.getBoundingClientRect(); return [x - r.left, y - r.top]; };
 function pinchInfo(){
@@ -85,10 +91,10 @@ scope.on(svg, 'pointermove', e => {
     return;
   }
   const p = toMM(e);
-  $('#cx').textContent = Math.round(p.x) + ' mm'; $('#cy').textContent = Math.round(p.y) + ' mm';
+  lastPoint=p;updateStatus();
   if (!drag){
     const room = e.target.closest && e.target.closest('[data-room]');
-    $('#hover').innerHTML = room ? `<b>${esc(store.getProject().rooms[room.dataset.room].name)}</b> ${fmt(area(store.getProject().geometry.rooms.find(r=>r.id===room.dataset.room).poly))} m²` : '';
+    hoverRoom=room?.dataset.room;updateStatus();
     if (ui.tool === 'measure' && ui.mA){ ui.mCur = snapPoint(p, e.shiftKey); renderMeasure(); }
     return;
   }
@@ -115,7 +121,8 @@ scope.on(svg, 'pointermove', e => {
     const a = f.rot*Math.PI/180, c = Math.cos(a), s = Math.sin(a);
     const dx = p.x-f.cx, dy = p.y-f.cy, lx = dx*c + dy*s, ly = -dx*s + dy*c;
     const ax = -f.w/2, ay = -f.d/2;
-    const nw = Math.max(100, Math.round((lx-ax)/10)*10), nd = Math.max(100, Math.round((ly-ay)/10)*10);
+    const step=unitStepMm(store.getProject().units.display);
+    const nw = Math.max(100, Math.round((lx-ax)/step)*step), nd = Math.max(100, Math.round((ly-ay)/step)*step);
     const mx = ax + nw/2, my = ay + nd/2;
     f.cx += mx*c - my*s; f.cy += mx*s + my*c; f.w = nw; f.d = nd;
   }
@@ -163,7 +170,7 @@ scope.on(document, 'keydown', e => {
   else if (k === 'delete' || k === 'backspace'){ e.preventDefault(); deleteSel(); }
   else if (k === 'escape'){ if (drag){ endDrag(true); return; } if (ui.mA){ ui.mA = null; renderMeasure(); } else { if (ui.tool !== 'select') setTool('select'); select(null); } }
   else if (k.startsWith('arrow') && ui.sel?.kind === 'furn'){
-    e.preventDefault(); const st = e.shiftKey ? 100 : 10;
+    e.preventDefault(); const st = unitStepMm(store.getProject().units.display,e.shiftKey);
     mutate(() => { const f = getF(ui.sel.id); if (k==='arrowleft') f.cx -= st; if (k==='arrowright') f.cx += st; if (k==='arrowup') f.cy -= st; if (k==='arrowdown') f.cy += st; });
   }
   else if (k === '+' || k === '=') zoomCenter(1.25);
@@ -177,5 +184,5 @@ function cancel(){
   touches.clear(); ui.mA=ui.mCur=null; renderMeasure();
 }
 scope.on(window,'blur',cancel);
-return {cancel,dispose(){cancel();scope.dispose();}};
+return {cancel,updateStatus,dispose(){cancel();scope.dispose();}};
 }

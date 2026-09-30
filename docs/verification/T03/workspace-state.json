@@ -1,0 +1,52 @@
+{
+  "time": "2026-09-30T12:58:12.478626",
+  "branch": "feat/project-data-t01",
+  "head": "680e26c53f08de4ce2dbd02dd70a65b6e603041d",
+  "status": [
+    " M README.md",
+    " M docs/architecture.md",
+    " M docs/development.md",
+    " M docs/features.md",
+    " M docs/roadmap.md",
+    " M docs/usage.md",
+    " M index.html",
+    " M src/data/project-data.js",
+    " M src/editor2d/editor.js",
+    " M src/editor2d/interactions.js",
+    " M src/editor2d/renderer.js",
+    " M src/editor2d/snapping.js",
+    " M src/editor2d/viewport.js",
+    " M src/main.js",
+    " M src/ui/furniture-library.js",
+    " M src/ui/project-actions.js",
+    " M src/ui/property-panel.js",
+    " M src/ui/room-editor.js",
+    " M src/ui/toolbar.js",
+    " M src/viewer3d/viewer.js",
+    " M styles/app.css",
+    " M tests/browser-3d-interactions.cjs",
+    " M tests/browser-failures.cjs",
+    " M tests/browser-t02-doors.cjs",
+    " M tests/browser-t02-storage.cjs",
+    "?? docs/T03-units-and-measurements-plan.md",
+    "?? docs/T03-verification.md",
+    "?? docs/verification/T03/",
+    "?? src/core/units.js",
+    "?? src/ui/length-field.js",
+    "?? tests/browser-t03-3d.cjs",
+    "?? tests/browser-t03.cjs",
+    "?? tests/units.test.js"
+  ],
+  "initialChangesPreserved": [
+    "README.md",
+    "docs/roadmap.md",
+    "docs/T03-units-and-measurements-plan.md"
+  ],
+  "service": "http://127.0.0.1:8086/",
+  "actionsNotTaken": [
+    "commit",
+    "push",
+    "merge",
+    "public deployment"
+  ]
+}

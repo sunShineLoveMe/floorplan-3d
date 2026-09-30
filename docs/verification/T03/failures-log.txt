@@ -1,0 +1,7 @@
+PASS blocked Three CDN keeps 2D and JSON export usable
+PASS WebGL constructor failure cleans canvas and leaves 2D working
+PASS rejected asynchronous pointer lock is handled and orbit remains usable
+PASS unreadable stored bytes survive load and are backed up before editing
+PASS quota failure is visible and does not overwrite prior saved project
+PASS initial 3D preference stays intact while the engine is loading
+PASS disposing active 3D removes its animation loop, canvas and late callbacks

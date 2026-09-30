@@ -85,6 +85,7 @@ import {validateRoomEditor,generateRoomGeometry,geometryMatches,GEOMETRY_TOLERAN
     if (!Array.isArray(data.furniture) || !obj(data.rooms) || !Array.isArray(data.demolished) || !Array.isArray(data.measures)) throw new ProjectError('UNKNOWN_FORMAT');
     if (!confirmLegacy) throw new ProjectError('LEGACY_CONFIRM_REQUIRED');
     const p=create(template, data.furniture);
+    if(data.units!==undefined)p.units=clone(data.units);
     p.rooms={...p.rooms,...data.rooms}; p.demolished=data.demolished; p.measures=data.measures;
     p.migratedFrom={format:'legacy-unversioned',templateId:TEMPLATE};
     return {project:validate(p,catalogs),legacy:true};

@@ -1,0 +1,8 @@
+[
+  '3D mouse furniture movement and one undo/redo',
+  '3D Escape drag cancellation',
+  '3D furniture and selection survive return to 2D',
+  'door clicked at inspected visible leaf; screenshots retained for visual confirmation',
+  'Chromium fullscreen enter/exit',
+  'wall snap reaches exact wall face; disabling snap keeps only 10mm grid'
+]

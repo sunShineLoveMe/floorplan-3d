@@ -1,3 +1,4 @@
+import {unitStepMm,formatLengthMm} from '../core/units.js';
 import {uid,F} from '../data/default-project.js';
 import {aabb,norm} from '../core/geometry.js';
 import {tr,nm} from '../ui/i18n.js';
@@ -38,11 +39,12 @@ function pushOut(f){
   }
 }
 function addItem(it, x, y){
-  const [type,name,w,d,color] = it, f = F(type,name,Math.round(x/10)*10,Math.round(y/10)*10,w,d,0,color);
+  const step=unitStepMm(store.getProject().units.display);
+  const [type,name,w,d,color] = it, f = F(type,name,Math.round(x/step)*step,Math.round(y/step)*step,w,d,0,color);
   pushOut(f);
   ui.sel = {kind:'furn', id:f.id};
   mutate(() => type==='rug' ? store.getProject().furniture.unshift(f) : store.getProject().furniture.push(f));
-  toast(tr(`已添加「${name}」${w}×${d}`, `Added "${nm(name)}" ${w}×${d}`));
+  toast(tr(`已添加「${name}」${formatLengthMm(w,store.getProject().units.display,{style:'inches'})} × ${formatLengthMm(d,store.getProject().units.display,{style:'inches'})}`, `Added "${nm(name)}" ${formatLengthMm(w,store.getProject().units.display,{style:'inches'})} × ${formatLengthMm(d,store.getProject().units.display,{style:'inches'})}`));
 }
 function toggleWall(id){
   if(store.getProject().roomEditor) return toast(tr('矩形房间的生成墙体不可拆除，请编辑房间或门窗。','Generated rectangle walls cannot be removed. Edit the room or openings.'));
@@ -51,7 +53,7 @@ function toggleWall(id){
   if (w[4]==='e') return toast(tr('外墙属于建筑外围护结构，不建议拆除', 'Exterior walls are part of the building envelope and should not be removed'));
   const on = store.getProject().demolished.includes(id);
   mutate(() => store.getProject().demolished = on ? store.getProject().demolished.filter(x => x!==id) : [...store.getProject().demolished, id]);
-  toast(on ? tr('已恢复墙体', 'Wall restored') : tr(`已标记拆除 ${Math.max(w[2]-w[0], w[3]-w[1])} mm 墙体`, `Marked ${Math.max(w[2]-w[0], w[3]-w[1])} mm of wall for removal`));
+  toast(on ? tr('已恢复墙体', 'Wall restored') : tr(`已标记拆除 ${formatLengthMm(Math.max(w[2]-w[0], w[3]-w[1]),store.getProject().units.display)} 墙体`, `Marked ${formatLengthMm(Math.max(w[2]-w[0], w[3]-w[1]),store.getProject().units.display)} of wall for removal`));
 }
 
 

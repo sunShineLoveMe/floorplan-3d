@@ -1,7 +1,8 @@
 import {$} from '../ui/dom.js';
 import {COARSE} from './dom.js';
 import {tr} from './i18n.js';
-import {area,fmt} from '../core/geometry.js';
+import {formatAreaM2} from '../core/units.js';
+import {area} from '../core/geometry.js';
 import {createScope} from './lifecycle.js';
 export function createToolbar({store,ui,viewport,drawers,mode,undo,redo,clearLayout,renderMeasure,toast,cancelInteraction}){
 const scope=createScope(),svg=$('#plan');
@@ -11,7 +12,8 @@ const setView=m=>mode.setView(m);
 function updateHeader(){
   $('#projectName').textContent=store.getProject().name==='三室两厅两卫 · 装修设计' ? tr(store.getProject().name,'3BR 2LR 2BA · Interior Design') : store.getProject().name;
   const tot = store.getProject().geometry.rooms.filter(r => r.counted !== false).reduce((a,r) => a + area(r.poly), 0);
-  $('#subtitle').textContent = tr(`套内使用面积约 ${fmt(tot)} m² · 尺寸单位 mm`, `Net floor area ≈ ${fmt(tot)} m² · Units: mm`);
+  $('#subtitle').textContent = tr(`套内使用面积约 ${formatAreaM2(tot,store.getProject().units.display)}`, `Net floor area ≈ ${formatAreaM2(tot,store.getProject().units.display)}`);
+  $('#projectUnits').value=store.getProject().units.display;
   $('#undo').disabled = !store.canUndo; $('#redo').disabled = !store.canRedo;
   $('#undo').style.opacity = store.canUndo ? 1 : .4; $('#redo').style.opacity = store.canRedo ? 1 : .4;
 }
@@ -43,6 +45,11 @@ document.querySelectorAll('#tools .btn').forEach(b => b.onclick = () => setTool(
 document.querySelectorAll('#layers .btn').forEach(b => b.onclick = () => {
   const k = b.dataset.layer; store.setView({layers:{...ui.layers,[k]:!ui.layers[k]}}); b.classList.toggle('on', ui.layers[k]);
 
+});
+scope.on($('#projectUnits'),'change',e=>{
+  if(document.querySelector('dialog[open]') || $('#projectUnits').disabled)return;
+  const display=e.target.value;if(!['metric','imperial'].includes(display))return;
+  cancelInteraction();store.mutate(p=>p.units.display=display);
 });
 $('#zoomIn').onclick = () => zoomCenter(1.25);
 $('#zoomOut').onclick = () => zoomCenter(.8);

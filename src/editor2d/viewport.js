@@ -1,3 +1,4 @@
+import {formatLengthMm} from '../core/units.js';
 import {$} from '../ui/dom.js';
 import {PX_MM} from '../ui/dom.js';
 export function createViewport({store,svg,onChange}){
@@ -7,9 +8,11 @@ function applyView(){
   svg.setAttribute('viewBox', `${view.x0} ${view.y0} ${W/view.s} ${H/view.s}`);
   const ratio = 1/(view.s*PX_MM);
   $('#ratio').textContent = '1:' + Math.round(ratio);
-  const nice = [100,200,500,1000,2000,5000].find(v => v*view.s >= 60) || 5000;
+  const display=store.getProject().units.display;
+  const sizes=display==='imperial'?[1,2,3,6,12,24,60,120,240,600].map(n=>n*25.4):[100,200,500,1000,2000,5000];
+  const nice = sizes.find(v => v*view.s >= 60) || sizes.at(-1);
   $('#sbBar').style.width = nice*view.s + 'px';
-  $('#sbText').textContent = nice >= 1000 ? `${nice/1000} m` : `${nice} mm`;
+  $('#sbText').textContent = display==='imperial'?formatLengthMm(nice,display,{style:nice<304.8?'inches':'feet'}):nice >= 1000 ? `${nice/1000} m` : `${nice} mm`;
   onChange();
 }
 function fitView(){

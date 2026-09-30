@@ -1,9 +1,12 @@
+import {formatLengthMm,formatAreaM2,gridSizeMm} from '../core/units.js';
 import {$} from '../ui/dom.js';
 import {COARSE,esc} from '../ui/dom.js';
 import {tr,nm} from '../ui/i18n.js';
-import {area,aabb,fmt} from '../core/geometry.js';
+import {area,aabb} from '../core/geometry.js';
 import {furnSVG} from './furniture-symbols.js';
 export function createRenderer({store,ui,view}){
+const length=(mm,style='feet')=>esc(formatLengthMm(mm,store.getProject().units.display,{style}));
+const surface=m2=>esc(formatAreaM2(m2,store.getProject().units.display));
 const getF = id => store.getProject().furniture.find(f=>f.id===id);
 const NOLABEL = ['plant','floorlamp','sidetable','barstool','beanbag'];
 function renderRooms(){
@@ -75,13 +78,13 @@ function renderLabels(){
   g.innerHTML = store.getProject().geometry.rooms.filter(r => r.at).map(r => {
     const [x,y] = r.at, halo = 'stroke="#fbf9f4" stroke-width="45" paint-order="stroke" stroke-linejoin="round"';
     return `<text x="${x}" y="${y}" font-size="250" font-weight="600" text-anchor="middle" fill="#2b2824" ${halo}>${esc(nm(store.getProject().rooms[r.id].name))}</text>
-      <text x="${x}" y="${y+260}" font-size="175" text-anchor="middle" fill="#7d7366" ${halo}>${fmt(area(r.poly))} m²</text>`;
+      <text x="${x}" y="${y+260}" font-size="175" text-anchor="middle" fill="#7d7366" ${halo}>${surface(area(r.poly))}</text>`;
   }).join('');
 }
 
 function renderDims(){
   const DC = '#7d7160', LS = `stroke="${DC}" stroke-width="1" vector-effect="non-scaling-stroke"`, TK = `stroke="${DC}" stroke-width="2" vector-effect="non-scaling-stroke"`;
-  const txt = (x,y,v,rot) => `<text x="${x}" y="${y}" font-size="${v<400?140:200}" text-anchor="middle" fill="${DC}" ${rot?`transform="rotate(-90 ${x} ${y})"`:''}>${v}</text>`;
+  const txt = (x,y,v,rot) => `<text x="${x}" y="${y}" font-size="${Math.max(45,Math.min(200,v/(formatLengthMm(v,store.getProject().units.display).length*.65)))}" text-anchor="middle" fill="${DC}" ${rot?`transform="rotate(-90 ${x} ${y})"`:''}>${length(v)}</text>`;
   const chain = (horiz, at, start, segs) => {
     const pts = [start]; segs.forEach(v => pts.push(pts[pts.length-1]+v));
     let s = horiz ? `<line x1="${pts[0]}" y1="${at}" x2="${pts.at(-1)}" y2="${at}" ${LS}/>` : `<line x1="${at}" y1="${pts[0]}" x2="${at}" y2="${pts.at(-1)}" ${LS}/>`;
@@ -97,20 +100,23 @@ function renderDims(){
 }
 
 function renderGrid(){
+  const size=gridSizeMm(store.getProject().units.display),grid=$('#grid');
+  grid.setAttribute('width',size);grid.setAttribute('height',size);
+  grid.innerHTML=`<path d="M${size/2} 0V${size}M0 ${size/2}H${size}" stroke="#e5dfd3" stroke-width="${size*.008}"/><path d="M0 0V${size}M0 0H${size}" stroke="#d8d0c1" stroke-width="${size*.014}"/>`;
   $('#gGrid').innerHTML = `<rect x="-20000" y="-20000" width="55000" height="55000" fill="${ui.layers.grid ? 'url(#grid)' : 'transparent'}" data-bg="1"/>`;
 }
 
 function renderMeasure(){
   const k = 1/view.s, fs = 12*k;
   const one = (a,b,tmp) => {
-    const L = Math.hypot(b.x-a.x, b.y-a.y); if (L < 1) return '';
+    const L = Math.hypot(b.x-a.x, b.y-a.y); if (L === 0) return '';
     let ang = Math.atan2(b.y-a.y, b.x-a.x)*180/Math.PI; if (ang > 90 || ang < -90) ang += 180;
     const mx = (a.x+b.x)/2, my = (a.y+b.y)/2, nx = -(b.y-a.y)/L*5*k, ny = (b.x-a.x)/L*5*k;
     const col = tmp ? '#2f5d62' : '#b5653a', S = `stroke="${col}" stroke-width="1.5" vector-effect="non-scaling-stroke"`;
     return `<line x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" ${S}/>
       <line x1="${a.x-nx}" y1="${a.y-ny}" x2="${a.x+nx}" y2="${a.y+ny}" ${S}/><line x1="${b.x-nx}" y1="${b.y-ny}" x2="${b.x+nx}" y2="${b.y+ny}" ${S}/>
       <text x="${mx}" y="${my-5*k}" font-size="${fs}" text-anchor="middle" fill="${col}" font-weight="600" transform="rotate(${ang} ${mx} ${my})"
-        stroke="#fff" stroke-width="${3.5*k}" paint-order="stroke">${Math.round(L)} mm</text>`;
+        stroke="#fff" stroke-width="${3.5*k}" paint-order="stroke">${length(L)}</text>`;
   };
   let s = store.getProject().measures.map(m => one(m.a,m.b)).join('');
   if (ui.mA && ui.mCur) s += one(ui.mA, ui.mCur, true);
@@ -135,7 +141,7 @@ function renderSel(){
         <rect data-handle="size" x="${sx-5*hs*k}" y="${sy-5*hs*k}" width="${10*hs*k}" height="${10*hs*k}" fill="#b5653a"><title>${tr('拖动调整尺寸','Drag to resize')}</title></rect></g>`;
       const {hh} = aabb(f);
       s += `<text x="${f.cx}" y="${f.cy+hh+24*k}" font-size="${12*k}" text-anchor="middle" fill="#b5653a" font-weight="600" pointer-events="none"
-        stroke="#fff" stroke-width="${3*k}" paint-order="stroke">${f.w} × ${f.d}</text>`;
+        stroke="#fff" stroke-width="${3*k}" paint-order="stroke">${length(f.w,'inches')} × ${length(f.d,'inches')}</text>`;
     }
   } else if (ui.sel?.kind === 'room'){
     const r = store.getProject().geometry.rooms.find(r => r.id === ui.sel.id);

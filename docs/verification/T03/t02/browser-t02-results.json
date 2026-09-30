@@ -1,0 +1,18 @@
+{
+  "browser": "149.0.7827.55",
+  "checks": [
+    "new room draft Escape, empty rectangle, area and full project undo/redo",
+    "blank input rejected and unchanged submission does not update timestamp/storage",
+    "SVG wall selection, parent wall, door/window numeric entry and opening selection",
+    "resize keeps furniture, updates area/origin/height and complete undo/redo",
+    "out-of-wall, overlapping and too-high opening reject without saving or adding undo",
+    "16 door wall/hinge/swing combinations, deletion and stable-ID undo through UI",
+    "real WebGL preview, live room resize in 3D, undo and 2D return",
+    "form focus and Escape isolate canvas keyboard actions",
+    "room name/material regenerate geometry and reopening the same room form is a no-op",
+    "real JSON/PNG downloads, new-context file upload, refresh and continued decimal editing",
+    "mismatched v2 parameter/snapshot import rejected without replacing the project",
+    "390x844 drawer, numeric form, error, cancel and apply are accessible"
+  ],
+  "errors": []
+}

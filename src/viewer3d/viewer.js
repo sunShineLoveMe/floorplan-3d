@@ -1,3 +1,4 @@
+import {formatAreaM2} from '../core/units.js';
 import {$} from '../ui/dom.js';
 import {createNavigation} from './navigation.js';
 import {createMaterials} from './materials.js';
@@ -163,12 +164,12 @@ function buildLabels(){
   labelG.children.slice().forEach(o => { o.element.remove(); labelG.remove(o); });
   store.getProject().geometry.rooms.filter(r => r.at).forEach(r => {
     const el = document.createElement('div'); el.className = 'rlabel';
-    el.innerHTML = `${esc(nm(store.getProject().rooms[r.id].name))}<small>${area(r.poly).toFixed(1)}m²</small>`;
+    el.innerHTML = `${esc(nm(store.getProject().rooms[r.id].name))}<small>${formatAreaM2(area(r.poly),store.getProject().units.display)}</small>`;
     const o = new CSS2DObject(el); o.position.set(wx(r.at[0]), opt.cut + .15, wz(r.at[1])); o.visible = labelG.visible; labelG.add(o);
   });
   const counted = store.getProject().geometry.rooms.filter(r => r.counted !== false);
-  $('#roomList').innerHTML = counted.map(r => `<button data-room="${r.id}"><span>${esc(nm(store.getProject().rooms[r.id].name))}</span><small>${area(r.poly).toFixed(2)} m²</small></button>`).join('')
-    + `<button data-room="__all"><span>${tr('全屋', 'Whole home')}</span><small>${counted.reduce((a, r) => a + area(r.poly), 0).toFixed(2)} m²</small></button>`;
+  $('#roomList').innerHTML = counted.map(r => `<button data-room="${r.id}"><span>${esc(nm(store.getProject().rooms[r.id].name))}</span><small>${formatAreaM2(area(r.poly),store.getProject().units.display)}</small></button>`).join('')
+    + `<button data-room="__all"><span>${tr('全屋', 'Whole home')}</span><small>${formatAreaM2(counted.reduce((a, r) => a + area(r.poly), 0),store.getProject().units.display)}</small></button>`;
   document.querySelectorAll('#roomList button').forEach(b => b.onclick = () => {
     document.querySelectorAll('#roomList button').forEach(x => x.classList.toggle('on', x === b));
     if (opt.mode === 'walk') setMode('orbit');
@@ -182,7 +183,7 @@ function sync(force){
   const oldH=H, oldOrigin=[OX,OY]; [OX,OY]=store.getProject().geometry.origin; H=M(store.getProject().geometry.height);
   if(opt.cut===oldH) opt.cut=H; else opt.cut=Math.min(opt.cut,H);
   document.querySelector('[data-cut]').dataset.cut=String(H); syncCutBtns();
-  const a = JSON.stringify([store.getProject().geometry,store.getProject().rooms, store.getProject().demolished, opt.cut]), f = JSON.stringify([store.getProject().geometry.origin,store.getProject().furniture]), l = JSON.stringify([store.getProject().geometry,store.getProject().rooms, opt.cut]);
+  const a = JSON.stringify([store.getProject().geometry,store.getProject().rooms, store.getProject().demolished, opt.cut]), f = JSON.stringify([store.getProject().geometry.origin,store.getProject().furniture]), l = JSON.stringify([store.getProject().geometry,store.getProject().rooms, opt.cut,store.getProject().units.display]);
   if (force || a !== sigArch){ sigArch = a; buildArch(); }
   if (force || f !== sigFurn){ sigFurn = f; buildFurn(); }
   if (force || l !== sigLabels){ sigLabels = l; buildLabels(); }

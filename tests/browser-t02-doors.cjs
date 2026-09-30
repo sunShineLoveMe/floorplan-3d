@@ -29,7 +29,7 @@ const OUT=path.resolve(process.env.TEST_OUT||'docs/verification/T02/doors');fs.m
    assert.equal(JSON.stringify(await saved()),bytes);checks.push({label,changedPixels:changed,reopenedResidualPixels:residual,door:(await saved()).roomEditor.openings[0]});console.log('PASS',label,changed,residual);
  };
  try{
-   await page.goto(process.env.TEST_URL||'http://127.0.0.1:8086');await page.setInputFiles('#fileIn','tests/fixtures/rectangle-project-v2.json');await page.locator('[data-edit="opening-door-1"]').waitFor();
+   await page.goto(process.env.TEST_URL||'http://127.0.0.1:8086');await page.locator('#gFurn [data-fid]').first().waitFor();await page.setInputFiles('#fileIn','tests/fixtures/rectangle-project-v2.json');await page.locator('[data-edit="opening-door-1"]').waitFor();
    await page.locator('[data-view="3d"]').click();await page.waitForFunction(()=>document.body.classList.contains('m3d')&&!document.body.classList.contains('busy'));
    await page.locator('[data-t="labels"]').click();await toggle('900-top-start-inward');
    await page.locator('[data-edit="opening-door-1"]').click();

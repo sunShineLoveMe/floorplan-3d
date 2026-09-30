@@ -1,0 +1,12 @@
+PASS new room draft Escape, empty rectangle, area and full project undo/redo
+PASS blank input rejected and unchanged submission does not update timestamp/storage
+PASS SVG wall selection, parent wall, door/window numeric entry and opening selection
+PASS resize keeps furniture, updates area/origin/height and complete undo/redo
+PASS out-of-wall, overlapping and too-high opening reject without saving or adding undo
+PASS 16 door wall/hinge/swing combinations, deletion and stable-ID undo through UI
+PASS real WebGL preview, live room resize in 3D, undo and 2D return
+PASS form focus and Escape isolate canvas keyboard actions
+PASS room name/material regenerate geometry and reopening the same room form is a no-op
+PASS real JSON/PNG downloads, new-context file upload, refresh and continued decimal editing
+PASS mismatched v2 parameter/snapshot import rejected without replacing the project
+PASS 390x844 drawer, numeric form, error, cancel and apply are accessible

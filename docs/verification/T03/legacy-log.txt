@@ -1,0 +1,22 @@
+PASS sample geometry, 46 furniture and area match baseline
+PASS sample 2D / 3D transition
+PASS library click adds one item
+PASS dimensions, decimal position, rotation, duplicate and delete
+PASS custom import clears original geometry; undo and redo
+PASS real pointer drag creates one undo / redo step
+PASS Escape cancels a drag without saving its preview
+PASS input focus protects shortcuts and language preserves selection
+PASS layer and snap controls
+PASS zoom, fit and pan
+PASS measurement
+PASS room name, material and language preserve custom names
+PASS 2D PNG downloaded
+PASS 3D room views, cut/full walls, sun and night
+PASS walk enters, moves and exits (door key exercised; visual door check separate)
+PASS 3D PNG and JSON downloaded; fixture fields preserved
+PASS refresh restores custom geometry and 3D mode
+PASS future/broken files and cancelled legacy migration preserve saved project
+PASS legacy confirmation downloads original bytes before migration
+PASS dispose / repeated mount removes canvas and duplicate listeners
+PASS narrow viewport drawers and floating toolbar
+PASS no uncaught page errors

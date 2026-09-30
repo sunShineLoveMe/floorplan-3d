@@ -10,7 +10,7 @@ const scope=createScope(),svg=$('#plan');
 let renderer;
 const viewport=createViewport({store,svg,onChange:()=>{renderer?.renderSel();renderer?.renderMeasure();}});
 renderer=createRenderer({store,ui,view:viewport.view});
-const snapping=createSnapping({ui,view:viewport.view,snapRects:actions.snapRects});
+const snapping=createSnapping({store,ui,view:viewport.view,snapRects:actions.snapRects});
 const interactions=createInteractions({store,ui,svg,viewport,renderer,snapping,actions,drawers,mode,setTool,toggleFullscreen,undo,redo});
 const {view,fitView,applyView}=viewport;
 buildDefs();
@@ -23,5 +23,5 @@ scope.observe(svg, () => {
 });
 
 
-return {viewport,snapping,renderer,cancel:interactions.cancel,update:renderer.update,dispose(){interactions.dispose();scope.dispose();}};
+return {viewport,snapping,renderer,cancel:interactions.cancel,update(){renderer.update();interactions.updateStatus();},dispose(){interactions.dispose();scope.dispose();}};
 }

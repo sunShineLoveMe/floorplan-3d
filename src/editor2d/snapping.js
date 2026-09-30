@@ -1,6 +1,7 @@
+import {unitStepMm} from '../core/units.js';
 import {aabb} from '../core/geometry.js';
-export function createSnapping({ui,view,snapRects}){
-const grid = () => 10;
+export function createSnapping({store,ui,view,snapRects}){
+const grid = () => unitStepMm(store.getProject().units.display);
 function snapMove(f, cx, cy){
   let nx = Math.round(cx/grid())*grid(), ny = Math.round(cy/grid())*grid();
   if (!ui.layers.wallSnap) return [nx, ny];
@@ -13,7 +14,7 @@ function snapMove(f, cx, cy){
   return [nx, ny];
 }
 function snapPoint(p, shift){
-  let x = Math.round(p.x/10)*10, y = Math.round(p.y/10)*10;
+  let x = Math.round(p.x/grid())*grid(), y = Math.round(p.y/grid())*grid();
   const tol = 8/view.s; let bx = tol, by = tol;
   for (const r of snapRects()){
     for (const ex of [r[0], r[2]]) if (Math.abs(ex-p.x) < bx){ bx = Math.abs(ex-p.x); x = ex; }

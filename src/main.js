@@ -37,7 +37,7 @@ export function createApplication(){
   const files=createFileMenu({store,ui,downloads,isSwitching:()=>switching,toast,loaded,cancelInteraction:()=>{editor.cancel();viewer?.cancel();}});
   roomEditor=createRoomEditor({store,ui,actions,cancelInteraction:()=>{editor.cancel();viewer?.cancel();},exportProject:files.exportProject,isSwitching:()=>switching,toast});
   actions.deleteOpening=roomEditor.remove;
-  function update(){editor.update();panel.update();roomEditor?.update();toolbar.update();viewer?.sync();}
+  function update(){library.update();editor.viewport.applyView();editor.update();panel.update();roomEditor?.update();toolbar.update();viewer?.sync();}
   function save(){if(!storage.save(store.getProject()).ok) scope.timeout(()=>toast(tr('保存失败，请导出项目文件备份','Save failed. Export a project file as a backup.')),0);}
   let geometry=JSON.stringify(store.getProject().geometry);
   const unsubscribe=store.subscribe(({project,reason})=>{

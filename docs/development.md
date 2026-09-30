@@ -39,7 +39,7 @@ npm test
 # 等价于 node --test tests/*.test.js
 ```
 
-当前 **31 项 Node 测试通过**：保留原19项行为覆盖，新增矩形几何、16门方向、原子编辑/撤销、v2一致性、v1迁移、存储优先级与失败保护等测试。`architecture.test.js` 用轻量 Three 依赖替身直接运行真实建筑生成器，覆盖1152组门窗/剖切边界并拒绝非正BoxGeometry；这不能替代浏览器 WebGL 验收。
+T02 时点 **31 项 Node 测试通过**：保留原19项行为覆盖，新增矩形几何、16门方向、原子编辑/撤销、v2一致性、v1迁移、存储优先级与失败保护等测试。`architecture.test.js` 用轻量 Three 依赖替身直接运行真实建筑生成器，覆盖1152组门窗/剖切边界并拒绝非正BoxGeometry；这不能替代浏览器 WebGL 验收。
 
 语法检查用 `node --check` 对 `src/`、根 ESM 入口和测试脚本逐个执行。`git diff --check` 检查跟踪文件空白错误；未跟踪新文件也需检查。可选 lint：
 
@@ -73,10 +73,26 @@ node tests/browser-t02-doors.cjs
 
 ## 开发边界与文档维护
 
-本轮完成 T02 单矩形房间与门窗数值编辑，不包含 T03 英制输入。业务操作通过 store，纯数据与状态模块不得引入 DOM 或 Three.js；组件间通过入口注入操作。资源生命周期和后续接入点见[架构说明](architecture.md)。
+当前工作区完成 T03 英制输入与全站尺寸接入，见 [T03 验收](T03-verification.md)。业务操作通过 store，纯数据与状态模块不得引入 DOM 或 Three.js；组件间通过入口注入操作。资源生命周期和后续接入点见[架构说明](architecture.md)。
 
 README 保留概览、启动与导航；功能变化更新 `features.md`；任务状态更新 `roadmap.md`；用户操作更新 `usage.md`；每项任务保留独立设计与验收记录。T01 原验收记录保留其历史时点。
 
 ## 代码来源与许可状态
 
 当前项目来自 [sunShineLoveMe/floorplan-3d](https://github.com/sunShineLoveMe/floorplan-3d)，该仓库 fork 自 [wy51ai/floorplan-3d](https://github.com/wy51ai/floorplan-3d)。本地检出版本未发现明确的项目许可证，商业复用授权仍待确认。
+
+## T03 复核
+
+`npm test` 当前 38 项；增加严格语法、数值基准、10,000 组双模式编辑往返、100 次切换、精确吸附和事务测试。无需构建或新增 npm 依赖。
+
+沿用上面的 Playwright/Chromium 环境变量：
+
+```bash
+node tests/browser-t03.cjs
+node tests/browser-t03-3d.cjs
+DISPLAY_UNITS=imperial TEST_OUT=docs/verification/T03/imperial-drag node tests/browser-3d-interactions.cjs
+```
+
+T02/旧回归脚本用 `TEST_OUT=docs/verification/T03/<suite>` 保存本轮证据，避免覆盖历史结果。T03 主流程覆盖真实下载和刷新，3D 专项在门动画稳定后比较切换单位前后画布，保留严格像素相等断言。`DISPLAY_UNITS` 仅控制测试设置；英制网格测试先关闭精确墙吸附，再验证 6.35 mm。
+
+项目没有生产测试桥接或新全局状态。实际环境、异常修正、逐项矩阵见 [T03 验收](T03-verification.md)。

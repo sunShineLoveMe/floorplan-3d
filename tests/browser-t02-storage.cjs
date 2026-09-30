@@ -1,6 +1,7 @@
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const OUT=path.resolve(process.env.TEST_OUT||'docs/verification/T02'),URL=process.env.TEST_URL||'http://127.0.0.1:8086';
+fs.mkdirSync(OUT,{recursive:true});
 (async()=>{
 const browser=await chromium.launch({headless:true,...(process.env.CHROMIUM_EXECUTABLE?{executablePath:process.env.CHROMIUM_EXECUTABLE}:{})}),checks=[];
 const v1=fs.readFileSync('tests/fixtures/custom-project.json','utf8');
