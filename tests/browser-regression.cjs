@@ -2,7 +2,9 @@
    No browser dependency or download is added to the application. Uses a fresh, isolated browser context. */
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
-const OUT=path.resolve('docs/verification/T01.1'),URL=process.env.TEST_URL || 'http://127.0.0.1:8086';
+const OUT=path.resolve(process.env.TEST_OUT || 'docs/verification/T02/legacy-regression'),URL=process.env.TEST_URL || 'http://127.0.0.1:8086';
+const BASELINE=path.resolve('docs/verification/T01.1');
+fs.mkdirSync(OUT,{recursive:true});
 const custom=JSON.parse(fs.readFileSync('tests/fixtures/custom-project.json'));
 (async()=>{
  const browser=await chromium.launch({headless:true,...(process.env.CHROMIUM_EXECUTABLE?{executablePath:process.env.CHROMIUM_EXECUTABLE}:{})});
@@ -10,7 +12,7 @@ const custom=JSON.parse(fs.readFileSync('tests/fixtures/custom-project.json'));
  const page=await context.newPage(),errors=[],checks=[],timings={};
  page.on('pageerror',e=>errors.push(e.message));
  const check=(name,data={})=>{checks.push({name,...data});console.log('PASS',name)};
- const saved=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('floorplan-project-v1')));
+ const saved=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('floorplan-project-v2')));
  const menu=async id=>{await page.locator('details.menu summary').click();await page.locator('#'+id).click()};
  const download=async(id,name)=>{const pending=page.waitForEvent('download');await menu(id);const d=await pending;const p=path.join(OUT,name);await d.saveAs(p);return p;};
  const screen=async name=>page.screenshot({path:path.join(OUT,name+'.png')});
@@ -22,7 +24,7 @@ const custom=JSON.parse(fs.readFileSync('tests/fixtures/custom-project.json'));
  try{
  let start=Date.now();await page.goto(URL);await page.locator('#gFurn [data-fid]').nth(45).waitFor();timings.initial2D=Date.now()-start;
  assert.equal(await page.locator('#gRooms polygon.room').count(),13);assert.match(await page.locator('#subtitle').textContent(),/87.18/);
- const baseline=JSON.parse(fs.readFileSync(path.join(OUT,'baseline-project.json'))),sample=JSON.parse(fs.readFileSync(await download('exportJson','sample-export.json')));
+ const baseline=JSON.parse(fs.readFileSync(path.join(BASELINE,'baseline-project.json'))),sample=JSON.parse(fs.readFileSync(await download('exportJson','sample-export.json')));
  assert.deepEqual(sample.geometry,baseline.geometry);assert.deepEqual(sample.furniture.map(({id,...f})=>f),baseline.furniture.map(({id,...f})=>f));await screen('sample-2d');check('sample geometry, 46 furniture and area match baseline');
  timings.sampleEnter3D=await mode('3d');await screen('sample-3d');assert.equal(await page.locator('#view3d canvas').count(),1);timings.sampleExit3D=await mode('2d');check('sample 2D / 3D transition');
  await page.locator('#lib .item').first().click();assert.equal((await saved()).furniture.length,47);check('library click adds one item');
@@ -52,10 +54,10 @@ const custom=JSON.parse(fs.readFileSync('tests/fixtures/custom-project.json'));
  await page.reload();await page.waitForFunction(()=>document.querySelector('#stage').classList.contains('is3d')&&!document.body.classList.contains('busy'));assert.equal((await saved()).view.mode,'3d');assert.equal((await saved()).id,custom.id);check('refresh restores custom geometry and 3D mode');
  await mode('2d');const unchanged=await saved();let dialogMessage='';page.once('dialog',async d=>{dialogMessage=d.message();await d.accept()});await page.setInputFiles('#fileIn','tests/fixtures/future-project.json');await page.waitForTimeout(150);assert.match(dialogMessage,/版本/);assert.deepEqual(await saved(),unchanged);
  page.once('dialog',d=>d.accept());await page.setInputFiles('#fileIn',{name:'bad.json',mimeType:'application/json',buffer:Buffer.from('{')});await page.waitForTimeout(150);assert.deepEqual(await saved(),unchanged);
- page.once('dialog',d=>d.dismiss());await page.setInputFiles('#fileIn',path.join(OUT,'legacy-project.json'));await page.waitForTimeout(150);assert.deepEqual(await saved(),unchanged);check('future/broken files and cancelled legacy migration preserve saved project');
- const backupPending=page.waitForEvent('download');page.once('dialog',d=>d.accept());await page.setInputFiles('#fileIn',path.join(OUT,'legacy-project.json'));const backup=await backupPending;await backup.saveAs(path.join(OUT,'legacy-backup-downloaded.json'));assert.equal(fs.readFileSync(path.join(OUT,'legacy-backup-downloaded.json'),'utf8'),fs.readFileSync(path.join(OUT,'legacy-project.json'),'utf8'));assert.equal((await saved()).geometry.rooms.length,13);check('legacy confirmation downloads original bytes before migration');
+ page.once('dialog',d=>d.dismiss());await page.setInputFiles('#fileIn',path.join(BASELINE,'legacy-project.json'));await page.waitForTimeout(150);assert.deepEqual(await saved(),unchanged);check('future/broken files and cancelled legacy migration preserve saved project');
+ const backupPending=page.waitForEvent('download');page.once('dialog',d=>d.accept());await page.setInputFiles('#fileIn',path.join(BASELINE,'legacy-project.json'));const backup=await backupPending;await backup.saveAs(path.join(OUT,'legacy-backup-downloaded.json'));assert.equal(fs.readFileSync(path.join(OUT,'legacy-backup-downloaded.json'),'utf8'),fs.readFileSync(path.join(BASELINE,'legacy-project.json'),'utf8'));assert.equal((await saved()).geometry.rooms.length,13);check('legacy confirmation downloads original bytes before migration');
  // Remount through the module API, with no production window bridge.
- await page.evaluate(async()=>{const m=await import('/src/main.js');m.application.dispose();const a=m.createApplication();a.dispose();const b=m.createApplication();b.dispose();m.createApplication();});
+ await page.evaluate(async()=>{const m=await import(new URL('./src/main.js',location.href).href);m.application.dispose();const a=m.createApplication();a.dispose();const b=m.createApplication();b.dispose();m.createApplication();});
  assert.equal(await page.locator('#view3d canvas').count(),0);await page.locator('#lib .item').first().click();assert.equal((await saved()).furniture.length,47);await mode('3d');assert.equal(await page.locator('#view3d canvas').count(),1);await mode('2d');check('dispose / repeated mount removes canvas and duplicate listeners');
  await page.setViewportSize({width:390,height:844});await page.locator('#tgLib').click();await page.waitForFunction(()=>document.querySelector('aside.lib').classList.contains('open'));await page.waitForTimeout(350);await page.locator('#lib .item').first().click();await page.locator('#fab').waitFor({state:'visible'});await page.locator('#fab [data-a="prop"]').click();await page.waitForFunction(()=>document.querySelector('aside.right').classList.contains('open')&&!document.querySelector('aside.lib').classList.contains('open'));await page.waitForTimeout(350);await screen('narrow-390');check('narrow viewport drawers and floating toolbar');
  assert.deepEqual(errors,[]);check('no uncaught page errors');

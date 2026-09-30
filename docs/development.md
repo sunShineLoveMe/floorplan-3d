@@ -1,6 +1,6 @@
 # 开发与验证说明
 
-[项目首页](../README.md) · [架构说明](architecture.md) · [T01.1 验收](T01.1-verification.md)
+[项目首页](../README.md) · [架构说明](architecture.md) · [T02 验收](T02-verification.md)
 
 ## 运行与目录
 
@@ -15,7 +15,7 @@ index.html                  静态骨架、import map、入口
 styles/app.css              原样式及响应式规则
 src/main.js                 依赖组装、订阅、视图模式与生命周期
 src/core/                   项目 store、临时编辑状态、纯几何函数
-src/data/                   项目格式、默认项目、模板、目录
+src/data/                   v2格式、v1迁移、矩形参数/几何、默认项目、模板、目录
 src/services/               存储、项目文件、浏览器下载
 src/editor2d/               SVG 渲染、图例、视口、吸附、指针与键盘
 src/viewer3d/               场景、建筑、家具、材质、相机及资源管理
@@ -26,7 +26,8 @@ package.json                type: module；无 npm 依赖
 tests/*.test.js            Node 数据、事务、读写和生命周期测试
 tests/browser-*.cjs        可选的真实 Chromium 回归脚本
 tests/fixtures/            独立卧室和未来版本 JSON
-docs/verification/T01.1/   基线/结果截图、真实下载及机器可读结果
+docs/verification/T01.1/   保留历史基线和验收证据
+docs/verification/T02/     当前结果、真实下载及机器可读记录
 ```
 
 ## 自动化验证
@@ -38,7 +39,7 @@ npm test
 # 等价于 node --test tests/*.test.js
 ```
 
-当前 **19 项通过**：保留原 8 项数据覆盖，另覆盖事务预览/取消、一次操作一次历史、导入几何撤销/重做、订阅卸载、旧文件取消/备份顺序、存储及恢复备份失败、待加载 3D 偏好、生命周期清理。
+当前 **31 项 Node 测试通过**：保留原19项行为覆盖，新增矩形几何、16门方向、原子编辑/撤销、v2一致性、v1迁移、存储优先级与失败保护等测试。`architecture.test.js` 用轻量 Three 依赖替身直接运行真实建筑生成器，覆盖1152组门窗/剖切边界并拒绝非正BoxGeometry；这不能替代浏览器 WebGL 验收。
 
 语法检查用 `node --check` 对 `src/`、根 ESM 入口和测试脚本逐个执行。`git diff --check` 检查跟踪文件空白错误；未跟踪新文件也需检查。可选 lint：
 
@@ -59,17 +60,20 @@ export CHROMIUM_EXECUTABLE=/absolute/path/to/chromium
 node tests/browser-regression.cjs
 node tests/browser-3d-interactions.cjs
 node tests/browser-failures.cjs
+node tests/browser-t02.cjs
+node tests/browser-t02-storage.cjs
+node tests/browser-t02-doors.cjs
 ```
 
-这些脚本使用**新建、非持久化的浏览器 context**，不读写用户的浏览器配置目录和原站点存储。主回归使用 `docs/verification/T01.1/baseline-project.json` 和 `legacy-project.json` 对照；结果输出同目录。故障注入只发生在测试 context 中。可选 `tests/browser-comparison.cjs` 接受 `BASELINE_DIR`（完整工作区备份的解压目录），启动临时本地服务做同机前后观察，结束后停止该服务。
+这些脚本使用**新建、非持久化的浏览器 context**，不读写用户的浏览器配置目录和原站点存储。主回归使用 `docs/verification/T01.1/baseline-project.json` 和 `legacy-project.json` 对照；结果默认输出 `docs/verification/T02/legacy-regression/`，支持 `TEST_OUT` 覆盖；基线读取仍固定为历史目录。T02 新流程输出 `docs/verification/T02/`，新门开合证据输出其 `doors/` 子目录。故障注入只发生在测试 context 中。可选 `tests/browser-comparison.cjs` 接受 `BASELINE_DIR`（完整工作区备份的解压目录），启动临时本地服务做同机前后观察，结束后停止该服务。
 
 已验证 Chromium 149.0.7827.55（macOS arm64，1440×1000，另测 390×844 窄视口）。结果包括真实文件上传/下载、2D/3D 交互、模式恢复、迁移/坏文件保护和主动注入的 CDN/WebGL/存储失败。PNG 已实际解码及目视检查。
 
-尚未验收 Safari、Edge、真实手机/iPad、真实触屏手势及不同 GPU/长时间运行；没有把窄视口模拟当成触屏实机通过。详见[验收矩阵与证据](T01.1-verification.md)。
+尚未验收 Safari、Edge、真实手机/iPad、真实触屏手势及不同 GPU/长时间运行；没有把窄视口模拟当成触屏实机通过。详见[验收矩阵与证据](T02-verification.md)。
 
 ## 开发边界与文档维护
 
-本轮只完成 T01.1，不包含 T02 房间/门窗编辑或 T03 英制输入。业务操作通过 store，纯数据与状态模块不得引入 DOM 或 Three.js；组件间通过入口注入操作。资源生命周期和后续接入点见[架构说明](architecture.md)。
+本轮完成 T02 单矩形房间与门窗数值编辑，不包含 T03 英制输入。业务操作通过 store，纯数据与状态模块不得引入 DOM 或 Three.js；组件间通过入口注入操作。资源生命周期和后续接入点见[架构说明](architecture.md)。
 
 README 保留概览、启动与导航；功能变化更新 `features.md`；任务状态更新 `roadmap.md`；用户操作更新 `usage.md`；每项任务保留独立设计与验收记录。T01 原验收记录保留其历史时点。
 

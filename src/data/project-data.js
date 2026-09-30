@@ -1,5 +1,5 @@
-  'use strict';
-  const FORMAT = 'floorplan-3d', VERSION = 1, TEMPLATE = 'three-bedroom-a03136c';
+import {validateRoomEditor,generateRoomGeometry,geometryMatches,GEOMETRY_TOLERANCE} from './room-editor.js';
+  const FORMAT = 'floorplan-3d', VERSION = 2, TEMPLATE = 'three-bedroom-a03136c';
   const clone = value => JSON.parse(JSON.stringify(value));
   class ProjectError extends Error { constructor(code, detail=''){ super(detail || code); this.code = code; } }
   function check(ok, path){ if (!ok) throw new ProjectError('INVALID_PROJECT', path); }
@@ -15,7 +15,7 @@
   function validate(p, catalogs){
     check(obj(p), 'project');
     if (p.format !== FORMAT) throw new ProjectError('UNKNOWN_FORMAT');
-    if (p.version !== VERSION) throw new ProjectError('UNSUPPORTED_VERSION');
+    if (![1,VERSION].includes(p.version)) throw new ProjectError('UNSUPPORTED_VERSION');
     check(id(p.id) && str(p.name), 'project metadata');
     check(['createdAt','updatedAt'].every(k=>typeof p[k]==='string' && Number.isFinite(Date.parse(p[k]))), 'timestamps');
     check(obj(p.units) && p.units.internal==='mm' && ['metric','imperial'].includes(p.units.display), 'units');
@@ -35,7 +35,7 @@
       check(r.counted===undefined || typeof r.counted==='boolean','room counted');
     });
     list(g.walls,'walls').forEach(w=>check(Array.isArray(w) && w.length===5 && rect(w.slice(0,4)) && ['b','e','n','low'].includes(w[4]),'wall'));
-    list(g.windows,'windows').forEach(w=>check(rect(w.rect) && num(w.sill) && w.sill>=0 && positive(w.head) && w.head>w.sill && w.head<=g.height,'window'));
+    list(g.windows,'windows').forEach(w=>check(rect(w.rect) && num(w.sill) && w.sill>=0 && positive(w.head) && w.head>w.sill && w.head<=g.height+GEOMETRY_TOLERANCE,'window'));
     list(g.doors,'doors').forEach(d=>{
       check(rect(d.rect) && point(d.h) && point(d.c) && point(d.o) && positive(d.len) && positive(d.height) && d.height<=g.height && str(d.name),'door');
       check(Math.abs(Math.hypot(...d.c)-1)<1e-8 && Math.abs(Math.hypot(...d.o)-1)<1e-8 && Math.abs(d.c[0]*d.o[0]+d.c[1]*d.o[1])<1e-8,'door directions');
@@ -52,7 +52,22 @@
     const walls=list(p.demolished,'demolished');
     check(new Set(walls).size===walls.length && walls.every(x=>typeof x==='string' && /^w\d+$/.test(x) && g.walls[+x.slice(1)] && g.walls[+x.slice(1)][4]!=='b'),'demolished walls');
     list(p.measures,'measures').forEach(m=>check(obj(m.a) && obj(m.b) && [m.a.x,m.a.y,m.b.x,m.b.y].every(num),'measurement'));
-    return clone(p);
+    if(p.version===2){
+      check(p.roomEditor===null || obj(p.roomEditor),'roomEditor');
+      if(p.roomEditor!==null){
+        const editor=validateRoomEditor(p.roomEditor);
+        check(rooms.length===1 && rooms[0].id===editor.roomId,'rectangle room settings');
+        check(p.rooms[editor.roomId].name.trim().length>0,'room name');
+        check(!p.templateId,'rectangle templateId');
+        check(p.demolished.length===0,'rectangle demolished');
+        const ids=[p.id,p.layout.id,...Object.keys(p.rooms),...p.furniture.map(f=>f.id),...editor.openings.map(o=>o.id)];
+        check(new Set(ids).size===ids.length,'project-wide IDs');
+        check(geometryMatches(g,generateRoomGeometry(editor,p.rooms)),'roomEditor / geometry mismatch');
+      }
+    }
+    const result=clone(p);
+    if(result.version===1){result.version=VERSION;result.roomEditor=null;}
+    return result;
   }
   function create(geometry, furniture){
     const now=new Date().toISOString(), rooms={};
@@ -60,7 +75,7 @@
     return {format:FORMAT,version:VERSION,id:'p-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10),name:'My floor plan',createdAt:now,updatedAt:now,templateId:TEMPLATE,
       units:{internal:'mm',display:'metric'},layout:{id:'layout-1',name:'Layout A'},
       view:{mode:'2d',layers:{dims:true,labels:true,furn:true,grid:false,bearing:false,wallSnap:true}},
-      geometry:clone(geometry),furniture:clone(furniture),rooms,demolished:[],measures:[]};
+      roomEditor:null,geometry:clone(geometry),furniture:clone(furniture),rooms,demolished:[],measures:[]};
   }
   function read(raw, template, catalogs, confirmLegacy=false){
     let data; try { data=JSON.parse(raw); } catch { throw new ProjectError('INVALID_JSON'); }
@@ -76,3 +91,17 @@
   }
 
 export {FORMAT,VERSION,TEMPLATE,ProjectError,create,validate,read,clone};
+
+export function createRectangleProject({name='My room',width=4000,depth=3000,height=2800}={}){
+  check(typeof name==='string'&&name.trim().length>0&&name.length<=500,'room name');
+  const roomEditor=validateRoomEditor({kind:'rectangle',roomId:'room-1',width,depth,height,wallThickness:120,openings:[]});
+  const rooms={'room-1':{name:name.trim(),mat:'wood'}};
+  const p=create(generateRoomGeometry(roomEditor,rooms),[]);
+  delete p.templateId;p.name=name.trim();p.layout={id:'layout-'+p.id,name:'Layout A'};p.roomEditor=roomEditor;
+  return p;
+}
+export function updateRectangleProject(project,editor,rooms=project.rooms){
+  const next=clone(project);next.roomEditor=validateRoomEditor(editor);next.rooms=clone(rooms);
+  next.geometry=generateRoomGeometry(next.roomEditor,next.rooms);next.demolished=[];delete next.templateId;
+  return next;
+}

@@ -11,7 +11,7 @@ function planPose(){
   return pose(t, new THREE.Vector3(t.x, dist, t.z + 1e-4));
 }
 function isoFrom(P){
-  const d = THREE.MathUtils.clamp(Math.max(P.p.y, getHeight()*3.8), 5, 80), dir = new THREE.Vector3(.3, .82, .49).normalize();
+  const d = Math.max(P.p.y, getHeight()*3.8, 5), dir = new THREE.Vector3(.3, .82, .49).normalize();
   return pose(P.t.clone(), P.t.clone().addScaledVector(dir, d));
 }
 const isoWhole = () => isoFrom(planPose());

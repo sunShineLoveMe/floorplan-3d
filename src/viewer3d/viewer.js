@@ -24,6 +24,8 @@ const SW = () => stage.clientWidth, SH = () => stage.clientHeight;
 const opt = {cut:H, furn:true, labels:true, night:false, hour:10, mode:'orbit'};
 
 let inited = false, active = false, raf = 0, anim = null, fly = null;
+let cancelGesture=()=>{};
+const modalOpen=()=>!!document.querySelector('dialog[open]');
 let renderer, labelRenderer, scene, camera, orbit, walkCtl, hemi, sun, ground, glassMat, wallMat, capMat, frameMat;
 let archFloor, archUp, furnG, labelG, lampG, colliders = [], selKey = null, selHelper = null;
 let sigArch = '', sigFurn = '', sigLabels = '', grow = 1, furnGrow = 1;
@@ -59,7 +61,7 @@ function init(){
   orbit = new OrbitControls(camera, renderer.domElement);
   orbit.enableDamping = true; orbit.maxPolarAngle = Math.PI*.495; orbit.minDistance = 1.5; orbit.maxDistance = 45;
   walkCtl = new PointerLockControls(camera, document.body);
-  scope.on(walkCtl, 'lock', () => { $('#walkOverlay').style.display = 'none'; $('#cross').style.display = 'block'; });
+  scope.on(walkCtl, 'lock', () => { if(scope.disposed || !active || opt.mode!=='walk'){walkCtl.unlock();return;} $('#walkOverlay').style.display = 'none'; $('#cross').style.display = 'block'; });
   scope.on(walkCtl, 'unlock', () => { if (opt.mode === 'walk'){ $('#walkOverlay').style.display = 'flex'; $('#cross').style.display = 'none'; } });
 
   hemi = new THREE.HemisphereLight(0xfff8ee, 0xb9a88f, 1.1);
@@ -80,6 +82,7 @@ function init(){
 
   const cv = renderer.domElement; let downAt = null, look = null;
   scope.on(cv, 'pointerdown', e => {
+    if(modalOpen()) return;
     downAt = [e.clientX, e.clientY]; closeDrawers();
     if (touchWalk && !look){ look = {id:e.pointerId, x:e.clientX, y:e.clientY}; cv.setPointerCapture(e.pointerId); }
   });
@@ -87,13 +90,13 @@ function init(){
     if (!look || e.pointerId !== look.id) return;
     lookBy(e.clientX - look.x, e.clientY - look.y); look.x = e.clientX; look.y = e.clientY;
   });
-  scope.on(cv, 'pointercancel', e => { if (look?.id === e.pointerId) look = null; });
+  scope.on(cv, 'pointercancel', e => { downAt=null; if (look?.id === e.pointerId) look = null; });
 
   // 按住已选中的家具拖动：沿地面摆放（与 2D 共用网格和贴墙吸附）。
   // 在父元素上用捕获阶段监听，赶在 OrbitControls 之前关掉它，避免同时旋转镜头
   let fdrag = null;
   scope.on(host, 'pointerdown', e => {
-    if (e.target !== cv || !e.isPrimary || anim || opt.mode !== 'orbit' || ui.sel?.kind !== 'furn') return;
+    if (modalOpen() || e.target !== cv || !e.isPrimary || anim || opt.mode !== 'orbit' || ui.sel?.kind !== 'furn') return;
     const h = pick(e), f = h?.fid === ui.sel.id && getF(h.fid), g = f && groundAt(e.clientX, e.clientY);
     if (!g) return;
     fdrag = {id:f.id, pid:e.pointerId, sx:e.clientX, sy:e.clientY, ox:g.x - f.cx, oy:g.y - f.cy, before:snap(), moved:false};
@@ -109,11 +112,20 @@ function init(){
   });
   const endF = e => {
     if (!fdrag || e.pointerId !== fdrag.pid) return;
-    const d = fdrag; fdrag = null; orbit.enabled = true; cv.style.cursor = '';
+    const d = fdrag; fdrag = null; orbit.enabled = opt.mode==='orbit'; cv.style.cursor = '';
+    if(cv.hasPointerCapture(d.pid)) cv.releasePointerCapture(d.pid);
     if (e.type === 'pointercancel'){store.cancel();buildFurn();} else commit(d.before);
   };
   scope.on(cv, 'pointerup', endF); scope.on(cv, 'pointercancel', endF);
-  scope.on(window,'keydown',e=>{if(e.key==='Escape' && fdrag){e.preventDefault();e.stopImmediatePropagation();endF({pointerId:fdrag.pid,type:'pointercancel'});}},true);
+  cancelGesture=()=>{
+    if(fdrag) endF({pointerId:fdrag.pid,type:'pointercancel'});
+    downAt=null;
+    if(look && cv.hasPointerCapture(look.id)) cv.releasePointerCapture(look.id);
+    look=null;
+    for(const key of Object.keys(keys)) delete keys[key];
+  };
+  scope.on(window,'blur',cancelGesture);
+  scope.on(window,'keydown',e=>{if(e.key==='Escape' && fdrag && !modalOpen()){e.preventDefault();e.stopImmediatePropagation();endF({pointerId:fdrag.pid,type:'pointercancel'});}},true);
 
   scope.on(cv, 'pointerup', e => {
     const tap = downAt && Math.hypot(e.clientX-downAt[0], e.clientY-downAt[1]) <= TAP;
@@ -167,13 +179,20 @@ function buildLabels(){
 // 只重建变化的部分
 function sync(force){
   if (!inited || (!active && !force)) return;
-  const oldH=H; [OX,OY]=store.getProject().geometry.origin; H=M(store.getProject().geometry.height);
-  if(opt.cut===oldH) opt.cut=H;
+  const oldH=H, oldOrigin=[OX,OY]; [OX,OY]=store.getProject().geometry.origin; H=M(store.getProject().geometry.height);
+  if(opt.cut===oldH) opt.cut=H; else opt.cut=Math.min(opt.cut,H);
   document.querySelector('[data-cut]').dataset.cut=String(H); syncCutBtns();
   const a = JSON.stringify([store.getProject().geometry,store.getProject().rooms, store.getProject().demolished, opt.cut]), f = JSON.stringify([store.getProject().geometry.origin,store.getProject().furniture]), l = JSON.stringify([store.getProject().geometry,store.getProject().rooms, opt.cut]);
   if (force || a !== sigArch){ sigArch = a; buildArch(); }
   if (force || f !== sigFurn){ sigFurn = f; buildFurn(); }
   if (force || l !== sigLabels){ sigLabels = l; buildLabels(); }
+  const moved=oldOrigin[0]!==OX || oldOrigin[1]!==OY || oldH!==H;
+  if(moved && !anim){
+    fly=null;
+    if(opt.mode==='walk') setMode('walk'); else setPose(isoWhole());
+  }
+  const span=Math.max(...store.getProject().geometry.rooms.flatMap(r=>r.poly.map(([x,y])=>Math.max(Math.abs(wx(x)),Math.abs(wz(y))))),H);
+  orbit.maxDistance=Math.max(45,span*6,planPose().p.y*3); camera.far=Math.max(300,orbit.maxDistance*2);camera.updateProjectionMatrix();
 }
 
 // CSS2DRenderer 只看标签自身的 visible，不继承父级，所以逐个设置
@@ -237,6 +256,7 @@ async function enter(){
   stage.classList.remove('animating');
 }
 async function exit(){
+  cancelGesture();
   if (opt.mode === 'walk'){ walkCtl.unlock(); stopTouchWalk(); $('#hint3d').textContent = HINT_ORBIT(); $('#walkOverlay').style.display = 'none'; $('#cross').style.display = 'none';
     const dir = new THREE.Vector3(); camera.getWorldDirection(dir); orbit.target.copy(camera.position).addScaledVector(dir, 3).setY(0); opt.mode = 'orbit'; syncModeBtns(); }
   fly = null; orbit.enabled = false; showLabels(false); stage.classList.add('animating');
@@ -343,13 +363,15 @@ function bindJoystick(){
 }
 function setMode(m){
   if (anim) return;
+  cancelGesture();
   opt.mode = m; syncModeBtns();
   if (m === 'walk'){
     select(null);
     if (opt.cut < H){ opt.cut = H; syncCutBtns(); sync(); }
     orbit.enabled = false; fly = null;
     const start=store.getProject().geometry.walkStart || {position:store.getProject().geometry.origin,target:[store.getProject().geometry.origin[0]+1000,store.getProject().geometry.origin[1]]};
-    camera.position.set(wx(start.position[0]), 1.6, wz(start.position[1])); camera.lookAt(wx(start.target[0]), 1.5, wz(start.target[1]));
+    const eye=Math.min(1.6,H*.8);
+    camera.position.set(wx(start.position[0]), eye, wz(start.position[1])); camera.lookAt(wx(start.target[0]), eye*.94, wz(start.target[1]));
     $('#walkOverlay').style.display = 'flex';
     syncHint3d();
   } else {
@@ -364,14 +386,14 @@ function setMode(m){
 function blocked(x, z, r = .22){
   for (const [x0, z0, x1, z1] of colliders) if (x > x0 - r && x < x1 + r && z > z0 - r && z < z1 + r) return true;
   for (const d of doors){
-    const a = d.pivot.rotation.y, px = d.pivot.position.x, pz = d.pivot.position.z, ex = px + Math.cos(a)*.9, ez = pz - Math.sin(a)*.9;
+    const a = d.pivot.rotation.y, px = d.pivot.position.x, pz = d.pivot.position.z, ex = px + Math.cos(a)*d.length, ez = pz - Math.sin(a)*d.length;
     const t = clamp01(((x-px)*(ex-px) + (z-pz)*(ez-pz)) / ((ex-px)**2 + (ez-pz)**2));
     if (Math.hypot(x - (px + t*(ex-px)), z - (pz + t*(ez-pz))) < r*.8) return true;
   }
   return false;
 }
 function stepWalk(dt){
-  if (!walkCtl.isLocked && !touchWalk) return;
+  if (modalOpen() || (!walkCtl.isLocked && !touchWalk)) return;
   const sp = (keys.ShiftLeft || keys.ShiftRight ? 2.6 : 1.4) * dt, fwd = new THREE.Vector3();
   camera.getWorldDirection(fwd); fwd.y = 0; fwd.normalize();
   const right = new THREE.Vector3(-fwd.z, 0, fwd.x), mv = new THREE.Vector3();
@@ -386,7 +408,7 @@ function stepWalk(dt){
   if (!blocked(p.x, p.z + mv.z)) p.z += mv.z;
 }
 scope.on(window, 'keydown', e => {
-  if (!active || e.target.matches('input,select,textarea')) return;
+  if (!active || modalOpen() || e.target.closest('input,select,textarea,[contenteditable=true]')) return;
   keys[e.code] = true;
   if(opt.mode==='walk' && e.code==='Escape'){walkCtl.unlock();if(touchWalk){stopTouchWalk();$('#walkOverlay').style.display='flex';}}
   if (opt.mode === 'walk' && e.code === 'KeyE'){ const h = pick(); if (h?.door && h.dist < 2.5) h.door.open = !h.door.open; }
@@ -398,9 +420,9 @@ function syncModeBtns(){ document.querySelectorAll('#modes3d .btn').forEach(b =>
 function syncCutBtns(){ document.querySelectorAll('[data-cut]').forEach(b => b.classList.toggle('on', +b.dataset.cut === opt.cut)); }
 function syncWalkTexts(){
   const t = COARSE
-    ? [tr('点击开始，从入户门进入', 'Tap to start at the front door'), tr('左下摇杆移动 · 在画面上拖动转向', 'Joystick moves · drag on screen to look'),
+    ? [tr('点击开始，在房间内漫游', 'Tap to start inside the room'), tr('左下摇杆移动 · 在画面上拖动转向', 'Joystick moves · drag on screen to look'),
        tr('点门开关 · 点「退出漫游」回到鸟瞰', 'Tap doors to open · "Exit walk" returns to orbit')]
-    : [tr('点击开始，从入户门进入', 'Click to start at the front door'),
+    : [tr('点击开始，在房间内漫游', 'Click to start inside the room'),
        tr('<kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> 移动 · 鼠标转向 · <kbd>Shift</kbd> 快走', '<kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> move · mouse looks · <kbd>Shift</kbd> runs'),
        tr('<kbd>E</kbd> 开关正前方的门 · <kbd>Esc</kbd> 暂停', '<kbd>E</kbd> opens the door ahead · <kbd>Esc</kbd> pauses')];
   t.forEach((h, i) => $('#wo' + (i + 1)).innerHTML = h);
@@ -409,7 +431,20 @@ function syncWalkTexts(){
 function bindUI(){
   document.querySelectorAll('#modes3d .btn').forEach(b => b.onclick = () => setMode(b.dataset.mode));
   // 触屏设备用摇杆漫游；桌面端锁定鼠标，锁定失败时也退回到摇杆
-  $('#walkOverlay').onclick = () => COARSE ? startTouchWalk() : walkCtl.lock();
+  $('#walkOverlay').onclick = async () => {
+    if(scope.disposed || !active || opt.mode!=='walk')return;
+    if(COARSE){startTouchWalk();return;}
+    try{
+      // r160 controls do not return/catch the browser's asynchronous lock request.
+      await document.body.requestPointerLock();
+      if(scope.disposed || !active || opt.mode!=='walk') walkCtl.unlock();
+    }catch{
+      if(!scope.disposed && active && opt.mode==='walk'){
+        $('#walkOverlay').style.display='flex';$('#cross').style.display='none';
+        $('#hint3d').textContent=tr('未能锁定鼠标，请点击重试或返回鸟瞰。','Pointer lock unavailable. Click to retry or return to orbit.');
+      }
+    }
+  };
   scope.on(document, 'pointerlockerror', () => { if (active && opt.mode === 'walk') startTouchWalk(); });
   $('#walkExit').onclick = () => setMode('orbit');
   bindJoystick();
@@ -448,7 +483,7 @@ function relang(){ syncWalkTexts(); if (inited) buildLabels(); }
 
 function dispose(){
   if(scope.disposed)return;
-  active=false;scope.dispose();cancelAnimationFrame(raf);raf=0;
+  cancelGesture();active=false;scope.dispose();cancelAnimationFrame(raf);raf=0;
   if(anim){const resolve=anim.res;anim=null;resolve();}fly=null;
   store.cancel();walkCtl?.unlock();walkCtl?.dispose();orbit?.dispose();stopTouchWalk();
   if(scene){const geometries=new Set();scene.traverse(o=>{if(o.geometry)geometries.add(o.geometry);if(o.element)o.element.remove();});geometries.forEach(g=>g.dispose());scene.clear();}
@@ -460,6 +495,6 @@ function dispose(){
   $('#roomList').replaceChildren();$('#walkOverlay').style.display='none';$('#cross').style.display='none';
 }
 
-return {enter, exit, relang, sync:() => sync(), shot, groundAt, flyToRoom:id => active && !anim && flyToRoom(id), walking:() => active && opt.mode === 'walk',dispose};
+return {enter, exit, cancel:()=>cancelGesture(), relang, sync:() => sync(), shot, groundAt, flyToRoom:id => active && !anim && flyToRoom(id), walking:() => active && opt.mode === 'walk',dispose};
 
 }

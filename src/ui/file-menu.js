@@ -4,8 +4,10 @@ import {ProjectError} from '../data/project-data.js';
 import {defaultState} from '../data/default-project.js';
 import {importProject,serializeProject} from '../services/project-files.js';
 import {createScope} from './lifecycle.js';
-export function createFileMenu({store,ui,downloads,isSwitching,toast,loaded}){
+export function createFileMenu({store,ui,downloads,isSwitching,toast,loaded,cancelInteraction}){
 const scope=createScope();const {download,exportPNG}=downloads;
+let revision=0,readRequest=0;
+const unsubscribe=store.subscribe(()=>{revision++;});
 $('#exportPng').onclick=exportPNG;
 function projectMessage(err){
   const messages={
@@ -21,26 +23,33 @@ function importProjectText(raw){
   const result=importProject(raw, {
     confirmLegacy:()=>confirm(tr('此旧文件没有户型几何。请确认它来自原始“三室两厅两卫”示例。确认后先下载原文件备份再迁移。','Confirm this file belongs to the original three-bedroom sample. A backup will be downloaded before migration.')),
     backup:text=>download('floorplan-legacy-backup.json',new Blob([text],{type:'application/json'})),
-    replace:project=>{ui.sel=null; store.replaceProject(project); }
+    replace:project=>{cancelInteraction();ui.sel=null; store.replaceProject(project); }
   });
   if(result.status==='cancelled') return false;
   toast(tr('项目已导入','Project imported')); return true;
 }
-$('#exportJson').onclick = () => {
+function exportProject(){
   try {
     const raw=serializeProject(store.getProject());
     download('floorplan-project.json',new Blob([raw],{type:'application/json'}));
   } catch(e){ toast(projectMessage(e)); }
 };
+$('#exportJson').onclick=exportProject;
 $('#importJson').onclick = () => $('#fileIn').click();
 $('#fileIn').onchange = async e => {
   const file=e.target.files[0]; e.target.value=''; if(!file) return;
-  try { if(file.size>10*1024*1024) throw new ProjectError('INVALID_PROJECT'); const raw=await file.text();if(!scope.disposed)importProjectText(raw); }
-  catch(e){ alert(projectMessage(e)); }
+  const request=++readRequest,startRevision=revision;
+  try {
+    if(file.size>10*1024*1024) throw new ProjectError('INVALID_PROJECT');
+    const raw=await file.text();if(scope.disposed || request!==readRequest)return;
+    if(startRevision!==revision){toast(tr('项目已变化，已取消迟到的文件读取；请重新导入。','The project changed while reading the file. Import it again.'));return;}
+    importProjectText(raw);
+  }
+  catch(e){ if(!scope.disposed && request===readRequest) alert(projectMessage(e)); }
 };
-$('#reset').onclick = () => { if (confirm(tr('恢复为默认设计方案？（可撤销）', 'Reset to the default design? (undoable)'))){ ui.sel = null; store.replaceProject(defaultState()); } };
+$('#reset').onclick = () => { if(isSwitching())return; if (confirm(tr('恢复为默认设计方案？（可撤销）', 'Reset to the default design? (undoable)'))){ cancelInteraction();ui.sel = null; store.replaceProject(defaultState()); } };
 
 if(loaded.error) scope.timeout(()=>alert(tr('已保留无法读取的本地项目，当前显示示例。','The unreadable local project has been preserved. Showing the sample.')+' '+projectMessage(loaded.error)),0);
 if(loaded.legacy) scope.timeout(()=>{try{importProjectText(loaded.legacy);}catch(e){alert(projectMessage(e));}},0);
-return {dispose(){scope.dispose();for(const id of ['exportPng','exportJson','importJson','reset']) $('#'+id).onclick=null;$('#fileIn').onchange=null;}};
+return {exportProject,dispose(){unsubscribe();readRequest++;scope.dispose();for(const id of ['exportPng','exportJson','importJson','reset']) $('#'+id).onclick=null;$('#fileIn').onchange=null;}};
 }

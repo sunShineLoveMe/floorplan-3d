@@ -36,13 +36,13 @@ function endDrag(cancel){
 }
 
 scope.on(svg, 'pointerdown', e => {
-  if (e.button === 1 || e.button === 2) return;
+  if (e.button === 1 || e.button === 2 || document.querySelector('dialog[open]')) return;
   closeDrawers(); $('details.menu').open = false;
   if (e.pointerType !== 'mouse'){
     touches.set(e.pointerId, {x:e.clientX, y:e.clientY});
     svg.setPointerCapture(e.pointerId);
     if (touches.size >= 2){                    // 第二根手指落下：取消单指操作，进入双指缩放 / 平移
-      endDrag(drag?.kind === 'measure' || drag?.kind === 'pan');
+      endDrag(true);
       const {d, c} = pinchInfo();
       pinch = {d, c, s:view.s, px:view.x0 + c[0]/view.s, py:view.y0 + c[1]/view.s};
       return;
@@ -61,6 +61,10 @@ scope.on(svg, 'pointerdown', e => {
     drag = {kind:h.dataset.handle, id:ui.sel.id, sx:e.clientX, sy:e.clientY, before:snap(), moved:false};
   } else if (ui.tool === 'demolish' && t.closest('[data-wall]')){
     toggleWall(t.closest('[data-wall]').dataset.wall); return;
+  } else if (ui.tool === 'select' && t.closest('[data-opening]')){
+    select({kind:'opening',id:t.closest('[data-opening]').dataset.opening}); return;
+  } else if (ui.tool === 'select' && store.getProject().roomEditor && t.closest('[data-wall]')){
+    select({kind:'wall',id:t.closest('[data-wall]').dataset.wall}); return;
   } else if (ui.tool === 'select' && t.closest('[data-fid]')){
     const f = getF(t.closest('[data-fid]').dataset.fid);
     if (ui.sel?.id !== f.id) select({kind:'furn', id:f.id});
@@ -140,7 +144,7 @@ scope.on(svg, 'contextmenu', e => { if (ui.tool==='measure'){ e.preventDefault()
 
 /* ======================= 键盘 ======================= */
 scope.on(document, 'keydown', e => {
-  if (e.target.matches('input,select,textarea')) return;
+  if (e.target.closest('input,select,textarea,[contenteditable=true]') || document.querySelector('dialog[open]')) return;
   if (mode.walking()) return;
   const mod = e.metaKey || e.ctrlKey, k = e.key.toLowerCase();
   if (mod && k === 'z'){ e.preventDefault(); e.shiftKey ? redo() : undo(); return; }
@@ -167,5 +171,11 @@ scope.on(document, 'keydown', e => {
 });
 
 
-return {cancel:()=>endDrag(true),dispose(){endDrag(true);scope.dispose();touches.clear();}};
+function cancel(){
+  endDrag(true); pinch=null;
+  for(const id of touches.keys()) if(svg.hasPointerCapture(id)) svg.releasePointerCapture(id);
+  touches.clear(); ui.mA=ui.mCur=null; renderMeasure();
+}
+scope.on(window,'blur',cancel);
+return {cancel,dispose(){cancel();scope.dispose();}};
 }

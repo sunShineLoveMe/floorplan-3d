@@ -1,0 +1,39 @@
+{
+  "browser": "149.0.7827.55",
+  "checks": [
+    {
+      "label": "900-top-start-inward",
+      "changedPixels": 20238,
+      "reopenedResidualPixels": 0,
+      "door": {
+        "id": "opening-door-1",
+        "type": "door",
+        "wallId": "top",
+        "offset": 500,
+        "width": 900,
+        "height": 2100,
+        "hinge": "start",
+        "swing": "inward"
+      }
+    },
+    {
+      "label": "1200-bottom-end-outward",
+      "changedPixels": 22297,
+      "reopenedResidualPixels": 0,
+      "door": {
+        "id": "opening-door-1",
+        "type": "door",
+        "wallId": "bottom",
+        "offset": 500,
+        "width": 1200,
+        "height": 2100,
+        "hinge": "end",
+        "swing": "outward"
+      }
+    }
+  ],
+  "errors": [],
+  "limitations": [
+    "Two representative door configurations tested in Chromium; 16 configurations are covered by numeric/SVG regression, not by this 3D picking test."
+  ]
+}

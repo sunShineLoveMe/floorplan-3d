@@ -1,0 +1,275 @@
+{
+  "syntax": [
+    {
+      "file": "src/main.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/ui/project-actions.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/ui/drawers.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/ui/room-editor.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/ui/furniture-library.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/ui/file-menu.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/ui/dom.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/ui/property-panel.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/ui/toolbar.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/ui/i18n.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/ui/notifications.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/ui/lifecycle.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/viewer3d/materials.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/viewer3d/random.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/viewer3d/viewer.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/viewer3d/navigation.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/viewer3d/furniture.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/viewer3d/resources.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/viewer3d/architecture.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/core/project-store.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/core/editor-state.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/core/geometry.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/editor2d/renderer.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/editor2d/furniture-symbols.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/editor2d/defs.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/editor2d/editor.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/editor2d/interactions.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/editor2d/snapping.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/editor2d/viewport.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/data/catalogs.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/data/default-project.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/data/sample-template.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/data/project-data.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/data/room-editor.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/services/project-files.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/services/downloads.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "src/services/storage.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/project-data.test.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/lifecycle.test.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/architecture.test.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/project-services.test.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/eslint.config.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/room-editor.test.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/project-store.test.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/browser-3d-interactions.cjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/browser-comparison.cjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/browser-t02-doors.cjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/browser-t02.cjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/browser-regression.cjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/browser-t02-storage.cjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/browser-failures.cjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "project-data.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "sample-template.js",
+      "exitCode": 0,
+      "output": ""
+    }
+  ],
+  "diffCheck": {
+    "exitCode": 0,
+    "output": ""
+  },
+  "missingLocalDocLinks": [],
+  "allSourceTrailingWhitespace": []
+}

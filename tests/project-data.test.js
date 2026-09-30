@@ -37,7 +37,7 @@ test('legacy foreign rooms cannot silently acquire the sample geometry',()=>{
 });
 test('bad JSON, future versions and unknown formats are distinguished',()=>{
  assert.throws(()=>Data.read('{',template,catalogs),{code:'INVALID_JSON'});
- assert.throws(()=>read({...project,version:2}),{code:'UNSUPPORTED_VERSION'});
+ assert.throws(()=>read({...project,version:999}),{code:'UNSUPPORTED_VERSION'});
  assert.throws(()=>read({...project,format:'other'}),{code:'UNKNOWN_FORMAT'});
 });
 test('reject broken references, invalid dimensions and unsafe render attributes',()=>{
@@ -59,7 +59,7 @@ test('reject broken references, invalid dimensions and unsafe render attributes'
 });
 test('standalone custom project fixture validates and does not depend on sample rooms',()=>{
  const p=JSON.parse(fs.readFileSync(new URL('./fixtures/custom-project.json',import.meta.url)));
- assert.deepEqual(read(p),p);
+ assert.deepEqual(read(p),{...p,version:2,roomEditor:null});
  assert.equal(p.geometry.rooms.length,1);
  assert.equal(p.geometry.doors[0].len,812.8);
 });

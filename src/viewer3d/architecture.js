@@ -6,7 +6,7 @@ const {archFloor,archUp,lampG,doors,colliders}=groups;
 const {mat,floorMat,wallMat,capMat,glassMat,frameMat,edgeMat,skirtMat}=materials;
 const {box,metal}=primitives;
 function wallBox([x0, y0, x1, y1], yb, yt, m){
-  if (yt - yb <= .001) return;
+  if (yt <= yb || x1 <= x0 || y1 <= y0) return;
   const o = new THREE.Mesh(new THREE.BoxGeometry(M(x1-x0), yt-yb, M(y1-y0)), m || [wallMat, wallMat, capMat, wallMat, wallMat, wallMat]);
   o.position.set(wx((x0+x1)/2), (yb+yt)/2, wz((y0+y1)/2)); o.castShadow = o.receiveShadow = true; archUp.add(o);
   // 漫游辅助：墙体棱线 + 踢脚线，让相邻墙面、墙角一眼可分（仅漫游模式显示）
@@ -20,7 +20,7 @@ function shapeOf(poly, flip){ const s = new THREE.Shape(); poly.forEach(([x, y],
 
 function build(){
   clearGroup(archFloor); clearGroup(archUp); clearGroup(lampG); doors.length = 0; colliders.length = 0;
-  const top = opt.cut;
+  const top = Math.min(opt.cut,H);
   store.getProject().geometry.rooms.forEach(r => {
     const m = floorMat(store.getProject().rooms[r.id].mat), bay = r.counted === false;
     const geo = bay ? new THREE.ExtrudeGeometry(shapeOf(r.poly), {depth:.45, bevelEnabled:false}) : new THREE.ShapeGeometry(shapeOf(r.poly));
@@ -51,20 +51,20 @@ function build(){
     wallBox(r, 0, Math.min(sill, top)); if (top > head) wallBox(r, head, top);
     colliders.push([wx(r[0]), wz(r[1]), wx(r[2]), wz(r[3])]);
     const gTop = Math.min(head, top); if (gTop <= sill) return;
-    const [x0, y0, x1, y1] = r, hz = (x1-x0) >= (y1-y0), L = M(hz ? x1-x0 : y1-y0), gh = gTop - sill, cx = wx((x0+x1)/2), cz = wz((y0+y1)/2);
+    const [x0, y0, x1, y1] = r, hz = store.getProject().geometry.windows[i].wallId ? ['top','bottom'].includes(store.getProject().geometry.windows[i].wallId) : (x1-x0) >= (y1-y0), L = M(hz ? x1-x0 : y1-y0), gh = gTop - sill, cx = wx((x0+x1)/2), cz = wz((y0+y1)/2);
     const pane = new THREE.Mesh(new THREE.BoxGeometry(hz ? L : .01, gh, hz ? .01 : L), glassMat); pane.position.set(cx, sill + gh/2, cz); archUp.add(pane);
-    const n = Math.max(1, Math.round(L/.9));
-    for (let k = 0; k <= n; k++){ const t = -L/2 + k*L/n, mu = new THREE.Mesh(new THREE.BoxGeometry(hz ? .04 : .06, gh, hz ? .06 : .04), frameMat);
+    const n = Math.max(1, Math.round(L/.9)), fw=Math.min(.04,L/2), fh=Math.min(.04,gh/2);
+    for (let k = 0; k <= n; k++){ const t = -L/2 + fw/2 + k*(L-fw)/n, mu = new THREE.Mesh(new THREE.BoxGeometry(hz ? fw : .06, gh, hz ? .06 : fw), frameMat);
       mu.position.set(cx + (hz ? t : 0), sill + gh/2, cz + (hz ? 0 : t)); mu.castShadow = true; archUp.add(mu); }
-    [sill + .02, gTop - .02].forEach(y => { const tr = new THREE.Mesh(new THREE.BoxGeometry(hz ? L : .06, .04, hz ? .06 : L), frameMat); tr.position.set(cx, y, cz); archUp.add(tr); });
+    [sill + fh/2, gTop - fh/2].forEach(y => { const tr = new THREE.Mesh(new THREE.BoxGeometry(hz ? L : .06, fh, hz ? .06 : L), frameMat); tr.position.set(cx, y, cz); archUp.add(tr); });
   });
   store.getProject().geometry.doors.forEach(d => {
-    const pivot = new THREE.Group(), L = M(d.len), dh = Math.min(M(d.height)-.05, top);
+    const pivot = new THREE.Group(), L = M(d.len), dh = Math.min(M(d.height)*.98, top);
     pivot.position.set(wx(d.h[0]), 0, wz(d.h[1]));
-    const leaf = box(L, dh, .04, mat(d.entry ? '#6b4f3a' : '#efe6d8', {roughness:.5}), L/2);
-    const knob = new THREE.Mesh(new THREE.SphereGeometry(.03, 12, 8), metal()); knob.position.set(L - .07, Math.min(1, dh - .05), 0); knob.scale.z = 2.2;
+    const leaf = box(L, dh, Math.min(.04,L*.2), mat(d.entry ? '#6b4f3a' : '#efe6d8', {roughness:.5}), L/2);
+    const knob = new THREE.Mesh(new THREE.SphereGeometry(Math.min(.03,L*.1,dh*.1), 12, 8), metal()); knob.position.set(Math.max(L*.5,L - .07), Math.min(1, dh*.5), 0); knob.scale.z = 2.2;
     pivot.add(leaf, knob);
-    const ang = v => Math.atan2(-v[1], v[0]), door = {pivot, a0:ang(d.c), a1:ang(d.o), open:true};
+    const ang = v => Math.atan2(-v[1], v[0]), door = {pivot, length:L, id:d.id, a0:ang(d.c), a1:ang(d.o), open:true};
     if (door.a1 - door.a0 > Math.PI) door.a1 -= Math.PI*2; if (door.a0 - door.a1 > Math.PI) door.a1 += Math.PI*2;
     door.cur = door.a1; pivot.rotation.y = door.cur; leaf.userData.door = knob.userData.door = door;
     doors.push(door); archUp.add(pivot);

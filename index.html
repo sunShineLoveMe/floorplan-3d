@@ -25,6 +25,8 @@
       <button class="btn chip" id="tgPanel" data-en="Properties ◨">属性 ◨</button>
     </div>
     <div class="brand"><b id="projectName">三室两厅两卫 · 装修设计</b><span id="subtitle">原始户型 1:60 · 尺寸单位 mm</span></div>
+    <button class="btn" id="newRoom">＋ 新建房间</button>
+    <button class="btn" id="editRoom">房间 / 门窗</button>
     <div class="grp seg" id="viewSeg" title="切换 2D / 3D (T)" data-en-title="Switch 2D / 3D (T)">
       <span class="pill"></span>
       <button class="btn" data-view="2d" data-en="2D Plan">2D 平面</button>
@@ -79,9 +81,9 @@
     <details class="menu"><summary class="btn" data-en="File ▾">文件 ▾</summary>
       <div class="menu-pop">
         <button class="btn" id="exportPng" data-en="Export image">导出图片</button>
-        <button class="btn" id="exportJson" data-en="Export plan JSON">导出方案 JSON</button>
+        <button class="btn" id="exportJson" title="导出 v2；旧版应用不能读取 v2" data-en-title="Exports v2; older app versions cannot read v2" data-en="Export plan JSON">导出方案 JSON</button>
         <button class="btn" id="importJson" data-en="Import plan">导入方案</button>
-        <button class="btn danger" id="reset" data-en="Reset to default">重置为默认方案</button>
+        <button class="btn danger" id="reset" data-en="Sample plan">示例户型</button>
       </div></details>
     <input type="file" id="fileIn" accept=".json,application/json" hidden>
   </header>
@@ -122,7 +124,7 @@
     <div id="fab"></div>
   </main>
 
-  <aside class="right"><div id="panel"></div></aside>
+  <aside class="right"><div id="structurePanel"></div><div id="panel"></div></aside>
 
   <footer>
     <span class="only2d">X <b id="cx">—</b></span><span class="only2d">Y <b id="cy">—</b></span>

@@ -2,6 +2,7 @@ import {uid,F} from '../data/default-project.js';
 import {aabb,norm} from '../core/geometry.js';
 import {tr,nm} from '../ui/i18n.js';
 export function createProjectActions({store,ui,onSelection,toast}){
+let api;
 const getF = id => store.getProject().furniture.find(f=>f.id===id);
 const mutate=fn=>store.mutate(fn);
 function snapRects(){ return store.getProject().geometry.walls.filter((w,i) => !store.getProject().demolished.includes('w'+i)).concat(store.getProject().geometry.windows.map(w=>w.rect)); }
@@ -16,7 +17,7 @@ function clearLayout(){
 
 function select(sel){ ui.sel = sel; onSelection(); }
 function rotateSel(d){ if (ui.sel?.kind==='furn') mutate(() => { const f = getF(ui.sel.id); f.rot = norm(f.rot + d); }); }
-function deleteSel(){ if (ui.sel?.kind==='furn'){ const id = ui.sel.id; ui.sel = null; mutate(() => store.getProject().furniture = store.getProject().furniture.filter(f => f.id !== id)); } }
+function deleteSel(){ if(ui.sel?.kind==='opening'){api.deleteOpening?.(ui.sel.id);return;} if (ui.sel?.kind==='furn'){ const id = ui.sel.id; ui.sel = null; mutate(() => store.getProject().furniture = store.getProject().furniture.filter(f => f.id !== id)); } }
 function duplicateSel(){
   if (ui.sel?.kind !== 'furn') return;
   const f = getF(ui.sel.id), n = {...f, id:uid(), cx:f.cx+200, cy:f.cy+200};
@@ -44,6 +45,7 @@ function addItem(it, x, y){
   toast(tr(`已添加「${name}」${w}×${d}`, `Added "${nm(name)}" ${w}×${d}`));
 }
 function toggleWall(id){
+  if(store.getProject().roomEditor) return toast(tr('矩形房间的生成墙体不可拆除，请编辑房间或门窗。','Generated rectangle walls cannot be removed. Edit the room or openings.'));
   const w = store.getProject().geometry.walls[+id.slice(1)];
   if (w[4]==='b') return toast(tr('承重墙（黑色）不可拆除', 'Load-bearing walls (black) cannot be removed'));
   if (w[4]==='e') return toast(tr('外墙属于建筑外围护结构，不建议拆除', 'Exterior walls are part of the building envelope and should not be removed'));
@@ -53,5 +55,5 @@ function toggleWall(id){
 }
 
 
-return {select,rotateSel,deleteSel,duplicateSel,addItem,toggleWall,clearLayout,getF,snapRects};
+return api={select,rotateSel,deleteSel,duplicateSel,addItem,toggleWall,clearLayout,getF,snapRects};
 }

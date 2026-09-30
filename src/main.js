@@ -11,6 +11,7 @@ import {createDrawers} from './ui/drawers.js';
 import {createPropertyPanel} from './ui/property-panel.js';
 import {createFurnitureLibrary} from './ui/furniture-library.js';
 import {createToolbar} from './ui/toolbar.js';
+import {createRoomEditor} from './ui/room-editor.js';
 import {createFileMenu} from './ui/file-menu.js';
 import {createNotifications} from './ui/notifications.js';
 import {createScope} from './ui/lifecycle.js';
@@ -22,21 +23,25 @@ export function createApplication(){
   const storage=createStorage({getItem:k=>localStorage.getItem(k),setItem:(k,v)=>localStorage.setItem(k,v)},readProject);
   const loaded=storage.load(),store=createProjectStore(loaded.project || defaultState()),ui=createEditorState(store);
   const notifications=createNotifications(),{toast}=notifications,drawers=createDrawers();
-  let viewer=null,viewerPromise=null,viewMode='2d',switching=false,toolbar,editor,panel;
+  let viewer=null,viewerPromise=null,viewMode='2d',switching=false,toolbar,editor,panel,roomEditor;
   const mode={is3D:()=>viewMode==='3d',setView,walking:()=>viewer?.walking() || false};
-  const actions=createProjectActions({store,ui,toast,onSelection:()=>{editor?.renderer.renderSel();panel?.update();}});
-  const undo=()=>{if(!switching && !store.undo()) toast(tr('没有可撤销的操作','Nothing to undo'));};
-  const redo=()=>{if(!switching) store.redo();};
+  const actions=createProjectActions({store,ui,toast,onSelection:()=>{editor?.renderer.renderSel();panel?.update();roomEditor?.update();}});
+  actions.showStructure=()=>{drawers.drawer('panel',true);$('aside.right').scrollTop=0;};
+  const undo=()=>{if(switching)return;editor.cancel();viewer?.cancel();if(!store.undo()) toast(tr('没有可撤销的操作','Nothing to undo'));};
+  const redo=()=>{if(!switching){editor.cancel();viewer?.cancel();store.redo();}};
   editor=createEditor2D({store,ui,actions,drawers,mode,setTool:t=>toolbar.setTool(t),toggleFullscreen:()=>toolbar.toggleFullscreen(),undo,redo});
-  panel=createPropertyPanel({store,ui,actions,drawers,is3D:mode.is3D,flyToRoom:id=>viewer?.flyToRoom(id)});
+  panel=createPropertyPanel({store,ui,actions,drawers,toast,is3D:mode.is3D,flyToRoom:id=>viewer?.flyToRoom(id)});
   const library=createFurnitureLibrary({store,ui,viewport:editor.viewport,actions,drawers,is3D:mode.is3D,groundAt:(x,y)=>viewer?.groundAt(x,y),toast});
-  toolbar=createToolbar({store,ui,viewport:editor.viewport,drawers,mode,undo,redo,clearLayout:actions.clearLayout,renderMeasure:editor.renderer.renderMeasure,toast,cancelInteraction:()=>editor.cancel()});
+  toolbar=createToolbar({store,ui,viewport:editor.viewport,drawers,mode,undo,redo,clearLayout:actions.clearLayout,renderMeasure:editor.renderer.renderMeasure,toast,cancelInteraction:()=>{editor.cancel();viewer?.cancel();}});
   const downloads=createDownloads({store,ui,svg:$('#plan'),is3D:mode.is3D,shot:()=>viewer?.shot()});
-  const files=createFileMenu({store,ui,downloads,isSwitching:()=>switching,toast,loaded});
-  function update(){editor.update();panel.update();toolbar.update();viewer?.sync();}
-  function save(){if(!storage.save(store.getProject()).ok) toast(tr('保存失败，请导出项目文件备份','Save failed. Export a project file as a backup.'));}
+  const files=createFileMenu({store,ui,downloads,isSwitching:()=>switching,toast,loaded,cancelInteraction:()=>{editor.cancel();viewer?.cancel();}});
+  roomEditor=createRoomEditor({store,ui,actions,cancelInteraction:()=>{editor.cancel();viewer?.cancel();},exportProject:files.exportProject,isSwitching:()=>switching,toast});
+  actions.deleteOpening=roomEditor.remove;
+  function update(){editor.update();panel.update();roomEditor?.update();toolbar.update();viewer?.sync();}
+  function save(){if(!storage.save(store.getProject()).ok) scope.timeout(()=>toast(tr('保存失败，请导出项目文件备份','Save failed. Export a project file as a backup.')),0);}
   let geometry=JSON.stringify(store.getProject().geometry);
   const unsubscribe=store.subscribe(({project,reason})=>{
+    if(ui.sel?.kind==='opening' && !project.roomEditor?.openings.some(o=>o.id===ui.sel.id) || ui.sel?.kind==='wall' && !project.roomEditor) ui.sel=null;
     if(ui.sel?.kind==='furn' && !actions.getF(ui.sel.id) || ui.sel?.kind==='room' && !project.rooms[ui.sel.id]) ui.sel=null;
     if(geometry!==JSON.stringify(project.geometry)){geometry=JSON.stringify(project.geometry);ui.mA=ui.mCur=null;editor.viewport.fitView();}
     if(reason!=='cancel') save();
@@ -72,11 +77,12 @@ export function createApplication(){
   function relang(){applyStaticLang();library.update();update();viewer?.relang();}
   $('#langBtn').onclick=()=>{setLanguage(LANG==='en'?'zh':'en');relang();};
   relang();editor.viewport.fitView();
+  if(loaded.migrationError) toast(tr('旧项目已读取，但 v2 保存失败，请导出备份。','Old project loaded, but v2 could not be saved. Export a backup.'));
   // Load Three only on demand; a CDN failure cannot block the 2D boot path.
   if(store.getProject().view.mode==='3d') setView('3d');
   function dispose(){
     if(scope.disposed)return;
-    unsubscribe();scope.dispose();editor.dispose();viewer?.dispose();library.dispose();panel.dispose();toolbar.dispose();files.dispose();downloads.dispose();notifications.dispose();store.dispose();
+    unsubscribe();scope.dispose();roomEditor.dispose();editor.dispose();viewer?.dispose();library.dispose();panel.dispose();toolbar.dispose();files.dispose();downloads.dispose();notifications.dispose();store.dispose();
     $('#langBtn').onclick=null;document.body.classList.remove('m3d','busy');$('#stage').classList.remove('is3d','animating');
   }
   scope.on(window,'pagehide',dispose);

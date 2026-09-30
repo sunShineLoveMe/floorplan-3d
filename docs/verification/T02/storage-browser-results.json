@@ -1,0 +1,9 @@
+{
+  "browser": "149.0.7827.55",
+  "checks": [
+    "v1 key migrates and persists editable snapshot copy without changing source",
+    "migration write failure keeps loaded project and v1 source with visible error",
+    "corrupt v2 never falls back to v1 and failed recovery blocks overwrite",
+    "late file reads cannot overwrite a project edited during reading"
+  ]
+}

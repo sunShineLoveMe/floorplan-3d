@@ -201,3 +201,22 @@ main.drawer-panel #fab{opacity:0;visibility:hidden}
   .lib-grid{grid-template-columns:1fr 1fr 1fr}
   .brand span,footer .only2d{display:none!important}
 }
+
+/* T02: numeric drafts stay separate from the persisted project. */
+#structurePanel section{padding:12px 16px;border-bottom:1px solid var(--line)}
+#structurePanel h3{font-size:13px;margin:0 0 8px}
+#structurePanel p{font-size:12px;line-height:1.6}
+#structurePanel select,.room-dialog select{width:100%;min-height:36px;background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:5px}
+.opening-row{display:flex;flex-wrap:wrap;gap:5px;padding:8px 0;border-bottom:1px solid var(--line)}
+.opening-row.selected{background:#f6e6d7}
+.opening-row [data-select]{flex:1 0 100%;text-align:left;white-space:normal}
+.opening-row small{display:block;margin-top:5px}
+.room-dialog{width:min(560px,calc(100vw - 24px));max-height:calc(100dvh - 32px);overflow:auto;border:1px solid var(--line);border-radius:12px;padding:22px;background:var(--panel);color:var(--ink)}
+.room-dialog::backdrop{background:rgba(30,26,20,.45)}
+.room-dialog h2{font-size:19px;margin:0 0 10px}
+.room-dialog p{font-size:13px;line-height:1.65}
+.room-dialog .actions{flex-wrap:wrap;position:sticky;bottom:-22px;background:var(--panel);padding:12px 0}
+.room-error{color:#ae3326;min-height:1.6em;overflow-wrap:anywhere}
+.room-dialog .form label{min-width:0}
+.room-dialog input{width:100%;min-width:0}
+@media(max-width:480px){.room-dialog{padding:16px}.room-dialog .form{grid-template-columns:1fr}.room-dialog .actions{bottom:-16px}}

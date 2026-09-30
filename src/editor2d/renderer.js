@@ -27,31 +27,36 @@ function renderFurn(){
 
 function renderWalls(){
   $('#gWalls').innerHTML = store.getProject().geometry.walls.map((w,i) => {
-    const [x0,y0,x1,y1,k] = w, id = 'w'+i, dem = store.getProject().demolished.includes(id);
+    const [x0,y0,x1,y1,k] = w, id = store.getProject().roomEditor ? store.getProject().geometry.wallIds[i] : 'w'+i, dem = store.getProject().demolished.includes(id);
     let fill = k==='b' ? (ui.layers.bearing ? '#b8412c' : '#26241f') : k==='low' ? '#e9e3d8' : k==='e' ? '#8f897d' : '#a7a195';
     let ex = k==='low' ? 'stroke="#8f897d" stroke-width="1" vector-effect="non-scaling-stroke"' : '';
     if (dem){ fill = 'rgba(198,91,58,.12)'; ex = 'stroke="#c65b3a" stroke-width="1.2" stroke-dasharray="5 3" vector-effect="non-scaling-stroke"'; }
-    return `<rect class="wall" data-wall="${id}" x="${x0}" y="${y0}" width="${x1-x0}" height="${y1-y0}" fill="${fill}" ${ex}/>`;
+    return `<rect class="wall" data-wall="${id}" style="${store.getProject().roomEditor ? 'pointer-events:all;cursor:pointer' : ''}" x="${x0}" y="${y0}" width="${x1-x0}" height="${y1-y0}" fill="${fill}" ${ex}/>`;
   }).join('');
 }
 
 function renderOpenings(){
   const WS = 'stroke="#4f7394" stroke-width="1" vector-effect="non-scaling-stroke"';
   let s = '';
-  store.getProject().geometry.windows.map(w=>w.rect).forEach(([x0,y0,x1,y1]) => {
+  store.getProject().geometry.windows.forEach(opening => {
+    const [x0,y0,x1,y1] = opening.rect;
+    s += opening.id ? `<g data-opening="${esc(opening.id)}" style="cursor:pointer">` : '<g>';
     const w = x1-x0, h = y1-y0;
     s += `<rect x="${x0}" y="${y0}" width="${w}" height="${h}" fill="#f7fbfd" ${WS}/>`;
-    if (w >= h) [1/3,2/3].forEach(t => s += `<line x1="${x0}" y1="${y0+h*t}" x2="${x1}" y2="${y0+h*t}" ${WS}/>`);
+    if (opening.wallId ? ['top','bottom'].includes(opening.wallId) : w >= h) [1/3,2/3].forEach(t => s += `<line x1="${x0}" y1="${y0+h*t}" x2="${x1}" y2="${y0+h*t}" ${WS}/>`);
     else [1/3,2/3].forEach(t => s += `<line x1="${x0+w*t}" y1="${y0}" x2="${x0+w*t}" y2="${y1}" ${WS}/>`);
+    s += '</g>';
   });
   const DS = 'stroke="#3d3a34" stroke-width="1" vector-effect="non-scaling-stroke"';
   store.getProject().geometry.doors.forEach(d => {
-    const [hx,hy] = d.h, L = d.len, T = 40;
+    const [hx,hy] = d.h, L = d.len, T = Math.min(40,L*.2);
+    s += d.id ? `<g data-opening="${esc(d.id)}" style="cursor:pointer"><rect x="${d.rect[0]}" y="${d.rect[1]}" width="${d.rect[2]-d.rect[0]}" height="${d.rect[3]-d.rect[1]}" fill="transparent"/>` : '<g>';
     const ox = hx + d.o[0]*L, oy = hy + d.o[1]*L, cx = hx + d.c[0]*L, cy = hy + d.c[1]*L;
     const sweep = d.o[0]*d.c[1] - d.o[1]*d.c[0] > 0 ? 1 : 0;
     const col = d.entry ? '#b5653a' : '#3d3a34';
     s += `<polygon points="${hx},${hy} ${ox},${oy} ${ox+d.c[0]*T},${oy+d.c[1]*T} ${hx+d.c[0]*T},${hy+d.c[1]*T}" fill="#fff" stroke="${col}" stroke-width="${d.entry?1.8:1}" vector-effect="non-scaling-stroke"/>`;
     s += `<path d="M${ox} ${oy}A${L} ${L} 0 0 ${sweep} ${cx} ${cy}" fill="none" ${DS} stroke-dasharray="5 3" opacity=".7"/>`;
+    s += '</g>';
   });
   store.getProject().geometry.slides.forEach(({rect:[x0,y0,x1,y1],v}) => {
     if (v){ const L = y1-y0, m = (x0+x1)/2; s += `<rect x="${m-45}" y="${y0}" width="40" height="${L*.55}" fill="#fff" ${DS}/><rect x="${m+5}" y="${y1-L*.55}" width="40" height="${L*.55}" fill="#fff" ${DS}/>`; }
@@ -134,7 +139,26 @@ function renderSel(){
     }
   } else if (ui.sel?.kind === 'room'){
     const r = store.getProject().geometry.rooms.find(r => r.id === ui.sel.id);
-    s += `<polygon points="${r.poly.map(p=>p.join(',')).join(' ')}" fill="rgba(181,101,58,.08)" stroke="#b5653a" stroke-width="2" vector-effect="non-scaling-stroke" pointer-events="none"/>`;
+    if(r) s += `<polygon points="${r.poly.map(p=>p.join(',')).join(' ')}" fill="rgba(181,101,58,.08)" stroke="#b5653a" stroke-width="2" vector-effect="non-scaling-stroke" pointer-events="none"/>`;
+  }
+  const editor = store.getProject().roomEditor;
+  if (editor && ['opening','wall'].includes(ui.sel?.kind)) {
+    const opening = editor.openings.find(o => o.id === ui.sel.id);
+    const wallId = ui.sel.kind === 'wall' ? ui.sel.id : opening?.wallId;
+    const {width:w, depth:d} = editor;
+    const endpoints = {top:[0,0,w,0], right:[w,0,w,d], bottom:[0,d,w,d], left:[0,0,0,d]}[wallId];
+    if (endpoints) {
+      const [x0,y0,x1,y1] = endpoints, dx = x1===x0 ? 0 : 1, dy = y1===y0 ? 0 : 1, a=10*k;
+      s += `<g pointer-events="none" fill="#b5653a" stroke="#b5653a" stroke-width="2" vector-effect="non-scaling-stroke">
+        <line x1="${x0}" y1="${y0}" x2="${x1}" y2="${y1}" vector-effect="non-scaling-stroke"/>
+        <circle cx="${x0}" cy="${y0}" r="${4*k}" stroke="none"/>
+        <path d="M${x1-dx*a-dy*a/2},${y1-dy*a+dx*a/2}L${x1},${y1}L${x1-dx*a+dy*a/2},${y1-dy*a-dx*a/2}" fill="none" vector-effect="non-scaling-stroke"/>
+        <text x="${(x0+x1)/2+dy*14*k}" y="${(y0+y1)/2-dx*14*k}" font-size="${12*k}" text-anchor="middle" stroke="white" stroke-width="${3*k}" paint-order="stroke">${tr('起点 → 终点','Start → End')}</text></g>`;
+    }
+    if(opening) {
+      const g = [...store.getProject().geometry.doors,...store.getProject().geometry.windows].find(o=>o.id===opening.id);
+      if(g) s += `<rect x="${g.rect[0]}" y="${g.rect[1]}" width="${g.rect[2]-g.rect[0]}" height="${g.rect[3]-g.rect[1]}" fill="rgba(181,101,58,.15)" stroke="#b5653a" stroke-width="3" vector-effect="non-scaling-stroke" pointer-events="none"/>`;
+    }
   }
   $('#gSel').innerHTML = s;
 }
