@@ -1,0 +1,5 @@
+primary normal/hover, actual keyboard focus, disabled boundary and 40/44px targets
+sample tabs, associated input error, primary dialog action, Escape focus and feedback
+specified text/brand/error token contrast >=4.5 on white and subtle surfaces (computed, not app-wide certification)
+production field height, icon target, disabled history, unit lock and invalid input isolation
+1440/1280/1024/390 visible canvas and no page horizontal overflow; legacy wrapping remains

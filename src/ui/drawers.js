@@ -36,7 +36,11 @@ function syncPaneBtns(){
   $('#stage').classList.toggle('drawer-panel', paneOverlay('panel') && vis('panel'));   // 属性抽屉盖住画面时让出底部工具条
 }
 function closeDrawers(){ drawer(null); }
+function escapeDrawer(){
+ const opened=[['lib',$('aside.lib')],['panel',$('aside.right')]].find(([k,el])=>paneOverlay(k)&&el.classList.contains('open'));
+ if(!opened)return false;drawer(opened[0],false);$(opened[0]==='lib'?'#tgLib':'#tgPanel').focus();return true;
+}
 
 
-return {drawer,closeDrawers,syncPaneBtns};
+return {drawer,closeDrawers,syncPaneBtns,escapeDrawer};
 }

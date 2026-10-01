@@ -1,0 +1,4 @@
+PASS quota error updates actual device save status and retains invalid draft
+PASS invalid import shows failure without changing project or selection fields
+PASS PNG encode failure has recoverable feedback and no false success
+PASS PNG image-load failure is caught and export returns to usable state

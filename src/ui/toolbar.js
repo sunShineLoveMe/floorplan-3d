@@ -11,6 +11,7 @@ const {drawer,syncPaneBtns}=drawers;
 const setView=m=>mode.setView(m);
 function updateHeader(){
   $('#projectName').textContent=store.getProject().name==='三室两厅两卫 · 装修设计' ? tr(store.getProject().name,'3BR 2LR 2BA · Interior Design') : store.getProject().name;
+  $('#fileProjectName').textContent=$('#projectName').textContent;$('#fileProjectName').title=$('#projectName').textContent;
   const tot = store.getProject().geometry.rooms.filter(r => r.counted !== false).reduce((a,r) => a + area(r.poly), 0);
   $('#subtitle').textContent = tr(`套内使用面积约 ${formatAreaM2(tot,store.getProject().units.display)}`, `Net floor area ≈ ${formatAreaM2(tot,store.getProject().units.display)}`);
   $('#projectUnits').value=store.getProject().units.display;
@@ -21,7 +22,7 @@ function updateHeader(){
 function setTool(t){
   cancelInteraction(); ui.tool = t; ui.mA = null; ui.mCur = null;
   svg.setAttribute('class', 'tool-' + t);
-  document.querySelectorAll('#tools .btn').forEach(b => b.classList.toggle('on', b.dataset.tool === t));
+  document.querySelectorAll('#tools .btn').forEach(b => {b.classList.toggle('on', b.dataset.tool === t);b.setAttribute('aria-pressed',String(b.dataset.tool===t));});
   syncModeHint();
   renderMeasure();
 }
@@ -42,7 +43,7 @@ document.querySelectorAll('.menu-pop .btn').forEach(b => scope.on(b, 'click', ()
 document.querySelectorAll('#viewSeg .btn').forEach(b => b.onclick = () => setView(b.dataset.view));
 
 document.querySelectorAll('#tools .btn').forEach(b => b.onclick = () => setTool(b.dataset.tool));
-document.querySelectorAll('#layers .btn').forEach(b => b.onclick = () => {
+document.querySelectorAll('[data-layer]').forEach(b => b.onclick = () => {
   const k = b.dataset.layer; store.setView({layers:{...ui.layers,[k]:!ui.layers[k]}}); b.classList.toggle('on', ui.layers[k]);
 
 });
@@ -82,18 +83,19 @@ if (navigator.standalone || matchMedia('(display-mode: standalone)').matches) $(
 $('#tgLib').onclick = () => drawer('lib');
 $('#tgPanel').onclick = () => drawer('panel');
 // Menus are UI overlays; outside clicks and Escape never reach the canvas as gestures.
-const menus = [...document.querySelectorAll('header details,.view-settings')];
+const menus = [...document.querySelectorAll('header details,.view-settings,.help-menu')];
 menus.forEach(menu=>{
   scope.on(menu,'toggle',()=>{if(menu.open)menus.forEach(other=>{if(other!==menu)other.open=false;});});
   scope.on(menu,'pointerdown',e=>e.stopPropagation());
+  scope.on(menu,'keydown',e=>{if(e.key!=='Escape')e.stopPropagation();});
 });
 scope.on(document,'pointerdown',e=>menus.forEach(menu=>{if(menu.open&&!menu.contains(e.target))menu.open=false;}));
-scope.on(document,'keydown',e=>{if(e.key==='Escape'){const open=menus.find(menu=>menu.open);if(open){open.open=false;open.querySelector('summary').focus();e.preventDefault();e.stopImmediatePropagation();}}},{capture:true});
+scope.on(document,'keydown',e=>{if(e.key==='Escape'){const open=menus.find(menu=>menu.open);if(open){open.open=false;open.querySelector('summary').focus();e.preventDefault();e.stopImmediatePropagation();}else if(!document.querySelector('dialog[open]')&&!e.target.closest('input,select,textarea')&&drawers.escapeDrawer()){e.preventDefault();e.stopImmediatePropagation();}}},{capture:true});
 for (const query of ['(max-width:1223px)','(max-width:899px)']) scope.on(matchMedia(query), 'change', () => drawer(null));
 document.querySelectorAll('[data-close-pane]').forEach(button=>scope.on(button,'click',()=>{drawer(button.dataset.closePane,false);$(button.dataset.closePane==='lib'?'#tgLib':'#tgPanel').focus();}));
 drawer(null);                                  // 恢复上次的面板收起状态
 
 
-function update(){updateHeader();syncModeHint();syncFullscreen();syncPaneBtns();$('#tip').textContent=TIPS()[mode.is3D()?'3d':'2d'];document.querySelectorAll('#layers .btn').forEach(b=>b.classList.toggle('on',ui.layers[b.dataset.layer]));}
-return {setTool,toggleFullscreen,update,dispose(){scope.dispose();document.querySelectorAll('header button,.workspace-toolbar button,.toolbar button,#viewSeg button,#tools button,#layers button').forEach(b=>b.onclick=null);}};
+function update(){document.querySelectorAll('#tools [data-tool]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.tool===ui.tool)));document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===(mode.is3D()?'3d':'2d'))));updateHeader();syncModeHint();syncFullscreen();syncPaneBtns();$('#tip').textContent=TIPS()[mode.is3D()?'3d':'2d'];document.querySelectorAll('[data-layer]').forEach(b=>{b.classList.toggle('on',ui.layers[b.dataset.layer]);b.setAttribute('aria-pressed',String(ui.layers[b.dataset.layer]));});}
+return {setTool,toggleFullscreen,update,dispose(){scope.dispose();document.querySelectorAll('header button,.workspace-toolbar button,.canvas-controls button,.toolbar button,#viewSeg button,#tools button,#layers button').forEach(b=>b.onclick=null);}};
 }

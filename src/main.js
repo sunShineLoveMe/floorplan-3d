@@ -38,7 +38,9 @@ export function createApplication(){
   roomEditor=createRoomEditor({store,ui,actions,cancelInteraction:()=>{editor.cancel();viewer?.cancel();},exportProject:files.exportProject,isSwitching:()=>switching,toast});
   actions.deleteOpening=roomEditor.remove;
   function update(){library.update();editor.viewport.applyView();editor.update();panel.update();roomEditor?.update();toolbar.update();viewer?.sync();}
-  function save(){if(!storage.save(store.getProject()).ok) scope.timeout(()=>toast(tr('保存失败，请导出项目文件备份','Save failed. Export a project file as a backup.')),0);}
+  let saveOK=null;
+  function syncSaveStatus(){const status=$('#saveStatus');status.textContent=saveOK===null?tr('仅本机存储','Device storage only'):saveOK?tr('已保存到此设备','Saved on this device'):tr('保存失败，请导出备份','Save failed — export a backup');status.dataset.state=saveOK===false?'error':'local';$('#fileSaveStatus').textContent=status.textContent;$('#fileSaveStatus').dataset.state=status.dataset.state;}
+  function save(){saveOK=storage.save(store.getProject()).ok;syncSaveStatus();if(!saveOK) scope.timeout(()=>toast(tr('保存失败，请导出项目文件备份','Save failed. Export a project file as a backup.')),0);}
   let geometry=JSON.stringify(store.getProject().geometry);
   const unsubscribe=store.subscribe(({project,reason})=>{
     if(ui.sel?.kind==='opening' && !project.roomEditor?.openings.some(o=>o.id===ui.sel.id) || ui.sel?.kind==='wall' && !project.roomEditor) ui.sel=null;
@@ -59,7 +61,7 @@ export function createApplication(){
   async function setView(m){
     if(scope.disposed || switching) return;
     if(m===viewMode){store.setView({mode:m});return;}
-    switching=true;editor.cancel();document.body.classList.add('busy');
+    switching=true;editor.cancel();document.body.classList.add('busy');$('#viewSeg').setAttribute('aria-busy','true');$('#viewStatus').textContent=tr('正在切换视图…','Switching view…');
     try{
       const next=await loadViewer();if(!next || scope.disposed)return;
       if(m==='3d'){toolbar.setTool('select');document.body.classList.add('m3d');await next.enter();}
@@ -72,9 +74,9 @@ export function createApplication(){
       viewer?.dispose();viewer=null;viewerPromise=null;viewMode='2d';
       document.body.classList.remove('m3d');$('#stage').classList.remove('is3d','animating');
       toast(tr('3D 加载失败，仍可使用 2D 和项目文件；请检查网络或 WebGL 支持。','3D could not load. 2D and project files remain available. Check network or WebGL support.'));
-    }finally{switching=false;if(!scope.disposed)document.body.classList.remove('busy');}
+    }finally{switching=false;if(!scope.disposed){document.body.classList.remove('busy');$('#viewSeg').setAttribute('aria-busy','false');$('#viewStatus').textContent='';}}
   }
-  function relang(){applyStaticLang();library.update();update();viewer?.relang();}
+  function relang(){applyStaticLang();syncSaveStatus();library.update();update();viewer?.relang();}
   $('#langBtn').onclick=()=>{setLanguage(LANG==='en'?'zh':'en');relang();};
   relang();editor.viewport.fitView();
   if(loaded.migrationError) toast(tr('旧项目已读取，但 v2 保存失败，请导出备份。','Old project loaded, but v2 could not be saved. Export a backup.'));

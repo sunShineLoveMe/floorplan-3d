@@ -1,0 +1,38 @@
+[
+  {
+    variant: 'before',
+    cards: 60,
+    bootMs: 89.79999995231628,
+    meanRefreshMs: 7.319999992847443
+  },
+  {
+    variant: 'after',
+    cards: 60,
+    bootMs: 103,
+    meanRefreshMs: 7.87000002861023
+  },
+  {
+    variant: 'before',
+    cards: 60,
+    bootMs: 85.70000004768372,
+    meanRefreshMs: 7.689999985694885
+  },
+  {
+    variant: 'after',
+    cards: 60,
+    bootMs: 87.10000002384186,
+    meanRefreshMs: 7.879999995231628
+  },
+  {
+    variant: 'before',
+    cards: 60,
+    bootMs: 78.80000007152557,
+    meanRefreshMs: 7.490000009536743
+  },
+  {
+    variant: 'after',
+    cards: 60,
+    bootMs: 111.10000002384186,
+    meanRefreshMs: 7.910000014305115
+  }
+]

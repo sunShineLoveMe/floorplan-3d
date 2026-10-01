@@ -1,5 +1,6 @@
 # UI-005｜关键交互样稿
 
+> 本页为该批次交付时的历史记录；当前实现、提交状态和验收边界见 [UI 最终交付](UI-final-delivery.md)。
 日期：2026-10-01。分支：`feat/ui-refactor`。依据 [UI 方案 v1.1](frontend-ui-refactor-plan-v1.0.md) 与 [UI-000 基线](UI-000-baseline.md)。本任务提供后续实现的交互与布局依据，未替换生产编辑器。
 
 ## 可审查结果

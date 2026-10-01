@@ -1,27 +1,44 @@
+import {captureInputs,restoreInputs} from './input-drafts.js';
 import {formatLengthMm,formatAreaM2} from '../core/units.js';
 import {lengthField,bindLengthField} from './length-field.js';
 import {clone,validate,updateRectangleProject} from '../data/project-data.js';
 import {$} from '../ui/dom.js';
 import {COARSE,esc} from '../ui/dom.js';
-import {tr,nm} from '../ui/i18n.js';
+import {tr,nm,LANG} from '../ui/i18n.js';
 import {area,perim,bbox,norm} from '../core/geometry.js';
 import {MATS,CATALOGS} from '../data/catalogs.js';
 export function createPropertyPanel({store,ui,actions,drawers,is3D,flyToRoom,toast}){
-const {select,rotateSel,deleteSel,duplicateSel,clearLayout,getF}=actions;
+const {select,rotateSel,deleteSel,duplicateSel,getF}=actions;
 const {drawer,closeDrawers}=drawers;
 const mutate=fn=>store.mutate(fn);
 const length=(mm,style='feet')=>formatLengthMm(mm,store.getProject().units.display,{style});
 const surface=m2=>formatAreaM2(m2,store.getProject().units.display);
+let signature,context,lastEntity={};
+function syncUnitLock(){
+ if(document.querySelector('dialog[open]'))return;
+ const locked=!!document.activeElement?.matches('#panel [data-length]')||!!$('#panel [data-length][aria-invalid=true]');
+ $('#projectUnits').disabled=locked;$('#unitLock').textContent=locked?tr('完成或取消尺寸编辑后可切换','Finish or cancel dimension editing to change units'):'';
+}
 function renderPanel(){
-  if(!document.querySelector('dialog[open]')){$('#projectUnits').disabled=false;$('#unitLock').textContent='';}
+  syncUnitLock();
   renderFab();
-  const p = $('#panel');
+  const p = $('#panel'),project=store.getProject();
+  const current=ui.sel?.kind==='furn'?getF(ui.sel.id):ui.sel?.kind==='room'?project.rooms[ui.sel.id]:{};
+  const key=project.id+':'+(ui.sel?.kind||'none')+':'+(ui.sel?.id||'')+':'+project.units.display;
+  const next=JSON.stringify([LANG,key,project.furniture,project.rooms,project.geometry,project.measures,project.demolished]);
+  if(next===signature)return;
+  const drafts=key===context?captureInputs(p):[],prior=lastEntity;
+  const detailsOpen=p.querySelector('#projectDetails')?.open||false;
+  signature=next;context=key;lastEntity={...current};
   const details=`<details id="projectDetails"><summary class="btn">${tr('项目详情 / 高级','Project details / Advanced')}</summary>${overviewPanel()}</details>`;
   if (ui.sel?.kind === 'furn' && getF(ui.sel.id)){p.innerHTML=furnPanel(getF(ui.sel.id))+details;bindFurnPanel(getF(ui.sel.id));}
   else if(ui.sel?.kind==='room'){p.innerHTML=roomPanel(store.getProject().geometry.rooms.find(r=>r.id===ui.sel.id))+details;bindRoomPanel();}
   else if(['wall','opening'].includes(ui.sel?.kind)){p.innerHTML=`<section class="muted">${tr('在上方编辑当前墙体或门窗。','Edit the selected wall or opening above.')}</section>`+details;}
   else {p.innerHTML=`<section class="empty-properties"><h3>${tr('属性','Properties')}</h3><p class="muted">${tr('选择房间、家具或门窗，查看并修改属性。','Select a room, furniture item or opening to edit its properties.')}</p><button class="btn" id="openRoomSettings">${tr('房间设置 / 门窗','Room settings / openings')}</button></section>`+details;$('#openRoomSettings').onclick=()=>actions.showStructure();}
   bindOverview();
+  p.querySelector('#projectDetails').open=detailsOpen;
+  const fields={fName:'name',fW:'w',fD:'d',fX:'cx',fY:'cy',fR:'rot',fC:'color',rName:'name'};
+  restoreInputs(p,drafts,id=>prior[fields[id]]===current[fields[id]]);syncUnitLock();
 }
 
 function overviewPanel(){
@@ -50,7 +67,7 @@ function overviewPanel(){
     <div class="stats"><div><small>${tr('家具数量','Furniture')}</small><span class="big">${store.getProject().furniture.length}</span></div>
       <div><small>${tr('拆除墙体','Walls removed')}</small><span class="big">${length(demLen*1000)}</span></div></div>
     <div class="actions"><button class="btn" id="clearMeasure">${tr('清除测量','Clear measures')} (${store.getProject().measures.length})</button>
-      <button class="btn danger" id="clearFurn">${tr('清空布置','Clear layout')}</button></div></section>
+      </div></section>
   ${COARSE ? tr(`<section><h3>触屏操作</h3><div class="kbd">
     <kbd>单指拖动</kbd><span>空白处平移画面</span><kbd>双指</kbd><span>捏合缩放、拖动平移</span>
     <kbd>家具库</kbd><span>点一下放到画面中央，或按住向右拖到指定位置</span>
@@ -79,15 +96,15 @@ function overviewPanel(){
 function bindOverview(){
   document.querySelectorAll('#projectDetails tr[data-room]').forEach(tr => tr.onclick = () => { select({kind:'room', id:tr.dataset.room}); if (is3D()) flyToRoom(tr.dataset.room); });
   $('#clearMeasure').onclick = () => store.getProject().measures.length && mutate(() => store.getProject().measures = []);
-  $('#clearFurn').onclick = clearLayout;
+
 }
 
 function renderFab(){
   const fab = $('#fab'), f = ui.sel?.kind === 'furn' && getF(ui.sel.id), r = ui.sel?.kind === 'room' && store.getProject().geometry.rooms.find(r => r.id === ui.sel.id);
   if (!f && !r){ fab.classList.remove('show'); return; }
   fab.innerHTML = f
-    ? `<span class="name">${esc(nm(f.name))}</span><button class="btn" data-a="rotL">↺</button><button class="btn" data-a="rotR">↻ ${tr('旋转','Rotate')}</button>
-       <button class="btn" data-a="dup">${tr('复制','Duplicate')}</button><button class="btn danger" data-a="del">${tr('删除','Delete')}</button><span class="sep"></span>
+    ? `<span class="name">${esc(nm(f.name))}</span><button class="btn" data-a="rotL" aria-label="${tr('逆时针旋转 90°','Rotate counterclockwise 90 degrees')}" title="${tr('逆时针旋转 90°','Rotate counterclockwise 90 degrees')}">↺</button><button class="btn" data-a="rotR">↻ ${tr('旋转','Rotate')}</button>
+       <button class="btn" data-a="dup">${tr('复制','Duplicate')}</button><button class="btn danger" data-a="del">${tr('删除家具','Delete item')}</button><span class="sep"></span>
        <button class="btn narrow-only" data-a="prop">${tr('属性','Properties')}</button><button class="btn" data-a="done">${tr('完成','Done')}</button>`
     : `<span class="name">${esc(nm(store.getProject().rooms[r.id].name))}</span><button class="btn narrow-only" data-a="prop">${tr('地面 / 属性','Floor / Properties')}</button><button class="btn" data-a="done">${tr('完成','Done')}</button>`;
   fab.classList.add('show');
@@ -133,10 +150,13 @@ function furnPanel(f){
   return `<section><h3>${tr('家具属性','Furniture')}</h3>
     <div class="form">
       <label class="full">${tr('名称','Name')}<input id="fName" value="${esc(nm(f.name))}"></label>
+      <h4 class="field-group">${tr('尺寸','Size')}</h4>
       ${lengthField('fW',tr('宽','Width'),f.w,store.getProject().units.display)}
       ${lengthField('fD',tr('深','Depth'),f.d,store.getProject().units.display)}
+      <h4 class="field-group">${tr('位置（家具中心）','Position (item center)')}</h4>
       ${lengthField('fX',tr('中心','Center')+' X',f.cx,store.getProject().units.display)}
       ${lengthField('fY',tr('中心','Center')+' Y',f.cy,store.getProject().units.display)}
+      <h4 class="field-group">${tr('朝向与外观','Orientation and appearance')}</h4>
       <label>${tr('旋转','Rotation')} (°)<input type="number" id="fR" value="${f.rot}" step="15"></label>
       <label>${tr('颜色','Color')}<input type="color" id="fC" value="${f.color}"></label>
     </div>
@@ -144,7 +164,7 @@ function furnPanel(f){
     <div class="actions">
       <button class="btn" id="aRot">${tr('旋转 90°','Rotate 90°')}</button><button class="btn" id="aDup">${tr('复制','Duplicate')}</button>
       <button class="btn" id="aTop">${tr('置于顶层','Bring to front')}</button><button class="btn" id="aBot">${tr('置于底层','Send to back')}</button>
-      <button class="btn danger" id="aDel">${tr('删除','Delete')}</button><button class="btn" id="back">${tr('← 返回','← Back')}</button>
+      <button class="btn danger" id="aDel">${tr('删除家具','Delete item')}</button><button class="btn" id="back">${tr('← 返回','← Back')}</button>
     </div></section>
   <section class="muted" style="font-size:12px">${tr('拖动家具移动；拖动上方圆点旋转；拖动右下角方块调整尺寸。开启「贴墙吸附」后靠近墙面会自动贴齐。', 'Drag to move; drag the top dot to rotate; drag the bottom-right square to resize. With "Wall snap" on, items snap flush to nearby walls.')}</section>`;
 }
@@ -154,7 +174,7 @@ function bindFurnPanel(f){
   for(const [id,key] of [['fW','w'],['fD','d'],['fX','cx'],['fY','cy']]){
     const input=$('#'+id),binding=bindLengthField(input,f[key],store.getProject().units.display,()=>['w','d'].includes(key)?[50,1e7]:[-1e7,1e7]);
     input.onfocus=()=>{ $('#projectUnits').disabled=true;$('#unitLock').textContent=tr('结束尺寸编辑后可切换','Finish dimension editing to change units'); };
-    input.onblur=()=>{ $('#projectUnits').disabled=false;$('#unitLock').textContent=''; };
+    input.onblur=syncUnitLock;
     input.onchange=()=>{const result=binding.read();if(result.ok)upd(g=>g[key]=result.mm);};
     input.onkeydown=e=>{if(e.key==='Escape'){e.preventDefault();binding.reset();input.blur();}if(e.key==='Enter'){e.preventDefault();input.blur();}};
   }

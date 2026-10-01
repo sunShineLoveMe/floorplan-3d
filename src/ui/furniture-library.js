@@ -10,7 +10,15 @@ export function createFurnitureLibrary({store,ui,viewport,actions,drawers,is3D,g
 const scope=createScope(),svg=$('#plan');
 const {view,toMM}=viewport;
 const {addItem}=actions; const {drawer,closeDrawers}=drawers;
-let signature,roomSignature;
+let signature,roomSignature,query='',category='all';
+function buildFilters(){
+ const select=$('#furnitureCategory');select.innerHTML=`<option value="all">${tr('全部分类','All categories')}</option>`+LIB.map((c,i)=>`<option value="${i}">${esc(nm(c.cat))}</option>`).join('');select.value=category;
+ $('#furnitureSearch').placeholder=tr('搜索当前家具库','Search this furniture library');
+}
+let filterLang;
+scope.on($('#furnitureSearch'),'input',e=>{query=e.target.value;signature=null;buildLib();});
+scope.on($('#furnitureCategory'),'change',e=>{category=e.target.value;signature=null;buildLib();});
+scope.on($('#clearFurnitureSearch'),'click',()=>{query='';category='all';$('#furnitureSearch').value='';$('#furnitureCategory').value='all';signature=null;buildLib();$('#furnitureSearch').focus();});
 let activeTab='furniture';
 function setTab(tab){
   activeTab=tab;
@@ -48,14 +56,16 @@ scope.on($('#roomList'),'click',e=>{
 const summary=value=>store.getProject().units.display==='imperial'?`≈ ${(value/25.4).toFixed(1).replace(/\.0$/,'')} in`:`${Math.round(value)} mm`;
 
 function buildLib(){
-  const next=LANG+store.getProject().units.display;if(signature===next)return;signature=next;
-  $('#lib').innerHTML = LIB.map((c,ci) => `<h4>${nm(c.cat)}</h4><div class="lib-grid">${c.items.map((it,ii) => {
+  if(filterLang!==LANG){filterLang=LANG;buildFilters();}
+  const next=JSON.stringify([LANG,store.getProject().units.display,query,category]);if(signature===next)return;signature=next;
+  $('#lib').innerHTML = LIB.map((c,ci) => {if(category!=='all'&&category!==String(ci))return '';const matches=c.items.map((it,ii)=>({it,ii})).filter(({it})=>[it[1],nm(it[1]),c.cat,nm(c.cat),it[0]].join(' ').toLowerCase().includes(query.trim().toLowerCase()));if(!matches.length)return '';return `<h4>${nm(c.cat)}</h4><div class="lib-grid">${matches.map(({it,ii}) => {
     const [t,n,w,d,col] = it, pad = Math.max(w,d)*.08;
     return `<div class="item" role="button" tabindex="0" data-key="${ci}:${ii}" title="${esc(nm(n))} · ${esc(formatLengthMm(w,store.getProject().units.display,{style:'inches'}))} × ${esc(formatLengthMm(d,store.getProject().units.display,{style:'inches'}))} · ${tr('点击或拖动添加','Click or drag to add')}">
-      <svg viewBox="${-w/2-pad} ${-d/2-pad} ${w+2*pad} ${d+2*pad}">${furnSVG(t,w,d,col)}</svg><b>${esc(nm(n))}</b><small>${tr('宽','W')} ${summary(w)}<br>${tr('深','D')} ${summary(d)}</small></div>`;
-  }).join('')}</div>`).join('') + `<div class="hint">${tr(
+      <svg aria-hidden="true" focusable="false" viewBox="${-w/2-pad} ${-d/2-pad} ${w+2*pad} ${d+2*pad}">${furnSVG(t,w,d,col)}</svg><b>${esc(nm(n))}</b><small>${tr('宽','W')} ${summary(w)}<br>${tr('深','D')} ${summary(d)}</small></div>`;
+  }).join('')}</div>`;}).join('') + `<div class="hint">${tr(
     `家具按实际尺寸比例绘制。${COARSE ? '点一下放到画面中央，或按住向右拖到平面图 / 3D 地面上的指定位置（上下滑动为滚动列表）。' : '点击添加到画面中央，或直接拖到平面图 / 3D 地面上。'}添加后可在右侧修改宽深与颜色。`,
     `Furniture is drawn to scale. ${COARSE ? 'Tap to place at the center, or hold and drag right onto the plan / 3D floor (swipe up/down to scroll).' : 'Click to add at the center, or drag onto the plan / 3D floor.'} Edit size and color in the right panel afterwards.`)}</div>`;
+  if(!$('#lib .item'))$('#lib').innerHTML=`<p class="hint" role="status">${tr('没有找到家具，请清空搜索或切换分类。','No furniture found. Clear the search or choose another category.')}</p>`;
 }
 scope.on($('#lib'), 'pointerdown', e=>{
   const el=e.target.closest('.item'); if(!el || e.button)return;
@@ -70,7 +80,7 @@ let libDrag = null;
 function dropPoint(x, y){
   const r = $('#stage').getBoundingClientRect();
   if (x < r.left || x > r.right || y < r.top || y > r.bottom) return null;
-  if (document.elementFromPoint(x, y)?.closest('aside.open,#fab,#walkOverlay,#joy,#walkExit')) return null;
+  if (document.elementFromPoint(x, y)?.closest('aside.open,#fab,#walkOverlay,#joy,#walkExit,.workspace-toolbar,header,details[open],.canvas-controls')) return null;
   if (is3D()) return groundAt(x, y) || null;
   const p = toMM({clientX:x, clientY:y}); return {x:p.x, y:p.y, s:view.s};
 }

@@ -8,7 +8,13 @@ export function createFileMenu({store,ui,downloads,isSwitching,toast,loaded,canc
 const scope=createScope();const {download,exportPNG}=downloads;
 let revision=0,readRequest=0;
 const unsubscribe=store.subscribe(()=>{revision++;});
-$('#exportPng').onclick=exportPNG;
+$('#exportPng').onclick=async()=>{
+ const button=$('#exportPng');if(button.disabled)return;
+ button.disabled=true;button.setAttribute('aria-busy','true');
+ try{await exportPNG();if(!scope.disposed)toast(tr('图片已生成，下载已启动','Image generated. Download started.'));}
+ catch{if(!scope.disposed)toast(tr('图片生成失败，请重试或导出项目 JSON','Image export failed. Retry or export the project JSON.'));}
+ finally{if(!scope.disposed){button.disabled=false;button.setAttribute('aria-busy','false');}}
+};
 function projectMessage(err){
   const messages={
     INVALID_JSON:['文件不是有效的 JSON','The file is not valid JSON.'],
@@ -31,14 +37,14 @@ function importProjectText(raw){
 function exportProject(){
   try {
     const raw=serializeProject(store.getProject());
-    download('floorplan-project.json',new Blob([raw],{type:'application/json'}));
+    download('floorplan-project.json',new Blob([raw],{type:'application/json'}));toast(tr('JSON 文件已生成，下载已启动','JSON file generated. Download started.'));
   } catch(e){ toast(projectMessage(e)); }
 };
 $('#exportJson').onclick=exportProject;
 $('#importJson').onclick = () => $('#fileIn').click();
 $('#fileIn').onchange = async e => {
   const file=e.target.files[0]; e.target.value=''; if(!file) return;
-  const request=++readRequest,startRevision=revision;
+  const request=++readRequest,startRevision=revision;$('#importJson').disabled=true;$('#importJson').setAttribute('aria-busy','true');
   try {
     if(file.size>10*1024*1024) throw new ProjectError('INVALID_PROJECT');
     const raw=await file.text();if(scope.disposed || request!==readRequest)return;
@@ -46,6 +52,7 @@ $('#fileIn').onchange = async e => {
     importProjectText(raw);
   }
   catch(e){ if(!scope.disposed && request===readRequest) alert(projectMessage(e)); }
+  finally{if(!scope.disposed&&request===readRequest){$('#importJson').disabled=false;$('#importJson').setAttribute('aria-busy','false');}}
 };
 $('#reset').onclick = () => { if(isSwitching())return; if (confirm(tr('恢复为默认设计方案？（可撤销）', 'Reset to the default design? (undoable)'))){ cancelInteraction();ui.sel = null; store.replaceProject(defaultState()); } };
 

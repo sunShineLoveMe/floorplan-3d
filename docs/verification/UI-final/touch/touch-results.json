@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-01T15:08:19.319Z",
+  "checks": [
+    "Simulated coarse-pointer tap add and numeric size edit avoid drag; drawers close and fields remain reachable",
+    "Simulated touch walk has a reachable exit and removes joystick overlay"
+  ],
+  "errors": [],
+  "environment": "Chromium emulated touch, not physical hardware"
+}

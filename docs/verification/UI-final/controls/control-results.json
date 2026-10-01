@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-01T15:09:58.093Z",
+  "browser": "149.0.7827.55",
+  "checks": [
+    "primary normal/hover, actual keyboard focus, disabled boundary and 40/44px targets",
+    "sample tabs, associated input error, primary dialog action, Escape focus and feedback",
+    "specified text/brand/error token contrast >=4.5 on white and subtle surfaces (computed, not app-wide certification)",
+    "production field height, icon target, disabled history, unit lock and invalid input isolation",
+    "1440/1280/1024/390 visible canvas and no page horizontal overflow; legacy wrapping remains"
+  ],
+  "contrast": [
+    {
+      "token": "--color-text-primary",
+      "color": "#202823",
+      "onWhite": 15.116594313795394,
+      "onSubtle": 13.632779642073872
+    },
+    {
+      "token": "--color-text-secondary",
+      "color": "#59645d",
+      "onWhite": 6.166132009120798,
+      "onSubtle": 5.560876820486449
+    },
+    {
+      "token": "--color-text-muted",
+      "color": "#626d65",
+      "onWhite": 5.391933468779913,
+      "onSubtle": 4.8626720608303335
+    },
+    {
+      "token": "--color-brand",
+      "color": "#245c4b",
+      "onWhite": 7.756312803542301,
+      "onSubtle": 6.994968647745613
+    },
+    {
+      "token": "--color-danger",
+      "color": "#b42318",
+      "onWhite": 6.57428861557707,
+      "onSubtle": 5.928969590575347
+    }
+  ],
+  "metrics": [
+    {
+      "width": 1440,
+      "headerHeight": 64,
+      "canvasWidth": 856,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "headerHeight": 64,
+      "canvasWidth": 696,
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "headerHeight": 64,
+      "canvasWidth": 744,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "headerHeight": 64,
+      "canvasWidth": 390,
+      "overflow": false
+    }
+  ],
+  "errors": []
+}

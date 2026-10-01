@@ -3,7 +3,7 @@ let LANG = (() => { try { return localStorage.getItem(LANG_KEY) === 'en' ? 'en' 
 const tr = (zh, en) => LANG === 'en' ? en : zh;
 // 内置的房间 / 材料 / 家具名称存的是中文；英文界面下显示译名，用户自己改过的名称原样显示
 const NAMES_EN = {
-  '主卧室':'Master Bedroom', '主卫浴':'Master Bath', '小孩房':"Kids' Room", '客卫浴':'Guest Bath', '洗衣阳台':'Laundry Balcony',
+  '主卧室':'Primary Bedroom', '主卫浴':'Primary Bath', '小孩房':"Kids' Room", '客卫浴':'Guest Bath', '洗衣阳台':'Laundry Balcony',
   '子女房':"Children's Room", '厨房':'Kitchen', '餐厅':'Dining', '过道':'Hallway', '客厅':'Living Room', '休闲阳台':'Leisure Balcony',
   '主卧飘窗':'Master Bay Window', '子女房飘窗':"Children's Bay Window",
   '橡木地板':'Oak Flooring', '胡桃木地板':'Walnut Flooring', '800 地砖':'800 Tile', '600 地砖':'600 Tile', '大理石':'Marble',
@@ -29,6 +29,7 @@ function applyStaticLang(){
   document.title = tr('户型装修设计', 'Floor Plan Designer');
   document.querySelectorAll('[data-en]').forEach(el => { el.dataset.zh ??= el.textContent; el.textContent = tr(el.dataset.zh, el.dataset.en); });
   document.querySelectorAll('[data-en-title]').forEach(el => { el.dataset.zhTitle ??= el.title; el.title = tr(el.dataset.zhTitle, el.dataset.enTitle); });
+  document.querySelectorAll('[data-en-short]').forEach(el=>{el.dataset.zhShort??=el.dataset.short;el.dataset.short=tr(el.dataset.zhShort,el.dataset.enShort);});
   document.getElementById('langBtn').textContent = tr('EN', '中文');
 }
 

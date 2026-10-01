@@ -40,7 +40,7 @@ fs.mkdirSync(OUT,{recursive:true});
  p=await saved();for(let i=0;i<100;i++)await units(i%2?'imperial':'metric');const after=await saved();assert.deepEqual({...after,updatedAt:p.updatedAt},p);
  await field('fW','60 1/64 in');const precise=await saved();await units('metric');await page.locator('#undo').click();assert.equal((await saved()).units.display,'imperial');await page.locator('#undo').click();near((await saved()).furniture[0].w,1524);await page.locator('#redo').click();await page.locator('#redo').click();near((await saved()).furniture[0].w,precise.furniture[0].w);await units('imperial');
  assert.match(await page.locator('#lib .item small').first().textContent(),/in/);assert.match(await page.locator('#sbText').textContent(),/'|in/);check('100 UI unit changes preserve all model values; fine input and ordered undo/redo');
- await page.locator('#plan').click({position:{x:20,y:20}});await page.locator('#gFurn [data-fid]').first().click();
+ await page.locator('#plan').click({position:{x:20,y:200}});await page.locator('#gFurn [data-fid]').first().click();
  let before=(await saved()).furniture[0];await page.keyboard.press('ArrowRight');near((await saved()).furniture[0].cx-before.cx,6.35);await page.keyboard.press('Shift+ArrowDown');near((await saved()).furniture[0].cy-before.cy,25.4);await page.locator('#undo').click();await page.locator('#undo').click();
  // Real SVG mouse drag / resize / cancellation and measurement.
  const point=async(x,y)=>page.evaluate(({x,y})=>{const s=document.querySelector('#plan'),p=s.createSVGPoint();p.x=x;p.y=y;const q=p.matrixTransform(s.getScreenCTM());return{x:q.x,y:q.y}},{x,y});

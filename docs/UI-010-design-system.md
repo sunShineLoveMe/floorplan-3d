@@ -1,5 +1,6 @@
 # UI-010｜设计 Token 与基础控件
 
+> 本页为该批次交付时的历史记录；当前实现、提交状态和验收边界见 [UI 最终交付](UI-final-delivery.md)。
 日期：2026-10-01。分支：`feat/ui-refactor`。依据 [UI 方案](frontend-ui-refactor-plan-v1.0.md)、[UI-000 基线](UI-000-baseline.md) 和 [UI-005 样稿](UI-005-interaction-draft.md)。本批次已接入真实编辑器；仍保留旧布局，下一批重组工作区。
 
 ## 已完成的改动

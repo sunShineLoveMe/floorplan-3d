@@ -18,7 +18,7 @@ const out='docs/verification/UI-020';fs.mkdirSync(out,{recursive:true});
  const m=await rect();assert.equal(m.header.h,64);assert.equal(m.left.w,280);assert.equal(m.right.w,304);assert.equal(m.stage.w,width-584);assert.equal(m.overflow,false);metrics.push(m);
  await page.locator('#gFurn [data-fid="ui-bed"]').click();await page.locator('#fName').waitFor();assert.equal(await page.locator('#fName').inputValue(),'Bed');
  assert.equal((await rect()).stage.w,m.stage.w);await shot(`selected-${width}`);
- await page.locator('#plan').click({position:{x:10,y:10}});assert.equal((await rect()).stage.w,m.stage.w);
+ await page.locator('#plan').click({position:{x:10,y:200}});assert.equal((await rect()).stage.w,m.stage.w);
  }
  checks.push('1440/1280: 64px header, 280/304 panes, stable canvas through select/deselect and actual SVG hits');
  await page.locator('#tgLib').click();await page.waitForTimeout(100);assert.equal((await rect()).stage.w,976);

@@ -1,0 +1,11 @@
+[
+  'invalid draft, focus, cursor and error survive language/pane updates; Escape resets without model writes',
+  'switching object isolates draft and leaves original bed unchanged',
+  'custom names and units retained; local search/category/empty/reset and filtered card add keep catalog association',
+  'overlay settings and library drop over canvas tools do not place or measure objects; Escape returns focus',
+  'blank room input retained with error, no geometry writes, modal Escape restores trigger focus',
+  'clear furniture cancel is side-effect free; confirm clears only furniture; undo restores',
+  '1440 to 320 plus 200%-equivalent 640 viewport: no horizontal overflow; drawer Escape restores focus',
+  'real WebGL camera/settings isolated to 3D, lighting persists across views, canvas instance reused',
+  'reduced motion disables UI transitions and preserves working view switch; final business data exactly matches fixture'
+]

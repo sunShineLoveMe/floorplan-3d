@@ -1,0 +1,4 @@
+[
+  'Simulated coarse-pointer tap add and numeric size edit avoid drag; drawers close and fields remain reachable',
+  'Simulated touch walk has a reachable exit and removes joystick overlay'
+]

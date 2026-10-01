@@ -1,5 +1,6 @@
 # UI-040｜左侧 Room / Furniture
 
+> 本页为该批次交付时的历史记录；当前实现、提交状态和验收边界见 [UI 最终交付](UI-final-delivery.md)。
 日期：2026-10-01，分支 `feat/ui-refactor`。已接入真实编辑器，尚未提交或推送。
 
 ## 实现

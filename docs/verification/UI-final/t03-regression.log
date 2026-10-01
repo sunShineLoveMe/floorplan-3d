@@ -1,0 +1,9 @@
+PASS imperial inherited by new 12ft x 10ft x 8ft room; 120 sq ft, dimensions, grid
+PASS unchanged form no-op; strict combined inches error; unit lock and Escape
+PASS door fractions, hinge-only preservation, furniture 60x80in, signed coordinates, name-only and invalid field isolation
+PASS 100 UI unit changes preserve all model values; fine input and ordered undo/redo
+PASS imperial keyboard normal/Shift, SVG drag/resize/undo, Escape/pointercancel/view-switch cancellation and saved measurement
+PASS real JSON and PNG downloads; saved imperial refresh and actual file upload preserve mm
+PASS real WebGL unit updates room list and labels; exact canvas pixels unchanged
+PASS English language is independent; 390px unit control, dialog and localized field error
+PASS actual legacy backup/import and v1 migration retain existing imperial and millimetres

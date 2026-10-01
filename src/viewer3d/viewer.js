@@ -216,9 +216,9 @@ function applyLight(){
 
 /* ======================= 相机位姿 / 动画 ======================= */
 const {ease,clamp01,pose,planPose,isoFrom,isoWhole,topWhole,curPose,camTween,setPose}=createNavigation({view,space:{wx,wz},size:{width:SW,height:SH},getCamera:()=>camera,getOrbit:()=>orbit,getHeight:()=>H});
-function animate(dur, fn){ return new Promise(res => { anim = {t0:performance.now(), dur, fn, res}; }); }
-const wait = ms => scope.wait(ms);
-function flyTo(B, dur = 900){ fly = {t0:performance.now(), dur, A:curPose(), B}; }
+function animate(dur, fn){ if(matchMedia('(prefers-reduced-motion:reduce)').matches)dur=1; return new Promise(res => { anim = {t0:performance.now(), dur, fn, res}; }); }
+const wait = ms => scope.wait(matchMedia('(prefers-reduced-motion:reduce)').matches?0:ms);
+function flyTo(B, dur = 900){ if(matchMedia('(prefers-reduced-motion:reduce)').matches)dur=1; fly = {t0:performance.now(), dur, A:curPose(), B}; }
 function flyToRoom(id){
   const r = store.getProject().geometry.rooms.find(r => r.id === id), xs = r.poly.map(p => p[0]), ys = r.poly.map(p => p[1]);
   const t = new THREE.Vector3(wx((Math.min(...xs)+Math.max(...xs))/2), .6, wz((Math.min(...ys)+Math.max(...ys))/2));
@@ -233,7 +233,7 @@ async function enter(){
   init(); active = true;
   renderer.setSize(SW(), SH()); labelRenderer.setSize(SW(), SH()); camera.aspect = SW()/SH(); camera.updateProjectionMatrix();
   sync(true);
-  opt.mode = 'orbit'; orbit.enabled = false; showLabels(false);
+  opt.mode = 'orbit'; syncModeBtns(); orbit.enabled = false; showLabels(false);
   const A = planPose(), B = isoFrom(A);
   grow = 0; furnGrow = 0; applyGrow(); setPose(A);
   stage.classList.add('animating');
@@ -410,8 +410,8 @@ scope.on(window, 'keydown', e => {
 scope.on(window, 'keyup', e => keys[e.code] = false);
 
 /* ======================= 工具栏 ======================= */
-function syncModeBtns(){ document.querySelectorAll('#modes3d .btn').forEach(b => b.classList.toggle('on', b.dataset.mode === opt.mode)); }
-function syncCutBtns(){ document.querySelectorAll('[data-cut]').forEach(b => b.classList.toggle('on', +b.dataset.cut === opt.cut)); }
+function syncModeBtns(){ stage.dataset.navigation=opt.mode; document.querySelectorAll('#modes3d .btn').forEach(b => {b.classList.toggle('on', b.dataset.mode === opt.mode);b.setAttribute('aria-pressed',String(b.dataset.mode===opt.mode));}); }
+function syncCutBtns(){ document.querySelectorAll('[data-cut]').forEach(b => {b.classList.toggle('on', +b.dataset.cut === opt.cut);b.setAttribute('aria-pressed',String(+b.dataset.cut===opt.cut));}); }
 function syncWalkTexts(){
   const t = COARSE
     ? [tr('点击开始，在房间内漫游', 'Tap to start inside the room'), tr('左下摇杆移动 · 在画面上拖动转向', 'Joystick moves · drag on screen to look'),
@@ -446,8 +446,8 @@ function bindUI(){
   $('#vIso').onclick = () => { if (opt.mode === 'walk') setMode('orbit'); else flyTo(isoWhole()); };
   $('#vTop').onclick = () => { if (opt.mode === 'walk') setMode('orbit'); flyTo(topWhole()); };
   document.querySelectorAll('[data-cut]').forEach(b => b.onclick = () => { if (opt.mode === 'walk') return; opt.cut = +b.dataset.cut; syncCutBtns(); sync(); });
-  document.querySelectorAll('#toggles3d .btn').forEach(b => b.onclick = () => {
-    const k = b.dataset.t; opt[k] = !opt[k]; b.classList.toggle('on', opt[k]);
+  document.querySelectorAll('[data-t]').forEach(b => b.onclick = () => {
+    const k = b.dataset.t; opt[k] = !opt[k]; b.classList.toggle('on', opt[k]);b.setAttribute('aria-pressed',String(opt[k]));
     if (k === 'furn'){ furnG.visible = opt.furn; if (!opt.furn && ui.sel?.kind === 'furn') select(null); }
     if (k === 'labels') showLabels(opt.labels && opt.mode === 'orbit' && !anim);
     if (k === 'night') applyLight();
@@ -485,7 +485,7 @@ function dispose(){
   materials.dispose();glassMat?.dispose();edgeMat.dispose();skirtMat.dispose();ground?.material.dispose();selHelper?.material.dispose();sun?.shadow?.map?.dispose();environmentTarget?.dispose();
   renderer?.dispose();renderer?.domElement.remove();labelRenderer?.domElement.remove();
   for(const id of ['walkOverlay','walkExit','vIso','vTop']) $('#'+id).onclick=null;
-  $('#sun').oninput=null;document.querySelectorAll('#modes3d button,[data-cut],#toggles3d button').forEach(b=>b.onclick=null);
+  $('#sun').oninput=null;document.querySelectorAll('#modes3d button,[data-cut],[data-t]').forEach(b=>b.onclick=null);
   $('#walkOverlay').style.display='none';$('#cross').style.display='none';
 }
 
