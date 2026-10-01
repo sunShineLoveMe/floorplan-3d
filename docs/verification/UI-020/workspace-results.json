@@ -1,0 +1,159 @@
+{
+  "date": "2026-10-01T14:44:00.131Z",
+  "checks": [
+    "1440/1280: 64px header, 280/304 panes, stable canvas through select/deselect and actual SVG hits",
+    "pane collapse preserves hit coordinates; library scroll stays independent from canvas zoom",
+    "1024: library docked, property overlay opens/closes without canvas resize; hidden fields inert",
+    "390px and low height: reachable pane controls, no page overflow, usable canvas height",
+    "real WebGL resized to host, persistent SVG/stage/canvas identity and exact project preservation"
+  ],
+  "metrics": [
+    {
+      "width": 1440,
+      "header": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 64
+      },
+      "stage": {
+        "x": 280,
+        "y": 124,
+        "w": 856,
+        "h": 746
+      },
+      "left": {
+        "x": 0,
+        "y": 124,
+        "w": 280,
+        "h": 746
+      },
+      "right": {
+        "x": 1136,
+        "y": 124,
+        "w": 304,
+        "h": 746
+      },
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "header": {
+        "x": 0,
+        "y": 0,
+        "w": 1280,
+        "h": 64
+      },
+      "stage": {
+        "x": 280,
+        "y": 124,
+        "w": 696,
+        "h": 646
+      },
+      "left": {
+        "x": 0,
+        "y": 124,
+        "w": 280,
+        "h": 646
+      },
+      "right": {
+        "x": 976,
+        "y": 124,
+        "w": 304,
+        "h": 646
+      },
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "header": {
+        "x": 0,
+        "y": 0,
+        "w": 1024,
+        "h": 64
+      },
+      "stage": {
+        "x": 280,
+        "y": 124,
+        "w": 744,
+        "h": 614
+      },
+      "left": {
+        "x": 0,
+        "y": 124,
+        "w": 280,
+        "h": 614
+      },
+      "right": {
+        "x": 1054.4000244140625,
+        "y": 124,
+        "w": 304,
+        "h": 614
+      },
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "header": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 64
+      },
+      "stage": {
+        "x": 0,
+        "y": 124,
+        "w": 390,
+        "h": 690
+      },
+      "left": {
+        "x": -308,
+        "y": 124,
+        "w": 280,
+        "h": 690
+      },
+      "right": {
+        "x": 420.3999938964844,
+        "y": 124,
+        "w": 304.0000305175781,
+        "h": 690
+      },
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "header": {
+        "x": 0,
+        "y": 0,
+        "w": 1280,
+        "h": 64
+      },
+      "stage": {
+        "x": 280,
+        "y": 124,
+        "w": 696,
+        "h": 326
+      },
+      "left": {
+        "x": 0,
+        "y": 124,
+        "w": 280,
+        "h": 326
+      },
+      "right": {
+        "x": 976,
+        "y": 124,
+        "w": 304,
+        "h": 326
+      },
+      "overflow": false
+    }
+  ],
+  "size": {
+    "w": 1136,
+    "h": 746,
+    "stageW": 1136,
+    "stageH": 746
+  },
+  "errors": []
+}

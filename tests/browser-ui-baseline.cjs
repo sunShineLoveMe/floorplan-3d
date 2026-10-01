@@ -1,0 +1,74 @@
+/* UI-000 evidence capture against the existing UI, in an isolated context. */
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const OUT=path.resolve(process.env.TEST_OUT||'docs/verification/UI-000');
+const URL=process.env.TEST_URL||'http://127.0.0.1:8086';
+const fixture=path.resolve('docs/verification/UI-000/baseline-project.json');
+fs.mkdirSync(OUT,{recursive:true});
+(async()=>{
+ const browser=await chromium.launch({headless:true,...(process.env.CHROMIUM_EXECUTABLE?{executablePath:process.env.CHROMIUM_EXECUTABLE}:{})});
+ const context=await browser.newContext({viewport:{width:1440,height:900},acceptDownloads:true});
+ const page=await context.newPage(),errors=[],checks=[],observations=[],screens=[];
+ page.on('pageerror',e=>errors.push(e.message));page.setDefaultTimeout(10000);
+ const openFor=async selector=>{const menu=page.locator(selector).locator('xpath=ancestor::details');if(await menu.count()&&!await menu.evaluate(e=>e.open))await menu.locator('summary').click();};
+ const saved=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('floorplan-project-v2')));
+ const shot=async name=>{await page.waitForTimeout(300);await page.screenshot({path:path.join(OUT,name+'.png')});screens.push(name+'.png');};
+ const mode=async m=>{await page.locator(`[data-view="${m}"]`).click();await page.waitForFunction(m=>!document.body.classList.contains('busy')&&document.body.classList.contains('m3d')===(m==='3d'),m,{timeout:45000});};
+ const bounds=()=>page.evaluate(()=>{
+  const rect=selector=>{const r=document.querySelector(selector).getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height};};
+  return {viewport:{width:innerWidth,height:innerHeight},header:rect('header'),stage:rect('#stage'),left:rect('aside.lib'),right:rect('aside.right'),pageOverflow:document.documentElement.scrollWidth>innerWidth};
+ });
+ const geometry=p=>({geometry:p.geometry,furniture:p.furniture,rooms:p.rooms,roomEditor:p.roomEditor,measures:p.measures,demolished:p.demolished});
+ try{
+  await page.goto(URL);await page.locator('#lib .item').first().waitFor();
+  await shot('sample-zh-1440');
+  await openFor('#langBtn');await page.locator('#langBtn').click();
+  await page.setInputFiles('#fileIn',fixture);await page.locator('#gFurn [data-fid]').nth(2).waitFor();
+  const initial=await saved(),expected=JSON.parse(fs.readFileSync(fixture));assert.deepEqual({...initial,updatedAt:expected.updatedAt},expected);
+  checks.push('real v2 fixture upload: 1 room, 3 furniture, 1 door, 1 window');
+  await shot('room-empty-selection-1440');observations.push(await bounds());
+  const roomListBefore3d=await page.locator('#roomList button').count();
+  await page.locator('#projectDetails summary').click();await page.locator('#panel tr[data-room="room-1"]').click();await shot('room-properties-1440');
+  await page.locator('#gFurn [data-fid="ui-bed"]').click();
+  await page.locator('#fW').waitFor();await shot('furniture-selected-1440');
+  await page.locator('#fW').fill('60 in');await page.locator('#fW').press('Enter');
+  assert.equal((await saved()).furniture[0].w,1524);
+  await page.locator('#undo').click();assert.deepEqual((await saved()).furniture,initial.furniture);
+  await page.locator('#redo').click();assert.equal((await saved()).furniture[0].w,1524);await page.locator('#undo').click();
+  checks.push('furniture field edit and undo/redo restore exact furniture values');
+  await page.locator('#tgLib').click();await page.locator('#tgPanel').click();await page.waitForTimeout(150);
+  assert.deepEqual(geometry(await saved()),geometry(initial));
+  await page.locator('#tgLib').click();await page.locator('#tgPanel').click();await page.waitForTimeout(150);
+  await page.locator('#gFurn [data-fid="ui-bed"]').click();assert.equal(await page.locator('#fName').inputValue(),'Bed');
+  checks.push('sidebar hide/show retains data and furniture hit after resize');
+  await page.locator('#editRoom').click();await page.locator('[data-edit="opening-door-1"]').click();await shot('door-dialog-1440');await page.keyboard.press('Escape');
+  await page.locator('#editRoom').click();await page.locator('#parentWall').selectOption('right');await page.locator('[data-edit="opening-window-1"]').click();await shot('window-dialog-1440');await page.keyboard.press('Escape');
+  await openFor('#newRoom');await page.locator('#newRoom').click();assert.match(await page.locator('#roomDialog').textContent(),/replaces the current plan/);await shot('new-plan-replace-dialog-1440');await page.keyboard.press('Escape');
+  assert.deepEqual(geometry(await saved()),geometry(initial));checks.push('door/window dialogs and cancel new-plan replacement preserve data');
+  await openFor('#projectUnits');await page.locator('#projectUnits').selectOption('metric');await openFor('#projectUnits');await page.locator('#projectUnits').selectOption('imperial');
+  assert.deepEqual(geometry(await saved()),geometry(initial));checks.push('unit round trip preserves exact model values');
+  await page.locator('details.menu summary').click();await shot('file-menu-1440');await page.locator('details.menu summary').click();
+  const pending=page.waitForEvent('download');await page.locator('details.menu summary').click();await page.locator('#exportJson').click();await(await pending).saveAs(path.join(OUT,'exported-project.json'));
+  assert.deepEqual(geometry(JSON.parse(fs.readFileSync(path.join(OUT,'exported-project.json')))),geometry(initial));
+  await page.reload();await page.locator('#gFurn [data-fid]').nth(2).waitFor();assert.deepEqual(geometry(await saved()),geometry(initial));checks.push('actual JSON download and refresh preserve data');
+  await page.setViewportSize({width:1280,height:800});await shot('room-1280');observations.push(await bounds());
+  await page.setViewportSize({width:1024,height:768});await page.locator('#tgPanel').click();await shot('drawer-1024');observations.push(await bounds());await page.locator('#tgPanel').click();
+  await page.setViewportSize({width:1440,height:900});await page.locator('#gFurn [data-fid="ui-bed"]').click();await mode('3d');await page.waitForTimeout(1200);
+  assert.equal(await page.locator('#view3d canvas').count(),1);await shot('room-3d-1440');observations.push(await bounds());
+  const roomListAfter3d=await page.locator('#roomList button').count();
+  await openFor('[data-cut="1.2"]');await page.locator('[data-cut="1.2"]').click();await page.waitForTimeout(500);await shot('room-3d-cut-walls-1440');
+  await mode('2d');assert.deepEqual(geometry(await saved()),geometry(initial));checks.push('3D real WebGL, wall cut and return to 2D preserve model');
+  // Record an existing keyboard gap without changing product code or hiding it as a pass.
+  await page.locator('details.menu summary').click();await page.keyboard.press('Escape');
+  const fileMenuClosesWithEscape=!(await page.locator('details.menu').evaluate(el=>el.open));
+  await page.locator('details.menu').evaluate(el=>el.open=false);
+  await page.locator('#gFurn [data-fid="ui-bed"]').click();await page.locator('#fW').fill('61 inx');
+  await page.locator('#langBtn').evaluate(el=>el.click());
+  const draftAfterLanguageChange=await page.locator('#fW').inputValue();
+  assert.deepEqual(geometry(await saved()),geometry(initial));
+  await shot('draft-refresh-existing-gap');
+  const result={date:new Date().toISOString(),browser:browser.version(),url:URL,checks,errors,screens,observations,roomListBefore3d,roomListAfter3d,fileMenuClosesWithEscape,draftBeforeLanguageChange:'61 inx',draftAfterLanguageChange,fixture:'baseline-project.json'};
+  fs.writeFileSync(path.join(OUT,'baseline-results.json'),JSON.stringify(result,null,2)+'\n');
+  assert.deepEqual(errors,[]);console.log(JSON.stringify(result,null,2));
+ }catch(e){await shot('capture-failure');throw e;}finally{await browser.close();}
+})().catch(e=>{console.error(e);process.exitCode=1;});

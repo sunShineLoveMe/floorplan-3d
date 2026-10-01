@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UI-005 · Editor interaction draft</title>
+<link rel="stylesheet" href="prototype.css">
+</head>
+<body>
+<section class="review" aria-label="样稿审查工具">
+  <div><strong>UI-005 · 交互样稿</strong><span>仅预览布局与选择状态；尺寸只读，不接入编辑、保存或用户数据。</span></div>
+  <div class="review-controls">
+    <label>视口 <select id="previewWidth"><option value="1440">1440 × 900</option><option value="1280">1280 × 800</option><option value="1024">1024 × 768</option></select></label>
+    <label>场景 <select id="previewState"><option value="none">无选择</option><option value="room">房间属性</option><option value="furniture">家具属性</option><option value="door">门属性</option><option value="window">窗属性</option></select></label>
+    <span id="layoutNote" role="status"></span>
+  </div>
+</section>
+<div class="preview-wrap"><div id="editor" aria-label="Proposed floor plan editor">
+  <header class="project-bar">
+    <div class="project-heading"><span class="brand">Floor Plan Designer</span><strong title="UI baseline bedroom">UI baseline bedroom</strong></div>
+    <div class="history"><button disabled>Undo</button><button disabled>Redo</button></div>
+    <div class="project-tools"><button id="fileButton" aria-expanded="false" aria-controls="fileMenu">File ▾</button><button id="settingsButton">Settings</button><button class="primary" id="exportButton" disabled>Export project</button></div>
+    <div id="fileMenu" class="popover" hidden><p class="menu-title">Project files</p><button disabled>Import project JSON</button><button disabled>Export project JSON</button><button disabled>Export image</button><hr><button disabled>Project details</button><button class="danger" disabled>Clear all furniture</button><button disabled>Replace with sample plan</button></div>
+  </header>
+  <div class="workspace">
+    <aside class="library" aria-label="Resources">
+      <div class="side-title"><h2>Add to your space</h2><button id="hideLibrary" class="icon" aria-label="Hide resources">‹</button></div>
+      <div class="tabs" role="tablist" aria-label="Resource type"><button id="roomTab" role="tab" aria-selected="true" aria-controls="roomResources">Room</button><button id="furnitureTab" role="tab" aria-selected="false" aria-controls="furnitureResources">Furniture</button></div>
+      <div class="side-scroll">
+        <div id="roomResources" role="tabpanel" aria-labelledby="roomTab">
+          <p class="eyebrow">Current room</p><button id="selectRoom" class="room-row"><span class="room-mark" aria-hidden="true"></span><span><strong>UI baseline bedroom</strong><small id="roomArea"></small></span></button>
+          <section><h3>Doors &amp; windows</h3><button class="opening-row" data-select="door"><span><strong>Door</strong><small>Top wall</small></span><span>›</span></button><button class="opening-row" data-select="window"><span><strong>Window</strong><small>Right wall</small></span><span>›</span></button><div class="two-actions"><button disabled>+ Door</button><button disabled>+ Window</button></div></section>
+          <section><button id="newPlanButton" class="block">New room plan</button><p class="small">Replaces this project with a new rectangular room.</p></section>
+        </div>
+        <div id="furnitureResources" role="tabpanel" aria-labelledby="furnitureTab" hidden><p class="eyebrow">Bedroom</p><div id="furnitureCards" class="catalog"></div><p class="small">Dimensions show width × depth. Select an item on the plan to inspect it.</p></div>
+      </div>
+    </aside>
+    <main class="canvas" aria-label="Room layout preview">
+      <div class="canvas-head"><button id="showLibrary" hidden>Resources</button><div class="view-switch" role="group" aria-label="View mode"><button class="active" id="view2d" aria-pressed="true">2D Layout</button><button disabled aria-pressed="false">3D View</button></div><button id="showInspector">Properties</button></div>
+      <div class="plan-space"><svg id="planPreview" role="img" aria-label="Measured bedroom with a bed, desk, chair, door and window" viewBox="-650 -650 5300 4300"></svg></div>
+      <div class="canvas-tools"><button class="active" aria-pressed="true">Select</button><button disabled>Measure</button><span class="tool-divider"></span><label class="snap"><input type="checkbox" checked disabled> Wall snap</label><button id="viewOptions">View options</button><button disabled>Fit view</button></div>
+      <span class="canvas-caption">4,000 × 3,000 mm · Measured room</span>
+      <div id="viewPopover" class="popover view-popover" hidden><h3>2D display</h3><label><input type="checkbox" checked disabled> Dimensions</label><label><input type="checkbox" checked disabled> Room labels</label><label><input type="checkbox" checked disabled> Furniture</label><label><input type="checkbox" disabled> Grid</label><p class="small">Camera and lighting controls appear in 3D View.</p></div>
+    </main>
+    <aside class="inspector" aria-label="Selected object properties">
+      <div class="side-title"><h2 id="inspectorTitle">Properties</h2><button id="hideInspector" class="icon" aria-label="Hide properties">›</button></div>
+      <div class="side-scroll" id="inspectorContent"></div>
+    </aside>
+  </div>
+  <dialog id="previewDialog"><div id="dialogContent"></div></dialog>
+</div></div>
+<script type="module" src="prototype.js"></script>
+</body>
+</html>

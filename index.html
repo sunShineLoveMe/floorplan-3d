@@ -6,10 +6,13 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="theme-color" content="#fffdf9">
+<meta name="theme-color" content="#f6f7f4">
 <title>户型装修设计</title>
 <link rel="icon" href="data:,">
+<link rel="stylesheet" href="styles/tokens.css">
 <link rel="stylesheet" href="styles/app.css">
+<link rel="stylesheet" href="styles/controls.css">
+<link rel="stylesheet" href="styles/workspace.css">
 <script type="importmap">
 {"imports":{
   "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
@@ -25,8 +28,21 @@
       <button class="btn chip" id="tgPanel" data-en="Properties ◨">属性 ◨</button>
     </div>
     <div class="brand"><b id="projectName">三室两厅两卫 · 装修设计</b><span id="subtitle">原始户型 1:60 · 尺寸单位 mm</span></div>
-    <label class="unit-control"><span data-en="Units">单位</span><select id="projectUnits" aria-label="Project units"><option value="metric">Metric</option><option value="imperial">Feet &amp; inches</option></select><small id="unitLock" role="status"></small></label>
-    <button class="btn" id="newRoom">＋ 新建房间</button>
+    <div class="grp history">      <button class="btn" id="undo" title="撤销 (Ctrl+Z)" data-en-title="Undo (Ctrl+Z)" data-en="Undo">撤销</button>      <button class="btn" id="redo" title="重做 (Ctrl+Shift+Z)" data-en-title="Redo (Ctrl+Shift+Z)" data-en="Redo">重做</button></div>
+    <details class="settings-menu"><summary class="btn" data-en="Settings ▾">设置 ▾</summary><div class="settings-pop">    <label class="unit-control"><span data-en="Units">单位</span><select id="projectUnits" aria-label="Project units"><option value="metric">Metric</option><option value="imperial">Feet &amp; inches</option></select><small id="unitLock" role="status"></small></label>    <button class="btn" id="langBtn" title="Switch language / 切换语言" style="border:1px solid var(--line);background:#fff">EN</button>    <button class="btn" id="fullscreen" title="全屏 (Shift+F)" style="border:1px solid var(--line);background:#fff">⛶ 全屏</button></div></details>
+    <details class="menu"><summary class="btn" data-en="Export / File ▾">导出 / 文件 ▾</summary>
+      <div class="menu-pop">    <button class="btn" id="newRoom">＋ 新建房间</button>      <button class="btn danger" id="clearAll" title="清空所有家具家电（可撤销）" data-en-title="Remove all furniture and appliances (undoable)" data-en="Clear">清空布置</button>
+        <button class="btn" id="exportPng" data-en="Export image">导出图片</button>
+        <button class="btn" id="exportJson" title="导出 v2；旧版应用不能读取 v2" data-en-title="Exports v2; older app versions cannot read v2" data-en="Export plan JSON">导出方案 JSON</button>
+        <button class="btn" id="importJson" data-en="Import plan">导入方案</button>
+        <button class="btn danger" id="reset" data-en="Sample plan">示例户型</button>
+      </div></details>
+    <input type="file" id="fileIn" accept=".json,application/json" hidden>
+  </header>
+
+  <nav class="workspace-toolbar" aria-label="Editor tools">
+
+
     <button class="btn" id="editRoom">房间 / 门窗</button>
     <div class="grp seg" id="viewSeg" title="切换 2D / 3D (T)" data-en-title="Switch 2D / 3D (T)">
       <span class="pill"></span>
@@ -38,26 +54,22 @@
       <button class="btn" data-tool="measure" title="测量 (M)" data-en-title="Measure (M)" data-en="Measure">测量</button>
       <button class="btn" data-tool="demolish" title="拆改非承重墙 (X)" data-en-title="Demolish non-bearing walls (X)" data-en="Demolish">拆改墙体</button>
     </div>
-    <div class="grp only2d">
-      <button class="btn" id="zoomOut" title="缩小" data-en-title="Zoom out">−</button>
-      <button class="btn" id="zoomIn" title="放大" data-en-title="Zoom in">＋</button>
-      <button class="btn" id="fit" title="适应窗口 (F)" data-en-title="Fit to window (F)" data-en="Fit">适应</button>
-      <button class="btn" id="s60" title="按 1:60 显示（与原图同比例）" data-en-title="Show at 1:60 (same scale as the original plan)">1:60</button>
-      <button class="btn" id="s100" title="按 1:100 显示" data-en-title="Show at 1:100">1:100</button>
-    </div>
     <div class="grp only3d" id="modes3d">
       <button class="btn on" data-mode="orbit" data-en="Orbit">鸟瞰</button>
       <button class="btn" data-mode="walk" data-en="Walk">漫游</button>
     </div>
-    <div class="grp only3d">
+    <div class="grp only2d">
+      <button class="btn ui-icon-button" id="zoomOut" aria-label="Zoom out" title="缩小" data-en-title="Zoom out">−</button>
+      <button class="btn ui-icon-button" id="zoomIn" aria-label="Zoom in" title="放大" data-en-title="Zoom in">＋</button>
+      <button class="btn" id="fit" title="适应窗口 (F)" data-en-title="Fit to window (F)" data-en="Fit">适应</button>
+      <button class="btn" id="s60" title="按 1:60 显示（与原图同比例）" data-en-title="Show at 1:60 (same scale as the original plan)">1:60</button>
+      <button class="btn" id="s100" title="按 1:100 显示" data-en-title="Show at 1:100">1:100</button>
+    </div>
+    <details class="view-settings"><summary class="btn" data-en="View settings ▾">视图设置 ▾</summary><div class="view-settings-pop">    <div class="grp only3d">
       <button class="btn" id="vIso" data-en="Iso">斜视</button>
       <button class="btn" id="vTop" data-en="Top">俯视</button>
     </div>
-    <div class="grp">
-      <button class="btn" id="undo" title="撤销 (Ctrl+Z)" data-en-title="Undo (Ctrl+Z)" data-en="Undo">撤销</button>
-      <button class="btn" id="redo" title="重做 (Ctrl+Shift+Z)" data-en-title="Redo (Ctrl+Shift+Z)" data-en="Redo">重做</button>
-      <button class="btn danger" id="clearAll" title="清空所有家具家电（可撤销）" data-en-title="Remove all furniture and appliances (undoable)" data-en="Clear">清空布置</button>
-    </div>
+
     <div class="grp only2d" id="layers">
       <button class="btn chip on" data-layer="dims" data-en="Dims">尺寸</button>
       <button class="btn chip on" data-layer="labels" data-en="Rooms">房间</button>
@@ -76,25 +88,24 @@
       <button class="btn chip" data-t="night" data-en="Night">夜景</button>
     </div>
     <div class="grp only3d"><label class="range"><span data-en="Sun">日照</span> <input type="range" id="sun" min="7" max="18" step=".25" value="10" style="width:84px"><span id="sunT">10:00</span></label></div>
+</div></details>
     <div class="spacer"></div>
-    <button class="btn" id="langBtn" title="Switch language / 切换语言" style="border:1px solid var(--line);background:#fff">EN</button>
-    <button class="btn" id="fullscreen" title="全屏 (Shift+F)" style="border:1px solid var(--line);background:#fff">⛶ 全屏</button>
-    <details class="menu"><summary class="btn" data-en="File ▾">文件 ▾</summary>
-      <div class="menu-pop">
-        <button class="btn" id="exportPng" data-en="Export image">导出图片</button>
-        <button class="btn" id="exportJson" title="导出 v2；旧版应用不能读取 v2" data-en-title="Exports v2; older app versions cannot read v2" data-en="Export plan JSON">导出方案 JSON</button>
-        <button class="btn" id="importJson" data-en="Import plan">导入方案</button>
-        <button class="btn danger" id="reset" data-en="Sample plan">示例户型</button>
-      </div></details>
-    <input type="file" id="fileIn" accept=".json,application/json" hidden>
-  </header>
 
-  <aside class="lib">
-    <div id="lib3d" class="only3d">
-      <h4 data-en="Rooms · click to fly there">房间 · 点击飞到该房间</h4>
+
+  </nav>
+
+  <aside class="lib" id="libraryPane" aria-label="Furniture library">
+    <button class="btn pane-close" data-close-pane="lib" data-en="Close library">关闭家具库</button>
+    <div class="resource-tabs" role="tablist" aria-label="Resources">
+      <button class="btn" id="roomsTab" role="tab" aria-selected="false" aria-controls="roomsResource" data-en="Room">房间</button>
+      <button class="btn on" id="furnitureTab" role="tab" aria-selected="true" aria-controls="furnitureResource" tabindex="0" data-en="Furniture">家具</button>
+    </div>
+    <div id="roomsResource" role="tabpanel" aria-labelledby="roomsTab" hidden>
+      <div class="resource-actions"><button class="btn" id="resourceNewRoom" data-en="New room plan">新建房间方案</button><button class="btn" id="resourceOpenings" data-en="Room / openings">房间 / 门窗</button></div>
+      <p class="hint" data-en="A new room plan replaces the current plan. Room buttons focus the current scene.">新建房间方案会替换当前方案；房间按钮用于定位当前场景。</p>
       <div id="roomList"></div>
     </div>
-    <div id="lib"></div>
+    <div id="furnitureResource" role="tabpanel" aria-labelledby="furnitureTab"><div id="lib"></div></div>
   </aside>
 
   <main id="stage">
@@ -125,7 +136,7 @@
     <div id="fab"></div>
   </main>
 
-  <aside class="right"><div id="structurePanel"></div><div id="panel"></div></aside>
+  <aside class="right" id="propertiesPane" aria-label="Properties"><button class="btn pane-close" data-close-pane="panel" data-en="Close properties">关闭属性</button><div id="structurePanel"></div><div id="panel"></div></aside>
 
   <footer>
     <span class="only2d">X <b id="cx">—</b></span><span class="only2d">Y <b id="cy">—</b></span>

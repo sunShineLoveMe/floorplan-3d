@@ -1,0 +1,162 @@
+{
+  "date": "2026-10-01T14:04:55.329Z",
+  "browser": "149.0.7827.55",
+  "url": "http://127.0.0.1:8086",
+  "checks": [
+    "real v2 fixture upload: 1 room, 3 furniture, 1 door, 1 window",
+    "furniture field edit and undo/redo restore exact furniture values",
+    "sidebar hide/show retains data and furniture hit after resize",
+    "door/window dialogs and cancel new-plan replacement preserve data",
+    "unit round trip preserves exact model values",
+    "actual JSON download and refresh preserve data",
+    "3D real WebGL, wall cut and return to 2D preserve model"
+  ],
+  "errors": [],
+  "screens": [
+    "sample-zh-1440.png",
+    "room-empty-selection-1440.png",
+    "room-properties-1440.png",
+    "furniture-selected-1440.png",
+    "door-dialog-1440.png",
+    "window-dialog-1440.png",
+    "new-plan-replace-dialog-1440.png",
+    "file-menu-1440.png",
+    "room-1280.png",
+    "drawer-1024.png",
+    "room-3d-1440.png",
+    "room-3d-cut-walls-1440.png",
+    "draft-refresh-existing-gap.png"
+  ],
+  "observations": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 96
+      },
+      "stage": {
+        "x": 236,
+        "y": 96,
+        "width": 904,
+        "height": 774
+      },
+      "left": {
+        "x": 0,
+        "y": 96,
+        "width": 236,
+        "height": 774
+      },
+      "right": {
+        "x": 1140,
+        "y": 96,
+        "width": 300,
+        "height": 774
+      },
+      "pageOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 96
+      },
+      "stage": {
+        "x": 236,
+        "y": 96,
+        "width": 744,
+        "height": 674
+      },
+      "left": {
+        "x": 0,
+        "y": 96,
+        "width": 236,
+        "height": 674
+      },
+      "right": {
+        "x": 980,
+        "y": 96,
+        "width": 300,
+        "height": 674
+      },
+      "pageOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 137.5
+      },
+      "stage": {
+        "x": 0,
+        "y": 137.5,
+        "width": 1024,
+        "height": 600.5
+      },
+      "left": {
+        "x": -352,
+        "y": 137.5,
+        "width": 320,
+        "height": 600.5
+      },
+      "right": {
+        "x": 704,
+        "y": 137.5,
+        "width": 320,
+        "height": 600.5
+      },
+      "pageOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 96
+      },
+      "stage": {
+        "x": 236,
+        "y": 96,
+        "width": 904,
+        "height": 774
+      },
+      "left": {
+        "x": 0,
+        "y": 96,
+        "width": 236,
+        "height": 774
+      },
+      "right": {
+        "x": 1140,
+        "y": 96,
+        "width": 300,
+        "height": 774
+      },
+      "pageOverflow": false
+    }
+  ],
+  "roomListBefore3d": 0,
+  "roomListAfter3d": 2,
+  "fileMenuClosesWithEscape": false,
+  "draftBeforeLanguageChange": "61 inx",
+  "draftAfterLanguageChange": "59.05511811",
+  "fixture": "baseline-project.json"
+}

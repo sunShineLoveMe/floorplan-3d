@@ -1,0 +1,254 @@
+{
+  "format": "floorplan-3d",
+  "version": 2,
+  "id": "p-mupmmuoi-yzdndzq1",
+  "name": "T03 room",
+  "createdAt": "2026-10-01T14:25:52.338Z",
+  "updatedAt": "2026-10-01T14:26:02.551Z",
+  "units": {
+    "internal": "mm",
+    "display": "imperial"
+  },
+  "layout": {
+    "id": "layout-p-mupmmuoi-yzdndzq1",
+    "name": "Layout A"
+  },
+  "view": {
+    "mode": "2d",
+    "layers": {
+      "dims": true,
+      "labels": true,
+      "furn": true,
+      "grid": false,
+      "bearing": false,
+      "wallSnap": false
+    }
+  },
+  "roomEditor": {
+    "kind": "rectangle",
+    "roomId": "room-1",
+    "width": 3657.6000000000004,
+    "depth": 3048,
+    "height": 2438.4,
+    "wallThickness": 120,
+    "openings": [
+      {
+        "id": "opening-fmupmmuse47",
+        "type": "door",
+        "wallId": "top",
+        "offset": 508,
+        "width": 774.6999999999999,
+        "height": 2032,
+        "hinge": "end",
+        "swing": "inward"
+      },
+      {
+        "id": "opening-fmupmmuu148",
+        "type": "window",
+        "wallId": "right",
+        "offset": 762,
+        "width": 1016,
+        "height": 1016,
+        "sill": 762
+      }
+    ]
+  },
+  "geometry": {
+    "height": 2438.4,
+    "origin": [
+      1828.8000000000002,
+      1524
+    ],
+    "bounds": {
+      "x": -720,
+      "y": -720,
+      "w": 5097.6,
+      "h": 4488
+    },
+    "rooms": [
+      {
+        "id": "room-1",
+        "name": "T03 room",
+        "mat": "wood",
+        "poly": [
+          [
+            0,
+            0
+          ],
+          [
+            3657.6000000000004,
+            0
+          ],
+          [
+            3657.6000000000004,
+            3048
+          ],
+          [
+            0,
+            3048
+          ]
+        ],
+        "at": [
+          1828.8000000000002,
+          1524
+        ]
+      }
+    ],
+    "walls": [
+      [
+        -120,
+        -120,
+        508,
+        0,
+        "n"
+      ],
+      [
+        1282.6999999999998,
+        -120,
+        3777.6000000000004,
+        0,
+        "n"
+      ],
+      [
+        3657.6000000000004,
+        0,
+        3777.6000000000004,
+        762,
+        "n"
+      ],
+      [
+        3657.6000000000004,
+        1778,
+        3777.6000000000004,
+        3048,
+        "n"
+      ],
+      [
+        -120,
+        3048,
+        3777.6000000000004,
+        3168,
+        "n"
+      ],
+      [
+        -120,
+        0,
+        0,
+        3048,
+        "n"
+      ]
+    ],
+    "wallIds": [
+      "top",
+      "top",
+      "right",
+      "right",
+      "bottom",
+      "left"
+    ],
+    "doors": [
+      {
+        "id": "opening-fmupmmuse47",
+        "wallId": "top",
+        "rect": [
+          508,
+          -120,
+          1282.6999999999998,
+          0
+        ],
+        "h": [
+          1282.6999999999998,
+          0
+        ],
+        "c": [
+          -1,
+          0
+        ],
+        "o": [
+          0,
+          1
+        ],
+        "len": 774.6999999999999,
+        "height": 2032,
+        "name": "opening-fmupmmuse47"
+      }
+    ],
+    "windows": [
+      {
+        "id": "opening-fmupmmuu148",
+        "wallId": "right",
+        "rect": [
+          3657.6000000000004,
+          762,
+          3777.6000000000004,
+          1778
+        ],
+        "sill": 762,
+        "head": 1778
+      }
+    ],
+    "slides": [],
+    "lintels": [],
+    "dimensions": [
+      {
+        "horizontal": true,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          3657.6000000000004
+        ]
+      },
+      {
+        "horizontal": false,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          3048
+        ]
+      }
+    ],
+    "walkStart": {
+      "position": [
+        1828.8000000000002,
+        2133.6
+      ],
+      "target": [
+        1828.8000000000002,
+        914.4
+      ]
+    },
+    "entry": null
+  },
+  "furniture": [
+    {
+      "id": "fmupmmuw349",
+      "type": "bed",
+      "name": "Fraction bed",
+      "cx": 1524,
+      "cy": 1524,
+      "w": 1524.396875,
+      "d": 2032,
+      "rot": 0,
+      "color": "#c9d6df"
+    }
+  ],
+  "rooms": {
+    "room-1": {
+      "name": "T03 room",
+      "mat": "wood"
+    }
+  },
+  "demolished": [],
+  "measures": [
+    {
+      "a": {
+        "x": 196.85,
+        "y": 196.85
+      },
+      "b": {
+        "x": 1200.1499999999999,
+        "y": 196.85
+      }
+    }
+  ]
+}

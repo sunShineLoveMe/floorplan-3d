@@ -1,0 +1,265 @@
+{
+  "format": "floorplan-3d",
+  "version": 2,
+  "id": "p-ui-000-baseline",
+  "name": "UI baseline bedroom",
+  "createdAt": "2026-09-30T00:00:00.000Z",
+  "updatedAt": "2026-10-01T14:53:28.724Z",
+  "units": {
+    "internal": "mm",
+    "display": "imperial"
+  },
+  "layout": {
+    "id": "layout-ui-000",
+    "name": "Layout A"
+  },
+  "view": {
+    "mode": "2d",
+    "layers": {
+      "dims": true,
+      "labels": true,
+      "furn": true,
+      "grid": false,
+      "bearing": false,
+      "wallSnap": true
+    }
+  },
+  "roomEditor": {
+    "kind": "rectangle",
+    "roomId": "room-1",
+    "width": 4000,
+    "depth": 3000,
+    "height": 2800,
+    "wallThickness": 120,
+    "openings": [
+      {
+        "id": "opening-door-1",
+        "type": "door",
+        "wallId": "top",
+        "offset": 500,
+        "width": 900,
+        "height": 2100,
+        "hinge": "start",
+        "swing": "inward"
+      },
+      {
+        "id": "opening-window-1",
+        "type": "window",
+        "wallId": "right",
+        "offset": 900,
+        "width": 1200,
+        "sill": 900,
+        "height": 1200
+      }
+    ]
+  },
+  "geometry": {
+    "height": 2800,
+    "origin": [
+      2000,
+      1500
+    ],
+    "bounds": {
+      "x": -720,
+      "y": -720,
+      "w": 5440,
+      "h": 4440
+    },
+    "rooms": [
+      {
+        "id": "room-1",
+        "name": "UI baseline bedroom",
+        "mat": "wood",
+        "poly": [
+          [
+            0,
+            0
+          ],
+          [
+            4000,
+            0
+          ],
+          [
+            4000,
+            3000
+          ],
+          [
+            0,
+            3000
+          ]
+        ],
+        "at": [
+          2000,
+          1500
+        ]
+      }
+    ],
+    "walls": [
+      [
+        -120,
+        -120,
+        500,
+        0,
+        "n"
+      ],
+      [
+        1400,
+        -120,
+        4120,
+        0,
+        "n"
+      ],
+      [
+        4000,
+        0,
+        4120,
+        900,
+        "n"
+      ],
+      [
+        4000,
+        2100,
+        4120,
+        3000,
+        "n"
+      ],
+      [
+        -120,
+        3000,
+        4120,
+        3120,
+        "n"
+      ],
+      [
+        -120,
+        0,
+        0,
+        3000,
+        "n"
+      ]
+    ],
+    "wallIds": [
+      "top",
+      "top",
+      "right",
+      "right",
+      "bottom",
+      "left"
+    ],
+    "doors": [
+      {
+        "id": "opening-door-1",
+        "wallId": "top",
+        "rect": [
+          500,
+          -120,
+          1400,
+          0
+        ],
+        "h": [
+          500,
+          0
+        ],
+        "c": [
+          1,
+          0
+        ],
+        "o": [
+          0,
+          1
+        ],
+        "len": 900,
+        "height": 2100,
+        "name": "opening-door-1"
+      }
+    ],
+    "windows": [
+      {
+        "id": "opening-window-1",
+        "wallId": "right",
+        "rect": [
+          4000,
+          900,
+          4120,
+          2100
+        ],
+        "sill": 900,
+        "head": 2100
+      }
+    ],
+    "slides": [],
+    "lintels": [],
+    "dimensions": [
+      {
+        "horizontal": true,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          4000
+        ]
+      },
+      {
+        "horizontal": false,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          3000
+        ]
+      }
+    ],
+    "walkStart": {
+      "position": [
+        2000,
+        2100
+      ],
+      "target": [
+        2000,
+        900
+      ]
+    },
+    "entry": null
+  },
+  "furniture": [
+    {
+      "id": "ui-bed",
+      "type": "bed",
+      "name": "Bed",
+      "cx": 1150,
+      "cy": 1800,
+      "w": 1500,
+      "d": 2000,
+      "rot": 0,
+      "color": "#c9d6df"
+    },
+    {
+      "id": "ui-desk",
+      "type": "desk",
+      "name": "Desk",
+      "cx": 3100,
+      "cy": 550,
+      "w": 1200,
+      "d": 600,
+      "rot": 0,
+      "color": "#c5a87a"
+    },
+    {
+      "id": "ui-chair",
+      "type": "chair",
+      "name": "Chair",
+      "cx": 3100,
+      "cy": 1100,
+      "w": 450,
+      "d": 480,
+      "rot": 0,
+      "color": "#a8bdaf"
+    }
+  ],
+  "rooms": {
+    "room-1": {
+      "name": "UI baseline bedroom",
+      "mat": "wood"
+    }
+  },
+  "demolished": [],
+  "measures": []
+}

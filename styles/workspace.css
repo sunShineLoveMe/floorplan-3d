@@ -1,0 +1,65 @@
+/* UI-020: stable canvas host, independent pane scroll and explicit drawers. */
+.app{grid-template-rows:64px 60px minmax(0,1fr) 30px;grid-template-columns:280px minmax(0,1fr) 304px;transition:none}
+.app header{grid-row:1;flex-wrap:nowrap;min-width:0;padding:8px 12px;gap:8px;z-index:10}
+.app header .brand{min-width:0;flex:1}
+.app header .brand b,.app header .brand span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.app header .menu{flex:none}
+.workspace-toolbar{grid-column:1/-1;grid-row:2;display:flex;align-items:center;gap:8px;padding:6px 12px;background:var(--panel);border-bottom:1px solid var(--line);overflow-x:auto;overflow-y:hidden;overscroll-behavior:contain}
+.workspace-toolbar>*{flex:none}.workspace-toolbar .spacer{display:none}
+.app #stage{grid-column:2;grid-row:3;min-width:0;min-height:0;touch-action:none;background:var(--color-canvas)}
+.app aside.lib{grid-column:1;grid-row:3}.app aside.right{grid-column:3;grid-row:3}
+.app aside{min-height:0;min-width:0;overflow:auto;overscroll-behavior:contain;scrollbar-gutter:stable}
+.app footer{grid-row:4;min-width:0}
+.app.hide-lib{grid-template-columns:0 minmax(0,1fr) 304px}
+.app.hide-panel{grid-template-columns:280px minmax(0,1fr) 0}
+.app.hide-lib.hide-panel{grid-template-columns:0 minmax(0,1fr) 0}
+.app aside.lib,.app aside.right{position:relative;transform:none;width:auto;justify-self:stretch;transition:none;z-index:6}
+.app.hide-lib aside.lib,.app.hide-panel aside.right{visibility:hidden;overflow:hidden;border:0}
+.app aside.lib>div{min-width:0}.app #panel{min-width:0}
+.app .pane-close{display:none}
+@media(max-width:1223px){
+ .app,.app.hide-panel{grid-template-columns:280px minmax(0,1fr)}
+ .app.hide-lib,.app.hide-lib.hide-panel{grid-template-columns:0 minmax(0,1fr)}
+ .app aside.right{grid-column:2;justify-self:end;width:min(304px,86vw);transform:translateX(110%);visibility:hidden;box-shadow:none}
+ .app aside.right.open{transform:none;visibility:visible;overflow:auto;border-left:1px solid var(--line);box-shadow:-8px 0 24px #20282326}
+ .app aside.right .pane-close{display:flex;position:sticky;top:0;z-index:2;width:100%;background:var(--panel)}
+ .app .lib-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:899px){
+ .app,.app.hide-lib,.app.hide-panel,.app.hide-lib.hide-panel{grid-template-columns:minmax(0,1fr)}
+ .app #stage,.app aside.lib,.app aside.right{grid-column:1}
+ .app aside.lib{justify-self:start;width:min(280px,86vw);transform:translateX(-110%);visibility:hidden}
+ .app aside.lib.open{transform:none;visibility:visible;overflow:auto;border-right:1px solid var(--line);box-shadow:8px 0 24px #20282326}
+ .app aside.lib .pane-close{display:flex;position:sticky;top:0;z-index:2;width:100%;background:var(--panel)}
+ .app header .brand span{display:none}.app header #paneBtns{border:0;background:transparent;padding:0}
+ .app header #paneBtns .btn{max-width:80px;overflow:hidden;text-overflow:ellipsis;padding-inline:6px}
+ .app header .brand b{font-size:13px}.app header{gap:4px;padding-inline:6px}
+}
+@media(min-width:1101px) and (max-width:1223px){.app .btn.narrow-only,.app #fab .btn.narrow-only{display:inline-flex!important}}
+/* UI-030: project menus and view-local settings. */
+.app header details,.view-settings{position:relative}
+.app summary{list-style:none;cursor:pointer;white-space:nowrap}.app summary::-webkit-details-marker{display:none}
+.app .menu>summary{background:var(--accent);color:white}
+.settings-pop,.view-settings-pop{position:absolute;right:0;top:calc(100% + 6px);width:280px;max-width:calc(100vw - 16px);max-height:calc(100dvh - 140px);overflow:auto;display:flex;flex-direction:column;gap:8px;padding:12px;background:var(--panel);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow-popover);z-index:20}
+.view-settings-pop .grp{flex-wrap:wrap}.workspace-toolbar{overflow:visible;z-index:9}
+.workspace-toolbar .view-settings{margin-left:auto}
+.app header .history{flex:none}
+@media(max-width:899px){.app header .history .btn{font-size:12px;padding-inline:4px}.app header .brand{flex:1}.app header .settings-menu summary,.app header .menu summary{padding-inline:6px;font-size:12px}}
+@media(max-width:700px){.workspace-toolbar{flex-wrap:wrap;gap:4px;padding:4px 6px}.app{grid-template-rows:64px 108px minmax(0,1fr) 30px}.workspace-toolbar .btn{padding-inline:6px;font-size:12px}.workspace-toolbar .seg .btn,.workspace-toolbar .seg .pill{width:68px}body.m3d .workspace-toolbar .seg .pill{transform:translateX(70px)}.workspace-toolbar .view-settings{margin-left:0}.app header .brand{display:none}}
+.app header .menu>summary{background:var(--accent);color:#fff}
+/* UI-040: resource tabs and readable catalog cards. */
+.resource-tabs{position:sticky;top:0;z-index:3;display:flex;padding:8px;gap:6px;background:var(--panel);border-bottom:1px solid var(--line)}
+.resource-tabs .btn{flex:1}.resource-actions{display:flex;flex-direction:column;gap:8px;padding:12px}
+.app #roomList{grid-template-columns:1fr;padding:0 12px 12px;gap:8px}.app #roomList button{padding:12px;min-height:64px}
+.app #roomList span{overflow-wrap:anywhere}.app #roomList small{display:block;margin-top:4px}
+.app .lib h4{position:static;letter-spacing:0;overflow-wrap:anywhere}
+.app .lib-grid .item{min-width:0;padding:10px 6px;gap:6px}.app .lib-grid .item svg{width:72px;height:64px}
+.app .lib-grid .item b{font-size:13px;text-align:center;overflow-wrap:anywhere;white-space:normal;line-height:1.4}
+.app .lib-grid .item small{font-size:12px;line-height:1.5;text-align:center}
+.app [role=tabpanel][hidden]{display:none!important}
+/* UI-050: selection context first; project-wide data opt-in. */
+.app #structurePanel[hidden]{display:none!important}
+#projectDetails{margin:12px 8px;border-top:1px solid var(--line);padding-top:8px}
+#projectDetails>summary{width:100%;white-space:normal;text-align:left}
+.empty-properties{min-height:160px}.app #panel .mat span{overflow-wrap:anywhere}
+#structurePanel[data-context=opening] [data-room-edit],#structurePanel[data-context=opening] section>p,#structurePanel[data-context=opening] section>label,#structurePanel[data-context=opening] section>.actions{display:none}

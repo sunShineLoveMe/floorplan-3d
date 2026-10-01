@@ -81,12 +81,19 @@ $('#fullscreen').onclick = toggleFullscreen;
 if (navigator.standalone || matchMedia('(display-mode: standalone)').matches) $('#fullscreen').hidden = true;
 $('#tgLib').onclick = () => drawer('lib');
 $('#tgPanel').onclick = () => drawer('panel');
-// 触屏上点菜单以外的地方收起「文件」菜单
-scope.on(document, 'pointerdown', e => { const m = $('details.menu'); if (m.open && !m.contains(e.target)) m.open = false; });
-scope.on(matchMedia('(max-width:1100px)'), 'change', () => drawer(null));
+// Menus are UI overlays; outside clicks and Escape never reach the canvas as gestures.
+const menus = [...document.querySelectorAll('header details,.view-settings')];
+menus.forEach(menu=>{
+  scope.on(menu,'toggle',()=>{if(menu.open)menus.forEach(other=>{if(other!==menu)other.open=false;});});
+  scope.on(menu,'pointerdown',e=>e.stopPropagation());
+});
+scope.on(document,'pointerdown',e=>menus.forEach(menu=>{if(menu.open&&!menu.contains(e.target))menu.open=false;}));
+scope.on(document,'keydown',e=>{if(e.key==='Escape'){const open=menus.find(menu=>menu.open);if(open){open.open=false;open.querySelector('summary').focus();e.preventDefault();e.stopImmediatePropagation();}}},{capture:true});
+for (const query of ['(max-width:1223px)','(max-width:899px)']) scope.on(matchMedia(query), 'change', () => drawer(null));
+document.querySelectorAll('[data-close-pane]').forEach(button=>scope.on(button,'click',()=>{drawer(button.dataset.closePane,false);$(button.dataset.closePane==='lib'?'#tgLib':'#tgPanel').focus();}));
 drawer(null);                                  // 恢复上次的面板收起状态
 
 
 function update(){updateHeader();syncModeHint();syncFullscreen();syncPaneBtns();$('#tip').textContent=TIPS()[mode.is3D()?'3d':'2d'];document.querySelectorAll('#layers .btn').forEach(b=>b.classList.toggle('on',ui.layers[b.dataset.layer]));}
-return {setTool,toggleFullscreen,update,dispose(){scope.dispose();document.querySelectorAll('header button,.toolbar button,#viewSeg button,#tools button,#layers button').forEach(b=>b.onclick=null);}};
+return {setTool,toggleFullscreen,update,dispose(){scope.dispose();document.querySelectorAll('header button,.workspace-toolbar button,.toolbar button,#viewSeg button,#tools button,#layers button').forEach(b=>b.onclick=null);}};
 }

@@ -1,0 +1,253 @@
+{
+  "branch": "feat/ui-refactor",
+  "commit": "6af3c7d274582b9cbf2d8b5240368704dfbba1a5",
+  "initialWorktree": [
+    "?? docs/frontend-ui-refactor-plan-v1.0.md"
+  ],
+  "sha256": {
+    "index.html": "6e13f74dff699402c3c2e14d81b42d4ef5b9daddc0e57f6db3d465d05671424e",
+    "styles/app.css": "54ecd8ee79026053021ee65fc613004006936c11bce5939502f84a8c2e673c8b",
+    "package.json": "c85066414ba61f62d92f6885508b2ce7ddc3e5cee3ad65ac192d5b16638144fd",
+    "src/core/editor-state.js": "2539d0d6a8708671220a3b8b391ccc7dd8c84fd2ec2ca08bb58f1f0c07549846",
+    "src/core/geometry.js": "f8ac1d58f5c7387f9ddc4f462c4b4b0f622b37044521646c45c469e0a94429b1",
+    "src/core/project-store.js": "2b3bed35244b29e4b21ec74bf4ec8b105bc912dd245f07f07195d44ec4a8e503",
+    "src/core/units.js": "6637d19c97d54a9f6fbafe11ed22372bb66ff447fcfb2dc582eaafad0eededfa",
+    "src/data/catalogs.js": "8cef882aec4a8e73ad99341dfc3def26448dfb076771b6e12fafa5da02f2e50d",
+    "src/data/default-project.js": "8b45f58085bcbbd0cc07fb25e441f951a44d864971e4fbc2d66c8b6b02242ee8",
+    "src/data/project-data.js": "d95f260a59744e17bfac0edb5417e4c702ca82280877bfee95773f55fc11c71b",
+    "src/data/room-editor.js": "49c592c5d50940a1fe0a6ecbf352ff9b2066022bb8952434fae287455efc0539",
+    "src/data/sample-template.js": "24752da43a5253a0bda6c6da4945558678776035052013596270aac80a001fea",
+    "src/editor2d/defs.js": "0a05f3cfe1cf8a9c8639d4c59dc29387b4d4b0fe63eac267c9316a11d914d14e",
+    "src/editor2d/editor.js": "9a5af907122ea660cd52a04f526368ede966e64d31ffc104508b0670db76355b",
+    "src/editor2d/furniture-symbols.js": "f386239cc3da057cb11247f1eeae1a62e52ea5e078fc154dd02b213187b50c28",
+    "src/editor2d/interactions.js": "4a92017b35e927d2c194eca7579f8688832fdc385e849722a63a445baf9d3ff1",
+    "src/editor2d/renderer.js": "db6740c9c79e72623275dc12f279e248dae6e249d8b1e695048c85ae948e88a3",
+    "src/editor2d/snapping.js": "c713adcf77d327229ced4abbb0f5205676eba150d651c2311312ee3af43ce0df",
+    "src/editor2d/viewport.js": "a36d211d0de087109bc534a60fefd3d7a52970c6579d799b84a7efce8e8dfa56",
+    "src/main.js": "dcc89904ab213ffa118cf00afd23efae5e9303d4fae6b8b05a771ee0a452d787",
+    "src/services/downloads.js": "223e01ecb45ed98a5a75ed984751d31e9921292750afb0f3be358bc2270a21e6",
+    "src/services/project-files.js": "65363e60ada5bf86ea487adc8790454a553f441abe4e3bfb06dd01e9357ac0ad",
+    "src/services/storage.js": "25e9133e0f85ec02967cbc700980bad8ef3ae4dfd3e8166ab6e25a213dae88c4",
+    "src/ui/dom.js": "3ae0870a82be852e1e2ca0aa2f5839af4ea6b914ec2ef4644e02ad3a6c0d84c8",
+    "src/ui/drawers.js": "d1cae67328ed2ee505649340f0b0bca608b1ff41ce853c3f790ed9da9aee5ec5",
+    "src/ui/file-menu.js": "3a486cce3ccc162d3c3bed13aa99e22ea18617697f29ff54f0d064c511076a68",
+    "src/ui/furniture-library.js": "a444b9640909027932ff66fd1f1427d05704a3dc76d8c73b879f8bfe1512877d",
+    "src/ui/i18n.js": "1bb0ba567f039c2dbc150345fdc31b5d7c4dac6b5ce04df5a676b2d211cb8360",
+    "src/ui/length-field.js": "3bad4e8f06024ce25a7c6cfae90588ed139856587e6f806e1848f40e7ff73d6a",
+    "src/ui/lifecycle.js": "ba735ab96ace36084154af77e143d1e6d4440c27df33b24b195d31fcdc690f35",
+    "src/ui/notifications.js": "aaabd690cfc382e52395eabfafbc175b14ce258a082cfd6fffea7152da17904d",
+    "src/ui/project-actions.js": "70e0e51c45a6f935b07e59b294b942117d8f410d8f161cbec63702eb665a56fb",
+    "src/ui/property-panel.js": "a962670c236bee403da4ec7853074bb5253452cc73721bbd9ae784b285fa38e8",
+    "src/ui/room-editor.js": "94ea68877091f52a2791782e102429c2135ad4151f7ad85b32987d75e5fbb093",
+    "src/ui/toolbar.js": "5300d8865b370e8e99a9fe97debccbd04bc7b5e21277bbded10c52f503aba258",
+    "src/viewer3d/architecture.js": "1d2f3ad061c650abe4e838464f628d82ce5e41fca8d4eacf2f42234ae91dc6da",
+    "src/viewer3d/furniture.js": "3c0b1f534219a21e6ab6d167cd211af33f2550229cd8c0cb624fe7b8bfbe2bef",
+    "src/viewer3d/materials.js": "5543cedc7fc2b095e2c583743ec716b00be15dec68723b8675ab16a7a87a5d42",
+    "src/viewer3d/navigation.js": "4eea768a7d0d9dfaf186fed08033914c18278c2ecf0640b1728874c4e540dd83",
+    "src/viewer3d/random.js": "7eaa42b569e764b50baa0cb9a58544b25e1997241a8185058847629c7f5dc3e5",
+    "src/viewer3d/resources.js": "c015f9c479bf2b1075ad0bd0f6d4692969930f5eeddc9e37d4ed94bebc1580e5",
+    "src/viewer3d/viewer.js": "6ad2cecf3093ea0a6a5221f32139102f157d59841d65327184592fa6a28854d2"
+  },
+  "syntaxChecks": [
+    {
+      "file": "src/core/editor-state.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/core/geometry.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/core/project-store.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/core/units.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/data/catalogs.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/data/default-project.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/data/project-data.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/data/room-editor.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/data/sample-template.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/editor2d/defs.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/editor2d/editor.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/editor2d/furniture-symbols.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/editor2d/interactions.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/editor2d/renderer.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/editor2d/snapping.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/editor2d/viewport.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/main.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/services/downloads.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/services/project-files.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/services/storage.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/ui/dom.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/ui/drawers.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/ui/file-menu.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/ui/furniture-library.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/ui/i18n.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/ui/length-field.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/ui/lifecycle.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/ui/notifications.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/ui/project-actions.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/ui/property-panel.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/ui/room-editor.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/ui/toolbar.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/viewer3d/architecture.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/viewer3d/furniture.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/viewer3d/materials.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/viewer3d/navigation.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/viewer3d/random.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/viewer3d/resources.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "src/viewer3d/viewer.js",
+      "exitCode": 0,
+      "diagnostics": ""
+    },
+    {
+      "file": "tests/browser-ui-baseline.cjs",
+      "exitCode": 0,
+      "diagnostics": ""
+    }
+  ]
+}

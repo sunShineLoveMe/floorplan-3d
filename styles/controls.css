@@ -1,0 +1,87 @@
+/* UI-010: shared UI styles, scoped to the editor, its own dialogs and samples. */
+:where(.app, .room-dialog, .ui-samples) {font-family:var(--font-ui);font-size:14px;line-height:1.5;color:var(--color-text-primary)}
+:where(.app, .room-dialog, .ui-samples) .btn {display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);min-height:var(--control-height);padding:8px 12px;border:1px solid transparent;border-radius:var(--radius-control);background:transparent;font-size:14px;line-height:20px;font-weight:500;white-space:nowrap;cursor:pointer}
+:where(.app, .room-dialog, .ui-samples) .btn:hover:not(:disabled):not([aria-disabled=true]) {background:var(--color-surface-subtle)}
+:where(.app, .room-dialog, .ui-samples) .btn.on,
+:where(.app, .room-dialog, .ui-samples) .btn.chip.on {color:var(--color-brand);background:var(--color-brand-soft);border-color:var(--color-brand);font-weight:600}
+:where(.app, .room-dialog, .ui-samples) .btn.secondary,
+.app .actions .btn,
+.room-dialog .actions .btn {border-color:var(--color-border-control);background:var(--color-surface)}
+:where(.app, .room-dialog, .ui-samples) .btn.primary,
+.app .actions .btn.primary,
+.room-dialog .actions .btn.primary {color:var(--color-surface);background:var(--color-brand);border-color:var(--color-brand)}
+:where(.app, .room-dialog, .ui-samples) .btn.primary:hover:not(:disabled),
+.app .actions .btn.primary:hover:not(:disabled),
+.room-dialog .actions .btn.primary:hover:not(:disabled) {background:var(--color-brand-hover);border-color:var(--color-brand-hover)}
+:where(.app, .room-dialog, .ui-samples) .btn.danger {color:var(--color-danger)}
+:where(.app, .room-dialog, .ui-samples) .btn.danger:hover:not(:disabled) {background:var(--color-danger-soft)}
+:is(.app, .room-dialog, .ui-samples) .btn:disabled,
+:is(.app, .room-dialog, .ui-samples) .btn[aria-disabled=true],
+.app .actions .btn:disabled,
+.room-dialog .actions .btn:disabled {color:var(--color-text-secondary);background:var(--color-surface-subtle);border:1px dashed var(--color-border-control);cursor:not-allowed;opacity:1!important}
+:where(.app, .room-dialog, .ui-samples) .ui-icon-button {min-width:var(--icon-button-size);min-height:var(--icon-button-size);padding:8px}
+:where(.app, .room-dialog, .ui-samples) :is(button,summary,input,select,a,[tabindex]):focus-visible {outline:2px solid var(--color-brand);outline-offset:2px}
+:where(.app, .room-dialog, .ui-samples) .btn[aria-busy=true]::before {content:"";width:14px;height:14px;flex:none;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:ui-spin .8s linear infinite}
+@keyframes ui-spin {to{transform:rotate(360deg)}}
+.app .grp {background:var(--color-surface);border-color:var(--color-border-subtle);border-radius:var(--radius-control)}
+.app header {gap:6px 8px}
+.app header .btn {padding-inline:9px}
+.app header .ui-icon-button {padding-inline:8px}
+.app .seg .pill {background:var(--color-brand-soft);box-shadow:none;border:1px solid var(--color-brand);border-radius:var(--radius-control)}
+.app .seg .btn {border:0}
+.app .seg .btn[data-view="2d"],body.m3d .app .seg .btn[data-view="3d"] {color:var(--color-brand);font-weight:600}
+body.m3d .app .seg .btn[data-view="2d"] {color:var(--color-text-primary);font-weight:500}
+.app .menu summary {display:flex;align-items:center;min-height:var(--control-height);border-color:var(--color-border-control);background:var(--color-surface)}
+.app .menu-pop {background:var(--color-surface);border-radius:var(--radius-card);box-shadow:var(--shadow-popover);padding:var(--space-2)}
+.app .menu-pop .btn {justify-content:flex-start}
+:where(.app, .room-dialog, .ui-samples) .form {gap:var(--space-3)}
+:where(.app, .room-dialog, .ui-samples) .form label {font-size:13px;line-height:20px;gap:6px;color:var(--color-text-secondary)}
+:where(.app, .room-dialog, .ui-samples) .form :is(input,select),
+.app #structurePanel select,
+.app .unit-control select {min-height:var(--control-height);border:1px solid var(--color-border-control);border-radius:var(--radius-control);padding:8px 10px;background:var(--color-surface);font-size:14px;line-height:20px;color:var(--color-text-primary);font-variant-numeric:tabular-nums lining-nums}
+:where(.app, .room-dialog, .ui-samples) .form input[type=color] {height:var(--control-height);padding:4px}
+:where(.app, .room-dialog, .ui-samples) .form :is(input,select):disabled {color:var(--color-text-secondary);background:var(--color-surface-subtle);border-style:dashed;cursor:not-allowed}
+.app .unit-control select:disabled {color:var(--color-text-secondary);background:var(--color-surface-subtle);border-style:dashed;cursor:not-allowed}
+:where(.app, .room-dialog, .ui-samples) input[aria-invalid=true] {border:2px solid var(--color-danger)}
+:where(.app, .room-dialog, .ui-samples) input[aria-invalid=true]+.length-feedback,
+:where(.app, .room-dialog, .ui-samples) .room-error {color:var(--color-danger)}
+:where(.app, .room-dialog, .ui-samples) .length-feedback {font-size:12px;line-height:18px;color:var(--color-text-secondary)}
+:where(.app, .room-dialog, .ui-samples) .actions {gap:var(--space-2);margin-top:var(--space-3)}
+.app :is(#panel,#structurePanel) section {padding:var(--space-4);border-color:var(--color-border-subtle)}
+.app :is(#panel,#structurePanel) h3 {font-size:14px;line-height:20px;font-weight:600;margin:0 0 var(--space-3)}
+.app .brand b {font-size:16px;line-height:24px;letter-spacing:0}
+.app .brand span,.app .hint {font-size:12px;line-height:18px;color:var(--color-text-secondary)}
+.app .lib h4 {font-size:13px;line-height:20px;letter-spacing:0;color:var(--color-text-secondary);padding:16px 14px 8px}
+.app .item {border-radius:var(--radius-control);background:var(--color-surface);border-color:var(--color-border-subtle)}
+.app .item b {font-size:13px;line-height:20px}
+.app .lib-grid .item small {font-size:12px;line-height:18px;color:var(--color-text-secondary)}
+.app .opening-row.selected {background:var(--color-brand-soft);border-left:3px solid var(--color-brand);padding-left:8px}
+.app .opening-row [data-select] {display:block}
+/* Legacy SVG presentation attributes remain in the renderer; style only its selection layer. */
+.app #gSel [stroke="#b5653a"] {stroke:var(--color-brand)}
+.app #gSel [fill="#b5653a"] {fill:var(--color-brand)}
+.app #gSel polygon {fill:var(--color-brand);fill-opacity:.08}
+.app #gSel rect[fill="rgba(181,101,58,.15)"] {fill:var(--color-brand);fill-opacity:.15}
+.app #gMeasure :is([stroke="#b5653a"],[stroke="#2f5d62"]) {stroke:var(--color-brand)}
+.app #gMeasure :is([fill="#b5653a"],[fill="#2f5d62"]) {fill:var(--color-brand)}
+@media(hover:hover){.app #plan .furn:hover {filter:drop-shadow(0 0 2px rgb(36 92 75 / 35%))}}
+.app #roomList button {min-height:var(--control-height);background:var(--color-surface);border-radius:var(--radius-control);padding:8px;border-color:var(--color-border-control)}
+.app #roomList button:hover {background:var(--color-surface-subtle)}
+.app #roomList button.on {color:var(--color-brand);background:var(--color-brand-soft);border-color:var(--color-brand)}
+.app .mat {min-height:var(--control-height);background:var(--color-surface);border-radius:var(--radius-control)}
+.app .mat.on {border-color:var(--color-brand);box-shadow:0 0 0 2px var(--color-brand-soft)}
+.app .stats div,.app kbd {background:var(--color-surface-subtle)}
+.app td {border-color:var(--color-border-subtle)}
+.app tr.click:hover td {background:var(--color-surface-subtle)}
+.app .scalebar,.app .rlabel,.app #fab {background:var(--color-surface);color:var(--color-text-primary)}
+.app #fab {border-radius:var(--radius-card);box-shadow:var(--shadow-popover)}
+.app .rlabel small {color:var(--color-text-secondary)}
+.room-dialog {padding:var(--space-5);border-radius:var(--radius-dialog);background:var(--color-surface);border-color:var(--color-border-subtle);font-family:var(--font-ui)}
+.room-dialog h2 {font-size:20px;line-height:28px}
+.room-dialog .actions {bottom:-24px;background:var(--color-surface)}
+#toast,.ui-samples .ui-toast {font-family:var(--font-ui);background:var(--color-text-primary);color:var(--color-surface);font-size:14px;line-height:20px;border-radius:var(--radius-control);padding:12px 16px}
+.ui-samples .ui-empty {padding:var(--space-5);color:var(--color-text-secondary);background:var(--color-surface-subtle);border-radius:var(--radius-card)}
+.ui-number {font-variant-numeric:tabular-nums lining-nums}
+@media(pointer:coarse){:where(.app,.room-dialog,.ui-samples) .form :is(input,select){font-size:16px}}
+@media(max-width:480px){.room-dialog{padding:var(--space-4)}.room-dialog .actions{bottom:-16px}}
+@media(prefers-reduced-motion:reduce){.app .btn,.app .seg .pill,.app .seg .btn,.app aside,.app,.app .item,.app .only2d,.app .only3d,.app #fab,.app .menu-pop,#toast{animation:none;transition:none}.ui-samples .btn[aria-busy=true]::before{animation:none}}

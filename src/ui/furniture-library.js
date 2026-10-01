@@ -1,22 +1,58 @@
-import {formatLengthMm} from '../core/units.js';
+import {formatLengthMm,formatAreaM2} from '../core/units.js';
 import {$} from '../ui/dom.js';
 import {COARSE,TAP,narrow,esc} from '../ui/dom.js';
 import {tr,nm,LANG} from '../ui/i18n.js';
-import {bbox} from '../core/geometry.js';
+import {bbox,area} from '../core/geometry.js';
 import {LIB} from '../data/catalogs.js';
 import {furnSVG} from '../editor2d/furniture-symbols.js';
 import {createScope} from './lifecycle.js';
-export function createFurnitureLibrary({store,ui,viewport,actions,drawers,is3D,groundAt,toast}){
+export function createFurnitureLibrary({store,ui,viewport,actions,drawers,is3D,groundAt,flyToRoom,toast}){
 const scope=createScope(),svg=$('#plan');
 const {view,toMM}=viewport;
 const {addItem}=actions; const {drawer,closeDrawers}=drawers;
-let signature;
+let signature,roomSignature;
+let activeTab='furniture';
+function setTab(tab){
+  activeTab=tab;
+  for(const [key,id] of [['rooms','rooms'],['furniture','furniture']]){
+    const button=$('#'+id+'Tab'),selected=tab===key;
+    button.classList.toggle('on',selected);button.setAttribute('aria-selected',String(selected));button.tabIndex=selected?0:-1;
+    $('#'+id+'Resource').hidden=!selected;
+  }
+}
+for(const key of ['rooms','furniture']){
+  scope.on($('#'+key+'Tab'),'click',()=>setTab(key));
+  scope.on($('#'+key+'Tab'),'keydown',e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();setTab(e.key==='Home'?'rooms':e.key==='End'?'furniture':activeTab==='rooms'?'furniture':'rooms');$('#'+activeTab+'Tab').focus();}});
+}
+setTab(activeTab);
+scope.on($('#resourceNewRoom'),'click',()=>$('#newRoom').click());
+scope.on($('#resourceOpenings'),'click',()=>$('#editRoom').click());
+function buildRooms(){
+  const project=store.getProject(),rooms=project.geometry.rooms.filter(r=>r.counted!==false);
+  const next=JSON.stringify([LANG,project.units.display,project.rooms,project.geometry.rooms,ui.sel]);
+  if(next===roomSignature)return;roomSignature=next;
+  $('#roomList').innerHTML=rooms.map(r=>`<button data-room="${esc(r.id)}" class="${ui.sel?.kind==='room'&&ui.sel.id===r.id?'on':''}"><span>${esc(nm(project.rooms[r.id].name))}</span><small>${formatAreaM2(area(r.poly),project.units.display)}</small></button>`).join('')+ (rooms.length?`<button data-room="__all"><span>${tr('全屋','Whole home')}</span><small>${formatAreaM2(rooms.reduce((sum,r)=>sum+area(r.poly),0),project.units.display)}</small></button>`:`<p class="hint">${tr('当前方案没有房间','No rooms in this plan')}</p>`);
+}
+scope.on($('#roomList'),'click',e=>{
+  const button=e.target.closest('[data-room]');if(!button)return;
+  const id=button.dataset.room;
+  if(id!=='__all')actions.select({kind:'room',id});
+  if(is3D())flyToRoom(id);
+  else if(id==='__all')viewport.fitView();
+  else {
+    const room=store.getProject().geometry.rooms.find(r=>r.id===id),b=bbox(room.poly),W=svg.clientWidth,H=svg.clientHeight;
+    view.s=Math.min(W/(b[2]-b[0]+800),H/(b[3]-b[1]+800));view.x0=(b[0]+b[2])/2-W/2/view.s;view.y0=(b[1]+b[3])/2-H/2/view.s;viewport.applyView();
+  }
+  closeDrawers();buildRooms();
+});
+const summary=value=>store.getProject().units.display==='imperial'?`≈ ${(value/25.4).toFixed(1).replace(/\.0$/,'')} in`:`${Math.round(value)} mm`;
+
 function buildLib(){
   const next=LANG+store.getProject().units.display;if(signature===next)return;signature=next;
   $('#lib').innerHTML = LIB.map((c,ci) => `<h4>${nm(c.cat)}</h4><div class="lib-grid">${c.items.map((it,ii) => {
     const [t,n,w,d,col] = it, pad = Math.max(w,d)*.08;
-    return `<div class="item" data-key="${ci}:${ii}" title="${tr('点击添加，或拖到平面图中的指定位置', 'Click to add, or drag onto the plan')}">
-      <svg viewBox="${-w/2-pad} ${-d/2-pad} ${w+2*pad} ${d+2*pad}">${furnSVG(t,w,d,col)}</svg><b>${esc(nm(n))}</b><small>${esc(formatLengthMm(w,store.getProject().units.display,{style:'inches'}))} × ${esc(formatLengthMm(d,store.getProject().units.display,{style:'inches'}))}</small></div>`;
+    return `<div class="item" role="button" tabindex="0" data-key="${ci}:${ii}" title="${esc(nm(n))} · ${esc(formatLengthMm(w,store.getProject().units.display,{style:'inches'}))} × ${esc(formatLengthMm(d,store.getProject().units.display,{style:'inches'}))} · ${tr('点击或拖动添加','Click or drag to add')}">
+      <svg viewBox="${-w/2-pad} ${-d/2-pad} ${w+2*pad} ${d+2*pad}">${furnSVG(t,w,d,col)}</svg><b>${esc(nm(n))}</b><small>${tr('宽','W')} ${summary(w)}<br>${tr('深','D')} ${summary(d)}</small></div>`;
   }).join('')}</div>`).join('') + `<div class="hint">${tr(
     `家具按实际尺寸比例绘制。${COARSE ? '点一下放到画面中央，或按住向右拖到平面图 / 3D 地面上的指定位置（上下滑动为滚动列表）。' : '点击添加到画面中央，或直接拖到平面图 / 3D 地面上。'}添加后可在右侧修改宽深与颜色。`,
     `Furniture is drawn to scale. ${COARSE ? 'Tap to place at the center, or hold and drag right onto the plan / 3D floor (swipe up/down to scroll).' : 'Click to add at the center, or drag onto the plan / 3D floor.'} Edit size and color in the right panel afterwards.`)}</div>`;
@@ -74,9 +110,13 @@ function endLibDrag(e, ok){
   addItem(d.it, p.x, p.y);
   closeDrawers();
 }
+scope.on($('#lib'),'keydown',e=>{
+  const el=e.target.closest('.item');if(!el||!['Enter',' '].includes(e.key))return;
+  e.preventDefault();libDrag={el,id:-1,it:itemOf(el),ghost:null};endLibDrag({pointerId:-1},true);
+});
 scope.on(window, 'pointerup', e => endLibDrag(e, true));
 scope.on(window, 'pointercancel', e => endLibDrag(e, false));
 
 
-return {update:buildLib,dispose(){scope.dispose();libDrag?.ghost?.remove();$("#lib").replaceChildren();}};
+return {update(){buildLib();buildRooms();},dispose(){scope.dispose();libDrag?.ghost?.remove();$("#lib").replaceChildren();}};
 }

@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-01T14:51:36.187Z",
+  "checks": [
+    "Room list exists before 3D; 2D room selection/focus preserves exact project",
+    "Room plan replacement and existing openings entry reuse actual actions",
+    "Keyboard add and real pointer drag add correct catalog dimensions; undo restores objects",
+    "Keyboard tab navigation and hidden panel focus isolation",
+    "Whole-home real 3D camera action and room list persist across views",
+    "390px resource drawer has readable cards and no page overflow"
+  ],
+  "errors": []
+}

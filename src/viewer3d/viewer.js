@@ -167,14 +167,7 @@ function buildLabels(){
     el.innerHTML = `${esc(nm(store.getProject().rooms[r.id].name))}<small>${formatAreaM2(area(r.poly),store.getProject().units.display)}</small>`;
     const o = new CSS2DObject(el); o.position.set(wx(r.at[0]), opt.cut + .15, wz(r.at[1])); o.visible = labelG.visible; labelG.add(o);
   });
-  const counted = store.getProject().geometry.rooms.filter(r => r.counted !== false);
-  $('#roomList').innerHTML = counted.map(r => `<button data-room="${r.id}"><span>${esc(nm(store.getProject().rooms[r.id].name))}</span><small>${formatAreaM2(area(r.poly),store.getProject().units.display)}</small></button>`).join('')
-    + `<button data-room="__all"><span>${tr('全屋', 'Whole home')}</span><small>${formatAreaM2(counted.reduce((a, r) => a + area(r.poly), 0),store.getProject().units.display)}</small></button>`;
-  document.querySelectorAll('#roomList button').forEach(b => b.onclick = () => {
-    document.querySelectorAll('#roomList button').forEach(x => x.classList.toggle('on', x === b));
-    if (opt.mode === 'walk') setMode('orbit');
-    b.dataset.room === '__all' ? flyTo(isoWhole()) : flyToRoom(b.dataset.room);
-  });
+
 }
 
 // 只重建变化的部分
@@ -493,9 +486,9 @@ function dispose(){
   renderer?.dispose();renderer?.domElement.remove();labelRenderer?.domElement.remove();
   for(const id of ['walkOverlay','walkExit','vIso','vTop']) $('#'+id).onclick=null;
   $('#sun').oninput=null;document.querySelectorAll('#modes3d button,[data-cut],#toggles3d button').forEach(b=>b.onclick=null);
-  $('#roomList').replaceChildren();$('#walkOverlay').style.display='none';$('#cross').style.display='none';
+  $('#walkOverlay').style.display='none';$('#cross').style.display='none';
 }
 
-return {enter, exit, cancel:()=>cancelGesture(), relang, sync:() => sync(), shot, groundAt, flyToRoom:id => active && !anim && flyToRoom(id), walking:() => active && opt.mode === 'walk',dispose};
+return {enter, exit, cancel:()=>cancelGesture(), relang, sync:() => sync(), shot, groundAt, flyToRoom:id => { if(active && !anim){if(opt.mode==='walk')setMode('orbit');id==='__all'?flyTo(isoWhole()):flyToRoom(id);}}, walking:() => active && opt.mode === 'walk',dispose};
 
 }

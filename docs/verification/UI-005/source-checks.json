@@ -1,0 +1,16 @@
+{
+  "productionSourcesUnchanged": true,
+  "baseCommit": "6af3c7d274582b9cbf2d8b5240368704dfbba1a5",
+  "prototypeFiles": {
+    "docs/ui-prototypes/UI-005/index.html": "896af1da77ea5238b3a5dbb4ba8fefcfab9cb67bb6bd0eacbd6fa4d9a3a9134b",
+    "docs/ui-prototypes/UI-005/prototype.css": "dd6f4c07e01b092c3d9996fc9abdb3cb8af80f2e1562645ec04bf71a78f4587c",
+    "docs/ui-prototypes/UI-005/prototype.js": "00f914bf182baf597c85c21956f87536cea0f324ae9b8abf1f28b85fd9d0ddec"
+  },
+  "documentLinksValid": true,
+  "syntaxChecked": [
+    "docs/ui-prototypes/UI-005/prototype.js",
+    "tests/browser-ui-prototype.cjs"
+  ],
+  "browserChecks": 10,
+  "screenshots": 14
+}

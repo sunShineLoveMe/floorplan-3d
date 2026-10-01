@@ -26,6 +26,14 @@ python3 -m http.server 8086 --bind 127.0.0.1
 
 | 文档 | 内容 |
 | --- | --- |
+| [UI 重构方案 v1.1](docs/frontend-ui-refactor-plan-v1.0.md) | 编辑器视觉、布局、交互样稿与分批实施任务 |
+| [UI-000 功能与页面基线](docs/UI-000-baseline.md) | 当前入口映射、可导入回归场景、基线截图及已知问题 |
+| [UI-005 关键交互样稿](docs/UI-005-interaction-draft.md) | 五种选中状态、1440/1280 布局、可交互预览与窄屏抽屉规则 |
+| [UI-050 上下文属性](docs/UI-050-properties.md) | 按对象展示属性、折叠统计与编辑回归 |
+| [UI-040 左侧资源面板](docs/UI-040-resources.md) | 公共房间列表、家具卡片与交互验证 |
+| [UI-030 项目栏与菜单](docs/UI-030-project-bar.md) | 项目操作、设置、视图菜单和回归证据 |
+| [UI-020 编辑器布局](docs/UI-020-workspace-layout.md) | 固定顶栏、独立面板、稳定画布与抽屉验证 |
+| [UI-010 设计 Token 与控件](docs/UI-010-design-system.md) | 已接入生产样式的视觉规范、状态样例、回归证据与阶段限制 |
 | [功能清单](docs/features.md) | 已实现的 2D、3D、项目数据与导出能力及使用边界 |
 | [待办与任务优先级](docs/roadmap.md) | T00–T21 状态、P0/P1/P2 待办和建议实施顺序 |
 | [使用与备份指南](docs/usage.md) | 启动、户型导入、本地保存、旧文件迁移和快捷键 |

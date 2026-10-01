@@ -1,0 +1,43 @@
+:root {
+  color-scheme: light;
+  --color-app-bg: #f6f7f4;
+  --color-surface: #ffffff;
+  --color-surface-subtle: #f1f4f0;
+  --color-canvas-bg: #ecefeb;
+  --color-text-primary: #202823;
+  --color-text-secondary: #59645d;
+  --color-text-muted: #626d65;
+  --color-border-subtle: #e0e5df;
+  --color-border-control: #7c877f;
+  --color-brand: #245c4b;
+  --color-brand-hover: #1b473a;
+  --color-brand-soft: #eaf2ee;
+  --color-danger: #b42318;
+  --color-danger-soft: #fff0ee;
+  --font-ui: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --radius-control: 8px;
+  --radius-card: 10px;
+  --radius-dialog: 12px;
+  --control-height: 40px;
+  --icon-button-size: 44px;
+  --topbar-height: 64px;
+  --library-width: 280px;
+  --inspector-width: 304px;
+  --shadow-popover: 0 8px 24px rgb(24 39 30 / 10%);
+  /* Compatibility aliases: existing layout/render code keeps its selectors. */
+  --bg: var(--color-app-bg);
+  --paper: var(--color-canvas-bg);
+  --panel: var(--color-surface);
+  --line: var(--color-border-subtle);
+  --ink: var(--color-text-primary);
+  --muted: var(--color-text-muted);
+  --accent: var(--color-brand);
+  --accent-soft: var(--color-brand-soft);
+  --teal: var(--color-brand);
+}

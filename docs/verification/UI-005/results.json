@@ -1,0 +1,326 @@
+{
+  "date": "2026-10-01T14:14:23.113Z",
+  "browser": "149.0.7827.55",
+  "checks": [
+    "1440/1280 × five selection states: 64px header, 280/304px sides, 856/696px canvas, no page overflow",
+    "canvas pointer/keyboard select actual desk/chair fixture, not stale bed fields",
+    "tab changes and both manual side toggles preserve selected furniture",
+    "deselect keeps right-side width stable",
+    "opening modal and new-plan replacement meaning; Escape returns focus to trigger",
+    "File popup Escape closes and restores focus",
+    "unit preview formats fixture and catalog using production formatters without model edit",
+    "no localStorage reads/writes or saved-state claims; file/edit operations disabled in draft",
+    "1024 property drawer closes with Escape and retains canvas container width",
+    "review controls change viewport and state in interactive board"
+  ],
+  "layouts": [
+    {
+      "viewport": 1440,
+      "header": {
+        "width": 1440,
+        "height": 64,
+        "x": 0,
+        "y": 0
+      },
+      "canvas": {
+        "width": 856,
+        "height": 836,
+        "x": 280,
+        "y": 64
+      },
+      "left": {
+        "width": 280,
+        "height": 836,
+        "x": 0,
+        "y": 64
+      },
+      "right": {
+        "width": 304,
+        "height": 836,
+        "x": 1136,
+        "y": 64
+      },
+      "overflow": false,
+      "state": "none"
+    },
+    {
+      "viewport": 1440,
+      "header": {
+        "width": 1440,
+        "height": 64,
+        "x": 0,
+        "y": 0
+      },
+      "canvas": {
+        "width": 856,
+        "height": 836,
+        "x": 280,
+        "y": 64
+      },
+      "left": {
+        "width": 280,
+        "height": 836,
+        "x": 0,
+        "y": 64
+      },
+      "right": {
+        "width": 304,
+        "height": 836,
+        "x": 1136,
+        "y": 64
+      },
+      "overflow": false,
+      "state": "room"
+    },
+    {
+      "viewport": 1440,
+      "header": {
+        "width": 1440,
+        "height": 64,
+        "x": 0,
+        "y": 0
+      },
+      "canvas": {
+        "width": 856,
+        "height": 836,
+        "x": 280,
+        "y": 64
+      },
+      "left": {
+        "width": 280,
+        "height": 836,
+        "x": 0,
+        "y": 64
+      },
+      "right": {
+        "width": 304,
+        "height": 836,
+        "x": 1136,
+        "y": 64
+      },
+      "overflow": false,
+      "state": "furniture"
+    },
+    {
+      "viewport": 1440,
+      "header": {
+        "width": 1440,
+        "height": 64,
+        "x": 0,
+        "y": 0
+      },
+      "canvas": {
+        "width": 856,
+        "height": 836,
+        "x": 280,
+        "y": 64
+      },
+      "left": {
+        "width": 280,
+        "height": 836,
+        "x": 0,
+        "y": 64
+      },
+      "right": {
+        "width": 304,
+        "height": 836,
+        "x": 1136,
+        "y": 64
+      },
+      "overflow": false,
+      "state": "door"
+    },
+    {
+      "viewport": 1440,
+      "header": {
+        "width": 1440,
+        "height": 64,
+        "x": 0,
+        "y": 0
+      },
+      "canvas": {
+        "width": 856,
+        "height": 836,
+        "x": 280,
+        "y": 64
+      },
+      "left": {
+        "width": 280,
+        "height": 836,
+        "x": 0,
+        "y": 64
+      },
+      "right": {
+        "width": 304,
+        "height": 836,
+        "x": 1136,
+        "y": 64
+      },
+      "overflow": false,
+      "state": "window"
+    },
+    {
+      "viewport": 1280,
+      "header": {
+        "width": 1280,
+        "height": 64,
+        "x": 0,
+        "y": 0
+      },
+      "canvas": {
+        "width": 696,
+        "height": 736,
+        "x": 280,
+        "y": 64
+      },
+      "left": {
+        "width": 280,
+        "height": 736,
+        "x": 0,
+        "y": 64
+      },
+      "right": {
+        "width": 304,
+        "height": 736,
+        "x": 976,
+        "y": 64
+      },
+      "overflow": false,
+      "state": "none"
+    },
+    {
+      "viewport": 1280,
+      "header": {
+        "width": 1280,
+        "height": 64,
+        "x": 0,
+        "y": 0
+      },
+      "canvas": {
+        "width": 696,
+        "height": 736,
+        "x": 280,
+        "y": 64
+      },
+      "left": {
+        "width": 280,
+        "height": 736,
+        "x": 0,
+        "y": 64
+      },
+      "right": {
+        "width": 304,
+        "height": 736,
+        "x": 976,
+        "y": 64
+      },
+      "overflow": false,
+      "state": "room"
+    },
+    {
+      "viewport": 1280,
+      "header": {
+        "width": 1280,
+        "height": 64,
+        "x": 0,
+        "y": 0
+      },
+      "canvas": {
+        "width": 696,
+        "height": 736,
+        "x": 280,
+        "y": 64
+      },
+      "left": {
+        "width": 280,
+        "height": 736,
+        "x": 0,
+        "y": 64
+      },
+      "right": {
+        "width": 304,
+        "height": 736,
+        "x": 976,
+        "y": 64
+      },
+      "overflow": false,
+      "state": "furniture"
+    },
+    {
+      "viewport": 1280,
+      "header": {
+        "width": 1280,
+        "height": 64,
+        "x": 0,
+        "y": 0
+      },
+      "canvas": {
+        "width": 696,
+        "height": 736,
+        "x": 280,
+        "y": 64
+      },
+      "left": {
+        "width": 280,
+        "height": 736,
+        "x": 0,
+        "y": 64
+      },
+      "right": {
+        "width": 304,
+        "height": 736,
+        "x": 976,
+        "y": 64
+      },
+      "overflow": false,
+      "state": "door"
+    },
+    {
+      "viewport": 1280,
+      "header": {
+        "width": 1280,
+        "height": 64,
+        "x": 0,
+        "y": 0
+      },
+      "canvas": {
+        "width": 696,
+        "height": 736,
+        "x": 280,
+        "y": 64
+      },
+      "left": {
+        "width": 280,
+        "height": 736,
+        "x": 0,
+        "y": 64
+      },
+      "right": {
+        "width": 304,
+        "height": 736,
+        "x": 976,
+        "y": 64
+      },
+      "overflow": false,
+      "state": "window"
+    }
+  ],
+  "screens": [
+    "1440-none.png",
+    "1440-room.png",
+    "1440-furniture.png",
+    "1440-door.png",
+    "1440-window.png",
+    "1280-none.png",
+    "1280-room.png",
+    "1280-furniture.png",
+    "1280-door.png",
+    "1280-window.png",
+    "window-edit-dialog.png",
+    "new-plan-replacement-dialog.png",
+    "1024-properties-drawer.png",
+    "review-board.png"
+  ],
+  "errors": [],
+  "scope": "UI-005 prototype only; no production-editor acceptance"
+}

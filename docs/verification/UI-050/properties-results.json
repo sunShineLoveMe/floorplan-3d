@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-01T14:54:51.984Z",
+  "checks": [
+    "No selection: stable inspector, light prompt; structure and project stats hidden",
+    "Furniture: isolated fields and actions, actual size edit and exact undo",
+    "Room: name, dimensions and flooring; material edit and undo",
+    "Door/window: selected item only, no visible IDs; existing edit dialog and wall list access",
+    "Advanced retains real statistics, costs and actions; selection never resizes canvas"
+  ],
+  "errors": []
+}

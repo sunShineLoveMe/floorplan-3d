@@ -9,6 +9,13 @@ function exportPNG(){
   clone.setAttribute('viewBox', `${store.getProject().geometry.bounds.x} ${store.getProject().geometry.bounds.y} ${store.getProject().geometry.bounds.w} ${store.getProject().geometry.bounds.h}`);
   clone.setAttribute('width', W); clone.setAttribute('height', H);
   clone.querySelector('#gSel').innerHTML = '';
+  // Standalone SVG rasterization cannot see the app's theme stylesheet.
+  const measureMarks = svg.querySelectorAll('#gMeasure [stroke],#gMeasure [fill]');
+  clone.querySelectorAll('#gMeasure [stroke],#gMeasure [fill]').forEach((mark, i) => {
+    const style = getComputedStyle(measureMarks[i]);
+    if (mark.hasAttribute('stroke')) mark.setAttribute('stroke', style.stroke);
+    if (mark.hasAttribute('fill')) mark.setAttribute('fill', style.fill);
+  });
   clone.querySelector('#gGrid').innerHTML = `<rect x="-20000" y="-20000" width="55000" height="55000" fill="${ui.layers.grid?'url(#grid)':'#f7f4ee'}"/>`;
   const bg = document.createElementNS('http://www.w3.org/2000/svg','rect');
   Object.entries({x:-20000,y:-20000,width:55000,height:55000,fill:'#f7f4ee'}).forEach(([k,v]) => bg.setAttribute(k,v));

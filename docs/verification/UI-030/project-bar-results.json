@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-01T14:48:19.123Z",
+  "checks": [
+    "1440/1280/390 long name: one-row project bar, no page/tool overflow; file actions and Escape focus reachable",
+    "settings unit changes and view layer toggles retain data; menu closes and returns focus",
+    "real 3D settings: wall cut, camera, night lighting and sun still wired"
+  ],
+  "errors": []
+}

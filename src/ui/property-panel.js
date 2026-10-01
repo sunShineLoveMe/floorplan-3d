@@ -16,9 +16,12 @@ function renderPanel(){
   if(!document.querySelector('dialog[open]')){$('#projectUnits').disabled=false;$('#unitLock').textContent='';}
   renderFab();
   const p = $('#panel');
-  if (ui.sel?.kind === 'furn'){ const f = getF(ui.sel.id); if (f){ p.innerHTML = furnPanel(f); bindFurnPanel(f); return; } }
-  if (ui.sel?.kind === 'room'){ p.innerHTML = roomPanel(store.getProject().geometry.rooms.find(r => r.id === ui.sel.id)); bindRoomPanel(); return; }
-  p.innerHTML = overviewPanel(); bindOverview();
+  const details=`<details id="projectDetails"><summary class="btn">${tr('项目详情 / 高级','Project details / Advanced')}</summary>${overviewPanel()}</details>`;
+  if (ui.sel?.kind === 'furn' && getF(ui.sel.id)){p.innerHTML=furnPanel(getF(ui.sel.id))+details;bindFurnPanel(getF(ui.sel.id));}
+  else if(ui.sel?.kind==='room'){p.innerHTML=roomPanel(store.getProject().geometry.rooms.find(r=>r.id===ui.sel.id))+details;bindRoomPanel();}
+  else if(['wall','opening'].includes(ui.sel?.kind)){p.innerHTML=`<section class="muted">${tr('在上方编辑当前墙体或门窗。','Edit the selected wall or opening above.')}</section>`+details;}
+  else {p.innerHTML=`<section class="empty-properties"><h3>${tr('属性','Properties')}</h3><p class="muted">${tr('选择房间、家具或门窗，查看并修改属性。','Select a room, furniture item or opening to edit its properties.')}</p><button class="btn" id="openRoomSettings">${tr('房间设置 / 门窗','Room settings / openings')}</button></section>`+details;$('#openRoomSettings').onclick=()=>actions.showStructure();}
+  bindOverview();
 }
 
 function overviewPanel(){
@@ -74,7 +77,7 @@ function overviewPanel(){
   </div></section>`)}`;
 }
 function bindOverview(){
-  document.querySelectorAll('#panel tr[data-room]').forEach(tr => tr.onclick = () => { select({kind:'room', id:tr.dataset.room}); if (is3D()) flyToRoom(tr.dataset.room); });
+  document.querySelectorAll('#projectDetails tr[data-room]').forEach(tr => tr.onclick = () => { select({kind:'room', id:tr.dataset.room}); if (is3D()) flyToRoom(tr.dataset.room); });
   $('#clearMeasure').onclick = () => store.getProject().measures.length && mutate(() => store.getProject().measures = []);
   $('#clearFurn').onclick = clearLayout;
 }
@@ -96,9 +99,9 @@ function renderFab(){
 
 function roomPanel(r){
   const st = store.getProject().rooms[r.id], a = area(r.poly), [x0,y0,x1,y1] = bbox(r.poly), inside = store.getProject().furniture.filter(f => f.cx>x0&&f.cx<x1&&f.cy>y0&&f.cy<y1);
-  const mats = Object.entries(MATS).map(([k,m]) => `<button class="mat ${k===st.mat?'on':''}" data-mat="${k}"><i style="background:${m.sw}"></i><span>${nm(m.name)}<small>¥${m.price}/m²</small></span></button>`).join('');
+  const mats = Object.entries(MATS).map(([k,m]) => `<button class="mat ${k===st.mat?'on':''}" data-mat="${k}"><i style="background:${m.sw}"></i><span>${nm(m.name)}</span></button>`).join('');
   return `<section><h3>${tr('房间','Room')}</h3>
-    <div class="form"><label class="full">${tr('名称','Name')}<input id="rName" maxlength="500" value="${esc(nm(st.name))}"></label></div>
+    <button class="btn" id="roomDimensions">${tr('编辑净尺寸 / 门窗','Edit dimensions / openings')}</button><div class="form"><label class="full">${tr('名称','Name')}<input id="rName" maxlength="500" value="${esc(nm(st.name))}"></label></div>
     <div class="stats" style="margin-top:10px">
       <div><small>${tr('使用面积','Floor area')}</small><span class="big">${surface(a)}</span></div>
       <div><small>${tr('周长','Perimeter')}</small><span class="big">${length(perim(r.poly)*1000)}</span></div>
@@ -106,13 +109,14 @@ function roomPanel(r){
       <div><small>${tr('进深','Depth')}</small><span class="big">${length(y1-y0)}</span></div></div>
     <div class="muted">${tr(`墙面面积（层高 ${length(store.getProject().geometry.height)}，未扣门窗）约 ${surface(perim(r.poly)*store.getProject().geometry.height/1000)}`, `Wall area (${length(store.getProject().geometry.height)} ceiling, openings not deducted) ≈ ${surface(perim(r.poly)*store.getProject().geometry.height/1000)}`)}</div></section>
   <section><h3>${tr('地面材料','Flooring')}</h3><div class="mats">${mats}</div>
-    <div class="total"><span>${tr('材料估价','Estimated cost')}</span><b>¥${Math.round(a*MATS[st.mat].price*1.05).toLocaleString()}</b></div></section>
+    </section>
   <section><h3>${tr('房间内家具','Furniture in room')} <small>${tr(`${inside.length} 件`, `${inside.length} items`)}</small></h3>
     <table>${inside.map(f => `<tr class="click" data-fid="${f.id}"><td>${esc(nm(f.name))}</td><td class="r muted">${length(f.w,'inches')} × ${length(f.d,'inches')}</td></tr>`).join('') || `<tr><td class="muted">${tr('暂无','None')}</td></tr>`}</table>
     <div class="actions"><button class="btn" id="back">${tr('← 返回总览','← Back to overview')}</button></div></section>`;
 }
 function bindRoomPanel(){
   const id = ui.sel.id;
+  $('#roomDimensions').onclick=()=>actions.showStructure();
   const updateRoom=patch=>{
     try{
       const p=store.getProject();if(p.roomEditor){const rooms=clone(p.rooms);Object.assign(rooms[id],patch);const next=updateRectangleProject(p,p.roomEditor,rooms);next.name=rooms[id].name;store.replaceProject(validate(next,CATALOGS));}
