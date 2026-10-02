@@ -1,0 +1,49 @@
+{
+  "id": "san-diego-plan-c",
+  "title": "San Diego Plan C：两卧两卫单层",
+  "provider": "San Diego County",
+  "sourcePage": "https://www.sandiegocounty.gov/content/sdc/pds/bldg/adu_plans.html",
+  "downloadUrl": "https://www.sandiegocounty.gov/content/dam/sdc/pds/bldg/adu_info/pds675_11x17.pdf",
+  "country": "US",
+  "scenario": "official-design",
+  "tags": [
+    "baseline",
+    "dimensioned",
+    "multi-page-pdf",
+    "imperial",
+    "closet",
+    "laundry"
+  ],
+  "original": "originals/san-diego-plan-c/original.pdf",
+  "previewPages": [
+    5
+  ],
+  "dimensionStatus": "overall-and-room-dimensions",
+  "acceptanceStatus": "accepted-single-floor-manual-model",
+  "rights": "Original source copyright retained; no open redistribution license inferred",
+  "sha256": "c5d7ba3bc8c5ee7ddd31223ab146058aca79d9dd27d2322520a85c911416a0e6",
+  "acceptanceEvidence": "../../../docs/verification/NA-complete-houses/plan-c/browser-results.json",
+  "bytes": 10357525,
+  "pageCount": 14,
+  "preview": "previews/san-diego-plan-c/page-5.png",
+  "previewDetails": [
+    {
+      "path": "previews/san-diego-plan-c/page-5.png",
+      "page": 5,
+      "rotation": 270,
+      "pageSizePt": [
+        1224.0,
+        792.0
+      ],
+      "textCharacters": 3263,
+      "embeddedImages": 4
+    }
+  ],
+  "inspection": "file-integrity-and-render-checked",
+  "sourceVisualReview": "A1 inspected in prior complete-house acceptance",
+  "calibrationPolicy": "use-labelled-exterior-length-for-fixture-test; confirm actual property measurements",
+  "unitsInSource": [
+    "ft",
+    "in"
+  ]
+}

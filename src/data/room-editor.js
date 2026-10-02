@@ -21,11 +21,15 @@ export function validateRoomEditor(editor){
   check(identifier(o.id)&&!ids.has(o.id)&&o.id!==editor.roomId,path+'unique id');ids.add(o.id);
   check(['door','window'].includes(o.type),path+'type');check(WALL_IDS.includes(o.wallId),path+'wallId');
   const length=['top','bottom'].includes(o.wallId)?editor.width:editor.depth;
-  number(o.offset,1,length-1,path+'offset');number(o.width,1,length-2,path+'width');
-  check(o.offset+o.width<=length-1+GEOMETRY_TOLERANCE,path+'outside parent wall');number(o.height,1,editor.height,path+'height');
+  const margin=o.type==='door'&&['sliding','bifold','passage'].includes(o.mode)?0:1;
+  number(o.offset,margin,length-margin,path+'offset');number(o.width,1,length-2*margin,path+'width');
+  check(o.offset+o.width<=length-margin+GEOMETRY_TOLERANCE,path+'outside parent wall');number(o.height,1,editor.height,path+'height');
   if(o.type==='door'){
-   check(['start','end'].includes(o.hinge),path+'hinge');check(['inward','outward'].includes(o.swing),path+'swing');check(!('sill' in o),path+'door cannot have sill');
-  } else {number(o.sill,0,editor.height,path+'sill');check(o.sill+o.height<=editor.height+GEOMETRY_TOLERANCE,path+'window head exceeds room height');check(!('hinge' in o)&&!('swing' in o),path+'window cannot have door fields');}
+   const mode=o.mode??'swing';check(['swing','sliding','bifold','passage'].includes(mode),path+'door mode');
+   if(mode==='swing')check(['start','end'].includes(o.hinge),path+'hinge');else check(!('hinge' in o),path+'hinge only for swing doors');
+   if(['swing','bifold'].includes(mode))check(['inward','outward'].includes(o.swing),path+'swing');else check(!('swing' in o),path+'swing only for hinged or folding doors');
+   check(!('sill' in o),path+'door cannot have sill');check(o.pairedWith===undefined||(mode==='swing'&&identifier(o.pairedWith)&&o.pairedWith!==o.id),path+'paired door');
+  } else {check(o.mode===undefined&&o.pairedWith===undefined,path+'window mode');number(o.sill,0,editor.height,path+'sill');check(o.sill+o.height<=editor.height+GEOMETRY_TOLERANCE,path+'window head exceeds room height');check(!('hinge' in o)&&!('swing' in o),path+'window cannot have door fields');}
  });
  WALL_IDS.forEach(w=>{const os=editor.openings.filter(o=>o.wallId===w).sort((a,b)=>a.offset-b.offset);for(let i=1;i<os.length;i++)check(os[i].offset-os[i-1].offset-os[i-1].width>=1-GEOMETRY_TOLERANCE,'opening '+os[i].id+' overlaps or is less than 1 mm from '+os[i-1].id);});
  return copy(editor);
@@ -34,7 +38,7 @@ export function generateRoomGeometry(input,rooms,wallWidths){
  const e=validateRoomEditor(input),{width:W,depth:D,height,wallThickness:T}=e;
  check(object(rooms)&&object(rooms[e.roomId]),'room settings');const room=rooms[e.roomId];
  const thickness=w=>wallWidths?.[w]??T;
- const walls=[],wallIds=[],doors=[],windows=[];
+ const walls=[],wallIds=[],doors=[],windows=[],slides=[],lintels=[];
  const rect=(wall,start,end)=>wall==='top'?[start,-thickness(wall),end,0]:wall==='bottom'?[start,D,end,D+thickness(wall)]:wall==='left'?[-thickness(wall),start,0,end]:[W,start,W+thickness(wall),end];
  WALL_IDS.forEach(w=>{
   if(thickness(w)===0)return;
@@ -42,9 +46,11 @@ export function generateRoomGeometry(input,rooms,wallWidths){
   const openings=e.openings.filter(o=>o.wallId===w).sort((a,b)=>a.offset-b.offset);
   let cursor=horizontal?-thickness('left'):0;
   for(const o of openings){
-   walls.push([...rect(w,cursor,o.offset),'n']);wallIds.push(w);cursor=o.offset+o.width;
-   const base={id:o.id,wallId:w,rect:rect(w,o.offset,cursor)};
+   if(o.offset-cursor>GEOMETRY_TOLERANCE){walls.push([...rect(w,cursor,o.offset),'n']);wallIds.push(w);}cursor=o.offset+o.width;
+   const base={id:o.id,wallId:w,rect:rect(w,o.offset,cursor),...(o.pairedWith?{pairedWith:o.pairedWith}:{})};
    if(o.type==='window')windows.push({...base,sill:o.sill,head:o.sill+o.height});
+   else if(o.mode==='sliding'||o.mode==='bifold')slides.push({...base,v:!horizontal,height:o.height,style:o.mode,...(o.mode==='bifold'?{swing:o.swing}:{})});
+   else if(o.mode==='passage')lintels.push({...base,height:o.height,passage:true});
    else {
     const at=o.hinge==='start'?o.offset:cursor,sign=o.hinge==='start'?1:-1;
     const h=horizontal?[at,w==='top'?0:D]:[w==='left'?0:W,at];
@@ -52,12 +58,12 @@ export function generateRoomGeometry(input,rooms,wallWidths){
     doors.push({...base,h,c:horizontal?[sign,0]:[0,sign],o:inside.map(x=>x*(o.swing==='inward'?1:-1)||0),len:o.width,height:o.height,name:o.id});
    }
   }
-  walls.push([...rect(w,cursor,horizontal?length+thickness('right'):length),'n']);wallIds.push(w);
+  const end=horizontal?length+thickness('right'):length;if(end-cursor>GEOMETRY_TOLERANCE){walls.push([...rect(w,cursor,end),'n']);wallIds.push(w);}
  });
  // Include the whole quarter-circle door sweep, dimension lines and text padding.
  let minX=-thickness('left')-600,minY=-thickness('top')-600,maxX=W+thickness('right')+600,maxY=D+thickness('bottom')+600;
  doors.forEach(d=>{for(const v of [d.c,d.o]){const x=d.h[0]+v[0]*d.len,y=d.h[1]+v[1]*d.len;minX=Math.min(minX,x-150);maxX=Math.max(maxX,x+150);minY=Math.min(minY,y-150);maxY=Math.max(maxY,y+150);}});
- return {height,origin:[W/2,D/2],bounds:{x:minX,y:minY,w:maxX-minX,h:maxY-minY},rooms:[{id:e.roomId,name:room.name,mat:room.mat,poly:[[0,0],[W,0],[W,D],[0,D]],at:[W/2,D/2]}],walls,wallIds,doors,windows,slides:[],lintels:[],dimensions:[{horizontal:true,at:-thickness('top')-300,start:0,segments:[W]},{horizontal:false,at:-thickness('left')-300,start:0,segments:[D]}],walkStart:{position:[W/2,D*.7],target:[W/2,D*.3]},entry:null};
+ return {height,origin:[W/2,D/2],bounds:{x:minX,y:minY,w:maxX-minX,h:maxY-minY},rooms:[{id:e.roomId,name:room.name,mat:room.mat,poly:[[0,0],[W,0],[W,D],[0,D]],at:[W/2,D/2]}],walls,wallIds,doors,windows,slides,lintels,dimensions:[{horizontal:true,at:-thickness('top')-300,start:0,segments:[W]},{horizontal:false,at:-thickness('left')-300,start:0,segments:[D]}],walkStart:{position:[W/2,D*.7],target:[W/2,D*.3]},entry:null};
 }
 /** Structural comparison has one absolute tolerance (one millionth of a mm). */
 export function geometryMatches(actual,expected){

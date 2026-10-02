@@ -1,0 +1,9 @@
+{
+  "error": "AssertionError [ERR_ASSERTION]: Living sofa outside usable floor\n    at auditHouse (file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/helpers/audit-house.js:25:262)\n    at file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-complete-houses.mjs:42:36",
+  "checks": [
+    "source A1 PDF rendered and calibrated using dimensioned exterior corners",
+    "every source room, closet, laundry and circulation zone created through room forms",
+    "all scheduled swing/sliding/bifold doors and windows created through opening forms"
+  ],
+  "errors": []
+}

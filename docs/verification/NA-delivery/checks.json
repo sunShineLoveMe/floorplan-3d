@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-02T07:52:47.858147+00:00",
+  "branch": "feat/ui-refactor",
+  "scope": "Fresh pre-commit checks; prior browser acceptance is retained rather than rerun",
+  "checks": {
+    "unit": {
+      "passed": true,
+      "tests": 78,
+      "failures": 0,
+      "log": "unit-tests.log"
+    },
+    "eslint": {
+      "passed": true,
+      "exitCode": 0,
+      "log": "eslint.log"
+    },
+    "build": {
+      "passed": true,
+      "exitCode": 0,
+      "log": "build.log",
+      "version": "58cd1dedbb49c3ad"
+    },
+    "diff": {
+      "passed": true,
+      "exitCode": 0,
+      "log": "diff.log"
+    },
+    "corpus": {
+      "passed": true,
+      "originals": 18,
+      "sha256AndMetadataMatched": true,
+      "galleryMatchesBrowserReviewedArtifact": true,
+      "priorApplicationReadPassed": 18,
+      "newFullModelsAccepted": 0
+    },
+    "priorAcceptanceArtifacts": {
+      "passed": true,
+      "hashesMatched": 42,
+      "fullModels": 4,
+      "currentBuildReviewChecks": 6,
+      "currentBuildRegressionChecks": 12,
+      "wallSegmentBrowserChecks": 15
+    },
+    "stagedDiff": {
+      "passed": true,
+      "exitCode": 0,
+      "derivedTextTrailingWhitespaceNormalized": true,
+      "originalPDFImageBytesUnchanged": true
+    },
+    "qaPythonSyntax": {
+      "passed": true
+    }
+  }
+}

@@ -227,3 +227,6 @@ input[aria-invalid=true]+.length-feedback{color:#b8412c}
 .lib-grid .item small{white-space:normal;overflow-wrap:anywhere;font-size:10px}
 .form label{min-width:0}
 .stats .big{overflow-wrap:anywhere;font-size:20px}
+.room-dialog [data-form-kind="wall"] > .actions{position:static;padding:8px 0}
+.room-dialog [data-segment]{min-width:0;margin:0 0 12px;padding:12px;border:1px solid var(--line);border-radius:6px}
+.room-dialog .form label[hidden]{display:none}

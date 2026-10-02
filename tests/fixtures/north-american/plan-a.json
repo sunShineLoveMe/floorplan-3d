@@ -1,0 +1,655 @@
+{
+ "id": "plan-a",
+ "name": "San Diego Plan A - complete floor layout",
+ "sourcePage": 5,
+ "originPdf": [
+  179.88,
+  129.63
+ ],
+ "pdfPointsPerFoot": 13.5,
+ "footprint": [
+  [
+   0,
+   0
+  ],
+  [
+   40,
+   0
+  ],
+  [
+   40,
+   30
+  ],
+  [
+   0,
+   30
+  ]
+ ],
+ "grossSqFt": 1200,
+ "notes": [
+  "Bounding rectangles include bedroom door approaches; corner notches exclude closets and their wall bands.",
+  "Window heads at 6 ft 8 in are editable modelling values; A1 specifies window width/height."
+ ],
+ "rooms": [
+  {
+   "id": "bed1",
+   "name": "Bedroom 1",
+   "x": 0.5,
+   "y": 0.5,
+   "width": 10.666666666666666,
+   "depth": 12.333333333333334,
+   "walls": [
+    6,
+    4,
+    0,
+    6
+   ],
+   "segments": {
+    "left": [
+     [
+      0,
+      12,
+      8
+     ]
+    ]
+   },
+   "notch": {
+    "corner": "bottom-left",
+    "width": 7.833333333333333,
+    "depth": 0.3333333333333333
+   }
+  },
+  {
+   "id": "bath",
+   "name": "Bath",
+   "x": 11.5,
+   "y": 0.5,
+   "width": 6,
+   "depth": 9.5,
+   "walls": [
+    6,
+    6,
+    4,
+    4
+   ]
+  },
+  {
+   "id": "kitchen",
+   "name": "Kitchen",
+   "x": 18,
+   "y": 0.5,
+   "width": 10,
+   "depth": 9.5,
+   "walls": [
+    6,
+    4,
+    4,
+    6
+   ],
+   "segments": {
+    "right": [
+     [
+      0,
+      9.5,
+      4
+     ]
+    ],
+    "bottom": [
+     [
+      6.5,
+      3.5,
+      8
+     ]
+    ]
+   }
+  },
+  {
+   "id": "dining",
+   "name": "Dining",
+   "x": 28.333333333333332,
+   "y": 0.5,
+   "width": 11.166666666666666,
+   "depth": 9.5,
+   "walls": [
+    6,
+    6,
+    4,
+    4
+   ],
+   "segments": {
+    "left": [
+     [
+      0,
+      9.5,
+      4
+     ]
+    ],
+    "bottom": [
+     [
+      0,
+      2.1666666666666665,
+      8
+     ]
+    ]
+   }
+  },
+  {
+   "id": "closet1",
+   "name": "Bedroom 1 closet",
+   "x": 0.5,
+   "y": 12.833333333333334,
+   "width": 7.5,
+   "depth": 2,
+   "walls": [
+    4,
+    4,
+    4,
+    6
+   ]
+  },
+  {
+   "id": "closet2",
+   "name": "Bedroom 2 closet",
+   "x": 0.5,
+   "y": 15.166666666666666,
+   "width": 7.5,
+   "depth": 2,
+   "walls": [
+    4,
+    4,
+    4,
+    6
+   ]
+  },
+  {
+   "id": "bed2",
+   "name": "Bedroom 2",
+   "x": 0.5,
+   "y": 17.166666666666668,
+   "width": 10.666666666666666,
+   "depth": 12.333333333333334,
+   "walls": [
+    0,
+    4,
+    6,
+    6
+   ],
+   "segments": {
+    "left": [
+     [
+      0.3333333333333333,
+      12,
+      8
+     ]
+    ]
+   },
+   "notch": {
+    "corner": "top-left",
+    "width": 7.833333333333333,
+    "depth": 0.3333333333333333
+   }
+  },
+  {
+   "id": "laundry",
+   "name": "Laundry",
+   "x": 16.833333333333332,
+   "y": 10.333333333333334,
+   "width": 3.3333333333333335,
+   "depth": 3.3333333333333335,
+   "walls": [
+    4,
+    4,
+    4,
+    4
+   ]
+  },
+  {
+   "id": "hallnorth",
+   "name": "Hall north",
+   "x": 11.5,
+   "y": 10.333333333333334,
+   "width": 5,
+   "depth": 2.5,
+   "walls": [
+    0,
+    4,
+    0,
+    4
+   ]
+  },
+  {
+   "id": "hallmid",
+   "name": "Hall middle",
+   "x": 8.333333333333334,
+   "y": 12.833333333333334,
+   "width": 8.166666666666666,
+   "depth": 0.8333333333333334,
+   "walls": [
+    0,
+    4,
+    0,
+    4
+   ]
+  },
+  {
+   "id": "halle",
+   "name": "Hall east",
+   "x": 20.5,
+   "y": 10.333333333333334,
+   "width": 2,
+   "depth": 3.6666666666666665,
+   "walls": [
+    0,
+    0,
+    0,
+    4
+   ]
+  },
+  {
+   "id": "hall",
+   "name": "Hall south",
+   "x": 8.333333333333334,
+   "y": 14,
+   "width": 14.166666666666666,
+   "depth": 3.1666666666666665,
+   "walls": [
+    4,
+    0,
+    4,
+    4
+   ],
+   "segments": {
+    "top": [
+     [
+      8.166666666666666,
+      4,
+      8
+     ]
+    ],
+    "bottom": [
+     [
+      3.1666666666666665,
+      11,
+      8
+     ]
+    ]
+   }
+  },
+  {
+   "id": "closet3",
+   "name": "Bedroom 3 closet",
+   "x": 15.166666666666666,
+   "y": 17.5,
+   "width": 7,
+   "depth": 2,
+   "walls": [
+    4,
+    4,
+    4,
+    4
+   ]
+  },
+  {
+   "id": "bed3",
+   "name": "Bedroom 3",
+   "x": 11.5,
+   "y": 17.5,
+   "width": 10.666666666666666,
+   "depth": 12,
+   "walls": [
+    4,
+    4,
+    6,
+    4
+   ],
+   "segments": {
+    "top": [
+     [
+      0,
+      3.1666666666666665,
+      8
+     ]
+    ],
+    "right": [
+     [
+      2.3333333333333335,
+      9.666666666666666,
+      8
+     ]
+    ]
+   },
+   "notch": {
+    "corner": "top-right",
+    "width": 7.5,
+    "depth": 2.3333333333333335
+   }
+  },
+  {
+   "id": "living",
+   "name": "Living / entry",
+   "x": 22.5,
+   "y": 10.333333333333334,
+   "width": 17,
+   "depth": 19.166666666666668,
+   "walls": [
+    4,
+    6,
+    6,
+    4
+   ],
+   "segments": {
+    "top": [
+     [
+      2,
+      6,
+      8
+     ]
+    ],
+    "left": [
+     [
+      6.833333333333333,
+      12,
+      8
+     ]
+    ]
+   }
+  }
+ ],
+ "openings": [
+  {
+   "id": "entry",
+   "room": "living",
+   "side": "right",
+   "type": "door",
+   "offset": 0.6666666666666666,
+   "width": 3,
+   "hinge": "end",
+   "swing": "inward"
+  },
+  {
+   "id": "bed1-door",
+   "room": "bed1",
+   "side": "right",
+   "type": "door",
+   "offset": 9.5,
+   "width": 2.6666666666666665,
+   "hinge": "end",
+   "swing": "inward"
+  },
+  {
+   "id": "bed2-door",
+   "room": "bed2",
+   "side": "right",
+   "type": "door",
+   "offset": 0.3333333333333333,
+   "width": 2.6666666666666665,
+   "hinge": "start",
+   "swing": "inward"
+  },
+  {
+   "id": "bed3-door",
+   "room": "bed3",
+   "side": "left",
+   "type": "door",
+   "offset": 0.16666666666666666,
+   "width": 3,
+   "hinge": "start",
+   "swing": "inward",
+   "pairedWith": "bed2-door"
+  },
+  {
+   "id": "bath-door",
+   "room": "bath",
+   "side": "left",
+   "type": "door",
+   "offset": 6.333333333333333,
+   "width": 3,
+   "hinge": "end",
+   "swing": "inward"
+  },
+  {
+   "id": "laundry-door",
+   "room": "laundry",
+   "side": "left",
+   "type": "door",
+   "offset": 0.16666666666666666,
+   "width": 3,
+   "mode": "bifold",
+   "swing": "outward"
+  },
+  {
+   "id": "closet1-door",
+   "room": "closet1",
+   "side": "top",
+   "type": "door",
+   "offset": 0.6666666666666666,
+   "width": 6,
+   "mode": "sliding"
+  },
+  {
+   "id": "closet2-door",
+   "room": "closet2",
+   "side": "bottom",
+   "type": "door",
+   "offset": 0.6666666666666666,
+   "width": 6,
+   "mode": "sliding"
+  },
+  {
+   "id": "closet3-door",
+   "room": "closet3",
+   "side": "bottom",
+   "type": "door",
+   "offset": 0.5,
+   "width": 6,
+   "mode": "sliding"
+  },
+  {
+   "id": "bath-top",
+   "room": "bath",
+   "side": "top",
+   "type": "window",
+   "offset": 1.5,
+   "width": 3,
+   "height": 2
+  },
+  {
+   "id": "dining-top",
+   "room": "dining",
+   "side": "top",
+   "type": "window",
+   "offset": 3.6666666666666665,
+   "width": 4,
+   "height": 4
+  },
+  {
+   "id": "dining-right",
+   "room": "dining",
+   "side": "right",
+   "type": "window",
+   "offset": 3.5,
+   "width": 4,
+   "height": 4
+  },
+  {
+   "id": "bed1-left",
+   "room": "bed1",
+   "side": "left",
+   "type": "window",
+   "offset": 3.5,
+   "width": 6,
+   "height": 4
+  },
+  {
+   "id": "bed2-left",
+   "room": "bed2",
+   "side": "left",
+   "type": "window",
+   "offset": 3.8333333333333335,
+   "width": 6,
+   "height": 4
+  },
+  {
+   "id": "bed3-bottom",
+   "room": "bed3",
+   "side": "bottom",
+   "type": "window",
+   "offset": 2.3333333333333335,
+   "width": 6,
+   "height": 4
+  },
+  {
+   "id": "living-bottom",
+   "room": "living",
+   "side": "bottom",
+   "type": "window",
+   "offset": 7.5,
+   "width": 6,
+   "height": 4
+  },
+  {
+   "id": "living-right",
+   "room": "living",
+   "side": "right",
+   "type": "window",
+   "offset": 9.666666666666666,
+   "width": 4,
+   "height": 4
+  }
+ ],
+ "furniture": [
+  {
+   "type": "shower",
+   "name": "Bath shower 72x30 in",
+   "x": 14.5,
+   "y": 1.75,
+   "w": 6,
+   "d": 2.5
+  },
+  {
+   "type": "vanity",
+   "name": "Bath vanity",
+   "x": 16.75,
+   "y": 5,
+   "w": 1.5,
+   "d": 2.5
+  },
+  {
+   "type": "toilet",
+   "name": "Bath toilet",
+   "x": 16.1,
+   "y": 8.4,
+   "w": 1.5,
+   "d": 2.5
+  },
+  {
+   "type": "washer",
+   "name": "Stacked washer dryer",
+   "x": 18.6,
+   "y": 12,
+   "w": 2.5,
+   "d": 2.5
+  },
+  {
+   "type": "fridge",
+   "name": "Kitchen refrigerator",
+   "x": 19.25,
+   "y": 6.25,
+   "w": 2.5,
+   "d": 3
+  },
+  {
+   "type": "stove",
+   "name": "Kitchen stove",
+   "x": 22.1,
+   "y": 1.5,
+   "w": 2.5,
+   "d": 2
+  },
+  {
+   "type": "counter",
+   "name": "Kitchen east counter",
+   "x": 26.75,
+   "y": 5.25,
+   "w": 2.5,
+   "d": 9.5
+  },
+  {
+   "type": "ksink",
+   "name": "Kitchen sink",
+   "x": 26.75,
+   "y": 5.25,
+   "w": 2,
+   "d": 2.5
+  },
+  {
+   "type": "wardrobe",
+   "name": "Closet 1 storage",
+   "x": 4.25,
+   "y": 13.8,
+   "w": 6.5,
+   "d": 1.5
+  },
+  {
+   "type": "wardrobe",
+   "name": "Closet 2 storage",
+   "x": 4.25,
+   "y": 16.2,
+   "w": 6.5,
+   "d": 1.5
+  },
+  {
+   "type": "wardrobe",
+   "name": "Closet 3 storage",
+   "x": 18.6,
+   "y": 18.5,
+   "w": 6,
+   "d": 1.5
+  },
+  {
+   "type": "bed",
+   "name": "Queen in Bedroom 1",
+   "x": 5,
+   "y": 6,
+   "w": 5,
+   "d": 6.666666666666667,
+   "purpose": "acceptance-furniture"
+  },
+  {
+   "type": "bed",
+   "name": "Queen in Bedroom 2",
+   "x": 5,
+   "y": 23,
+   "w": 5,
+   "d": 6.666666666666667,
+   "purpose": "acceptance-furniture"
+  },
+  {
+   "type": "bed",
+   "name": "Queen in Bedroom 3",
+   "x": 17.1,
+   "y": 25.5,
+   "w": 5,
+   "d": 6.666666666666667,
+   "purpose": "acceptance-furniture"
+  },
+  {
+   "type": "sofa",
+   "name": "Living sofa",
+   "x": 37.8,
+   "y": 24,
+   "w": 3,
+   "d": 9,
+   "purpose": "acceptance-furniture"
+  },
+  {
+   "type": "table",
+   "name": "Dining table",
+   "x": 34,
+   "y": 5.5,
+   "w": 5,
+   "d": 3,
+   "purpose": "acceptance-furniture"
+  }
+ ]
+}

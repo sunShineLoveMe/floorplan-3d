@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "build": "58cd1dedbb49c3ad",
+  "checks": [
+    "plan-b: full source JSON read, independent area/connectivity/fixture checks and clean source overlay/3D review",
+    "A: wrong opposite leaf rejected atomically; deleting its partner clears association; undo restores both",
+    "plan-a: full source JSON read, independent area/connectivity/fixture checks and clean source overlay/3D review",
+    "plan-c: full source JSON read, independent area/connectivity/fixture checks and clean source overlay/3D review",
+    "F: oversized notch rejected atomically; valid notch area edit and exact undo/redo passed",
+    "plan-f: full source JSON read, independent area/connectivity/fixture checks and clean source overlay/3D review"
+  ],
+  "errors": [],
+  "timestamp": "2026-10-02T06:36:00.258Z"
+}

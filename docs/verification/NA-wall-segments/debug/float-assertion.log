@@ -1,0 +1,44 @@
+PASS partial shared wall: both sides edited, 4 ft passage open in data and rendered 2D; floor bridge retained
+PASS full-height segment accepts a door; door in the passage is rejected atomically
+PASS overlapping segments and lowering a segment containing a door preserve project
+PASS restore whole wall and undo/redo recover exact partial geometry
+PASS room edits retain custom wall segments
+PASS partial walls: JSON and 2D PNG downloaded
+PASS Plan B dining/kitchen: 9 ft 6 in shared pony wall at 4 ft; taller neighboring wall cannot be hidden; 2D low-wall style
+PASS pony wall height undo/redo preserves exact geometry
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ 2743.2000000000003
+- 2743.2
+        ^
+
+    at file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-wall-segments.mjs:48:111 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 2743.2000000000003,
+  expected: 2743.2,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ 2743.2000000000003
+- 2743.2
+        ^
+
+    at file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-wall-segments.mjs:48:111 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 2743.2000000000003,
+  expected: 2743.2,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.22.3

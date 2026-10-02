@@ -1,0 +1,53 @@
+{
+  "id": "cmu-fairfax-two-bedroom",
+  "title": "CMU Fairfax：三人两卧公寓",
+  "provider": "Carnegie Mellon University",
+  "sourcePage": "https://www.cmu.edu/housing/our-communities/residences/fairfax.html",
+  "downloadUrl": "https://www.cmu.edu/housing/our-communities/residences/floor-plans/fairfax-apartments/faf-2br-sample-layout.pdf",
+  "country": "US",
+  "scenario": "student-housing",
+  "tags": [
+    "two-bedroom",
+    "small-bedroom",
+    "shared-housing",
+    "pdf",
+    "imperial",
+    "raster-pdf",
+    "approximate-room-dimensions"
+  ],
+  "original": "originals/cmu-fairfax-two-bedroom/original.pdf",
+  "previewPages": [
+    1
+  ],
+  "dimensionStatus": "room-dimensions-only",
+  "acceptanceStatus": "collected-not-accepted",
+  "rights": "Original source copyright retained; no open redistribution license inferred",
+  "resolvedDownloadUrl": "https://www.cmu.edu/housing/our-communities/residences/floor-plans/fairfax-apartments/faf-2br-sample-layout.pdf",
+  "contentType": "application/pdf",
+  "retrievedAt": "2026-10-02T07:27:35.146613+00:00",
+  "sha256": "bdef8e9000ff1a9a0f857aa584f0a7fdfa8e095f4a36637a943301530bb60e76",
+  "bytes": 4847347,
+  "pageCount": 1,
+  "preview": "previews/cmu-fairfax-two-bedroom/page-1.png",
+  "previewDetails": [
+    {
+      "path": "previews/cmu-fairfax-two-bedroom/page-1.png",
+      "page": 1,
+      "rotation": 0,
+      "pageSizePt": [
+        1224.0,
+        792.0
+      ],
+      "textCharacters": 5,
+      "embeddedImages": 1
+    }
+  ],
+  "inspection": "file-integrity-and-render-checked",
+  "reviewNotes": "8'6\" 小卧室；柱子、门扇与衣柜占地",
+  "sourceVisualReview": "selected-page-inspected",
+  "calibrationPolicy": "use-readable-labelled-length-as-approximate-test-reference; confirm measured length for actual furniture decisions",
+  "unitsInSource": [
+    "ft",
+    "in"
+  ]
+}

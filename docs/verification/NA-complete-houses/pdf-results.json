@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "files": [
+    {
+      "plan": "plan-b",
+      "pages": 1,
+      "paper": "A3 landscape",
+      "widthPt": 1191.1199951171875,
+      "heightPt": 841.9199829101562,
+      "rulerLengthPt": 283.5,
+      "sha256": "1ad765e57b9775837f58721a3fc49aac9c353c071c8da3ce3c80ce27e3e9024f",
+      "passed": true
+    },
+    {
+      "plan": "plan-a",
+      "pages": 1,
+      "paper": "A3 landscape",
+      "widthPt": 1191.1199951171875,
+      "heightPt": 841.9199829101562,
+      "rulerLengthPt": 283.5,
+      "sha256": "576dda8cb31accbbda0ebd9b7bf3fdcff104dce2f2e2144a0d96798d573639ce",
+      "passed": true
+    },
+    {
+      "plan": "plan-c",
+      "pages": 1,
+      "paper": "A3 landscape",
+      "widthPt": 1191.1199951171875,
+      "heightPt": 841.9199829101562,
+      "rulerLengthPt": 283.5,
+      "sha256": "6d4abaf82001757d09975483e9b4ae34d9079800524671437a41dba35edcc30a",
+      "passed": true
+    },
+    {
+      "plan": "plan-f",
+      "pages": 1,
+      "paper": "A3 landscape",
+      "widthPt": 1191.1199951171875,
+      "heightPt": 841.9199829101562,
+      "rulerLengthPt": 283.5,
+      "sha256": "2514c6cf21956088b22777a75df0e1de943fbe3112aca53768cce13c6202e806",
+      "passed": true
+    }
+  ],
+  "physicalPrinterTested": false
+}

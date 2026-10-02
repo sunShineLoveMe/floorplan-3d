@@ -8,7 +8,7 @@
 
 截至 **2026-10-02**，T01 / T01.1 已完成，**T02 / T03 已在当前工作区完成**：可输入矩形房间净尺寸、添加和编辑门窗、摆家具、同步查看 2D/3D，并保存为可继续编辑的 v2 项目；兼容读取 v1 和原无版本旧文件。支持严格英尺/英寸输入、项目单位切换及全站尺寸显示。验证与未测范围见 [T03 验收记录](docs/T03-verification.md)。
 
-当前分支为 `feat/ui-refactor`，NA-001～012 及后续 P0 两批修复已完成，提交与远程同步状态以 Git 为准。新用户默认 English / Feet & inches；支持 PDF/图片参考底图标定、单层矩形多房间与共享墙门窗、门扇冲突提示、项目化导出及打印。新增每侧墙厚与开放边界，公开住宅设计图的简化手工建模见 [P0 真实图纸验收](docs/NA-real-house-verification-2026-10-02.md)；前轮逐项结果见 [北美问题修复验收](docs/NA-fixes-verification-2026-10-02.md)。未合并、未部署。
+当前分支为 `feat/ui-refactor`，NA-001～012 及后续 P0 两批修复已完成，提交与远程同步状态以 Git 为准。新用户默认 English / Feet & inches；支持 PDF/图片参考底图标定、单层矩形多房间与共享墙门窗、门扇冲突提示、项目化导出及打印。已将前两批修复推送至 `25faa07`；本批新增局部墙段与半高墙，见 [墙段验收](docs/NA-wall-segments-verification-2026-10-02.md)。支持每侧墙厚与开放边界，公开住宅设计图的简化手工建模见 [P0 真实图纸验收](docs/NA-real-house-verification-2026-10-02.md)；前轮逐项结果见 [北美问题修复验收](docs/NA-fixes-verification-2026-10-02.md)。未合并、未部署。
 
 本轮前端 UI 计划的实现项（UI-000～210）已完成，内部任务走查与回归通过；外部首次用户试用尚未执行。布局、草稿保护、搜索、视图设置与验收边界见 [UI 最终交付](docs/UI-final-delivery.md)。
 
@@ -30,6 +30,9 @@ npm start
 | 文档 | 内容 |
 | --- | --- |
 | [UI 最终交付](docs/UI-final-delivery.md) | UI-060～210 结果、43 组浏览器检查、内部走查与未执行项 |
+| [P0 墙段与半高墙验收](docs/NA-wall-segments-verification-2026-10-02.md) | 局部通道、共享墙合并、半高墙、逐项复测与后续任务 |
+| [户型原始图纸测试素材库](tests/fixtures/floorplans/README.md) | 18 份原始 PDF/JPG/PNG、可搜索预览、实际场景来源及后续深入测试顺序 |
+| [四套完整户型验收](docs/NA-complete-houses-verification-2026-10-02.md) | B 完整验收及 A/C/F 三图复测、可回导模型和真实导出 |
 | [P0 真实图纸验收](docs/NA-real-house-verification-2026-10-02.md) | 公开住宅 PDF、开放空间与墙厚修复、简化模型和剩余能力缺口 |
 | [北美问题修复验收](docs/NA-fixes-verification-2026-10-02.md) | 12 项修复、逐项复测、实际 JSON/PNG/PDF 与未测范围 |
 | [北美用户全流程审查与问题清单](docs/NA-user-flow-audit-2026-10-01.md) | 12 项问题的 P0/P1/P2 优先级、复现步骤、影响、验收条件与实操截图 |

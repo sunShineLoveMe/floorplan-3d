@@ -1,0 +1,93 @@
+PASS partial shared wall: both sides edited, 4 ft passage open in data and rendered 2D; floor bridge retained
+PASS full-height segment accepts a door; door in the passage is rejected atomically
+PASS overlapping segments and lowering a segment containing a door preserve project
+PASS restore whole wall and undo/redo recover exact partial geometry
+PASS room edits retain custom wall segments
+PASS partial walls: JSON and 2D PNG downloaded
+PASS Plan B dining/kitchen: 9 ft 6 in shared pony wall at 4 ft; taller neighboring wall cannot be hidden; 2D low-wall style
+PASS pony wall height undo/redo preserves exact geometry
+PASS ceiling edit follows full-height segments and retains fixed pony wall heights
+PASS pony walls, reference PDF, rooms, furniture and door/window survive refresh and JSON round trip
+PASS 3D full-height scene initializes and PNG downloads with pony walls
+locator.click: Timeout 15000ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-cut="1.2"]')[22m
+[2m    - locator resolved to <button data-zh="剖切墙" data-cut="1.2" class="btn chip" aria-pressed="false" data-en="Cutaway display">Cutaway display</button>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not visible[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not visible[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    27 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is not visible[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+
+    at /Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-wall-segments.mjs:51:41 {
+  log: [
+    `  - waiting for locator('[data-cut="1.2"]')`,
+    '    - locator resolved to <button data-zh="剖切墙" data-cut="1.2" class="btn chip" aria-pressed="false" data-en="Cutaway display">Cutaway display</button>',
+    '  - attempting click action',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is not visible',
+    '    - retrying click action',
+    '    - waiting 20ms',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is not visible',
+    '    - retrying click action',
+    '      - waiting 100ms',
+    '    27 × waiting for element to be visible, enabled and stable',
+    '       - element is not visible',
+    '     - retrying click action',
+    '       - waiting 500ms'
+  ],
+  name: 'TimeoutError'
+}
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+locator.click: Timeout 15000ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-cut="1.2"]')[22m
+[2m    - locator resolved to <button data-zh="剖切墙" data-cut="1.2" class="btn chip" aria-pressed="false" data-en="Cutaway display">Cutaway display</button>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not visible[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not visible[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    27 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is not visible[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+
+    at /Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-wall-segments.mjs:51:41 {
+  log: [
+    `  - waiting for locator('[data-cut="1.2"]')`,
+    '    - locator resolved to <button data-zh="剖切墙" data-cut="1.2" class="btn chip" aria-pressed="false" data-en="Cutaway display">Cutaway display</button>',
+    '  - attempting click action',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is not visible',
+    '    - retrying click action',
+    '    - waiting 20ms',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is not visible',
+    '    - retrying click action',
+    '      - waiting 100ms',
+    '    27 × waiting for element to be visible, enabled and stable',
+    '       - element is not visible',
+    '     - retrying click action',
+    '       - waiting 500ms'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v22.22.3

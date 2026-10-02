@@ -100,7 +100,7 @@ T02/旧回归脚本用 `TEST_OUT=docs/verification/T03/<suite>` 保存本轮证�
 
 ## NA-001～012 修复验证
 
-当前 `npm test` 为 48 项，`node --check` 与配置内 ESLint 通过。逐项浏览器场景保留在 `tests/browser-na-fixes.mjs` 和 `tests/na-fixes/`。
+当前 `npm test` 为 78 项，`node --check` 与配置内 ESLint 通过。逐项浏览器场景保留在 `tests/browser-na-fixes.mjs` 和 `tests/na-fixes/`。
 
 ```bash
 npm run build
@@ -125,3 +125,45 @@ PLAYWRIGHT_MODULE=/absolute/path/to/node_modules/playwright TEST_URL=http://127.
 `tests/browser-real-house.mjs` 使用 `docs/verification/NA-real-house/san-diego-plan-b.pdf`，下载来源和摘要见同目录 `source.json`。测试通过实际 DOM 表单建立简化九区模型，不向产品增加测试接口。`wallWidths` 是 House 各矩形空间的可选字段，键为 `top/right/bottom/left`，省略侧默认 120 mm；范围 0–1000 mm，0 为整侧开放，且不能拥有洞口。旧单矩形仍采用原固定墙厚数据；编辑为非默认墙厚时转为 House，ID、家具、底图等保留。详细范围见 [验收记录](NA-real-house-verification-2026-10-02.md)。
 
 本地服务初始化回归：`PLAYWRIGHT_MODULE=/absolute/path/to/node_modules/playwright TEST_URL=http://127.0.0.1:8095/ node tests/browser-local-reload.mjs`，连续 100 次导航并检查请求失败。服务器日志建议重定向文件，避免终端输出缓冲影响长批次。
+
+
+### 局部墙段与半高墙
+
+`House.rooms[].wallSegments` 为可选对象，键同四侧。省略某侧表示该侧按 `wallWidths` 生成整面全高墙；空数组表示本侧无墙段；每段为 `{offset, length, height}`，均为浮点毫米。段长至少 1 mm，高度 100 mm 至本层净高，不能越界或重叠，每侧最多 20 段、每层总计 300 段。门窗只能位于一个连续全高墙段内并距两端至少 1 mm。共享边界取两侧物理墙体的并集，重叠处取较高墙；不自动改写邻室。
+
+仅自定义墙段项目生成与 `walls` 一一对应的 `geometry.wallHeights`，以及共享通道的 `geometry.passages` 地面连接矩形；无自定义墙段的旧项目几何保持原结构。导入时仍重新生成并逐字段验证，不能通过修改几何绕过源参数。2D 使用既有 `low` 墙样式，3D 使用毫米高度并受剖切上限约束，原模板 `low` 默认 1 m 保持兼容。
+
+```bash
+PLAYWRIGHT_MODULE=/absolute/path/to/node_modules/playwright TEST_URL=http://127.0.0.1:8095/ node tests/browser-wall-segments.mjs
+```
+
+实际表单、公开住宅底图续建、JSON/PNG 和窄屏结果见 [墙段验收](NA-wall-segments-verification-2026-10-02.md)。
+
+
+### 完整地面布局数据与四图验收
+
+- `House.floorSlab?: boolean`：新矩形转 House 时为 true。生成互不重叠的 `geometry.floorSlabs`，覆盖矩形空间的外包墙带并集；旧 House 省略该字段时不新增几何字段，保持兼容。
+- `House.rooms[].notch?: {corner, width, depth}`：corner 为 `top-left/top-right/bottom-left/bottom-right`，宽深使用毫米，须留至少 1 mm 的连通地面。只扣净地面，不自动添加内凹墙；使用已有墙段与独立衣柜 / 洗衣空间表达内凹边界。重叠净地面及侵入地面的墙体拒绝提交。
+- 门对象的 `mode` 可省略（旧平开门），或为 `swing/sliding/bifold/passage`。仅 swing 保留 hinge；swing/bifold 保留 swing；其他模式拒绝铰链与开启方向。推拉 / 折叠 / 开放模式允许 offset 0 及贴合父墙端点，普通平开门 / 窗保留 1 mm 几何间隔。
+- `pairedWith?: openingId` 仅为平开门使用。House 需引用另一空间中的平开门；生成时须确实共洞口且朝相反方向。删除门或房间会清理关联，普通重复洞口继续拒绝。
+- Sliding / Bi-fold 生成到 `geometry.slides`，新数据包含 style，折叠数据另含 swing；Open passage 生成到 `geometry.lintels`，含 passage 标记。旧滑动门几何省略 style 时仍使用原玻璃模型；新推拉门采用实心门板。导入仍按源参数重建核对，不能直接改几何绕过验证。
+- 单层完整证据位于 `docs/verification/NA-complete-houses`；独立的英尺源清单位于 `tests/fixtures/north-american`。辅助核算不依赖生成器的面积值：核对原图外轮廓、多边形分区、门窗清单、3 in 地面连通、家具及平开/静态折叠占地。
+
+```bash
+npm test
+npm run build
+PLAYWRIGHT_MODULE=/absolute/path/to/node_modules/playwright TEST_URL=http://127.0.0.1:8095/ node tests/browser-complete-houses.mjs plan-b
+# 依次用 plan-a、plan-c、plan-f 复测；每套从真实 PDF 与表单建立模型。
+PLAYWRIGHT_MODULE=/absolute/path/to/node_modules/playwright TEST_URL=http://127.0.0.1:8095/ node tests/browser-house-review.mjs
+```
+
+打印文件另用可选的 QA 环境验证，无需向产品添加依赖：安装 PyMuPDF 后运行 `python tests/verify-house-pdfs.py`，检查单页 A3、100 mm 比例尺并生成 PDF 页渲染。仍须人工查看渲染文件；该检查不代替实体打印机量测。
+
+同一套脚本复测应保存最终构建号，失败文件按早期运行保留，不能用旧构建的 passed 文件替代当前结果。完整证据矩阵见 [四套验收](NA-complete-houses-verification-2026-10-02.md)。
+
+
+### 可重复使用的原图素材库
+
+`tests/fixtures/floorplans` 保存四套官方完整 PDF 和 14 份新增场景资料。格式、页码、来源、SHA-256 和当前验收状态以 `manifest.json` 为准；预览目录与后续深测顺序见 [素材库说明](../tests/fixtures/floorplans/README.md)。
+
+可选 Python QA 脚本 `scripts/floorplan-corpus.py` 使用 PyMuPDF；默认核对本地原件，`--download-missing --render` 仅补充缺失原件并生成选定页预览。`tests/browser-floorplan-corpus.mjs` 用实际菜单和图纸导入界面读取原文件，检查页码、渲染、取消后项目不变及目录筛选；不做伪造尺寸标定，不等同于完整模型验收。未新增产品运行依赖。

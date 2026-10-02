@@ -1,0 +1,48 @@
+{
+  "id": "zag-b4-image",
+  "title": "ZAG B4：一卧租赁 PNG",
+  "provider": "Aragon",
+  "sourcePage": "https://zag.aragon.ca/floor-plans/",
+  "downloadUrl": "https://zag.aragon.ca/wp-content/uploads/2022/06/ZAG-Floorplans-B4.png",
+  "country": "US",
+  "scenario": "rental-apartment",
+  "tags": [
+    "one-bedroom",
+    "png",
+    "balcony",
+    "marketing",
+    "missing-full-dimensions",
+    "angled-walls"
+  ],
+  "original": "originals/zag-b4-image/original.png",
+  "previewPages": [
+    1
+  ],
+  "dimensionStatus": "no-linear-dimensions",
+  "acceptanceStatus": "collected-not-accepted",
+  "rights": "Original source copyright retained; no open redistribution license inferred",
+  "resolvedDownloadUrl": "https://zag.aragon.ca/wp-content/uploads/2022/06/ZAG-Floorplans-B4.png",
+  "contentType": "image/png",
+  "retrievedAt": "2026-10-02T07:27:39.112227+00:00",
+  "sha256": "6f9f682391633640f5eebc5afcd8ffa3120344f38d66511de2bfdb39299bfead",
+  "bytes": 135002,
+  "pageCount": 1,
+  "imageDimensions": [
+    1910,
+    1360
+  ],
+  "preview": "originals/zag-b4-image/original.png",
+  "previewDetails": [
+    {
+      "path": "originals/zag-b4-image/original.png",
+      "format": "png"
+    }
+  ],
+  "inspection": "file-integrity-and-render-checked",
+  "reviewNotes": "斜向外墙、阳台、壁橱；完整斜墙模型超出当前能力",
+  "sourceVisualReview": "selected-page-inspected",
+  "calibrationPolicy": "require-measured-linear-reference",
+  "unitsInSource": [
+    "area-label-or-source-page-only"
+  ]
+}

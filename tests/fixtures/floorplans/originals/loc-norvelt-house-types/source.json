@@ -1,0 +1,53 @@
+{
+  "id": "loc-norvelt-house-types",
+  "title": "HABS Norvelt：历史住宅档案中的户型",
+  "provider": "Library of Congress / HABS",
+  "sourcePage": "https://tile.loc.gov/storage-services/master/pnp/habshaer/pa/pa2500/pa2599/data/pa2599data.pdf",
+  "downloadUrl": "https://tile.loc.gov/storage-services/master/pnp/habshaer/pa/pa2500/pa2599/data/pa2599data.pdf",
+  "country": "US",
+  "scenario": "historic-building-survey",
+  "tags": [
+    "scan",
+    "archival",
+    "small-diagrams",
+    "multi-page-pdf",
+    "two-levels",
+    "low-quality-scan",
+    "multiple-plans-one-page"
+  ],
+  "original": "originals/loc-norvelt-house-types/original.pdf",
+  "previewPages": [
+    18
+  ],
+  "dimensionStatus": "printed-dimensions-hard-to-read",
+  "acceptanceStatus": "collected-not-accepted",
+  "rights": "Original source copyright retained; no open redistribution license inferred",
+  "resolvedDownloadUrl": "https://tile.loc.gov/storage-services/master/pnp/habshaer/pa/pa2500/pa2599/data/pa2599data.pdf",
+  "contentType": "application/pdf",
+  "retrievedAt": "2026-10-02T07:30:12.056113+00:00",
+  "sha256": "f5518648530cf2fd2f9126886e01729b754a677608874f7dc2a2f308301f13ea",
+  "bytes": 366016,
+  "pageCount": 19,
+  "preview": "previews/loc-norvelt-house-types/page-18.png",
+  "previewDetails": [
+    {
+      "path": "previews/loc-norvelt-house-types/page-18.png",
+      "page": 18,
+      "rotation": 0,
+      "pageSizePt": [
+        590.0399780273438,
+        783.719970703125
+      ],
+      "textCharacters": 442,
+      "embeddedImages": 1
+    }
+  ],
+  "inspection": "file-integrity-and-render-checked",
+  "reviewNotes": "PDF 第 18 页（页内编号 17）；低清历史扫描，多户型多层",
+  "sourceVisualReview": "selected-page-inspected",
+  "calibrationPolicy": "use-readable-labelled-length-as-approximate-test-reference; confirm measured length for actual furniture decisions",
+  "unitsInSource": [
+    "ft",
+    "in"
+  ]
+}

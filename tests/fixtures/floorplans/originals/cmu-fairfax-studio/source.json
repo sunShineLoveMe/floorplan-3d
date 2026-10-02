@@ -1,0 +1,53 @@
+{
+  "id": "cmu-fairfax-studio",
+  "title": "CMU Fairfax：双人 Studio",
+  "provider": "Carnegie Mellon University",
+  "sourcePage": "https://www.cmu.edu/housing/our-communities/residences/fairfax.html",
+  "downloadUrl": "https://www.cmu.edu/housing/our-communities/residences/floor-plans/fairfax-apartments/faf-studio-sample-layout.pdf",
+  "country": "US",
+  "scenario": "student-housing",
+  "tags": [
+    "studio",
+    "shared-room",
+    "pdf",
+    "imperial",
+    "raster-pdf",
+    "approximate-room-dimensions",
+    "fixed-fixtures"
+  ],
+  "original": "originals/cmu-fairfax-studio/original.pdf",
+  "previewPages": [
+    1
+  ],
+  "dimensionStatus": "room-dimensions-only",
+  "acceptanceStatus": "collected-not-accepted",
+  "rights": "Original source copyright retained; no open redistribution license inferred",
+  "resolvedDownloadUrl": "https://www.cmu.edu/housing/our-communities/residences/floor-plans/fairfax-apartments/faf-studio-sample-layout.pdf",
+  "contentType": "application/pdf",
+  "retrievedAt": "2026-10-02T07:27:20.536629+00:00",
+  "sha256": "12dbc086f2368cf36784e754fecce8ca78386d33ac743afff0561804573ba293",
+  "bytes": 42688,
+  "pageCount": 1,
+  "preview": "previews/cmu-fairfax-studio/page-1.png",
+  "previewDetails": [
+    {
+      "path": "previews/cmu-fairfax-studio/page-1.png",
+      "page": 1,
+      "rotation": 0,
+      "pageSizePt": [
+        450.0,
+        566.0
+      ],
+      "textCharacters": 0,
+      "embeddedImages": 1
+    }
+  ],
+  "inspection": "file-integrity-and-render-checked",
+  "reviewNotes": "位图 PDF，部分英尺标注；柱子和墙带需核对",
+  "sourceVisualReview": "selected-page-inspected",
+  "calibrationPolicy": "use-readable-labelled-length-as-approximate-test-reference; confirm measured length for actual furniture decisions",
+  "unitsInSource": [
+    "ft",
+    "in"
+  ]
+}

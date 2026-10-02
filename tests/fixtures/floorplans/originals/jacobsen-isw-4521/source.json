@@ -1,0 +1,53 @@
+{
+  "id": "jacobsen-isw-4521",
+  "title": "Jacobsen ISW-4521：狭长单宽预制住宅",
+  "provider": "Jacobsen Homes",
+  "sourcePage": "https://www.jachomes.com/manufactured-modular-homes/single-wide/two-bedroom/one-and-a-half-bath/isw-4521/",
+  "downloadUrl": "https://www.jachomes.com/wp-content/uploads/2024/07/ISW-4521-Model.pdf",
+  "country": "US",
+  "scenario": "manufactured-home",
+  "tags": [
+    "long-narrow",
+    "two-bedroom",
+    "imperial",
+    "pdf",
+    "marketing",
+    "raster-pdf",
+    "approximate-dimensions"
+  ],
+  "original": "originals/jacobsen-isw-4521/original.pdf",
+  "previewPages": [
+    1
+  ],
+  "dimensionStatus": "overall-and-room-dimensions",
+  "acceptanceStatus": "collected-not-accepted",
+  "rights": "Original source copyright retained; no open redistribution license inferred",
+  "resolvedDownloadUrl": "https://www.jachomes.com/wp-content/uploads/2024/07/ISW-4521-Model.pdf",
+  "contentType": "application/pdf",
+  "retrievedAt": "2026-10-02T07:29:37.256767+00:00",
+  "sha256": "420bb3c5a38f37a8b41a2206f3d2bdc3c07e6248544cc70bcb641a62d8bf24cb",
+  "bytes": 1440245,
+  "pageCount": 1,
+  "preview": "previews/jacobsen-isw-4521/page-1.png",
+  "previewDetails": [
+    {
+      "path": "previews/jacobsen-isw-4521/page-1.png",
+      "page": 1,
+      "rotation": 0,
+      "pageSizePt": [
+        713.52001953125,
+        571.2000122070312
+      ],
+      "textCharacters": 0,
+      "embeddedImages": 1
+    }
+  ],
+  "inspection": "file-integrity-and-render-checked",
+  "reviewNotes": "13'4\"×52'，名义尺寸近似；小卧室与斜向设备/门",
+  "sourceVisualReview": "selected-page-inspected",
+  "calibrationPolicy": "use-readable-labelled-length-as-approximate-test-reference; confirm measured length for actual furniture decisions",
+  "unitsInSource": [
+    "ft",
+    "in"
+  ]
+}

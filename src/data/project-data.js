@@ -37,12 +37,15 @@ import {validateRoomEditor,generateRoomGeometry,geometryMatches,GEOMETRY_TOLERAN
       check(r.counted===undefined || typeof r.counted==='boolean','room counted');
     });
     list(g.walls,'walls').forEach(w=>check(Array.isArray(w) && w.length===5 && rect(w.slice(0,4)) && ['b','e','n','low'].includes(w[4]),'wall'));
+    if(g.wallHeights!==undefined)check(Array.isArray(g.wallHeights)&&g.wallHeights.length===g.walls.length&&g.wallHeights.every(h=>positive(h)&&h<=g.height),'wall heights');
+    if(g.floorSlabs!==undefined)list(g.floorSlabs,'floor slabs').forEach(r=>check(rect(r),'floor slab'));
+    if(g.passages!==undefined)list(g.passages,'passages').forEach(p=>check(rect(p.rect)&&rooms.some(r=>r.id===p.roomId),'passage'));
     list(g.windows,'windows').forEach(w=>check(rect(w.rect) && num(w.sill) && w.sill>=0 && positive(w.head) && w.head>w.sill && w.head<=g.height+GEOMETRY_TOLERANCE,'window'));
     list(g.doors,'doors').forEach(d=>{
       check(rect(d.rect) && point(d.h) && point(d.c) && point(d.o) && positive(d.len) && positive(d.height) && d.height<=g.height && str(d.name),'door');
       check(Math.abs(Math.hypot(...d.c)-1)<1e-8 && Math.abs(Math.hypot(...d.o)-1)<1e-8 && Math.abs(d.c[0]*d.o[0]+d.c[1]*d.o[1])<1e-8,'door directions');
     });
-    list(g.slides,'sliding doors').forEach(d=>check(rect(d.rect) && typeof d.v==='boolean' && positive(d.height) && d.height<=g.height,'sliding door'));
+    list(g.slides,'sliding doors').forEach(d=>check(rect(d.rect) && typeof d.v==='boolean' && positive(d.height) && d.height<=g.height && (d.style===undefined||['sliding','bifold'].includes(d.style)) && (d.style!=='bifold'||['inward','outward'].includes(d.swing)),'sliding/folding door'));
     list(g.lintels,'lintels').forEach(l=>check(rect(l.rect) && positive(l.height) && l.height<=g.height,'lintel'));
     list(g.dimensions,'dimensions').forEach(d=>check(typeof d.horizontal==='boolean' && num(d.at) && num(d.start) && list(d.segments,'dimension segments',100).every(positive),'dimension'));
     check(g.walkStart===undefined || (obj(g.walkStart) && point(g.walkStart.position) && point(g.walkStart.target)), 'walk start');

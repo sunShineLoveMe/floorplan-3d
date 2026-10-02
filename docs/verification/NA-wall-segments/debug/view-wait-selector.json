@@ -1,0 +1,16 @@
+{
+  "error": "page.waitForFunction: Timeout 15000ms exceeded.",
+  "errors": [],
+  "checks": [
+    "partial shared wall: both sides edited, 4 ft passage open in data and rendered 2D; floor bridge retained",
+    "full-height segment accepts a door; door in the passage is rejected atomically",
+    "overlapping segments and lowering a segment containing a door preserve project",
+    "restore whole wall and undo/redo recover exact partial geometry",
+    "room edits retain custom wall segments",
+    "partial walls: JSON and 2D PNG downloaded",
+    "Plan B dining/kitchen: 9 ft 6 in shared pony wall at 4 ft; taller neighboring wall cannot be hidden; 2D low-wall style",
+    "pony wall height undo/redo preserves exact geometry",
+    "ceiling edit follows full-height segments and retains fixed pony wall heights",
+    "pony walls, reference PDF, rooms, furniture and door/window survive refresh and JSON round trip"
+  ]
+}

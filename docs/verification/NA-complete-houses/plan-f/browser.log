@@ -1,0 +1,26 @@
+PASS source A1 PDF rendered and calibrated using dimensioned exterior corners
+ROOM Bedroom closet
+ROOM Bedroom
+ROOM Bath
+ROOM Laundry
+ROOM Kitchen
+ROOM Living
+ROOM Dining
+PASS every source room, closet, laundry and circulation zone created through room forms
+OPENING entry
+OPENING bath-door
+OPENING laundry-door
+OPENING closet-door
+OPENING bath-top
+OPENING kitchen-right
+OPENING dining-right
+OPENING living-left
+OPENING living-bottom
+OPENING dining-bottom
+PASS all scheduled swing/sliding/bifold doors and windows created through opening forms
+PASS independent source outline, net areas, full opening inventory and walkable connection of every space passed
+PASS door mode edit, passage symbol, conditional fields and exact undo/redo passed
+PASS actual JSON download, refresh and import preserve full geometry, fixtures and calibrated reference
+PASS full house WebGL and 3D PNG export passed
+PASS real print-preview page and PDF generated with net and footprint area
+PASS 390px mobile opening controls reachable without dialog overflow

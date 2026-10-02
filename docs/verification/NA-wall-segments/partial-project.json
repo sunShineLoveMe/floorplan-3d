@@ -1,0 +1,354 @@
+{
+  "format": "floorplan-3d",
+  "version": 2,
+  "id": "p-muqhyyzh-88jgezmi",
+  "name": "Dining passage test",
+  "createdAt": "2026-10-02T05:03:05.885Z",
+  "updatedAt": "2026-10-02T05:03:09.419Z",
+  "units": {
+    "internal": "mm",
+    "display": "imperial"
+  },
+  "layout": {
+    "id": "layout-p-muqhyyzh-88jgezmi",
+    "name": "Layout A"
+  },
+  "view": {
+    "mode": "2d",
+    "layers": {
+      "dims": true,
+      "labels": true,
+      "furn": true,
+      "grid": false,
+      "bearing": false,
+      "wallSnap": true
+    }
+  },
+  "roomEditor": {
+    "kind": "house",
+    "height": 2438.4,
+    "wallThickness": 120,
+    "rooms": [
+      {
+        "id": "room-1",
+        "x": 0,
+        "y": 0,
+        "width": 3657.6,
+        "depth": 3048,
+        "wallWidths": {
+          "right": 120
+        },
+        "wallSegments": {
+          "right": [
+            {
+              "offset": 0,
+              "length": 914.4000000000001,
+              "height": 2438.4
+            },
+            {
+              "offset": 2133.6,
+              "length": 914.4000000000001,
+              "height": 2438.4
+            }
+          ]
+        }
+      },
+      {
+        "id": "room-fmuqhyzvv1",
+        "x": 3777.6,
+        "y": 0,
+        "width": 3657.6,
+        "depth": 3048,
+        "wallWidths": {
+          "top": 120,
+          "right": 120,
+          "bottom": 120,
+          "left": 120
+        },
+        "wallSegments": {
+          "left": [
+            {
+              "offset": 0,
+              "length": 914.4000000000001,
+              "height": 2438.4
+            },
+            {
+              "offset": 2133.6,
+              "length": 914.4000000000001,
+              "height": 2438.4
+            }
+          ]
+        }
+      }
+    ],
+    "openings": [
+      {
+        "id": "opening-fmuqhz0xb2",
+        "type": "door",
+        "wallId": "room-fmuqhyzvv1--left",
+        "offset": 152.39999999999998,
+        "width": 609.6,
+        "height": 2032,
+        "roomId": "room-fmuqhyzvv1",
+        "hinge": "start",
+        "swing": "inward"
+      }
+    ]
+  },
+  "geometry": {
+    "height": 2438.4,
+    "origin": [
+      3717.6000000000004,
+      1524
+    ],
+    "bounds": {
+      "x": -720,
+      "y": -720,
+      "w": 8875.2,
+      "h": 4488
+    },
+    "rooms": [
+      {
+        "id": "room-1",
+        "name": "Dining passage test",
+        "mat": "wood",
+        "poly": [
+          [
+            0,
+            0
+          ],
+          [
+            3657.6,
+            0
+          ],
+          [
+            3657.6,
+            3048
+          ],
+          [
+            0,
+            3048
+          ]
+        ],
+        "at": [
+          1828.8,
+          1524
+        ]
+      },
+      {
+        "id": "room-fmuqhyzvv1",
+        "name": "Kitchen renamed",
+        "mat": "wood",
+        "poly": [
+          [
+            3777.6,
+            0
+          ],
+          [
+            7435.2,
+            0
+          ],
+          [
+            7435.2,
+            3048
+          ],
+          [
+            3777.6,
+            3048
+          ]
+        ],
+        "at": [
+          5606.4,
+          1524
+        ]
+      }
+    ],
+    "walls": [
+      [
+        -120,
+        -120,
+        3777.6,
+        0,
+        "n"
+      ],
+      [
+        3657.6,
+        0,
+        3777.6,
+        152.39999999999998,
+        "n"
+      ],
+      [
+        3657.6,
+        762,
+        3777.6,
+        914.4000000000001,
+        "n"
+      ],
+      [
+        3657.6,
+        2133.6,
+        3777.6,
+        3048,
+        "n"
+      ],
+      [
+        -120,
+        3048,
+        3777.6,
+        3168,
+        "n"
+      ],
+      [
+        -120,
+        0,
+        0,
+        3048,
+        "n"
+      ],
+      [
+        3777.6,
+        -120,
+        7555.2,
+        0,
+        "n"
+      ],
+      [
+        7435.2,
+        0,
+        7555.2,
+        3048,
+        "n"
+      ],
+      [
+        3777.6,
+        3048,
+        7555.2,
+        3168,
+        "n"
+      ]
+    ],
+    "wallIds": [
+      "room-1--top",
+      "room-1--right",
+      "room-1--right",
+      "room-1--right",
+      "room-1--bottom",
+      "room-1--left",
+      "room-fmuqhyzvv1--top",
+      "room-fmuqhyzvv1--right",
+      "room-fmuqhyzvv1--bottom"
+    ],
+    "wallHeights": [
+      2438.4,
+      2438.4,
+      2438.4,
+      2438.4,
+      2438.4,
+      2438.4,
+      2438.4,
+      2438.4,
+      2438.4
+    ],
+    "passages": [
+      {
+        "rect": [
+          3657.6,
+          914.4000000000001,
+          3777.6,
+          2133.6
+        ],
+        "roomId": "room-1"
+      }
+    ],
+    "doors": [
+      {
+        "id": "opening-fmuqhz0xb2",
+        "wallId": "room-fmuqhyzvv1--left",
+        "rect": [
+          3657.6,
+          152.39999999999998,
+          3777.6,
+          762
+        ],
+        "h": [
+          3777.6,
+          152.39999999999998
+        ],
+        "c": [
+          0,
+          1
+        ],
+        "o": [
+          1,
+          0
+        ],
+        "len": 609.6,
+        "height": 2032,
+        "name": "opening-fmuqhz0xb2",
+        "roomId": "room-fmuqhyzvv1"
+      }
+    ],
+    "windows": [],
+    "slides": [],
+    "lintels": [],
+    "dimensions": [
+      {
+        "horizontal": true,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          3657.6
+        ]
+      },
+      {
+        "horizontal": false,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          3048
+        ]
+      },
+      {
+        "horizontal": true,
+        "at": -420,
+        "start": 3777.6,
+        "segments": [
+          3657.6
+        ]
+      },
+      {
+        "horizontal": false,
+        "at": 3357.6,
+        "start": 0,
+        "segments": [
+          3048
+        ]
+      }
+    ],
+    "walkStart": {
+      "position": [
+        1828.8,
+        2133.6
+      ],
+      "target": [
+        1828.8,
+        914.4
+      ]
+    },
+    "entry": null
+  },
+  "furniture": [],
+  "rooms": {
+    "room-1": {
+      "name": "Dining passage test",
+      "mat": "wood"
+    },
+    "room-fmuqhyzvv1": {
+      "name": "Kitchen renamed",
+      "mat": "wood"
+    }
+  },
+  "demolished": [],
+  "measures": []
+}

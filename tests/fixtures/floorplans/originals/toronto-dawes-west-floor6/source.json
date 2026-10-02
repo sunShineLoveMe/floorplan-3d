@@ -1,0 +1,55 @@
+{
+  "id": "toronto-dawes-west-floor6",
+  "title": "Toronto 6 Dawes：斜向多单元整层",
+  "provider": "City of Toronto / BDP Quadrangle",
+  "sourcePage": "https://www.toronto.ca/legdocs/mmis/2021/cc/bgrd/backgroundfile-166251.pdf",
+  "downloadUrl": "https://www.toronto.ca/legdocs/mmis/2021/cc/bgrd/backgroundfile-166251.pdf",
+  "country": "CA",
+  "scenario": "planning-multi-unit",
+  "tags": [
+    "canada",
+    "metric",
+    "mixed-area-units",
+    "angled-outline",
+    "multi-unit",
+    "dense-linework",
+    "multi-page-pdf",
+    "intrinsic-pdf-rotation"
+  ],
+  "original": "originals/toronto-dawes-west-floor6/original.pdf",
+  "previewPages": [
+    9
+  ],
+  "dimensionStatus": "drawing-scale-and-metric-dimensions",
+  "acceptanceStatus": "collected-not-accepted",
+  "rights": "Original source copyright retained; no open redistribution license inferred",
+  "resolvedDownloadUrl": "https://www.toronto.ca/legdocs/mmis/2021/cc/bgrd/backgroundfile-166251.pdf",
+  "contentType": "application/pdf",
+  "retrievedAt": "2026-10-02T07:30:10.758157+00:00",
+  "sha256": "2ce0311dfcb3a4006d3d202618af54ed9a1cff2ad1f44ee534aa1fc7feaf01a7",
+  "bytes": 10459475,
+  "pageCount": 29,
+  "preview": "previews/toronto-dawes-west-floor6/page-9.png",
+  "previewDetails": [
+    {
+      "path": "previews/toronto-dawes-west-floor6/page-9.png",
+      "page": 9,
+      "rotation": 90,
+      "pageSizePt": [
+        2592.0,
+        1728.0
+      ],
+      "textCharacters": 1881,
+      "embeddedImages": 0
+    }
+  ],
+  "inspection": "file-integrity-and-render-checked",
+  "reviewNotes": "第 9 页 A214.S；29 页完整规划文件，毫米尺寸与 m²/ft² 混用",
+  "sourceVisualReview": "selected-page-inspected",
+  "calibrationPolicy": "use-readable-labelled-length-as-approximate-test-reference; confirm measured length for actual furniture decisions",
+  "unitsInSource": [
+    "mm",
+    "m2",
+    "sq-ft"
+  ]
+}

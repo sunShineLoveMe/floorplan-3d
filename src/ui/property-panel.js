@@ -59,6 +59,7 @@ function overviewPanel(){
   <section><h3>${tr('房间面积','Room Areas')} <small>${tr('点击查看 / 更换地面','Click to view / change flooring')}</small></h3>
     <table>${rows}</table>
     <div class="total"><span>${tr('套内使用面积','Net floor area')}</span><b>${surface(tot)}</b></div>
+    ${store.getProject().geometry.floorSlabs?`<div class="total"><span>${tr('外轮廓面积（含墙体）','Footprint area (includes walls)')}</span><b>${surface(store.getProject().geometry.floorSlabs.reduce((sum,r)=>sum+(r[2]-r[0])*(r[3]-r[1])/1e6,0))}</b></div>`:''}
     <div class="muted" style="font-size:11px;margin-top:4px">${tr('* 飘窗不计入使用面积；面积按墙体内净尺寸计算','* Bay windows are excluded; areas use net inner wall dimensions')}</div></section>
   ${LANG==='zh'&&store.getProject().units.display==='metric'?`<section><h3>${tr('地面材料估算','Flooring Estimate')} <small>${tr('含 5% 损耗，示例价：人民币/平方米','incl. 5% waste; example prices: CNY/m²')}</small></h3>
     <table>${matRows}</table>

@@ -1,0 +1,52 @@
+{
+  "id": "regent-unit-l",
+  "title": "Regent Unit L：养老公寓一卧",
+  "provider": "Regent at Burnsville",
+  "sourcePage": "https://www.regentburnsville.org/floor-plans/",
+  "downloadUrl": "https://www.regentburnsville.org/wp-content/uploads/sites/23/2025/11/REG_FloorPlans_IL_OneBed_Lake_L_1125_EMAIL.pdf",
+  "country": "US",
+  "scenario": "senior-housing",
+  "tags": [
+    "one-bedroom",
+    "senior-housing",
+    "bathroom-clearance",
+    "furnished",
+    "imperial",
+    "angled-wall-details"
+  ],
+  "original": "originals/regent-unit-l/original.pdf",
+  "previewPages": [
+    1
+  ],
+  "dimensionStatus": "room-dimensions-only",
+  "acceptanceStatus": "collected-not-accepted",
+  "rights": "Original source copyright retained; no open redistribution license inferred",
+  "resolvedDownloadUrl": "https://www.regentburnsville.org/wp-content/uploads/sites/23/2025/11/REG_FloorPlans_IL_OneBed_Lake_L_1125_EMAIL.pdf",
+  "contentType": "application/pdf",
+  "retrievedAt": "2026-10-02T07:29:42.072377+00:00",
+  "sha256": "09931c68a4b4fc5299926100c0541e9b643ccc53324860990ad3b59043b7f518",
+  "bytes": 194958,
+  "pageCount": 1,
+  "preview": "previews/regent-unit-l/page-1.png",
+  "previewDetails": [
+    {
+      "path": "previews/regent-unit-l/page-1.png",
+      "page": 1,
+      "rotation": 0,
+      "pageSizePt": [
+        612.0,
+        792.0
+      ],
+      "textCharacters": 329,
+      "embeddedImages": 0
+    }
+  ],
+  "inspection": "file-integrity-and-render-checked",
+  "reviewNotes": "门口、衣柜折叠门、斜墙局部；不代表无障碍规范认证",
+  "sourceVisualReview": "selected-page-inspected",
+  "calibrationPolicy": "use-readable-labelled-length-as-approximate-test-reference; confirm measured length for actual furniture decisions",
+  "unitsInSource": [
+    "ft",
+    "in"
+  ]
+}

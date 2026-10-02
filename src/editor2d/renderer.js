@@ -13,7 +13,7 @@ const NOLABEL = ['plant','floorlamp','sidetable','barstool','beanbag'];
 function renderRooms(){
   const reference=store.getProject().referencePlan;
   $('#gReference').innerHTML=reference?.visible?`<image href="${esc(reference.src)}" x="${reference.x}" y="${reference.y}" width="${reference.pixelWidth*reference.mmPerPixel}" height="${reference.pixelHeight*reference.mmPerPixel}" opacity="${reference.opacity}"/>`:'';
-  let s = '';
+  let s = (store.getProject().geometry.floorSlabs||[]).map(([x0,y0,x1,y1])=>`<rect data-floor-slab x="${x0}" y="${y0}" width="${x1-x0}" height="${y1-y0}" fill="url(#m-${store.getProject().rooms[store.getProject().geometry.rooms[0].id].mat})" fill-opacity="${reference?.visible?.35:1}" pointer-events="none"/>`).join('');
   store.getProject().geometry.rooms.forEach(r => s += `<polygon class="room" data-room="${r.id}" points="${r.poly.map(p=>p.join(',')).join(' ')}" fill="url(#m-${store.getProject().rooms[r.id].mat})" fill-opacity="${store.getProject().referencePlan?.visible?.35:1}"/>`);
   const sill = ([a,b,c,d]) => `<rect x="${a}" y="${b}" width="${c-a}" height="${d-b}" fill="#e2dacb" stroke="#b9b0a0" stroke-width="1" vector-effect="non-scaling-stroke" pointer-events="none"/>`;
   store.getProject().geometry.doors.forEach(d => s += sill(d.rect)); store.getProject().geometry.slides.forEach(d => s += sill(d.rect));
@@ -64,10 +64,17 @@ function renderOpenings(){
     s += `<path d="M${ox} ${oy}A${L} ${L} 0 0 ${sweep} ${cx} ${cy}" fill="none" ${DS} stroke-dasharray="5 3" opacity=".7"/>`;
     s += '</g>';
   });
-  store.getProject().geometry.slides.forEach(({rect:[x0,y0,x1,y1],v}) => {
+  store.getProject().geometry.slides.forEach(({rect:[x0,y0,x1,y1],v,id,style,wallId,swing}) => {
+    s+=id?`<g data-opening="${esc(id)}" style="cursor:pointer"><rect x="${x0}" y="${y0}" width="${x1-x0}" height="${y1-y0}" fill="transparent"/>`:'<g>';
+    if(style==='bifold'){
+      const L=v?y1-y0:x1-x0,side=String(wallId).split('--').at(-1),normal=(['top','left'].includes(side)?1:-1)*(swing==='outward'?-1:1),face=v?(side==='left'?x1:x0):(side==='top'?y1:y0);
+      for(const end of [0,1]){const start=v?(end?y1:y0):(end?x1:x0),sign=end?-1:1,point=(along,depth)=>v?`${face+normal*depth},${start+sign*along}`:`${start+sign*along},${face+normal*depth}`;s+=`<polyline points="${point(0,0)} ${point(L*.06,L*.24)} ${point(L*.12,0)}" fill="none" ${DS}/>`;}
+    }else {
     if (v){ const L = y1-y0, m = (x0+x1)/2; s += `<rect x="${m-45}" y="${y0}" width="40" height="${L*.55}" fill="#fff" ${DS}/><rect x="${m+5}" y="${y1-L*.55}" width="40" height="${L*.55}" fill="#fff" ${DS}/>`; }
     else { const L = x1-x0, m = (y0+y1)/2; s += `<rect x="${x0}" y="${m-45}" width="${L*.55}" height="40" fill="#fff" ${DS}/><rect x="${x1-L*.55}" y="${m+5}" width="${L*.55}" height="40" fill="#fff" ${DS}/>`; }
+    }s+='</g>';
   });
+  store.getProject().geometry.lintels.filter(o=>o.passage).forEach(o=>{const [x0,y0,x1,y1]=o.rect;s+=`<g data-opening="${esc(o.id)}" style="cursor:pointer"><rect x="${x0}" y="${y0}" width="${x1-x0}" height="${y1-y0}" fill="#f9f6ef" stroke="#8f897d" stroke-dasharray="4 3" vector-effect="non-scaling-stroke"/></g>`;});
   // Entry annotation is template data, not a fixed drawing coordinate.
   if(store.getProject().geometry.entry){ const [x,y]=store.getProject().geometry.entry.position;
     s += `<g transform="translate(${x} ${y})"><path d="M0 0H1000M800 -155L1050 0L800 155" fill="none" stroke="#b5653a" stroke-width="2" vector-effect="non-scaling-stroke"/><text x="30" y="-155" font-size="200" fill="#b5653a">${tr('入户','Entry')}</text></g>`;
@@ -101,7 +108,9 @@ function renderDims(){
     return s;
   };
   const g = $('#gDims');
-  g.innerHTML = store.getProject().geometry.dimensions.map(d=>chain(d.horizontal,d.at,d.start,d.segments)).join('');
+  const geometry=store.getProject().geometry;let dimensions=geometry.dimensions;
+  if(geometry.floorSlabs){const slabs=geometry.floorSlabs,x0=Math.min(...slabs.map(r=>r[0])),y0=Math.min(...slabs.map(r=>r[1])),x1=Math.max(...slabs.map(r=>r[2])),y1=Math.max(...slabs.map(r=>r[3]));dimensions=dimensions.filter(d=>d.at<=(d.horizontal?y0:x0)-150);dimensions=[...dimensions,{horizontal:true,at:y0-700,start:x0,segments:[x1-x0]},{horizontal:false,at:x0-700,start:y0,segments:[y1-y0]}];}
+  g.innerHTML = dimensions.map(d=>chain(d.horizontal,d.at,d.start,d.segments)).join('');
   g.setAttribute('display', ui.layers.dims ? 'inline' : 'none');
 }
 

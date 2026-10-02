@@ -1,0 +1,51 @@
+{
+  "id": "imprint-a1",
+  "title": "Imprint A1：租赁一卧",
+  "provider": "Imprint",
+  "sourcePage": "https://liveatimprint.com/floorplans/a1/",
+  "downloadUrl": "https://liveatimprint.com/assets/files/A1_compressed.pdf",
+  "country": "US",
+  "scenario": "rental-apartment",
+  "tags": [
+    "one-bedroom",
+    "artist-rendering",
+    "compressed-pdf",
+    "approximate-dimensions",
+    "furnished-3d-plan",
+    "missing-linear-dimensions"
+  ],
+  "original": "originals/imprint-a1/original.pdf",
+  "previewPages": [
+    1
+  ],
+  "dimensionStatus": "area-only-no-linear-dimensions",
+  "acceptanceStatus": "collected-not-accepted",
+  "rights": "Original source copyright retained; no open redistribution license inferred",
+  "resolvedDownloadUrl": "https://liveatimprint.com/assets/files/A1_compressed.pdf",
+  "contentType": "application/pdf",
+  "retrievedAt": "2026-10-02T07:27:38.087430+00:00",
+  "sha256": "2ce5e76bbc9de2aeac1a4b618c68487d100afa18f9d4c3f08cfa6514f441099c",
+  "bytes": 83924,
+  "pageCount": 1,
+  "preview": "previews/imprint-a1/page-1.png",
+  "previewDetails": [
+    {
+      "path": "previews/imprint-a1/page-1.png",
+      "page": 1,
+      "rotation": 0,
+      "pageSizePt": [
+        612.0,
+        792.0
+      ],
+      "textCharacters": 371,
+      "embeddedImages": 1
+    }
+  ],
+  "inspection": "file-integrity-and-render-checked",
+  "reviewNotes": "带家具的 3D 营销图；644 sq ft 是面积，不能作为线性标定依据",
+  "sourceVisualReview": "selected-page-inspected",
+  "calibrationPolicy": "require-measured-linear-reference",
+  "unitsInSource": [
+    "area-label-or-source-page-only"
+  ]
+}

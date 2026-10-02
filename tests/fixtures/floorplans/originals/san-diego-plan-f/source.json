@@ -1,0 +1,49 @@
+{
+  "id": "san-diego-plan-f",
+  "title": "San Diego Plan F：一卧一卫紧凑单层",
+  "provider": "San Diego County",
+  "sourcePage": "https://www.sandiegocounty.gov/content/sdc/pds/bldg/adu_plans.html",
+  "downloadUrl": "https://www.sandiegocounty.gov/content/dam/sdc/pds/bldg/adu_info/pds671_11x17.pdf",
+  "country": "US",
+  "scenario": "official-design",
+  "tags": [
+    "baseline",
+    "dimensioned",
+    "multi-page-pdf",
+    "imperial",
+    "closet",
+    "laundry"
+  ],
+  "original": "originals/san-diego-plan-f/original.pdf",
+  "previewPages": [
+    5
+  ],
+  "dimensionStatus": "overall-and-room-dimensions",
+  "acceptanceStatus": "accepted-single-floor-manual-model",
+  "rights": "Original source copyright retained; no open redistribution license inferred",
+  "sha256": "89dbbd8f7977d772df44a4eea1a0ec35d795d9830538e3aa1e29f8d5bfe10bdc",
+  "acceptanceEvidence": "../../../docs/verification/NA-complete-houses/plan-f/browser-results.json",
+  "bytes": 10103499,
+  "pageCount": 14,
+  "preview": "previews/san-diego-plan-f/page-5.png",
+  "previewDetails": [
+    {
+      "path": "previews/san-diego-plan-f/page-5.png",
+      "page": 5,
+      "rotation": 270,
+      "pageSizePt": [
+        1224.0,
+        792.0
+      ],
+      "textCharacters": 2953,
+      "embeddedImages": 4
+    }
+  ],
+  "inspection": "file-integrity-and-render-checked",
+  "sourceVisualReview": "A1 inspected in prior complete-house acceptance",
+  "calibrationPolicy": "use-labelled-exterior-length-for-fixture-test; confirm actual property measurements",
+  "unitsInSource": [
+    "ft",
+    "in"
+  ]
+}

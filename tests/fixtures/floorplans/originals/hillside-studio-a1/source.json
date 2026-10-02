@@ -1,0 +1,51 @@
+{
+  "id": "hillside-studio-a1",
+  "title": "Hillside A1：小型 Studio",
+  "provider": "Hillside Courtyard",
+  "sourcePage": "https://hillsidecourtyard.com/apartment-layouts/",
+  "downloadUrl": "https://hillsidecourtyard.com/wp-content/uploads/floorplans-pdf/HillsideCourtyardFP_PlanA1_Studio1b_372sf.pdf",
+  "country": "US",
+  "scenario": "rental-apartment",
+  "tags": [
+    "studio",
+    "compact",
+    "marketing",
+    "pdf",
+    "missing-full-dimensions",
+    "colored-marketing"
+  ],
+  "original": "originals/hillside-studio-a1/original.pdf",
+  "previewPages": [
+    1
+  ],
+  "dimensionStatus": "no-linear-dimensions",
+  "acceptanceStatus": "collected-not-accepted",
+  "rights": "Original source copyright retained; no open redistribution license inferred",
+  "resolvedDownloadUrl": "https://hillsidecourtyard.com/wp-content/uploads/floorplans-pdf/HillsideCourtyardFP_PlanA1_Studio1b_372sf.pdf",
+  "contentType": "application/pdf",
+  "retrievedAt": "2026-10-02T07:27:15.364652+00:00",
+  "sha256": "c67db77f48cfb877e4765a3f779bcdf4a45b779a6f4f04df23d1b65d2b68a89d",
+  "bytes": 988750,
+  "pageCount": 1,
+  "preview": "previews/hillside-studio-a1/page-1.png",
+  "previewDetails": [
+    {
+      "path": "previews/hillside-studio-a1/page-1.png",
+      "page": 1,
+      "rotation": 0,
+      "pageSizePt": [
+        792.0,
+        612.0
+      ],
+      "textCharacters": 186,
+      "embeddedImages": 2
+    }
+  ],
+  "inspection": "file-integrity-and-render-checked",
+  "reviewNotes": "需提供实测长度；总面积不能直接用于线性标定",
+  "sourceVisualReview": "selected-page-inspected",
+  "calibrationPolicy": "require-measured-linear-reference",
+  "unitsInSource": [
+    "area-label-or-source-page-only"
+  ]
+}

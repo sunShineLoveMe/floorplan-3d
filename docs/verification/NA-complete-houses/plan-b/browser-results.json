@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "build": "3db3caeb96d1c51c",
+  "audit": {
+    "furniture": 15,
+    "swingConflicts": 0,
+    "grossSqFt": 1199.9999999999998,
+    "sourceOutlineSqFt": 1200,
+    "netSqFt": 1079.9444444444443,
+    "spaces": 11,
+    "doors": 5,
+    "sliding": 2,
+    "bifold": 1,
+    "windows": 12,
+    "connectedSpaces": 11
+  },
+  "checks": [
+    "source A1 PDF rendered and calibrated using dimensioned exterior corners",
+    "every source room, closet, laundry and circulation zone created through room forms",
+    "all scheduled swing/sliding/bifold doors and windows created through opening forms",
+    "independent source outline, net areas, full opening inventory and walkable connection of every space passed",
+    "door mode edit, passage symbol, conditional fields and exact undo/redo passed",
+    "actual JSON download, refresh and import preserve full geometry, fixtures and calibrated reference",
+    "full house WebGL and 3D PNG export passed",
+    "real print-preview page and PDF generated with net and footprint area",
+    "390px mobile opening controls reachable without dialog overflow"
+  ],
+  "errors": [],
+  "timestamp": "2026-10-02T06:17:30.563Z"
+}

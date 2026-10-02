@@ -1,0 +1,133 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-02T07:51:19.554072+00:00",
+  "scope": "Original source bytes, PDF/image parse, selected-page render existence; not product acceptance",
+  "samples": [
+    {
+      "id": "san-diego-plan-b",
+      "passed": true,
+      "sha256": "bb55e87e8a7c5f63316c019c840693e22f8bcfc63bf6777710cbc5d9848c9502",
+      "bytes": 10327642,
+      "pageCount": 14
+    },
+    {
+      "id": "san-diego-plan-a",
+      "passed": true,
+      "sha256": "89c21a906886ee7fb10d3911bf16899021e8f1e3d7bf63604e5dd8033aff6759",
+      "bytes": 10140640,
+      "pageCount": 14
+    },
+    {
+      "id": "san-diego-plan-c",
+      "passed": true,
+      "sha256": "c5d7ba3bc8c5ee7ddd31223ab146058aca79d9dd27d2322520a85c911416a0e6",
+      "bytes": 10357525,
+      "pageCount": 14
+    },
+    {
+      "id": "san-diego-plan-f",
+      "passed": true,
+      "sha256": "89dbbd8f7977d772df44a4eea1a0ec35d795d9830538e3aa1e29f8d5bfe10bdc",
+      "bytes": 10103499,
+      "pageCount": 14
+    },
+    {
+      "id": "hillside-studio-a1",
+      "passed": true,
+      "sha256": "c67db77f48cfb877e4765a3f779bcdf4a45b779a6f4f04df23d1b65d2b68a89d",
+      "bytes": 988750,
+      "pageCount": 1
+    },
+    {
+      "id": "hillside-corner-b5",
+      "passed": true,
+      "sha256": "e95496af4f396b35ab3087f9d373a798699f8e11221c6268f456dc04e4f1228e",
+      "bytes": 117317,
+      "pageCount": 1
+    },
+    {
+      "id": "cmu-fairfax-studio",
+      "passed": true,
+      "sha256": "12dbc086f2368cf36784e754fecce8ca78386d33ac743afff0561804573ba293",
+      "bytes": 42688,
+      "pageCount": 1
+    },
+    {
+      "id": "cmu-fairfax-two-bedroom",
+      "passed": true,
+      "sha256": "bdef8e9000ff1a9a0f857aa584f0a7fdfa8e095f4a36637a943301530bb60e76",
+      "bytes": 4847347,
+      "pageCount": 1
+    },
+    {
+      "id": "cmu-fairfax-one-bedroom-jpeg",
+      "passed": true,
+      "sha256": "a80336a75ea8b6bda92b1ed28dd890cc459ba66dc820410e6d4445397f17687c",
+      "bytes": 61785,
+      "pageCount": 1
+    },
+    {
+      "id": "imprint-a1",
+      "passed": true,
+      "sha256": "2ce5e76bbc9de2aeac1a4b618c68487d100afa18f9d4c3f08cfa6514f441099c",
+      "bytes": 83924,
+      "pageCount": 1
+    },
+    {
+      "id": "zag-b4-image",
+      "passed": true,
+      "sha256": "6f9f682391633640f5eebc5afcd8ffa3120344f38d66511de2bfdb39299bfead",
+      "bytes": 135002,
+      "pageCount": 1
+    },
+    {
+      "id": "zag-live-work",
+      "passed": true,
+      "sha256": "c5ccb799af5fdaadcf8f9b9d888806a8cfaad33cdce7252c7acb3f55ae45d0b6",
+      "bytes": 123672,
+      "pageCount": 1
+    },
+    {
+      "id": "remington-b-basement",
+      "passed": true,
+      "sha256": "e16dd52d694199f0376c7e0f845e18d7fde9f19ed890b4abd264f7e7bfae1980",
+      "bytes": 35109,
+      "pageCount": 1
+    },
+    {
+      "id": "jacobsen-isw-4521",
+      "passed": true,
+      "sha256": "420bb3c5a38f37a8b41a2206f3d2bdc3c07e6248544cc70bcb641a62d8bf24cb",
+      "bytes": 1440245,
+      "pageCount": 1
+    },
+    {
+      "id": "regent-unit-l",
+      "passed": true,
+      "sha256": "09931c68a4b4fc5299926100c0541e9b643ccc53324860990ad3b59043b7f518",
+      "bytes": 194958,
+      "pageCount": 1
+    },
+    {
+      "id": "newmark-umbria",
+      "passed": true,
+      "sha256": "c40d44e5b93f0376299d85748d511c2546d70ffb18146a4a2768116fcc7bf731",
+      "bytes": 1035137,
+      "pageCount": 2
+    },
+    {
+      "id": "toronto-dawes-west-floor6",
+      "passed": true,
+      "sha256": "2ce0311dfcb3a4006d3d202618af54ed9a1cff2ad1f44ee534aa1fc7feaf01a7",
+      "bytes": 10459475,
+      "pageCount": 29
+    },
+    {
+      "id": "loc-norvelt-house-types",
+      "passed": true,
+      "sha256": "f5518648530cf2fd2f9126886e01729b754a677608874f7dc2a2f308301f13ea",
+      "bytes": 366016,
+      "pageCount": 19
+    }
+  ]
+}

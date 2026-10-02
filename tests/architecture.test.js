@@ -25,7 +25,7 @@ class BoxGeometry {
   }
 }
 class Shape {moveTo(){} lineTo(){}}
-class Geometry {rotateX(){}}
+class Geometry {rotateX(){return this;}}
 const THREE={Group,Mesh,BoxGeometry,Shape,ShapeGeometry:Geometry,ExtrudeGeometry:Geometry,CylinderGeometry:Geometry,SphereGeometry:Geometry,EdgesGeometry:Geometry,LineSegments:Mesh,PointLight:Group};
 
 async function loadArchitecture(){
@@ -98,5 +98,46 @@ test('house-prefixed window IDs retain horizontal/vertical pane orientation',asy
   createArchitecture({store:{getProject:()=>project},opt:{cut:2.8,mode:'orbit'},space:{wx:v=>v/1000,wz:v=>v/1000},groups,materials:{mat:()=>({}),floorMat:()=>({}),glassMat:glass},primitives:{box:()=>{},metal:()=>({})}}).build();
   const pane=groups.archUp.children.find(o=>o.material===glass),horizontal=['top','bottom'].includes(side);
   close(pane.geometry.parameters.width,horizontal?1.2:.01);close(pane.geometry.parameters.depth,horizontal?.01:1.2);close(pane.geometry.parameters.height,1.2);
+ }
+});
+
+test('custom wall heights create exact pony wall meshes and respect the cut height',async()=>{
+ const {asHouse}=await import('../src/data/house-editor.js'),{createRectangleProject,updateRectangleProject}=await import('../src/data/project-data.js');
+ const createArchitecture=await loadArchitecture(),base=createRectangleProject(),editor=asHouse(base.roomEditor);
+ editor.rooms[0].wallSegments={right:[{offset:0,length:1000,height:1219.2},{offset:2000,length:1000,height:915}]};
+ const project=updateRectangleProject(base,editor);
+ for(const cut of [2.8,1,.5]){
+  const groups={archFloor:new Group(),archUp:new Group(),lampG:new Group(),doors:[],colliders:[]};
+  createArchitecture({store:{getProject:()=>project},opt:{cut,mode:'orbit'},space:{wx:v=>v/1000,wz:v=>v/1000},groups,materials:{mat:()=>({}),floorMat:()=>({})},primitives:{box:()=>{},metal:()=>({})}}).build();
+  const walls=groups.archUp.children.filter(o=>o.geometry instanceof BoxGeometry&&o.position.x===4.06&&o.geometry.parameters.width===.12);
+  assert.equal(walls.length,2);close(walls.find(w=>w.position.z===.5).geometry.parameters.height,Math.min(cut,1.2192));close(walls.find(w=>w.position.z===2.5).geometry.parameters.height,Math.min(cut,.915));
+  assert.ok(!groups.colliders.some(c=>c[0]===4&&c[2]===4.12&&c[1]<2&&c[3]>1),'passage has phantom collision');
+ }
+});
+
+test('partial shared-wall passage has an actual connecting floor and no wall collider in either axis',async()=>{
+ const {asHouse}=await import('../src/data/house-editor.js'),{createRectangleProject,updateRectangleProject}=await import('../src/data/project-data.js');
+ const createArchitecture=await loadArchitecture();
+ for(const vertical of [true,false]){
+  const base=createRectangleProject({width:3000,depth:3000}),editor=asHouse(base.roomEditor),side=vertical?'right':'bottom',opposite=vertical?'left':'top',segments=[{offset:0,length:1000,height:2800},{offset:2000,length:1000,height:2800}];
+  editor.rooms[0].wallSegments={[side]:segments};editor.rooms.push({id:'next',x:vertical?3120:0,y:vertical?0:3120,width:3000,depth:3000,wallSegments:{[opposite]:segments}});
+  const project=updateRectangleProject(base,editor,{...base.rooms,next:{name:'Next',mat:'wood'}}),groups={archFloor:new Group(),archUp:new Group(),lampG:new Group(),doors:[],colliders:[]};
+  const box=(w,h,d,m,x,y,z)=>{const o=new Mesh(new BoxGeometry(w,h,d),m);o.position.set(x,y,z);return o;};
+  createArchitecture({store:{getProject:()=>project},opt:{cut:2.8,mode:'orbit'},space:{wx:v=>v/1000,wz:v=>v/1000},groups,materials:{mat:()=>({}),floorMat:()=>({})},primitives:{box,metal:()=>({})}}).build();
+  const bridge=groups.archFloor.children.find(o=>o.geometry instanceof BoxGeometry);
+  assert.ok(bridge);close(bridge.geometry.parameters.width,vertical?.12:1);close(bridge.geometry.parameters.depth,vertical?1:.12);close(bridge.position.x,vertical?3.06:1.5);close(bridge.position.z,vertical?1.5:3.06);
+  assert.ok(!groups.colliders.some(c=>vertical?c[0]<3.12&&c[2]>3&&c[1]<2&&c[3]>1:c[1]<3.12&&c[3]>3&&c[0]<2&&c[2]>1));
+ }
+});
+test('folding leaves face the selected room on every wall, reverse for outward folds and respect cutaway',async()=>{
+ const createArchitecture=await loadArchitecture();
+ for(const side of ['top','right','bottom','left'])for(const swing of ['inward','outward'])for(const cut of [1.2,2.8]){
+  const rooms={r:{name:'Laundry',mat:'wood'}},geometry=generateRoomGeometry({kind:'rectangle',roomId:'r',width:3000,depth:3000,height:2800,wallThickness:120,openings:[{id:'fold',type:'door',mode:'bifold',wallId:side,offset:500,width:1200,height:2032,swing}]},rooms);
+  const project={geometry,rooms,demolished:[]},groups={archFloor:new Group(),archUp:new Group(),lampG:new Group(),doors:[],colliders:[]};
+  const box=(w,h,d,m,x=0,y=0,z=0)=>{const o=new Mesh(new BoxGeometry(w,h,d),m);o.position.set(x,y+h/2,z);return o;};
+  createArchitecture({store:{getProject:()=>project},opt:{cut,mode:'orbit'},space:{wx:v=>v/1000,wz:v=>v/1000},groups,materials:{mat:color=>({color}),floorMat:()=>({})},primitives:{box,metal:()=>({})}}).build();
+  const leaves=groups.archUp.children.filter(o=>o.material?.color==='#efe6d8');assert.equal(leaves.length,4);assert.equal(groups.doors.length,0);
+  const vertical=['left','right'].includes(side),face=['right','bottom'].includes(side)?3:0,normal=(['top','left'].includes(side)?1:-1)*(swing==='inward'?1:-1);
+  for(const leaf of leaves){close(leaf.geometry.parameters.width,.3);close(leaf.geometry.parameters.height,Math.min(cut,2.032));close((vertical?leaf.position.x:leaf.position.z)-face,normal*1.2*.12);assert.ok(Math.abs(vertical?Math.sin(leaf.rotation.y):Math.cos(leaf.rotation.y))<.3);}
  }
 });

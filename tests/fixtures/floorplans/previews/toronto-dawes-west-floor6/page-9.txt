@@ -1,0 +1,146 @@
+UP
+INDOOR AMENITY
+964 m²
+10381 ft²
+LINE OF TOWER
+ABOVE
+LINE OF TOWER
+ABOVE
+MECHANICAL
+ROOM
+LINE OF NON-
+SENSITIVE
+CONSTRUCTION
+LINE OF NON-SENSITIVE
+CONSTRUCTION
+OUTDOOR AMENITY
+426 m²
+4588 ft²
+3B UNIT
+116 m²
+1244 ft²
+1B UNIT
+56 m²
+603 ft²
+2B UNIT
+68 m²
+729 ft²
+2B UNIT
+71 m²
+761 ft²
+2B UNIT
+74 m²
+801 ft²
+2B UNIT
+73 m²
+782 ft²
+2B UNIT
+76 m²
+819 ft²
+2B UNIT
+80 m²
+864 ft²
+3B UNIT
+131 m²
+1411 ft²
+3B UNIT
+136 m²
+1469 ft²
+2B UNIT
+90 m²
+974 ft²
+3B UNIT
+124 m²
+1338 ft²
+3B UNIT
+108 m²
+1162 ft²
+OPEN TO ABOVE
+BALC.
+BALC.
+BALC.
+BALC.
+BALC.
+BALC.
+BALC.
+BALC.
+BALC.
+BALC.
+BALC.
+BALC.
+MECHANICAL
+ROOM
+LINE OF TOWER
+ABOVE
+OPEN TO BELOW
+2430mm (MIN) SCREEN @
+OUTDOOR AMENITY TERRACE
+738
+OVERALL
+27683
+9249
+9232
+9195
+OVERALL
+27459
+738
+2.43 m HIGH ELECTRIFICATION
+BARRIER
+OVERALL
+137565
+A452.S
+1
+A451.S
+1
+A452.S
+3
+A452.S
+2
+PROPERTY LINE
+PROPERTY LINE
+PROPERTY LINE
+PROPERTY LINE
+PROPERTY LINE
+METROLINX PROPERTY LINE
+PROPERTY LINE
+METROLINX PROPERTY LINE
+METROLINX PROPERTY LINE
+3.5M VEGETATION
+CLEARANCE ZONE
+3500
+901 King Street West, Suite 701  Toronto, ON M5V 3H5
+t 416 598 1240   www.bdpquadrangle.com
+Quadrangle Architects Limited
+P R O J E C T
+S C A L E
+D R A W N
+R E V I E W E D
+I S S U E  R E C O R D
+R E V I S I O N  R E C O R D
+Note: This drawing is the property of the Architect and may not be reproduced
+or
+used without the expressed consent of the Architect. The Contractor is
+responsible
+for checking and verifying all levels and dimensions and shall report all
+discrepancies to the Architect and obtain clarification prior to commencing
+work.
+2020-12-18 11:54:05 AM
+C:\Users\JWalker\Documents\QAL_SITE_19002_6 Dawes Rd_R2020_jwalker.rvt
+6 Dawes Rd
+Toronto, Ontario
+West Block Floor 6
+19002
+JW
+MS
+A214.S
+1:250
+A214.S
+SCALE: 1 : 250
+W EST BLOCK -  LEVEL 6 FLOOR PLAN
+1
+Date
+No. Description
+2019-11-22
+Issued for Rezoning
+2020-12-18
+Issued for Rezoning Resubmission

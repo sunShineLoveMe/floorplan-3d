@@ -1,0 +1,50 @@
+{
+  "id": "cmu-fairfax-one-bedroom-jpeg",
+  "title": "CMU Fairfax：一卧网页图片",
+  "provider": "Carnegie Mellon University",
+  "sourcePage": "https://www.cmu.edu/housing/our-communities/residences/fairfax.html",
+  "downloadUrl": "https://www.cmu.edu/housing/images/grid-images/fairfax-one-br-sample-layout-cropped.jpg",
+  "country": "US",
+  "scenario": "student-housing",
+  "tags": [
+    "one-bedroom",
+    "web-image",
+    "jpeg",
+    "cropped-source",
+    "imperial",
+    "low-resolution-web-image",
+    "approximate-room-dimensions"
+  ],
+  "original": "originals/cmu-fairfax-one-bedroom-jpeg/original.jpg",
+  "previewPages": [
+    1
+  ],
+  "dimensionStatus": "room-dimensions-only",
+  "acceptanceStatus": "collected-not-accepted",
+  "rights": "Original source copyright retained; no open redistribution license inferred",
+  "resolvedDownloadUrl": "https://www.cmu.edu/housing/images/grid-images/fairfax-one-br-sample-layout-cropped.jpg",
+  "contentType": "image/jpeg",
+  "retrievedAt": "2026-10-02T07:27:36.927725+00:00",
+  "sha256": "a80336a75ea8b6bda92b1ed28dd890cc459ba66dc820410e6d4445397f17687c",
+  "bytes": 61785,
+  "pageCount": 1,
+  "imageDimensions": [
+    509,
+    542
+  ],
+  "preview": "originals/cmu-fairfax-one-bedroom-jpeg/original.jpg",
+  "previewDetails": [
+    {
+      "path": "originals/cmu-fairfax-one-bedroom-jpeg/original.jpg",
+      "format": "jpg"
+    }
+  ],
+  "inspection": "file-integrity-and-render-checked",
+  "reviewNotes": "509×542 原生网页 JPG，文字较小，不应猜读",
+  "sourceVisualReview": "selected-page-inspected",
+  "calibrationPolicy": "use-readable-labelled-length-as-approximate-test-reference; confirm measured length for actual furniture decisions",
+  "unitsInSource": [
+    "ft",
+    "in"
+  ]
+}

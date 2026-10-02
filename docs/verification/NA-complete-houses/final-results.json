@@ -1,0 +1,380 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-02T06:37:32.787Z",
+  "scope": "Four complete manually modelled single-floor A1 layouts; excludes structure, roof, MEP, permits, arbitrary polygons, auto recognition and multi-floor buildings",
+  "finalBuild": "58cd1dedbb49c3ad",
+  "coreCreationBuild": "3db3caeb96d1c51c",
+  "buildDifference": "Final build changes print layout reservation and footer spacing only; all four exported projects were imported, audited and reviewed in 2D/3D on final build, with four PDFs regenerated and checked",
+  "plans": [
+    {
+      "plan": "plan-b",
+      "passed": true,
+      "coreBrowserBuild": "3db3caeb96d1c51c",
+      "coreBrowserChecks": 9,
+      "currentBuildReadValidated": true,
+      "currentBuildAudit": {
+        "openFoldPacks": 2,
+        "furniture": 15,
+        "swingConflicts": 0,
+        "grossSqFt": 1199.9999999999998,
+        "sourceOutlineSqFt": 1200,
+        "netSqFt": 1079.9444444444443,
+        "spaces": 11,
+        "doors": 5,
+        "sliding": 2,
+        "bifold": 1,
+        "windows": 12,
+        "connectedSpaces": 11
+      },
+      "source": {
+        "plan": "B",
+        "url": "https://www.sandiegocounty.gov/content/dam/sdc/pds/bldg/adu_info/pds673_11x17.pdf",
+        "originalPages": 14,
+        "originalPage": 5,
+        "originalSha256": "bb55e87e8a7c5f63316c019c840693e22f8bcfc63bf6777710cbc5d9848c9502",
+        "rotation": 270,
+        "a1PdfSha256": "0ade5f1c743cddddb919bd9eaee8c0dfcc2bdb9936ae500c73cc1b946034bf97"
+      },
+      "artifactSha256": {
+        "source-a1.pdf": "0ade5f1c743cddddb919bd9eaee8c0dfcc2bdb9936ae500c73cc1b946034bf97",
+        "source-a1.png": "596090dd8f1e0362828482229684732a2dd4820b3160aea2ea4b4fd08b33eacb",
+        "complete-project.json": "78f87e64da865ec0f471f8e7da68dcd72eeff57921299983bc7d19e774adab5f",
+        "complete-2d.png": "ae865a204f5e7a6f378276356dbcf8e08393340252cab8525c872e4f5c8f58b9",
+        "complete-3d.png": "f86ed48f823a1f98c623b704581380667696fbc7cb8e146d40dd9013d705c955",
+        "complete-print.pdf": "1ad765e57b9775837f58721a3fc49aac9c353c071c8da3ce3c80ce27e3e9024f",
+        "complete-print-render.png": "75c82f63b1e73f711ef8e53b259b31e0e0398c840502835948c0e0b1eeadc728",
+        "source-overlay.png": "57c81621e667840ef2fc3328784debf93631e6512199301895d92e7741f9e953",
+        "review-cutaway.png": "491ed85942c091e3fa75d4920e09e0928ec3b4535c565277b2e83eeba6bd7845"
+      }
+    },
+    {
+      "plan": "plan-a",
+      "passed": true,
+      "coreBrowserBuild": "3db3caeb96d1c51c",
+      "coreBrowserChecks": 9,
+      "currentBuildReadValidated": true,
+      "currentBuildAudit": {
+        "openFoldPacks": 2,
+        "furniture": 16,
+        "swingConflicts": 0,
+        "grossSqFt": 1200,
+        "sourceOutlineSqFt": 1200,
+        "netSqFt": 1078.9166666666667,
+        "spaces": 15,
+        "doors": 5,
+        "sliding": 3,
+        "bifold": 1,
+        "windows": 8,
+        "connectedSpaces": 15
+      },
+      "source": {
+        "plan": "A",
+        "url": "https://www.sandiegocounty.gov/content/dam/sdc/pds/bldg/adu_info/pds670_11x17.pdf",
+        "originalPages": 14,
+        "originalPage": 5,
+        "originalSha256": "89c21a906886ee7fb10d3911bf16899021e8f1e3d7bf63604e5dd8033aff6759",
+        "rotation": 270,
+        "a1PdfSha256": "68ec92633d47b4be725dac2172fe9b348e34ae450e34a569b3b507dc6576134f"
+      },
+      "artifactSha256": {
+        "source-a1.pdf": "68ec92633d47b4be725dac2172fe9b348e34ae450e34a569b3b507dc6576134f",
+        "source-a1.png": "756125b5fa08ff07e16253992be4e801006b26dfb41d09849e0cff5574d3434b",
+        "complete-project.json": "4af716932e7914185d9c8a983ac6c33a562e0b5fa4c14edf0fc69e1cd9373cfb",
+        "complete-2d.png": "3f6714c654b6506ef3840070816b71a8713ae2fb79d85106e23c7505fe149b94",
+        "complete-3d.png": "94f0cd335a9094315eb891ba2b862b7f53dda2c34d51031c439b60326b307ce0",
+        "complete-print.pdf": "576dda8cb31accbbda0ebd9b7bf3fdcff104dce2f2e2144a0d96798d573639ce",
+        "complete-print-render.png": "1e0b783acbf25846b89f10a01bbeda46d1988dddfdcb9f5fbd82a1b1a432c86f",
+        "source-overlay.png": "5790caba73d88e132643319ed7355c42c54e37eeaa6673030872d0f207f342a4",
+        "review-cutaway.png": "8f73b1548d5bee892fb7568a5053ccb7ed5f119e5eb3a2f7535aeba767a5e181"
+      }
+    },
+    {
+      "plan": "plan-c",
+      "passed": true,
+      "coreBrowserBuild": "3db3caeb96d1c51c",
+      "coreBrowserChecks": 9,
+      "currentBuildReadValidated": true,
+      "currentBuildAudit": {
+        "openFoldPacks": 2,
+        "furniture": 17,
+        "swingConflicts": 0,
+        "grossSqFt": 1198.75,
+        "sourceOutlineSqFt": 1198.75,
+        "netSqFt": 1084.986111111111,
+        "spaces": 14,
+        "doors": 5,
+        "sliding": 2,
+        "bifold": 1,
+        "windows": 8,
+        "connectedSpaces": 14
+      },
+      "source": {
+        "plan": "C",
+        "url": "https://www.sandiegocounty.gov/content/dam/sdc/pds/bldg/adu_info/pds675_11x17.pdf",
+        "originalPages": 14,
+        "originalPage": 5,
+        "originalSha256": "c5d7ba3bc8c5ee7ddd31223ab146058aca79d9dd27d2322520a85c911416a0e6",
+        "rotation": 270,
+        "a1PdfSha256": "91c170854649fd51b5458c29ee34ed97424348b68bcd682bd95af9b53fa5fd9e"
+      },
+      "artifactSha256": {
+        "source-a1.pdf": "91c170854649fd51b5458c29ee34ed97424348b68bcd682bd95af9b53fa5fd9e",
+        "source-a1.png": "4d8c5dee558504fb0e544c244c903daff161a01b7b25a4d6e699af33cbdf6a97",
+        "complete-project.json": "aff93b6401e7dd84dd94592da9008f4f8f2c1d3200dd0ab89efcce9d7f1d9173",
+        "complete-2d.png": "f41cc9472f732ec2a2e4b28faceb03eefb24e6630c33ba83354608cf005fea45",
+        "complete-3d.png": "4a5f360b0e9b560bf9dbd1ffb885e310ecc56aad780a5b0abe45057f231961fd",
+        "complete-print.pdf": "6d4abaf82001757d09975483e9b4ae34d9079800524671437a41dba35edcc30a",
+        "complete-print-render.png": "1c7818723b137548ea083365440efe1e15a5fa081861b917a19885a66a45ca08",
+        "source-overlay.png": "e40bc4261e4451ef1c701bc13a13461648c692d1ed0b10d82abbc2e006e6b3ed",
+        "review-cutaway.png": "399619ee755bb4a51631904d9407d7b0aade1e96613b10e59871048d9a35f0d7"
+      }
+    },
+    {
+      "plan": "plan-f",
+      "passed": true,
+      "coreBrowserBuild": "3db3caeb96d1c51c",
+      "coreBrowserChecks": 9,
+      "currentBuildReadValidated": true,
+      "currentBuildAudit": {
+        "openFoldPacks": 2,
+        "furniture": 12,
+        "swingConflicts": 0,
+        "grossSqFt": 600.2499999999999,
+        "sourceOutlineSqFt": 600.25,
+        "netSqFt": 532.3611111111111,
+        "spaces": 7,
+        "doors": 2,
+        "sliding": 1,
+        "bifold": 1,
+        "windows": 6,
+        "connectedSpaces": 7
+      },
+      "source": {
+        "plan": "F",
+        "url": "https://www.sandiegocounty.gov/content/dam/sdc/pds/bldg/adu_info/pds671_11x17.pdf",
+        "originalPages": 14,
+        "originalPage": 5,
+        "originalSha256": "89dbbd8f7977d772df44a4eea1a0ec35d795d9830538e3aa1e29f8d5bfe10bdc",
+        "rotation": 270,
+        "a1PdfSha256": "484a993d9440069a5316c5dbc537e67e98a2b24a3b368ca2576dcdbdbf5654c5"
+      },
+      "artifactSha256": {
+        "source-a1.pdf": "484a993d9440069a5316c5dbc537e67e98a2b24a3b368ca2576dcdbdbf5654c5",
+        "source-a1.png": "4667f15cfd40085ea1fe566781d2446fd0c2b0cfb783569b4e847a752756658d",
+        "complete-project.json": "f56ddc71d6fe4dfb01f8239b1d04bee60d5e3951aff3174135c78326d14f3155",
+        "complete-2d.png": "90250ba1b1058b84dbc9889b47a973f366ff6ba00216a0dbb049eb44efe3993a",
+        "complete-3d.png": "22f972b1b5d0cdcb06286134d2b1c93abc2770a8d777aa7bc897eaf1726ab217",
+        "complete-print.pdf": "2514c6cf21956088b22777a75df0e1de943fbe3112aca53768cce13c6202e806",
+        "complete-print-render.png": "7b221757ed594086c4b7e3c673fce3982362dc4ae91d974a2207638c48cef931",
+        "source-overlay.png": "ded8b1cdc0ca8929f8b756e4e754ff642b34ab57f52e6b4d3072c9ccae32f275",
+        "review-cutaway.png": "74ff724d144e0833de00f9dfddf25d64643207f4be940263eb326aeb1c4f1a36"
+      }
+    }
+  ],
+  "checks": {
+    "unit": {
+      "passed": true,
+      "tests": 78,
+      "failures": 0,
+      "log": "unit-tests.log"
+    },
+    "eslint": {
+      "passed": true,
+      "exitCode": 0,
+      "log": "eslint.log"
+    },
+    "syntax": {
+      "passed": true,
+      "files": 87
+    },
+    "build": {
+      "passed": true,
+      "version": "58cd1dedbb49c3ad",
+      "log": "build.log"
+    },
+    "gitDiffCheck": {
+      "passed": true,
+      "exitCode": 0
+    },
+    "coreBrowserChecks": 36,
+    "currentBuildReview": {
+      "passed": true,
+      "build": "58cd1dedbb49c3ad",
+      "checks": [
+        "plan-b: full source JSON read, independent area/connectivity/fixture checks and clean source overlay/3D review",
+        "A: wrong opposite leaf rejected atomically; deleting its partner clears association; undo restores both",
+        "plan-a: full source JSON read, independent area/connectivity/fixture checks and clean source overlay/3D review",
+        "plan-c: full source JSON read, independent area/connectivity/fixture checks and clean source overlay/3D review",
+        "F: oversized notch rejected atomically; valid notch area edit and exact undo/redo passed",
+        "plan-f: full source JSON read, independent area/connectivity/fixture checks and clean source overlay/3D review"
+      ],
+      "errors": [],
+      "timestamp": "2026-10-02T06:36:00.258Z"
+    },
+    "currentBuildRegression": {
+      "passed": true,
+      "build": "58cd1dedbb49c3ad",
+      "testCount": 12,
+      "results": [
+        {
+          "task": "NA-001",
+          "passed": true,
+          "errors": [],
+          "timestamp": "2026-10-02T06:34:44.078Z"
+        },
+        {
+          "task": "NA-002",
+          "passed": true,
+          "errors": [],
+          "timestamp": "2026-10-02T06:34:45.946Z"
+        },
+        {
+          "task": "NA-003",
+          "passed": true,
+          "errors": [],
+          "timestamp": "2026-10-02T06:34:46.712Z"
+        },
+        {
+          "task": "NA-004",
+          "passed": true,
+          "errors": [],
+          "timestamp": "2026-10-02T06:34:46.137Z"
+        },
+        {
+          "task": "NA-005",
+          "passed": true,
+          "errors": [],
+          "timestamp": "2026-10-02T06:34:46.972Z"
+        },
+        {
+          "task": "NA-006",
+          "passed": true,
+          "errors": [],
+          "timestamp": "2026-10-02T06:34:47.685Z"
+        },
+        {
+          "task": "NA-007",
+          "passed": true,
+          "errors": [],
+          "timestamp": "2026-10-02T06:34:48.273Z"
+        },
+        {
+          "task": "NA-008",
+          "passed": true,
+          "errors": [],
+          "timestamp": "2026-10-02T06:34:59.398Z"
+        },
+        {
+          "task": "NA-009",
+          "passed": true,
+          "errors": [],
+          "timestamp": "2026-10-02T06:34:59.979Z"
+        },
+        {
+          "task": "NA-010",
+          "passed": true,
+          "errors": [],
+          "timestamp": "2026-10-02T06:35:00.381Z"
+        },
+        {
+          "task": "NA-011",
+          "passed": true,
+          "errors": [],
+          "timestamp": "2026-10-02T06:35:05.549Z"
+        },
+        {
+          "task": "NA-012",
+          "passed": true,
+          "errors": [],
+          "timestamp": "2026-10-02T06:35:05.249Z"
+        }
+      ]
+    },
+    "pdf": {
+      "passed": true,
+      "files": [
+        {
+          "plan": "plan-b",
+          "pages": 1,
+          "paper": "A3 landscape",
+          "widthPt": 1191.1199951171875,
+          "heightPt": 841.9199829101562,
+          "rulerLengthPt": 283.5,
+          "sha256": "1ad765e57b9775837f58721a3fc49aac9c353c071c8da3ce3c80ce27e3e9024f",
+          "passed": true
+        },
+        {
+          "plan": "plan-a",
+          "pages": 1,
+          "paper": "A3 landscape",
+          "widthPt": 1191.1199951171875,
+          "heightPt": 841.9199829101562,
+          "rulerLengthPt": 283.5,
+          "sha256": "576dda8cb31accbbda0ebd9b7bf3fdcff104dce2f2e2144a0d96798d573639ce",
+          "passed": true
+        },
+        {
+          "plan": "plan-c",
+          "pages": 1,
+          "paper": "A3 landscape",
+          "widthPt": 1191.1199951171875,
+          "heightPt": 841.9199829101562,
+          "rulerLengthPt": 283.5,
+          "sha256": "6d4abaf82001757d09975483e9b4ae34d9079800524671437a41dba35edcc30a",
+          "passed": true
+        },
+        {
+          "plan": "plan-f",
+          "pages": 1,
+          "paper": "A3 landscape",
+          "widthPt": 1191.1199951171875,
+          "heightPt": 841.9199829101562,
+          "rulerLengthPt": 283.5,
+          "sha256": "2514c6cf21956088b22777a75df0e1de943fbe3112aca53768cce13c6202e806",
+          "passed": true
+        }
+      ],
+      "physicalPrinterTested": false
+    },
+    "visualReview": {
+      "passed": true,
+      "inspected": [
+        "all four source overlays",
+        "all four clean 3D cutaways",
+        "all four complete PDF page renders"
+      ],
+      "physicalPrinterTested": false
+    },
+    "service": {
+      "passed": true,
+      "originalServicePreserved": true,
+      "temporaryQAServiceStopped": true,
+      "services": {
+        "8086": {
+          "running": true,
+          "status": 200,
+          "currentBuild": true
+        },
+        "8095": {
+          "running": false,
+          "reason": "URLError"
+        }
+      }
+    }
+  },
+  "delivery": {
+    "branch": "feat/ui-refactor",
+    "head": "25faa07cf0a58ea82f403d7654ca3a9c3076e91b",
+    "headUpstreamAheadBehind": "0\t0",
+    "uncommittedLocalWork": true,
+    "pushedThisBatch": false,
+    "mergedThisBatch": false,
+    "deployedThisBatch": false
+  },
+  "limitations": [
+    "Only local Chrome used; no Safari/Edge/physical touch device verification",
+    "Reference source wall dimensions and window head modelling assumptions are documented in the acceptance report",
+    "3 inch floor connectivity is not a code-compliance or human-clear-width calculation",
+    "Bi-fold packs are checked statically; automatic door conflict indicators cover swing doors"
+  ]
+}

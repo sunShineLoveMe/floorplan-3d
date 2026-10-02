@@ -1,0 +1,376 @@
+{
+ "id": "plan-f",
+ "name": "San Diego Plan F - complete floor layout",
+ "sourcePage": 5,
+ "originPdf": [
+  218.82,
+  137.22
+ ],
+ "pdfPointsPerFoot": 18,
+ "footprint": [
+  [
+   0,
+   0
+  ],
+  [
+   28.583333333333332,
+   0
+  ],
+  [
+   28.583333333333332,
+   21
+  ],
+  [
+   0,
+   21
+  ]
+ ],
+ "grossSqFt": 600,
+ "notes": [
+  "A1 exterior dimensions produce 600.25 sq ft; the title rounds to 600.",
+  "Living net polygon excludes the bedroom corner; open-room labels on A1 overlap, so their rectangle areas are not additive.",
+  "Window heads at 6 ft 8 in are editable modelling values; A1 specifies window width/height."
+ ],
+ "rooms": [
+  {
+   "id": "closet",
+   "name": "Bedroom closet",
+   "x": 0.5,
+   "y": 0.5,
+   "width": 10.166666666666666,
+   "depth": 2,
+   "walls": [
+    6,
+    4,
+    4,
+    6
+   ]
+  },
+  {
+   "id": "bed",
+   "name": "Bedroom",
+   "x": 0.5,
+   "y": 2.8333333333333335,
+   "width": 10.166666666666666,
+   "depth": 9.833333333333334,
+   "walls": [
+    4,
+    4,
+    0,
+    6
+   ],
+   "segments": {
+    "right": [
+     [
+      0,
+      7.5,
+      8
+     ]
+    ]
+   }
+  },
+  {
+   "id": "bath",
+   "name": "Bath",
+   "x": 11,
+   "y": 0.5,
+   "width": 6,
+   "depth": 9.5,
+   "walls": [
+    6,
+    6,
+    4,
+    4
+   ]
+  },
+  {
+   "id": "laundry",
+   "name": "Laundry",
+   "x": 17.5,
+   "y": 0.5,
+   "width": 3.0833333333333335,
+   "depth": 3.1666666666666665,
+   "walls": [
+    6,
+    4,
+    4,
+    6
+   ]
+  },
+  {
+   "id": "kitchen",
+   "name": "Kitchen",
+   "x": 17.5,
+   "y": 0.5,
+   "width": 10.583333333333334,
+   "depth": 9.5,
+   "walls": [
+    6,
+    6,
+    4,
+    6
+   ],
+   "segments": {
+    "bottom": [
+     [
+      3.5833333333333335,
+      7,
+      4
+     ]
+    ]
+   },
+   "notch": {
+    "corner": "top-left",
+    "width": 3.4166666666666665,
+    "depth": 3.5
+   }
+  },
+  {
+   "id": "living",
+   "name": "Living",
+   "x": 0.5,
+   "y": 10.333333333333334,
+   "width": 20.5,
+   "depth": 10.166666666666666,
+   "walls": [
+    4,
+    0,
+    6,
+    6
+   ],
+   "segments": {
+    "top": [
+     [
+      10.166666666666666,
+      6.833333333333333,
+      8
+     ]
+    ]
+   },
+   "notch": {
+    "corner": "top-left",
+    "width": 10.166666666666666,
+    "depth": 2.3333333333333335
+   }
+  },
+  {
+   "id": "dining",
+   "name": "Dining",
+   "x": 21,
+   "y": 10.333333333333334,
+   "width": 7.083333333333333,
+   "depth": 10.166666666666666,
+   "walls": [
+    4,
+    6,
+    6,
+    0
+   ],
+   "segments": {
+    "top": [
+     [
+      0.08333333333333333,
+      7,
+      4
+     ]
+    ]
+   }
+  }
+ ],
+ "openings": [
+  {
+   "id": "entry",
+   "room": "living",
+   "side": "bottom",
+   "type": "door",
+   "offset": 17.496719160104988,
+   "width": 3,
+   "hinge": "end",
+   "swing": "inward"
+  },
+  {
+   "id": "bath-door",
+   "room": "bath",
+   "side": "left",
+   "type": "door",
+   "offset": 6.333333333333333,
+   "width": 3,
+   "hinge": "end",
+   "swing": "inward"
+  },
+  {
+   "id": "laundry-door",
+   "room": "laundry",
+   "side": "bottom",
+   "type": "door",
+   "offset": 0,
+   "width": 3,
+   "mode": "bifold",
+   "swing": "outward"
+  },
+  {
+   "id": "closet-door",
+   "room": "closet",
+   "side": "bottom",
+   "type": "door",
+   "offset": 1.0833333333333333,
+   "width": 8,
+   "mode": "sliding"
+  },
+  {
+   "id": "bath-top",
+   "room": "bath",
+   "side": "top",
+   "type": "window",
+   "offset": 1.5,
+   "width": 3,
+   "height": 2
+  },
+  {
+   "id": "kitchen-right",
+   "room": "kitchen",
+   "side": "right",
+   "type": "window",
+   "offset": 3.5,
+   "width": 3,
+   "height": 4
+  },
+  {
+   "id": "dining-right",
+   "room": "dining",
+   "side": "right",
+   "type": "window",
+   "offset": 0.666666666666667,
+   "width": 4,
+   "height": 4
+  },
+  {
+   "id": "living-left",
+   "room": "living",
+   "side": "left",
+   "type": "window",
+   "offset": 1.6666666666666665,
+   "width": 4,
+   "height": 4
+  },
+  {
+   "id": "living-bottom",
+   "room": "living",
+   "side": "bottom",
+   "type": "window",
+   "offset": 3.5,
+   "width": 4,
+   "height": 4
+  },
+  {
+   "id": "dining-bottom",
+   "room": "dining",
+   "side": "bottom",
+   "type": "window",
+   "offset": 1.5833333333333335,
+   "width": 2,
+   "height": 3
+  }
+ ],
+ "furniture": [
+  {
+   "type": "shower",
+   "name": "Bath shower 72x30 in",
+   "x": 14,
+   "y": 1.75,
+   "w": 6,
+   "d": 2.5
+  },
+  {
+   "type": "vanity",
+   "name": "Bath vanity",
+   "x": 16.25,
+   "y": 5,
+   "w": 1.5,
+   "d": 2.5
+  },
+  {
+   "type": "toilet",
+   "name": "Bath toilet",
+   "x": 15.75,
+   "y": 8.5,
+   "w": 1.5,
+   "d": 2.5
+  },
+  {
+   "type": "washer",
+   "name": "Stacked washer dryer",
+   "x": 19,
+   "y": 2,
+   "w": 2.5,
+   "d": 2.5
+  },
+  {
+   "type": "fridge",
+   "name": "Kitchen refrigerator",
+   "x": 22.25,
+   "y": 2,
+   "w": 2.5,
+   "d": 3
+  },
+  {
+   "type": "stove",
+   "name": "Kitchen stove",
+   "x": 26.25,
+   "y": 1.5,
+   "w": 2.5,
+   "d": 2
+  },
+  {
+   "type": "counter",
+   "name": "Kitchen south counter",
+   "x": 24.6,
+   "y": 9,
+   "w": 6.5,
+   "d": 2.5
+  },
+  {
+   "type": "ksink",
+   "name": "Kitchen sink",
+   "x": 25.75,
+   "y": 9,
+   "w": 2.5,
+   "d": 2
+  },
+  {
+   "type": "wardrobe",
+   "name": "Closet storage",
+   "x": 5.5,
+   "y": 1.5,
+   "w": 9,
+   "d": 1.5
+  },
+  {
+   "type": "bed",
+   "name": "Queen in Bedroom",
+   "x": 5.5,
+   "y": 7.75,
+   "w": 5,
+   "d": 6.666666666666667,
+   "purpose": "acceptance-furniture"
+  },
+  {
+   "type": "sofa",
+   "name": "Living sofa",
+   "x": 13,
+   "y": 18.9,
+   "w": 8,
+   "d": 3,
+   "purpose": "acceptance-furniture"
+  },
+  {
+   "type": "table",
+   "name": "Dining table",
+   "x": 24.5,
+   "y": 17,
+   "w": 5,
+   "d": 3,
+   "purpose": "acceptance-furniture"
+  }
+ ]
+}

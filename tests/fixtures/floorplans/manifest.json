@@ -1,0 +1,937 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-02",
+  "purpose": "Reusable original-source library for North American user-flow testing",
+  "samples": [
+    {
+      "id": "san-diego-plan-b",
+      "title": "San Diego Plan B：两卧一卫，L 形单层",
+      "provider": "San Diego County",
+      "sourcePage": "https://www.sandiegocounty.gov/content/sdc/pds/bldg/adu_plans.html",
+      "downloadUrl": "https://www.sandiegocounty.gov/content/dam/sdc/pds/bldg/adu_info/pds673_11x17.pdf",
+      "country": "US",
+      "scenario": "official-design",
+      "tags": [
+        "baseline",
+        "dimensioned",
+        "multi-page-pdf",
+        "imperial",
+        "closet",
+        "laundry"
+      ],
+      "original": "originals/san-diego-plan-b/original.pdf",
+      "previewPages": [
+        5
+      ],
+      "dimensionStatus": "overall-and-room-dimensions",
+      "acceptanceStatus": "accepted-single-floor-manual-model",
+      "rights": "Original source copyright retained; no open redistribution license inferred",
+      "sha256": "bb55e87e8a7c5f63316c019c840693e22f8bcfc63bf6777710cbc5d9848c9502",
+      "acceptanceEvidence": "../../../docs/verification/NA-complete-houses/plan-b/browser-results.json",
+      "bytes": 10327642,
+      "pageCount": 14,
+      "preview": "previews/san-diego-plan-b/page-5.png",
+      "previewDetails": [
+        {
+          "path": "previews/san-diego-plan-b/page-5.png",
+          "page": 5,
+          "rotation": 270,
+          "pageSizePt": [
+            1224.0,
+            792.0
+          ],
+          "textCharacters": 3185,
+          "embeddedImages": 4
+        }
+      ],
+      "inspection": "file-integrity-and-render-checked",
+      "sourceVisualReview": "A1 inspected in prior complete-house acceptance",
+      "calibrationPolicy": "use-labelled-exterior-length-for-fixture-test; confirm actual property measurements",
+      "unitsInSource": [
+        "ft",
+        "in"
+      ]
+    },
+    {
+      "id": "san-diego-plan-a",
+      "title": "San Diego Plan A：三卧一卫单层",
+      "provider": "San Diego County",
+      "sourcePage": "https://www.sandiegocounty.gov/content/sdc/pds/bldg/adu_plans.html",
+      "downloadUrl": "https://www.sandiegocounty.gov/content/dam/sdc/pds/bldg/adu_info/pds670_11x17.pdf",
+      "country": "US",
+      "scenario": "official-design",
+      "tags": [
+        "baseline",
+        "dimensioned",
+        "multi-page-pdf",
+        "imperial",
+        "closet",
+        "laundry"
+      ],
+      "original": "originals/san-diego-plan-a/original.pdf",
+      "previewPages": [
+        5
+      ],
+      "dimensionStatus": "overall-and-room-dimensions",
+      "acceptanceStatus": "accepted-single-floor-manual-model",
+      "rights": "Original source copyright retained; no open redistribution license inferred",
+      "sha256": "89c21a906886ee7fb10d3911bf16899021e8f1e3d7bf63604e5dd8033aff6759",
+      "acceptanceEvidence": "../../../docs/verification/NA-complete-houses/plan-a/browser-results.json",
+      "bytes": 10140640,
+      "pageCount": 14,
+      "preview": "previews/san-diego-plan-a/page-5.png",
+      "previewDetails": [
+        {
+          "path": "previews/san-diego-plan-a/page-5.png",
+          "page": 5,
+          "rotation": 270,
+          "pageSizePt": [
+            1224.0,
+            792.0
+          ],
+          "textCharacters": 3164,
+          "embeddedImages": 4
+        }
+      ],
+      "inspection": "file-integrity-and-render-checked",
+      "sourceVisualReview": "A1 inspected in prior complete-house acceptance",
+      "calibrationPolicy": "use-labelled-exterior-length-for-fixture-test; confirm actual property measurements",
+      "unitsInSource": [
+        "ft",
+        "in"
+      ]
+    },
+    {
+      "id": "san-diego-plan-c",
+      "title": "San Diego Plan C：两卧两卫单层",
+      "provider": "San Diego County",
+      "sourcePage": "https://www.sandiegocounty.gov/content/sdc/pds/bldg/adu_plans.html",
+      "downloadUrl": "https://www.sandiegocounty.gov/content/dam/sdc/pds/bldg/adu_info/pds675_11x17.pdf",
+      "country": "US",
+      "scenario": "official-design",
+      "tags": [
+        "baseline",
+        "dimensioned",
+        "multi-page-pdf",
+        "imperial",
+        "closet",
+        "laundry"
+      ],
+      "original": "originals/san-diego-plan-c/original.pdf",
+      "previewPages": [
+        5
+      ],
+      "dimensionStatus": "overall-and-room-dimensions",
+      "acceptanceStatus": "accepted-single-floor-manual-model",
+      "rights": "Original source copyright retained; no open redistribution license inferred",
+      "sha256": "c5d7ba3bc8c5ee7ddd31223ab146058aca79d9dd27d2322520a85c911416a0e6",
+      "acceptanceEvidence": "../../../docs/verification/NA-complete-houses/plan-c/browser-results.json",
+      "bytes": 10357525,
+      "pageCount": 14,
+      "preview": "previews/san-diego-plan-c/page-5.png",
+      "previewDetails": [
+        {
+          "path": "previews/san-diego-plan-c/page-5.png",
+          "page": 5,
+          "rotation": 270,
+          "pageSizePt": [
+            1224.0,
+            792.0
+          ],
+          "textCharacters": 3263,
+          "embeddedImages": 4
+        }
+      ],
+      "inspection": "file-integrity-and-render-checked",
+      "sourceVisualReview": "A1 inspected in prior complete-house acceptance",
+      "calibrationPolicy": "use-labelled-exterior-length-for-fixture-test; confirm actual property measurements",
+      "unitsInSource": [
+        "ft",
+        "in"
+      ]
+    },
+    {
+      "id": "san-diego-plan-f",
+      "title": "San Diego Plan F：一卧一卫紧凑单层",
+      "provider": "San Diego County",
+      "sourcePage": "https://www.sandiegocounty.gov/content/sdc/pds/bldg/adu_plans.html",
+      "downloadUrl": "https://www.sandiegocounty.gov/content/dam/sdc/pds/bldg/adu_info/pds671_11x17.pdf",
+      "country": "US",
+      "scenario": "official-design",
+      "tags": [
+        "baseline",
+        "dimensioned",
+        "multi-page-pdf",
+        "imperial",
+        "closet",
+        "laundry"
+      ],
+      "original": "originals/san-diego-plan-f/original.pdf",
+      "previewPages": [
+        5
+      ],
+      "dimensionStatus": "overall-and-room-dimensions",
+      "acceptanceStatus": "accepted-single-floor-manual-model",
+      "rights": "Original source copyright retained; no open redistribution license inferred",
+      "sha256": "89dbbd8f7977d772df44a4eea1a0ec35d795d9830538e3aa1e29f8d5bfe10bdc",
+      "acceptanceEvidence": "../../../docs/verification/NA-complete-houses/plan-f/browser-results.json",
+      "bytes": 10103499,
+      "pageCount": 14,
+      "preview": "previews/san-diego-plan-f/page-5.png",
+      "previewDetails": [
+        {
+          "path": "previews/san-diego-plan-f/page-5.png",
+          "page": 5,
+          "rotation": 270,
+          "pageSizePt": [
+            1224.0,
+            792.0
+          ],
+          "textCharacters": 2953,
+          "embeddedImages": 4
+        }
+      ],
+      "inspection": "file-integrity-and-render-checked",
+      "sourceVisualReview": "A1 inspected in prior complete-house acceptance",
+      "calibrationPolicy": "use-labelled-exterior-length-for-fixture-test; confirm actual property measurements",
+      "unitsInSource": [
+        "ft",
+        "in"
+      ]
+    },
+    {
+      "id": "hillside-studio-a1",
+      "title": "Hillside A1：小型 Studio",
+      "provider": "Hillside Courtyard",
+      "sourcePage": "https://hillsidecourtyard.com/apartment-layouts/",
+      "downloadUrl": "https://hillsidecourtyard.com/wp-content/uploads/floorplans-pdf/HillsideCourtyardFP_PlanA1_Studio1b_372sf.pdf",
+      "country": "US",
+      "scenario": "rental-apartment",
+      "tags": [
+        "studio",
+        "compact",
+        "marketing",
+        "pdf",
+        "missing-full-dimensions",
+        "colored-marketing"
+      ],
+      "original": "originals/hillside-studio-a1/original.pdf",
+      "previewPages": [
+        1
+      ],
+      "dimensionStatus": "no-linear-dimensions",
+      "acceptanceStatus": "collected-not-accepted",
+      "rights": "Original source copyright retained; no open redistribution license inferred",
+      "resolvedDownloadUrl": "https://hillsidecourtyard.com/wp-content/uploads/floorplans-pdf/HillsideCourtyardFP_PlanA1_Studio1b_372sf.pdf",
+      "contentType": "application/pdf",
+      "retrievedAt": "2026-10-02T07:27:15.364652+00:00",
+      "sha256": "c67db77f48cfb877e4765a3f779bcdf4a45b779a6f4f04df23d1b65d2b68a89d",
+      "bytes": 988750,
+      "pageCount": 1,
+      "preview": "previews/hillside-studio-a1/page-1.png",
+      "previewDetails": [
+        {
+          "path": "previews/hillside-studio-a1/page-1.png",
+          "page": 1,
+          "rotation": 0,
+          "pageSizePt": [
+            792.0,
+            612.0
+          ],
+          "textCharacters": 186,
+          "embeddedImages": 2
+        }
+      ],
+      "inspection": "file-integrity-and-render-checked",
+      "reviewNotes": "需提供实测长度；总面积不能直接用于线性标定",
+      "sourceVisualReview": "selected-page-inspected",
+      "calibrationPolicy": "require-measured-linear-reference",
+      "unitsInSource": [
+        "area-label-or-source-page-only"
+      ]
+    },
+    {
+      "id": "hillside-corner-b5",
+      "title": "Hillside B5：带餐区的转角一卧",
+      "provider": "Hillside Courtyard",
+      "sourcePage": "https://hillsidecourtyard.com/apartment-layouts/",
+      "downloadUrl": "https://hillsidecourtyard.com/wp-content/uploads/floorplans/HillsideCourtyardFP_PlanB5_1b1b_635sf.jpg",
+      "country": "US",
+      "scenario": "rental-apartment",
+      "tags": [
+        "one-bedroom",
+        "corner",
+        "marketing",
+        "jpeg",
+        "missing-full-dimensions",
+        "low-resolution-web-image"
+      ],
+      "original": "originals/hillside-corner-b5/original.jpg",
+      "previewPages": [
+        1
+      ],
+      "dimensionStatus": "no-linear-dimensions",
+      "acceptanceStatus": "collected-not-accepted",
+      "rights": "Original source copyright retained; no open redistribution license inferred",
+      "resolvedDownloadUrl": "https://hillsidecourtyard.com/wp-content/uploads/floorplans/HillsideCourtyardFP_PlanB5_1b1b_635sf.jpg",
+      "contentType": "image/jpeg",
+      "retrievedAt": "2026-10-02T07:27:17.178330+00:00",
+      "sha256": "e95496af4f396b35ab3087f9d373a798699f8e11221c6268f456dc04e4f1228e",
+      "bytes": 117317,
+      "pageCount": 1,
+      "imageDimensions": [
+        507,
+        1024
+      ],
+      "preview": "originals/hillside-corner-b5/original.jpg",
+      "previewDetails": [
+        {
+          "path": "originals/hillside-corner-b5/original.jpg",
+          "format": "jpg"
+        }
+      ],
+      "inspection": "file-integrity-and-render-checked",
+      "reviewNotes": "507×1024 JPG；缺少线性尺寸，L 形客餐厅分区",
+      "sourceVisualReview": "selected-page-inspected",
+      "calibrationPolicy": "require-measured-linear-reference",
+      "unitsInSource": [
+        "area-label-or-source-page-only"
+      ]
+    },
+    {
+      "id": "cmu-fairfax-studio",
+      "title": "CMU Fairfax：双人 Studio",
+      "provider": "Carnegie Mellon University",
+      "sourcePage": "https://www.cmu.edu/housing/our-communities/residences/fairfax.html",
+      "downloadUrl": "https://www.cmu.edu/housing/our-communities/residences/floor-plans/fairfax-apartments/faf-studio-sample-layout.pdf",
+      "country": "US",
+      "scenario": "student-housing",
+      "tags": [
+        "studio",
+        "shared-room",
+        "pdf",
+        "imperial",
+        "raster-pdf",
+        "approximate-room-dimensions",
+        "fixed-fixtures"
+      ],
+      "original": "originals/cmu-fairfax-studio/original.pdf",
+      "previewPages": [
+        1
+      ],
+      "dimensionStatus": "room-dimensions-only",
+      "acceptanceStatus": "collected-not-accepted",
+      "rights": "Original source copyright retained; no open redistribution license inferred",
+      "resolvedDownloadUrl": "https://www.cmu.edu/housing/our-communities/residences/floor-plans/fairfax-apartments/faf-studio-sample-layout.pdf",
+      "contentType": "application/pdf",
+      "retrievedAt": "2026-10-02T07:27:20.536629+00:00",
+      "sha256": "12dbc086f2368cf36784e754fecce8ca78386d33ac743afff0561804573ba293",
+      "bytes": 42688,
+      "pageCount": 1,
+      "preview": "previews/cmu-fairfax-studio/page-1.png",
+      "previewDetails": [
+        {
+          "path": "previews/cmu-fairfax-studio/page-1.png",
+          "page": 1,
+          "rotation": 0,
+          "pageSizePt": [
+            450.0,
+            566.0
+          ],
+          "textCharacters": 0,
+          "embeddedImages": 1
+        }
+      ],
+      "inspection": "file-integrity-and-render-checked",
+      "reviewNotes": "位图 PDF，部分英尺标注；柱子和墙带需核对",
+      "sourceVisualReview": "selected-page-inspected",
+      "calibrationPolicy": "use-readable-labelled-length-as-approximate-test-reference; confirm measured length for actual furniture decisions",
+      "unitsInSource": [
+        "ft",
+        "in"
+      ]
+    },
+    {
+      "id": "cmu-fairfax-two-bedroom",
+      "title": "CMU Fairfax：三人两卧公寓",
+      "provider": "Carnegie Mellon University",
+      "sourcePage": "https://www.cmu.edu/housing/our-communities/residences/fairfax.html",
+      "downloadUrl": "https://www.cmu.edu/housing/our-communities/residences/floor-plans/fairfax-apartments/faf-2br-sample-layout.pdf",
+      "country": "US",
+      "scenario": "student-housing",
+      "tags": [
+        "two-bedroom",
+        "small-bedroom",
+        "shared-housing",
+        "pdf",
+        "imperial",
+        "raster-pdf",
+        "approximate-room-dimensions"
+      ],
+      "original": "originals/cmu-fairfax-two-bedroom/original.pdf",
+      "previewPages": [
+        1
+      ],
+      "dimensionStatus": "room-dimensions-only",
+      "acceptanceStatus": "collected-not-accepted",
+      "rights": "Original source copyright retained; no open redistribution license inferred",
+      "resolvedDownloadUrl": "https://www.cmu.edu/housing/our-communities/residences/floor-plans/fairfax-apartments/faf-2br-sample-layout.pdf",
+      "contentType": "application/pdf",
+      "retrievedAt": "2026-10-02T07:27:35.146613+00:00",
+      "sha256": "bdef8e9000ff1a9a0f857aa584f0a7fdfa8e095f4a36637a943301530bb60e76",
+      "bytes": 4847347,
+      "pageCount": 1,
+      "preview": "previews/cmu-fairfax-two-bedroom/page-1.png",
+      "previewDetails": [
+        {
+          "path": "previews/cmu-fairfax-two-bedroom/page-1.png",
+          "page": 1,
+          "rotation": 0,
+          "pageSizePt": [
+            1224.0,
+            792.0
+          ],
+          "textCharacters": 5,
+          "embeddedImages": 1
+        }
+      ],
+      "inspection": "file-integrity-and-render-checked",
+      "reviewNotes": "8'6\" 小卧室；柱子、门扇与衣柜占地",
+      "sourceVisualReview": "selected-page-inspected",
+      "calibrationPolicy": "use-readable-labelled-length-as-approximate-test-reference; confirm measured length for actual furniture decisions",
+      "unitsInSource": [
+        "ft",
+        "in"
+      ]
+    },
+    {
+      "id": "cmu-fairfax-one-bedroom-jpeg",
+      "title": "CMU Fairfax：一卧网页图片",
+      "provider": "Carnegie Mellon University",
+      "sourcePage": "https://www.cmu.edu/housing/our-communities/residences/fairfax.html",
+      "downloadUrl": "https://www.cmu.edu/housing/images/grid-images/fairfax-one-br-sample-layout-cropped.jpg",
+      "country": "US",
+      "scenario": "student-housing",
+      "tags": [
+        "one-bedroom",
+        "web-image",
+        "jpeg",
+        "cropped-source",
+        "imperial",
+        "low-resolution-web-image",
+        "approximate-room-dimensions"
+      ],
+      "original": "originals/cmu-fairfax-one-bedroom-jpeg/original.jpg",
+      "previewPages": [
+        1
+      ],
+      "dimensionStatus": "room-dimensions-only",
+      "acceptanceStatus": "collected-not-accepted",
+      "rights": "Original source copyright retained; no open redistribution license inferred",
+      "resolvedDownloadUrl": "https://www.cmu.edu/housing/images/grid-images/fairfax-one-br-sample-layout-cropped.jpg",
+      "contentType": "image/jpeg",
+      "retrievedAt": "2026-10-02T07:27:36.927725+00:00",
+      "sha256": "a80336a75ea8b6bda92b1ed28dd890cc459ba66dc820410e6d4445397f17687c",
+      "bytes": 61785,
+      "pageCount": 1,
+      "imageDimensions": [
+        509,
+        542
+      ],
+      "preview": "originals/cmu-fairfax-one-bedroom-jpeg/original.jpg",
+      "previewDetails": [
+        {
+          "path": "originals/cmu-fairfax-one-bedroom-jpeg/original.jpg",
+          "format": "jpg"
+        }
+      ],
+      "inspection": "file-integrity-and-render-checked",
+      "reviewNotes": "509×542 原生网页 JPG，文字较小，不应猜读",
+      "sourceVisualReview": "selected-page-inspected",
+      "calibrationPolicy": "use-readable-labelled-length-as-approximate-test-reference; confirm measured length for actual furniture decisions",
+      "unitsInSource": [
+        "ft",
+        "in"
+      ]
+    },
+    {
+      "id": "imprint-a1",
+      "title": "Imprint A1：租赁一卧",
+      "provider": "Imprint",
+      "sourcePage": "https://liveatimprint.com/floorplans/a1/",
+      "downloadUrl": "https://liveatimprint.com/assets/files/A1_compressed.pdf",
+      "country": "US",
+      "scenario": "rental-apartment",
+      "tags": [
+        "one-bedroom",
+        "artist-rendering",
+        "compressed-pdf",
+        "approximate-dimensions",
+        "furnished-3d-plan",
+        "missing-linear-dimensions"
+      ],
+      "original": "originals/imprint-a1/original.pdf",
+      "previewPages": [
+        1
+      ],
+      "dimensionStatus": "area-only-no-linear-dimensions",
+      "acceptanceStatus": "collected-not-accepted",
+      "rights": "Original source copyright retained; no open redistribution license inferred",
+      "resolvedDownloadUrl": "https://liveatimprint.com/assets/files/A1_compressed.pdf",
+      "contentType": "application/pdf",
+      "retrievedAt": "2026-10-02T07:27:38.087430+00:00",
+      "sha256": "2ce5e76bbc9de2aeac1a4b618c68487d100afa18f9d4c3f08cfa6514f441099c",
+      "bytes": 83924,
+      "pageCount": 1,
+      "preview": "previews/imprint-a1/page-1.png",
+      "previewDetails": [
+        {
+          "path": "previews/imprint-a1/page-1.png",
+          "page": 1,
+          "rotation": 0,
+          "pageSizePt": [
+            612.0,
+            792.0
+          ],
+          "textCharacters": 371,
+          "embeddedImages": 1
+        }
+      ],
+      "inspection": "file-integrity-and-render-checked",
+      "reviewNotes": "带家具的 3D 营销图；644 sq ft 是面积，不能作为线性标定依据",
+      "sourceVisualReview": "selected-page-inspected",
+      "calibrationPolicy": "require-measured-linear-reference",
+      "unitsInSource": [
+        "area-label-or-source-page-only"
+      ]
+    },
+    {
+      "id": "zag-b4-image",
+      "title": "ZAG B4：一卧租赁 PNG",
+      "provider": "Aragon",
+      "sourcePage": "https://zag.aragon.ca/floor-plans/",
+      "downloadUrl": "https://zag.aragon.ca/wp-content/uploads/2022/06/ZAG-Floorplans-B4.png",
+      "country": "US",
+      "scenario": "rental-apartment",
+      "tags": [
+        "one-bedroom",
+        "png",
+        "balcony",
+        "marketing",
+        "missing-full-dimensions",
+        "angled-walls"
+      ],
+      "original": "originals/zag-b4-image/original.png",
+      "previewPages": [
+        1
+      ],
+      "dimensionStatus": "no-linear-dimensions",
+      "acceptanceStatus": "collected-not-accepted",
+      "rights": "Original source copyright retained; no open redistribution license inferred",
+      "resolvedDownloadUrl": "https://zag.aragon.ca/wp-content/uploads/2022/06/ZAG-Floorplans-B4.png",
+      "contentType": "image/png",
+      "retrievedAt": "2026-10-02T07:27:39.112227+00:00",
+      "sha256": "6f9f682391633640f5eebc5afcd8ffa3120344f38d66511de2bfdb39299bfead",
+      "bytes": 135002,
+      "pageCount": 1,
+      "imageDimensions": [
+        1910,
+        1360
+      ],
+      "preview": "originals/zag-b4-image/original.png",
+      "previewDetails": [
+        {
+          "path": "originals/zag-b4-image/original.png",
+          "format": "png"
+        }
+      ],
+      "inspection": "file-integrity-and-render-checked",
+      "reviewNotes": "斜向外墙、阳台、壁橱；完整斜墙模型超出当前能力",
+      "sourceVisualReview": "selected-page-inspected",
+      "calibrationPolicy": "require-measured-linear-reference",
+      "unitsInSource": [
+        "area-label-or-source-page-only"
+      ]
+    },
+    {
+      "id": "zag-live-work",
+      "title": "ZAG LW1：上下层 Live/Work",
+      "provider": "Aragon",
+      "sourcePage": "https://zag.aragon.ca/floor-plans/",
+      "downloadUrl": "https://zag.aragon.ca/wp-content/uploads/2022/07/zag_live_work_1.pdf",
+      "country": "US",
+      "scenario": "live-work-loft",
+      "tags": [
+        "two-levels",
+        "stairs",
+        "open-to-below",
+        "multiple-plans-one-page",
+        "marketing",
+        "angled-walls",
+        "missing-linear-dimensions"
+      ],
+      "original": "originals/zag-live-work/original.pdf",
+      "previewPages": [
+        1
+      ],
+      "dimensionStatus": "area-only-no-linear-dimensions",
+      "acceptanceStatus": "collected-not-accepted",
+      "rights": "Original source copyright retained; no open redistribution license inferred",
+      "resolvedDownloadUrl": "https://zag.aragon.ca/wp-content/uploads/2022/07/zag_live_work_1.pdf",
+      "contentType": "application/pdf",
+      "retrievedAt": "2026-10-02T07:27:40.228110+00:00",
+      "sha256": "c5ccb799af5fdaadcf8f9b9d888806a8cfaad33cdce7252c7acb3f55ae45d0b6",
+      "bytes": 123672,
+      "pageCount": 1,
+      "preview": "previews/zag-live-work/page-1.png",
+      "previewDetails": [
+        {
+          "path": "previews/zag-live-work/page-1.png",
+          "page": 1,
+          "rotation": 0,
+          "pageSizePt": [
+            612.0,
+            792.0
+          ],
+          "textCharacters": 508,
+          "embeddedImages": 0
+        }
+      ],
+      "inspection": "file-integrity-and-render-checked",
+      "reviewNotes": "同页上下两层、斜墙和挑空；不能合并为单层",
+      "sourceVisualReview": "selected-page-inspected",
+      "calibrationPolicy": "require-measured-linear-reference",
+      "unitsInSource": [
+        "area-label-or-source-page-only"
+      ]
+    },
+    {
+      "id": "remington-b-basement",
+      "title": "Remington B：标有地下室的两层联排",
+      "provider": "Remington Grove",
+      "sourcePage": "https://www.remington-grove.com/floor-plans",
+      "downloadUrl": "https://irp.cdn-website.com/67b47b47/files/uploaded/plan%20B%20basement%20brochure.pdf",
+      "country": "US",
+      "scenario": "townhouse",
+      "tags": [
+        "basement",
+        "stairs",
+        "garage",
+        "multiple-plans-one-page",
+        "outlined-text-pdf",
+        "angled-walls"
+      ],
+      "original": "originals/remington-b-basement/original.pdf",
+      "previewPages": [
+        1
+      ],
+      "dimensionStatus": "room-dimensions-only",
+      "acceptanceStatus": "collected-not-accepted",
+      "rights": "Original source copyright retained; no open redistribution license inferred",
+      "resolvedDownloadUrl": "https://irp.cdn-website.com/67b47b47/files/uploaded/plan%20B%20basement%20brochure.pdf",
+      "contentType": "application/pdf",
+      "retrievedAt": "2026-10-02T07:27:41.852898+00:00",
+      "sha256": "e16dd52d694199f0376c7e0f845e18d7fde9f19ed890b4abd264f7e7bfae1980",
+      "bytes": 35109,
+      "pageCount": 1,
+      "preview": "previews/remington-b-basement/page-1.png",
+      "previewDetails": [
+        {
+          "path": "previews/remington-b-basement/page-1.png",
+          "page": 1,
+          "rotation": 0,
+          "pageSizePt": [
+            792.0,
+            1224.0
+          ],
+          "textCharacters": 0,
+          "embeddedImages": 0
+        }
+      ],
+      "inspection": "file-integrity-and-render-checked",
+      "reviewNotes": "文件含一层/二层及地下室标记，未提供完整地下室平面",
+      "sourceVisualReview": "selected-page-inspected",
+      "calibrationPolicy": "use-readable-labelled-length-as-approximate-test-reference; confirm measured length for actual furniture decisions",
+      "unitsInSource": [
+        "ft",
+        "in"
+      ]
+    },
+    {
+      "id": "jacobsen-isw-4521",
+      "title": "Jacobsen ISW-4521：狭长单宽预制住宅",
+      "provider": "Jacobsen Homes",
+      "sourcePage": "https://www.jachomes.com/manufactured-modular-homes/single-wide/two-bedroom/one-and-a-half-bath/isw-4521/",
+      "downloadUrl": "https://www.jachomes.com/wp-content/uploads/2024/07/ISW-4521-Model.pdf",
+      "country": "US",
+      "scenario": "manufactured-home",
+      "tags": [
+        "long-narrow",
+        "two-bedroom",
+        "imperial",
+        "pdf",
+        "marketing",
+        "raster-pdf",
+        "approximate-dimensions"
+      ],
+      "original": "originals/jacobsen-isw-4521/original.pdf",
+      "previewPages": [
+        1
+      ],
+      "dimensionStatus": "overall-and-room-dimensions",
+      "acceptanceStatus": "collected-not-accepted",
+      "rights": "Original source copyright retained; no open redistribution license inferred",
+      "resolvedDownloadUrl": "https://www.jachomes.com/wp-content/uploads/2024/07/ISW-4521-Model.pdf",
+      "contentType": "application/pdf",
+      "retrievedAt": "2026-10-02T07:29:37.256767+00:00",
+      "sha256": "420bb3c5a38f37a8b41a2206f3d2bdc3c07e6248544cc70bcb641a62d8bf24cb",
+      "bytes": 1440245,
+      "pageCount": 1,
+      "preview": "previews/jacobsen-isw-4521/page-1.png",
+      "previewDetails": [
+        {
+          "path": "previews/jacobsen-isw-4521/page-1.png",
+          "page": 1,
+          "rotation": 0,
+          "pageSizePt": [
+            713.52001953125,
+            571.2000122070312
+          ],
+          "textCharacters": 0,
+          "embeddedImages": 1
+        }
+      ],
+      "inspection": "file-integrity-and-render-checked",
+      "reviewNotes": "13'4\"×52'，名义尺寸近似；小卧室与斜向设备/门",
+      "sourceVisualReview": "selected-page-inspected",
+      "calibrationPolicy": "use-readable-labelled-length-as-approximate-test-reference; confirm measured length for actual furniture decisions",
+      "unitsInSource": [
+        "ft",
+        "in"
+      ]
+    },
+    {
+      "id": "regent-unit-l",
+      "title": "Regent Unit L：养老公寓一卧",
+      "provider": "Regent at Burnsville",
+      "sourcePage": "https://www.regentburnsville.org/floor-plans/",
+      "downloadUrl": "https://www.regentburnsville.org/wp-content/uploads/sites/23/2025/11/REG_FloorPlans_IL_OneBed_Lake_L_1125_EMAIL.pdf",
+      "country": "US",
+      "scenario": "senior-housing",
+      "tags": [
+        "one-bedroom",
+        "senior-housing",
+        "bathroom-clearance",
+        "furnished",
+        "imperial",
+        "angled-wall-details"
+      ],
+      "original": "originals/regent-unit-l/original.pdf",
+      "previewPages": [
+        1
+      ],
+      "dimensionStatus": "room-dimensions-only",
+      "acceptanceStatus": "collected-not-accepted",
+      "rights": "Original source copyright retained; no open redistribution license inferred",
+      "resolvedDownloadUrl": "https://www.regentburnsville.org/wp-content/uploads/sites/23/2025/11/REG_FloorPlans_IL_OneBed_Lake_L_1125_EMAIL.pdf",
+      "contentType": "application/pdf",
+      "retrievedAt": "2026-10-02T07:29:42.072377+00:00",
+      "sha256": "09931c68a4b4fc5299926100c0541e9b643ccc53324860990ad3b59043b7f518",
+      "bytes": 194958,
+      "pageCount": 1,
+      "preview": "previews/regent-unit-l/page-1.png",
+      "previewDetails": [
+        {
+          "path": "previews/regent-unit-l/page-1.png",
+          "page": 1,
+          "rotation": 0,
+          "pageSizePt": [
+            612.0,
+            792.0
+          ],
+          "textCharacters": 329,
+          "embeddedImages": 0
+        }
+      ],
+      "inspection": "file-integrity-and-render-checked",
+      "reviewNotes": "门口、衣柜折叠门、斜墙局部；不代表无障碍规范认证",
+      "sourceVisualReview": "selected-page-inspected",
+      "calibrationPolicy": "use-readable-labelled-length-as-approximate-test-reference; confirm measured length for actual furniture decisions",
+      "unitsInSource": [
+        "ft",
+        "in"
+      ]
+    },
+    {
+      "id": "newmark-umbria",
+      "title": "Newmark Umbria：大独栋与可选布局",
+      "provider": "Newmark Homes",
+      "sourcePage": "https://newmarkhomes.com/uploads/files/Floorplans/Umbria/5014_MKT_PL_HOU_3-9-21.pdf",
+      "downloadUrl": "https://newmarkhomes.com/uploads/files/Floorplans/Umbria/5014_MKT_PL_HOU_3-9-21.pdf",
+      "country": "US",
+      "scenario": "detached-builder-home",
+      "tags": [
+        "four-bedroom",
+        "garage",
+        "bay-options",
+        "alternative-layouts",
+        "second-floor-options",
+        "dense-labels",
+        "multiple-plans-one-page",
+        "approximate-dimensions"
+      ],
+      "original": "originals/newmark-umbria/original.pdf",
+      "previewPages": [
+        2
+      ],
+      "dimensionStatus": "room-dimensions-only",
+      "acceptanceStatus": "collected-not-accepted",
+      "rights": "Original source copyright retained; no open redistribution license inferred",
+      "resolvedDownloadUrl": "https://newmarkhomes.com/uploads/files/Floorplans/Umbria/5014_MKT_PL_HOU_3-9-21.pdf",
+      "contentType": "application/pdf",
+      "retrievedAt": "2026-10-02T07:29:47.147260+00:00",
+      "sha256": "c40d44e5b93f0376299d85748d511c2546d70ffb18146a4a2768116fcc7bf731",
+      "bytes": 1035137,
+      "pageCount": 2,
+      "preview": "previews/newmark-umbria/page-2.png",
+      "previewDetails": [
+        {
+          "path": "previews/newmark-umbria/page-2.png",
+          "page": 2,
+          "rotation": 0,
+          "pageSizePt": [
+            612.0,
+            792.0
+          ],
+          "textCharacters": 1112,
+          "embeddedImages": 2
+        }
+      ],
+      "inspection": "file-integrity-and-render-checked",
+      "reviewNotes": "第 2 页包含主方案与多个可选方案，不应混算为一栋房屋",
+      "sourceVisualReview": "selected-page-inspected",
+      "calibrationPolicy": "use-readable-labelled-length-as-approximate-test-reference; confirm measured length for actual furniture decisions",
+      "unitsInSource": [
+        "ft",
+        "in"
+      ]
+    },
+    {
+      "id": "toronto-dawes-west-floor6",
+      "title": "Toronto 6 Dawes：斜向多单元整层",
+      "provider": "City of Toronto / BDP Quadrangle",
+      "sourcePage": "https://www.toronto.ca/legdocs/mmis/2021/cc/bgrd/backgroundfile-166251.pdf",
+      "downloadUrl": "https://www.toronto.ca/legdocs/mmis/2021/cc/bgrd/backgroundfile-166251.pdf",
+      "country": "CA",
+      "scenario": "planning-multi-unit",
+      "tags": [
+        "canada",
+        "metric",
+        "mixed-area-units",
+        "angled-outline",
+        "multi-unit",
+        "dense-linework",
+        "multi-page-pdf",
+        "intrinsic-pdf-rotation"
+      ],
+      "original": "originals/toronto-dawes-west-floor6/original.pdf",
+      "previewPages": [
+        9
+      ],
+      "dimensionStatus": "drawing-scale-and-metric-dimensions",
+      "acceptanceStatus": "collected-not-accepted",
+      "rights": "Original source copyright retained; no open redistribution license inferred",
+      "resolvedDownloadUrl": "https://www.toronto.ca/legdocs/mmis/2021/cc/bgrd/backgroundfile-166251.pdf",
+      "contentType": "application/pdf",
+      "retrievedAt": "2026-10-02T07:30:10.758157+00:00",
+      "sha256": "2ce0311dfcb3a4006d3d202618af54ed9a1cff2ad1f44ee534aa1fc7feaf01a7",
+      "bytes": 10459475,
+      "pageCount": 29,
+      "preview": "previews/toronto-dawes-west-floor6/page-9.png",
+      "previewDetails": [
+        {
+          "path": "previews/toronto-dawes-west-floor6/page-9.png",
+          "page": 9,
+          "rotation": 90,
+          "pageSizePt": [
+            2592.0,
+            1728.0
+          ],
+          "textCharacters": 1881,
+          "embeddedImages": 0
+        }
+      ],
+      "inspection": "file-integrity-and-render-checked",
+      "reviewNotes": "第 9 页 A214.S；29 页完整规划文件，毫米尺寸与 m²/ft² 混用",
+      "sourceVisualReview": "selected-page-inspected",
+      "calibrationPolicy": "use-readable-labelled-length-as-approximate-test-reference; confirm measured length for actual furniture decisions",
+      "unitsInSource": [
+        "mm",
+        "m2",
+        "sq-ft"
+      ]
+    },
+    {
+      "id": "loc-norvelt-house-types",
+      "title": "HABS Norvelt：历史住宅档案中的户型",
+      "provider": "Library of Congress / HABS",
+      "sourcePage": "https://tile.loc.gov/storage-services/master/pnp/habshaer/pa/pa2500/pa2599/data/pa2599data.pdf",
+      "downloadUrl": "https://tile.loc.gov/storage-services/master/pnp/habshaer/pa/pa2500/pa2599/data/pa2599data.pdf",
+      "country": "US",
+      "scenario": "historic-building-survey",
+      "tags": [
+        "scan",
+        "archival",
+        "small-diagrams",
+        "multi-page-pdf",
+        "two-levels",
+        "low-quality-scan",
+        "multiple-plans-one-page"
+      ],
+      "original": "originals/loc-norvelt-house-types/original.pdf",
+      "previewPages": [
+        18
+      ],
+      "dimensionStatus": "printed-dimensions-hard-to-read",
+      "acceptanceStatus": "collected-not-accepted",
+      "rights": "Original source copyright retained; no open redistribution license inferred",
+      "resolvedDownloadUrl": "https://tile.loc.gov/storage-services/master/pnp/habshaer/pa/pa2500/pa2599/data/pa2599data.pdf",
+      "contentType": "application/pdf",
+      "retrievedAt": "2026-10-02T07:30:12.056113+00:00",
+      "sha256": "f5518648530cf2fd2f9126886e01729b754a677608874f7dc2a2f308301f13ea",
+      "bytes": 366016,
+      "pageCount": 19,
+      "preview": "previews/loc-norvelt-house-types/page-18.png",
+      "previewDetails": [
+        {
+          "path": "previews/loc-norvelt-house-types/page-18.png",
+          "page": 18,
+          "rotation": 0,
+          "pageSizePt": [
+            590.0399780273438,
+            783.719970703125
+          ],
+          "textCharacters": 442,
+          "embeddedImages": 1
+        }
+      ],
+      "inspection": "file-integrity-and-render-checked",
+      "reviewNotes": "PDF 第 18 页（页内编号 17）；低清历史扫描，多户型多层",
+      "sourceVisualReview": "selected-page-inspected",
+      "calibrationPolicy": "use-readable-labelled-length-as-approximate-test-reference; confirm measured length for actual furniture decisions",
+      "unitsInSource": [
+        "ft",
+        "in"
+      ]
+    }
+  ],
+  "summary": {
+    "originals": 18,
+    "baselineAcceptedSingleFloorModels": 4,
+    "newSamplesNotDeeplyAccepted": 14,
+    "pdf": 15,
+    "jpg": 2,
+    "png": 1,
+    "sourceProviders": 11
+  }
+}

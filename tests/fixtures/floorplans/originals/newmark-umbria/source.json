@@ -1,0 +1,54 @@
+{
+  "id": "newmark-umbria",
+  "title": "Newmark Umbria：大独栋与可选布局",
+  "provider": "Newmark Homes",
+  "sourcePage": "https://newmarkhomes.com/uploads/files/Floorplans/Umbria/5014_MKT_PL_HOU_3-9-21.pdf",
+  "downloadUrl": "https://newmarkhomes.com/uploads/files/Floorplans/Umbria/5014_MKT_PL_HOU_3-9-21.pdf",
+  "country": "US",
+  "scenario": "detached-builder-home",
+  "tags": [
+    "four-bedroom",
+    "garage",
+    "bay-options",
+    "alternative-layouts",
+    "second-floor-options",
+    "dense-labels",
+    "multiple-plans-one-page",
+    "approximate-dimensions"
+  ],
+  "original": "originals/newmark-umbria/original.pdf",
+  "previewPages": [
+    2
+  ],
+  "dimensionStatus": "room-dimensions-only",
+  "acceptanceStatus": "collected-not-accepted",
+  "rights": "Original source copyright retained; no open redistribution license inferred",
+  "resolvedDownloadUrl": "https://newmarkhomes.com/uploads/files/Floorplans/Umbria/5014_MKT_PL_HOU_3-9-21.pdf",
+  "contentType": "application/pdf",
+  "retrievedAt": "2026-10-02T07:29:47.147260+00:00",
+  "sha256": "c40d44e5b93f0376299d85748d511c2546d70ffb18146a4a2768116fcc7bf731",
+  "bytes": 1035137,
+  "pageCount": 2,
+  "preview": "previews/newmark-umbria/page-2.png",
+  "previewDetails": [
+    {
+      "path": "previews/newmark-umbria/page-2.png",
+      "page": 2,
+      "rotation": 0,
+      "pageSizePt": [
+        612.0,
+        792.0
+      ],
+      "textCharacters": 1112,
+      "embeddedImages": 2
+    }
+  ],
+  "inspection": "file-integrity-and-render-checked",
+  "reviewNotes": "第 2 页包含主方案与多个可选方案，不应混算为一栋房屋",
+  "sourceVisualReview": "selected-page-inspected",
+  "calibrationPolicy": "use-readable-labelled-length-as-approximate-test-reference; confirm measured length for actual furniture decisions",
+  "unitsInSource": [
+    "ft",
+    "in"
+  ]
+}

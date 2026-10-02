@@ -21,12 +21,15 @@ function shapeOf(poly, flip){ const s = new THREE.Shape(); poly.forEach(([x, y],
 function build(){
   clearGroup(archFloor); clearGroup(archUp); clearGroup(lampG); doors.length = 0; colliders.length = 0;
   const top = Math.min(opt.cut,H);
+  (store.getProject().geometry.floorSlabs||[]).forEach(([x0,y0,x1,y1])=>{
+    const slab=new THREE.Mesh(new THREE.ShapeGeometry(shapeOf([[x0,y0],[x1,y0],[x1,y1],[x0,y1]])).rotateX(-Math.PI/2),floorMat(store.getProject().rooms[store.getProject().geometry.rooms[0].id].mat));slab.receiveShadow=true;archFloor.add(slab);
+  });
   store.getProject().geometry.rooms.forEach(r => {
     const m = floorMat(store.getProject().rooms[r.id].mat), bay = r.counted === false;
     const geo = bay ? new THREE.ExtrudeGeometry(shapeOf(r.poly), {depth:.45, bevelEnabled:false}) : new THREE.ShapeGeometry(shapeOf(r.poly));
     geo.rotateX(-Math.PI/2);
     const fl = new THREE.Mesh(geo, bay ? [m, mat('#e9e4da')] : m);
-    fl.receiveShadow = true; fl.userData.room = r.id;
+    fl.receiveShadow = true;if(store.getProject().geometry.floorSlabs)fl.position.y=.001; fl.userData.room = r.id;
     if (bay){ fl.castShadow = true; archUp.add(fl); } else archFloor.add(fl);
     // 天花：法线朝下，只在室内仰视时可见
     const cg = new THREE.ShapeGeometry(shapeOf(r.poly, true)); cg.rotateX(Math.PI/2);
@@ -37,10 +40,11 @@ function build(){
       const pl = new THREE.PointLight(0xffd9a8, 0, 7, 1.6); pl.position.set(wx(r.at[0]), H - .25, wz(r.at[1])); lampG.add(pl);
     }
   });
-  [...store.getProject().geometry.doors, ...store.getProject().geometry.slides].forEach(d => { const [x0, y0, x1, y1] = d.rect; const s = box(M(x1-x0), .012, M(y1-y0), mat('#d8d0c0', {roughness:.3}), wx((x0+x1)/2), 0, wz((y0+y1)/2)); s.castShadow = false; archFloor.add(s); });
+  [...store.getProject().geometry.doors, ...store.getProject().geometry.slides,...store.getProject().geometry.lintels.filter(o=>o.passage)].forEach(d => { const [x0, y0, x1, y1] = d.rect; const s = box(M(x1-x0), .012, M(y1-y0), mat('#d8d0c0', {roughness:.3}), wx((x0+x1)/2), 0, wz((y0+y1)/2)); s.castShadow = false; archFloor.add(s); });
+  (store.getProject().geometry.passages||[]).forEach(({rect:[x0,y0,x1,y1],roomId})=>archFloor.add(box(M(x1-x0),.012,M(y1-y0),floorMat(store.getProject().rooms[roomId].mat),wx((x0+x1)/2),0,wz((y0+y1)/2))));
   store.getProject().geometry.walls.forEach((w, i) => {
     if (store.getProject().demolished.includes('w'+i)) return;
-    wallBox(w, 0, w[4] === 'low' ? Math.min(1, top) : top);
+    wallBox(w, 0, Math.min(top, M(store.getProject().geometry.wallHeights?.[i] ?? (w[4] === 'low' ? 1000 : H*1000))));
     colliders.push([wx(w[0]), wz(w[1]), wx(w[2]), wz(w[3])]);
   });
   // 门洞、飘窗洞口上方过梁
@@ -69,11 +73,19 @@ function build(){
     door.cur = door.a1; pivot.rotation.y = door.cur; leaf.userData.door = knob.userData.door = door;
     doors.push(door); archUp.add(pivot);
   });
-  store.getProject().geometry.slides.forEach(({rect:[x0, y0, x1, y1], v, height}) => {
+  store.getProject().geometry.slides.forEach(({rect:[x0, y0, x1, y1], v, height, style, wallId, swing}) => {
     const L = M(v ? y1-y0 : x1-x0), ph = Math.min(M(height), top), pl = L*.55;
+    if(style==='bifold'){
+      const side=String(wallId).split('--').at(-1),normal=(['top','left'].includes(side)?1:-1)*(swing==='outward'?-1:1),face=M(v?(side==='left'?x1:x0):(side==='top'?y1:y0)),origin=M(v?y0:x0);
+      for(const end of [0,1])for(const panel of [0,1]){
+        const sign=end?-1:1,along=origin+(end?L:0)+sign*L*(panel ? .09 : .03),depth=normal*L*.12;
+        const leaf=box(L/4,ph,.025,mat('#efe6d8', {roughness:.5}));leaf.position.set(v?wx(face*1000+depth*1000):wx(along*1000),ph/2,v?wz(along*1000):wz(face*1000+depth*1000));leaf.rotation.y=(v?0:-Math.PI/2)+(panel?-.245:.245)*sign*normal;leaf.castShadow=true;archUp.add(leaf);
+      }
+      return;
+    }
     [[-1, -.02], [1, .02]].forEach(([s, off]) => {
       const c = s < 0 ? -L/2 + pl/2 : L/2 - pl/2, x = v ? wx((x0+x1)/2) + off : wx(x0) + L/2 + c, z = v ? wz(y0) + L/2 + c : wz((y0+y1)/2) + off;
-      const p = new THREE.Mesh(new THREE.BoxGeometry(v ? .02 : pl, ph, v ? pl : .02), glassMat); p.position.set(x, ph/2, z); archUp.add(p);
+      const p = new THREE.Mesh(new THREE.BoxGeometry(v ? .02 : pl, ph, v ? pl : .02), style==='sliding'?mat('#efe6d8', {roughness:.5}):glassMat); p.position.set(x, ph/2, z); archUp.add(p);
       [ph - .03, .03].forEach(y => { const fr = new THREE.Mesh(new THREE.BoxGeometry(v ? .04 : pl, .05, v ? pl : .04), frameMat); fr.position.set(x, y, z); archUp.add(fr); });
       [-1, 1].forEach(e => { const fr = new THREE.Mesh(new THREE.BoxGeometry(.04, ph, .04), frameMat); fr.position.set(v ? x : x + e*pl/2, ph/2, v ? z + e*pl/2 : z); archUp.add(fr); });
     });

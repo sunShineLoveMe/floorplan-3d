@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "originalServicePreserved": true,
+  "temporaryQAServiceStopped": true,
+  "services": {
+    "8086": {
+      "running": true,
+      "status": 200,
+      "currentBuild": true
+    },
+    "8095": {
+      "running": false,
+      "reason": "URLError"
+    }
+  }
+}

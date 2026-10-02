@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "date": "2026-10-02",
+  "scope": "Source collection, integrity, rendered-page review and actual application file read; no full new-layout acceptance",
+  "summary": {
+    "originals": 18,
+    "baselineAcceptedSingleFloorModels": 4,
+    "newSamplesNotDeeplyAccepted": 14,
+    "pdf": 15,
+    "jpg": 2,
+    "png": 1,
+    "sourceProviders": 11
+  },
+  "sourceBytes": 60860731,
+  "allOriginalsWithin20MiBImportLimit": true,
+  "appBuild": "58cd1dedbb49c3ad",
+  "applicationReadPassed": 18,
+  "projectPreservedOnCancel": true,
+  "visualReview": "All 14 new selected source previews inspected; four baseline A1 pages match previous accepted source hashes",
+  "linksAndCSVChecked": true,
+  "browserEvidence": "../../../docs/verification/NA-floorplan-corpus/browser-results.json",
+  "integrityEvidence": "integrity-results.json",
+  "delivery": {
+    "localOnly": true,
+    "pushed": false,
+    "deployed": false
+  },
+  "gallerySha256": "65a8a560273b1d737acdb5f29caf8e0063f884237965f6c5995d34a925542735",
+  "services": {
+    "original8086Preserved": true,
+    "temporary8095Stopped": true,
+    "galleryHTTPStatus": 200
+  }
+}

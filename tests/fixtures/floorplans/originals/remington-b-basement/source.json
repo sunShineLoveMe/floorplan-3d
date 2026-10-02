@@ -1,0 +1,52 @@
+{
+  "id": "remington-b-basement",
+  "title": "Remington B：标有地下室的两层联排",
+  "provider": "Remington Grove",
+  "sourcePage": "https://www.remington-grove.com/floor-plans",
+  "downloadUrl": "https://irp.cdn-website.com/67b47b47/files/uploaded/plan%20B%20basement%20brochure.pdf",
+  "country": "US",
+  "scenario": "townhouse",
+  "tags": [
+    "basement",
+    "stairs",
+    "garage",
+    "multiple-plans-one-page",
+    "outlined-text-pdf",
+    "angled-walls"
+  ],
+  "original": "originals/remington-b-basement/original.pdf",
+  "previewPages": [
+    1
+  ],
+  "dimensionStatus": "room-dimensions-only",
+  "acceptanceStatus": "collected-not-accepted",
+  "rights": "Original source copyright retained; no open redistribution license inferred",
+  "resolvedDownloadUrl": "https://irp.cdn-website.com/67b47b47/files/uploaded/plan%20B%20basement%20brochure.pdf",
+  "contentType": "application/pdf",
+  "retrievedAt": "2026-10-02T07:27:41.852898+00:00",
+  "sha256": "e16dd52d694199f0376c7e0f845e18d7fde9f19ed890b4abd264f7e7bfae1980",
+  "bytes": 35109,
+  "pageCount": 1,
+  "preview": "previews/remington-b-basement/page-1.png",
+  "previewDetails": [
+    {
+      "path": "previews/remington-b-basement/page-1.png",
+      "page": 1,
+      "rotation": 0,
+      "pageSizePt": [
+        792.0,
+        1224.0
+      ],
+      "textCharacters": 0,
+      "embeddedImages": 0
+    }
+  ],
+  "inspection": "file-integrity-and-render-checked",
+  "reviewNotes": "文件含一层/二层及地下室标记，未提供完整地下室平面",
+  "sourceVisualReview": "selected-page-inspected",
+  "calibrationPolicy": "use-readable-labelled-length-as-approximate-test-reference; confirm measured length for actual furniture decisions",
+  "unitsInSource": [
+    "ft",
+    "in"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "id": "zag-live-work",
+  "title": "ZAG LW1：上下层 Live/Work",
+  "provider": "Aragon",
+  "sourcePage": "https://zag.aragon.ca/floor-plans/",
+  "downloadUrl": "https://zag.aragon.ca/wp-content/uploads/2022/07/zag_live_work_1.pdf",
+  "country": "US",
+  "scenario": "live-work-loft",
+  "tags": [
+    "two-levels",
+    "stairs",
+    "open-to-below",
+    "multiple-plans-one-page",
+    "marketing",
+    "angled-walls",
+    "missing-linear-dimensions"
+  ],
+  "original": "originals/zag-live-work/original.pdf",
+  "previewPages": [
+    1
+  ],
+  "dimensionStatus": "area-only-no-linear-dimensions",
+  "acceptanceStatus": "collected-not-accepted",
+  "rights": "Original source copyright retained; no open redistribution license inferred",
+  "resolvedDownloadUrl": "https://zag.aragon.ca/wp-content/uploads/2022/07/zag_live_work_1.pdf",
+  "contentType": "application/pdf",
+  "retrievedAt": "2026-10-02T07:27:40.228110+00:00",
+  "sha256": "c5ccb799af5fdaadcf8f9b9d888806a8cfaad33cdce7252c7acb3f55ae45d0b6",
+  "bytes": 123672,
+  "pageCount": 1,
+  "preview": "previews/zag-live-work/page-1.png",
+  "previewDetails": [
+    {
+      "path": "previews/zag-live-work/page-1.png",
+      "page": 1,
+      "rotation": 0,
+      "pageSizePt": [
+        612.0,
+        792.0
+      ],
+      "textCharacters": 508,
+      "embeddedImages": 0
+    }
+  ],
+  "inspection": "file-integrity-and-render-checked",
+  "reviewNotes": "同页上下两层、斜墙和挑空；不能合并为单层",
+  "sourceVisualReview": "selected-page-inspected",
+  "calibrationPolicy": "require-measured-linear-reference",
+  "unitsInSource": [
+    "area-label-or-source-page-only"
+  ]
+}

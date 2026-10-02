@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "build": "73707f19f6ed9794",
+  "unitTests": 53,
+  "wallBrowserChecks": 15,
+  "regressionChecks": 12,
+  "syntax": "80 JavaScript modules: syntax PASS",
+  "lint": true,
+  "diffCheck": true,
+  "documentationLinks": true,
+  "previousBatchesPushedCommit": "25faa07cf0a58ea82f403d7654ca3a9c3076e91b",
+  "currentBatch": "local-uncommitted",
+  "artifacts": {
+    "partial-project.json": {
+      "bytes": 6097,
+      "sha256": "38b84a671d957cbc343193d074340cfeeeb08171d1a6ebe8d8532491d4b21997"
+    },
+    "plan-b-pony-project.json": {
+      "bytes": 809365,
+      "sha256": "d79cd479a3eec87871fc2b2e32b963e3b119dd09392949c9e21460e42eea5b48"
+    },
+    "partial-2d.png": {
+      "bytes": 361604,
+      "sha256": "56ca0d682263fe0261b613cf789e6555fee195d8050dc88a587594503f675f15"
+    },
+    "plan-b-pony-2d.png": {
+      "bytes": 2152171,
+      "sha256": "ba5acc20b9e939aaa838c9596f64173d02f3fd94eaffbb2d414405defb31943d"
+    },
+    "plan-b-pony-3d.png": {
+      "bytes": 143532,
+      "sha256": "4775606f3604a82f4cf07a90bc3fceed2bc5920362b09af63613486b90a9e9a7"
+    },
+    "regression/NA-012-print-100.pdf": {
+      "bytes": 110572,
+      "sha256": "d0353f33a3b2fd06b6c332c9387c90a375453f050992c0a1d0b3f5c2b38f9cf5"
+    }
+  },
+  "originalServer8086": 200,
+  "temporaryServer8095": "stopped"
+}
