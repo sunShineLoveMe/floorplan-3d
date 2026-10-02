@@ -1,0 +1,16 @@
+{
+  "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#editRoom')\u001b[22m\n\u001b[2m    - locator resolved to <button class=\"btn\" id=\"editRoom\">Room / Openings</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    29 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+  "errors": [],
+  "checks": [
+    "14-page rotated architectural PDF: page 5 and 54 ft calibration",
+    "nine traced zones: 6 labelled rooms plus entry/hall, open L-shaped circulation, mixed wall widths",
+    "Bedroom 1 shared-wall 36 in door and 72×48 in exterior window",
+    "invalid open boundary preserves the complete project",
+    "open edge disables door/window insertion",
+    "Queen size/position, blocked door warning, and warning clears after moving",
+    "JSON download/import and refresh preserve all rooms, wall widths, openings, furniture and drawing",
+    "wall edit undo/redo restores exact geometry",
+    "2D PNG downloaded",
+    "3D initialization and PNG downloaded"
+  ]
+}

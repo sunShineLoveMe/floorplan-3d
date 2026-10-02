@@ -1,3 +1,5 @@
+import {placeRoomLabels} from './room-labels.js';
+import {doorConflicts} from '../core/door-clearance.js';
 import {formatLengthMm,formatAreaM2,gridSizeMm} from '../core/units.js';
 import {$} from '../ui/dom.js';
 import {COARSE,esc} from '../ui/dom.js';
@@ -6,12 +8,13 @@ import {area,aabb} from '../core/geometry.js';
 import {furnSVG} from './furniture-symbols.js';
 export function createRenderer({store,ui,view}){
 const length=(mm,style='feet')=>esc(formatLengthMm(mm,store.getProject().units.display,{style}));
-const surface=m2=>esc(formatAreaM2(m2,store.getProject().units.display));
 const getF = id => store.getProject().furniture.find(f=>f.id===id);
 const NOLABEL = ['plant','floorlamp','sidetable','barstool','beanbag'];
 function renderRooms(){
+  const reference=store.getProject().referencePlan;
+  $('#gReference').innerHTML=reference?.visible?`<image href="${esc(reference.src)}" x="${reference.x}" y="${reference.y}" width="${reference.pixelWidth*reference.mmPerPixel}" height="${reference.pixelHeight*reference.mmPerPixel}" opacity="${reference.opacity}"/>`:'';
   let s = '';
-  store.getProject().geometry.rooms.forEach(r => s += `<polygon class="room" data-room="${r.id}" points="${r.poly.map(p=>p.join(',')).join(' ')}" fill="url(#m-${store.getProject().rooms[r.id].mat})"/>`);
+  store.getProject().geometry.rooms.forEach(r => s += `<polygon class="room" data-room="${r.id}" points="${r.poly.map(p=>p.join(',')).join(' ')}" fill="url(#m-${store.getProject().rooms[r.id].mat})" fill-opacity="${store.getProject().referencePlan?.visible?.35:1}"/>`);
   const sill = ([a,b,c,d]) => `<rect x="${a}" y="${b}" width="${c-a}" height="${d-b}" fill="#e2dacb" stroke="#b9b0a0" stroke-width="1" vector-effect="non-scaling-stroke" pointer-events="none"/>`;
   store.getProject().geometry.doors.forEach(d => s += sill(d.rect)); store.getProject().geometry.slides.forEach(d => s += sill(d.rect));
   $('#gRooms').innerHTML = s;
@@ -46,7 +49,7 @@ function renderOpenings(){
     s += opening.id ? `<g data-opening="${esc(opening.id)}" style="cursor:pointer">` : '<g>';
     const w = x1-x0, h = y1-y0;
     s += `<rect x="${x0}" y="${y0}" width="${w}" height="${h}" fill="#f7fbfd" ${WS}/>`;
-    if (opening.wallId ? ['top','bottom'].includes(opening.wallId) : w >= h) [1/3,2/3].forEach(t => s += `<line x1="${x0}" y1="${y0+h*t}" x2="${x1}" y2="${y0+h*t}" ${WS}/>`);
+    if (opening.wallId ? ['top','bottom'].includes(String(opening.wallId).split('--').at(-1)) : w >= h) [1/3,2/3].forEach(t => s += `<line x1="${x0}" y1="${y0+h*t}" x2="${x1}" y2="${y0+h*t}" ${WS}/>`);
     else [1/3,2/3].forEach(t => s += `<line x1="${x0+w*t}" y1="${y0}" x2="${x0+w*t}" y2="${y1}" ${WS}/>`);
     s += '</g>';
   });
@@ -72,13 +75,16 @@ function renderOpenings(){
   $('#gOpen').innerHTML = s;
 }
 
+function renderWarnings(){
+ const conflicts=doorConflicts(store.getProject()),doors=[...new Set(conflicts.map(c=>c.door))];
+ $('#gWarnings').innerHTML=doors.map(d=>{const [x,y]=d.h,ox=x+d.o[0]*d.len,oy=y+d.o[1]*d.len,cx=x+d.c[0]*d.len,cy=y+d.c[1]*d.len,sweep=d.o[0]*d.c[1]-d.o[1]*d.c[0]>0?1:0;return `<path d="M${x} ${y}L${ox} ${oy}A${d.len} ${d.len} 0 0 ${sweep} ${cx} ${cy}Z" fill="#d7442633" stroke="#b5351b" stroke-width="2" vector-effect="non-scaling-stroke"/>`;}).join('');
+}
 function renderLabels(){
   const g = $('#gLabels');
   g.setAttribute('display', ui.layers.labels ? 'inline' : 'none');
-  g.innerHTML = store.getProject().geometry.rooms.filter(r => r.at).map(r => {
-    const [x,y] = r.at, halo = 'stroke="#fbf9f4" stroke-width="45" paint-order="stroke" stroke-linejoin="round"';
-    return `<text x="${x}" y="${y}" font-size="250" font-weight="600" text-anchor="middle" fill="#2b2824" ${halo}>${esc(nm(store.getProject().rooms[r.id].name))}</text>
-      <text x="${x}" y="${y+260}" font-size="175" text-anchor="middle" fill="#7d7366" ${halo}>${surface(area(r.poly))}</text>`;
+  g.innerHTML = placeRoomLabels(store.getProject(),nm,poly=>formatAreaM2(area(poly),store.getProject().units.display)).map(label=>{
+    const {x,y,font,small}=label,halo='stroke="#fbf9f4" stroke-width="35" paint-order="stroke" stroke-linejoin="round"';
+    return `<g data-label-room="${label.id}"><text x="${x}" y="${y}" font-size="${font}" font-weight="600" text-anchor="middle" fill="#2b2824" ${halo}>${esc(label.name)}</text><text x="${x}" y="${y+font}" font-size="${small}" text-anchor="middle" fill="#7d7366" ${halo}>${esc(label.area)}</text></g>`;
   }).join('');
 }
 
@@ -151,8 +157,9 @@ function renderSel(){
   if (editor && ['opening','wall'].includes(ui.sel?.kind)) {
     const opening = editor.openings.find(o => o.id === ui.sel.id);
     const wallId = ui.sel.kind === 'wall' ? ui.sel.id : opening?.wallId;
-    const {width:w, depth:d} = editor;
-    const endpoints = {top:[0,0,w,0], right:[w,0,w,d], bottom:[0,d,w,d], left:[0,0,0,d]}[wallId];
+    const room=editor.kind==='house'?editor.rooms.find(r=>r.id===wallId?.split('--')[0]):editor;
+    const {width:w,depth:d}=room||{},origin=editor.kind==='house'?[room?.x||0,room?.y||0]:[0,0];
+    const endpoints = {top:[0,0,w,0], right:[w,0,w,d], bottom:[0,d,w,d], left:[0,0,0,d]}[wallId?.split('--').at(-1)]?.map((v,i)=>v+origin[i%2]);
     if (endpoints) {
       const [x0,y0,x1,y1] = endpoints, dx = x1===x0 ? 0 : 1, dy = y1===y0 ? 0 : 1, a=10*k;
       s += `<g pointer-events="none" fill="#b5653a" stroke="#b5653a" stroke-width="2" vector-effect="non-scaling-stroke">
@@ -170,5 +177,5 @@ function renderSel(){
 }
 
 
-return {update(){renderOpenings();renderDims();renderGrid();renderRooms();renderFurn();renderWalls();renderLabels();renderMeasure();renderSel();},renderFurn,renderSel,renderMeasure,renderOpenings,renderDims};
+return {update(){renderOpenings();renderDims();renderGrid();renderRooms();renderFurn();renderWalls();renderWarnings();renderLabels();renderMeasure();renderSel();},renderFurn,renderSel,renderMeasure,renderOpenings,renderDims};
 }

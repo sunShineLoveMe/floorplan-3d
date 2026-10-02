@@ -1,0 +1,231 @@
+{
+  "format": "floorplan-3d",
+  "version": 2,
+  "id": "p-muqezfcs-otioctb0",
+  "name": "House Alpha",
+  "createdAt": "2026-10-02T03:39:28.252Z",
+  "updatedAt": "2026-10-02T03:39:28.547Z",
+  "units": {
+    "internal": "mm",
+    "display": "imperial"
+  },
+  "layout": {
+    "id": "layout-p-muqezfcs-otioctb0",
+    "name": "Layout B"
+  },
+  "view": {
+    "mode": "2d",
+    "layers": {
+      "dims": true,
+      "labels": true,
+      "furn": true,
+      "grid": false,
+      "bearing": false,
+      "wallSnap": true
+    }
+  },
+  "roomEditor": {
+    "kind": "rectangle",
+    "roomId": "room-1",
+    "width": 12192,
+    "depth": 9144,
+    "height": 2438.4,
+    "wallThickness": 120,
+    "openings": [
+      {
+        "id": "opening-fmuqezffj2",
+        "type": "door",
+        "wallId": "bottom",
+        "offset": 609.6,
+        "width": 914.4,
+        "height": 2032,
+        "hinge": "start",
+        "swing": "inward"
+      },
+      {
+        "id": "opening-fmuqezfhe3",
+        "type": "window",
+        "wallId": "bottom",
+        "offset": 1828.8,
+        "width": 1219.2,
+        "height": 1219.2,
+        "sill": 914.4
+      }
+    ]
+  },
+  "geometry": {
+    "height": 2438.4,
+    "origin": [
+      6096,
+      4572
+    ],
+    "bounds": {
+      "x": -720,
+      "y": -720,
+      "w": 13632,
+      "h": 10584
+    },
+    "rooms": [
+      {
+        "id": "room-1",
+        "name": "My room",
+        "mat": "wood",
+        "poly": [
+          [
+            0,
+            0
+          ],
+          [
+            12192,
+            0
+          ],
+          [
+            12192,
+            9144
+          ],
+          [
+            0,
+            9144
+          ]
+        ],
+        "at": [
+          6096,
+          4572
+        ]
+      }
+    ],
+    "walls": [
+      [
+        -120,
+        -120,
+        12312,
+        0,
+        "n"
+      ],
+      [
+        12192,
+        0,
+        12312,
+        9144,
+        "n"
+      ],
+      [
+        -120,
+        9144,
+        609.6,
+        9264,
+        "n"
+      ],
+      [
+        1524,
+        9144,
+        1828.8,
+        9264,
+        "n"
+      ],
+      [
+        3048,
+        9144,
+        12312,
+        9264,
+        "n"
+      ],
+      [
+        -120,
+        0,
+        0,
+        9144,
+        "n"
+      ]
+    ],
+    "wallIds": [
+      "top",
+      "right",
+      "bottom",
+      "bottom",
+      "bottom",
+      "left"
+    ],
+    "doors": [
+      {
+        "id": "opening-fmuqezffj2",
+        "wallId": "bottom",
+        "rect": [
+          609.6,
+          9144,
+          1524,
+          9264
+        ],
+        "h": [
+          609.6,
+          9144
+        ],
+        "c": [
+          1,
+          0
+        ],
+        "o": [
+          0,
+          -1
+        ],
+        "len": 914.4,
+        "height": 2032,
+        "name": "opening-fmuqezffj2"
+      }
+    ],
+    "windows": [
+      {
+        "id": "opening-fmuqezfhe3",
+        "wallId": "bottom",
+        "rect": [
+          1828.8,
+          9144,
+          3048,
+          9264
+        ],
+        "sill": 914.4,
+        "head": 2133.6
+      }
+    ],
+    "slides": [],
+    "lintels": [],
+    "dimensions": [
+      {
+        "horizontal": true,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          12192
+        ]
+      },
+      {
+        "horizontal": false,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          9144
+        ]
+      }
+    ],
+    "walkStart": {
+      "position": [
+        6096,
+        6400.799999999999
+      ],
+      "target": [
+        6096,
+        2743.2
+      ]
+    },
+    "entry": null
+  },
+  "furniture": [],
+  "rooms": {
+    "room-1": {
+      "name": "My room",
+      "mat": "wood"
+    }
+  },
+  "demolished": [],
+  "measures": []
+}

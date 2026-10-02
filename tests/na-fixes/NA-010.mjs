@@ -1,0 +1,6 @@
+const output=file=>(process.env.NA_TEST_OUT||'docs/verification/NA-fixes')+'/'+file;
+export async function run({page,assert,project}){
+ await page.locator('#newRoom').evaluate(b=>b.click());await page.locator('#roomDialog [name=width]').fill('40 ft');await page.locator('#roomDialog [name=depth]').fill('30 ft');await page.locator('#roomDialog [type=submit]').click();await page.locator('#editRoom').click();await page.locator('#parentWall').selectOption('bottom');await page.locator('[data-add=door]').click();await page.locator('#roomDialog [type=submit]').click();
+ assert(await page.locator('[data-add=window]').isVisible(),'continuous window action hidden');assert(await page.locator('#parentWall').inputValue()==='bottom','wall reset after door');await page.locator('[data-add=window]').click();assert(await page.locator('#roomDialog [name=wallId]').inputValue()==='bottom','window wall not retained');await page.locator('#roomDialog [type=submit]').click();await page.waitForSelector('#roomDialog',{state:'hidden'});assert((await project()).geometry.windows.length===1,'window not added');assert((await project()).roomEditor.openings.every(o=>o.wallId==='bottom'),'wrong wall');
+ await page.locator('#editRoom').click();assert(await page.locator('#parentWall').inputValue()==='bottom','reopen wall reset');await page.screenshot({path:output('NA-010.png')});
+}

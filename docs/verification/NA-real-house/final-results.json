@@ -1,0 +1,29 @@
+{
+  "completedAt": "2026-10-02T03:40:04.176890+00:00",
+  "build": "b4be7033176714bb",
+  "nodeTestsPassed": 48,
+  "realHouseChecksPassed": 11,
+  "regression": [
+    "NA-001",
+    "NA-002",
+    "NA-004",
+    "NA-003",
+    "NA-005",
+    "NA-006",
+    "NA-007",
+    "NA-008",
+    "NA-009",
+    "NA-010",
+    "NA-012",
+    "NA-011"
+  ],
+  "reloadsPassed": 100,
+  "syntax": "pass",
+  "lint": "0 errors, 0 warnings",
+  "branch": "feat/ui-refactor",
+  "delivery": "Local uncommitted changes; not pushed, merged or deployed",
+  "scope": "Public architectural PDF and simplified one-floor manual trace; full house parity not achieved",
+  "nextP0": "Partial wall segments and pony walls",
+  "temporary8095Closed": true,
+  "original8086HTTP": 200
+}

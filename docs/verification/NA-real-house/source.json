@@ -1,0 +1,18 @@
+{
+  "url": "https://www.sandiegocounty.gov/content/dam/sdc/pds/bldg/adu_info/pds673_11x17.pdf",
+  "landingPage": "https://www.sandiegocounty.gov/content/sdc/pds/bldg/adu_plans.html",
+  "publisher": "County of San Diego Planning & Development Services",
+  "title": "PDS 673 Plan B - 1200 SF detached dwelling unit",
+  "retrievedAt": "2026-10-02T03:29:50.031085+00:00",
+  "sha256": "bb55e87e8a7c5f63316c019c840693e22f8bcfc63bf6777710cbc5d9848c9502",
+  "bytes": 10327642,
+  "pages": 14,
+  "floorPlanPage": 5,
+  "sheet": "A1",
+  "calibration": "54 ft outer top edge",
+  "wallWidthAssumptionsMM": {
+    "interior": 114.3,
+    "exterior": 165.1
+  },
+  "scope": "Public architectural design, simplified manual trace; not a user-provided or as-built survey"
+}

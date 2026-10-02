@@ -1,1 +1,10 @@
-{"name":"floorplan-3d","private":true,"type":"module","scripts":{"test":"node --test tests/*.test.js"}}
+{
+  "name": "floorplan-3d",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "build": "node scripts/version-assets.mjs",
+    "start": "python3 scripts/serve.py --port 8086"
+  }
+}

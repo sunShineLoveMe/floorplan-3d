@@ -3,7 +3,7 @@ import {$} from '../ui/dom.js';
 import {COARSE,TAP,narrow,esc} from '../ui/dom.js';
 import {tr,nm,LANG} from '../ui/i18n.js';
 import {bbox,area} from '../core/geometry.js';
-import {LIB} from '../data/catalogs.js';
+import {LIB,matchesFurniture} from '../data/catalogs.js';
 import {furnSVG} from '../editor2d/furniture-symbols.js';
 import {createScope} from './lifecycle.js';
 export function createFurnitureLibrary({store,ui,viewport,actions,drawers,is3D,groundAt,flyToRoom,toast}){
@@ -58,13 +58,13 @@ const summary=value=>store.getProject().units.display==='imperial'?`≈ ${(value
 function buildLib(){
   if(filterLang!==LANG){filterLang=LANG;buildFilters();}
   const next=JSON.stringify([LANG,store.getProject().units.display,query,category]);if(signature===next)return;signature=next;
-  $('#lib').innerHTML = LIB.map((c,ci) => {if(category!=='all'&&category!==String(ci))return '';const matches=c.items.map((it,ii)=>({it,ii})).filter(({it})=>[it[1],nm(it[1]),c.cat,nm(c.cat),it[0]].join(' ').toLowerCase().includes(query.trim().toLowerCase()));if(!matches.length)return '';return `<h4>${nm(c.cat)}</h4><div class="lib-grid">${matches.map(({it,ii}) => {
+  $('#lib').innerHTML = LIB.map((c,ci) => {if(category!=='all'&&category!==String(ci))return '';const matches=c.items.map((it,ii)=>({it,ii})).filter(({it})=>matchesFurniture(it,query,nm));if(!matches.length)return '';return `<h4>${nm(c.cat)}</h4><div class="lib-grid">${matches.map(({it,ii}) => {
     const [t,n,w,d,col] = it, pad = Math.max(w,d)*.08;
     return `<div class="item" role="button" tabindex="0" data-key="${ci}:${ii}" title="${esc(nm(n))} · ${esc(formatLengthMm(w,store.getProject().units.display,{style:'inches'}))} × ${esc(formatLengthMm(d,store.getProject().units.display,{style:'inches'}))} · ${tr('点击或拖动添加','Click or drag to add')}">
-      <svg aria-hidden="true" focusable="false" viewBox="${-w/2-pad} ${-d/2-pad} ${w+2*pad} ${d+2*pad}">${furnSVG(t,w,d,col)}</svg><b>${esc(nm(n))}</b><small>${tr('宽','W')} ${summary(w)}<br>${tr('深','D')} ${summary(d)}</small></div>`;
+      <svg aria-hidden="true" focusable="false" viewBox="${-w/2-pad} ${-d/2-pad} ${w+2*pad} ${d+2*pad}">${furnSVG(t,w,d,col)}</svg><b>${esc(nm(n))}</b><small>${tr('宽','W')} ${summary(w)}<br>${tr('深','D')} ${summary(d)}</small>${it[5]?.note==='mattress'?`<small>${tr('床垫占地，不含床架','Mattress footprint; excludes frame')}</small>`:''}</div>`;
   }).join('')}</div>`;}).join('') + `<div class="hint">${tr(
     `家具按实际尺寸比例绘制。${COARSE ? '点一下放到画面中央，或按住向右拖到平面图 / 3D 地面上的指定位置（上下滑动为滚动列表）。' : '点击添加到画面中央，或直接拖到平面图 / 3D 地面上。'}添加后可在右侧修改宽深与颜色。`,
-    `Furniture is drawn to scale. ${COARSE ? 'Tap to place at the center, or hold and drag right onto the plan / 3D floor (swipe up/down to scroll).' : 'Click to add at the center, or drag onto the plan / 3D floor.'} Edit size and color in the right panel afterwards.`)}</div>`;
+    `Furniture is drawn to scale. ${COARSE ? 'Tap to place at the center, or hold and drag right onto the plan / 3D floor (swipe up/down to scroll).' : 'Click to add at the center, or drag onto the plan / 3D floor.'} Example footprints. Edit actual outer dimensions in Properties. Mattress footprints exclude the bed frame.`)}</div>`;
   if(!$('#lib .item'))$('#lib').innerHTML=`<p class="hint" role="status">${tr('没有找到家具，请清空搜索或切换分类。','No furniture found. Clear the search or choose another category.')}</p>`;
 }
 scope.on($('#lib'), 'pointerdown', e=>{

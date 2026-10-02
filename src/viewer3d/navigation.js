@@ -1,5 +1,6 @@
+import {sceneBox,fitPerspectiveBox} from './framing.js';
 import * as THREE from 'three';
-export function createNavigation({view,space,size,getCamera,getOrbit,getHeight}){
+export function createNavigation({view,space,size,getCamera,getOrbit,getHeight,getProject}){
 const {wx,wz}=space;
 const ease = t => t < .5 ? 4*t*t*t : 1 - (-2*t + 2)**3/2;
 const clamp01 = t => Math.max(0, Math.min(1, t));
@@ -14,8 +15,12 @@ function isoFrom(P){
   const d = Math.max(P.p.y, getHeight()*3.8, 5), dir = new THREE.Vector3(.3, .82, .49).normalize();
   return pose(P.t.clone(), P.t.clone().addScaledVector(dir, d));
 }
-const isoWhole = () => isoFrom(planPose());
-const topWhole = () => planPose();
+function fitPose(roomId,direction){
+ const b=sceneBox(getProject(),roomId),box={min:[wx(b.min[0]),0,wz(b.min[2])],max:[wx(b.max[0]),b.max[1]/1000,wz(b.max[2])]},fit=fitPerspectiveBox(box,size.width()/size.height(),getCamera().fov,direction);
+ return pose(new THREE.Vector3(...fit.target),new THREE.Vector3(...fit.position));
+}
+const isoWhole=()=>fitPose();
+const topWhole=()=>fitPose(null,[0,1,.0001]);
 const curPose = () => pose(getOrbit().target.clone(), getCamera().position.clone());
 // 以目标点为中心做球坐标插值：镜头沿弧线倾斜环绕，而不是直线穿越
 function camTween(A, B, e){
@@ -27,5 +32,5 @@ function camTween(A, B, e){
 }
 function setPose(P){ getCamera().position.copy(P.p); getOrbit().target.copy(P.t); getCamera().lookAt(P.t); }
 
-return {ease,clamp01,pose,planPose,isoFrom,isoWhole,topWhole,curPose,camTween,setPose};
+return {ease,clamp01,pose,planPose,isoFrom,isoWhole,topWhole,fitPose,curPose,camTween,setPose};
 }

@@ -1,0 +1,86 @@
+{
+  "commit": "6ddee8d007102ee04206e05ad67f16bc4ea23902",
+  "method": "Computer Use: in-app browser and native Chrome UI",
+  "files": {
+    "10-door-blocked-no-warning.jpg": {
+      "bytes": 144224,
+      "sha256": "d8e03ba957fd807519db9b7485bc8dc29e1bd943cb2a0e53ff2cf06b05329231"
+    },
+    "11-clearance-measured.jpg": {
+      "bytes": 121107,
+      "sha256": "a7a65cdc4234d0a8a160c4ea1a7dddbd356c32b8b0bf5ebf19e572504933c7e7"
+    },
+    "12-3d-preview.jpg": {
+      "bytes": 126868,
+      "sha256": "946e304bf357c38a50a70128c3afaa3333fc183c4da2fe46ef36b8caa9e17493"
+    },
+    "03-import-menu.jpg": {
+      "bytes": 163957,
+      "sha256": "d0a8fa033bfca1f7a43baff8c662bd4830821bcd966fbf9f426e32fdb2d27417"
+    },
+    "detached-house-fixture.pdf": {
+      "bytes": 770,
+      "sha256": "c170b3736576ea41f5808ea875257a5065da00c3094d0220038feef322ee84d7"
+    },
+    "09-custom-bed-position.jpg": {
+      "bytes": 145576,
+      "sha256": "474cbdd90ba9cae5c6ee372156aea011670bca91d34b0c182fd732aa35cb6b48"
+    },
+    "07-openings-added.jpg": {
+      "bytes": 101878,
+      "sha256": "b5b858d142db8589f911656c8af01f780d8a2e50ed1fcc7c99e4d4f91908ecab"
+    },
+    "chrome-exported-2d.png": {
+      "bytes": 666155,
+      "sha256": "25f7827761814ee26a7a3449ac13687cf6ce167cdac208f60b1057664c1094d8"
+    },
+    "05-new-house-form.jpg": {
+      "bytes": 114716,
+      "sha256": "5c44376841e68b15025144945a82dab01d39a2d7a22b599ec1acec35ef2ef682"
+    },
+    "04-pdf-import-rejected.txt": {
+      "bytes": 158,
+      "sha256": "ec956e01d6ff92a518fd05484678070abb1c2ea8733d5cf4e77bfc8e189e1589"
+    },
+    "13-3d-iso.jpg": {
+      "bytes": 127257,
+      "sha256": "d427edcae43b17a93fcffea4cf79337bb1badd387133fb261c1c887649ae1bec"
+    },
+    "15-chrome-roundtrip-download.jpg": {
+      "bytes": 677590,
+      "sha256": "7f2cc53154203d7931da28c0a6bee5d66991455437f0a1233b5a8366d578bb76"
+    },
+    "16-restored-project-advanced.jpg": {
+      "bytes": 129320,
+      "sha256": "90b8eb94796a99ec74e274f8b4de41da730bb5af90b24dd23949ad12e9fcb9e2"
+    },
+    "06-house-no-partitions.jpg": {
+      "bytes": 112506,
+      "sha256": "a74d9acde26cc810fb22a655389bbd8bdf079e09f8fc81b0e9c65e1241847c08"
+    },
+    "download-environment-canceled.json": {
+      "bytes": 761,
+      "sha256": "b9b595b8109150b5058d2c14192a0edf327d37ad5e9be2cb311924a53d8fa386"
+    },
+    "02-clean-start.jpg": {
+      "bytes": 148457,
+      "sha256": "b71fed50b2dd58566a3efbe39d71022a1b699ab40982f877adaddb764c2fb9f8"
+    },
+    "01-live-mixed-ui.jpg": {
+      "bytes": 176957,
+      "sha256": "0f5c0d9a441e43430e68b6f9932a51d1b2fe423da075ef4082670baac4cac1dd"
+    },
+    "14-export-feedback.jpg": {
+      "bytes": 127111,
+      "sha256": "f647b93ddca439b78b1f82a6c4304d1472511bbb18324fb4611ddd5765d75a16"
+    },
+    "chrome-exported-project.json": {
+      "bytes": 2656,
+      "sha256": "c32459eecc829b4e041d63999c32d9d26e4b2a9a18ef52e158624633ade5c423"
+    },
+    "08-queen-search-empty.jpg": {
+      "bytes": 103630,
+      "sha256": "ff7782718203bef124fa32476ea49058f0955bbb3b8d0526b5ee7664f43421f6"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "pages": 1,
+  "paperPoints": {
+    "width": 792,
+    "height": 612
+  },
+  "scale": 100,
+  "measured40ftOnPaperMm": 121.91707547256962,
+  "expected40ftOnPaperMm": 121.92,
+  "rulerOnPaperMm": 100.01249583281248
+}

@@ -85,3 +85,5 @@ body.m3d .app .seg .btn[data-view="2d"] {color:var(--color-text-primary);font-we
 @media(pointer:coarse){:where(.app,.room-dialog,.ui-samples) .form :is(input,select){font-size:16px}}
 @media(max-width:480px){.room-dialog{padding:var(--space-4)}.room-dialog .actions{bottom:-16px}}
 @media(prefers-reduced-motion:reduce){.app .btn,.app .seg .pill,.app .seg .btn,.app aside,.app,.app .item,.app .only2d,.app .only3d,.app #fab,.app .menu-pop,#toast{animation:none;transition:none}.ui-samples .btn[aria-busy=true]::before{animation:none}}
+
+.reference-dialog canvas{display:block;width:auto;height:auto;max-width:100%;max-height:48vh;cursor:crosshair;border:1px solid var(--line)}

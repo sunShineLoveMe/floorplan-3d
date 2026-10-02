@@ -11,6 +11,7 @@ const {drawer,syncPaneBtns}=drawers;
 const setView=m=>mode.setView(m);
 function updateHeader(){
   $('#projectName').textContent=store.getProject().name==='三室两厅两卫 · 装修设计' ? tr(store.getProject().name,'3BR 2LR 2BA · Interior Design') : store.getProject().name;
+  if(document.activeElement!==$('#fileName'))$('#fileName').value=store.getProject().name;if(document.activeElement!==$('#layoutName'))$('#layoutName').value=store.getProject().layout.name;
   $('#fileProjectName').textContent=$('#projectName').textContent;$('#fileProjectName').title=$('#projectName').textContent;
   const tot = store.getProject().geometry.rooms.filter(r => r.counted !== false).reduce((a,r) => a + area(r.poly), 0);
   $('#subtitle').textContent = tr(`套内使用面积约 ${formatAreaM2(tot,store.getProject().units.display)}`, `Net floor area ≈ ${formatAreaM2(tot,store.getProject().units.display)}`);

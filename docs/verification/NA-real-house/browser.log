@@ -1,0 +1,11 @@
+PASS 14-page rotated architectural PDF: page 5 and 54 ft calibration
+PASS nine traced zones: 6 labelled rooms plus entry/hall, open L-shaped circulation, mixed wall widths
+PASS Bedroom 1 shared-wall 36 in door and 72×48 in exterior window
+PASS invalid open boundary preserves the complete project
+PASS open edge disables door/window insertion
+PASS Queen size/position, blocked door warning, and warning clears after moving
+PASS JSON download/import and refresh preserve all rooms, wall widths, openings, furniture and drawing
+PASS wall edit undo/redo restores exact geometry
+PASS 2D PNG downloaded
+PASS 3D initialization and PNG downloaded
+PASS 390px wall fields are reachable

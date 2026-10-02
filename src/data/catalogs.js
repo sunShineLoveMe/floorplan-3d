@@ -11,6 +11,8 @@ const MATS = {
 // 家具库：[类型, 名称, 宽, 深, 颜色]
 const LIB = [
   {cat:'卧室', items:[
+    // Nominal U.S. mattress footprints; frames and individual products vary.
+    ...[['Twin',38,75,'single'],['Twin XL',38,80,'twin long extra long'],['Full',54,75,'double'],['Queen',60,80,'queen size'],['King',76,80,'eastern king'],['California King',72,84,'cal king western king']].map(([name,w,d,aliases])=>['bed',name+' · mattress footprint',w*25.4,d*25.4,'#c9d6df',{aliases,note:'mattress'}]),
     ['bed','双人床 1.8m',1800,2000,'#c9d6df'],['bed','双人床 1.5m',1500,2000,'#d8c7dc'],['bed','单人床',1200,2000,'#e8d5b5'],
     ['crib','婴儿床',1250,700,'#efe3d0'],['nightstand','床头柜',450,400,'#e8dccb'],['wardrobe','衣柜',2000,600,'#efe6d8'],
     ['wardrobe','小衣柜',1200,550,'#efe6d8'],['dresser','梳妆台',1000,450,'#efe6d8'],['desk','书桌',1200,600,'#e2cfb4'],
@@ -42,3 +44,9 @@ const typeColor = t => { for (const c of LIB) for (const i of c.items) if (i[0]=
 const CATALOGS = {materials:Object.keys(MATS),types:[...new Set(LIB.flatMap(c=>c.items.map(i=>i[0])))]};
 
 export {MATS,LIB,typeColor,CATALOGS};
+
+export function matchesFurniture(item,query,translate=v=>v){
+ const aliases={sofa:'couch',armchair:'accent chair',wardrobe:'closet',tvstand:'media console',nightstand:'bedside table'};
+ const text=[item[0],item[1],translate(item[1]),item[5]?.aliases||'',aliases[item[0]]||''].join(' ').toLowerCase();
+ return query.trim().toLowerCase().split(/\s+/).every(word=>text.includes(word));
+}

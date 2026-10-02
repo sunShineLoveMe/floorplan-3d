@@ -1,3 +1,5 @@
+import {validateHouseEditor,generateHouseGeometry} from './house-editor.js';
+import {validateReference} from './reference-plan.js';
 import {validateRoomEditor,generateRoomGeometry,geometryMatches,GEOMETRY_TOLERANCE} from './room-editor.js';
   const FORMAT = 'floorplan-3d', VERSION = 2, TEMPLATE = 'three-bedroom-a03136c';
   const clone = value => JSON.parse(JSON.stringify(value));
@@ -47,6 +49,7 @@ import {validateRoomEditor,generateRoomGeometry,geometryMatches,GEOMETRY_TOLERAN
     check(g.entry===null || (obj(g.entry) && point(g.entry.position)), 'entry');
     check(obj(p.rooms) && Object.keys(p.rooms).length===rooms.length, 'room settings');
     rooms.forEach(r=>check(Object.hasOwn(p.rooms,r.id) && obj(p.rooms[r.id]) && str(p.rooms[r.id].name) && catalogs.materials.includes(p.rooms[r.id].mat),'room settings'));
+    Object.values(p.rooms).forEach(r=>check(r.labelHidden===undefined||typeof r.labelHidden==='boolean','room label visibility'));
     unique(list(p.furniture,'furniture'),'furniture IDs');
     p.furniture.forEach(f=>check(catalogs.types.includes(f.type) && str(f.name) && positive(f.w) && positive(f.d) && (f.height===undefined || positive(f.height)) && [f.cx,f.cy,f.rot].every(num) && typeof f.color==='string' && /^#[0-9a-f]{6}$/i.test(f.color),'furniture'));
     const walls=list(p.demolished,'demolished');
@@ -55,16 +58,18 @@ import {validateRoomEditor,generateRoomGeometry,geometryMatches,GEOMETRY_TOLERAN
     if(p.version===2){
       check(p.roomEditor===null || obj(p.roomEditor),'roomEditor');
       if(p.roomEditor!==null){
-        const editor=validateRoomEditor(p.roomEditor);
-        check(rooms.length===1 && rooms[0].id===editor.roomId,'rectangle room settings');
-        check(p.rooms[editor.roomId].name.trim().length>0,'room name');
+        const house=p.roomEditor.kind==='house';
+        const editor=house?validateHouseEditor(p.roomEditor):validateRoomEditor(p.roomEditor);
+        check(house?rooms.length===editor.rooms.length&&editor.rooms.every(r=>Object.hasOwn(p.rooms,r.id)):rooms.length===1&&rooms[0].id===editor.roomId,'room settings');
+        check(Object.values(p.rooms).every(r=>r.name.trim().length>0),'room name');
         check(!p.templateId,'rectangle templateId');
         check(p.demolished.length===0,'rectangle demolished');
         const ids=[p.id,p.layout.id,...Object.keys(p.rooms),...p.furniture.map(f=>f.id),...editor.openings.map(o=>o.id)];
         check(new Set(ids).size===ids.length,'project-wide IDs');
-        check(geometryMatches(g,generateRoomGeometry(editor,p.rooms)),'roomEditor / geometry mismatch');
+        check(geometryMatches(g,(house?generateHouseGeometry:generateRoomGeometry)(editor,p.rooms)),'roomEditor / geometry mismatch');
       }
     }
+    if(p.referencePlan!==undefined)validateReference(p.referencePlan);
     const result=clone(p);
     if(result.version===1){result.version=VERSION;result.roomEditor=null;}
     return result;
@@ -102,7 +107,7 @@ export function createRectangleProject({name='My room',width=4000,depth=3000,hei
   return p;
 }
 export function updateRectangleProject(project,editor,rooms=project.rooms){
-  const next=clone(project);next.roomEditor=validateRoomEditor(editor);next.rooms=clone(rooms);
-  next.geometry=generateRoomGeometry(next.roomEditor,next.rooms);next.demolished=[];delete next.templateId;
+  const next=clone(project);next.roomEditor=editor.kind==='house'?validateHouseEditor(editor):validateRoomEditor(editor);next.rooms=clone(rooms);
+  next.geometry=(next.roomEditor.kind==='house'?generateHouseGeometry:generateRoomGeometry)(next.roomEditor,next.rooms);next.demolished=[];delete next.templateId;
   return next;
 }

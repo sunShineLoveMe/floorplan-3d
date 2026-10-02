@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-02",
+  "branch": "feat/ui-refactor",
+  "baseline": "6ddee8d",
+  "assetVersion": "74dd01a140d4791f",
+  "unitTests": {
+    "passed": 44,
+    "failed": 0
+  },
+  "browserItems": [
+    "NA-001",
+    "NA-002",
+    "NA-004",
+    "NA-003",
+    "NA-005",
+    "NA-006",
+    "NA-007",
+    "NA-008",
+    "NA-009",
+    "NA-010",
+    "NA-012",
+    "NA-011"
+  ],
+  "integration": "PASS",
+  "workerVersionRegression": "PASS",
+  "lint": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "syntaxModules": 76,
+  "localOnly": true,
+  "committed": false,
+  "pushed": false,
+  "deployed": false,
+  "original8086": "preserved",
+  "temporary8094": "stopped"
+}

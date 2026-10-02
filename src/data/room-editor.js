@@ -30,15 +30,17 @@ export function validateRoomEditor(editor){
  WALL_IDS.forEach(w=>{const os=editor.openings.filter(o=>o.wallId===w).sort((a,b)=>a.offset-b.offset);for(let i=1;i<os.length;i++)check(os[i].offset-os[i-1].offset-os[i-1].width>=1-GEOMETRY_TOLERANCE,'opening '+os[i].id+' overlaps or is less than 1 mm from '+os[i-1].id);});
  return copy(editor);
 }
-export function generateRoomGeometry(input,rooms){
+export function generateRoomGeometry(input,rooms,wallWidths){
  const e=validateRoomEditor(input),{width:W,depth:D,height,wallThickness:T}=e;
  check(object(rooms)&&object(rooms[e.roomId]),'room settings');const room=rooms[e.roomId];
+ const thickness=w=>wallWidths?.[w]??T;
  const walls=[],wallIds=[],doors=[],windows=[];
- const rect=(wall,start,end)=>wall==='top'?[start,-T,end,0]:wall==='bottom'?[start,D,end,D+T]:wall==='left'?[-T,start,0,end]:[W,start,W+T,end];
+ const rect=(wall,start,end)=>wall==='top'?[start,-thickness(wall),end,0]:wall==='bottom'?[start,D,end,D+thickness(wall)]:wall==='left'?[-thickness(wall),start,0,end]:[W,start,W+thickness(wall),end];
  WALL_IDS.forEach(w=>{
+  if(thickness(w)===0)return;
   const horizontal=['top','bottom'].includes(w),length=horizontal?W:D;
   const openings=e.openings.filter(o=>o.wallId===w).sort((a,b)=>a.offset-b.offset);
-  let cursor=horizontal?-T:0;
+  let cursor=horizontal?-thickness('left'):0;
   for(const o of openings){
    walls.push([...rect(w,cursor,o.offset),'n']);wallIds.push(w);cursor=o.offset+o.width;
    const base={id:o.id,wallId:w,rect:rect(w,o.offset,cursor)};
@@ -50,12 +52,12 @@ export function generateRoomGeometry(input,rooms){
     doors.push({...base,h,c:horizontal?[sign,0]:[0,sign],o:inside.map(x=>x*(o.swing==='inward'?1:-1)||0),len:o.width,height:o.height,name:o.id});
    }
   }
-  walls.push([...rect(w,cursor,horizontal?length+T:length),'n']);wallIds.push(w);
+  walls.push([...rect(w,cursor,horizontal?length+thickness('right'):length),'n']);wallIds.push(w);
  });
  // Include the whole quarter-circle door sweep, dimension lines and text padding.
- let minX=-T-600,minY=-T-600,maxX=W+T+600,maxY=D+T+600;
+ let minX=-thickness('left')-600,minY=-thickness('top')-600,maxX=W+thickness('right')+600,maxY=D+thickness('bottom')+600;
  doors.forEach(d=>{for(const v of [d.c,d.o]){const x=d.h[0]+v[0]*d.len,y=d.h[1]+v[1]*d.len;minX=Math.min(minX,x-150);maxX=Math.max(maxX,x+150);minY=Math.min(minY,y-150);maxY=Math.max(maxY,y+150);}});
- return {height,origin:[W/2,D/2],bounds:{x:minX,y:minY,w:maxX-minX,h:maxY-minY},rooms:[{id:e.roomId,name:room.name,mat:room.mat,poly:[[0,0],[W,0],[W,D],[0,D]],at:[W/2,D/2]}],walls,wallIds,doors,windows,slides:[],lintels:[],dimensions:[{horizontal:true,at:-T-300,start:0,segments:[W]},{horizontal:false,at:-T-300,start:0,segments:[D]}],walkStart:{position:[W/2,D*.7],target:[W/2,D*.3]},entry:null};
+ return {height,origin:[W/2,D/2],bounds:{x:minX,y:minY,w:maxX-minX,h:maxY-minY},rooms:[{id:e.roomId,name:room.name,mat:room.mat,poly:[[0,0],[W,0],[W,D],[0,D]],at:[W/2,D/2]}],walls,wallIds,doors,windows,slides:[],lintels:[],dimensions:[{horizontal:true,at:-thickness('top')-300,start:0,segments:[W]},{horizontal:false,at:-thickness('left')-300,start:0,segments:[D]}],walkStart:{position:[W/2,D*.7],target:[W/2,D*.3]},entry:null};
 }
 /** Structural comparison has one absolute tolerance (one millionth of a mm). */
 export function geometryMatches(actual,expected){

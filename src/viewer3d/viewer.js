@@ -162,7 +162,7 @@ function buildFurn(){
 
 function buildLabels(){
   labelG.children.slice().forEach(o => { o.element.remove(); labelG.remove(o); });
-  store.getProject().geometry.rooms.filter(r => r.at).forEach(r => {
+  store.getProject().geometry.rooms.filter(r => r.at&&!store.getProject().rooms[r.id].labelHidden).forEach(r => {
     const el = document.createElement('div'); el.className = 'rlabel';
     el.innerHTML = `${esc(nm(store.getProject().rooms[r.id].name))}<small>${formatAreaM2(area(r.poly),store.getProject().units.display)}</small>`;
     const o = new CSS2DObject(el); o.position.set(wx(r.at[0]), opt.cut + .15, wz(r.at[1])); o.visible = labelG.visible; labelG.add(o);
@@ -215,26 +215,22 @@ function applyLight(){
 }
 
 /* ======================= 相机位姿 / 动画 ======================= */
-const {ease,clamp01,pose,planPose,isoFrom,isoWhole,topWhole,curPose,camTween,setPose}=createNavigation({view,space:{wx,wz},size:{width:SW,height:SH},getCamera:()=>camera,getOrbit:()=>orbit,getHeight:()=>H});
+const {ease,clamp01,planPose,isoWhole,topWhole,fitPose,curPose,camTween,setPose}=createNavigation({view,space:{wx,wz},size:{width:SW,height:SH},getCamera:()=>camera,getOrbit:()=>orbit,getHeight:()=>H,getProject:()=>store.getProject()});
 function animate(dur, fn){ if(matchMedia('(prefers-reduced-motion:reduce)').matches)dur=1; return new Promise(res => { anim = {t0:performance.now(), dur, fn, res}; }); }
 const wait = ms => scope.wait(matchMedia('(prefers-reduced-motion:reduce)').matches?0:ms);
 function flyTo(B, dur = 900){ if(matchMedia('(prefers-reduced-motion:reduce)').matches)dur=1; fly = {t0:performance.now(), dur, A:curPose(), B}; }
 function flyToRoom(id){
-  const r = store.getProject().geometry.rooms.find(r => r.id === id), xs = r.poly.map(p => p[0]), ys = r.poly.map(p => p[1]);
-  const t = new THREE.Vector3(wx((Math.min(...xs)+Math.max(...xs))/2), .6, wz((Math.min(...ys)+Math.max(...ys))/2));
-  const size = M(Math.max(Math.max(...xs)-Math.min(...xs), Math.max(...ys)-Math.min(...ys)));
-  const dir = camera.position.clone().sub(orbit.target).setY(0); if (dir.lengthSq() < .01) dir.set(.6, 0, .8); dir.normalize();
-  const dist = size*1.3 + 2.2;
-  flyTo(pose(t, new THREE.Vector3(t.x + dir.x*dist*.7, dist*1.05, t.z + dir.z*dist*.7)));
+  if(store.getProject().geometry.rooms.some(r=>r.id===id))flyTo(fitPose(id));
 }
 
 /* ======================= 进入 / 退出 3D ======================= */
+let remembered=null;
 async function enter(){
   init(); active = true;
   renderer.setSize(SW(), SH()); labelRenderer.setSize(SW(), SH()); camera.aspect = SW()/SH(); camera.updateProjectionMatrix();
   sync(true);
   opt.mode = 'orbit'; syncModeBtns(); orbit.enabled = false; showLabels(false);
-  const A = planPose(), B = isoFrom(A);
+  const A=planPose(),B=remembered?.geometry===JSON.stringify(store.getProject().geometry)?remembered.pose:isoWhole();
   grow = 0; furnGrow = 0; applyGrow(); setPose(A);
   stage.classList.add('animating');
   startLoop(); renderer.render(scene, camera);
@@ -250,6 +246,7 @@ async function enter(){
   stage.classList.remove('animating');
 }
 async function exit(){
+  if(opt.mode==='orbit')remembered={geometry:JSON.stringify(store.getProject().geometry),pose:curPose()};
   cancelGesture();
   if (opt.mode === 'walk'){ walkCtl.unlock(); stopTouchWalk(); $('#hint3d').textContent = HINT_ORBIT(); $('#walkOverlay').style.display = 'none'; $('#cross').style.display = 'none';
     const dir = new THREE.Vector3(); camera.getWorldDirection(dir); orbit.target.copy(camera.position).addScaledVector(dir, 3).setY(0); opt.mode = 'orbit'; syncModeBtns(); }
@@ -443,6 +440,7 @@ function bindUI(){
   $('#walkExit').onclick = () => setMode('orbit');
   bindJoystick();
   syncWalkTexts();
+  $('#fit3d').onclick=()=>{if(opt.mode==='walk')setMode('orbit');flyTo(isoWhole());};
   $('#vIso').onclick = () => { if (opt.mode === 'walk') setMode('orbit'); else flyTo(isoWhole()); };
   $('#vTop').onclick = () => { if (opt.mode === 'walk') setMode('orbit'); flyTo(topWhole()); };
   document.querySelectorAll('[data-cut]').forEach(b => b.onclick = () => { if (opt.mode === 'walk') return; opt.cut = +b.dataset.cut; syncCutBtns(); sync(); });
@@ -471,7 +469,7 @@ function loop(){
   labelRenderer.render(scene, camera);
 }
 
-function shot(){ const a = document.createElement('a'); a.download = tr('户型装修方案', 'floor-plan-design') + '-3D.png'; a.href = renderer.domElement.toDataURL('image/png'); a.click(); }
+function shot(name){ const a = document.createElement('a'); a.download=name; a.href = renderer.domElement.toDataURL('image/png'); a.click(); }
 
 function relang(){ syncWalkTexts(); if (inited) buildLabels(); }
 
@@ -484,7 +482,7 @@ function dispose(){
   // Shared cache materials are released once here, never while rebuilding a mesh.
   materials.dispose();glassMat?.dispose();edgeMat.dispose();skirtMat.dispose();ground?.material.dispose();selHelper?.material.dispose();sun?.shadow?.map?.dispose();environmentTarget?.dispose();
   renderer?.dispose();renderer?.domElement.remove();labelRenderer?.domElement.remove();
-  for(const id of ['walkOverlay','walkExit','vIso','vTop']) $('#'+id).onclick=null;
+  for(const id of ['walkOverlay','walkExit','vIso','vTop','fit3d']) $('#'+id).onclick=null;
   $('#sun').oninput=null;document.querySelectorAll('#modes3d button,[data-cut],[data-t]').forEach(b=>b.onclick=null);
   $('#walkOverlay').style.display='none';$('#cross').style.display='none';
 }

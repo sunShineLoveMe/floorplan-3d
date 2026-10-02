@@ -1,0 +1,8 @@
+const output=file=>(process.env.NA_TEST_OUT||'docs/verification/NA-fixes')+'/'+file;
+export async function run({context,assert,fs,baseURL}){
+ const fresh=await context.browser().newContext({viewport:{width:1440,height:1000}}),page=await fresh.newPage();try{
+ await page.goto(baseURL);await page.waitForSelector('#lib .item');assert(await page.locator('html').getAttribute('lang')==='en','fresh language not en');assert(await page.locator('#projectUnits').inputValue()==='imperial','fresh units not imperial');assert(await page.locator('#projectUnits').isVisible(),'units hidden');assert(await page.locator('#langBtn').isVisible(),'language hidden');
+ await page.locator('#fileIn').setInputFiles('tests/fixtures/rectangle-project-v2.json');await page.waitForFunction(()=>document.querySelector('#projectUnits').value==='metric');await page.locator('#langBtn').click();await page.reload();await page.waitForSelector('#lib .item');assert(await page.locator('html').getAttribute('lang')==='zh-CN','saved zh lost');assert(await page.locator('#projectUnits').inputValue()==='metric','existing metric changed');
+ await page.locator('#langBtn').click();await page.setViewportSize({width:390,height:844});await page.screenshot({path:output('NA-003-mobile.png')});assert(await page.locator('#projectUnits').isVisible(),'mobile units hidden');const bounds=await page.locator('#projectUnits').boundingBox();assert(bounds.x>=0&&bounds.x+bounds.width<=390,'mobile units clipped');const langBounds=await page.locator('#langBtn').boundingBox();assert(langBounds.x+langBounds.width<=390,'mobile language clipped');assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'mobile overflow');
+ }finally{await fresh.close();}
+}

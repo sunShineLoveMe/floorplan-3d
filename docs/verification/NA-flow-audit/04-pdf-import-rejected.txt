@@ -1,0 +1,3 @@
+Actual browser alert: The file is not valid JSON.
+File chooser accepts .json,application/json only.
+Screenshot API unavailable while JavaScript alert is open.

@@ -1,3 +1,4 @@
+import {asHouse,sideOf,wallWidth} from '../data/house-editor.js';
 import {formatLengthMm} from '../core/units.js';
 import {lengthField,bindLengthField} from './length-field.js';
 import {$,esc} from './dom.js';
@@ -33,23 +34,27 @@ export function createRoomEditor({store,ui,actions,cancelInteraction,exportProje
     if(isSwitching())return;
     opener=document.activeElement===document.body?trigger:document.activeElement;
     cancelInteraction();
-    const p=store.getProject(),r=p.roomEditor;
+    const p=store.getProject(),raw=p.roomEditor,r=raw?.kind==='house'?raw.rooms.find(r=>r.id===(ui.sel?.kind==='room'?ui.sel.id:ui.activeRoom))||raw.rooms[0]:raw;
+    if(r)ui.activeRoom=r.id||r.roomId;
     if(kind!=='new'&&!r)return;
     editing={kind,id,projectId:p.id,original:{}};
     let fields='',title='',hint='';
-    if(kind==='new'||kind==='room'){
-      const v=kind==='new'?{width:4000,depth:3000,height:2800}:r;
-      title=kind==='new'?tr('新建矩形房间','New rectangular room'):tr('编辑房间','Edit room');
-      const name=kind==='new'?tr('我的房间','My room'):p.rooms[r.roomId].name;
-      fields=`<label class="full">${tr('名称','Name')}<input name="name" maxlength="500" required value="${esc(name)}"></label>`+number('width',tr('室内净宽 X','Net width X'),v.width)+number('depth',tr('室内净深 Y','Net depth Y'),v.depth)+number('height',tr('室内净高','Net height'),v.height);
-      hint=tr(`宽/深 ${length(100)}–${length(100000)}；高 ${length(100)}–${length(20000)}。固定墙厚 ${length(120)}。`,`Width/depth ${length(100)}–${length(100000)}; height ${length(100)}–${length(20000)}. Fixed walls ${length(120)}.`);
-      hint+=' '+(kind==='new'?tr('以上为示例初值，请按实测修改。创建将替换当前方案，可撤销；建议先导出备份。','These are example values; enter your measurements. Creating replaces the current plan and can be undone. Export a backup first.'):tr('家具和测量保留绝对坐标，请复核位置；超出父墙或房高的门窗会阻止提交。','Furniture and measurements keep their coordinates; review their positions. Openings outside the wall or ceiling block this change.'));
+    if(['new','room','add'].includes(kind)){
+      const v=kind!=='room'?{...(p.units.display==='imperial'?{width:3657.6,depth:3048,height:2438.4}:{width:4000,depth:3000,height:2800}),height:kind==='add'?p.geometry.height:p.units.display==='imperial'?2438.4:2800,x:r?r.x??0:0,y:r?(r.y??0)+r.depth+Math.max(120,wallWidth(r,'bottom')):0}:{...r,height:p.geometry.height};
+      title=kind==='add'?tr('添加房间','Add room'):kind==='new'?tr('新建矩形房间','New rectangular room'):tr('编辑房间','Edit room');
+      const name=kind!=='room'?tr('我的房间','My room'):p.rooms[r.id||r.roomId].name;
+      fields=`<label class="full">${tr('名称','Name')}<input name="name" maxlength="500" required value="${esc(name)}"></label>`+number('width',tr('室内净宽 X','Net width X'),v.width)+number('depth',tr('室内净深 Y','Net depth Y'),v.depth)+number('height',raw?.kind==='house'||kind==='add'?tr('本层净高（所有房间）','Floor ceiling height (all rooms)'):tr('室内净高','Net height'),v.height);
+      if(kind==='add'||kind==='room'&&raw?.kind==='house')fields+=number('x',tr('左上角 X','Top-left X'),v.x)+number('y',tr('左上角 Y','Top-left Y'),v.y);
+      fields+=`<fieldset class="full"><legend>${tr('每侧墙厚（0 表示开放边界）','Wall thickness by side (0 = open boundary)')}</legend><div class="form">${walls().map(([side,label])=>number('wall-'+side,label,kind==='room'?wallWidth(r,side):120)).join('')}</div></fieldset>`;
+      hint=tr(`宽/深 ${length(100)}–${length(100000)}；高 ${length(100)}–${length(20000)}。每侧墙厚可设为 0–1000 mm，0 为开放边界。`,`Width/depth ${length(100)}–${length(100000)}; height ${length(100)}–${length(20000)}. Each wall can be 0–1000 mm thick; 0 creates an open boundary.`);
+      hint+=' '+(kind==='add'?tr('添加到当前项目，不替换已有房间。相邻净空间按对应墙厚留间距；开放相接须双方墙厚均为 0。默认接在当前房间下方。','Adds to this project. Leave the larger facing wall thickness between net spaces. Set both facing sides to 0 to join open spaces. Default position is below the current room.'):kind==='new'?tr('以上为示例初值，请按实测修改。创建将替换当前方案，可撤销；建议先导出备份。','These are example values; enter your measurements. Creating replaces the current plan and can be undone. Export a backup first.'):tr('家具和测量保留绝对坐标，请复核位置；超出父墙或房高的门窗会阻止提交。','Furniture and measurements keep their coordinates; review their positions. Openings outside the wall or ceiling block this change.'));
     }else{
-      const o=id?r.openings.find(o=>o.id===id):{type:kind,wallId:ui.sel?.kind==='wall'?ui.sel.id:'top',offset:500,width:kind==='door'?900:1200,height:kind==='door'?2100:1200,sill:900,hinge:'start',swing:'inward'};
+      const o=id?raw.openings.find(o=>o.id===id):{type:kind,wallId:ui.sel?.kind==='wall'?sideOf(ui.sel.id):'top',offset:p.units.display==='imperial'?609.6:500,width:p.units.display==='imperial'?(kind==='door'?914.4:1219.2):(kind==='door'?900:1200),height:p.units.display==='imperial'?(kind==='door'?2032:1219.2):(kind==='door'?2100:1200),sill:p.units.display==='imperial'?914.4:900,hinge:'start',swing:'inward'};
       if(!o)return;
+      if(!id){const wall=raw.kind==='house'?ui.activeRoom+'--'+o.wallId:o.wallId,existing=raw.openings.filter(x=>x.wallId===wall);if(existing.length)o.offset=Math.max(...existing.map(x=>x.offset+x.width))+(p.units.display==='imperial'?304.8:100);}
       editing.type=o.type;
       title=(id?tr('编辑','Edit '):tr('添加','Add '))+(o.type==='door'?tr('门','door'):tr('窗','window'));
-      fields=choice('wallId',tr('所属墙及方向','Parent wall and direction'),o.wallId,walls())+number('offset',tr('距墙起点到洞口起边','Wall start to opening start'),o.offset)+number('width',tr('洞口宽','Opening width'),o.width)+number('height',tr('洞口高','Opening height'),o.height);
+      fields=choice('wallId',tr('所属墙及方向','Parent wall and direction'),sideOf(o.wallId),walls())+number('offset',tr('距墙起点到洞口起边','Wall start to opening start'),o.offset)+number('width',tr('洞口宽','Opening width'),o.width)+number('height',tr('洞口高','Opening height'),o.height);
       fields+=o.type==='door'?choice('hinge',tr('铰链端','Hinge end'),o.hinge,[['start',tr('起端','Start')],['end',tr('末端','End')]])+choice('swing',tr('开启方向','Swing'),o.swing,[['inward',tr('向室内','Inward')],['outward',tr('向室外','Outward')]]):number('sill',tr('窗台高','Sill height'),o.sill);
       hint=tr('基准：所选墙的起点墙角，沿列表方向到洞口起边。距起点沿箭头方向计算。洞口距两端及其他洞口至少 1 mm；此为几何限制，不是结构规范。更换墙后沿用当前数值并重新校验。','Reference: the selected wall\'s start corner to the opening start, following the listed direction. Offset follows the wall arrow. Keep at least 1 mm from corners and other openings; this is a geometry limit, not a building standard. Changing walls validates the same values.');
     }
@@ -61,9 +66,9 @@ export function createRoomEditor({store,ui,actions,cancelInteraction,exportProje
     for(const input of dialog.querySelectorAll('[data-length]')){
       const key=input.name;
       fieldsByName[key]=bindLengthField(input,editing.original[key],p.units.display,()=>{
-        if(kind==='new'||kind==='room')return [100,key==='height'?20000:100000];
+        if(['new','room','add'].includes(kind))return key.startsWith('wall-')?[0,1000]:['x','y'].includes(key)?[-100000,100000]:[100,key==='height'?20000:100000];
         const wall=dialog.querySelector('[name=wallId]').value,L=['top','bottom'].includes(wall)?r.width:r.depth;
-        return key==='sill'?[0,r.height]:key==='height'?[1,r.height]:[1,L-(key==='width'?2:1)];
+        return key==='sill'?[0,p.geometry.height]:key==='height'?[1,p.geometry.height]:[1,L-(key==='width'?2:1)];
       });
     }
     dialog.querySelectorAll('select').forEach(select=>select.onchange=()=>Object.values(fieldsByName).forEach(field=>field.read()));
@@ -77,17 +82,22 @@ export function createRoomEditor({store,ui,actions,cancelInteraction,exportProje
       const p=store.getProject();if(p.id!==editing.projectId)throw new Error(tr('项目已更换，请重新打开表单。','Project changed. Reopen the form.'));
       const form=new FormData(e.target),value=k=>{const result=fieldsByName[k].read();if(!result.ok){dialog.querySelector(`[name="${k}"]`).focus();throw new Error(tr('请修正标记的长度字段。','Correct the marked length field.'));}return result.mm;};
       let next,nextSelection=ui.sel;
-      if(editing.kind==='new'||editing.kind==='room'){
+      if(['new','room','add'].includes(editing.kind)){
         const name=form.get('name').trim();if(!name)throw new Error(tr('名称不能为空。','Name is required.'));
-        const dimensions={width:value('width'),depth:value('depth'),height:value('height')};
-        if(editing.kind==='new'){next=createRectangleProject({name,...dimensions});next.units=clone(p.units);nextSelection=null;}
-        else{
+        const dimensions={width:value('width'),depth:value('depth'),height:value('height')},wallWidths=Object.fromEntries(walls().map(([side])=>[side,value('wall-'+side)]));
+        if(editing.kind==='new'){next=createRectangleProject({name,...dimensions});next.units=clone(p.units);if(p.referencePlan)next.referencePlan=clone(p.referencePlan);if(Object.values(wallWidths).some(w=>w!==120)){const editor=asHouse(next.roomEditor);editor.rooms[0].wallWidths=wallWidths;next=updateRectangleProject(next,editor);}nextSelection=null;}
+        else if(editing.kind==='add'||p.roomEditor.kind==='house'||Object.values(wallWidths).some(w=>w!==120)){
+          const editor=asHouse(p.roomEditor),roomId=editing.kind==='add'?'room-'+uid():ui.activeRoom,rooms=clone(p.rooms);rooms[roomId]={...rooms[roomId],name,mat:rooms[roomId]?.mat||'wood'};
+          const room={id:roomId,x:fieldsByName.x?value('x'):0,y:fieldsByName.y?value('y'):0,width:dimensions.width,depth:dimensions.depth,wallWidths};editor.height=dimensions.height;
+          if(editing.kind==='add')editor.rooms.push(room);else editor.rooms[editor.rooms.findIndex(r=>r.id===roomId)]=room;
+          next=updateRectangleProject(p,editor,rooms);nextSelection={kind:'room',id:roomId};ui.activeRoom=roomId;
+        }else{
           const rooms=clone(p.rooms);rooms[p.roomEditor.roomId].name=name;
           next=updateRectangleProject(p,{...p.roomEditor,...dimensions},rooms);
-          next.name=name;
         }
       }else{
         const r=clone(p.roomEditor),o={id:editing.id||'opening-'+uid(),type:editing.type,wallId:form.get('wallId'),offset:value('offset'),width:value('width'),height:value('height')};
+        if(r.kind==='house'){o.roomId=ui.activeRoom;o.wallId=o.roomId+'--'+o.wallId;}
         if(o.type==='door'){o.hinge=form.get('hinge');o.swing=form.get('swing');}else o.sill=value('sill');
         if(editing.id)r.openings[r.openings.findIndex(x=>x.id===editing.id)]=o;else r.openings.push(o);
         next=updateRectangleProject(p,r);nextSelection={kind:'opening',id:o.id};
@@ -111,21 +121,27 @@ export function createRoomEditor({store,ui,actions,cancelInteraction,exportProje
   }
   let signature;
   function update(){
-    const r=store.getProject().roomEditor;
-    if(dialog.open&&editing.projectId!==store.getProject().id)close();
-    $('#newRoom').textContent=tr('＋ 新建房间方案','＋ New room plan');
+    const p=store.getProject(),raw=p.roomEditor;
+    if(dialog.open&&editing.projectId!==p.id)close();
+    $('#newRoom').textContent=tr('＋ 新建项目','＋ New project');
     $('#editRoom').textContent=tr('房间 / 门窗','Room / Openings');
-    const next=JSON.stringify([store.getProject().id,store.getProject().roomEditor,store.getProject().units.display,ui.sel,document.documentElement.lang]);
-    if(next===signature)return;signature=next;
+    const selectedOpening=raw?.openings.find(o=>ui.sel?.kind==='opening'&&o.id===ui.sel.id);
+    if(raw){if(ui.sel?.kind==='room')ui.activeRoom=ui.sel.id;if(selectedOpening)ui.activeRoom=selectedOpening.roomId||raw.roomId;if(ui.sel?.kind==='wall'&&raw.kind==='house')ui.activeRoom=ui.sel.id.split('--')[0];}
+    const room=raw?.kind==='house'?raw.rooms.find(r=>r.id===ui.activeRoom)||raw.rooms[0]:raw;
+    if(room)ui.activeRoom=room.id||room.roomId;
+    const chosen=ui.sel?.kind==='wall'?sideOf(ui.sel.id):selectedOpening?sideOf(selectedOpening.wallId):ui.lastWall||'top';ui.lastWall=chosen;
+    const next=JSON.stringify([p.id,raw,p.rooms,p.units.display,ui.sel,ui.activeRoom,chosen,document.documentElement.lang]);if(next===signature)return;signature=next;
     host.dataset.context=ui.sel?.kind||'none';
     host.hidden=!['room','wall','opening'].includes(ui.sel?.kind);
-    host.innerHTML=r?`<section><h3>${ui.sel?.kind==='opening'?(r.openings.find(o=>o.id===ui.sel.id)?.type==='door'?tr('门属性','Door properties'):tr('窗属性','Window properties')):ui.sel?.kind==='wall'?tr('墙体与门窗','Wall and openings'):tr('房间与门窗','Room and openings')}</h3><button class="btn" data-room-edit>${tr('编辑净尺寸','Edit net dimensions')}</button><p class="muted">${tr(`固定墙厚 ${length(120)}；生成墙体不可拆除。`,`Fixed ${length(120)} walls; generated walls cannot be demolished.`)}</p><label>${tr('选择墙（起点 → 终点）','Choose wall (start → end)')}<select id="parentWall">${walls().map(([v,t])=>`<option value="${v}">${t}</option>`).join('')}</select></label><div class="actions"><button class="btn" data-add="door">${tr('＋ 门','＋ Door')}</button><button class="btn" data-add="window">${tr('＋ 窗','＋ Window')}</button></div><div class="opening-list">${r.openings.filter(o=>ui.sel?.kind==='opening'?o.id===ui.sel.id:ui.sel?.kind==='wall'?o.wallId===ui.sel.id:true).map(o=>`<div class="opening-row ${ui.sel?.id===o.id?'selected':''}"><button class="btn" data-select="${o.id}">${o.type==='door'?tr('门','Door'):tr('窗','Window')} · ${walls().find(([v])=>v===o.wallId)[1]}<small>${length(o.offset)} → ${length(o.offset+o.width)} · ${length(o.width)} × ${length(o.height)}</small></button><button class="btn" data-edit="${o.id}">${tr('编辑','Edit')}</button><button class="btn danger" data-delete="${o.id}">${tr('删除','Delete')}</button></div>`).join('')||`<p class="muted">${tr('尚无门窗。可点选平面图的墙再添加。','No openings. Select a wall on the plan to add one.')}</p>`}</div></section>`:`<section><h3>${tr('几何快照项目','Geometry snapshot')}</h3><p class="muted">${tr('此方案保留原几何，可继续摆家具和改材料。要输入净尺寸和门窗关系，请新建矩形房间。','This plan retains its geometry. Furniture and materials remain editable. Create a rectangular room to edit dimensions and openings.')}</p></section>`;
-    if(!r)return;
-    const chosen=ui.sel?.kind==='wall'?ui.sel.id:r.openings.find(o=>o.id===ui.sel?.id)?.wallId||'top';
-    host.querySelector('#parentWall').value=chosen;
-    host.querySelector('#parentWall').onchange=e=>actions.select({kind:'wall',id:e.target.value});
-    host.querySelector('[data-room-edit]').onclick=()=>open('room');
-    host.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>{actions.select({kind:'wall',id:host.querySelector('#parentWall').value});open(b.dataset.add);});
+    host.innerHTML=raw?`<section><h3>${tr('房间与门窗','Rooms and openings')}</h3>${selectedOpening?`<button class="btn" data-back-wall>${tr('← 返回当前墙 / 继续添加','← Back to this wall / add another')}</button>`:''}<label>${tr('当前房间','Current room')}<select id="activeRoom">${p.geometry.rooms.map(r=>`<option value="${r.id}" ${r.id===ui.activeRoom?'selected':''}>${esc(p.rooms[r.id].name)}</option>`).join('')}</select></label><div class="actions"><button class="btn" data-room-edit>${tr('编辑尺寸 / 位置','Edit dimensions / position')}</button><button class="btn" data-room-add>${tr('＋ 添加房间','＋ Add room')}</button>${raw.kind==='house'&&raw.rooms.length>1?`<button class="btn danger" data-room-delete>${tr('删除当前房间','Delete current room')}</button>`:''}</div><p class="muted">${tr('单层矩形空间；相邻净空间按墙厚留间距。双方墙厚均为 0 可连接开放空间。','Single floor, rectangular spaces. Leave the facing wall thickness between net spaces. Set both sides to 0 to connect open spaces.')}</p><label>${tr('选择墙（起点 → 终点）','Choose wall (start → end)')}<select id="parentWall">${walls().map(([v,t])=>`<option value="${v}" ${v===chosen?'selected':''}>${t}</option>`).join('')}</select></label><div class="actions"><button class="btn" data-add="door">${tr('＋ 门','＋ Door')}</button><button class="btn" data-add="window">${tr('＋ 窗','＋ Window')}</button></div><div class="opening-list">${raw.openings.filter(o=>raw.kind!=='house'||o.roomId===ui.activeRoom).map(o=>`<div class="opening-row"><button class="btn" data-select="${o.id}">${o.type==='door'?tr('门','Door'):tr('窗','Window')} · ${walls().find(([v])=>v===sideOf(o.wallId))[1]}<small>${length(o.offset)} → ${length(o.offset+o.width)}</small></button><button class="btn" data-edit="${o.id}">${tr('编辑','Edit')}</button><button class="btn danger" data-delete="${o.id}">${tr('删除','Delete')}</button></div>`).join('')}</div></section>`:`<section><p>${tr('示例为几何快照。新建项目后可连续添加房间、门窗。','This sample is a geometry snapshot. Create a project to add rooms and openings.')}</p><button class="btn" data-start>${tr('新建项目','New project')}</button></section>`;
+    if(!raw){host.querySelector('[data-start]').onclick=()=>open('new');return;}
+    const back=host.querySelector('[data-back-wall]');if(back)back.onclick=()=>actions.select({kind:'wall',id:selectedOpening.wallId});
+    const wallId=side=>raw.kind==='house'?ui.activeRoom+'--'+side:side;
+    host.querySelector('#activeRoom').onchange=e=>actions.select({kind:'room',id:e.target.value});
+    host.querySelector('#parentWall').onchange=e=>{ui.lastWall=e.target.value;actions.select({kind:'wall',id:wallId(e.target.value)});};
+    host.querySelector('[data-room-edit]').onclick=()=>open('room');host.querySelector('[data-room-add]').onclick=()=>open('add');
+    const del=host.querySelector('[data-room-delete]');if(del)del.onclick=()=>{const editor=asHouse(raw),id=ui.activeRoom,rooms=clone(p.rooms);editor.rooms=editor.rooms.filter(r=>r.id!==id);editor.openings=editor.openings.filter(o=>o.roomId!==id);delete rooms[id];const next=validate(updateRectangleProject(p,editor,rooms),CATALOGS);ui.sel=null;ui.activeRoom=editor.rooms[0].id;store.replaceProject(next);};
+    host.querySelectorAll('[data-add]').forEach(b=>{b.disabled=raw.kind==='house'&&wallWidth(room,chosen)===0;b.onclick=()=>{actions.select({kind:'wall',id:wallId(host.querySelector('#parentWall').value)});open(b.dataset.add);};});
     host.querySelectorAll('[data-select]').forEach(b=>b.onclick=()=>actions.select({kind:'opening',id:b.dataset.select}));
     host.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>{actions.select({kind:'opening',id:b.dataset.edit});open('opening',b.dataset.edit);});
     host.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>remove(b.dataset.delete));

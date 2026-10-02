@@ -17,8 +17,9 @@ function applyView(){
 }
 function fitView(){
   const W = svg.clientWidth, H = svg.clientHeight;
-  view.s = Math.min(W/store.getProject().geometry.bounds.w, H/store.getProject().geometry.bounds.h);
-  view.x0 = store.getProject().geometry.bounds.x - (W/view.s - store.getProject().geometry.bounds.w)/2; view.y0 = store.getProject().geometry.bounds.y - (H/view.s - store.getProject().geometry.bounds.h)/2;
+  const p=store.getProject(),r=p.referencePlan,b={...p.geometry.bounds};
+  if(r?.visible){const x=Math.min(b.x,r.x),y=Math.min(b.y,r.y),right=Math.max(b.x+b.w,r.x+r.pixelWidth*r.mmPerPixel),bottom=Math.max(b.y+b.h,r.y+r.pixelHeight*r.mmPerPixel);Object.assign(b,{x,y,w:right-x,h:bottom-y});}
+  view.s=Math.min(W/b.w,H/b.h);view.x0=b.x-(W/view.s-b.w)/2;view.y0=b.y-(H/view.s-b.h)/2;
   applyView();
 }
 function zoomAt(ns, mx, my){

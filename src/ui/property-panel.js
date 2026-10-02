@@ -60,9 +60,9 @@ function overviewPanel(){
     <table>${rows}</table>
     <div class="total"><span>${tr('套内使用面积','Net floor area')}</span><b>${surface(tot)}</b></div>
     <div class="muted" style="font-size:11px;margin-top:4px">${tr('* 飘窗不计入使用面积；面积按墙体内净尺寸计算','* Bay windows are excluded; areas use net inner wall dimensions')}</div></section>
-  <section><h3>${tr('地面材料估算','Flooring Estimate')} <small>${tr('含 5% 损耗，示例价：人民币/平方米','incl. 5% waste; example prices: CNY/m²')}</small></h3>
+  ${LANG==='zh'&&store.getProject().units.display==='metric'?`<section><h3>${tr('地面材料估算','Flooring Estimate')} <small>${tr('含 5% 损耗，示例价：人民币/平方米','incl. 5% waste; example prices: CNY/m²')}</small></h3>
     <table>${matRows}</table>
-    <div class="total"><span>${tr('地面材料合计','Flooring total')}</span><b>¥${Math.round(cost).toLocaleString()}</b></div></section>
+    <div class="total"><span>${tr('地面材料合计','Flooring total')}</span><b>¥${Math.round(cost).toLocaleString()}</b></div></section>`:''}
   <section><h3>${tr('方案统计','Plan Stats')}</h3>
     <div class="stats"><div><small>${tr('家具数量','Furniture')}</small><span class="big">${store.getProject().furniture.length}</span></div>
       <div><small>${tr('拆除墙体','Walls removed')}</small><span class="big">${length(demLen*1000)}</span></div></div>
@@ -119,7 +119,7 @@ function roomPanel(r){
   const mats = Object.entries(MATS).map(([k,m]) => `<button class="mat ${k===st.mat?'on':''}" data-mat="${k}"><i style="background:${m.sw}"></i><span>${nm(m.name)}</span></button>`).join('');
   return `<section><h3>${tr('房间','Room')}</h3>
     <button class="btn" id="roomDimensions">${tr('编辑净尺寸 / 门窗','Edit dimensions / openings')}</button><div class="form"><label class="full">${tr('名称','Name')}<input id="rName" maxlength="500" value="${esc(nm(st.name))}"></label></div>
-    <div class="stats" style="margin-top:10px">
+    <label><input type="checkbox" id="hideRoomLabel" ${st.labelHidden?'checked':''}>${tr('隐藏此房间标签（含导出图）','Hide this room label (also in exports)')}</label><div class="stats" style="margin-top:10px">
       <div><small>${tr('使用面积','Floor area')}</small><span class="big">${surface(a)}</span></div>
       <div><small>${tr('周长','Perimeter')}</small><span class="big">${length(perim(r.poly)*1000)}</span></div>
       <div><small>${tr('开间','Width')}</small><span class="big">${length(x1-x0)}</span></div>
@@ -136,10 +136,11 @@ function bindRoomPanel(){
   $('#roomDimensions').onclick=()=>actions.showStructure();
   const updateRoom=patch=>{
     try{
-      const p=store.getProject();if(p.roomEditor){const rooms=clone(p.rooms);Object.assign(rooms[id],patch);const next=updateRectangleProject(p,p.roomEditor,rooms);next.name=rooms[id].name;store.replaceProject(validate(next,CATALOGS));}
+      const p=store.getProject();if(p.roomEditor){const rooms=clone(p.rooms);Object.assign(rooms[id],patch);const next=updateRectangleProject(p,p.roomEditor,rooms);store.replaceProject(validate(next,CATALOGS));}
       else mutate(()=>Object.assign(store.getProject().rooms[id],patch));
     }catch(error){toast(tr('无法修改房间：','Cannot update room: ')+error.message);}
   };
+  $('#hideRoomLabel').onchange=e=>updateRoom({labelHidden:e.target.checked});
   $('#rName').onchange = e => updateRoom({name:e.target.value.trim() || store.getProject().rooms[id].name});
   document.querySelectorAll('#panel [data-mat]').forEach(b => b.onclick = () => updateRoom({mat:b.dataset.mat}));
   document.querySelectorAll('#panel tr[data-fid]').forEach(tr => tr.onclick = () => select({kind:'furn', id:tr.dataset.fid}));
@@ -147,7 +148,7 @@ function bindRoomPanel(){
 }
 
 function furnPanel(f){
-  return `<section><h3>${tr('家具属性','Furniture')}</h3>
+  return `<section><h3>${tr('家具属性','Furniture')}</h3>${f.type==='bed'?`<p class="muted">${tr('床垫示例尺寸不含床架；请按厂商实际外廓修改宽深。','Mattress example dimensions exclude the frame. Enter the manufacturer’s actual outer width and depth.')}</p>`:''}
     <div class="form">
       <label class="full">${tr('名称','Name')}<input id="fName" value="${esc(nm(f.name))}"></label>
       <h4 class="field-group">${tr('尺寸','Size')}</h4>

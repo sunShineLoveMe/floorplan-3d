@@ -1,0 +1,168 @@
+{
+  "format": "floorplan-3d",
+  "version": 2,
+  "id": "p-mupp1e4j-a9r4sgsr",
+  "name": "NA Chrome Roundtrip",
+  "createdAt": "2026-10-01T15:33:09.955Z",
+  "updatedAt": "2026-10-01T15:33:14.555Z",
+  "units": {
+    "internal": "mm",
+    "display": "imperial"
+  },
+  "layout": {
+    "id": "layout-p-mupp1e4j-a9r4sgsr",
+    "name": "Layout A"
+  },
+  "view": {
+    "mode": "2d",
+    "layers": {
+      "dims": true,
+      "labels": true,
+      "furn": true,
+      "grid": false,
+      "bearing": false,
+      "wallSnap": true
+    }
+  },
+  "roomEditor": {
+    "kind": "rectangle",
+    "roomId": "room-1",
+    "width": 12192,
+    "depth": 9144,
+    "height": 2743.2,
+    "wallThickness": 120,
+    "openings": []
+  },
+  "geometry": {
+    "height": 2743.2,
+    "origin": [
+      6096,
+      4572
+    ],
+    "bounds": {
+      "x": -720,
+      "y": -720,
+      "w": 13632,
+      "h": 10584
+    },
+    "rooms": [
+      {
+        "id": "room-1",
+        "name": "NA Chrome Roundtrip",
+        "mat": "wood",
+        "poly": [
+          [
+            0,
+            0
+          ],
+          [
+            12192,
+            0
+          ],
+          [
+            12192,
+            9144
+          ],
+          [
+            0,
+            9144
+          ]
+        ],
+        "at": [
+          6096,
+          4572
+        ]
+      }
+    ],
+    "walls": [
+      [
+        -120,
+        -120,
+        12312,
+        0,
+        "n"
+      ],
+      [
+        12192,
+        0,
+        12312,
+        9144,
+        "n"
+      ],
+      [
+        -120,
+        9144,
+        12312,
+        9264,
+        "n"
+      ],
+      [
+        -120,
+        0,
+        0,
+        9144,
+        "n"
+      ]
+    ],
+    "wallIds": [
+      "top",
+      "right",
+      "bottom",
+      "left"
+    ],
+    "doors": [],
+    "windows": [],
+    "slides": [],
+    "lintels": [],
+    "dimensions": [
+      {
+        "horizontal": true,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          12192
+        ]
+      },
+      {
+        "horizontal": false,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          9144
+        ]
+      }
+    ],
+    "walkStart": {
+      "position": [
+        6096,
+        6400.799999999999
+      ],
+      "target": [
+        6096,
+        2743.2
+      ]
+    },
+    "entry": null
+  },
+  "furniture": [
+    {
+      "id": "fmupp1hob47",
+      "type": "bed",
+      "name": "双人床 1.5m",
+      "cx": 6096,
+      "cy": 4572,
+      "w": 1500,
+      "d": 2000,
+      "rot": 0,
+      "color": "#d8c7dc"
+    }
+  ],
+  "rooms": {
+    "room-1": {
+      "name": "NA Chrome Roundtrip",
+      "mat": "wood"
+    }
+  },
+  "demolished": [],
+  "measures": []
+}

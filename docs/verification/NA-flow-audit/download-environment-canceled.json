@@ -1,0 +1,33 @@
+{
+  "cursor": 10,
+  "events": [
+    {
+      "sequence": 9,
+      "source": {
+        "tabId": 5
+      },
+      "method": "Page.downloadWillBegin",
+      "params": {
+        "frameId": "B907231F054B069169B036E9F75D5EE3",
+        "guid": "f8d35849-fc06-4fdb-9433-02126e637ab1",
+        "suggestedFilename": "floorplan-project.json",
+        "url": "blob:http://127.0.0.1:8093/ce42fe07-c62d-4f42-96bb-e416972b4bba"
+      }
+    },
+    {
+      "sequence": 10,
+      "source": {
+        "tabId": 5
+      },
+      "method": "Page.downloadProgress",
+      "params": {
+        "guid": "f8d35849-fc06-4fdb-9433-02126e637ab1",
+        "receivedBytes": 0,
+        "state": "canceled",
+        "totalBytes": 4453
+      }
+    }
+  ],
+  "hasMore": false,
+  "truncated": false
+}

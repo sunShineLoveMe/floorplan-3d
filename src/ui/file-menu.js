@@ -1,3 +1,5 @@
+import {exportName} from '../services/export-names.js';
+import {printDocument,printLayout} from '../services/print-plan.js';
 import {$} from '../ui/dom.js';
 import {tr} from './i18n.js';
 import {ProjectError} from '../data/project-data.js';
@@ -11,7 +13,7 @@ const unsubscribe=store.subscribe(()=>{revision++;});
 $('#exportPng').onclick=async()=>{
  const button=$('#exportPng');if(button.disabled)return;
  button.disabled=true;button.setAttribute('aria-busy','true');
- try{await exportPNG();if(!scope.disposed)toast(tr('图片已生成，下载已启动','Image generated. Download started.'));}
+ try{await exportPNG($('#exportView').value);if(!scope.disposed)toast(tr('图片已生成，下载已启动','Image generated. Download started.'));}
  catch{if(!scope.disposed)toast(tr('图片生成失败，请重试或导出项目 JSON','Image export failed. Retry or export the project JSON.'));}
  finally{if(!scope.disposed){button.disabled=false;button.setAttribute('aria-busy','false');}}
 };
@@ -37,10 +39,17 @@ function importProjectText(raw){
 function exportProject(){
   try {
     const raw=serializeProject(store.getProject());
-    download('floorplan-project.json',new Blob([raw],{type:'application/json'}));toast(tr('JSON 文件已生成，下载已启动','JSON file generated. Download started.'));
+    download(exportName(store.getProject(),'project','json'),new Blob([raw],{type:'application/json'}));toast(tr('JSON 文件已生成，下载已启动','JSON file generated. Download started.'));
   } catch(e){ toast(projectMessage(e)); }
 };
 $('#exportJson').onclick=exportProject;
+$('#fileName').onchange=e=>{const name=e.target.value.trim();if(name)store.mutate(p=>p.name=name);};
+$('#layoutName').onchange=e=>{const name=e.target.value.trim();if(name)store.mutate(p=>p.layout.name=name);};
+$('#printPlan').onclick=()=>{
+ try{const project=store.getProject(),options={paper:$('#printPaper').value,orientation:$('#printOrientation').value,scale:$('#printScale').value};printLayout(project.geometry.bounds,options);
+ const win=window.open('','_blank');if(!win)throw Error('Allow popups to open the print preview.');win.document.open();win.document.write(printDocument(project,downloads.planSVG(),options,exportName(project,'print','pdf')));win.document.close();win.opener=null;
+ }catch(error){toast(error.message);}
+};
 $('#importJson').onclick = () => $('#fileIn').click();
 $('#fileIn').onchange = async e => {
   const file=e.target.files[0]; e.target.value=''; if(!file) return;
@@ -58,5 +67,5 @@ $('#reset').onclick = () => { if(isSwitching())return; if (confirm(tr('恢复为
 
 if(loaded.error) scope.timeout(()=>alert(tr('已保留无法读取的本地项目，当前显示示例。','The unreadable local project has been preserved. Showing the sample.')+' '+projectMessage(loaded.error)),0);
 if(loaded.legacy) scope.timeout(()=>{try{importProjectText(loaded.legacy);}catch(e){alert(projectMessage(e));}},0);
-return {exportProject,dispose(){unsubscribe();readRequest++;scope.dispose();for(const id of ['exportPng','exportJson','importJson','reset']) $('#'+id).onclick=null;$('#fileIn').onchange=null;}};
+return {exportProject,dispose(){unsubscribe();readRequest++;scope.dispose();for(const id of ['exportPng','exportJson','importJson','reset','printPlan']) $('#'+id).onclick=null;$('#fileIn').onchange=$('#fileName').onchange=$('#layoutName').onchange=null;}};
 }

@@ -5,10 +5,11 @@
 ## 运行与目录
 
 ```bash
-python3 -m http.server 8086 --bind 127.0.0.1
+npm run build
+npm start
 ```
 
-已有本项目服务时直接访问。通过 HTTP 打开，不依赖构建器；不要通过 `file://` 打开 ESM。Three.js r160 保持 jsDelivr import map，首次进入 3D 时按需加载；加载失败不阻断 2D 和文件操作。
+已有本项目服务时直接访问。通过 HTTP 打开；`npm run build` 是无依赖资源版本生成，不引入打包器。改动模块、HTML 或 CSS 后运行该命令，避免同来源缓存混用。`npm start` 使用 HTTP/1.1 长连接与 128 连接监听队列，对资源设 `no-cache, must-revalidate`；生产静态托管也应对 HTML 设重新验证。不要通过 `file://` 打开 ESM。Three.js r160 保持 jsDelivr import map，首次进入 3D 时按需加载；加载失败不阻断 2D 和文件操作。
 
 ```text
 index.html                  静态骨架、import map、入口
@@ -96,3 +97,31 @@ DISPLAY_UNITS=imperial TEST_OUT=docs/verification/T03/imperial-drag node tests/b
 T02/旧回归脚本用 `TEST_OUT=docs/verification/T03/<suite>` 保存本轮证据，避免覆盖历史结果。T03 主流程覆盖真实下载和刷新，3D 专项在门动画稳定后比较切换单位前后画布，保留严格像素相等断言。`DISPLAY_UNITS` 仅控制测试设置；英制网格测试先关闭精确墙吸附，再验证 6.35 mm。
 
 项目没有生产测试桥接或新全局状态。实际环境、异常修正、逐项矩阵见 [T03 验收](T03-verification.md)。
+
+## NA-001～012 修复验证
+
+当前 `npm test` 为 48 项，`node --check` 与配置内 ESLint 通过。逐项浏览器场景保留在 `tests/browser-na-fixes.mjs` 和 `tests/na-fixes/`。
+
+```bash
+npm run build
+# 另一个终端运行 npm start；也可使用现有来源
+PLAYWRIGHT_MODULE=/absolute/path/to/node_modules/playwright TEST_URL=http://127.0.0.1:8086/ node tests/browser-na-fixes.mjs
+```
+
+默认使用本机 Chrome 的独立临时 profile，缓存与项目存储跨场景保留，来源不写入用户原 Chrome profile。可用 `CHROMIUM_EXECUTABLE` 指定浏览器，`NA_TEST_PROFILE` 指定专用测试 profile。脚本按优先级顺序运行 NA-001～012；单项参数只用于有对应准备状态的复测。全套跑完后可加参数 `Integration` 执行多房间联动复测。证据输出到 `docs/verification/NA-fixes/`，可用 `NA_TEST_OUT` 指定独立证据目录，保留此前验收结果。
+
+PDF.js 5.6.205 的 ESM/worker 与 Apache-2.0 许可在 `vendor/pdfjs/`；仅在导入 PDF 时加载。Three.js 仍通过原 CDN 按需加载。新数据字段约定、逐项验收与限制见 [本轮验收](NA-fixes-verification-2026-10-02.md)。
+
+
+## P0 公开住宅图纸复测
+
+```bash
+# 使用独立来源与临时 Chrome profile；source.json 记录原 PDF 来源与 SHA-256
+python3 scripts/serve.py --port 8095 > /tmp/floorplan-real-house-server.log 2>&1
+PLAYWRIGHT_MODULE=/absolute/path/to/node_modules/playwright TEST_URL=http://127.0.0.1:8095/ node tests/browser-real-house.mjs
+PLAYWRIGHT_MODULE=/absolute/path/to/node_modules/playwright TEST_URL=http://127.0.0.1:8095/ NA_TEST_OUT=docs/verification/NA-real-house/regression node tests/browser-na-fixes.mjs
+```
+
+`tests/browser-real-house.mjs` 使用 `docs/verification/NA-real-house/san-diego-plan-b.pdf`，下载来源和摘要见同目录 `source.json`。测试通过实际 DOM 表单建立简化九区模型，不向产品增加测试接口。`wallWidths` 是 House 各矩形空间的可选字段，键为 `top/right/bottom/left`，省略侧默认 120 mm；范围 0–1000 mm，0 为整侧开放，且不能拥有洞口。旧单矩形仍采用原固定墙厚数据；编辑为非默认墙厚时转为 House，ID、家具、底图等保留。详细范围见 [验收记录](NA-real-house-verification-2026-10-02.md)。
+
+本地服务初始化回归：`PLAYWRIGHT_MODULE=/absolute/path/to/node_modules/playwright TEST_URL=http://127.0.0.1:8095/ node tests/browser-local-reload.mjs`，连续 100 次导航并检查请求失败。服务器日志建议重定向文件，避免终端输出缓冲影响长批次。

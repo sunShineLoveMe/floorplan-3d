@@ -51,7 +51,7 @@ function build(){
     wallBox(r, 0, Math.min(sill, top)); if (top > head) wallBox(r, head, top);
     colliders.push([wx(r[0]), wz(r[1]), wx(r[2]), wz(r[3])]);
     const gTop = Math.min(head, top); if (gTop <= sill) return;
-    const [x0, y0, x1, y1] = r, hz = store.getProject().geometry.windows[i].wallId ? ['top','bottom'].includes(store.getProject().geometry.windows[i].wallId) : (x1-x0) >= (y1-y0), L = M(hz ? x1-x0 : y1-y0), gh = gTop - sill, cx = wx((x0+x1)/2), cz = wz((y0+y1)/2);
+    const [x0, y0, x1, y1] = r, hz = store.getProject().geometry.windows[i].wallId ? ['top','bottom'].includes(String(store.getProject().geometry.windows[i].wallId).split('--').at(-1)) : (x1-x0) >= (y1-y0), L = M(hz ? x1-x0 : y1-y0), gh = gTop - sill, cx = wx((x0+x1)/2), cz = wz((y0+y1)/2);
     const pane = new THREE.Mesh(new THREE.BoxGeometry(hz ? L : .01, gh, hz ? .01 : L), glassMat); pane.position.set(cx, sill + gh/2, cz); archUp.add(pane);
     const n = Math.max(1, Math.round(L/.9)), fw=Math.min(.04,L/2), fh=Math.min(.04,gh/2);
     for (let k = 0; k <= n; k++){ const t = -L/2 + fw/2 + k*(L-fw)/n, mu = new THREE.Mesh(new THREE.BoxGeometry(hz ? fw : .06, gh, hz ? .06 : fw), frameMat);

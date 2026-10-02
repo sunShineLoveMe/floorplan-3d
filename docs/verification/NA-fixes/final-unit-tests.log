@@ -1,0 +1,278 @@
+
+> test
+> node --test tests/*.test.js
+
+TAP version 13
+# Subtest: architecture builds positive meshes at opening boundaries and matches all door directions
+ok 1 - architecture builds positive meshes at opening boundaries and matches all door directions
+  ---
+  duration_ms: 29.975125
+  type: 'test'
+  ...
+# Subtest: audit Bottom door conflicts, displacement and all hinge/swing axes including rotations
+ok 2 - audit Bottom door conflicts, displacement and all hinge/swing axes including rotations
+  ---
+  duration_ms: 2.274417
+  type: 'test'
+  ...
+# Subtest: 40x30ft room including wall height fits wide and narrow viewports
+ok 3 - 40x30ft room including wall height fits wide and narrow viewports
+  ---
+  duration_ms: 1.17125
+  type: 'test'
+  ...
+# Subtest: three adjacent rooms share walls, cut both sides of an opening, and round trip
+ok 4 - three adjacent rooms share walls, cut both sides of an opening, and round trip
+  ---
+  duration_ms: 5.400541
+  type: 'test'
+  ...
+# Subtest: disposing a component removes listeners and pending work before remount
+ok 5 - disposing a component removes listeners and pending work before remount
+  ---
+  duration_ms: 0.444
+  type: 'test'
+  ...
+# Subtest: physical print dimensions respect scale and reject cropped pages
+ok 6 - physical print dimensions respect scale and reject cropped pages
+  ---
+  duration_ms: 0.556625
+  type: 'test'
+  ...
+# Subtest: export names distinguish project, layout, date and representation with safe characters
+ok 7 - export names distinguish project, layout, date and representation with safe characters
+  ---
+  duration_ms: 0.717042
+  type: 'test'
+  ...
+# Subtest: complete sample round trip retains all geometry, settings and furniture
+ok 8 - complete sample round trip retains all geometry, settings and furniture
+  ---
+  duration_ms: 2.095958
+  type: 'test'
+  ...
+# Subtest: edited geometry, decimal units and furniture are independent of template
+ok 9 - edited geometry, decimal units and furniture are independent of template
+  ---
+  duration_ms: 0.945375
+  type: 'test'
+  ...
+# Subtest: legacy import requires explicit template confirmation
+ok 10 - legacy import requires explicit template confirmation
+  ---
+  duration_ms: 0.655292
+  type: 'test'
+  ...
+# Subtest: legacy foreign rooms cannot silently acquire the sample geometry
+ok 11 - legacy foreign rooms cannot silently acquire the sample geometry
+  ---
+  duration_ms: 0.153834
+  type: 'test'
+  ...
+# Subtest: bad JSON, future versions and unknown formats are distinguished
+ok 12 - bad JSON, future versions and unknown formats are distinguished
+  ---
+  duration_ms: 0.587334
+  type: 'test'
+  ...
+# Subtest: reject broken references, invalid dimensions and unsafe render attributes
+ok 13 - reject broken references, invalid dimensions and unsafe render attributes
+  ---
+  duration_ms: 2.531125
+  type: 'test'
+  ...
+# Subtest: standalone custom project fixture validates and does not depend on sample rooms
+ok 14 - standalone custom project fixture validates and does not depend on sample rooms
+  ---
+  duration_ms: 0.481958
+  type: 'test'
+  ...
+# Subtest: legacy edits to removable external/low walls remain importable
+ok 15 - legacy edits to removable external/low walls remain importable
+  ---
+  duration_ms: 0.291542
+  type: 'test'
+  ...
+# Subtest: file rejection and legacy cancellation leave memory and saved data unchanged
+ok 16 - file rejection and legacy cancellation leave memory and saved data unchanged
+  ---
+  duration_ms: 3.359125
+  type: 'test'
+  ...
+# Subtest: legacy backup happens before replacement and failed backup prevents replacement
+ok 17 - legacy backup happens before replacement and failed backup prevents replacement
+  ---
+  duration_ms: 0.890625
+  type: 'test'
+  ...
+# Subtest: unreadable storage is backed up before overwrite, and legacy key is untouched
+ok 18 - unreadable storage is backed up before overwrite, and legacy key is untouched
+  ---
+  duration_ms: 1.070916
+  type: 'test'
+  ...
+# Subtest: backup failure blocks overwrite; quota failure is returned without false success
+ok 19 - backup failure blocks overwrite; quota failure is returned without false success
+  ---
+  duration_ms: 1.330208
+  type: 'test'
+  ...
+# Subtest: existing recovery keys are not overwritten and serialization preserves decimals
+ok 20 - existing recovery keys are not overwritten and serialization preserves decimals
+  ---
+  duration_ms: 1.257375
+  type: 'test'
+  ...
+# Subtest: mutation notifies once with the current project; unchanged operations do not commit
+ok 21 - mutation notifies once with the current project; unchanged operations do not commit
+  ---
+  duration_ms: 1.582166
+  type: 'test'
+  ...
+# Subtest: drag previews have one history entry, cancellation restores without committing
+ok 22 - drag previews have one history entry, cancellation restores without committing
+  ---
+  duration_ms: 1.750459
+  type: 'test'
+  ...
+# Subtest: import undo/redo restores complete geometry and new edits clear redo
+ok 23 - import undo/redo restores complete geometry and new edits clear redo
+  ---
+  duration_ms: 1.079666
+  type: 'test'
+  ...
+# Subtest: subscriptions can be removed; failed mutations roll back; render reads do not alter timestamps
+ok 24 - subscriptions can be removed; failed mutations roll back; render reads do not alter timestamps
+  ---
+  duration_ms: 0.752708
+  type: 'test'
+  ...
+# Subtest: stored 3D mode survives pending engine initialization and layer changes
+ok 25 - stored 3D mode survives pending engine initialization and layer changes
+  ---
+  duration_ms: 0.333875
+  type: 'test'
+  ...
+# Subtest: reference calibration anchors the first point and round-trips exact scale
+ok 26 - reference calibration anchors the first point and round-trips exact scale
+  ---
+  duration_ms: 2.826375
+  type: 'test'
+  ...
+# Subtest: rectangle geometry keeps net area, decimal dimensions and non-overlapping wall corners
+ok 27 - rectangle geometry keeps net area, decimal dimensions and non-overlapping wall corners
+  ---
+  duration_ms: 2.70325
+  type: 'test'
+  ...
+# Subtest: all sixteen door wall/hinge/swing combinations produce matching hinge and perpendicular directions
+ok 28 - all sixteen door wall/hinge/swing combinations produce matching hinge and perpendicular directions
+  ---
+  duration_ms: 3.833375
+  type: 'test'
+  ...
+# Subtest: multiple apertures split stable wall intervals without filling door/window holes
+ok 29 - multiple apertures split stable wall intervals without filling door/window holes
+  ---
+  duration_ms: 0.25025
+  type: 'test'
+  ...
+# Subtest: invalid parameters, unsafe IDs, wrong fields, overlaps, shrink and height changes are rejected atomically
+ok 30 - invalid parameters, unsafe IDs, wrong fields, overlaps, shrink and height changes are rejected atomically
+  ---
+  duration_ms: 1.013958
+  type: 'test'
+  ...
+# Subtest: v2 validates generated snapshots and project-wide opening IDs; decimal tolerance is bounded
+ok 31 - v2 validates generated snapshots and project-wide opening IDs; decimal tolerance is bounded
+  ---
+  duration_ms: 1.058084
+  type: 'test'
+  ...
+# Subtest: v1 independent room migration retains IDs, decimals, timestamps, wall references and preferences
+ok 32 - v1 independent room migration retains IDs, decimals, timestamps, wall references and preferences
+  ---
+  duration_ms: 0.450083
+  type: 'test'
+  ...
+# Subtest: storage respects strict v2/v1/legacy priority and preserves source keys on migration and failure
+ok 33 - storage respects strict v2/v1/legacy priority and preserves source keys on migration and failure
+  ---
+  duration_ms: 0.4335
+  type: 'test'
+  ...
+# Subtest: save rejects mismatched rectangle before writing or recovery backup
+ok 34 - save rejects mismatched rectangle before writing or recovery backup
+  ---
+  duration_ms: 0.260542
+  type: 'test'
+  ...
+# Subtest: room changes and opening transactions preserve furniture, measurements, IDs and complete undo/redo state
+ok 35 - room changes and opening transactions preserve furniture, measurements, IDs and complete undo/redo state
+  ---
+  duration_ms: 0.763792
+  type: 'test'
+  ...
+# Subtest: checked-in v2 rectangle fixture round-trips and remains structurally editable
+ok 36 - checked-in v2 rectangle fixture round-trips and remains structurally editable
+  ---
+  duration_ms: 0.58075
+  type: 'test'
+  ...
+# Subtest: decimal millimetre arithmetic accepts a mathematically exact 1 mm gap without rounding input
+ok 37 - decimal millimetre arithmetic accepts a mathematically exact 1 mm gap without rounding input
+  ---
+  duration_ms: 0.218541
+  type: 'test'
+  ...
+# Subtest: strict imperial and explicit metric parsing matrix
+ok 38 - strict imperial and explicit metric parsing matrix
+  ---
+  duration_ms: 0.927875
+  type: 'test'
+  ...
+# Subtest: parser rejects complete invalid strings rather than prefixes
+ok 39 - parser rejects complete invalid strings rather than prefixes
+  ---
+  duration_ms: 0.136708
+  type: 'test'
+  ...
+# Subtest: display rounding, carry, reduced fractions, tiny lengths, area and negative zero
+ok 40 - display rounding, carry, reduced fractions, tiny lengths, area and negative zero
+  ---
+  duration_ms: 0.106166
+  type: 'test'
+  ...
+# Subtest: editing precision and untouched float preservation across 10000 deterministic values
+ok 41 - editing precision and untouched float preservation across 10000 deterministic values
+  ---
+  duration_ms: 17.49625
+  type: 'test'
+  ...
+# Subtest: unit transactions preserve geometry, support no-op and ordered undo/redo and v2 validation
+ok 42 - unit transactions preserve geometry, support no-op and ordered undo/redo and v2 validation
+  ---
+  duration_ms: 3.2425
+  type: 'test'
+  ...
+# Subtest: steps and exact wall snap preserve physical priority in both modes
+ok 43 - steps and exact wall snap preserve physical priority in both modes
+  ---
+  duration_ms: 0.185584
+  type: 'test'
+  ...
+# Subtest: v1 and legacy unit compatibility retains imperial and defaults absent legacy units
+ok 44 - v1 and legacy unit compatibility retains imperial and defaults absent legacy units
+  ---
+  duration_ms: 1.601083
+  type: 'test'
+  ...
+1..44
+# tests 44
+# suites 0
+# pass 44
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 80.505209

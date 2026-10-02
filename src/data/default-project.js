@@ -41,3 +41,8 @@ function defaultFurniture(){ return [
 function defaultState(){ const p=ProjectData.create(FloorplanTemplate, defaultFurniture()); p.name='三室两厅两卫 · 装修设计'; return p; }
 
 export {uid,F,defaultFurniture,defaultState};
+
+export function starterState(){
+ const p=ProjectData.createRectangleProject({name:'Living room',width:3657.6,depth:3048,height:2438.4});
+ p.units.display='imperial';return p;
+}

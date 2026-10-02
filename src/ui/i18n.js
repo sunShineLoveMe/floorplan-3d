@@ -1,5 +1,5 @@
 const LANG_KEY = 'huxing-lang';
-let LANG = (() => { try { return localStorage.getItem(LANG_KEY) === 'en' ? 'en' : 'zh'; } catch { return 'zh'; } })();
+let LANG = (() => { try { return localStorage.getItem(LANG_KEY) === 'zh' ? 'zh' : 'en'; } catch { return 'en'; } })();
 const tr = (zh, en) => LANG === 'en' ? en : zh;
 // 内置的房间 / 材料 / 家具名称存的是中文；英文界面下显示译名，用户自己改过的名称原样显示
 const NAMES_EN = {

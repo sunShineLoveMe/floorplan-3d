@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "build": "b4be7033176714bb",
+  "checks": [
+    "14-page rotated architectural PDF: page 5 and 54 ft calibration",
+    "nine traced zones: 6 labelled rooms plus entry/hall, open L-shaped circulation, mixed wall widths",
+    "Bedroom 1 shared-wall 36 in door and 72×48 in exterior window",
+    "invalid open boundary preserves the complete project",
+    "open edge disables door/window insertion",
+    "Queen size/position, blocked door warning, and warning clears after moving",
+    "JSON download/import and refresh preserve all rooms, wall widths, openings, furniture and drawing",
+    "wall edit undo/redo restores exact geometry",
+    "2D PNG downloaded",
+    "3D initialization and PNG downloaded",
+    "390px wall fields are reachable"
+  ],
+  "errors": [],
+  "jsonName": "San Diego Plan B - manual reference-Layout A-2026-10-02-113900-project.json",
+  "timestamp": "2026-10-02T03:39:09.523Z"
+}

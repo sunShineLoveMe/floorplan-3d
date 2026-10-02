@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-build="b4be7033176714bb">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -9,15 +9,68 @@
 <meta name="theme-color" content="#f6f7f4">
 <title>户型装修设计</title>
 <link rel="icon" href="data:,">
-<link rel="stylesheet" href="styles/tokens.css">
-<link rel="stylesheet" href="styles/app.css">
-<link rel="stylesheet" href="styles/controls.css">
-<link rel="stylesheet" href="styles/workspace.css">
+<link rel="stylesheet" href="styles/tokens.css?v=b4be7033176714bb">
+<link rel="stylesheet" href="styles/app.css?v=b4be7033176714bb">
+<link rel="stylesheet" href="styles/controls.css?v=b4be7033176714bb">
+<link rel="stylesheet" href="styles/workspace.css?v=b4be7033176714bb">
 <script type="importmap">
-{"imports":{
-  "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-}}
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/",
+    "./src/core/door-clearance.js": "./src/core/door-clearance.js?v=b4be7033176714bb",
+    "./src/core/editor-state.js": "./src/core/editor-state.js?v=b4be7033176714bb",
+    "./src/core/geometry.js": "./src/core/geometry.js?v=b4be7033176714bb",
+    "./src/core/project-store.js": "./src/core/project-store.js?v=b4be7033176714bb",
+    "./src/core/units.js": "./src/core/units.js?v=b4be7033176714bb",
+    "./src/data/catalogs.js": "./src/data/catalogs.js?v=b4be7033176714bb",
+    "./src/data/default-project.js": "./src/data/default-project.js?v=b4be7033176714bb",
+    "./src/data/house-editor.js": "./src/data/house-editor.js?v=b4be7033176714bb",
+    "./src/data/project-data.js": "./src/data/project-data.js?v=b4be7033176714bb",
+    "./src/data/reference-plan.js": "./src/data/reference-plan.js?v=b4be7033176714bb",
+    "./src/data/room-editor.js": "./src/data/room-editor.js?v=b4be7033176714bb",
+    "./src/data/sample-template.js": "./src/data/sample-template.js?v=b4be7033176714bb",
+    "./src/editor2d/defs.js": "./src/editor2d/defs.js?v=b4be7033176714bb",
+    "./src/editor2d/editor.js": "./src/editor2d/editor.js?v=b4be7033176714bb",
+    "./src/editor2d/furniture-symbols.js": "./src/editor2d/furniture-symbols.js?v=b4be7033176714bb",
+    "./src/editor2d/interactions.js": "./src/editor2d/interactions.js?v=b4be7033176714bb",
+    "./src/editor2d/renderer.js": "./src/editor2d/renderer.js?v=b4be7033176714bb",
+    "./src/editor2d/room-labels.js": "./src/editor2d/room-labels.js?v=b4be7033176714bb",
+    "./src/editor2d/snapping.js": "./src/editor2d/snapping.js?v=b4be7033176714bb",
+    "./src/editor2d/viewport.js": "./src/editor2d/viewport.js?v=b4be7033176714bb",
+    "./src/main.js": "./src/main.js?v=b4be7033176714bb",
+    "./src/services/downloads.js": "./src/services/downloads.js?v=b4be7033176714bb",
+    "./src/services/export-names.js": "./src/services/export-names.js?v=b4be7033176714bb",
+    "./src/services/print-plan.js": "./src/services/print-plan.js?v=b4be7033176714bb",
+    "./src/services/project-files.js": "./src/services/project-files.js?v=b4be7033176714bb",
+    "./src/services/storage.js": "./src/services/storage.js?v=b4be7033176714bb",
+    "./src/ui/dom.js": "./src/ui/dom.js?v=b4be7033176714bb",
+    "./src/ui/door-clearance.js": "./src/ui/door-clearance.js?v=b4be7033176714bb",
+    "./src/ui/drawers.js": "./src/ui/drawers.js?v=b4be7033176714bb",
+    "./src/ui/file-menu.js": "./src/ui/file-menu.js?v=b4be7033176714bb",
+    "./src/ui/furniture-library.js": "./src/ui/furniture-library.js?v=b4be7033176714bb",
+    "./src/ui/i18n.js": "./src/ui/i18n.js?v=b4be7033176714bb",
+    "./src/ui/input-drafts.js": "./src/ui/input-drafts.js?v=b4be7033176714bb",
+    "./src/ui/length-field.js": "./src/ui/length-field.js?v=b4be7033176714bb",
+    "./src/ui/lifecycle.js": "./src/ui/lifecycle.js?v=b4be7033176714bb",
+    "./src/ui/notifications.js": "./src/ui/notifications.js?v=b4be7033176714bb",
+    "./src/ui/project-actions.js": "./src/ui/project-actions.js?v=b4be7033176714bb",
+    "./src/ui/property-panel.js": "./src/ui/property-panel.js?v=b4be7033176714bb",
+    "./src/ui/reference-plan.js": "./src/ui/reference-plan.js?v=b4be7033176714bb",
+    "./src/ui/room-editor.js": "./src/ui/room-editor.js?v=b4be7033176714bb",
+    "./src/ui/toolbar.js": "./src/ui/toolbar.js?v=b4be7033176714bb",
+    "./src/viewer3d/architecture.js": "./src/viewer3d/architecture.js?v=b4be7033176714bb",
+    "./src/viewer3d/framing.js": "./src/viewer3d/framing.js?v=b4be7033176714bb",
+    "./src/viewer3d/furniture.js": "./src/viewer3d/furniture.js?v=b4be7033176714bb",
+    "./src/viewer3d/materials.js": "./src/viewer3d/materials.js?v=b4be7033176714bb",
+    "./src/viewer3d/navigation.js": "./src/viewer3d/navigation.js?v=b4be7033176714bb",
+    "./src/viewer3d/random.js": "./src/viewer3d/random.js?v=b4be7033176714bb",
+    "./src/viewer3d/resources.js": "./src/viewer3d/resources.js?v=b4be7033176714bb",
+    "./src/viewer3d/viewer.js": "./src/viewer3d/viewer.js?v=b4be7033176714bb",
+    "./vendor/pdfjs/pdf.min.mjs": "./vendor/pdfjs/pdf.min.mjs?v=b4be7033176714bb",
+    "./vendor/pdfjs/pdf.worker.min.mjs": "./vendor/pdfjs/pdf.worker.min.mjs?v=b4be7033176714bb"
+  }
+}
 </script>
 </head>
 <body>
@@ -29,14 +82,17 @@
     </div>
     <div class="brand"><b id="projectName">三室两厅两卫 · 装修设计</b><span id="saveStatus" role="status"></span><span id="subtitle">原始户型 1:60 · 尺寸单位 mm</span></div>
     <div class="grp history">      <button class="btn" id="undo" title="撤销 (Ctrl+Z)" data-en-title="Undo (Ctrl+Z)" data-en="Undo">撤销</button>      <button class="btn" id="redo" title="重做 (Ctrl+Shift+Z)" data-en-title="Redo (Ctrl+Shift+Z)" data-en="Redo">重做</button></div>
-    <details class="settings-menu"><summary class="btn" title="设置" data-en-title="Settings" data-en="Settings ▾">设置 ▾</summary><div class="settings-pop">    <label class="unit-control"><span data-en="Units">单位</span><select id="projectUnits" aria-label="Project units"><option value="metric">Metric</option><option value="imperial">Feet &amp; inches</option></select><small id="unitLock" role="status"></small></label>    <button class="btn" id="langBtn" title="Switch language / 切换语言" style="border:1px solid var(--line);background:#fff">EN</button>    <button class="btn" id="fullscreen" title="全屏 (Shift+F)" style="border:1px solid var(--line);background:#fff">⛶ 全屏</button></div></details>
+    <details class="settings-menu"><summary class="btn" title="设置" data-en-title="Settings" data-en="Settings ▾">设置 ▾</summary><div class="settings-pop">    <button class="btn" id="fullscreen" title="全屏 (Shift+F)" style="border:1px solid var(--line);background:#fff">⛶ 全屏</button></div></details>
     <details class="menu"><summary class="btn" data-short="导出" data-en-short="Export" title="导出 / 文件" data-en-title="Export / File" data-en="Export / File ▾">导出 / 文件 ▾</summary>
       <div class="menu-pop"><div class="file-context"><b id="fileProjectName"></b><small id="fileSaveStatus"></small></div>    <button class="btn" id="newRoom">＋ 新建房间</button>      <button class="btn danger" id="clearAll" title="清空所有家具家电（可撤销）" data-en-title="Remove all furniture and appliances (undoable)" data-en="Clear all furniture">清空布置</button>
+        <label><span data-en="Project name">项目名</span><input id="fileName" maxlength="500"></label><label><span data-en="Layout name">方案名</span><input id="layoutName" maxlength="500"></label><label><span data-en="Image view">图片视图</span><select id="exportView"><option value="2d">2D PNG</option><option value="3d">3D PNG</option></select></label>
         <button class="btn" id="exportPng" data-en="Export image">导出图片</button>
+        <label><span data-en="Print paper">打印纸张</span><select id="printPaper"><option value="letter">US Letter</option><option value="a4">A4</option><option value="a3">A3</option></select></label><label><span data-en="Orientation">方向</span><select id="printOrientation"><option value="landscape">Landscape</option><option value="portrait">Portrait</option></select></label><label><span data-en="Print scale">打印比例</span><select id="printScale"><option value="fit">Fit page</option><option value="50">1:50</option><option value="60">1:60</option><option value="100">1:100</option></select></label><button class="btn" id="printPlan" data-en="Print / Save PDF">打印 / 保存 PDF</button>
         <button class="btn" id="exportJson" title="导出 v2；旧版应用不能读取 v2" data-en-title="Exports v2; older app versions cannot read v2" data-en="Export plan JSON">导出方案 JSON</button>
-        <button class="btn" id="importJson" data-en="Import plan">导入方案</button>
-        <button class="btn danger" id="reset" data-en="Sample plan">示例户型</button>
+        <button class="btn" id="importJson" data-en="Open project (.json)">打开项目 (.json)</button>
+        <p class="hint" data-en="Project JSON restores this app’s saved data. For house drawings, use Import reference drawing.">项目 JSON 用于恢复本工具数据；房屋图纸请用导入参考图纸。</p><button class="btn" id="importDrawing" data-en="Import reference drawing (PDF / image)">导入参考图纸（PDF / 图片）</button><small id="referenceName"></small><button class="btn" id="toggleReference">隐藏底图</button><button class="btn" id="removeReference" data-en="Remove drawing (undoable)">移除底图（可撤销）</button><button class="btn danger" id="reset" data-en="Sample plan">示例户型</button>
       </div></details>
+    <input type="file" id="drawingIn" accept=".pdf,.png,.jpg,.jpeg,application/pdf,image/png,image/jpeg" hidden>
     <input type="file" id="fileIn" accept=".json,application/json" hidden>
   </header>
 
@@ -83,8 +139,7 @@
     <h4 class="only3d" data-en="Lighting">照明</h4><div class="grp only3d">      <button class="btn chip" data-t="night" data-en="Night">夜景</button></div><div class="grp only3d"><label class="range"><span data-en="Sun">日照</span> <input type="range" id="sun" min="7" max="18" step=".25" value="10" style="width:84px"><span id="sunT">10:00</span></label></div>
 </div></details>
     <div class="spacer"></div>
-
-
+    <div class="grp locale-controls">    <label class="unit-control"><span data-en="Units">单位</span><select id="projectUnits" aria-label="Project units"><option value="metric">Metric</option><option value="imperial">Feet &amp; inches</option></select><small id="unitLock" role="status"></small></label>    <button class="btn" id="langBtn" title="Switch language / 切换语言" style="border:1px solid var(--line);background:#fff">EN</button></div>
   </nav>
 
   <aside class="lib" id="libraryPane" aria-label="Furniture library">
@@ -95,7 +150,7 @@
     </div>
     <div id="roomsResource" role="tabpanel" aria-labelledby="roomsTab" hidden>
       <div class="resource-actions"><button class="btn" id="resourceNewRoom" data-en="New room plan">新建房间方案</button><button class="btn" id="resourceOpenings" data-en="Room / openings">房间 / 门窗</button></div>
-      <p class="hint" data-en="A new room plan replaces the current plan. Room buttons focus the current scene.">新建房间方案会替换当前方案；房间按钮用于定位当前场景。</p>
+      <p class="hint" data-en="Create a project, then use Room / openings → Add room for a single floor. Room buttons focus each space.">新建项目后在房间 / 门窗中追加单层房间；房间按钮定位各空间。</p>
       <div id="roomList"></div>
     </div>
     <div id="furnitureResource" role="tabpanel" aria-labelledby="furnitureTab">
@@ -104,7 +159,8 @@
   </aside>
 
   <main id="stage">
-    <div class="canvas-controls" aria-label="Canvas tools">    <div class="grp only2d" id="tools">
+    <button id="clearanceStatus" class="btn" role="status" hidden></button>
+    <div class="canvas-controls" aria-label="Canvas tools"><div class="grp only3d"><button class="btn" id="fit3d" data-en="Fit home">适应全屋</button></div>    <div class="grp only2d" id="tools">
       <button class="btn on" data-tool="select" title="选择 / 移动 (V)" data-en-title="Select / Move (V)" data-en="Select">选择</button>
       <button class="btn" data-tool="measure" title="测量 (M)" data-en-title="Measure (M)" data-en="Measure">测量</button>
       <button class="btn" data-tool="demolish" title="拆改非承重墙 (X)" data-en-title="Demolish non-bearing walls (X)" data-en="Demolish">拆改墙体</button>
@@ -118,10 +174,12 @@
     <svg id="plan" class="tool-select" font-family="-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
       <defs id="defs"></defs>
       <g id="gGrid"></g>
+      <g id="gReference" pointer-events="none"></g>
       <g id="gRooms"></g>
       <g id="gFurn"></g>
       <g id="gWalls"></g>
       <g id="gOpen"></g>
+      <g id="gWarnings" pointer-events="none"></g>
       <g id="gLabels" pointer-events="none"></g>
       <g id="gDims" pointer-events="none"></g>
       <g id="gMeasure" pointer-events="none"></g>
@@ -142,7 +200,7 @@
     <div id="fab"></div>
   </main>
 
-  <aside class="right" id="propertiesPane" aria-label="Properties"><button class="btn pane-close" data-close-pane="panel" data-en="Close properties">关闭属性</button><div id="structurePanel"></div><div id="panel"></div></aside>
+  <aside class="right" id="propertiesPane" aria-label="Properties"><button class="btn pane-close" data-close-pane="panel" data-en="Close properties">关闭属性</button><div id="clearancePanel" hidden></div><div id="structurePanel"></div><div id="panel"></div></aside>
 
   <footer>
     <span class="only2d">X <b id="cx">—</b></span><span class="only2d">Y <b id="cy">—</b></span>
@@ -154,6 +212,6 @@
 </div>
 <div id="toast" role="status" aria-live="polite"></div>
 
-<script type="module" src="src/main.js"></script>
+<script type="module" src="src/main.js?v=b4be7033176714bb"></script>
 </body>
 </html>

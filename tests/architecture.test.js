@@ -88,3 +88,15 @@ test('architecture builds positive meshes at opening boundaries and matches all 
   }
   assert.equal(cases,1152);assert.ok(BoxGeometry.count>20000);
 });
+
+test('house-prefixed window IDs retain horizontal/vertical pane orientation',async()=>{
+ const createArchitecture=await loadArchitecture();
+ for(const side of ['top','right','bottom','left']){
+  const rooms={r:{name:'Room',mat:'wood'}},geometry=generateRoomGeometry({kind:'rectangle',roomId:'r',width:4000,depth:3000,height:2800,wallThickness:120,openings:[{id:'window',type:'window',wallId:side,offset:500,width:1200,sill:900,height:1200}]},rooms);
+  geometry.windows[0].wallId='r--'+side;
+  const project={geometry,rooms,demolished:[]},groups={archFloor:new Group(),archUp:new Group(),lampG:new Group(),doors:[],colliders:[]},glass={};
+  createArchitecture({store:{getProject:()=>project},opt:{cut:2.8,mode:'orbit'},space:{wx:v=>v/1000,wz:v=>v/1000},groups,materials:{mat:()=>({}),floorMat:()=>({}),glassMat:glass},primitives:{box:()=>{},metal:()=>({})}}).build();
+  const pane=groups.archUp.children.find(o=>o.material===glass),horizontal=['top','bottom'].includes(side);
+  close(pane.geometry.parameters.width,horizontal?1.2:.01);close(pane.geometry.parameters.depth,horizontal?.01:1.2);close(pane.geometry.parameters.height,1.2);
+ }
+});
