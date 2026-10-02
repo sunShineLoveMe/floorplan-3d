@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 
 const {chromium}=createRequire(import.meta.url)(process.env.PLAYWRIGHT_MODULE||'playwright');
 const base=process.env.TEST_URL||'http://127.0.0.1:8095/';
-const corpus='tests/fixtures/floorplans',out='docs/verification/NA-floorplan-corpus';
+const corpus='tests/fixtures/floorplans',out=process.env.CORPUS_TEST_OUT||'docs/verification/NA-floorplan-corpus';
 const manifest=JSON.parse(fs.readFileSync(corpus+'/manifest.json','utf8'));
 fs.mkdirSync(out,{recursive:true});
 const context=await chromium.launchPersistentContext(fs.mkdtempSync(path.join(os.tmpdir(),'floorplan-corpus-')),{headless:true,channel:'chrome',viewport:{width:1440,height:1000},args:['--enable-webgl','--use-angle=swiftshader','--enable-unsafe-swiftshader']});

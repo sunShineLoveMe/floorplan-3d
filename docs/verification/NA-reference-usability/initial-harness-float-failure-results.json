@@ -1,0 +1,11 @@
+{
+  "passed": false,
+  "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 6019.799999999999\n- 6019.8\n       ^\n",
+  "checks": [
+    "P0: blank, floor-area, zero and negative distance rejected without project changes",
+    "P1: 4x preview, scrolling, source-pixel endpoints and labelled 19 ft 9 in calibration passed",
+    "P0: four undimensioned PDF/JPG/PNG imports require a length; cancellation retains calibrated project",
+    "P1: 390px preview zoom/scroll/fit preserves points and scale without outer overflow"
+  ],
+  "errors": []
+}

@@ -1,0 +1,111 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-02T08:17:53.731590+00:00",
+  "build": "7c985078a299dbb4",
+  "branch": "feat/ui-refactor",
+  "baseCommit": "290488f0c93c00a9156dee92c35341072b82ab08",
+  "scope": "Reference usability fixes and one labelled Studio rectangle workflow; Fairfax complete apartment not accepted",
+  "checks": {
+    "unit": {
+      "passed": true,
+      "exitCode": 0,
+      "log": "unit.txt",
+      "tests": 78
+    },
+    "eslint": {
+      "passed": true,
+      "exitCode": 0,
+      "log": "eslint.txt"
+    },
+    "build": {
+      "passed": true,
+      "exitCode": 0,
+      "log": "build.txt",
+      "version": "7c985078a299dbb4"
+    },
+    "diff": {
+      "passed": true,
+      "exitCode": 0,
+      "log": "diff.txt"
+    },
+    "newTextWhitespace": {
+      "passed": true
+    },
+    "sourceIntegrity": {
+      "passed": true,
+      "originals": 18
+    },
+    "documentationLinks": {
+      "passed": true,
+      "links": 102
+    },
+    "qaPythonSyntax": {
+      "passed": true
+    },
+    "browserScriptSyntax": {
+      "passed": true,
+      "files": 2
+    }
+  },
+  "newBrowserChecks": 8,
+  "corpusApplicationReadChecks": 18,
+  "priorNARegressionChecks": 12,
+  "browserErrors": [],
+  "issues": {
+    "DV-001": "fixed-retested",
+    "DV-002": "fixed-retested",
+    "DV-003": "open-fixed-obstacles-and-source-dimensions"
+  },
+  "wholeNewApartmentAccepted": false,
+  "newCorpusFullModelsAccepted": 0,
+  "delivery": {
+    "localUncommitted": true,
+    "pushedThisBatch": false,
+    "merged": false,
+    "deployed": false
+  },
+  "pdf": {
+    "passed": true,
+    "pages": 1,
+    "paper": "US Letter landscape",
+    "widthPt": 792.0,
+    "heightPt": 612.0,
+    "rulerLengthPt": 283.5,
+    "sha256": "53e32779a029cc1f3ff0f83c4da97989c2cfd98608d750b7472bc48b187a9010",
+    "physicalPrinterTested": false
+  },
+  "artifacts": {
+    "before-desktop.png": "ed19565a49bb4a8a54deaf6226306ee52bd9cd2f68ff7a4bd3506e01ad734459",
+    "studio-room-print-render.png": "81474f71b8138e50ca5061fb985ed2b44546e5231bdb9bef19042d6c9c45e09c",
+    "studio-room-2d-screen.png": "7e06a175a16557fe4e8d034379779a870ca59ab90eb6fa89205508b77a8bfbee",
+    "before-results.json": "694ca4e9c4408be3ae2293110bcbdf9c3a8c6d5e0bf0a2df94f3b6645513851c",
+    "mobile-preview.png": "b10a09ded939ab3e4c49a413f6d932183bf04fb48e12a8e949cf05f3dc3bbc0c",
+    "pdf-results.json": "ee0cbdb22499f03e11fb9dc716abb6dd6ec07093402b6dcd5999cadc3887d4b8",
+    "studio-room-print.pdf": "53e32779a029cc1f3ff0f83c4da97989c2cfd98608d750b7472bc48b187a9010",
+    "studio-room-3d-screen.png": "bba54fb211307bb962990afde04a2bc8a90bee7d42e0f8a6207d91255bab2b20",
+    "browser-results.json": "8e7d7255eb55fdfba573cdb633a4f75844c0d37741a46bae6c73f1092ec2614b",
+    "distance-rejected.png": "00e1ff542b44ab0365f8bc64fc1e281105f0d73a46fcbf17847ebd9473225041",
+    "studio-room-project.json": "10a109f46b624e74237ed3feb3664acc4af6e29fe5a9cddab3f2bc3d5cd2a599",
+    "studio-zoom-calibration.png": "e555e7da89795a5fac3f0127969aae8ff276b6d37f28976017e87fb7f6e3f896",
+    "studio-room-2d.png": "b630c294a1c711b12ff429860e745187907b11c4ad2016c50052830efa9fcbe3",
+    "studio-room-3d.png": "489c7ece85e04b103692f9f2368411bc5b9a6f60b5e49702ca0e711bdda05757"
+  },
+  "services": {
+    "original8086": {
+      "running": true,
+      "status": 200,
+      "build": "7c985078a299dbb4"
+    },
+    "temporary8095Stopped": true
+  },
+  "visualReview": {
+    "passed": true,
+    "inspected": [
+      "studio zoom calibration",
+      "Studio 2D and 3D PNG",
+      "final US Letter PDF render",
+      "390px preview"
+    ],
+    "sourceBitmapResolutionLimitRetained": true
+  }
+}

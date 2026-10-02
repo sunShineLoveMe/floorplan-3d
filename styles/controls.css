@@ -86,4 +86,7 @@ body.m3d .app .seg .btn[data-view="2d"] {color:var(--color-text-primary);font-we
 @media(max-width:480px){.room-dialog{padding:var(--space-4)}.room-dialog .actions{bottom:-16px}}
 @media(prefers-reduced-motion:reduce){.app .btn,.app .seg .pill,.app .seg .btn,.app aside,.app,.app .item,.app .only2d,.app .only3d,.app #fab,.app .menu-pop,#toast{animation:none;transition:none}.ui-samples .btn[aria-busy=true]::before{animation:none}}
 
-.reference-dialog canvas{display:block;width:auto;height:auto;max-width:100%;max-height:48vh;cursor:crosshair;border:1px solid var(--line)}
+.reference-tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.reference-tools span{font-size:12px}
+.reference-preview{max-width:100%;max-height:48vh;overflow:auto;border:1px solid var(--line)}
+.reference-preview canvas{display:block;width:auto;height:auto;max-width:none;max-height:none;cursor:crosshair;margin-inline:auto}

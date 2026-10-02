@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "pages": 1,
+  "paper": "US Letter landscape",
+  "widthPt": 792.0,
+  "heightPt": 612.0,
+  "rulerLengthPt": 283.5,
+  "sha256": "53e32779a029cc1f3ff0f83c4da97989c2cfd98608d750b7472bc48b187a9010",
+  "physicalPrinterTested": false
+}

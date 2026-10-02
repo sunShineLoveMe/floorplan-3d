@@ -167,3 +167,14 @@ PLAYWRIGHT_MODULE=/absolute/path/to/node_modules/playwright TEST_URL=http://127.
 `tests/fixtures/floorplans` 保存四套官方完整 PDF 和 14 份新增场景资料。格式、页码、来源、SHA-256 和当前验收状态以 `manifest.json` 为准；预览目录与后续深测顺序见 [素材库说明](../tests/fixtures/floorplans/README.md)。
 
 可选 Python QA 脚本 `scripts/floorplan-corpus.py` 使用 PyMuPDF；默认核对本地原件，`--download-missing --render` 仅补充缺失原件并生成选定页预览。`tests/browser-floorplan-corpus.mjs` 用实际菜单和图纸导入界面读取原文件，检查页码、渲染、取消后项目不变及目录筛选；不做伪造尺寸标定，不等同于完整模型验收。未新增产品运行依赖。
+
+### 位图和无尺寸图纸的标定复测
+
+```bash
+PLAYWRIGHT_MODULE=/absolute/path/to/node_modules/playwright TEST_URL=http://127.0.0.1:8095/ node tests/browser-reference-usability.mjs
+PLAYWRIGHT_MODULE=/absolute/path/to/node_modules/playwright TEST_URL=http://127.0.0.1:8095/ CORPUS_TEST_OUT=docs/verification/NA-reference-usability/corpus node tests/browser-floorplan-corpus.mjs
+```
+
+新脚本验证必填已知长度、面积输入拒绝、预览缩放/滚动的像素坐标、PDF 换页清空标定草稿、390 px 实际标定与取消保护；通过实际表单创建 Studio 标注矩形房间，验证 Queen 门扇冲突、真实 JSON/PNG/PDF 下载和撤销回导。`REFERENCE_TEST_OUT` 可指定独立证据目录，`--observe` 仅用于旧实现复现，不能当作修复通过的检查。两脚本均使用独立临时 Chrome profile。
+
+`lengthField` 的原始毫米值为 `undefined` 时生成空白草稿，配合正长度范围校验用于参考标定；已有数值字段仍保留未修改时的精度。预览缩放只改变 CSS 显示宽度，标定坐标始终换算回 canvas 原生像素；resize 监听在 dispose 时移除。完整范围、测试假设与待办见 [多样化图纸验收](NA-diverse-floorplans-verification-2026-10-02.md)。

@@ -32,6 +32,7 @@ npm start
 | [UI 最终交付](docs/UI-final-delivery.md) | UI-060～210 结果、43 组浏览器检查、内部走查与未执行项 |
 | [P0 墙段与半高墙验收](docs/NA-wall-segments-verification-2026-10-02.md) | 局部通道、共享墙合并、半高墙、逐项复测与后续任务 |
 | [户型原始图纸测试素材库](tests/fixtures/floorplans/README.md) | 18 份原始 PDF/JPG/PNG、可搜索预览、实际场景来源及后续深入测试顺序 |
+| [多样化图纸标定与 Studio 房间验收](docs/NA-diverse-floorplans-verification-2026-10-02.md) | 必填长度、预览缩放、无尺寸保护、房间摆放和真实导出；完整公寓仍待验收 |
 | [四套完整户型验收](docs/NA-complete-houses-verification-2026-10-02.md) | B 完整验收及 A/C/F 三图复测、可回导模型和真实导出 |
 | [P0 真实图纸验收](docs/NA-real-house-verification-2026-10-02.md) | 公开住宅 PDF、开放空间与墙厚修复、简化模型和剩余能力缺口 |
 | [北美问题修复验收](docs/NA-fixes-verification-2026-10-02.md) | 12 项修复、逐项复测、实际 JSON/PNG/PDF 与未测范围 |

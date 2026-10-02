@@ -1,0 +1,13 @@
+{
+  "build": "58cd1dedbb49c3ad",
+  "metrics": {
+    "dialogWidth": 558,
+    "scrollWidth": 558,
+    "canvasWidth": 382.03125,
+    "initialDistance": "10' 0\""
+  },
+  "calibratedWithoutEnteringDistance": true,
+  "appliedScale": 12.938125,
+  "errors": [],
+  "timestamp": "2026-10-02T08:02:51.481Z"
+}
