@@ -7,7 +7,7 @@
 - 项目：`/Users/chris/Documents/项目/AI家装/floorplan-3d`，分支 `feat/ui-refactor`。
 - 接续包含本文的当前分支；不要从主分支、旧 HEAD、远程克隆或新 worktree 重建。先核对 `git status --short`、分支、HEAD 与远程；保留届时全部本地改动，禁止 reset、clean、stash。
 - 功能资源构建：`bad34d23ec95f5e4`；132 项自动化测试通过，T06 第二批 48 项新增原生浏览器检查、102 项既有流程回归通过。回归与漫游文件各自保留实际构建号，不都来自最终构建。
-- T06 两批、Jacobsen / CMU 全屋复用和 3D 标签修复已经纳入本次提交范围；推送后的准确提交基线见本节后续同步记录，并以 Git 为准。
+- T06 两批、Jacobsen / CMU 全屋复用、3D 标签修复及完整验收证据已提交并推送至 `origin/feat/ui-refactor`：功能基线 `999181e64c965fe5c74c53ff0d2bc04bfc725e7e`。推送后已通过 `git ls-remote` 核对。本文与导航的同步更新可能位于后续文档提交，最新 HEAD 以 Git 为准；资源构建保持不变。
 - 先读取 [T06 最新验收](T06-use-zones-verification-2026-10-03.md)、[最终机器结果](verification/T06-use-zones/final-results.json)，再读 [第一批验收](T06-clearance-verification-2026-10-03.md)、[路线图](roadmap.md)、[保存指南](usage.md)。原始 [T06 交接](T06-clearance-handoff-2026-10-03.md)保留历史，不再按其中“下一批使用区”重复开工。
 - `aws-tokyo-wireguard.yaml` 是项目外的本地文件，禁止读取、修改、提交或上传。其他未跟踪内容也先辨别用途，不能清理。
 - 产品保持英文，内部尺寸 mm，沿用原生 ESM、store 事务、v2 / v1 / legacy 兼容；不新增账户、云同步或后端。

@@ -10,11 +10,11 @@
 
 当前分支为 `feat/ui-refactor`，NA-001～012 及后续 P0 两批修复已完成，提交与远程同步状态以 Git 为准。新用户默认 English / Feet & inches；支持 PDF/图片参考底图标定、单层矩形多房间与共享墙门窗、门扇冲突提示、项目化导出及打印。已将前两批修复推送至 `25faa07`；本批新增局部墙段与半高墙，见 [墙段验收](docs/NA-wall-segments-verification-2026-10-02.md)。支持每侧墙厚与开放边界，公开住宅设计图的简化手工建模见 [P0 真实图纸验收](docs/NA-real-house-verification-2026-10-02.md)；前轮逐项结果见 [北美问题修复验收](docs/NA-fixes-verification-2026-10-02.md)。未合并、未部署。
 
-新增独立矩形固定障碍物编辑、净面积扣除和家具 / 平开门冲突复核，见 [固定障碍物验收](docs/NA-fixed-obstacles-verification-2026-10-02.md)。后续已验证 CMU 两卧的 8 空间组合流程并修复紧凑家具标签越界，见 [整户组合与标签复测](docs/NA-apartment-composition-verification-2026-10-02.md)。补充细部为测试假设，原公寓完整尺寸仍未验收；斜切角已完成四个方向、不同斜率及跨户型复用，通用地面检查补充修正 Plan F 橱柜越界，见 [斜切角与 Plan F 复测](docs/NA-diagonal-cuts-verification-2026-10-03.md)。以上已验收内容已推送至 `ea09df0`。后续 Jacobsen 12 空间 / 20 家具的全屋测试已复用同一流程，DV-007 的 3D 标签避让完成两户型复测，见 [全屋复用验收](docs/NA-whole-floor-reuse-verification-2026-10-03.md)；此后新增改动为本地状态，原图未知尺寸继续保留。
+新增独立矩形固定障碍物编辑、净面积扣除和家具 / 平开门冲突复核，见 [固定障碍物验收](docs/NA-fixed-obstacles-verification-2026-10-02.md)。后续已验证 CMU 两卧的 8 空间组合流程并修复紧凑家具标签越界，见 [整户组合与标签复测](docs/NA-apartment-composition-verification-2026-10-02.md)。补充细部为测试假设，原公寓完整尺寸仍未验收；斜切角已完成四个方向、不同斜率及跨户型复用，通用地面检查补充修正 Plan F 橱柜越界，见 [斜切角与 Plan F 复测](docs/NA-diagonal-cuts-verification-2026-10-03.md)。以上已验收内容已推送至 `ea09df0`。后续 Jacobsen 12 空间 / 20 家具的全屋测试已复用同一流程，DV-007 的 3D 标签避让完成两户型复测，见 [全屋复用验收](docs/NA-whole-floor-reuse-verification-2026-10-03.md)；后续全屋复用与 T06 两批已推送至 `999181e`，原图未知尺寸继续保留。
 
 本轮前端 UI 计划的实现项（UI-000～210）已完成，内部任务走查与回归通过；外部首次用户试用尚未执行。布局、草稿保护、搜索、视图设置与验收边界见 [UI 最终交付](docs/UI-final-delivery.md)。
 
-T06 两批已完成占地间距、显式嵌套、目标净宽路径、可调整家具使用区与持续行走 / 摇杆碰撞复核，见 [最新验收](docs/T06-use-zones-verification-2026-10-03.md)。使用区采用显式平面规划假设；本地未提交 / 未推送。
+T06 两批已完成占地间距、显式嵌套、目标净宽路径、可调整家具使用区与持续行走 / 摇杆碰撞复核，见 [最新验收](docs/T06-use-zones-verification-2026-10-03.md)。使用区采用显式平面规划假设；代码与验收证据已推送至 `999181e`，未合并、未部署。下一批是 [T07 保存与恢复](docs/T07-save-recovery-handoff-2026-10-03.md)。
 
 ## 快速启动
 
