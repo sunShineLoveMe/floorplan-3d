@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "linksChecked": 111,
+  "files": [
+    "README.md",
+    "docs/roadmap.md",
+    "docs/usage.md",
+    "docs/T07-save-recovery-handoff-2026-10-03.md",
+    "docs/T07-save-recovery-verification-2026-10-03.md"
+  ],
+  "missing": []
+}

@@ -1,0 +1,7 @@
+{
+  "head": "7abfb7100fa3bdd40f20ebe8fd70f3da0067dfb4",
+  "build": "bad34d23ec95f5e4",
+  "branch": "feat/ui-refactor",
+  "note": "Historical native baseline results used an absent app-build meta selector and report null. Original HEAD data-build is recorded here; original results are preserved.",
+  "remoteHead": "7abfb7100fa3bdd40f20ebe8fd70f3da0067dfb4"
+}

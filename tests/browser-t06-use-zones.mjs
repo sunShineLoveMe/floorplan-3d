@@ -1,3 +1,4 @@
+import {uploadProject} from './helpers/project-protection.mjs';
 import {createRequire} from 'node:module';import fs from 'node:fs';import assert from 'node:assert/strict';
 import {useZoneReport} from '../src/core/use-zones.js';import {passageSpace} from '../src/core/spatial-clearance.js';
 import {createRectangleProject} from '../src/data/project-data.js';
@@ -10,7 +11,7 @@ if(previous){results.push(...previous.results.filter(r=>!filter.includes(r.name)
 async function openZones(){if(!await page.locator('#useZoneDetails').evaluate(e=>e.open))await page.locator('#useZoneDetails summary').click();}
 async function field(id,v){await page.locator('#'+id).fill(String(v));await page.locator('#'+id).press('Tab');}
 async function select(id){await page.locator(`.furn[data-fid="${id}"]`).click();await page.locator('#fName').waitFor();}
-async function load(file){await page.locator('#fileIn').setInputFiles(file);await page.waitForFunction(()=>!document.querySelector('#importJson').disabled);await ready();assert.equal((await current()).id,JSON.parse(fs.readFileSync(file)).id);}
+async function load(file){await uploadProject(page,file);await page.waitForFunction(()=>!document.querySelector('#importJson').disabled);await ready();assert.equal((await current()).id,JSON.parse(fs.readFileSync(file)).id);}
 function write(file,value){fs.writeFileSync(file,JSON.stringify(value,null,2));}
 async function download(id,file){const pending=page.waitForEvent('download',{timeout:60000});await page.locator('#'+id).evaluate(e=>e.click());const d=await pending;await d.saveAs(file);assert.equal(await d.failure(),null);}
 async function verifyOverlay(){const p=await current(),r=useZoneReport(p);assert.equal(await page.locator('[data-use-zone]').count(),r.zones.length);for(const z of r.zones){const el=page.locator(`[data-use-zone="${z.zoneId}"]`);assert.equal(await el.getAttribute('data-zone-status'),z.status);const actual=(await el.getAttribute('points')).split(' ').map(p=>p.split(',').map(Number));assert.deepEqual(actual,z.poly);}return r;}

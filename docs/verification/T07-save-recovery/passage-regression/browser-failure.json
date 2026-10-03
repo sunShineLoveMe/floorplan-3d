@@ -1,0 +1,27 @@
+{
+  "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(await page.locator('#passageTarget').isVisible())\n\n    at file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t06-clearance.mjs:43:367",
+  "checks": [
+    "jacobsen: selected route, exact target and continuous swept path overlay",
+    "jacobsen: invalid target rejected and units preserve exact millimetres",
+    "jacobsen: declared nesting, exact undo/redo and retained solid counter",
+    "jacobsen: actual move/resize blocks the selected endpoint without changing structure",
+    "jacobsen: undo/redo recalculates passage result",
+    "jacobsen: native WebGL walk enters at a verified free point and preserves geometry",
+    "jacobsen: refresh, JSON roundtrip, 2D/3D PNG and actual print PDF",
+    "cmu: selected route, exact target and continuous swept path overlay",
+    "cmu: invalid target rejected and units preserve exact millimetres",
+    "cmu: actual move/resize blocks the selected endpoint without changing structure",
+    "cmu: undo/redo recalculates passage result",
+    "cmu: native WebGL walk enters at a verified free point and preserves geometry",
+    "cmu: refresh, JSON roundtrip, 2D/3D PNG and actual print PDF",
+    "plan-f: selected route, exact target and continuous swept path overlay",
+    "plan-f: invalid target rejected and units preserve exact millimetres",
+    "plan-f: declared nesting, exact undo/redo and retained solid counter",
+    "plan-f: actual move/resize blocks the selected endpoint without changing structure",
+    "plan-f: undo/redo recalculates passage result",
+    "plan-f: native WebGL walk enters at a verified free point and preserves geometry",
+    "plan-f: refresh, JSON roundtrip, 2D/3D PNG and actual print PDF",
+    "independent open-floor barrier: blocking, explicit walkable assumption, deletion and undo/redo"
+  ],
+  "errors": []
+}

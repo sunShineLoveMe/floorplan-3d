@@ -4,9 +4,9 @@ import {$} from '../ui/dom.js';
 import {tr} from './i18n.js';
 import {ProjectError} from '../data/project-data.js';
 import {defaultState} from '../data/default-project.js';
-import {importProject,serializeProject} from '../services/project-files.js';
+import {prepareImport,serializeProject} from '../services/project-files.js';
 import {createScope} from './lifecycle.js';
-export function createFileMenu({store,ui,downloads,isSwitching,toast,loaded,cancelInteraction}){
+export function createFileMenu({store,ui,downloads,isSwitching,toast,loaded,protection,cancelInteraction}){
 const scope=createScope();const {download,exportPNG}=downloads;
 let revision=0,readRequest=0;
 const unsubscribe=store.subscribe(()=>{revision++;});
@@ -28,18 +28,24 @@ function projectMessage(err){
 }
 function importProjectText(raw){
   if(isSwitching()) throw new Error('Wait for the view transition to finish.');
-  const result=importProject(raw, {
-    confirmLegacy:()=>confirm(tr('此旧文件没有户型几何。请确认它来自原始“三室两厅两卫”示例。确认后先下载原文件备份再迁移。','Confirm this file belongs to the original three-bedroom sample. A backup will be downloaded before migration.')),
-    backup:text=>download('floorplan-legacy-backup.json',new Blob([text],{type:'application/json'})),
-    replace:project=>{cancelInteraction();ui.sel=null; store.replaceProject(project); }
+  let result=prepareImport(raw),legacy=false;
+  if(result.status==='confirmation-required'){
+    if(!confirm(tr('此旧文件没有户型几何。请确认它来自原始“三室两厅两卫”示例。','Confirm this file belongs to the original three-bedroom sample. It has no floor-plan geometry.')))return false;
+    result=prepareImport(raw,true);legacy=true;
+  }
+  if(result.status==='error')throw result.error;
+  protection.replace(result.project,{
+    label:tr('打开工程并替换','Open project and replace'),
+    beforeReplace:()=>{if(legacy)download('floorplan-legacy-backup.json',new Blob([raw],{type:'application/json'}));},
+    onReplace:project=>{if(isSwitching())throw Error('Wait for the view transition to finish.');cancelInteraction();ui.sel=null;store.replaceProject(project);},
+    afterReplace:()=>toast(tr('项目已导入','Project imported'))
   });
-  if(result.status==='cancelled') return false;
-  toast(tr('项目已导入','Project imported')); return true;
+  return true;
 }
 function exportProject(){
   try {
-    const raw=serializeProject(store.getProject());
-    download(exportName(store.getProject(),'project','json'),new Blob([raw],{type:'application/json'}));toast(tr('JSON 文件已生成，下载已启动','JSON file generated. Download started.'));
+    const raw=serializeProject(store.getCommittedProject());
+    download(exportName(store.getCommittedProject(),'project','json'),new Blob([raw],{type:'application/json'}));toast(tr('JSON 文件已生成，下载已启动','JSON file generated. Download started.'));
   } catch(e){ toast(projectMessage(e)); }
 };
 $('#exportJson').onclick=exportProject;
@@ -63,9 +69,8 @@ $('#fileIn').onchange = async e => {
   catch(e){ if(!scope.disposed && request===readRequest) alert(projectMessage(e)); }
   finally{if(!scope.disposed&&request===readRequest){$('#importJson').disabled=false;$('#importJson').setAttribute('aria-busy','false');}}
 };
-$('#reset').onclick = () => { if(isSwitching())return; if (confirm(tr('恢复为默认设计方案？（可撤销）', 'Reset to the default design? (undoable)'))){ cancelInteraction();ui.sel = null; store.replaceProject(defaultState()); } };
+$('#reset').onclick = () => {if(isSwitching())return;protection.replace(defaultState(),{label:tr('恢复示例工程','Restore sample project'),onReplace:project=>{cancelInteraction();ui.sel=null;store.replaceProject(project);}});};
+if(loaded.error || loaded.legacy)scope.timeout(()=>toast(tr('原始本地数据已保留。文件菜单提供恢复与原文导出。','Original device data preserved. Use Recovery in the file menu to review or export it.')),0);
 
-if(loaded.error) scope.timeout(()=>alert(tr('已保留无法读取的本地项目，当前显示示例。','The unreadable local project has been preserved. Showing the sample.')+' '+projectMessage(loaded.error)),0);
-if(loaded.legacy) scope.timeout(()=>{try{importProjectText(loaded.legacy);}catch(e){alert(projectMessage(e));}},0);
 return {exportProject,dispose(){unsubscribe();readRequest++;scope.dispose();for(const id of ['exportPng','exportJson','importJson','reset','printPlan']) $('#'+id).onclick=null;$('#fileIn').onchange=$('#fileName').onchange=$('#layoutName').onchange=null;}};
 }

@@ -1,0 +1,194 @@
+{
+  "passed": true,
+  "build": "0a797fe1d69e03fd",
+  "productionJavaScriptImported": false,
+  "caseCount": 9,
+  "cases": [
+    {
+      "name": "jacobsen",
+      "passed": true,
+      "comparedKeys": [
+        "createdAt",
+        "demolished",
+        "format",
+        "furniture",
+        "geometry",
+        "id",
+        "layout",
+        "measures",
+        "name",
+        "referencePlan",
+        "roomEditor",
+        "rooms",
+        "units",
+        "version",
+        "view"
+      ],
+      "source": "docs/verification/T06-use-zones/jacobsen/complete-project.json",
+      "download": "final/jacobsen-roundtrip.json",
+      "sourceSha256": "f292083b9ffc0f3b2a20b35018f6d7de30903c5a5862c657bc269995ab165c52",
+      "downloadSha256": "615ae3aba5d7d9ee535cef18e1ec0a7c26c7a5e873f22f0117b73ffbb2f678a4"
+    },
+    {
+      "name": "cmu",
+      "passed": true,
+      "comparedKeys": [
+        "createdAt",
+        "demolished",
+        "format",
+        "furniture",
+        "geometry",
+        "id",
+        "layout",
+        "measures",
+        "name",
+        "referencePlan",
+        "roomEditor",
+        "rooms",
+        "units",
+        "version",
+        "view"
+      ],
+      "source": "docs/verification/T06-use-zones/cmu/complete-project.json",
+      "download": "final/cmu-roundtrip.json",
+      "sourceSha256": "0036faa86af4f5abdf2d78fd4dd9b881f304c6289d721c8c5aa05ec7c6f5da30",
+      "downloadSha256": "704ab4df714e8fe55547c50f5ded12740fb0bf77a7ebc29e9e65d514eb8f689a"
+    },
+    {
+      "name": "plan-f",
+      "passed": true,
+      "comparedKeys": [
+        "createdAt",
+        "demolished",
+        "format",
+        "furniture",
+        "geometry",
+        "id",
+        "layout",
+        "measures",
+        "name",
+        "referencePlan",
+        "roomEditor",
+        "rooms",
+        "units",
+        "version",
+        "view"
+      ],
+      "source": "docs/verification/T06-use-zones/plan-f/complete-project.json",
+      "download": "final/plan-f-roundtrip.json",
+      "sourceSha256": "2ba573e6b53b059c5cdce2db605ed87e47b079d0af0800b7bdb779066a7666e3",
+      "downloadSha256": "9c0043044120350e1580a292487677a03de72cea90043acb7236950c91e34537"
+    },
+    {
+      "name": "diagonal-compact-bedroom",
+      "passed": true,
+      "comparedKeys": [
+        "createdAt",
+        "demolished",
+        "format",
+        "furniture",
+        "geometry",
+        "id",
+        "layout",
+        "measures",
+        "name",
+        "roomEditor",
+        "rooms",
+        "units",
+        "version",
+        "view"
+      ],
+      "source": "docs/verification/T06-use-zones/diagonal-compact-bedroom/complete-project.json",
+      "download": "final/diagonal-compact-bedroom-roundtrip.json",
+      "sourceSha256": "d13e0f88bb50f7bc3f4cb2d5616a2d7a3a9438c36dc065ffabcadaca41a073d1",
+      "downloadSha256": "d43160d8965dc27eac735d8b192476a4513f5363e2fb86787df336ab638321fa"
+    },
+    {
+      "name": "diagonal-jacobsen-kitchen",
+      "passed": true,
+      "comparedKeys": [
+        "createdAt",
+        "demolished",
+        "format",
+        "furniture",
+        "geometry",
+        "id",
+        "layout",
+        "measures",
+        "name",
+        "roomEditor",
+        "rooms",
+        "units",
+        "version",
+        "view"
+      ],
+      "source": "docs/verification/T06-use-zones/diagonal-jacobsen-kitchen/complete-project.json",
+      "download": "final/diagonal-jacobsen-kitchen-roundtrip.json",
+      "sourceSha256": "1505831461dd6657274c6d737109f352fde83efa42c6a5389abd76d5ac8780d1",
+      "downloadSha256": "b96aba159fb561461d524be469804b13445bf44177c29c78d6a64f4c68a2488f"
+    },
+    {
+      "name": "diagonal-mirrored-entry",
+      "passed": true,
+      "comparedKeys": [
+        "createdAt",
+        "demolished",
+        "format",
+        "furniture",
+        "geometry",
+        "id",
+        "layout",
+        "measures",
+        "name",
+        "roomEditor",
+        "rooms",
+        "units",
+        "version",
+        "view"
+      ],
+      "source": "docs/verification/T06-use-zones/diagonal-mirrored-entry/complete-project.json",
+      "download": "final/diagonal-mirrored-entry-roundtrip.json",
+      "sourceSha256": "0f8e1b5205a6e383211cd27b80a71fc9d4d5a4f36ecbb35be423353779c4a0a0",
+      "downloadSha256": "0007a4a2db77307d6e5ae130b708f0de61baf58bb5005367d4b72988ae01a051"
+    },
+    {
+      "name": "diagonal-shared-kitchen-bath",
+      "passed": true,
+      "comparedKeys": [
+        "createdAt",
+        "demolished",
+        "format",
+        "furniture",
+        "geometry",
+        "id",
+        "layout",
+        "measures",
+        "name",
+        "roomEditor",
+        "rooms",
+        "units",
+        "version",
+        "view"
+      ],
+      "source": "docs/verification/T06-use-zones/diagonal-shared-kitchen-bath/complete-project.json",
+      "download": "final/diagonal-shared-kitchen-bath-roundtrip.json",
+      "sourceSha256": "35e800737f8ab3346d1bf820fbaa72634153b66423e677a0b42d7e9437f00954",
+      "downloadSha256": "fa3c947bc17e1a0e0a0cac84c3c56694f9c2e30dbb8185d22b13f50f0311abf5"
+    },
+    {
+      "name": "corrupt-original.json",
+      "passed": true
+    },
+    {
+      "name": "corrupt-v1-original.json",
+      "passed": true
+    }
+  ],
+  "excludedChanges": [
+    "updatedAt is refreshed on reviewed import",
+    "view.mode changes during the explicit 2D/3D checks"
+  ],
+  "limits": [
+    "Byte and JSON parameter comparisons; native browser results establish recovery UI and file reimport behavior."
+  ]
+}

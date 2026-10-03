@@ -215,6 +215,10 @@ main.drawer-panel #fab{opacity:0;visibility:hidden}
 .room-error{color:#ae3326;min-height:1.6em;overflow-wrap:anywhere}
 .room-dialog .form label{min-width:0}
 .room-dialog input{width:100%;min-width:0}
+.save-recovery{display:flex;flex-wrap:wrap;gap:6px;padding:8px 0;border-bottom:1px solid var(--line)}
+.save-recovery[hidden]{display:none}
+.save-recovery small{flex-basis:100%;overflow-wrap:anywhere}
+.save-recovery .btn,#protectionDialog .btn{white-space:normal;overflow-wrap:anywhere;max-width:100%}
 @media(max-width:480px){.room-dialog{padding:16px}.room-dialog .form{grid-template-columns:1fr}.room-dialog .actions{bottom:-16px}}
 
 /* Unit controls and length feedback must remain usable in narrow drawers. */

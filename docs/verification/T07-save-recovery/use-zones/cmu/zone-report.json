@@ -1,0 +1,199 @@
+{
+  "zones": [
+    {
+      "furnitureId": "fmursdasg27",
+      "zoneId": "uz-076e4111-c2cf-45f9-a96f-64199039a5a1",
+      "kind": "bed-side",
+      "side": "left",
+      "widthMm": 617.123456,
+      "depthMm": 600,
+      "offsetMm": 100,
+      "poly": [
+        [
+          -168.19999999999982,
+          1315.4382719999999
+        ],
+        [
+          431.8000000000001,
+          1315.4382719999999
+        ],
+        [
+          431.8000000000001,
+          1932.5617280000001
+        ],
+        [
+          -168.19999999999982,
+          1932.5617280000001
+        ]
+      ],
+      "outsideMm2": 103800.16529919996,
+      "status": "conflict",
+      "conflicts": [
+        {
+          "kind": "floor",
+          "id": "net-floor",
+          "name": "Outside net floor",
+          "overlapMm2": 103800.16529919996
+        },
+        {
+          "kind": "wall",
+          "id": "wall-6",
+          "name": "Wall",
+          "overlapMm2": 26026.031564800007
+        }
+      ]
+    },
+    {
+      "furnitureId": "fmursdasg27",
+      "zoneId": "uz-051b5b85-0cd5-4db1-bcb1-03e0d24b7981",
+      "kind": "bed-side",
+      "side": "right",
+      "widthMm": 600,
+      "depthMm": 600,
+      "offsetMm": 0,
+      "poly": [
+        [
+          1397,
+          1224
+        ],
+        [
+          1997,
+          1224
+        ],
+        [
+          1997,
+          1824
+        ],
+        [
+          1397,
+          1824
+        ]
+      ],
+      "outsideMm2": 0,
+      "status": "clear",
+      "conflicts": []
+    },
+    {
+      "furnitureId": "fmursdb3228",
+      "zoneId": "uz-311d330e-722c-45c8-a1f2-10271024493f",
+      "kind": "seating",
+      "side": "bottom",
+      "widthMm": 617.123456,
+      "depthMm": 600,
+      "offsetMm": 100,
+      "poly": [
+        [
+          2229.838272,
+          1219.2
+        ],
+        [
+          2846.961728,
+          1219.2
+        ],
+        [
+          2846.961728,
+          1819.2
+        ],
+        [
+          2229.838272,
+          1819.2
+        ]
+      ],
+      "outsideMm2": 0,
+      "status": "clear",
+      "conflicts": []
+    },
+    {
+      "furnitureId": "fmursdbir29",
+      "zoneId": "uz-36fb727f-e5d8-4f2c-88d8-904e4f80e59f",
+      "kind": "cabinet",
+      "side": "right",
+      "widthMm": 617.123456,
+      "depthMm": 600,
+      "offsetMm": 100,
+      "poly": [
+        [
+          4013.2000000000003,
+          2077.438272
+        ],
+        [
+          4613.2,
+          2077.438272
+        ],
+        [
+          4613.2,
+          2694.561728
+        ],
+        [
+          4013.2000000000003,
+          2694.561728
+        ]
+      ],
+      "outsideMm2": 62699.74312959984,
+      "status": "conflict",
+      "conflicts": [
+        {
+          "kind": "floor",
+          "id": "net-floor",
+          "name": "Outside net floor",
+          "overlapMm2": 62699.74312959984
+        },
+        {
+          "kind": "wall",
+          "id": "wall-13",
+          "name": "Wall",
+          "overlapMm2": 62699.74312959984
+        },
+        {
+          "kind": "furniture",
+          "id": "fmursdccx32",
+          "name": "Lower counter - test",
+          "overlapMm2": 80105.33475839905
+        }
+      ]
+    },
+    {
+      "furnitureId": "fmursdbvh30",
+      "zoneId": "uz-f1bccf74-880c-445d-b222-335cd8abd6a8",
+      "kind": "appliance",
+      "side": "top",
+      "widthMm": 617.123456,
+      "depthMm": 600,
+      "offsetMm": 100,
+      "poly": [
+        [
+          3652.238272,
+          -523.8
+        ],
+        [
+          4269.361728,
+          -523.8
+        ],
+        [
+          4269.361728,
+          76.20000000000005
+        ],
+        [
+          3652.238272,
+          76.20000000000005
+        ]
+      ],
+      "outsideMm2": 323249.2662527997,
+      "status": "conflict",
+      "conflicts": [
+        {
+          "kind": "floor",
+          "id": "net-floor",
+          "name": "Outside net floor",
+          "overlapMm2": 323249.2662527997
+        },
+        {
+          "kind": "wall",
+          "id": "wall-7",
+          "name": "Wall",
+          "overlapMm2": 62699.743129599956
+        }
+      ]
+    }
+  ]
+}

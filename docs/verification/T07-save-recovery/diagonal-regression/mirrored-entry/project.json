@@ -1,0 +1,404 @@
+{
+  "format": "floorplan-3d",
+  "version": 2,
+  "id": "p-murvert3-1ymi0krl",
+  "name": "Apartment entry - synthetic test",
+  "createdAt": "2026-10-03T04:07:04.263Z",
+  "updatedAt": "2026-10-03T04:07:08.916Z",
+  "units": {
+    "internal": "mm",
+    "display": "imperial"
+  },
+  "layout": {
+    "id": "layout-p-murvert3-1ymi0krl",
+    "name": "Layout A"
+  },
+  "view": {
+    "mode": "2d",
+    "layers": {
+      "dims": true,
+      "labels": true,
+      "furn": true,
+      "grid": false,
+      "bearing": false,
+      "wallSnap": true
+    }
+  },
+  "roomEditor": {
+    "kind": "house",
+    "floorSlab": true,
+    "height": 2800,
+    "wallThickness": 120,
+    "rooms": [
+      {
+        "id": "room-1",
+        "x": -1400,
+        "y": 750,
+        "width": 4200,
+        "depth": 3400,
+        "wallWidths": {
+          "top": 120,
+          "right": 120,
+          "bottom": 120,
+          "left": 120
+        },
+        "notch": {
+          "corner": "top-left",
+          "width": 1200,
+          "depth": 500,
+          "shape": "diagonal",
+          "wallThickness": 180
+        },
+        "obstacles": [
+          {
+            "id": "obstacle-fmurvetam4",
+            "name": "Test column",
+            "width": 100,
+            "depth": 100,
+            "x": 4100,
+            "y": 0,
+            "height": 2800
+          }
+        ]
+      }
+    ],
+    "openings": [
+      {
+        "id": "opening-fmurvesim1",
+        "type": "door",
+        "wallId": "room-1--bottom",
+        "offset": 500,
+        "width": 850,
+        "height": 2000,
+        "roomId": "room-1",
+        "hinge": "start",
+        "swing": "inward"
+      },
+      {
+        "id": "opening-fmurvess82",
+        "type": "window",
+        "wallId": "room-1--right",
+        "offset": 500,
+        "width": 1000,
+        "height": 1000,
+        "roomId": "room-1",
+        "sill": 900
+      }
+    ]
+  },
+  "geometry": {
+    "height": 2800,
+    "origin": [
+      700,
+      2450
+    ],
+    "bounds": {
+      "x": -2620,
+      "y": -470,
+      "w": 6640,
+      "h": 5840
+    },
+    "rooms": [
+      {
+        "id": "room-1",
+        "name": "Entry",
+        "mat": "wood",
+        "poly": [
+          [
+            -200,
+            750
+          ],
+          [
+            2800,
+            750
+          ],
+          [
+            2800,
+            4150
+          ],
+          [
+            -1400,
+            4150
+          ],
+          [
+            -1400,
+            1250
+          ]
+        ],
+        "at": [
+          472,
+          2250
+        ],
+        "usableAreaM2": 13.97
+      }
+    ],
+    "obstacles": [
+      {
+        "id": "obstacle-fmurvetam4",
+        "roomId": "room-1",
+        "name": "Test column",
+        "rect": [
+          2700,
+          750,
+          2800,
+          850
+        ],
+        "height": 2800
+      }
+    ],
+    "walls": [
+      [
+        -200,
+        630,
+        2920,
+        750,
+        "n"
+      ],
+      [
+        2800,
+        750,
+        2920,
+        1250,
+        "n"
+      ],
+      [
+        2800,
+        2250,
+        2920,
+        4150,
+        "n"
+      ],
+      [
+        -1520,
+        4150,
+        -900,
+        4270,
+        "n"
+      ],
+      [
+        -50,
+        4150,
+        2920,
+        4270,
+        "n"
+      ],
+      [
+        -1520,
+        1250,
+        -1400,
+        4150,
+        "n"
+      ]
+    ],
+    "wallIds": [
+      "room-1--top",
+      "room-1--right",
+      "room-1--right",
+      "room-1--bottom",
+      "room-1--bottom",
+      "room-1--left"
+    ],
+    "diagonalWalls": [
+      {
+        "id": "room-1--diagonal",
+        "roomId": "room-1",
+        "poly": [
+          [
+            -200,
+            750
+          ],
+          [
+            -1400,
+            1250
+          ],
+          [
+            -1520,
+            1250
+          ],
+          [
+            -1520,
+            1105
+          ],
+          [
+            -668,
+            750
+          ]
+        ],
+        "inner": [
+          [
+            -1400,
+            1250
+          ],
+          [
+            -200,
+            750
+          ]
+        ],
+        "height": 2800
+      },
+      {
+        "id": "room-1--diagonal",
+        "roomId": "room-1",
+        "poly": [
+          [
+            -380,
+            630
+          ],
+          [
+            -200,
+            630
+          ],
+          [
+            -200,
+            750
+          ],
+          [
+            -668,
+            750
+          ]
+        ],
+        "inner": [
+          [
+            -1400,
+            1250
+          ],
+          [
+            -200,
+            750
+          ]
+        ],
+        "height": 2800
+      }
+    ],
+    "floorPolygons": [
+      [
+        [
+          -380,
+          630
+        ],
+        [
+          2920,
+          630
+        ],
+        [
+          2920,
+          4270
+        ],
+        [
+          -1520,
+          4270
+        ],
+        [
+          -1520,
+          1105
+        ]
+      ]
+    ],
+    "doors": [
+      {
+        "id": "opening-fmurvesim1",
+        "wallId": "room-1--bottom",
+        "rect": [
+          -900,
+          4150,
+          -50,
+          4270
+        ],
+        "h": [
+          -900,
+          4150
+        ],
+        "c": [
+          1,
+          0
+        ],
+        "o": [
+          0,
+          -1
+        ],
+        "len": 850,
+        "height": 2000,
+        "name": "opening-fmurvesim1",
+        "roomId": "room-1"
+      }
+    ],
+    "windows": [
+      {
+        "id": "opening-fmurvess82",
+        "wallId": "room-1--right",
+        "rect": [
+          2800,
+          1250,
+          2920,
+          2250
+        ],
+        "sill": 900,
+        "head": 1900,
+        "roomId": "room-1"
+      }
+    ],
+    "slides": [],
+    "lintels": [],
+    "dimensions": [
+      {
+        "horizontal": true,
+        "at": 330,
+        "start": -1400,
+        "segments": [
+          4200
+        ]
+      },
+      {
+        "horizontal": false,
+        "at": -1820,
+        "start": 750,
+        "segments": [
+          3400
+        ]
+      }
+    ],
+    "walkStart": {
+      "position": [
+        472,
+        2250
+      ],
+      "target": [
+        472,
+        1250
+      ]
+    },
+    "entry": null
+  },
+  "furniture": [
+    {
+      "id": "fmurvetsc5",
+      "type": "desk",
+      "name": "Test bench",
+      "cx": 600,
+      "cy": 2950,
+      "w": 1000,
+      "d": 400,
+      "rot": 325,
+      "color": "#e2cfb4"
+    },
+    {
+      "id": "fmurveubb6",
+      "type": "wardrobe",
+      "name": "Test cabinet",
+      "cx": 1800,
+      "cy": 2500,
+      "w": 600,
+      "d": 600,
+      "rot": 0,
+      "color": "#efe6d8"
+    }
+  ],
+  "rooms": {
+    "room-1": {
+      "name": "Entry",
+      "mat": "wood"
+    }
+  },
+  "demolished": [],
+  "measures": []
+}

@@ -1,3 +1,4 @@
+import {uploadProject} from './helpers/project-protection.mjs';
 import {createRequire} from 'node:module';
 import fs from 'node:fs';
 import os from 'node:os';
@@ -34,7 +35,7 @@ const snapshot=async prefix=>{
 try{
  await page.goto(process.env.TEST_URL||'http://127.0.0.1:8095/');await page.waitForSelector('#lib .item');await ready();
  if(await page.locator('html').getAttribute('lang')!=='en')await page.locator('#langBtn').click();
- await page.locator('#fileIn').setInputFiles('docs/verification/NA-reference-usability/studio-room-project.json');await page.waitForTimeout(250);await ready();const original=await project();await structure();
+ await uploadProject(page,'docs/verification/NA-reference-usability/studio-room-project.json');await page.waitForTimeout(250);await ready();const original=await project();await structure();
  await page.locator('[data-obstacle-add]').click();assert.equal(await page.locator('#roomDialog [name=width]').inputValue(),'');assert.equal(await page.locator('#roomDialog [name=depth]').inputValue(),'');
  await submit();assert.ok(await page.locator('#roomDialog').isVisible());assert.deepEqual(await project(),original);assert.equal(await page.locator('#roomDialog [name=width]').getAttribute('aria-invalid'),'true');
  await apply({name:'Assumed 12 in left column',width:'12 in',depth:'12 in',x:'0 ft',y:'0 ft'});
@@ -59,7 +60,7 @@ try{
  const three=await project();await page.locator('[data-obstacle-delete]').last().click();assert.equal((await project()).geometry.obstacles.length,2);await page.locator('#undo').click();assert.deepEqual((await project()).geometry,three.geometry);await page.locator('#redo').click();assert.equal((await project()).geometry.obstacles.length,2);await page.locator('#undo').click();
  page.once('dialog',d=>d.accept());await page.locator('#clearAll').evaluate(b=>b.click());assert.equal((await project()).furniture.length,0);assert.deepEqual((await project()).geometry,three.geometry);await page.locator('#undo').click();assert.deepEqual((await project()).furniture,three.furniture);
  pass('Delete undo/redo and clear-furniture undo preserve fixed structural geometry');
- const studio=await snapshot('studio');await page.reload();await page.waitForSelector('#lib .item');await ready();assert.deepEqual((await project()).geometry,studio.geometry);await page.locator('#fileIn').setInputFiles(out+'/studio-project.json');await page.waitForTimeout(200);await ready();assert.deepEqual((await project()).roomEditor,studio.roomEditor);await structure();
+ const studio=await snapshot('studio');await page.reload();await page.waitForSelector('#lib .item');await ready();assert.deepEqual((await project()).geometry,studio.geometry);await uploadProject(page,out+'/studio-project.json');await page.waitForTimeout(200);await ready();assert.deepEqual((await project()).roomEditor,studio.roomEditor);await structure();
  await page.setViewportSize({width:390,height:844});await page.waitForTimeout(100);if(!await page.locator('[data-obstacle-add]').isVisible())await page.locator('#tgPanel').click();await page.locator('[data-obstacle-add]').click();assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));assert.ok(await page.locator('#roomDialog').evaluate(d=>d.scrollWidth<=d.clientWidth+1));await page.locator('#roomDialog [data-cancel]').scrollIntoViewIfNeeded();await page.screenshot({path:out+'/mobile-obstacle-form.png'});await page.locator('#roomDialog [data-cancel]').click();await page.setViewportSize({width:1440,height:1000});
  pass('Studio JSON/PNG/3D/Letter PDF, reload/import and 390px obstacle form passed');
  // Second real source. Room dimensions are labelled; all structural detail values below are explicitly assumed.
@@ -73,7 +74,7 @@ try{
  await page.locator('#furnitureSearch').fill('wardrobe');await page.locator('#lib .item').first().click();for(const [id,value]of Object.entries({fName:'Assumed 3 ft wardrobe',fW:'3 ft',fD:'2 ft',fX:'8 ft',fY:'5 ft'})){await page.locator('#'+id).fill(value);await page.locator('#'+id).press('Tab');}
  assert.equal(obstacleConflicts(await project()).length,0);assert.ok(Math.abs(roomArea((await project()).geometry.rooms[0])/.3048**2-(10+10/12)*8.5+2)<1e-8);
  if((await project()).referencePlan.visible)await page.locator('#toggleReference').evaluate(b=>b.click());await snapshot('bedroom-two');pass('Second official PDF: labelled small bedroom, two assumed columns, Twin XL and exports passed');
- for(const id of ['plan-b','plan-a','plan-c','plan-f']){const file='docs/verification/NA-complete-houses/'+id+'/complete-project.json',old=validate(JSON.parse(fs.readFileSync(file,'utf8')),CATALOGS);await page.locator('#fileIn').setInputFiles(file);await page.waitForTimeout(200);await ready();assert.deepEqual((await project()).geometry,old.geometry);assert.equal(await page.locator('#gObstacles rect').count(),0);assert.equal(await page.locator('#gRooms .room').count(),old.geometry.rooms.length);await page.screenshot({path:out+'/legacy-'+id+'.png'});}
+ for(const id of ['plan-b','plan-a','plan-c','plan-f']){const file='docs/verification/NA-complete-houses/'+id+'/complete-project.json',old=validate(JSON.parse(fs.readFileSync(file,'utf8')),CATALOGS);await uploadProject(page,file);await page.waitForTimeout(200);await ready();assert.deepEqual((await project()).geometry,old.geometry);assert.equal(await page.locator('#gObstacles rect').count(),0);assert.equal(await page.locator('#gRooms .room').count(),old.geometry.rooms.length);await page.screenshot({path:out+'/legacy-'+id+'.png'});}
  pass('Four complete houses import with exact original geometry and no phantom obstacles');
  assert.deepEqual(errors,[]);fs.writeFileSync(out+'/browser-results.json',JSON.stringify({passed:true,build:await page.locator('html').getAttribute('data-build'),checks,cases,errors,timestamp:new Date().toISOString()},null,2)+'\n');
 }catch(error){await page.screenshot({path:out+'/failure.png'}).catch(()=>{});fs.writeFileSync(out+'/failure-results.json',JSON.stringify({passed:false,error:error.message,checks,errors},null,2)+'\n');throw error;}finally{await context.close();}

@@ -11,12 +11,12 @@ export function createProjectStore(initial, {now = () => new Date().toISOString(
     transaction = snapshot();
     return transaction;
   }
-  function commit(before = transaction) {
+  function commit(before = transaction, {touch = true} = {}) {
     if (before === null) return false;
     transaction = null;
     if (before === snapshot()) return false;
     past.push(before); if (past.length > limit) past.shift(); future.length = 0;
-    project.updatedAt = now(); notify('commit'); return true;
+    if(touch)project.updatedAt = now(); notify('commit'); return true;
   }
   function cancel() {
     if (transaction === null) return false;
@@ -26,8 +26,8 @@ export function createProjectStore(initial, {now = () => new Date().toISOString(
     cancel(); begin();
     try { fn(project); return commit(); } catch (error) { cancel(); throw error; }
   }
-  function replaceProject(next) {
-    cancel(); begin(); project = clone(next); return commit();
+  function replaceProject(next, options) {
+    cancel(); begin(); project = clone(next); return commit(undefined, options);
   }
   function travel(from, to, reason) {
     cancel(); if (!from.length) return false;
@@ -35,6 +35,8 @@ export function createProjectStore(initial, {now = () => new Date().toISOString(
   }
   return {
     getProject: () => project,
+    // Persistence and downloads must never include a drag preview.
+    getCommittedProject: () => transaction === null ? project : JSON.parse(transaction),
     get canUndo() { return past.length > 0; }, get canRedo() { return future.length > 0; },
     get inTransaction() { return transaction !== null; },
     begin, commit, cancel, mutate, replaceProject,
@@ -43,7 +45,11 @@ export function createProjectStore(initial, {now = () => new Date().toISOString(
     setView(patch) {
       const before = JSON.stringify(project.view);
       Object.assign(project.view, clone(patch));
-      if (before !== JSON.stringify(project.view)) { project.updatedAt = now(); notify('preferences'); }
+      if (before !== JSON.stringify(project.view)) {
+        project.updatedAt = now();
+        if(transaction !== null){const committed=JSON.parse(transaction);committed.view=clone(project.view);committed.updatedAt=project.updatedAt;transaction=JSON.stringify(committed);}
+        notify('preferences');
+      }
     },
     subscribe(fn) { listeners.add(fn); return () => listeners.delete(fn); },
     dispose() { listeners.clear(); transaction = null; }

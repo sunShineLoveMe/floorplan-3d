@@ -1,0 +1,566 @@
+{
+  "format": "floorplan-3d",
+  "version": 2,
+  "id": "p-murumenl-fs2yv44q",
+  "name": "Kitchen and dining - assumed details",
+  "createdAt": "2026-10-03T03:45:00.849Z",
+  "updatedAt": "2026-10-03T04:08:19.953Z",
+  "units": {
+    "internal": "mm",
+    "display": "imperial"
+  },
+  "layout": {
+    "id": "layout-p-murumenl-fs2yv44q",
+    "name": "Layout A"
+  },
+  "view": {
+    "mode": "2d",
+    "layers": {
+      "dims": true,
+      "labels": true,
+      "furn": true,
+      "grid": false,
+      "bearing": false,
+      "wallSnap": true
+    }
+  },
+  "roomEditor": {
+    "kind": "house",
+    "floorSlab": true,
+    "height": 2800,
+    "wallThickness": 120,
+    "rooms": [
+      {
+        "id": "kitchen",
+        "name": "Kitchen",
+        "x": 0,
+        "y": 0,
+        "width": 2700,
+        "depth": 3000,
+        "notch": {
+          "corner": "bottom-left",
+          "width": 900,
+          "depth": 1200,
+          "shape": "diagonal",
+          "wallThickness": 120
+        },
+        "obstacles": [
+          {
+            "id": "column",
+            "name": "Test column",
+            "x": 2600,
+            "y": 0,
+            "width": 100,
+            "depth": 100,
+            "height": 2800
+          }
+        ]
+      },
+      {
+        "id": "dining",
+        "name": "Dining",
+        "x": 2820,
+        "y": 0,
+        "width": 2500,
+        "depth": 3000
+      }
+    ],
+    "openings": [
+      {
+        "id": "opening-0",
+        "roomId": "kitchen",
+        "wallId": "kitchen--right",
+        "type": "door",
+        "offset": 400,
+        "width": 900,
+        "height": 2000,
+        "hinge": "end",
+        "swing": "inward"
+      },
+      {
+        "id": "opening-1",
+        "roomId": "kitchen",
+        "wallId": "kitchen--top",
+        "type": "window",
+        "offset": 1400,
+        "width": 800,
+        "height": 1000,
+        "sill": 900
+      }
+    ]
+  },
+  "geometry": {
+    "height": 2800,
+    "origin": [
+      2660,
+      1500
+    ],
+    "bounds": {
+      "x": -1220,
+      "y": -1220,
+      "w": 7760,
+      "h": 5440
+    },
+    "rooms": [
+      {
+        "id": "kitchen",
+        "name": "Kitchen",
+        "mat": "wood",
+        "poly": [
+          [
+            0,
+            0
+          ],
+          [
+            2700,
+            0
+          ],
+          [
+            2700,
+            3000
+          ],
+          [
+            900,
+            3000
+          ],
+          [
+            0,
+            1800
+          ]
+        ],
+        "at": [
+          1260,
+          1600
+        ],
+        "usableAreaM2": 7.55
+      },
+      {
+        "id": "dining",
+        "name": "Dining",
+        "mat": "wood",
+        "poly": [
+          [
+            2820,
+            0
+          ],
+          [
+            5320,
+            0
+          ],
+          [
+            5320,
+            3000
+          ],
+          [
+            2820,
+            3000
+          ]
+        ],
+        "at": [
+          4070,
+          1500
+        ]
+      }
+    ],
+    "obstacles": [
+      {
+        "id": "column",
+        "roomId": "kitchen",
+        "name": "Test column",
+        "rect": [
+          2600,
+          0,
+          2700,
+          100
+        ],
+        "height": 2800
+      }
+    ],
+    "walls": [
+      [
+        -120,
+        -120,
+        1400,
+        0,
+        "n"
+      ],
+      [
+        2200,
+        -120,
+        2820,
+        0,
+        "n"
+      ],
+      [
+        2700,
+        0,
+        2820,
+        400,
+        "n"
+      ],
+      [
+        2700,
+        1300,
+        2820,
+        3000,
+        "n"
+      ],
+      [
+        900,
+        3000,
+        2820,
+        3120,
+        "n"
+      ],
+      [
+        -120,
+        0,
+        0,
+        1800,
+        "n"
+      ],
+      [
+        2820,
+        -120,
+        5440,
+        0,
+        "n"
+      ],
+      [
+        5320,
+        0,
+        5440,
+        3000,
+        "n"
+      ],
+      [
+        2820,
+        3000,
+        5440,
+        3120,
+        "n"
+      ]
+    ],
+    "wallIds": [
+      "kitchen--top",
+      "kitchen--top",
+      "kitchen--right",
+      "kitchen--right",
+      "kitchen--bottom",
+      "kitchen--left",
+      "dining--top",
+      "dining--right",
+      "dining--bottom"
+    ],
+    "diagonalWalls": [
+      {
+        "id": "kitchen--diagonal",
+        "roomId": "kitchen",
+        "poly": [
+          [
+            900,
+            3120
+          ],
+          [
+            840,
+            3120
+          ],
+          [
+            750,
+            3000
+          ],
+          [
+            900,
+            3000
+          ]
+        ],
+        "inner": [
+          [
+            900,
+            3000
+          ],
+          [
+            0,
+            1800
+          ]
+        ],
+        "height": 2800
+      },
+      {
+        "id": "kitchen--diagonal",
+        "roomId": "kitchen",
+        "poly": [
+          [
+            750,
+            3000
+          ],
+          [
+            0,
+            2000
+          ],
+          [
+            0,
+            1800
+          ],
+          [
+            900,
+            3000
+          ]
+        ],
+        "inner": [
+          [
+            900,
+            3000
+          ],
+          [
+            0,
+            1800
+          ]
+        ],
+        "height": 2800
+      },
+      {
+        "id": "kitchen--diagonal",
+        "roomId": "kitchen",
+        "poly": [
+          [
+            0,
+            2000
+          ],
+          [
+            -120,
+            1840
+          ],
+          [
+            -120,
+            1800
+          ],
+          [
+            0,
+            1800
+          ]
+        ],
+        "inner": [
+          [
+            900,
+            3000
+          ],
+          [
+            0,
+            1800
+          ]
+        ],
+        "height": 2800
+      }
+    ],
+    "floorPolygons": [
+      [
+        [
+          -120,
+          -120
+        ],
+        [
+          2820,
+          -120
+        ],
+        [
+          2820,
+          3120
+        ],
+        [
+          840,
+          3120
+        ],
+        [
+          -120,
+          1840
+        ]
+      ],
+      [
+        [
+          2820,
+          -120
+        ],
+        [
+          5440,
+          -120
+        ],
+        [
+          5440,
+          3120
+        ],
+        [
+          2820,
+          3120
+        ]
+      ]
+    ],
+    "doors": [
+      {
+        "id": "opening-0",
+        "wallId": "kitchen--right",
+        "rect": [
+          2700,
+          400,
+          2820,
+          1300
+        ],
+        "h": [
+          2700,
+          1300
+        ],
+        "c": [
+          0,
+          -1
+        ],
+        "o": [
+          -1,
+          0
+        ],
+        "len": 900,
+        "height": 2000,
+        "name": "opening-0",
+        "roomId": "kitchen"
+      }
+    ],
+    "windows": [
+      {
+        "id": "opening-1",
+        "wallId": "kitchen--top",
+        "rect": [
+          1400,
+          -120,
+          2200,
+          0
+        ],
+        "sill": 900,
+        "head": 1900,
+        "roomId": "kitchen"
+      }
+    ],
+    "slides": [],
+    "lintels": [],
+    "dimensions": [
+      {
+        "horizontal": true,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          2700
+        ]
+      },
+      {
+        "horizontal": false,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          3000
+        ]
+      },
+      {
+        "horizontal": true,
+        "at": -420,
+        "start": 2820,
+        "segments": [
+          2500
+        ]
+      },
+      {
+        "horizontal": false,
+        "at": 2400,
+        "start": 0,
+        "segments": [
+          3000
+        ]
+      }
+    ],
+    "walkStart": {
+      "position": [
+        1260,
+        1600
+      ],
+      "target": [
+        1260,
+        600
+      ]
+    },
+    "entry": null
+  },
+  "furniture": [
+    {
+      "type": "fridge",
+      "name": "Test fridge",
+      "cx": 1300,
+      "cy": 500,
+      "w": 600,
+      "d": 600,
+      "rot": 0,
+      "id": "furniture-0",
+      "color": "#ddd6c8",
+      "useZones": [
+        {
+          "id": "zone-0",
+          "kind": "appliance",
+          "side": "bottom",
+          "widthMm": 600,
+          "depthMm": 600,
+          "offsetMm": 0
+        }
+      ]
+    },
+    {
+      "type": "desk",
+      "name": "Test counter",
+      "cx": 1600,
+      "cy": 2200,
+      "w": 700,
+      "d": 500,
+      "rot": 30,
+      "id": "furniture-1",
+      "color": "#ddd6c8",
+      "useZones": [
+        {
+          "id": "zone-1",
+          "kind": "appliance",
+          "side": "bottom",
+          "widthMm": 600,
+          "depthMm": 600,
+          "offsetMm": 0
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "name": "Test dining table",
+      "cx": 4000,
+      "cy": 1500,
+      "w": 1000,
+      "d": 700,
+      "rot": 45,
+      "id": "furniture-2",
+      "color": "#ddd6c8",
+      "useZones": [
+        {
+          "id": "zone-2",
+          "kind": "appliance",
+          "side": "bottom",
+          "widthMm": 600,
+          "depthMm": 600,
+          "offsetMm": 0
+        }
+      ]
+    }
+  ],
+  "rooms": {
+    "kitchen": {
+      "name": "Kitchen",
+      "mat": "wood"
+    },
+    "dining": {
+      "name": "Dining",
+      "mat": "wood"
+    }
+  },
+  "demolished": [],
+  "measures": []
+}

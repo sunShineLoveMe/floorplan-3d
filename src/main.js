@@ -1,3 +1,5 @@
+import {createProjectProtection} from './ui/project-protection.js';
+import {createSaveRecovery} from './ui/save-recovery.js';
 import {createUseZones} from './ui/use-zones.js';
 import {createPassageClearance} from './ui/passage-clearance.js';
 import {createDoorClearance} from './ui/door-clearance.js';
@@ -24,7 +26,7 @@ import {LANG,tr,applyStaticLang,setLanguage} from './ui/i18n.js';
 /** The entry point assembles components. The store never imports a view. */
 export function createApplication(){
   const scope=createScope();
-  const storage=createStorage({getItem:k=>localStorage.getItem(k),setItem:(k,v)=>localStorage.setItem(k,v)},readProject);
+  const storage=createStorage({getItem:k=>localStorage.getItem(k),setItem:(k,v)=>localStorage.setItem(k,v),get length(){return localStorage.length;},key:i=>localStorage.key(i)},readProject);
   const loaded=storage.load(),store=createProjectStore(loaded.project || starterState()),ui=createEditorState(store);
   const notifications=createNotifications(),{toast}=notifications,drawers=createDrawers();
   let reference,clearance,passage,useZones;
@@ -39,7 +41,10 @@ export function createApplication(){
   library=createFurnitureLibrary({store,ui,viewport:editor.viewport,actions,drawers,is3D:mode.is3D,groundAt:(x,y)=>viewer?.groundAt(x,y),flyToRoom:id=>viewer?.flyToRoom(id),toast});
   toolbar=createToolbar({store,ui,viewport:editor.viewport,drawers,mode,undo,redo,clearLayout:actions.clearLayout,renderMeasure:editor.renderer.renderMeasure,toast,cancelInteraction:()=>{editor.cancel();viewer?.cancel();}});
   const downloads=createDownloads({store,ui,svg:$('#plan'),is3D:mode.is3D,shot:name=>viewer?.shot(name),prepare3D:async()=>{await setView('3d');if(!mode.is3D())throw Error('3D unavailable');}});
-  const files=createFileMenu({store,ui,downloads,isSwitching:()=>switching,toast,loaded,cancelInteraction:()=>{editor.cancel();viewer?.cancel();}});
+  let files;
+  const protection=createProjectProtection({store,exportProject:()=>files.exportProject(),toast});
+  const replace=(project,options)=>{editor.cancel();viewer?.cancel();ui.sel=null;store.replaceProject(project,options);};
+  files=createFileMenu({store,ui,downloads,isSwitching:()=>switching,toast,loaded,protection,cancelInteraction:()=>{editor.cancel();viewer?.cancel();}});
   roomEditor=createRoomEditor({store,ui,actions,cancelInteraction:()=>{editor.cancel();viewer?.cancel();},exportProject:files.exportProject,isSwitching:()=>switching,toast});
   actions.deleteOpening=roomEditor.remove;
   const locatePoint=async(point,roomId)=>{if(mode.is3D())await setView('2d');if(roomId)actions.select({kind:'room',id:roomId});drawers.drawer('panel',true);const v=editor.viewport.view,svg=$('#plan');v.x0=point[0]-svg.clientWidth/2/v.s;v.y0=point[1]-svg.clientHeight/2/v.s;editor.viewport.applyView();};
@@ -49,15 +54,12 @@ export function createApplication(){
   useZones=createUseZones({store,locate:locateFurniture,locatePoint});
   reference=createReferencePlan({store,fitView:editor.viewport.fitView,cancelInteraction:()=>{editor.cancel();viewer?.cancel();},toast});
   function update(){clearance?.update();passage?.update();useZones?.update();reference?.update();library.update();editor.viewport.applyView();editor.update();panel.update();roomEditor?.update();toolbar.update();viewer?.sync();}
-  let saveOK=null;
-  function syncSaveStatus(){const status=$('#saveStatus');status.textContent=saveOK===null?tr('仅本机存储','Device storage only'):saveOK?tr('已保存到此设备','Saved on this device'):tr('保存失败，请导出备份','Save failed — export a backup');status.dataset.state=saveOK===false?'error':'local';$('#fileSaveStatus').textContent=status.textContent;$('#fileSaveStatus').dataset.state=status.dataset.state;}
-  function save(){saveOK=storage.save(store.getProject()).ok;syncSaveStatus();if(!saveOK) scope.timeout(()=>toast(tr('保存失败，请导出项目文件备份','Save failed. Export a project file as a backup.')),0);}
+  const recovery=createSaveRecovery({store,storage,loaded,protection,readOriginal:key=>localStorage.getItem(key),download:downloads.download,exportProject:files.exportProject,replace,toast});
   let geometry=JSON.stringify(store.getProject().geometry);
   const unsubscribe=store.subscribe(({project,reason})=>{
     if(ui.sel?.kind==='opening' && !project.roomEditor?.openings.some(o=>o.id===ui.sel.id) || ui.sel?.kind==='wall' && !project.roomEditor) ui.sel=null;
     if(ui.sel?.kind==='furn' && !actions.getF(ui.sel.id) || ui.sel?.kind==='room' && !project.rooms[ui.sel.id]) ui.sel=null;
     if(geometry!==JSON.stringify(project.geometry)){geometry=JSON.stringify(project.geometry);ui.mA=ui.mCur=null;editor.viewport.fitView();}
-    if(reason!=='cancel') save();
     update();
     if(reason!=='cancel' && !switching && project.view.mode!==viewMode) setView(project.view.mode);
   });
@@ -87,7 +89,7 @@ export function createApplication(){
       toast(tr('3D 加载失败，仍可使用 2D 和项目文件；请检查网络或 WebGL 支持。','3D could not load. 2D and project files remain available. Check network or WebGL support.'));
     }finally{switching=false;if(!scope.disposed){document.body.classList.remove('busy');$('#viewSeg').setAttribute('aria-busy','false');$('#viewStatus').textContent='';}}
   }
-  function relang(){applyStaticLang();syncSaveStatus();library.update();update();viewer?.relang();}
+  function relang(){applyStaticLang();recovery.update();library.update();update();viewer?.relang();}
   $('#langBtn').onclick=()=>{setLanguage(LANG==='en'?'zh':'en');relang();};
   relang();editor.viewport.fitView();
   if(loaded.migrationError) toast(tr('旧项目已读取，但 v2 保存失败，请导出备份。','Old project loaded, but v2 could not be saved. Export a backup.'));
@@ -95,7 +97,7 @@ export function createApplication(){
   if(store.getProject().view.mode==='3d') setView('3d');
   function dispose(){
     if(scope.disposed)return;
-    unsubscribe();scope.dispose();reference.dispose();clearance.dispose();passage.dispose();useZones.dispose();roomEditor.dispose();editor.dispose();viewer?.dispose();library.dispose();panel.dispose();toolbar.dispose();files.dispose();downloads.dispose();notifications.dispose();store.dispose();
+    unsubscribe();scope.dispose();reference.dispose();clearance.dispose();passage.dispose();useZones.dispose();roomEditor.dispose();editor.dispose();viewer?.dispose();library.dispose();panel.dispose();toolbar.dispose();files.dispose();recovery.dispose();protection.dispose();downloads.dispose();notifications.dispose();store.dispose();
     $('#langBtn').onclick=null;document.body.classList.remove('m3d','busy');$('#stage').classList.remove('is3d','animating');
   }
   scope.on(window,'pagehide',dispose);

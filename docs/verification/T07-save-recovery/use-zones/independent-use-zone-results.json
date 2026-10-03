@@ -1,0 +1,612 @@
+{
+  "passed": true,
+  "library": "Shapely 2.1.2",
+  "productionGeometryImported": false,
+  "areaToleranceMm2": 0.001,
+  "caseCount": 7,
+  "zoneCount": 24,
+  "cases": [
+    {
+      "name": "cmu",
+      "passed": true,
+      "doorState": "open",
+      "zoneCount": 5,
+      "zones": [
+        {
+          "furnitureId": "fmursdasg27",
+          "zoneId": "uz-076e4111-c2cf-45f9-a96f-64199039a5a1",
+          "status": "conflict",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 103800.16529919993,
+          "conflicts": [
+            {
+              "kind": "floor",
+              "id": "net-floor",
+              "overlapMm2": 103800.16529919993
+            },
+            {
+              "kind": "wall",
+              "id": "wall-6",
+              "overlapMm2": 26026.031564800003
+            }
+          ],
+          "passed": true
+        },
+        {
+          "furnitureId": "fmursdasg27",
+          "zoneId": "uz-051b5b85-0cd5-4db1-bcb1-03e0d24b7981",
+          "status": "clear",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 0.0,
+          "conflicts": [],
+          "passed": true
+        },
+        {
+          "furnitureId": "fmursdb3228",
+          "zoneId": "uz-311d330e-722c-45c8-a1f2-10271024493f",
+          "status": "clear",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 0.0,
+          "conflicts": [],
+          "passed": true
+        },
+        {
+          "furnitureId": "fmursdbir29",
+          "zoneId": "uz-36fb727f-e5d8-4f2c-88d8-904e4f80e59f",
+          "status": "conflict",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 62699.74312959997,
+          "conflicts": [
+            {
+              "kind": "floor",
+              "id": "net-floor",
+              "overlapMm2": 62699.74312959997
+            },
+            {
+              "kind": "furniture",
+              "id": "fmursdccx32",
+              "overlapMm2": 80105.33475839962
+            },
+            {
+              "kind": "wall",
+              "id": "wall-13",
+              "overlapMm2": 62699.74312959997
+            }
+          ],
+          "passed": true
+        },
+        {
+          "furnitureId": "fmursdbvh30",
+          "zoneId": "uz-f1bccf74-880c-445d-b222-335cd8abd6a8",
+          "status": "conflict",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 323249.2662527999,
+          "conflicts": [
+            {
+              "kind": "floor",
+              "id": "net-floor",
+              "overlapMm2": 323249.2662527999
+            },
+            {
+              "kind": "wall",
+              "id": "wall-7",
+              "overlapMm2": 62699.74312959998
+            }
+          ],
+          "passed": true
+        }
+      ],
+      "errors": [],
+      "pdf": {
+        "pages": 1,
+        "rulerLengthPt": 283.5,
+        "legendPresent": true,
+        "physicalPrinterTested": false
+      },
+      "explicitKinds": [
+        "appliance",
+        "bed-side",
+        "cabinet",
+        "seating"
+      ],
+      "explicitSides": [
+        "bottom",
+        "left",
+        "right",
+        "top"
+      ],
+      "sourceSha256": {
+        "complete-project.json": "0d66a75b135fd18d5590e0a32d0f670299de8a4f998b6c5403eb1041e3ba5f40",
+        "zone-report.json": "a448039617d34b4de339c35f6b23e6aa22d98515349179c005aa560c9ae04101",
+        "print.pdf": "8b9dd4329d64e8a2e17dbabbf63b9c8081ab58362885a9392d57856720f641fe"
+      }
+    },
+    {
+      "name": "diagonal-compact-bedroom",
+      "passed": true,
+      "doorState": "open",
+      "zoneCount": 2,
+      "zones": [
+        {
+          "furnitureId": "furniture-0",
+          "zoneId": "zone-0",
+          "status": "conflict",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 189600.0,
+          "conflicts": [
+            {
+              "kind": "floor",
+              "id": "net-floor",
+              "overlapMm2": 189600.0
+            },
+            {
+              "kind": "wall",
+              "id": "wall-3",
+              "overlapMm2": 72000.0
+            }
+          ],
+          "passed": true
+        },
+        {
+          "furnitureId": "furniture-1",
+          "zoneId": "zone-1",
+          "status": "clear",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 0.0,
+          "conflicts": [],
+          "passed": true
+        }
+      ],
+      "errors": [],
+      "pdf": {
+        "verified": false,
+        "reason": "No print.pdf export"
+      },
+      "explicitKinds": [
+        "appliance"
+      ],
+      "explicitSides": [
+        "bottom"
+      ],
+      "sourceSha256": {
+        "complete-project.json": "708fe857b453d259c096d16d2f6926cd8c5f08c7b6c095cde915575ef4c3b9be",
+        "zone-report.json": "5f10eedb6b1e352f1b4cdfbcdc4f74f0c257b745067dfa5392e51a19cdee8441"
+      }
+    },
+    {
+      "name": "diagonal-jacobsen-kitchen",
+      "passed": true,
+      "doorState": "open",
+      "zoneCount": 3,
+      "zones": [
+        {
+          "furnitureId": "furniture-0",
+          "zoneId": "zone-0",
+          "status": "clear",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 0.0,
+          "conflicts": [],
+          "passed": true
+        },
+        {
+          "furnitureId": "furniture-1",
+          "zoneId": "zone-1",
+          "status": "conflict",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 8564.331699490698,
+          "conflicts": [
+            {
+              "kind": "floor",
+              "id": "net-floor",
+              "overlapMm2": 8564.331699490698
+            },
+            {
+              "kind": "wall",
+              "id": "wall-4",
+              "overlapMm2": 8564.331699490698
+            }
+          ],
+          "passed": true
+        },
+        {
+          "furnitureId": "furniture-2",
+          "zoneId": "zone-2",
+          "status": "clear",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 0.0,
+          "conflicts": [],
+          "passed": true
+        }
+      ],
+      "errors": [],
+      "pdf": {
+        "verified": false,
+        "reason": "No print.pdf export"
+      },
+      "explicitKinds": [
+        "appliance"
+      ],
+      "explicitSides": [
+        "bottom"
+      ],
+      "sourceSha256": {
+        "complete-project.json": "6167f4e7409f7368b6e085b1fc74366fc6c21916242811e24def0797abc11de3",
+        "zone-report.json": "090ba53ab617c7d1ce69ad0c517a8706bfadbac292582474e6ac137675c72a17"
+      }
+    },
+    {
+      "name": "diagonal-mirrored-entry",
+      "passed": true,
+      "doorState": "open",
+      "zoneCount": 2,
+      "zones": [
+        {
+          "furnitureId": "furniture-0",
+          "zoneId": "zone-0",
+          "status": "clear",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 0.0,
+          "conflicts": [],
+          "passed": true
+        },
+        {
+          "furnitureId": "furniture-1",
+          "zoneId": "zone-1",
+          "status": "clear",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 0.0,
+          "conflicts": [],
+          "passed": true
+        }
+      ],
+      "errors": [],
+      "pdf": {
+        "verified": false,
+        "reason": "No print.pdf export"
+      },
+      "explicitKinds": [
+        "appliance"
+      ],
+      "explicitSides": [
+        "bottom"
+      ],
+      "sourceSha256": {
+        "complete-project.json": "e0409c1ab213774585142a8dcdb7614cb39ff32e445cfed26c57904a4eb7f9a5",
+        "zone-report.json": "e53ba40dce463fe41b76d8b9d41326c01b6143da062cb5196e78564dfcb0f4a8"
+      }
+    },
+    {
+      "name": "diagonal-shared-kitchen-bath",
+      "passed": true,
+      "doorState": "open",
+      "zoneCount": 2,
+      "zones": [
+        {
+          "furnitureId": "furniture-0",
+          "zoneId": "zone-0",
+          "status": "clear",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 0.0,
+          "conflicts": [],
+          "passed": true
+        },
+        {
+          "furnitureId": "furniture-1",
+          "zoneId": "zone-1",
+          "status": "conflict",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 78176.62350913715,
+          "conflicts": [
+            {
+              "kind": "floor",
+              "id": "net-floor",
+              "overlapMm2": 78176.62350913715
+            },
+            {
+              "kind": "wall",
+              "id": "wall-8",
+              "overlapMm2": 71999.99999999972
+            }
+          ],
+          "passed": true
+        }
+      ],
+      "errors": [],
+      "pdf": {
+        "verified": false,
+        "reason": "No print.pdf export"
+      },
+      "explicitKinds": [
+        "appliance"
+      ],
+      "explicitSides": [
+        "bottom"
+      ],
+      "sourceSha256": {
+        "complete-project.json": "88cf4bf8dbbfac0b8c71f44c08759b147d3d28a26f6471372ec1a6d0f791178c",
+        "zone-report.json": "bd7c059c86f7cad2b1ff063384c80365c039575f818d73fb215c1fc848522b9a"
+      }
+    },
+    {
+      "name": "jacobsen",
+      "passed": true,
+      "doorState": "open",
+      "zoneCount": 5,
+      "zones": [
+        {
+          "furnitureId": "fmursdbz330",
+          "zoneId": "uz-6a7a64c0-213f-4a53-b08b-a8db216552f7",
+          "status": "conflict",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 182174.8442112001,
+          "conflicts": [
+            {
+              "kind": "floor",
+              "id": "net-floor",
+              "overlapMm2": 182174.8442112001
+            },
+            {
+              "kind": "wall",
+              "id": "wall-7",
+              "overlapMm2": 15813.28734719999
+            }
+          ],
+          "passed": true
+        },
+        {
+          "furnitureId": "fmursdbz330",
+          "zoneId": "uz-98f23c38-e9e9-4295-8f16-48dd637e7ab1",
+          "status": "clear",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 0.0,
+          "conflicts": [],
+          "passed": true
+        },
+        {
+          "furnitureId": "fmursdcam31",
+          "zoneId": "uz-f4547bea-780c-4955-b872-1ed2b7ae2cf0",
+          "status": "conflict",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 10366.881093120111,
+          "conflicts": [
+            {
+              "kind": "floor",
+              "id": "net-floor",
+              "overlapMm2": 10366.881093120111
+            },
+            {
+              "kind": "wall",
+              "id": "wall-4",
+              "overlapMm2": 7770.54356480006
+            },
+            {
+              "kind": "wall",
+              "id": "wall-8",
+              "overlapMm2": 2596.337528319992
+            }
+          ],
+          "passed": true
+        },
+        {
+          "furnitureId": "fmursdcks32",
+          "zoneId": "uz-5e76bde3-b2f6-4482-8c9a-f6e35a1e8280",
+          "status": "conflict",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 154924.54036479996,
+          "conflicts": [
+            {
+              "kind": "floor",
+              "id": "net-floor",
+              "overlapMm2": 154924.54036479996
+            },
+            {
+              "kind": "furniture",
+              "id": "fmursdcw533",
+              "overlapMm2": 63243.14059035648
+            },
+            {
+              "kind": "wall",
+              "id": "wall-12",
+              "overlapMm2": 37246.560000000034
+            },
+            {
+              "kind": "wall",
+              "id": "wall-8",
+              "overlapMm2": 43899.50356480002
+            },
+            {
+              "kind": "wall",
+              "id": "wall-9",
+              "overlapMm2": 54193.43999999998
+            }
+          ],
+          "passed": true
+        },
+        {
+          "furnitureId": "fmursdcw533",
+          "zoneId": "uz-13f1259e-2d35-4665-a532-c0240cf2981f",
+          "status": "conflict",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 38996.732799999976,
+          "conflicts": [
+            {
+              "kind": "floor",
+              "id": "net-floor",
+              "overlapMm2": 38996.732799999976
+            },
+            {
+              "kind": "wall",
+              "id": "wall-11",
+              "overlapMm2": 6724.849135999993
+            },
+            {
+              "kind": "wall",
+              "id": "wall-2",
+              "overlapMm2": 19666.21235519996
+            },
+            {
+              "kind": "wall",
+              "id": "wall-5",
+              "overlapMm2": 12605.671308799972
+            }
+          ],
+          "passed": true
+        }
+      ],
+      "errors": [],
+      "pdf": {
+        "pages": 1,
+        "rulerLengthPt": 283.5,
+        "legendPresent": true,
+        "physicalPrinterTested": false
+      },
+      "explicitKinds": [
+        "appliance",
+        "bed-side",
+        "cabinet",
+        "seating"
+      ],
+      "explicitSides": [
+        "bottom",
+        "left",
+        "right",
+        "top"
+      ],
+      "sourceSha256": {
+        "complete-project.json": "66a1f47d7e978b74070b10560f5b04262cba68879f852bbb866c35b1c067bebe",
+        "zone-report.json": "e56532b3e97ddcdc1c03fdeb8ce510925d3b1edf0470f0200f647b0b1490f24f",
+        "print.pdf": "e18ae829ef9e05090db721449d88d3d9548f9cd3d869ce4c72ee995b84aebc26"
+      }
+    },
+    {
+      "name": "plan-f",
+      "passed": true,
+      "doorState": "open",
+      "zoneCount": 5,
+      "zones": [
+        {
+          "furnitureId": "fmuqkqb5o20",
+          "zoneId": "uz-5394f21f-b28a-421d-82c4-8b6f1c5c7f64",
+          "status": "conflict",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 323249.26625279966,
+          "conflicts": [
+            {
+              "kind": "floor",
+              "id": "net-floor",
+              "overlapMm2": 323249.26625279966
+            },
+            {
+              "kind": "wall",
+              "id": "wall-12",
+              "overlapMm2": 94049.61469439989
+            }
+          ],
+          "passed": true
+        },
+        {
+          "furnitureId": "fmuqkqcaz25",
+          "zoneId": "uz-b253bdd2-fdee-45a5-bef2-afc5c042fce3",
+          "status": "conflict",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 83344.86312960021,
+          "conflicts": [
+            {
+              "kind": "floor",
+              "id": "net-floor",
+              "overlapMm2": 83344.86312960021
+            },
+            {
+              "kind": "furniture",
+              "id": "fmuqkqagp17",
+              "overlapMm2": 182174.84421120016
+            },
+            {
+              "kind": "wall",
+              "id": "wall-1",
+              "overlapMm2": 52157.55156479995
+            },
+            {
+              "kind": "wall",
+              "id": "wall-3",
+              "overlapMm2": 30967.67999999998
+            },
+            {
+              "kind": "wall",
+              "id": "wall-5",
+              "overlapMm2": 219.6315648000038
+            }
+          ],
+          "passed": true
+        },
+        {
+          "furnitureId": "fmuqkqcjf26",
+          "zoneId": "uz-2384db08-377a-4e51-a95c-fff3ed2e0e9d",
+          "status": "clear",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 0.0,
+          "conflicts": [],
+          "passed": true
+        },
+        {
+          "furnitureId": "fmuqkqcjf26",
+          "zoneId": "uz-e25ad91b-8e6c-49de-8a75-3362ad14791d",
+          "status": "clear",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 0.0,
+          "conflicts": [],
+          "passed": true
+        },
+        {
+          "furnitureId": "fmuqkqcsp27",
+          "zoneId": "uz-087d5e68-b69d-447a-88bb-140fdf7e07f1",
+          "status": "conflict",
+          "polygonDifferenceMm2": 0.0,
+          "outsideMm2": 351464.15066111984,
+          "conflicts": [
+            {
+              "kind": "floor",
+              "id": "net-floor",
+              "overlapMm2": 351464.15066111984
+            },
+            {
+              "kind": "wall",
+              "id": "wall-19",
+              "overlapMm2": 94049.61469440037
+            }
+          ],
+          "passed": true
+        }
+      ],
+      "errors": [],
+      "pdf": {
+        "pages": 1,
+        "rulerLengthPt": 283.5,
+        "legendPresent": true,
+        "physicalPrinterTested": false
+      },
+      "explicitKinds": [
+        "appliance",
+        "bed-side",
+        "cabinet",
+        "seating"
+      ],
+      "explicitSides": [
+        "bottom",
+        "left",
+        "right",
+        "top"
+      ],
+      "sourceSha256": {
+        "complete-project.json": "fb259cc19440910eaf43c62d20901af0579fc8911f9d9f3e517c7ab23128c62a",
+        "zone-report.json": "4d8ba8c21a222181eb19997f75d2cad733607ed8a7475c711f92d4f4b9e94759",
+        "print.pdf": "009ea02ba9f775b734ae84c71e666668de81768c7c2ad1f39f8dde821d594c4f"
+      }
+    }
+  ],
+  "limits": [
+    "Audits exported 2D planning rectangles and saved door assumptions only.",
+    "No height, cabinet hinge, real appliance travel or code compliance inference.",
+    "Does not validate native keyboard/joystick movement or rendering."
+  ]
+}

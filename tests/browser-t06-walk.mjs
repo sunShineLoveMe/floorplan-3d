@@ -1,3 +1,4 @@
+import {uploadProject} from './helpers/project-protection.mjs';
 import {createRequire} from 'node:module';import fs from 'node:fs';import assert from 'node:assert/strict';
 import {createRectangleProject,updateRectangleProject} from '../src/data/project-data.js';import {asHouse} from '../src/data/house-editor.js';import {passageSpace} from '../src/core/spatial-clearance.js';
 const {chromium}=createRequire(import.meta.url)(process.env.PLAYWRIGHT_MODULE||'playwright'),out=process.env.WALK_TEST_OUT||'docs/verification/T06-use-zones/walk',baseline=process.env.WALK_BASELINE==='1';fs.mkdirSync(out,{recursive:true});
@@ -12,7 +13,7 @@ try{
  for(const input of ['keyboard','joystick']){
   const c=await b.newContext({viewport:{width:1200,height:900},hasTouch:input==='joystick',isMobile:input==='joystick'}),page=await c.newPage();page.on('pageerror',e=>errors.push(e.message));await page.goto(process.env.TEST_URL||'http://127.0.0.1:8095/');await page.locator('#lib .item').first().waitFor();
   for(const kind of baseline?['sliding']:['floor','floor-open','wall','furniture','fixed','diagonal','swing','sliding','bifold']){
-   const p=model(kind),file=out+'/'+kind+'-input.json';fs.writeFileSync(file,JSON.stringify(p,null,2));await page.locator('#fileIn').setInputFiles(file);await page.waitForFunction(()=>!document.querySelector('#importJson').disabled);await page.waitForFunction(()=>!document.body.classList.contains('busy'));await page.locator('[data-view="3d"]').evaluate(e=>e.click());await page.waitForFunction(()=>!document.body.classList.contains('busy'));await page.locator('[data-mode="walk"]').evaluate(e=>e.click());await page.locator('#walkOverlay').click();
+   const p=model(kind),file=out+'/'+kind+'-input.json';fs.writeFileSync(file,JSON.stringify(p,null,2));await uploadProject(page,file);await page.waitForFunction(()=>!document.querySelector('#importJson').disabled);await page.waitForFunction(()=>!document.body.classList.contains('busy'));await page.locator('[data-view="3d"]').evaluate(e=>e.click());await page.waitForFunction(()=>!document.body.classList.contains('busy'));await page.locator('[data-mode="walk"]').evaluate(e=>e.click());await page.locator('#walkOverlay').click();
    const get=async()=>JSON.parse(await page.locator('#walkPositionStatus').getAttribute('data-position')),start=await get(),trace=[start],space=passageSpace(p,{includeDoors:false});
    if(input==='keyboard'){await page.waitForFunction(()=>!!document.pointerLockElement);await page.keyboard.down('w');await page.keyboard.down('Shift');}
    else{const r=await page.locator('#joy').boundingBox();assert.ok(r);await page.mouse.move(r.x+r.width/2,r.y+r.height/2);await page.mouse.down();await page.mouse.move(r.x+r.width/2,r.y+r.height/2-50,{steps:5});}

@@ -19,14 +19,14 @@ test('legacy backup happens before replacement and failed backup prevents replac
 });
 test('unreadable storage is backed up before overwrite, and legacy key is untouched',()=>{
  const adapter=memory({[STORE]:'broken',[LEGACY_STORE]:'old'}),service=createStorage(adapter,readProject,{now:()=>123});
- assert.equal(service.load().ok,false);assert.equal(service.save(defaultState()).ok,true);assert.equal(adapter.getItem(STORE+'-recovery-123'),'broken');assert.equal(adapter.getItem(LEGACY_STORE),'old');
+ assert.equal(service.load().ok,false);assert.equal(service.save(defaultState(),{recover:true}).ok,true);assert.equal(adapter.getItem(STORE+'-recovery-123'),'broken');assert.equal(adapter.getItem(LEGACY_STORE),'old');
 });
 test('backup failure blocks overwrite; quota failure is returned without false success',()=>{
  const adapter=memory({[STORE]:'broken'}),service=createStorage(adapter,readProject);service.load();
- adapter.setItem=()=>{throw Error('quota')};const result=service.save(defaultState());assert.equal(result.ok,false);assert.equal(adapter.getItem(STORE),'broken');
- const valid=memory({[STORE]:serializeProject(defaultState())}),saved=valid.getItem(STORE),s=createStorage(valid,readProject);s.load();valid.setItem=()=>{throw Error('quota')};assert.equal(s.save(defaultState()).ok,false);assert.equal(valid.getItem(STORE),saved);
+ adapter.setItem=()=>{throw Error('quota')};const result=service.save(defaultState(),{recover:true});assert.equal(result.ok,false);assert.equal(adapter.getItem(STORE),'broken');
+ const valid=memory({[STORE]:serializeProject(defaultState())}),saved=valid.getItem(STORE),s=createStorage(valid,readProject);s.load();valid.setItem=()=>{throw Error('quota')};assert.equal(s.save(defaultState(),{recover:true}).ok,false);assert.equal(valid.getItem(STORE),saved);
 });
 test('existing recovery keys are not overwritten and serialization preserves decimals',()=>{
- const adapter=memory({[STORE]:'bad',[STORE+'-recovery-1']:'earlier'}),s=createStorage(adapter,readProject,{now:()=>1});s.load();assert.equal(s.save(defaultState()).ok,true);assert.equal(adapter.getItem(STORE+'-recovery-1'),'earlier');assert.equal(adapter.getItem(STORE+'-recovery-1-1'),'bad');
+ const adapter=memory({[STORE]:'bad',[STORE+'-recovery-1']:'earlier'}),s=createStorage(adapter,readProject,{now:()=>1});s.load();assert.equal(s.save(defaultState(),{recover:true}).ok,true);assert.equal(adapter.getItem(STORE+'-recovery-1'),'earlier');assert.equal(adapter.getItem(STORE+'-recovery-1-1'),'bad');
  const p=defaultState();p.furniture[0].w=1234.56;assert.deepEqual(readProject(serializeProject(p)).project,p);
 });
