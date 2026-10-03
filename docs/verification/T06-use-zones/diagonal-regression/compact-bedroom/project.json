@@ -1,0 +1,400 @@
+{
+  "format": "floorplan-3d",
+  "version": 2,
+  "id": "p-muruaapi-242no6cc",
+  "name": "Clipped bedroom - synthetic test",
+  "createdAt": "2026-10-03T03:35:35.862Z",
+  "updatedAt": "2026-10-03T03:35:38.566Z",
+  "units": {
+    "internal": "mm",
+    "display": "imperial"
+  },
+  "layout": {
+    "id": "layout-p-muruaapi-242no6cc",
+    "name": "Layout A"
+  },
+  "view": {
+    "mode": "2d",
+    "layers": {
+      "dims": true,
+      "labels": true,
+      "furn": true,
+      "grid": false,
+      "bearing": false,
+      "wallSnap": true
+    }
+  },
+  "roomEditor": {
+    "kind": "house",
+    "floorSlab": true,
+    "height": 2800,
+    "wallThickness": 120,
+    "rooms": [
+      {
+        "id": "room-1",
+        "x": 0,
+        "y": 0,
+        "width": 3500,
+        "depth": 3000,
+        "wallWidths": {
+          "top": 120,
+          "right": 120,
+          "bottom": 120,
+          "left": 120
+        },
+        "notch": {
+          "corner": "bottom-right",
+          "width": 1200,
+          "depth": 700,
+          "shape": "diagonal",
+          "wallThickness": 100
+        },
+        "obstacles": [
+          {
+            "id": "obstacle-fmuruabrm4",
+            "name": "Test column",
+            "width": 100,
+            "depth": 100,
+            "x": 3400,
+            "y": 0,
+            "height": 2800
+          }
+        ]
+      }
+    ],
+    "openings": [
+      {
+        "id": "opening-fmuruaaxk1",
+        "type": "door",
+        "wallId": "room-1--top",
+        "offset": 1900,
+        "width": 700,
+        "height": 2000,
+        "roomId": "room-1",
+        "hinge": "end",
+        "swing": "inward"
+      },
+      {
+        "id": "opening-fmuruab5m2",
+        "type": "window",
+        "wallId": "room-1--left",
+        "offset": 600,
+        "width": 1200,
+        "height": 1000,
+        "roomId": "room-1",
+        "sill": 900
+      }
+    ]
+  },
+  "geometry": {
+    "height": 2800,
+    "origin": [
+      1750,
+      1500
+    ],
+    "bounds": {
+      "x": -1220,
+      "y": -1220,
+      "w": 5940,
+      "h": 5440
+    },
+    "rooms": [
+      {
+        "id": "room-1",
+        "name": "Bedroom",
+        "mat": "wood",
+        "poly": [
+          [
+            0,
+            0
+          ],
+          [
+            3500,
+            0
+          ],
+          [
+            3500,
+            2300
+          ],
+          [
+            2300,
+            3000
+          ],
+          [
+            0,
+            3000
+          ]
+        ],
+        "at": [
+          1860,
+          1700
+        ],
+        "usableAreaM2": 10.07
+      }
+    ],
+    "obstacles": [
+      {
+        "id": "obstacle-fmuruabrm4",
+        "roomId": "room-1",
+        "name": "Test column",
+        "rect": [
+          3400,
+          0,
+          3500,
+          100
+        ],
+        "height": 2800
+      }
+    ],
+    "walls": [
+      [
+        -120,
+        -120,
+        1900,
+        0,
+        "n"
+      ],
+      [
+        2600,
+        -120,
+        3620,
+        0,
+        "n"
+      ],
+      [
+        3500,
+        0,
+        3620,
+        2300,
+        "n"
+      ],
+      [
+        -120,
+        3000,
+        2300,
+        3120,
+        "n"
+      ],
+      [
+        -120,
+        0,
+        0,
+        600,
+        "n"
+      ],
+      [
+        -120,
+        1800,
+        0,
+        3000,
+        "n"
+      ]
+    ],
+    "wallIds": [
+      "room-1--top",
+      "room-1--top",
+      "room-1--right",
+      "room-1--bottom",
+      "room-1--left",
+      "room-1--left"
+    ],
+    "diagonalWalls": [
+      {
+        "id": "room-1--diagonal",
+        "roomId": "room-1",
+        "poly": [
+          [
+            3620,
+            2300
+          ],
+          [
+            3620,
+            2345.770366578748
+          ],
+          [
+            2498.4634855635686,
+            3000
+          ],
+          [
+            2300,
+            3000
+          ],
+          [
+            3500,
+            2300
+          ]
+        ],
+        "inner": [
+          [
+            3500,
+            2300
+          ],
+          [
+            2300,
+            3000
+          ]
+        ],
+        "height": 2800
+      },
+      {
+        "id": "room-1--diagonal",
+        "roomId": "room-1",
+        "poly": [
+          [
+            2498.4634855635686,
+            3000
+          ],
+          [
+            2300,
+            3115.7703665787485
+          ],
+          [
+            2300,
+            3000
+          ]
+        ],
+        "inner": [
+          [
+            3500,
+            2300
+          ],
+          [
+            2300,
+            3000
+          ]
+        ],
+        "height": 2800
+      }
+    ],
+    "floorPolygons": [
+      [
+        [
+          -120,
+          -120
+        ],
+        [
+          3620,
+          -120
+        ],
+        [
+          3620,
+          2345.770366578748
+        ],
+        [
+          2292.7491998492833,
+          3120
+        ],
+        [
+          -120,
+          3120
+        ]
+      ]
+    ],
+    "doors": [
+      {
+        "id": "opening-fmuruaaxk1",
+        "wallId": "room-1--top",
+        "rect": [
+          1900,
+          -120,
+          2600,
+          0
+        ],
+        "h": [
+          2600,
+          0
+        ],
+        "c": [
+          -1,
+          0
+        ],
+        "o": [
+          0,
+          1
+        ],
+        "len": 700,
+        "height": 2000,
+        "name": "opening-fmuruaaxk1",
+        "roomId": "room-1"
+      }
+    ],
+    "windows": [
+      {
+        "id": "opening-fmuruab5m2",
+        "wallId": "room-1--left",
+        "rect": [
+          -120,
+          600,
+          0,
+          1800
+        ],
+        "sill": 900,
+        "head": 1900,
+        "roomId": "room-1"
+      }
+    ],
+    "slides": [],
+    "lintels": [],
+    "dimensions": [
+      {
+        "horizontal": true,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          3500
+        ]
+      },
+      {
+        "horizontal": false,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          3000
+        ]
+      }
+    ],
+    "walkStart": {
+      "position": [
+        1860,
+        1700
+      ],
+      "target": [
+        1860,
+        700
+      ]
+    },
+    "entry": null
+  },
+  "furniture": [
+    {
+      "id": "fmuruabxx5",
+      "type": "bed",
+      "name": "Twin XL - test mattress",
+      "cx": 1000,
+      "cy": 1700,
+      "w": 965.1999999999999,
+      "d": 2032,
+      "rot": 0,
+      "color": "#c9d6df"
+    },
+    {
+      "id": "fmuruac966",
+      "type": "desk",
+      "name": "Test desk",
+      "cx": 2700,
+      "cy": 1600,
+      "w": 600,
+      "d": 450,
+      "rot": 45,
+      "color": "#e2cfb4"
+    }
+  ],
+  "rooms": {
+    "room-1": {
+      "name": "Bedroom",
+      "mat": "wood"
+    }
+  },
+  "demolished": [],
+  "measures": []
+}

@@ -1,3 +1,4 @@
+import {USE_ZONE_KINDS,USE_ZONE_SIDES} from '../core/use-zones.js';
 import {validateHouseEditor,generateHouseGeometry} from './house-editor.js';
 import {validateReference} from './reference-plan.js';
 import {validateRoomEditor,generateRoomGeometry,geometryMatches,GEOMETRY_TOLERANCE} from './room-editor.js';
@@ -67,6 +68,18 @@ import {validateRoomEditor,generateRoomGeometry,geometryMatches,GEOMETRY_TOLERAN
     Object.values(p.rooms).forEach(r=>check(r.labelHidden===undefined||typeof r.labelHidden==='boolean','room label visibility'));
     unique(list(p.furniture,'furniture'),'furniture IDs');
     p.furniture.forEach(f=>check(catalogs.types.includes(f.type) && str(f.name) && positive(f.w) && positive(f.d) && (f.height===undefined || positive(f.height)) && [f.cx,f.cy,f.rot].every(num) && typeof f.color==='string' && /^#[0-9a-f]{6}$/i.test(f.color),'furniture'));
+    if(p.clearance!==undefined){
+      const c=p.clearance;check(obj(c)&&num(c.targetMm)&&c.targetMm>=100&&c.targetMm<=3000&&['open','closed'].includes(c.doorState),'clearance settings');
+      for(const key of ['fromRoomId','toRoomId'])check(c[key]===undefined||id(c[key]),'clearance room');
+    }
+    for(const f of p.furniture)if(f.clearance!==undefined){
+      const c=f.clearance;check(obj(c)&&['solid','ground'].includes(c.mode),'furniture clearance mode');
+      check(c.containerId===undefined||id(c.containerId)&&c.containerId!==f.id,'furniture container');
+    }
+    for(const f of p.furniture)if(f.useZones!==undefined){
+      const zones=list(f.useZones,'furniture use zones',16);unique(zones,'use zone IDs');
+      zones.forEach(z=>check(obj(z)&&USE_ZONE_KINDS.includes(z.kind)&&USE_ZONE_SIDES.includes(z.side)&&['widthMm','depthMm'].every(k=>num(z[k])&&z[k]>=1&&z[k]<=10000)&&num(z.offsetMm)&&Math.abs(z.offsetMm)<=10000,'use zone assumption'));
+    }
     const walls=list(p.demolished,'demolished');
     check(new Set(walls).size===walls.length && walls.every(x=>typeof x==='string' && /^w\d+$/.test(x) && g.walls[+x.slice(1)] && g.walls[+x.slice(1)][4]!=='b'),'demolished walls');
     list(p.measures,'measures').forEach(m=>check(obj(m.a) && obj(m.b) && [m.a.x,m.a.y,m.b.x,m.b.y].every(num),'measurement'));

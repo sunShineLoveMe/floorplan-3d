@@ -1,0 +1,195 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "id": "plan-b",
+      "rooms": 11,
+      "furniture": 15,
+      "route": {
+        "targetMm": 900,
+        "stepMm": 50,
+        "doorState": "open",
+        "fromRoomId": "dining",
+        "toRoomId": "living",
+        "start": [
+          1800,
+          2452.4
+        ],
+        "end": [
+          3200,
+          7152.4
+        ],
+        "status": "route-found",
+        "path": [
+          [
+            1800,
+            2452.4
+          ],
+          [
+            2950,
+            2452.4
+          ],
+          [
+            2950,
+            3752.4
+          ],
+          [
+            3000,
+            3752.4
+          ],
+          [
+            3000,
+            3802.4
+          ],
+          [
+            3050,
+            3802.4
+          ],
+          [
+            3050,
+            3852.4
+          ],
+          [
+            3100,
+            3852.4
+          ],
+          [
+            3100,
+            3902.4
+          ],
+          [
+            3150,
+            3902.4
+          ],
+          [
+            3150,
+            3952.4
+          ],
+          [
+            3200,
+            3952.4
+          ],
+          [
+            3200,
+            7152.4
+          ]
+        ]
+      },
+      "allSolidFurnitureCentersBlocked": true,
+      "geometryUnchanged": true
+    },
+    {
+      "id": "plan-a",
+      "rooms": 15,
+      "furniture": 16,
+      "route": {
+        "targetMm": 900,
+        "stepMm": 50,
+        "doorState": "open",
+        "fromRoomId": "bed1",
+        "toRoomId": "living",
+        "start": [
+          1352.4,
+          3302.4
+        ],
+        "end": [
+          9452.4,
+          6052.4
+        ],
+        "status": "no-route",
+        "reason": "sampled-disconnection",
+        "frontier": [
+          3052.4,
+          3352.4
+        ],
+        "nearby": [
+          {
+            "kind": "wall",
+            "id": "wall-2",
+            "name": "Wall",
+            "distanceMm": 464.7588622070589
+          },
+          {
+            "kind": "door",
+            "id": "bed1-door",
+            "name": "Swing door · Bedroom 1",
+            "roomId": "bed1",
+            "distanceMm": 488.39999999999964
+          },
+          {
+            "kind": "wall",
+            "id": "wall-9",
+            "name": "Wall",
+            "distanceMm": 496.1407864709373
+          },
+          {
+            "kind": "door",
+            "id": "bath-door",
+            "name": "Swing door · Bath",
+            "roomId": "bath",
+            "distanceMm": 563.3709967685593
+          }
+        ],
+        "path": []
+      },
+      "allSolidFurnitureCentersBlocked": true,
+      "geometryUnchanged": true
+    },
+    {
+      "id": "plan-c",
+      "rooms": 14,
+      "furniture": 17,
+      "route": {
+        "targetMm": 900,
+        "stepMm": 50,
+        "doorState": "open",
+        "fromRoomId": "bed2",
+        "toRoomId": "living",
+        "start": [
+          2752.4,
+          1852.4
+        ],
+        "end": [
+          7102.4,
+          8602.4
+        ],
+        "status": "no-route",
+        "reason": "sampled-disconnection",
+        "frontier": [
+          3102.4,
+          3002.4
+        ],
+        "nearby": [
+          {
+            "kind": "wall",
+            "id": "wall-2",
+            "name": "Wall",
+            "distanceMm": 479.5329811389411
+          },
+          {
+            "kind": "door",
+            "id": "bed2-door",
+            "name": "Swing door · Bedroom 2",
+            "roomId": "bed2",
+            "distanceMm": 481.8000000000002
+          },
+          {
+            "kind": "wall",
+            "id": "wall-3",
+            "name": "Wall",
+            "distanceMm": 643.4680100828637
+          },
+          {
+            "kind": "wall",
+            "id": "wall-36",
+            "name": "Wall",
+            "distanceMm": 644.2481509480647
+          }
+        ],
+        "path": []
+      },
+      "allSolidFurnitureCentersBlocked": true,
+      "geometryUnchanged": true
+    }
+  ]
+}

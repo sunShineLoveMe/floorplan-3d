@@ -97,12 +97,15 @@ function build(){
       for(const end of [0,1])for(const panel of [0,1]){
         const sign=end?-1:1,along=origin+(end?L:0)+sign*L*(panel ? .09 : .03),depth=normal*L*.12;
         const leaf=box(L/4,ph,.025,mat('#efe6d8', {roughness:.5}));leaf.position.set(v?wx(face*1000+depth*1000):wx(along*1000),ph/2,v?wz(along*1000):wz(face*1000+depth*1000));leaf.rotation.y=(v?0:-Math.PI/2)+(panel?-.245:.245)*sign*normal;leaf.castShadow=true;archUp.add(leaf);
+        const a=leaf.rotation.y,c=Math.cos(a),sn=Math.sin(a);
+        colliders.push({poly:[[-L/8,-.0125],[L/8,-.0125],[L/8,.0125],[-L/8,.0125]].map(([x,z])=>[leaf.position.x+x*c+z*sn,leaf.position.z-x*sn+z*c])});
       }
       return;
     }
     [[-1, -.02], [1, .02]].forEach(([s, off]) => {
       const c = s < 0 ? -L/2 + pl/2 : L/2 - pl/2, x = v ? wx((x0+x1)/2) + off : wx(x0) + L/2 + c, z = v ? wz(y0) + L/2 + c : wz((y0+y1)/2) + off;
       const p = new THREE.Mesh(new THREE.BoxGeometry(v ? .02 : pl, ph, v ? pl : .02), style==='sliding'?mat('#efe6d8', {roughness:.5}):glassMat); p.position.set(x, ph/2, z); archUp.add(p);
+      colliders.push(v?[x-.02,z-pl/2-.02,x+.02,z+pl/2+.02]:[x-pl/2-.02,z-.02,x+pl/2+.02,z+.02]);
       [ph - .03, .03].forEach(y => { const fr = new THREE.Mesh(new THREE.BoxGeometry(v ? .04 : pl, .05, v ? pl : .04), frameMat); fr.position.set(x, y, z); archUp.add(fr); });
       [-1, 1].forEach(e => { const fr = new THREE.Mesh(new THREE.BoxGeometry(.04, ph, .04), frameMat); fr.position.set(v ? x : x + e*pl/2, ph/2, v ? z + e*pl/2 : z); archUp.add(fr); });
     });

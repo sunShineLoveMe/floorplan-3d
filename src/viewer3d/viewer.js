@@ -1,4 +1,5 @@
-import {formatAreaM2} from '../core/units.js';
+import {passageSpace,nearestStandingPoint,pointInPolygon,segmentDistance,sweptCircleIntersectsPolygon} from '../core/spatial-clearance.js';
+import {formatAreaM2,formatLengthMm} from '../core/units.js';
 import {circleIntersectsPolygon} from '../core/polygons.js';
 import {$} from '../ui/dom.js';
 import {createNavigation} from './navigation.js';
@@ -29,6 +30,7 @@ let inited = false, active = false, raf = 0, anim = null, fly = null;
 let cancelGesture=()=>{};
 const modalOpen=()=>!!document.querySelector('dialog[open]');
 let renderer, labelRenderer, scene, camera, orbit, walkCtl, hemi, sun, ground, glassMat, wallMat, capMat, frameMat;
+let walkSpace,walkSignature,positionStamp=0;
 let archFloor, archUp, furnG, labelG, lampG, colliders = [], selKey = null, selHelper = null;
 let sigArch = '', sigFurn = '', sigLabels = '', grow = 1, furnGrow = 1;
 const doors = [], keys = {};
@@ -84,7 +86,7 @@ function init(){
 
   const cv = renderer.domElement; let downAt = null, look = null;
   scope.on(cv, 'pointerdown', e => {
-    if(modalOpen()) return;
+    if(!active || anim || !stage.classList.contains('is3d') || modalOpen()) return;
     downAt = [e.clientX, e.clientY]; closeDrawers();
     if (touchWalk && !look){ look = {id:e.pointerId, x:e.clientX, y:e.clientY}; cv.setPointerCapture(e.pointerId); }
   });
@@ -123,7 +125,7 @@ function init(){
     if(fdrag) endF({pointerId:fdrag.pid,type:'pointercancel'});
     downAt=null;
     if(look && cv.hasPointerCapture(look.id)) cv.releasePointerCapture(look.id);
-    look=null;
+    look=null;joy.x=joy.y=0;joy.id=null;$('#joy i').style.transform='';
     for(const key of Object.keys(keys)) delete keys[key];
   };
   scope.on(window,'blur',cancelGesture);
@@ -136,7 +138,7 @@ function init(){
       if (tap){ const h = pick(e); if (h?.door && h.dist < 3.5) h.door.open = !h.door.open; }   // 漫游时点门开关
       return;
     }
-    if (anim || opt.mode !== 'orbit' || !tap) return;
+    if (!active || !stage.classList.contains('is3d') || anim || opt.mode !== 'orbit' || !tap) return;
     const h = pick(e);
     if (h?.door) h.door.open = !h.door.open;
     else if (h?.fid) select({kind:'furn', id:h.fid});
@@ -164,9 +166,9 @@ function buildFurn(){
 function buildLabels(){
   labelG.children.slice().forEach(o => { o.element.remove(); labelG.remove(o); });
   store.getProject().geometry.rooms.filter(r => r.at&&!store.getProject().rooms[r.id].labelHidden).forEach(r => {
-    const el = document.createElement('div'); el.className = 'rlabel';
+    const el = document.createElement('div'); el.className = 'rlabel'; el.dataset.roomId=r.id;
     el.innerHTML = `${esc(nm(store.getProject().rooms[r.id].name))}<small>${formatAreaM2(roomArea(r),store.getProject().units.display)}</small>`;
-    const o = new CSS2DObject(el); o.position.set(wx(r.at[0]), opt.cut + .15, wz(r.at[1])); o.visible = labelG.visible; labelG.add(o);
+    const o = new CSS2DObject(el); o.position.set(wx(r.at[0]), opt.cut + .15, wz(r.at[1])); o.visible = labelG.visible; o.userData.roomId=r.id; o.userData.labelArea=roomArea(r); labelG.add(o);
   });
 
 }
@@ -181,6 +183,8 @@ function sync(force){
   if (force || a !== sigArch){ sigArch = a; buildArch(); }
   if (force || f !== sigFurn){ sigFurn = f; buildFurn(); }
   if (force || l !== sigLabels){ sigLabels = l; buildLabels(); }
+  const walkKey=JSON.stringify([store.getProject().geometry,store.getProject().furniture,store.getProject().demolished]);
+  if(walkKey!==walkSignature){walkSignature=walkKey;walkSpace=passageSpace(store.getProject(),{includeDoors:false});}
   const moved=oldOrigin[0]!==OX || oldOrigin[1]!==OY || oldH!==H;
   if(moved && !anim){
     fly=null;
@@ -192,6 +196,19 @@ function sync(force){
 
 // CSS2DRenderer 只看标签自身的 visible，不继承父级，所以逐个设置
 function showLabels(v){ labelG.visible = v; labelG.children.forEach(o => o.visible = v); }
+// Projection changes with camera, viewport, names and units; keep readable labels in screen space.
+function layoutLabels(){
+  if(!labelG.visible)return;
+  const viewport=host.getBoundingClientRect(),kept=[];
+  const labels=[...labelG.children].sort((a,b)=>Number(ui.sel?.kind==='room'&&b.userData.roomId===ui.sel.id)-Number(ui.sel?.kind==='room'&&a.userData.roomId===ui.sel.id)||b.userData.labelArea-a.userData.labelArea);
+  for(const label of labels){
+    const el=label.element,r=el.getBoundingClientRect();
+    const fits=label.visible&&el.style.display!=='none'&&r.width>0&&r.left>=viewport.left&&r.top>=viewport.top&&r.right<=viewport.right&&r.bottom<=viewport.bottom;
+    const overlaps=kept.some(b=>r.left<b.right+4&&r.right>b.left-4&&r.top<b.bottom+4&&r.bottom>b.top-4);
+    el.style.visibility=fits&&!overlaps?'visible':'hidden';
+    if(fits&&!overlaps)kept.push(r);
+  }
+}
 function applyGrow(){
   if (!inited) return;
   archUp.scale.y = Math.max(grow, .001);
@@ -319,8 +336,8 @@ function updateSel(){
 
 /* ======================= 漫游 ======================= */
 // 触屏漫游：左下虚拟摇杆移动，在画面上拖动转向（iPad 不支持鼠标指针锁定）
-const HINT_ORBIT = () => COARSE ? tr('单指旋转 · 双指缩放 / 平移 · 点选家具后可拖动摆放 · 点门开关', '1 finger orbits · 2 fingers zoom / pan · select furniture to drag it · tap doors to open')
-  : tr('左键旋转 · 右键平移 · 滚轮缩放 · 选中家具后拖动可摆放 · 点击门开关', 'Left-drag orbits · right-drag pans · scroll zooms · select furniture to drag it · click doors to open');
+const HINT_ORBIT = () => (COARSE ? tr('单指旋转 · 双指缩放 / 平移 · 点选家具后可拖动摆放 · 点门开关', '1 finger orbits · 2 fingers zoom / pan · select furniture to drag it · tap doors to open')
+  : tr('左键旋转 · 右键平移 · 滚轮缩放 · 选中家具后拖动可摆放 · 点击门开关', 'Left-drag orbits · right-drag pans · scroll zooms · select furniture to drag it · click doors to open'))+' · '+tr('放大可显示更多房间标签','Zoom in to see more room labels');
 const HINT_TOUCHWALK = () => tr('左下摇杆移动 · 拖动画面转向 · 点门开关', 'Joystick moves · drag to look · tap doors to open');
 const HINT_WALK = () => tr('WASD 移动 · 鼠标转向 · Shift 快走 · E 开关门 · Esc 暂停', 'WASD moves · mouse looks · Shift runs · E opens doors · Esc pauses');
 function syncHint3d(){ $('#hint3d').textContent = opt.mode === 'orbit' ? HINT_ORBIT() : touchWalk ? HINT_TOUCHWALK() : HINT_WALK(); }
@@ -351,24 +368,34 @@ function bindJoystick(){
   scope.on(el, 'pointerdown', e => { e.preventDefault(); joy.id = e.pointerId; el.setPointerCapture(e.pointerId); upd(e); });
   scope.on(el, 'pointermove', e => { if (e.pointerId === joy.id) upd(e); });
   const end = e => { if (e.pointerId !== joy.id) return; joy.id = null; joy.x = joy.y = 0; knob.style.transform = ''; };
-  scope.on(el, 'pointerup', end); scope.on(el, 'pointercancel', end);
+  scope.on(el, 'pointerup', end); scope.on(el, 'pointercancel', end); scope.on(el, 'lostpointercapture', end);
 }
 function setMode(m){
   if (anim) return;
   cancelGesture();
   opt.mode = m; syncModeBtns();
   if (m === 'walk'){
+    $('#walkStartStatus').textContent='';
     select(null);
     if (opt.cut < H){ opt.cut = H; syncCutBtns(); sync(); }
     orbit.enabled = false; fly = null;
-    const start=store.getProject().geometry.walkStart || {position:store.getProject().geometry.origin,target:[store.getProject().geometry.origin[0]+1000,store.getProject().geometry.origin[1]]};
+    const start={...(store.getProject().geometry.walkStart || {position:store.getProject().geometry.origin,target:[store.getProject().geometry.origin[0]+1000,store.getProject().geometry.origin[1]]})};
+    const project=store.getProject(),space=walkSpace||passageSpace(project,{includeDoors:false}),preferred=start.position;
+    const rooms=[...project.geometry.rooms].sort((a,b)=>Number(pointInPolygon(preferred,b.poly))-Number(pointInPolygon(preferred,a.poly)));
+    let standing=null;
+    for(const room of rooms){standing=nearestStandingPoint(space,room,220,preferred,50,p=>!blocked(wx(p[0]),wz(p[1])));if(standing)break;}
+    if(!standing){opt.mode='orbit';orbit.enabled=true;syncModeBtns();$('#hint3d').textContent=tr('未找到安全漫游起点，请调整家具或空间。','No clear walk start found. Adjust furniture or space.');return;}
+    const moved=Math.hypot(standing[0]-preferred[0],standing[1]-preferred[1])>1;
+    $('#walkStartStatus').textContent=(moved?tr('已选择避开家具的漫游起点：','Clear walk start selected: '):tr('漫游起点：','Walk start: '))+standing.map(n=>formatLengthMm(n,project.units.display)).join(', ');
     const eye=Math.min(1.6,H*.8);
+    start.position=standing;
     camera.position.set(wx(start.position[0]), eye, wz(start.position[1])); camera.lookAt(wx(start.target[0]), eye*.94, wz(start.target[1]));
+    updateWalkPosition();
     $('#walkOverlay').style.display = 'flex';
     syncHint3d();
   } else {
     walkCtl.unlock(); stopTouchWalk(); orbit.enabled = true;
-    $('#walkOverlay').style.display = 'none'; $('#cross').style.display = 'none';
+    $('#walkOverlay').style.display = 'none'; $('#cross').style.display = 'none';$('#walkPositionStatus').textContent='';
     syncHint3d();
     orbit.target.set(0, 0, 0); flyTo(isoWhole());
   }
@@ -376,6 +403,7 @@ function setMode(m){
   archUp.traverse(o => { if (o.userData.walkOnly) o.visible = m === 'walk'; });
 }
 function blocked(x, z, r = .22){
+  if(walkSpace&&!walkSpace.free([x*1000+OX,z*1000+OY],r*1000))return true;
   for (const collider of colliders){
     if(collider.poly){if(circleIntersectsPolygon(x,z,r,collider.poly))return true;}
     else{const [x0,z0,x1,z1]=collider;if(x>x0-r&&x<x1+r&&z>z0-r&&z<z1+r)return true;}
@@ -383,9 +411,19 @@ function blocked(x, z, r = .22){
   for (const d of doors){
     const a = d.pivot.rotation.y, px = d.pivot.position.x, pz = d.pivot.position.z, ex = px + Math.cos(a)*d.length, ez = pz - Math.sin(a)*d.length;
     const t = clamp01(((x-px)*(ex-px) + (z-pz)*(ez-pz)) / ((ex-px)**2 + (ez-pz)**2));
-    if (Math.hypot(x - (px + t*(ex-px)), z - (pz + t*(ez-pz))) < r*.8) return true;
+    if (Math.hypot(x - (px + t*(ex-px)), z - (pz + t*(ez-pz))) < r+.02) return true;
   }
   return false;
+}
+function updateWalkPosition(){
+ const status=$('#walkPositionStatus'),point=[camera.position.x*1000+OX,camera.position.z*1000+OY];
+ status.dataset.position=JSON.stringify(point);status.textContent=tr('位置：','Position: ')+point.map(n=>formatLengthMm(n,store.getProject().units.display)).join(', ');
+}
+function canWalkSegment(a,b,r=.22){
+ if(!walkSpace.swept(a.map((n,i)=>n*1000+(i?OY:OX)),b.map((n,i)=>n*1000+(i?OY:OX)),r*1000))return false;
+ for(const collider of colliders){const poly=collider.poly||[[collider[0],collider[1]],[collider[2],collider[1]],[collider[2],collider[3]],[collider[0],collider[3]]];if(sweptCircleIntersectsPolygon(a,b,r,poly))return false;}
+ for(const d of doors){const angle=d.pivot.rotation.y,h=[d.pivot.position.x,d.pivot.position.z],e=[h[0]+Math.cos(angle)*d.length,h[1]-Math.sin(angle)*d.length];if(segmentDistance(a,b,h,e)<r+.02)return false;}
+ return true;
 }
 function stepWalk(dt){
   if (modalOpen() || (!walkCtl.isLocked && !touchWalk)) return;
@@ -399,8 +437,8 @@ function stepWalk(dt){
   if (mag < .05) return;
   mv.normalize().multiplyScalar(sp * mag);
   const p = camera.position;
-  if (!blocked(p.x + mv.x, p.z)) p.x += mv.x;
-  if (!blocked(p.x, p.z + mv.z)) p.z += mv.z;
+  if (canWalkSegment([p.x,p.z],[p.x+mv.x,p.z])) p.x += mv.x;
+  if (canWalkSegment([p.x,p.z],[p.x,p.z+mv.z])) p.z += mv.z;
 }
 scope.on(window, 'keydown', e => {
   if (!active || modalOpen() || e.target.closest('input,select,textarea,[contenteditable=true]')) return;
@@ -467,10 +505,12 @@ function loop(){
   else if (fly){ const t = clamp01((now - fly.t0)/fly.dur); camTween(fly.A, fly.B, ease(t)); if (t >= 1) fly = null; }
   else if (opt.mode === 'orbit') orbit.update();
   else stepWalk(dt);
+  if(opt.mode==='walk'&&now-positionStamp>100){positionStamp=now;updateWalkPosition();}
   doors.forEach(d => { const tg = d.open ? d.a1 : d.a0; d.cur += (tg - d.cur) * Math.min(1, dt*6); d.pivot.rotation.y = d.cur; });
   updateSel();
   renderer.render(scene, camera);
   labelRenderer.render(scene, camera);
+  layoutLabels();
 }
 
 function shot(name){ const a = document.createElement('a'); a.download=name; a.href = renderer.domElement.toDataURL('image/png'); a.click(); }

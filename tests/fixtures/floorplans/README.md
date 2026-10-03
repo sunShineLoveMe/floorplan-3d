@@ -93,3 +93,6 @@ PLAYWRIGHT_MODULE=/absolute/path/to/node_modules/playwright TEST_URL=http://127.
 ## 2026-10-03 可复用斜切与补充复核
 
 单角斜切已支持四个方向和不同斜率，四套局部 / 合成场景共用编辑、面积、冲突和导出；这些场景不计作原房屋完整验收。Jacobsen 全屋组合与细部尺寸仍待核对。Plan F 原手工模型的橱柜 3 in 越界已修正，最新模型及复测见 [斜切角与 Plan F 补充验收](../../../docs/NA-diagonal-cuts-verification-2026-10-03.md)。18 份原图不变；4 套既有单层手工模型与其余 14 份待完整验收资料的数量不变。
+
+
+Jacobsen 已补 12 空间 / 20 件家具的全屋工程测试，与 CMU 8 空间复用同一验收脚本，并修复 3D 标签互相遮挡；原住宅完整尺寸仍未验收。模型、假设清单与复测见 [全屋组合复用](../../../docs/NA-whole-floor-reuse-verification-2026-10-03.md)。

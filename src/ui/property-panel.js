@@ -1,3 +1,5 @@
+import {useZoneFields,bindUseZoneFields} from './use-zones.js';
+import {furnitureDistances} from '../core/spatial-clearance.js';
 import {captureInputs,restoreInputs} from './input-drafts.js';
 import {formatLengthMm,formatAreaM2} from '../core/units.js';
 import {lengthField,bindLengthField} from './length-field.js';
@@ -16,29 +18,34 @@ const surface=m2=>formatAreaM2(m2,store.getProject().units.display);
 let signature,context,lastEntity={};
 function syncUnitLock(){
  if(document.querySelector('dialog[open]'))return;
- const locked=!!document.activeElement?.matches('#panel [data-length]')||!!$('#panel [data-length][aria-invalid=true]');
+ const locked=!!document.activeElement?.matches('#panel [data-length], #passagePanel [data-length]')||!!document.querySelector('#panel [data-length][aria-invalid=true], #passagePanel [data-length][aria-invalid=true]');
  $('#projectUnits').disabled=locked;$('#unitLock').textContent=locked?tr('完成或取消尺寸编辑后可切换','Finish or cancel dimension editing to change units'):'';
 }
 function renderPanel(){
   syncUnitLock();
   renderFab();
   const p = $('#panel'),project=store.getProject();
-  const current=ui.sel?.kind==='furn'?getF(ui.sel.id):ui.sel?.kind==='room'?project.rooms[ui.sel.id]:{};
+  const current=(ui.sel?.kind==='furn'?getF(ui.sel.id):ui.sel?.kind==='room'?project.rooms[ui.sel.id]:{})||{};
   const key=project.id+':'+(ui.sel?.kind||'none')+':'+(ui.sel?.id||'')+':'+project.units.display;
   const next=JSON.stringify([LANG,key,project.furniture,project.rooms,project.geometry,project.measures,project.demolished]);
   if(next===signature)return;
   const drafts=key===context?captureInputs(p):[],prior=lastEntity;
   const detailsOpen=p.querySelector('#projectDetails')?.open||false;
-  signature=next;context=key;lastEntity={...current};
+  signature=next;context=key;lastEntity=JSON.parse(JSON.stringify(current));
   const details=`<details id="projectDetails"><summary class="btn">${tr('项目详情 / 高级','Project details / Advanced')}</summary>${overviewPanel()}</details>`;
   if (ui.sel?.kind === 'furn' && getF(ui.sel.id)){p.innerHTML=furnPanel(getF(ui.sel.id))+details;bindFurnPanel(getF(ui.sel.id));}
-  else if(ui.sel?.kind==='room'){p.innerHTML=roomPanel(store.getProject().geometry.rooms.find(r=>r.id===ui.sel.id))+details;bindRoomPanel();}
+  else if(ui.sel?.kind==='room'&&project.geometry.rooms.some(r=>r.id===ui.sel.id)){p.innerHTML=roomPanel(store.getProject().geometry.rooms.find(r=>r.id===ui.sel.id))+details;bindRoomPanel();}
   else if(['wall','opening'].includes(ui.sel?.kind)){p.innerHTML=`<section class="muted">${tr('在上方编辑当前墙体或门窗。','Edit the selected wall or opening above.')}</section>`+details;}
   else {p.innerHTML=`<section class="empty-properties"><h3>${tr('属性','Properties')}</h3><p class="muted">${tr('选择房间、家具或门窗，查看并修改属性。','Select a room, furniture item or opening to edit its properties.')}</p><button class="btn" id="openRoomSettings">${tr('房间设置 / 门窗','Room settings / openings')}</button></section>`+details;$('#openRoomSettings').onclick=()=>actions.showStructure();}
   bindOverview();
   p.querySelector('#projectDetails').open=detailsOpen;
   const fields={fName:'name',fW:'w',fD:'d',fX:'cx',fY:'cy',fR:'rot',fC:'color',rName:'name'};
-  restoreInputs(p,drafts,id=>prior[fields[id]]===current[fields[id]]);syncUnitLock();
+  restoreInputs(p,drafts,id=>{
+    const zoneField=/^zUi(\d+)(Width|Depth|Offset)$/.exec(id);
+    if(!zoneField)return prior[fields[id]]===current[fields[id]];
+    const before=prior.useZones?.[+zoneField[1]],after=current.useZones?.[+zoneField[1]],field={Width:'widthMm',Depth:'depthMm',Offset:'offsetMm'}[zoneField[2]];
+    return !!before&&!!after&&before.id===after.id&&before[field]===after[field];
+  });syncUnitLock();
 }
 
 function overviewPanel(){
@@ -158,11 +165,17 @@ function furnPanel(f){
       <h4 class="field-group">${tr('位置（家具中心）','Position (item center)')}</h4>
       ${lengthField('fX',tr('中心','Center')+' X',f.cx,store.getProject().units.display)}
       ${lengthField('fY',tr('中心','Center')+' Y',f.cy,store.getProject().units.display)}
+      <h4 class="field-group">${tr('占地规则','Footprint rules')}</h4>
+      <label class="full">${tr('通行阻挡','Passage footprint')}<select id="fPassage"><option value="solid" ${(f.clearance?.mode|| (f.type==='rug'?'ground':'solid'))==='solid'?'selected':''}>${tr('实体阻挡','Solid obstacle')}</option><option value="ground" ${(f.clearance?.mode|| (f.type==='rug'?'ground':'solid'))==='ground'?'selected':''}>${tr('地面覆盖（可跨越）','Floor covering (walkable)')}</option></select></label>
+      <label class="full">${tr('显式嵌套于','Explicitly nested in')}<select id="fContainer"><option value="">${tr('无','None')}</option>${store.getProject().furniture.filter(g=>g.id!==f.id).map(g=>`<option value="${esc(g.id)}" ${f.clearance?.containerId===g.id?'selected':''}>${esc(nm(g.name))}</option>`).join('')}</select></label>
+      <p class="full muted">${tr('仅完全包含且无嵌套链时豁免这一对重叠；外层仍阻挡通行。地面覆盖是假设，不代表高度避让。','Nesting exempts only this pair when fully contained, with no nesting chain. The container still blocks passage. Walkable covering is an explicit assumption, not a height check.')}</p>
+      ${useZoneFields(f,store.getProject().units.display)}
       <h4 class="field-group">${tr('朝向与外观','Orientation and appearance')}</h4>
       <label>${tr('旋转','Rotation')} (°)<input type="number" id="fR" value="${f.rot}" step="15"></label>
       <label>${tr('颜色','Color')}<input type="color" id="fC" value="${f.color}"></label>
     </div>
     <div class="muted" style="margin-top:8px">${tr('占地面积','Footprint')} ${surface(f.w*f.d/1e6)}</div>
+    <p data-wall-distances class="muted">${tr('最近墙 / 固定物距离：','Nearest wall / fixed footprint distances: ')}${furnitureDistances(store.getProject(),f.id).map(o=>`${esc(nm(o.name))} ${length(o.distanceMm)}`).join(' · ')}</p>
     <div class="actions">
       <button class="btn" id="aRot">${tr('旋转 90°','Rotate 90°')}</button><button class="btn" id="aDup">${tr('复制','Duplicate')}</button>
       <button class="btn" id="aTop">${tr('置于顶层','Bring to front')}</button><button class="btn" id="aBot">${tr('置于底层','Send to back')}</button>
@@ -172,6 +185,7 @@ function furnPanel(f){
 }
 function bindFurnPanel(f){
   const upd = (fn) => mutate(() => { const g = getF(f.id); if (g) fn(g); });
+  bindUseZoneFields(f,store.getProject().units.display,upd,syncUnitLock);
   $('#fName').onchange = e => upd(g => g.name = e.target.value.trim() || g.name);
   for(const [id,key] of [['fW','w'],['fD','d'],['fX','cx'],['fY','cy']]){
     const input=$('#'+id),binding=bindLengthField(input,f[key],store.getProject().units.display,()=>['w','d'].includes(key)?[50,1e7]:[-1e7,1e7]);
@@ -180,6 +194,8 @@ function bindFurnPanel(f){
     input.onchange=()=>{const result=binding.read();if(result.ok)upd(g=>g[key]=result.mm);};
     input.onkeydown=e=>{if(e.key==='Escape'){e.preventDefault();binding.reset();input.blur();}if(e.key==='Enter'){e.preventDefault();input.blur();}};
   }
+  $('#fPassage').onchange=e=>upd(g=>g.clearance={...g.clearance,mode:e.target.value});
+  $('#fContainer').onchange=e=>upd(g=>{g.clearance={mode:g.type==='rug'?'ground':'solid',...g.clearance};if(e.target.value)g.clearance.containerId=e.target.value;else delete g.clearance.containerId;});
   $('#fR').onchange=e=>{const v=Number(e.target.value);if(e.target.value.trim()&&Number.isFinite(v))upd(g=>g.rot=norm(v));};
   $('#fC').onchange = e => upd(g => g.color = e.target.value);
   $('#aRot').onclick = () => rotateSel(90);

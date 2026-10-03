@@ -1,0 +1,16 @@
+FAIL floor keyboard end=1828.8,232.2199998140336
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: floor keyboard failed movement/block/release
+    at file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t06-walk.mjs:23:280 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v22.22.3

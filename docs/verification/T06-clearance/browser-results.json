@@ -1,0 +1,754 @@
+{
+  "passed": true,
+  "build": "d30813843994046d",
+  "checks": [
+    "jacobsen: selected route, exact target and continuous swept path overlay",
+    "jacobsen: invalid target rejected and units preserve exact millimetres",
+    "jacobsen: declared nesting, exact undo/redo and retained solid counter",
+    "jacobsen: actual move/resize blocks the selected endpoint without changing structure",
+    "jacobsen: undo/redo recalculates passage result",
+    "jacobsen: native WebGL walk enters at a verified free point and preserves geometry",
+    "jacobsen: refresh, JSON roundtrip, 2D/3D PNG and actual print PDF",
+    "cmu: selected route, exact target and continuous swept path overlay",
+    "cmu: invalid target rejected and units preserve exact millimetres",
+    "cmu: actual move/resize blocks the selected endpoint without changing structure",
+    "cmu: undo/redo recalculates passage result",
+    "cmu: native WebGL walk enters at a verified free point and preserves geometry",
+    "cmu: refresh, JSON roundtrip, 2D/3D PNG and actual print PDF",
+    "plan-f: selected route, exact target and continuous swept path overlay",
+    "plan-f: invalid target rejected and units preserve exact millimetres",
+    "plan-f: declared nesting, exact undo/redo and retained solid counter",
+    "plan-f: actual move/resize blocks the selected endpoint without changing structure",
+    "plan-f: undo/redo recalculates passage result",
+    "plan-f: native WebGL walk enters at a verified free point and preserves geometry",
+    "plan-f: refresh, JSON roundtrip, 2D/3D PNG and actual print PDF",
+    "independent open-floor barrier: blocking, explicit walkable assumption, deletion and undo/redo",
+    "target boundary and 390px controls, text wrapping and 2D locator"
+  ],
+  "results": [
+    {
+      "name": "jacobsen",
+      "originalDefault": {
+        "targetMm": 900,
+        "stepMm": 50,
+        "doorState": "open",
+        "fromRoomId": "room-1",
+        "toRoomId": "room-fmursd8u211",
+        "start": [
+          2300,
+          1547.6
+        ],
+        "end": null,
+        "status": "no-standing-point",
+        "reason": "end",
+        "nearby": [
+          {
+            "kind": "furniture",
+            "id": "fmursdhdw49",
+            "name": "Bedroom Two storage",
+            "distanceMm": 0
+          },
+          {
+            "kind": "wall",
+            "id": "wall-46",
+            "name": "Wall",
+            "distanceMm": 406.39999999999964
+          },
+          {
+            "kind": "door",
+            "id": "opening-fmursdaop22",
+            "name": "Bifold opening (stack unknown)",
+            "distanceMm": 406.4000000000001
+          },
+          {
+            "kind": "wall",
+            "id": "wall-42",
+            "name": "Wall",
+            "distanceMm": 507.9999999999982
+          }
+        ],
+        "frontier": [
+          15036.8,
+          3352.8
+        ],
+        "path": []
+      },
+      "configured": {
+        "targetMm": 600,
+        "stepMm": 50,
+        "doorState": "open",
+        "fromRoomId": "room-fmursd71b4",
+        "toRoomId": "room-fmursd8038",
+        "start": [
+          7400,
+          1047.6
+        ],
+        "end": [
+          11000,
+          1897.6
+        ],
+        "status": "route-found",
+        "path": [
+          [
+            7400,
+            1047.6
+          ],
+          [
+            8600,
+            1047.6
+          ],
+          [
+            8600,
+            1097.6
+          ],
+          [
+            8650,
+            1097.6
+          ],
+          [
+            8650,
+            1147.6
+          ],
+          [
+            8700,
+            1147.6
+          ],
+          [
+            8700,
+            1197.6
+          ],
+          [
+            8750,
+            1197.6
+          ],
+          [
+            8750,
+            1247.6
+          ],
+          [
+            11000,
+            1247.6
+          ],
+          [
+            11000,
+            1897.6
+          ]
+        ]
+      },
+      "spacing": {
+        "issues": [
+          {
+            "kind": "gap",
+            "distanceMm": 96.32454307349701,
+            "points": [
+              [
+                6858,
+                3108.9599999999996
+              ],
+              [
+                6774.580498690423,
+                3060.797728463251
+              ]
+            ],
+            "furnitureId": "fmursdely39",
+            "otherId": "fmursdf5o41",
+            "targetMm": 600
+          },
+          {
+            "kind": "gap",
+            "distanceMm": 96.52000000000044,
+            "points": [
+              [
+                14686.28,
+                386.0799999999998
+              ],
+              [
+                14782.800000000001,
+                386.0799999999998
+              ]
+            ],
+            "furnitureId": "fmursdgdd45",
+            "otherId": "fmursdgla46",
+            "targetMm": 600
+          },
+          {
+            "kind": "gap",
+            "distanceMm": 137.15999999999985,
+            "points": [
+              [
+                4038.6000000000004,
+                3017.52
+              ],
+              [
+                4175.76,
+                3017.52
+              ]
+            ],
+            "furnitureId": "fmursddfy35",
+            "otherId": "fmursddpi36",
+            "targetMm": 600
+          },
+          {
+            "kind": "gap",
+            "distanceMm": 182.8799999999992,
+            "points": [
+              [
+                8199.119999999999,
+                2926.0800000000004
+              ],
+              [
+                8199.119999999999,
+                3108.9599999999996
+              ]
+            ],
+            "furnitureId": "fmursdebb38",
+            "otherId": "fmursdely39",
+            "targetMm": 600
+          },
+          {
+            "kind": "gap",
+            "distanceMm": 213.36000000000058,
+            "points": [
+              [
+                4602.48,
+                3154.6800000000003
+              ],
+              [
+                4815.84,
+                3154.6800000000003
+              ]
+            ],
+            "furnitureId": "fmursddpi36",
+            "otherId": "fmursddzp37",
+            "targetMm": 600
+          },
+          {
+            "kind": "gap",
+            "distanceMm": 260.8667797938243,
+            "points": [
+              [
+                8199.119999999999,
+                2926.0800000000004
+              ],
+              [
+                8168.64,
+                3185.16
+              ]
+            ],
+            "furnitureId": "fmursdebb38",
+            "otherId": "fmursdevh40",
+            "targetMm": 600
+          },
+          {
+            "kind": "gap",
+            "distanceMm": 289.5599999999997,
+            "points": [
+              [
+                1828.8,
+                2148.84
+              ],
+              [
+                2118.3599999999997,
+                2148.84
+              ]
+            ],
+            "furnitureId": "fmursdbz330",
+            "otherId": "fmursdcam31",
+            "targetMm": 600
+          },
+          {
+            "kind": "gap",
+            "distanceMm": 396.2399999999998,
+            "points": [
+              [
+                10668.000000000002,
+                2514.6
+              ],
+              [
+                10668.000000000002,
+                2118.36
+              ]
+            ],
+            "furnitureId": "fmursdffk42",
+            "otherId": "fmursdg6e44",
+            "targetMm": 600
+          },
+          {
+            "kind": "gap",
+            "distanceMm": 426.72000000000116,
+            "points": [
+              [
+                8869.68,
+                2514.6
+              ],
+              [
+                9296.400000000001,
+                2514.6
+              ]
+            ],
+            "furnitureId": "fmursdebb38",
+            "otherId": "fmursdffk42",
+            "targetMm": 600
+          },
+          {
+            "kind": "gap",
+            "distanceMm": 426.72000000000116,
+            "points": [
+              [
+                13456.92,
+                3048
+              ],
+              [
+                13883.640000000001,
+                3048
+              ]
+            ],
+            "furnitureId": "fmursdgul47",
+            "otherId": "fmursdh4o48",
+            "targetMm": 600
+          }
+        ],
+        "nested": [
+          {
+            "furnitureId": "fmursdevh40",
+            "containerId": "fmursdely39",
+            "valid": true
+          }
+        ]
+      },
+      "walkStart": [
+        2049.4625,
+        1900.2375
+      ],
+      "walkText": "Clear walk start selected: ≈ 6' 8 11/16\", ≈ 6' 2 13/16\"",
+      "geometryUnchanged": true
+    },
+    {
+      "name": "cmu",
+      "originalDefault": {
+        "targetMm": 900,
+        "stepMm": 50,
+        "doorState": "open",
+        "fromRoomId": "room-1",
+        "toRoomId": "room-fmursd8ry14",
+        "start": [
+          1850,
+          1650
+        ],
+        "end": [
+          5300,
+          8100
+        ],
+        "status": "no-route",
+        "reason": "sampled-disconnection",
+        "frontier": [
+          2400,
+          2350
+        ],
+        "nearby": [
+          {
+            "kind": "wall",
+            "id": "wall-3",
+            "name": "Wall",
+            "distanceMm": 474.94757605445284
+          },
+          {
+            "kind": "door",
+            "id": "opening-fmursd8vy15",
+            "name": "Swing door · Bedroom Two",
+            "roomId": "room-1",
+            "distanceMm": 475.5999999999999
+          },
+          {
+            "kind": "wall",
+            "id": "wall-4",
+            "name": "Wall",
+            "distanceMm": 632.6338593531018
+          },
+          {
+            "kind": "door",
+            "id": "opening-fmursd92a16",
+            "name": "Bifold opening (stack unknown)",
+            "distanceMm": 902
+          }
+        ],
+        "path": []
+      },
+      "configured": {
+        "targetMm": 600,
+        "stepMm": 50,
+        "doorState": "open",
+        "fromRoomId": "room-fmursd7hx6",
+        "toRoomId": "room-fmursd8kc13",
+        "start": [
+          3250,
+          4350
+        ],
+        "end": [
+          5050,
+          6600
+        ],
+        "status": "route-found",
+        "path": [
+          [
+            3250,
+            4350
+          ],
+          [
+            3550,
+            4350
+          ],
+          [
+            3550,
+            4300
+          ],
+          [
+            3600,
+            4300
+          ],
+          [
+            3600,
+            4250
+          ],
+          [
+            3650,
+            4250
+          ],
+          [
+            3650,
+            4200
+          ],
+          [
+            5350,
+            4200
+          ],
+          [
+            5350,
+            5600
+          ],
+          [
+            5300,
+            5600
+          ],
+          [
+            5300,
+            5650
+          ],
+          [
+            5250,
+            5650
+          ],
+          [
+            5250,
+            5700
+          ],
+          [
+            5200,
+            5700
+          ],
+          [
+            5200,
+            5750
+          ],
+          [
+            5050,
+            5750
+          ],
+          [
+            5050,
+            6600
+          ]
+        ]
+      },
+      "spacing": {
+        "issues": [
+          {
+            "kind": "gap",
+            "distanceMm": 45.720000000001164,
+            "points": [
+              [
+                4305.3,
+                8580.12
+              ],
+              [
+                4305.3,
+                8534.4
+              ]
+            ],
+            "furnitureId": "fmursddu538",
+            "otherId": "fmursdef640",
+            "targetMm": 600
+          },
+          {
+            "kind": "gap",
+            "distanceMm": 152.39999999999964,
+            "points": [
+              [
+                4267.200000000001,
+                7772.400000000001
+              ],
+              [
+                4267.200000000001,
+                7924.8
+              ]
+            ],
+            "furnitureId": "fmursde5p39",
+            "otherId": "fmursdef640",
+            "targetMm": 600
+          },
+          {
+            "kind": "gap",
+            "distanceMm": 304.79999999999995,
+            "points": [
+              [
+                5232.400000000001,
+                1828.8
+              ],
+              [
+                5232.400000000001,
+                2133.6
+              ]
+            ],
+            "furnitureId": "fmursdc4u31",
+            "otherId": "fmursdccx32",
+            "targetMm": 600
+          },
+          {
+            "kind": "gap",
+            "distanceMm": 304.8000000000002,
+            "points": [
+              [
+                2286,
+                8280.400000000001
+              ],
+              [
+                2590.8,
+                8280.400000000001
+              ]
+            ],
+            "furnitureId": "fmursdd1035",
+            "otherId": "fmursddce36",
+            "targetMm": 600
+          },
+          {
+            "kind": "gap",
+            "distanceMm": 340.3600000000006,
+            "points": [
+              [
+                762,
+                8473.44
+              ],
+              [
+                762,
+                8813.800000000001
+              ]
+            ],
+            "furnitureId": "fmursdd1035",
+            "otherId": "fmursddlc37",
+            "targetMm": 600
+          },
+          {
+            "kind": "gap",
+            "distanceMm": 381,
+            "points": [
+              [
+                4241.8,
+                304.79999999999995
+              ],
+              [
+                4622.8,
+                304.79999999999995
+              ]
+            ],
+            "furnitureId": "fmursdbvh30",
+            "otherId": "fmursdc4u31",
+            "targetMm": 600
+          },
+          {
+            "kind": "gap",
+            "distanceMm": 457.1999999999998,
+            "points": [
+              [
+                2590.8,
+                8890
+              ],
+              [
+                2133.6000000000004,
+                8890
+              ]
+            ],
+            "furnitureId": "fmursddce36",
+            "otherId": "fmursddlc37",
+            "targetMm": 600
+          },
+          {
+            "kind": "gap",
+            "distanceMm": 584.2,
+            "points": [
+              [
+                1397,
+                609.6000000000001
+              ],
+              [
+                1981.2,
+                609.6000000000001
+              ]
+            ],
+            "furnitureId": "fmursdasg27",
+            "otherId": "fmursdb3228",
+            "targetMm": 600
+          }
+        ],
+        "nested": []
+      },
+      "walkStart": [
+        1727.1999999999998,
+        1447.8
+      ],
+      "walkText": "Walk start: 5' 8\", 4' 9\"",
+      "geometryUnchanged": true
+    },
+    {
+      "name": "plan-f",
+      "originalDefault": {
+        "targetMm": 900,
+        "stepMm": 50,
+        "doorState": "open",
+        "fromRoomId": "room-1",
+        "toRoomId": "room-fmuqkq8x96",
+        "start": null,
+        "end": [
+          7502.4,
+          4252.4
+        ],
+        "status": "no-standing-point",
+        "reason": "start",
+        "nearby": [
+          {
+            "kind": "furniture",
+            "id": "fmuqkqcaz25",
+            "name": "Closet storage",
+            "distanceMm": 0
+          },
+          {
+            "kind": "wall",
+            "id": "wall-0",
+            "name": "Wall",
+            "distanceMm": 304.79999999999995
+          },
+          {
+            "kind": "wall",
+            "id": "wall-2",
+            "name": "Wall",
+            "distanceMm": 1256.7225946882627
+          },
+          {
+            "kind": "wall",
+            "id": "wall-3",
+            "name": "Wall",
+            "distanceMm": 1256.722594688263
+          }
+        ],
+        "frontier": [
+          1701.8,
+          457.2
+        ],
+        "path": []
+      },
+      "configured": {
+        "targetMm": 600,
+        "stepMm": 50,
+        "doorState": "open",
+        "fromRoomId": "room-fmuqkq8kd5",
+        "toRoomId": "room-fmuqkq8x96",
+        "start": [
+          4802.4,
+          4702.4
+        ],
+        "end": [
+          7502.4,
+          4402.4
+        ],
+        "status": "route-found",
+        "path": [
+          [
+            4802.4,
+            4702.4
+          ],
+          [
+            6402.4,
+            4702.4
+          ],
+          [
+            6402.4,
+            4552.4
+          ],
+          [
+            6452.4,
+            4552.4
+          ],
+          [
+            6452.4,
+            4502.4
+          ],
+          [
+            6502.4,
+            4502.4
+          ],
+          [
+            6502.4,
+            4452.4
+          ],
+          [
+            6552.4,
+            4452.4
+          ],
+          [
+            6552.4,
+            4402.4
+          ],
+          [
+            7502.4,
+            4402.4
+          ]
+        ]
+      },
+      "spacing": {
+        "issues": [
+          {
+            "kind": "gap",
+            "distanceMm": 304.8000000000002,
+            "points": [
+              [
+                4724.4,
+                1905
+              ],
+              [
+                4724.4,
+                2209.8
+              ]
+            ],
+            "furnitureId": "fmuqkqaoj18",
+            "otherId": "fmuqkqaxt19",
+            "targetMm": 600
+          }
+        ],
+        "nested": [
+          {
+            "furnitureId": "fmuqkqc1m24",
+            "containerId": "fmuqkqbu723",
+            "valid": true
+          }
+        ]
+      },
+      "walkStart": [
+        1701.8,
+        912.8125
+      ],
+      "walkText": "Clear walk start selected: ≈ 5' 7\", ≈ 2' 11 15/16\"",
+      "geometryUnchanged": true
+    }
+  ],
+  "errors": [],
+  "timestamp": "2026-10-03T03:12:27.068Z"
+}

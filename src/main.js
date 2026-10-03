@@ -1,3 +1,5 @@
+import {createUseZones} from './ui/use-zones.js';
+import {createPassageClearance} from './ui/passage-clearance.js';
 import {createDoorClearance} from './ui/door-clearance.js';
 import {createReferencePlan} from './ui/reference-plan.js';
 import {$} from './ui/dom.js';
@@ -25,7 +27,7 @@ export function createApplication(){
   const storage=createStorage({getItem:k=>localStorage.getItem(k),setItem:(k,v)=>localStorage.setItem(k,v)},readProject);
   const loaded=storage.load(),store=createProjectStore(loaded.project || starterState()),ui=createEditorState(store);
   const notifications=createNotifications(),{toast}=notifications,drawers=createDrawers();
-  let reference,clearance;
+  let reference,clearance,passage,useZones;
   let viewer=null,viewerPromise=null,viewMode='2d',switching=false,toolbar,editor,panel,roomEditor,library;
   const mode={is3D:()=>viewMode==='3d',setView,walking:()=>viewer?.walking() || false};
   const actions=createProjectActions({store,ui,toast,onSelection:()=>{editor?.renderer.renderSel();panel?.update();roomEditor?.update();library?.update();}});
@@ -40,9 +42,13 @@ export function createApplication(){
   const files=createFileMenu({store,ui,downloads,isSwitching:()=>switching,toast,loaded,cancelInteraction:()=>{editor.cancel();viewer?.cancel();}});
   roomEditor=createRoomEditor({store,ui,actions,cancelInteraction:()=>{editor.cancel();viewer?.cancel();},exportProject:files.exportProject,isSwitching:()=>switching,toast});
   actions.deleteOpening=roomEditor.remove;
-  clearance=createDoorClearance({store,locateObstacle:async o=>{if(mode.is3D())await setView('2d');actions.select({kind:'room',id:o.roomId});drawers.drawer('panel',true);const v=editor.viewport.view,svg=$('#plan');v.x0=(o.rect[0]+o.rect[2])/2-svg.clientWidth/2/v.s;v.y0=(o.rect[1]+o.rect[3])/2-svg.clientHeight/2/v.s;editor.viewport.applyView();},locate:async id=>{if(!id)return;if(mode.is3D())await setView('2d');const f=actions.getF(id);if(!f)return;actions.select({kind:'furn',id});drawers.drawer('panel',true);const v=editor.viewport.view,svg=$('#plan');v.x0=f.cx-svg.clientWidth/2/v.s;v.y0=f.cy-svg.clientHeight/2/v.s;editor.viewport.applyView();}});
+  const locatePoint=async(point,roomId)=>{if(mode.is3D())await setView('2d');if(roomId)actions.select({kind:'room',id:roomId});drawers.drawer('panel',true);const v=editor.viewport.view,svg=$('#plan');v.x0=point[0]-svg.clientWidth/2/v.s;v.y0=point[1]-svg.clientHeight/2/v.s;editor.viewport.applyView();};
+  const locateFurniture=async id=>{if(!id)return;if(mode.is3D())await setView('2d');const f=actions.getF(id);if(!f)return;actions.select({kind:'furn',id});drawers.drawer('panel',true);const v=editor.viewport.view,svg=$('#plan');v.x0=f.cx-svg.clientWidth/2/v.s;v.y0=f.cy-svg.clientHeight/2/v.s;editor.viewport.applyView();};
+  clearance=createDoorClearance({store,locate:locateFurniture,locateObstacle:o=>locatePoint([(o.rect[0]+o.rect[2])/2,(o.rect[1]+o.rect[3])/2],o.roomId)});
+  passage=createPassageClearance({store,locate:locateFurniture,locatePoint,cancelInteraction:()=>{editor.cancel();viewer?.cancel();}});
+  useZones=createUseZones({store,locate:locateFurniture,locatePoint});
   reference=createReferencePlan({store,fitView:editor.viewport.fitView,cancelInteraction:()=>{editor.cancel();viewer?.cancel();},toast});
-  function update(){clearance?.update();reference?.update();library.update();editor.viewport.applyView();editor.update();panel.update();roomEditor?.update();toolbar.update();viewer?.sync();}
+  function update(){clearance?.update();passage?.update();useZones?.update();reference?.update();library.update();editor.viewport.applyView();editor.update();panel.update();roomEditor?.update();toolbar.update();viewer?.sync();}
   let saveOK=null;
   function syncSaveStatus(){const status=$('#saveStatus');status.textContent=saveOK===null?tr('仅本机存储','Device storage only'):saveOK?tr('已保存到此设备','Saved on this device'):tr('保存失败，请导出备份','Save failed — export a backup');status.dataset.state=saveOK===false?'error':'local';$('#fileSaveStatus').textContent=status.textContent;$('#fileSaveStatus').dataset.state=status.dataset.state;}
   function save(){saveOK=storage.save(store.getProject()).ok;syncSaveStatus();if(!saveOK) scope.timeout(()=>toast(tr('保存失败，请导出项目文件备份','Save failed. Export a project file as a backup.')),0);}
@@ -89,7 +95,7 @@ export function createApplication(){
   if(store.getProject().view.mode==='3d') setView('3d');
   function dispose(){
     if(scope.disposed)return;
-    unsubscribe();scope.dispose();reference.dispose();clearance.dispose();roomEditor.dispose();editor.dispose();viewer?.dispose();library.dispose();panel.dispose();toolbar.dispose();files.dispose();downloads.dispose();notifications.dispose();store.dispose();
+    unsubscribe();scope.dispose();reference.dispose();clearance.dispose();passage.dispose();useZones.dispose();roomEditor.dispose();editor.dispose();viewer?.dispose();library.dispose();panel.dispose();toolbar.dispose();files.dispose();downloads.dispose();notifications.dispose();store.dispose();
     $('#langBtn').onclick=null;document.body.classList.remove('m3d','busy');$('#stage').classList.remove('is3d','animating');
   }
   scope.on(window,'pagehide',dispose);

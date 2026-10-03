@@ -1,0 +1,139 @@
+{
+  "name": "jacobsen",
+  "passed": true,
+  "doorState": "open",
+  "zoneCount": 5,
+  "zones": [
+    {
+      "furnitureId": "fmursdbz330",
+      "zoneId": "uz-2fe14679-506b-436d-9425-f2fefe145b77",
+      "status": "conflict",
+      "polygonDifferenceMm2": 0.0,
+      "outsideMm2": 182174.8442112001,
+      "conflicts": [
+        {
+          "kind": "floor",
+          "id": "net-floor",
+          "overlapMm2": 182174.8442112001
+        },
+        {
+          "kind": "wall",
+          "id": "wall-7",
+          "overlapMm2": 15813.28734719999
+        }
+      ],
+      "passed": true
+    },
+    {
+      "furnitureId": "fmursdbz330",
+      "zoneId": "uz-829b8f74-2f53-4387-8e72-ddad1b364382",
+      "status": "clear",
+      "polygonDifferenceMm2": 0.0,
+      "outsideMm2": 0.0,
+      "conflicts": [],
+      "passed": true
+    },
+    {
+      "furnitureId": "fmursdcam31",
+      "zoneId": "uz-d9afa062-b021-484b-ba4a-b50e1cffb603",
+      "status": "conflict",
+      "polygonDifferenceMm2": 0.0,
+      "outsideMm2": 10366.881093120111,
+      "conflicts": [
+        {
+          "kind": "floor",
+          "id": "net-floor",
+          "overlapMm2": 10366.881093120111
+        },
+        {
+          "kind": "wall",
+          "id": "wall-4",
+          "overlapMm2": 7770.54356480006
+        },
+        {
+          "kind": "wall",
+          "id": "wall-8",
+          "overlapMm2": 2596.337528319992
+        }
+      ],
+      "passed": true
+    },
+    {
+      "furnitureId": "fmursdcks32",
+      "zoneId": "uz-6f12e078-4201-4c88-b8fc-661e1aa5bb6a",
+      "status": "conflict",
+      "polygonDifferenceMm2": 0.0,
+      "outsideMm2": 154924.54036479996,
+      "conflicts": [
+        {
+          "kind": "floor",
+          "id": "net-floor",
+          "overlapMm2": 154924.54036479996
+        },
+        {
+          "kind": "furniture",
+          "id": "fmursdcw533",
+          "overlapMm2": 63243.14059035648
+        },
+        {
+          "kind": "wall",
+          "id": "wall-12",
+          "overlapMm2": 37246.560000000034
+        },
+        {
+          "kind": "wall",
+          "id": "wall-8",
+          "overlapMm2": 43899.50356480002
+        },
+        {
+          "kind": "wall",
+          "id": "wall-9",
+          "overlapMm2": 54193.43999999998
+        }
+      ],
+      "passed": true
+    },
+    {
+      "furnitureId": "fmursdcw533",
+      "zoneId": "uz-0abe5061-447c-4624-8940-2da0f60a7cad",
+      "status": "conflict",
+      "polygonDifferenceMm2": 0.0,
+      "outsideMm2": 38996.732799999976,
+      "conflicts": [
+        {
+          "kind": "floor",
+          "id": "net-floor",
+          "overlapMm2": 38996.732799999976
+        },
+        {
+          "kind": "wall",
+          "id": "wall-11",
+          "overlapMm2": 6724.849135999993
+        },
+        {
+          "kind": "wall",
+          "id": "wall-2",
+          "overlapMm2": 19666.21235519996
+        },
+        {
+          "kind": "wall",
+          "id": "wall-5",
+          "overlapMm2": 12605.671308799972
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "pdf": {
+    "pages": 1,
+    "rulerLengthPt": 283.5,
+    "legendPresent": true,
+    "physicalPrinterTested": false
+  },
+  "sourceSha256": {
+    "complete-project.json": "9f8a4d4d1f2152a9360085855db2ae17ffacb1c600c865a483db45f65ba739b7",
+    "zone-report.json": "35c2a941b61351f1fcb5a6d3f6e0c9a264c0f27bcf6b8d4c167d2935d76d4f46",
+    "print.pdf": "6924a8b4f34beb98eda9013b05136c8b500c42d0330b0ed9aff96fad8659d998"
+  }
+}

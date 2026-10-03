@@ -1,0 +1,36 @@
+PASS jacobsen: explicit four purposes, opposite bed sides, exact dimensions and 2D conflicts
+PASS jacobsen: zone locator selects its owner and centers the 2D envelope
+PASS jacobsen: move, 45 degree rotation, both dimensions and undo/redo update anchors
+PASS jacobsen: invalid size blocked and unit switching preserves millimetre precision
+PASS jacobsen: duplicated zones edit independently; zone/item deletion and restoration update results
+PASS jacobsen: refresh, JSON roundtrip, overlay visibility and actual PNG/PDF exports
+PASS jacobsen: sustained native keyboard walk stays on free floor and stops on release
+PASS cmu: explicit four purposes, opposite bed sides, exact dimensions and 2D conflicts
+PASS cmu: zone locator selects its owner and centers the 2D envelope
+PASS cmu: move, 45 degree rotation, both dimensions and undo/redo update anchors
+PASS cmu: invalid size blocked and unit switching preserves millimetre precision
+PASS cmu: duplicated zones edit independently; zone/item deletion and restoration update results
+PASS cmu: refresh, JSON roundtrip, overlay visibility and actual PNG/PDF exports
+PASS cmu: sustained native keyboard walk stays on free floor and stops on release
+PASS plan-f: explicit four purposes, opposite bed sides, exact dimensions and 2D conflicts
+PASS plan-f: zone locator selects its owner and centers the 2D envelope
+PASS plan-f: move, 45 degree rotation, both dimensions and undo/redo update anchors
+PASS plan-f: invalid size blocked and unit switching preserves millimetre precision
+PASS plan-f: duplicated zones edit independently; zone/item deletion and restoration update results
+PASS plan-f: refresh, JSON roundtrip, overlay visibility and actual PNG/PDF exports
+PASS plan-f: sustained native keyboard walk stays on free floor and stops on release
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Timeout 20000ms exceeded.
+Call log:
+[2m  - waiting for locator('#fName') to be visible[22m
+
+    at select (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t06-use-zones.mjs:10:122)
+    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t06-use-zones.mjs:48:351 {
+  log: [ "  - waiting for locator('#fName') to be visible" ],
+  name: 'TimeoutError'
+}
+
+Node.js v22.22.3

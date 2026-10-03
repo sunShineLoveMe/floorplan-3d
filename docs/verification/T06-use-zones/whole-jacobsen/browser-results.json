@@ -1,0 +1,555 @@
+{
+  "passed": true,
+  "fixture": "jacobsen-whole-floor-scenario",
+  "sourceWholeApartmentAccepted": false,
+  "sourceWholePlanAccepted": false,
+  "scope": "Whole-floor workflow scenario inspired by ISW-4521, not a measured reconstruction or complete source acceptance",
+  "assumptions": [
+    "All room origins, adjacency offsets and subdivision into circulation/closet/laundry/bath spaces",
+    "Kitchen/bath corner cut dimensions and decomposition into a shared diagonal corner space",
+    "All wall thicknesses, wall segments and ceiling height",
+    "All opening widths/offsets/heights/modes and swing directions",
+    "Furniture dimensions and positions are test selections, not source inventory"
+  ],
+  "unknownSourceDimensions": [
+    "Kitchen exact net outline",
+    "Bath One outline, diagonal endpoints and clearance",
+    "Bath Two net dimensions",
+    "Closet and laundry dimensions",
+    "Door/window schedules and optional bay",
+    "Wall thicknesses and ceiling height",
+    "Exact surveyed external dimensions"
+  ],
+  "labels": [
+    {
+      "id": "fmurubh2330",
+      "name": "Queen - test mattress",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -422.63853149413967,
+          -182.77000427246094
+        ],
+        [
+          422.6386291503916,
+          -182.77000427246094
+        ],
+        [
+          422.6386291503916,
+          182.77000427246094
+        ],
+        [
+          -422.63853149413967,
+          182.77000427246094
+        ]
+      ],
+      "displayed": "Queen - testmattress",
+      "lines": 2
+    },
+    {
+      "id": "fmurubhr331",
+      "name": "Master desk",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -147.27300964355436,
+          -111.30405181884771
+        ],
+        [
+          147.27322448730501,
+          -111.30405181884771
+        ],
+        [
+          147.27322448730501,
+          111.3039346313476
+        ],
+        [
+          -147.27300964355436,
+          111.3039346313476
+        ]
+      ],
+      "displayed": "Masterdesk",
+      "lines": 2
+    },
+    {
+      "id": "fmurubj0m32",
+      "name": "Master storage",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -143.7455718994131,
+          -107.64646118164046
+        ],
+        [
+          143.74566955566502,
+          -107.64646118164046
+        ],
+        [
+          143.74566955566502,
+          107.64633972167985
+        ],
+        [
+          -143.7455718994131,
+          107.64633972167985
+        ]
+      ],
+      "displayed": "Masterstora…",
+      "lines": 2
+    },
+    {
+      "id": "fmurubjtb33",
+      "name": "Laundry unit",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -176.15447317871076,
+          -111.30404205322293
+        ],
+        [
+          176.15457833496112,
+          -111.30404205322293
+        ],
+        [
+          176.15457833496112,
+          111.30394439697238
+        ],
+        [
+          -176.15447317871076,
+          111.30394439697238
+        ]
+      ],
+      "displayed": "Laund…unit…",
+      "lines": 2
+    },
+    {
+      "id": "fmurubkhp34",
+      "name": "Dining table",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -205.03579772949251,
+          -182.77005798339837
+        ],
+        [
+          205.03607116699186,
+          -182.77005798339837
+        ],
+        [
+          205.03607116699186,
+          182.7699505615235
+        ],
+        [
+          -205.03579772949251,
+          182.7699505615235
+        ]
+      ],
+      "displayed": "Diningtable",
+      "lines": 2
+    },
+    {
+      "id": "fmurubl5835",
+      "name": "54 inch tub - test",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -241.63364562988318,
+          -266.7699804687504
+        ],
+        [
+          241.63384094238245,
+          -266.7699804687504
+        ],
+        [
+          241.63384094238245,
+          266.7700585937496
+        ],
+        [
+          -241.63364562988318,
+          266.7700585937496
+        ]
+      ],
+      "displayed": "54 inchtub -test",
+      "lines": 3
+    },
+    {
+      "id": "fmurublus36",
+      "name": "Bath One toilet",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -99.8722277832021,
+          -158.85274963378924
+        ],
+        [
+          99.87246215820414,
+          -158.85274963378924
+        ],
+        [
+          99.87246215820414,
+          158.85284729003888
+        ],
+        [
+          -99.8722277832021,
+          158.85284729003888
+        ]
+      ],
+      "displayed": "BathOnetoilet",
+      "lines": 3
+    },
+    {
+      "id": "fmurubmai37",
+      "name": "Bath One vanity",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -123.90327850341782,
+          -166.16796997070333
+        ],
+        [
+          123.90359100341811,
+          -166.16796997070333
+        ],
+        [
+          123.90359100341811,
+          166.16802856445292
+        ],
+        [
+          -123.90327850341782,
+          166.16802856445292
+        ]
+      ],
+      "displayed": "BathOnevanity",
+      "lines": 3
+    },
+    {
+      "id": "fmurubn1p38",
+      "name": "Kitchen fridge",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -228.184759521484,
+          -179.23714904785174
+        ],
+        [
+          228.18554077148474,
+          -179.23714904785174
+        ],
+        [
+          228.18554077148474,
+          179.23724670410138
+        ],
+        [
+          -228.184759521484,
+          179.23724670410138
+        ]
+      ],
+      "displayed": "Kitch…fridg…",
+      "lines": 2
+    },
+    {
+      "id": "fmurubno139",
+      "name": "Kitchen counter",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -220.02780151367188,
+          -157.8119866943357
+        ],
+        [
+          220.02780151367188,
+          -157.8119866943357
+        ],
+        [
+          220.02780151367188,
+          157.81200622558617
+        ],
+        [
+          -220.02780151367188,
+          157.81200622558617
+        ]
+      ],
+      "displayed": "Kitch…count…",
+      "lines": 2
+    },
+    {
+      "id": "fmuruboc640",
+      "name": "Kitchen sink",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -155.6510961914064,
+          -111.30398345947242
+        ],
+        [
+          155.6507836914061,
+          -111.30398345947242
+        ],
+        [
+          155.6507836914061,
+          111.30400299072289
+        ],
+        [
+          -155.6510961914064,
+          111.30400299072289
+        ]
+      ],
+      "displayed": "Kitch…sink…",
+      "lines": 2
+    },
+    {
+      "id": "fmurubp0o41",
+      "name": "Kitchen stove",
+      "rotation": 30,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -152.6450717215098,
+          -40.39316403375998
+        ],
+        [
+          41.341367959460534,
+          -152.39128720270529
+        ],
+        [
+          152.64536118455817,
+          40.39288414846599
+        ],
+        [
+          -41.341078496412145,
+          152.3910073174113
+        ]
+      ],
+      "displayed": "Kit…sto…",
+      "lines": 2
+    },
+    {
+      "id": "fmurubq4t42",
+      "name": "Living couch",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -195.7764404296886,
+          -182.76990661621085
+        ],
+        [
+          195.7760498046864,
+          -182.76990661621085
+        ],
+        [
+          195.7760498046864,
+          182.77010192871103
+        ],
+        [
+          -195.7764404296886,
+          182.77010192871103
+        ]
+      ],
+      "displayed": "Livingcouch",
+      "lines": 2
+    },
+    {
+      "id": "fmurubsl144",
+      "name": "Coffee table",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -142.2025421142589,
+          -111.30398345947287
+        ],
+        [
+          142.20215148925672,
+          -111.30398345947287
+        ],
+        [
+          142.20215148925672,
+          111.30400299072244
+        ],
+        [
+          -142.2025421142589,
+          111.30400299072244
+        ]
+      ],
+      "displayed": "Coffeetable",
+      "lines": 2
+    },
+    {
+      "id": "fmurubtua45",
+      "name": "Twin XL - test mattress",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -328.0578076171878,
+          -266.7700634765624
+        ],
+        [
+          328.0571826171872,
+          -266.7700634765624
+        ],
+        [
+          328.0571826171872,
+          266.7699755859376
+        ],
+        [
+          -328.0578076171878,
+          266.7699755859376
+        ]
+      ],
+      "displayed": "Twin XL -testmattress",
+      "lines": 3
+    },
+    {
+      "id": "fmurubvdd46",
+      "name": "Bedroom Two desk",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -172.4069458007816,
+          -166.16802368164065
+        ],
+        [
+          172.4061645507809,
+          -166.16802368164065
+        ],
+        [
+          172.4061645507809,
+          166.1679748535156
+        ],
+        [
+          -172.4069458007816,
+          166.1679748535156
+        ]
+      ],
+      "displayed": "Bedro…Twodesk…",
+      "lines": 3
+    },
+    {
+      "id": "fmurubwms47",
+      "name": "Bath Two vanity",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -108.2498400878867,
+          -152.44010986328158
+        ],
+        [
+          108.25046508789455,
+          -152.44010986328158
+        ],
+        [
+          108.25046508789455,
+          152.43989501953092
+        ],
+        [
+          -108.2498400878867,
+          152.43989501953092
+        ]
+      ],
+      "displayed": "BathTwovanity",
+      "lines": 3
+    },
+    {
+      "id": "fmurubxhm48",
+      "name": "Bath Two toilet",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -93.69945312500204,
+          -152.43995361328143
+        ],
+        [
+          93.69898437499796,
+          -152.43995361328143
+        ],
+        [
+          93.69898437499796,
+          152.44005126953107
+        ],
+        [
+          -93.69945312500204,
+          152.44005126953107
+        ]
+      ],
+      "displayed": "BathTwotoilet",
+      "lines": 3
+    },
+    {
+      "id": "fmuruby5z49",
+      "name": "Bedroom Two storage",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -150.58031223144462,
+          -152.4400708007811
+        ],
+        [
+          150.579996606446,
+          -152.4400708007811
+        ],
+        [
+          150.579996606446,
+          152.4399340820314
+        ],
+        [
+          -150.58031223144462,
+          152.4399340820314
+        ]
+      ],
+      "displayed": "Bedro…Twostora…",
+      "lines": 3
+    }
+  ],
+  "build": "4717cfe4e8ffc12a",
+  "audit": {
+    "spaces": 12,
+    "connectedSpaces": 12,
+    "structuralGridInches": 3,
+    "furniture": 20,
+    "fixedObstacles": 0,
+    "swingDoors": 5,
+    "bifoldDoors": 2,
+    "slidingDoors": 1,
+    "passages": 3,
+    "windows": 7,
+    "potentialDoorConflicts": 0,
+    "potentialFixedConflicts": 0,
+    "usableSqFt": 604.2702757189178,
+    "scenarioFootprintSqFt": 693.1830473785413,
+    "potentialFloorConflicts": 0,
+    "diagonalWallCount": 1,
+    "sourceWholeApartmentAccepted": false,
+    "sourceWholePlanAccepted": false
+  },
+  "checks": [
+    "archived PDF rendered and calibrated to the declared approximate reference span",
+    "all scheduled scenario spaces, corner cuts, shared open boundaries and fixed structures created through the reusable forms",
+    "all scheduled swing/sliding/bifold doors and windows created through opening forms",
+    "independent net areas, furniture types/fit/nesting, zero conflicts, all-space structural connectivity and rendered glyph bounds passed",
+    "door mode edit, passage symbol, conditional fields and exact undo/redo passed",
+    "declared overlapping room expansion rejected without changing the complete model",
+    "actual JSON download, refresh and import preserve full geometry, fixtures and calibrated reference",
+    "full house WebGL and 3D PNG export passed",
+    "3D labels avoid overlap after cutaway, toggle, room focus, whole-house fit, units and 390px resize; selected room remains visible",
+    "real print-preview page and PDF generated with net and footprint area",
+    "390px mobile opening controls reachable without dialog overflow"
+  ],
+  "errors": [],
+  "timestamp": "2026-10-03T03:37:29.657Z"
+}

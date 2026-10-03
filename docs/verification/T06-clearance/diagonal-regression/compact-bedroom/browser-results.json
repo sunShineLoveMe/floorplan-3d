@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "id": "compact-bedroom",
+  "build": "6bd208c0db8e2ee4",
+  "sourceScope": "Synthetic compact bedroom with a different cut angle; all dimensions are test selections.",
+  "sourceWholePlanAccepted": false,
+  "checks": [
+    "rooms and unequal-angle cuts created through the same forms",
+    "straight openings and fixed column validated; cut-corner column rejected atomically",
+    "exact net areas, disjoint footprint, clear furniture/swings and native label bounds passed",
+    "furniture in cut region warns and correction clears it",
+    "invalid cut, excessive diagonal thickness and opening on removed wall rejected atomically",
+    "cut removal returns to rectangular geometry; exact undo restores the diagonal",
+    "clear furniture and undo retain angled structures",
+    "real JSON/2D exports, reload and import preserve the editable model",
+    "WebGL, 3D export and cutaway passed",
+    "actual Letter print preview exported",
+    "390px reusable cut form reachable without horizontal overflow"
+  ],
+  "rooms": 1,
+  "furniture": 2,
+  "netM2": 10.07,
+  "footprintM2": 11.603801549770626,
+  "errors": [],
+  "timestamp": "2026-10-03T03:06:04.132Z"
+}

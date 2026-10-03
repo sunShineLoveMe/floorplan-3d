@@ -1,0 +1,41 @@
+PASS archived PDF rendered and calibrated to the declared approximate reference span
+ROOM Master Bedroom
+ROOM Master closet
+ROOM Laundry
+ROOM Dining
+ROOM Central circulation
+ROOM Bath One
+ROOM Kitchen
+ROOM Bath One corner
+ROOM Living
+ROOM Bedroom Two
+ROOM Bath Two
+ROOM Bedroom Two closet
+PASS all scheduled scenario spaces, corner cuts, shared open boundaries and fixed structures created through the reusable forms
+OPENING master-door
+OPENING master-closet-door
+OPENING laundry-door
+OPENING bath-one-door
+OPENING central-entry
+OPENING central-living
+OPENING kitchen-living
+OPENING living-entry
+OPENING bedroom-two-door
+OPENING bath-two-door
+OPENING bedroom-two-closet-door
+OPENING master-window
+OPENING dining-window
+OPENING living-window-top
+OPENING living-window-bottom
+OPENING bedroom-two-window
+OPENING kitchen-window
+OPENING bath-two-window
+PASS all scheduled swing/sliding/bifold doors and windows created through opening forms
+PASS independent net areas, furniture types/fit/nesting, zero conflicts, all-space structural connectivity and rendered glyph bounds passed
+PASS door mode edit, passage symbol, conditional fields and exact undo/redo passed
+PASS declared overlapping room expansion rejected without changing the complete model
+PASS actual JSON download, refresh and import preserve full geometry, fixtures and calibrated reference
+PASS full house WebGL and 3D PNG export passed
+PASS 3D labels avoid overlap after cutaway, toggle, room focus, whole-house fit, units and 390px resize; selected room remains visible
+PASS real print-preview page and PDF generated with net and footprint area
+PASS 390px mobile opening controls reachable without dialog overflow

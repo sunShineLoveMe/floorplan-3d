@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "id": "jacobsen-kitchen",
+  "build": "cd24d1281a92a43a",
+  "sourceScope": "Inspired by the source angled kitchen boundary. Every local room/cut/fixture dimension below is an engineering assumption.",
+  "sourceWholePlanAccepted": false,
+  "checks": [
+    "rooms and unequal-angle cuts created through the same forms",
+    "straight openings and fixed column validated; cut-corner column rejected atomically",
+    "exact net areas, disjoint footprint, clear furniture/swings and native label bounds passed",
+    "furniture in cut region warns and correction clears it",
+    "invalid cut, excessive diagonal thickness and opening on removed wall rejected atomically",
+    "clear furniture and undo retain angled structures",
+    "real JSON/2D exports, reload and import preserve the editable model",
+    "WebGL, 3D export and cutaway passed",
+    "actual Letter print preview exported",
+    "390px reusable cut form reachable without horizontal overflow"
+  ],
+  "rooms": 2,
+  "furniture": 3,
+  "netM2": 15.05,
+  "footprintM2": 17.4,
+  "errors": [],
+  "timestamp": "2026-10-03T02:42:45.927Z"
+}

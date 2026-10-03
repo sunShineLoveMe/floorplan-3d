@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "build": "src/main.js?v=4717cfe4e8ffc12a",
+  "source": "Independent native Chrome review",
+  "viewport": {
+    "width": 1400,
+    "height": 1000
+  },
+  "steps": [
+    "Import new Jacobsen export and locate first zone owner",
+    "Enter 0 mm in first zone width and press Tab",
+    "Change second zone side to top",
+    "Check first draft, error state, unit lock and exact saved width",
+    "Escape first width draft and check unlock"
+  ],
+  "beforeFix": {
+    "build": "99d1b59cfcbe9cdb",
+    "beforeSiblingChange": {
+      "width": "0 mm",
+      "invalid": "true",
+      "unitLocked": true
+    },
+    "afterSiblingChange": {
+      "width": "2' 5/16\"",
+      "invalid": "false",
+      "unitLocked": false
+    },
+    "nativeObserved": true,
+    "reconstructedOldSource": false
+  },
+  "afterFix": {
+    "beforeSiblingChange": {
+      "width": "0 mm",
+      "invalid": "true",
+      "unitLocked": true
+    },
+    "afterSiblingChange": {
+      "width": "0 mm",
+      "invalid": "true",
+      "unitLocked": true
+    },
+    "afterEscape": {
+      "width": "2' 5/16\"",
+      "invalid": "false",
+      "unitLocked": false
+    },
+    "storedWidthMm": 617.123456
+  },
+  "errors": []
+}

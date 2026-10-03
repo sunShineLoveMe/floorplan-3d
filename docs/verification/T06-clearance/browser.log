@@ -1,0 +1,22 @@
+PASS jacobsen: selected route, exact target and continuous swept path overlay
+PASS jacobsen: invalid target rejected and units preserve exact millimetres
+PASS jacobsen: declared nesting, exact undo/redo and retained solid counter
+PASS jacobsen: actual move/resize blocks the selected endpoint without changing structure
+PASS jacobsen: undo/redo recalculates passage result
+PASS jacobsen: native WebGL walk enters at a verified free point and preserves geometry
+PASS jacobsen: refresh, JSON roundtrip, 2D/3D PNG and actual print PDF
+PASS cmu: selected route, exact target and continuous swept path overlay
+PASS cmu: invalid target rejected and units preserve exact millimetres
+PASS cmu: actual move/resize blocks the selected endpoint without changing structure
+PASS cmu: undo/redo recalculates passage result
+PASS cmu: native WebGL walk enters at a verified free point and preserves geometry
+PASS cmu: refresh, JSON roundtrip, 2D/3D PNG and actual print PDF
+PASS plan-f: selected route, exact target and continuous swept path overlay
+PASS plan-f: invalid target rejected and units preserve exact millimetres
+PASS plan-f: declared nesting, exact undo/redo and retained solid counter
+PASS plan-f: actual move/resize blocks the selected endpoint without changing structure
+PASS plan-f: undo/redo recalculates passage result
+PASS plan-f: native WebGL walk enters at a verified free point and preserves geometry
+PASS plan-f: refresh, JSON roundtrip, 2D/3D PNG and actual print PDF
+PASS independent open-floor barrier: blocking, explicit walkable assumption, deletion and undo/redo
+PASS target boundary and 390px controls, text wrapping and 2D locator

@@ -1,0 +1,3 @@
+PASS jacobsen: native joystick forward/sideways, collision and release
+PASS cmu: native joystick forward/sideways, collision and release
+PASS plan-f: native joystick forward/sideways, collision and release

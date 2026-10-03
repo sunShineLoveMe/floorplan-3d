@@ -113,3 +113,25 @@
 #clearanceStatus[hidden],#clearancePanel[hidden]{display:none!important}
 
 .menu-pop label{display:grid;gap:4px;font-size:12px}.menu-pop input,.menu-pop select{width:100%;padding:6px;border:1px solid var(--line);border-radius:6px;min-width:0}
+#passagePanel section{border:1px solid var(--line);background:#f4f8f5}#passagePanel summary{cursor:pointer;font-size:13px;line-height:1.5}#passagePanel .btn{white-space:normal;text-align:left;width:100%;margin-top:6px}#passagePanel p{font-size:12px;line-height:1.5;overflow-wrap:anywhere}#passagePanel .form{margin-top:10px}#passagePanel [data-state=route-found]{color:#126c52}#passagePanel [data-state=no-route],#passagePanel [data-state=no-standing-point]{color:#8a311b}#walkStartStatus{max-width:90vw}
+#passagePanel section{padding:12px 14px}#passagePanel summary{white-space:normal;overflow-wrap:anywhere}#passagePanel .form{grid-template-columns:repeat(2,minmax(0,1fr))}#panel .form p.full{grid-column:1/-1;min-width:0;overflow-wrap:anywhere}@media(max-width:480px){#passagePanel .form{grid-template-columns:1fr}}
+
+/* Explicit furniture use envelopes share the property rail and touch layout. */
+#useZonePanel summary { white-space:normal; overflow-wrap:anywhere; }
+#useZonePanel .btn { max-width:100%; white-space:normal; overflow-wrap:anywhere; text-align:left; }
+.use-zone-fields { padding:10px; border:1px solid var(--border, #d6d6d6); border-radius:8px; }
+.use-zone-result { margin-top:8px; }
+.use-zone-result p { margin:4px 0 8px; overflow-wrap:anywhere; }
+
+.walk-position { position:absolute; bottom:50px; right:12px; pointer-events:none; font-size:11px; padding:3px 6px; border-radius:5px; background:rgba(255,255,255,.85); color:#222; }
+.walk-position:empty { display:none; }
+
+#useZonePanel section { padding:12px 14px; border:1px solid var(--line); background:#f4f8f5; }
+#useZonePanel summary { cursor:pointer; font-size:13px; line-height:1.5; }
+#useZonePanel .btn { width:100%; margin-top:6px; }
+#useZonePanel p { font-size:12px; line-height:1.5; }
+#panel .use-zone-fields .form { grid-template-columns:repeat(2,minmax(0,1fr)); }
+@media(max-width:480px) { #panel .use-zone-fields .form { grid-template-columns:1fr; } }
+#panel .form { grid-template-columns:repeat(2,minmax(0,1fr)); }
+#panel .form > .use-zone-fields, #panel .form > #useZoneAdd { grid-column:1/-1; min-width:0; }
+#useZoneAdd { white-space:normal; }

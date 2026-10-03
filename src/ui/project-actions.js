@@ -1,3 +1,4 @@
+import {clone} from '../data/project-data.js';
 import {unitStepMm,formatLengthMm} from '../core/units.js';
 import {uid,F} from '../data/default-project.js';
 import {aabb,norm} from '../core/geometry.js';
@@ -21,7 +22,8 @@ function rotateSel(d){ if (ui.sel?.kind==='furn') mutate(() => { const f = getF(
 function deleteSel(){ if(ui.sel?.kind==='opening'){api.deleteOpening?.(ui.sel.id);return;} if (ui.sel?.kind==='furn'){ const id = ui.sel.id; ui.sel = null; mutate(() => store.getProject().furniture = store.getProject().furniture.filter(f => f.id !== id)); } }
 function duplicateSel(){
   if (ui.sel?.kind !== 'furn') return;
-  const f = getF(ui.sel.id), n = {...f, id:uid(), cx:f.cx+200, cy:f.cy+200};
+  const f = getF(ui.sel.id), n = {...clone(f), id:uid(), cx:f.cx+200, cy:f.cy+200};
+  if(n.useZones)n.useZones.forEach(z=>z.id=uid());
   ui.sel = {kind:'furn', id:n.id}; mutate(() => store.getProject().furniture.push(n));
 }
 // 新放下的家具若压在墙 / 窗上，沿穿透较浅的方向推出来，刚好贴墙

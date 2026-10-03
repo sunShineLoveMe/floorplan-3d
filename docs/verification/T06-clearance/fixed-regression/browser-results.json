@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "build": "9a5adaccd0da1f04",
+  "checks": [
+    "Blank dimensions reject atomically; two independently editable columns deduct exactly 2 sq ft",
+    "Overlap, outside-room, over-height and clipping resize reject without changing geometry",
+    "Moving a column into a swing warns and locates the room; correction clears the warning",
+    "Fixed structures collide with furniture, remain visible with furniture hidden, and clear on correction",
+    "Delete undo/redo and clear-furniture undo preserve fixed structural geometry",
+    "Studio JSON/PNG/3D/Letter PDF, reload/import and 390px obstacle form passed",
+    "Second official PDF: labelled small bedroom, two assumed columns, Twin XL and exports passed",
+    "Four complete houses import with exact original geometry and no phantom obstacles"
+  ],
+  "cases": [
+    {
+      "prefix": "studio",
+      "usableSqFt": 227.4166666666666,
+      "obstacles": 3,
+      "furniture": 3,
+      "conflicts": 0,
+      "scope": "Labelled room only; obstacle/door/height/wall dimensions are test assumptions, full apartment not accepted"
+    },
+    {
+      "prefix": "bedroom-two",
+      "usableSqFt": 90.08333333333333,
+      "obstacles": 2,
+      "furniture": 2,
+      "conflicts": 0,
+      "scope": "Labelled room only; obstacle/door/height/wall dimensions are test assumptions, full apartment not accepted"
+    }
+  ],
+  "errors": [],
+  "timestamp": "2026-10-03T03:08:12.404Z"
+}

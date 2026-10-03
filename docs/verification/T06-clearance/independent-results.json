@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "library": "Shapely + PyMuPDF",
+  "cases": [
+    {
+      "name": "jacobsen",
+      "continuousPathFloorDistanceMm": 300.8026595627105,
+      "continuousPathSolidDistanceMm": 300.8026595627105,
+      "targetRadiusMm": 300.0,
+      "pdfPages": 1,
+      "rulerLengthPt": 283.5,
+      "physicalPrinterTested": false
+    },
+    {
+      "name": "cmu",
+      "continuousPathFloorDistanceMm": 305.0521266931282,
+      "continuousPathSolidDistanceMm": 305.0072786016762,
+      "targetRadiusMm": 300.0,
+      "pdfPages": 1,
+      "rulerLengthPt": 283.5,
+      "physicalPrinterTested": false
+    },
+    {
+      "name": "plan-f",
+      "continuousPathFloorDistanceMm": 1057.3999999999996,
+      "continuousPathSolidDistanceMm": 300.95554488994003,
+      "targetRadiusMm": 300.0,
+      "pdfPages": 1,
+      "rulerLengthPt": 283.5,
+      "physicalPrinterTested": false
+    }
+  ]
+}

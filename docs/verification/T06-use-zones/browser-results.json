@@ -1,0 +1,309 @@
+{
+  "passed": true,
+  "build": "bad34d23ec95f5e4",
+  "checks": [
+    "jacobsen: explicit four purposes, opposite bed sides, exact dimensions and 2D conflicts",
+    "jacobsen: zone locator selects its owner and centers the 2D envelope",
+    "jacobsen: move, 45 degree rotation, both dimensions and undo/redo update anchors",
+    "jacobsen: invalid size blocked and unit switching preserves millimetre precision",
+    "jacobsen: duplicated zones edit independently; zone/item deletion and restoration update results",
+    "jacobsen: refresh, JSON roundtrip, overlay visibility and actual PNG/PDF exports",
+    "jacobsen: sustained native keyboard walk stays on free floor and stops on release",
+    "cmu: explicit four purposes, opposite bed sides, exact dimensions and 2D conflicts",
+    "cmu: zone locator selects its owner and centers the 2D envelope",
+    "cmu: move, 45 degree rotation, both dimensions and undo/redo update anchors",
+    "cmu: invalid size blocked and unit switching preserves millimetre precision",
+    "cmu: duplicated zones edit independently; zone/item deletion and restoration update results",
+    "cmu: refresh, JSON roundtrip, overlay visibility and actual PNG/PDF exports",
+    "cmu: sustained native keyboard walk stays on free floor and stops on release",
+    "plan-f: explicit four purposes, opposite bed sides, exact dimensions and 2D conflicts",
+    "plan-f: zone locator selects its owner and centers the 2D envelope",
+    "plan-f: move, 45 degree rotation, both dimensions and undo/redo update anchors",
+    "plan-f: invalid size blocked and unit switching preserves millimetre precision",
+    "plan-f: duplicated zones edit independently; zone/item deletion and restoration update results",
+    "plan-f: refresh, JSON roundtrip, overlay visibility and actual PNG/PDF exports",
+    "plan-f: sustained native keyboard walk stays on free floor and stops on release",
+    "known blocker: move, walkable assumption, delete and undo distinguish clear/conflict without name inference",
+    "390px controls, text wrapping and 2D locator",
+    "jacobsen-kitchen: same production envelope logic on actual diagonal geometry",
+    "mirrored-entry: same production envelope logic on actual diagonal geometry",
+    "compact-bedroom: same production envelope logic on actual diagonal geometry",
+    "shared-kitchen-bath: same production envelope logic on actual diagonal geometry"
+  ],
+  "results": [
+    {
+      "name": "jacobsen",
+      "zoneCount": 5,
+      "conflicts": 4,
+      "walk": {
+        "name": "jacobsen",
+        "kind": "keyboard",
+        "trace": [
+          [
+            2050,
+            1900
+          ],
+          [
+            2050,
+            1785.3108720326845
+          ],
+          [
+            2050,
+            1551.8038076006062
+          ],
+          [
+            2050,
+            1437.1146796332907
+          ],
+          [
+            2050,
+            1207.7364236986596
+          ],
+          [
+            2050,
+            978.5875458012111
+          ],
+          [
+            2050,
+            978.5875458012111
+          ],
+          [
+            2050,
+            978.5875458012111
+          ],
+          [
+            2050,
+            978.5875458012111
+          ],
+          [
+            2050,
+            978.5875458012111
+          ],
+          [
+            2050,
+            978.5875458012111
+          ],
+          [
+            2050,
+            978.5875458012111
+          ],
+          [
+            2050,
+            978.5875458012111
+          ],
+          [
+            2050,
+            978.5875458012111
+          ],
+          [
+            2050,
+            978.5875458012111
+          ],
+          [
+            2050,
+            978.5875458012111
+          ],
+          [
+            2050,
+            978.5875458012111
+          ],
+          [
+            2050,
+            978.5875458012111
+          ]
+        ],
+        "geometryUnchanged": true
+      }
+    },
+    {
+      "name": "cmu",
+      "zoneCount": 5,
+      "conflicts": 3,
+      "walk": {
+        "name": "cmu",
+        "kind": "keyboard",
+        "trace": [
+          [
+            1727.2000000000003,
+            1293.8800001859668
+          ],
+          [
+            1727.2000000000003,
+            1293.8800001859668
+          ],
+          [
+            1727.2000000000003,
+            955.0999999999999
+          ],
+          [
+            1727.2000000000003,
+            660.2600000619891
+          ],
+          [
+            1727.2000000000003,
+            462.39999999999964
+          ],
+          [
+            1727.2000000000003,
+            462.39999999999964
+          ],
+          [
+            1727.2000000000003,
+            462.39999999999964
+          ],
+          [
+            1727.2000000000003,
+            462.39999999999964
+          ],
+          [
+            1727.2000000000003,
+            462.39999999999964
+          ],
+          [
+            1727.2000000000003,
+            462.39999999999964
+          ],
+          [
+            1727.2000000000003,
+            462.39999999999964
+          ],
+          [
+            1727.2000000000003,
+            462.39999999999964
+          ],
+          [
+            1727.2000000000003,
+            462.39999999999964
+          ],
+          [
+            1727.2000000000003,
+            462.39999999999964
+          ],
+          [
+            1727.2000000000003,
+            462.39999999999964
+          ],
+          [
+            1727.2000000000003,
+            462.39999999999964
+          ],
+          [
+            1727.2000000000003,
+            462.39999999999964
+          ],
+          [
+            1727.2000000000003,
+            462.39999999999964
+          ]
+        ],
+        "geometryUnchanged": true
+      }
+    },
+    {
+      "name": "plan-f",
+      "zoneCount": 5,
+      "conflicts": 3,
+      "walk": {
+        "name": "plan-f",
+        "kind": "keyboard",
+        "trace": [
+          [
+            1702.4,
+            1113.6
+          ],
+          [
+            1702.4,
+            1113.6
+          ],
+          [
+            1702.2997841802562,
+            1113.6
+          ],
+          [
+            1702.0606692344422,
+            1090.4600069377261
+          ],
+          [
+            1702.0606692344422,
+            1090.4600069377261
+          ],
+          [
+            1701.860237594954,
+            1090.4600069377261
+          ],
+          [
+            1701.6598059554658,
+            1090.4600069377261
+          ],
+          [
+            1701.6598059554658,
+            1090.4600069377261
+          ],
+          [
+            1701.459374315978,
+            1090.4600069377261
+          ],
+          [
+            1701.2589426764898,
+            1090.4600069377261
+          ],
+          [
+            1701.0585110370016,
+            1090.4600069377261
+          ],
+          [
+            1701.0585110370016,
+            1090.4600069377261
+          ],
+          [
+            1700.8580793975134,
+            1090.4600069377261
+          ],
+          [
+            1700.6576477580252,
+            1090.4600069377261
+          ],
+          [
+            1700.4572161185374,
+            1090.4600069377261
+          ],
+          [
+            1700.4572161185374,
+            1090.4600069377261
+          ],
+          [
+            1700.2567844790492,
+            1090.4600069377261
+          ],
+          [
+            1700.056352839561,
+            1090.4600069377261
+          ]
+        ],
+        "geometryUnchanged": true
+      }
+    }
+  ],
+  "errors": [],
+  "browser": "154.0.8037.97",
+  "timestamp": "2026-10-03T03:45:01.492Z",
+  "retainedEarlierLayoutChecks": [
+    "jacobsen: explicit four purposes, opposite bed sides, exact dimensions and 2D conflicts",
+    "jacobsen: zone locator selects its owner and centers the 2D envelope",
+    "jacobsen: move, 45 degree rotation, both dimensions and undo/redo update anchors",
+    "jacobsen: invalid size blocked and unit switching preserves millimetre precision",
+    "jacobsen: duplicated zones edit independently; zone/item deletion and restoration update results",
+    "jacobsen: refresh, JSON roundtrip, overlay visibility and actual PNG/PDF exports",
+    "jacobsen: sustained native keyboard walk stays on free floor and stops on release",
+    "cmu: explicit four purposes, opposite bed sides, exact dimensions and 2D conflicts",
+    "cmu: zone locator selects its owner and centers the 2D envelope",
+    "cmu: move, 45 degree rotation, both dimensions and undo/redo update anchors",
+    "cmu: invalid size blocked and unit switching preserves millimetre precision",
+    "cmu: duplicated zones edit independently; zone/item deletion and restoration update results",
+    "cmu: refresh, JSON roundtrip, overlay visibility and actual PNG/PDF exports",
+    "cmu: sustained native keyboard walk stays on free floor and stops on release"
+  ],
+  "runLayoutFilter": [
+    "plan-f"
+  ]
+}

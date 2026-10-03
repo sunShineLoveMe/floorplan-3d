@@ -1,0 +1,64 @@
+{
+  "zones": [
+    {
+      "furnitureId": "furniture-0",
+      "zoneId": "zone-0",
+      "kind": "appliance",
+      "side": "bottom",
+      "widthMm": 600,
+      "depthMm": 600,
+      "offsetMm": 0,
+      "poly": [
+        [
+          468.96967398351165,
+          3285.9033397631124
+        ],
+        [
+          960.4609005569068,
+          2941.7574779524844
+        ],
+        [
+          1304.6067623675344,
+          3433.2487045258795
+        ],
+        [
+          813.1155357941393,
+          3777.3945663365075
+        ]
+      ],
+      "outsideMm2": 0,
+      "status": "clear",
+      "conflicts": []
+    },
+    {
+      "furnitureId": "furniture-1",
+      "zoneId": "zone-1",
+      "kind": "appliance",
+      "side": "bottom",
+      "widthMm": 600,
+      "depthMm": 600,
+      "offsetMm": 0,
+      "poly": [
+        [
+          1500,
+          2800
+        ],
+        [
+          2100,
+          2800
+        ],
+        [
+          2100,
+          3400
+        ],
+        [
+          1500,
+          3400
+        ]
+      ],
+      "outsideMm2": 0,
+      "status": "clear",
+      "conflicts": []
+    }
+  ]
+}

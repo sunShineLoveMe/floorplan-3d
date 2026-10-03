@@ -1,0 +1,29 @@
+{
+  "error": "locator.waitFor: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#fName') to be visible\u001b[22m\n\n    at select (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t06-use-zones.mjs:10:122)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t06-use-zones.mjs:48:351",
+  "checks": [
+    "jacobsen: explicit four purposes, opposite bed sides, exact dimensions and 2D conflicts",
+    "jacobsen: zone locator selects its owner and centers the 2D envelope",
+    "jacobsen: move, 45 degree rotation, both dimensions and undo/redo update anchors",
+    "jacobsen: invalid size blocked and unit switching preserves millimetre precision",
+    "jacobsen: duplicated zones edit independently; zone/item deletion and restoration update results",
+    "jacobsen: refresh, JSON roundtrip, overlay visibility and actual PNG/PDF exports",
+    "jacobsen: sustained native keyboard walk stays on free floor and stops on release",
+    "cmu: explicit four purposes, opposite bed sides, exact dimensions and 2D conflicts",
+    "cmu: zone locator selects its owner and centers the 2D envelope",
+    "cmu: move, 45 degree rotation, both dimensions and undo/redo update anchors",
+    "cmu: invalid size blocked and unit switching preserves millimetre precision",
+    "cmu: duplicated zones edit independently; zone/item deletion and restoration update results",
+    "cmu: refresh, JSON roundtrip, overlay visibility and actual PNG/PDF exports",
+    "cmu: sustained native keyboard walk stays on free floor and stops on release",
+    "plan-f: explicit four purposes, opposite bed sides, exact dimensions and 2D conflicts",
+    "plan-f: zone locator selects its owner and centers the 2D envelope",
+    "plan-f: move, 45 degree rotation, both dimensions and undo/redo update anchors",
+    "plan-f: invalid size blocked and unit switching preserves millimetre precision",
+    "plan-f: duplicated zones edit independently; zone/item deletion and restoration update results",
+    "plan-f: refresh, JSON roundtrip, overlay visibility and actual PNG/PDF exports",
+    "plan-f: sustained native keyboard walk stays on free floor and stops on release"
+  ],
+  "errors": [
+    "TypeError: Cannot read properties of undefined (reading 'id')\n    at roomPanel (http://127.0.0.1:8095/src/ui/property-panel.js?v=4717cfe4e8ffc12a:126:41)\n    at Object.renderPanel [as update] (http://127.0.0.1:8095/src/ui/property-panel.js?v=4717cfe4e8ffc12a:37:46)\n    at onSelection (http://127.0.0.1:8095/src/main.js?v=4717cfe4e8ffc12a:33:107)\n    at select (http://127.0.0.1:8095/src/ui/project-actions.js?v=4717cfe4e8ffc12a:20:37)\n    at HTMLCanvasElement.<anonymous> (http://127.0.0.1:8095/src/viewer3d/viewer.js?v=4717cfe4e8ffc12a:145:23)"
+  ]
+}

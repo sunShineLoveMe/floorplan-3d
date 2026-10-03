@@ -1,0 +1,806 @@
+
+> test
+> node --test tests/*.test.js
+
+TAP version 13
+# Subtest: CMU composition scenario preserves labelled sizes, separates unknown dimensions and connects all eight spaces
+ok 1 - CMU composition scenario preserves labelled sizes, separates unknown dimensions and connects all eight spaces
+  ---
+  duration_ms: 71.189667
+  type: 'test'
+  ...
+# Subtest: composite kitchen notch/closet and shared openings survive room and column edits atomically
+ok 2 - composite kitchen notch/closet and shared openings survive room and column edits atomically
+  ---
+  duration_ms: 15.473792
+  type: 'test'
+  ...
+# Subtest: architecture builds positive meshes at opening boundaries and matches all door directions
+ok 3 - architecture builds positive meshes at opening boundaries and matches all door directions
+  ---
+  duration_ms: 67.509958
+  type: 'test'
+  ...
+# Subtest: house-prefixed window IDs retain horizontal/vertical pane orientation
+ok 4 - house-prefixed window IDs retain horizontal/vertical pane orientation
+  ---
+  duration_ms: 1.586125
+  type: 'test'
+  ...
+# Subtest: custom wall heights create exact pony wall meshes and respect the cut height
+ok 5 - custom wall heights create exact pony wall meshes and respect the cut height
+  ---
+  duration_ms: 10.549541
+  type: 'test'
+  ...
+# Subtest: partial shared-wall passage has an actual connecting floor and no wall collider in either axis
+ok 6 - partial shared-wall passage has an actual connecting floor and no wall collider in either axis
+  ---
+  duration_ms: 5.547667
+  type: 'test'
+  ...
+# Subtest: folding leaves face the selected room on every wall, reverse for outward folds and respect cutaway
+ok 7 - folding leaves face the selected room on every wall, reverse for outward folds and respect cutaway
+  ---
+  duration_ms: 3.396833
+  type: 'test'
+  ...
+# Subtest: fixed obstacles produce exact meshes, cutaway heights and persistent walk colliders
+ok 8 - fixed obstacles produce exact meshes, cutaway heights and persistent walk colliders
+  ---
+  duration_ms: 1.397625
+  type: 'test'
+  ...
+# Subtest: diagonal walls extrude their exact footprints and retain polygon walk colliders at every cut height
+ok 9 - diagonal walls extrude their exact footprints and retain polygon walk colliders at every cut height
+  ---
+  duration_ms: 5.450125
+  type: 'test'
+  ...
+# Subtest: visible sliding and folded leaves have colliders matching their actual displayed footprints
+ok 10 - visible sliding and folded leaves have colliders matching their actual displayed footprints
+  ---
+  duration_ms: 1.717042
+  type: 'test'
+  ...
+# Subtest: plan-b: source outline, complete inventory and all spaces reachable
+ok 11 - plan-b: source outline, complete inventory and all spaces reachable
+  ---
+  duration_ms: 44.846625
+  type: 'test'
+  ...
+# Subtest: plan-a: source outline, complete inventory and all spaces reachable
+ok 12 - plan-a: source outline, complete inventory and all spaces reachable
+  ---
+  duration_ms: 62.261583
+  type: 'test'
+  ...
+# Subtest: plan-c: source outline, complete inventory and all spaces reachable
+ok 13 - plan-c: source outline, complete inventory and all spaces reachable
+  ---
+  duration_ms: 16.416417
+  type: 'test'
+  ...
+# Subtest: plan-f: source outline, complete inventory and all spaces reachable
+ok 14 - plan-f: source outline, complete inventory and all spaces reachable
+  ---
+  duration_ms: 3.995334
+  type: 'test'
+  ...
+# Subtest: one generic cut model covers four corners, unequal angles and translated layouts with exact areas and no wall-floor intrusion
+ok 15 - one generic cut model covers four corners, unequal angles and translated layouts with exact areas and no wall-floor intrusion
+  ---
+  duration_ms: 32.154458
+  type: 'test'
+  ...
+# Subtest: polygon clipping conserves area through disjoint floor union and concave notch decomposition
+ok 16 - polygon clipping conserves area through disjoint floor union and concave notch decomposition
+  ---
+  duration_ms: 0.237125
+  type: 'test'
+  ...
+# Subtest: diagonal neighbours may overlap bounding boxes, require real wall clearance and never double count the footprint
+ok 17 - diagonal neighbours may overlap bounding boxes, require real wall clearance and never double count the footprint
+  ---
+  duration_ms: 2.80825
+  type: 'test'
+  ...
+# Subtest: cut removal, invalid dimensions, clipped openings and fixed columns validate atomically
+ok 18 - cut removal, invalid dimensions, clipped openings and fixed columns validate atomically
+  ---
+  duration_ms: 3.1715
+  type: 'test'
+  ...
+# Subtest: true sloping footprints warn, clear after correction and do not use their rectangular bounding box for walk collision
+ok 19 - true sloping footprints warn, clear after correction and do not use their rectangular bounding box for walk collision
+  ---
+  duration_ms: 0.561625
+  type: 'test'
+  ...
+# Subtest: floor clearance handles a rotated item across connected rooms and detects a swing hitting a cut
+ok 20 - floor clearance handles a rotated item across connected rooms and detects a swing hitting a cut
+  ---
+  duration_ms: 1.513041
+  type: 'test'
+  ...
+# Subtest: all four accepted manual houses and CMU composition still read with their exact prior geometry
+ok 21 - all four accepted manual houses and CMU composition still read with their exact prior geometry
+  ---
+  duration_ms: 38.177125
+  type: 'test'
+  ...
+# Subtest: four different engineering layouts reuse one model, retain provenance and have no floor, diagonal-wall or swing conflicts
+ok 22 - four different engineering layouts reuse one model, retain provenance and have no floor, diagonal-wall or swing conflicts
+  ---
+  duration_ms: 8.259042
+  type: 'test'
+  ...
+# Subtest: generic floor checks catch the prior Plan F cabinet crossing a pony wall; a 3 in correction clears it without changing structural geometry
+ok 23 - generic floor checks catch the prior Plan F cabinet crossing a pony wall; a 3 in correction clears it without changing structural geometry
+  ---
+  duration_ms: 5.335083
+  type: 'test'
+  ...
+# Subtest: audit Bottom door conflicts, displacement and all hinge/swing axes including rotations
+ok 24 - audit Bottom door conflicts, displacement and all hinge/swing axes including rotations
+  ---
+  duration_ms: 6.627417
+  type: 'test'
+  ...
+# Subtest: multiple fixed footprints deduct net area and retain exact local dimensions through JSON
+ok 25 - multiple fixed footprints deduct net area and retain exact local dimensions through JSON
+  ---
+  duration_ms: 6.323542
+  type: 'test'
+  ...
+# Subtest: source offsets move with the room and combine with a notch without double subtraction
+ok 26 - source offsets move with the room and combine with a notch without double subtraction
+  ---
+  duration_ms: 0.409291
+  type: 'test'
+  ...
+# Subtest: invalid sizes, height, overlaps, duplicate IDs and limits reject the whole source draft
+ok 27 - invalid sizes, height, overlaps, duplicate IDs and limits reject the whole source draft
+  ---
+  duration_ms: 3.180584
+  type: 'test'
+  ...
+# Subtest: rotated footprint collision uses separating axes, permits contact and detects contained objects
+ok 28 - rotated footprint collision uses separating axes, permits contact and detects contained objects
+  ---
+  duration_ms: 0.436125
+  type: 'test'
+  ...
+# Subtest: fixed columns block swing doors and furniture independently, and disappear when corrected
+ok 29 - fixed columns block swing doors and furniture independently, and disappear when corrected
+  ---
+  duration_ms: 3.679459
+  type: 'test'
+  ...
+# Subtest: labels and print use usable area, labels avoid fixed objects even with furniture hidden
+ok 30 - labels and print use usable area, labels avoid fixed objects even with furniture hidden
+  ---
+  duration_ms: 14.223208
+  type: 'test'
+  ...
+# Subtest: removing the final obstacle restores the original legacy-compatible geometry fields
+ok 31 - removing the final obstacle restores the original legacy-compatible geometry fields
+  ---
+  duration_ms: 0.849
+  type: 'test'
+  ...
+# Subtest: imperial boundary sums tolerate floating-point rounding without rejecting flush columns
+ok 32 - imperial boundary sums tolerate floating-point rounding without rejecting flush columns
+  ---
+  duration_ms: 1.976459
+  type: 'test'
+  ...
+# Subtest: room label anchor and initial walking position avoid a central structural column
+ok 33 - room label anchor and initial walking position avoid a central structural column
+  ---
+  duration_ms: 1.384125
+  type: 'test'
+  ...
+# Subtest: adjacent imperial structural footprints permit contact despite rounding
+ok 34 - adjacent imperial structural footprints permit contact despite rounding
+  ---
+  duration_ms: 0.548666
+  type: 'test'
+  ...
+# Subtest: 40x30ft room including wall height fits wide and narrow viewports
+ok 35 - 40x30ft room including wall height fits wide and narrow viewports
+  ---
+  duration_ms: 1.380875
+  type: 'test'
+  ...
+# Subtest: Twin XL mattress label wraps without discarding its canonical name
+ok 36 - Twin XL mattress label wraps without discarding its canonical name
+  ---
+  duration_ms: 0.6315
+  type: 'test'
+  ...
+# Subtest: long English/Chinese names are bounded and retain the full accessible text
+ok 37 - long English/Chinese names are bounded and retain the full accessible text
+  ---
+  duration_ms: 3.184959
+  type: 'test'
+  ...
+# Subtest: small objects and intentionally unlabelled types keep their existing visibility policy
+ok 38 - small objects and intentionally unlabelled types keep their existing visibility policy
+  ---
+  duration_ms: 0.11575
+  type: 'test'
+  ...
+# Subtest: three adjacent rooms share walls, cut both sides of an opening, and round trip
+ok 39 - three adjacent rooms share walls, cut both sides of an opening, and round trip
+  ---
+  duration_ms: 11.218333
+  type: 'test'
+  ...
+# Subtest: open adjacent zones form an L without phantom partitions and preserve asymmetric exterior walls
+ok 40 - open adjacent zones form an L without phantom partitions and preserve asymmetric exterior walls
+  ---
+  duration_ms: 2.164417
+  type: 'test'
+  ...
+# Subtest: 4.5 inch shared wall cuts both sides, invalid side widths are rejected atomically
+ok 41 - 4.5 inch shared wall cuts both sides, invalid side widths are rejected atomically
+  ---
+  duration_ms: 0.502708
+  type: 'test'
+  ...
+# Subtest: a shared wall opening cuts the entire thicker neighbor side
+ok 42 - a shared wall opening cuts the entire thicker neighbor side
+  ---
+  duration_ms: 0.866083
+  type: 'test'
+  ...
+# Subtest: partial walls keep only their specified intervals, allow internal openings, and round trip
+ok 43 - partial walls keep only their specified intervals, allow internal openings, and round trip
+  ---
+  duration_ms: 0.955416
+  type: 'test'
+  ...
+# Subtest: a shared partial partition needs both sides open and keeps one disjoint wall union
+ok 44 - a shared partial partition needs both sides open and keeps one disjoint wall union
+  ---
+  duration_ms: 0.404292
+  type: 'test'
+  ...
+# Subtest: pony wall heights and taller shared overlaps are independent of room order
+ok 45 - pony wall heights and taller shared overlaps are independent of room order
+  ---
+  duration_ms: 2.891625
+  type: 'test'
+  ...
+# Subtest: disposing a component removes listeners and pending work before remount
+ok 46 - disposing a component removes listeners and pending work before remount
+  ---
+  duration_ms: 0.438292
+  type: 'test'
+  ...
+# Subtest: top-left notch removes only closet footprint and round trips
+ok 47 - top-left notch removes only closet footprint and round trips
+  ---
+  duration_ms: 8.467958
+  type: 'test'
+  ...
+# Subtest: top-right notch removes only closet footprint and round trips
+ok 48 - top-right notch removes only closet footprint and round trips
+  ---
+  duration_ms: 0.746292
+  type: 'test'
+  ...
+# Subtest: bottom-left notch removes only closet footprint and round trips
+ok 49 - bottom-left notch removes only closet footprint and round trips
+  ---
+  duration_ms: 0.866292
+  type: 'test'
+  ...
+# Subtest: bottom-right notch removes only closet footprint and round trips
+ok 50 - bottom-right notch removes only closet footprint and round trips
+  ---
+  duration_ms: 1.312083
+  type: 'test'
+  ...
+# Subtest: closet in bedroom notch can share walls without overlapping usable floors
+ok 51 - closet in bedroom notch can share walls without overlapping usable floors
+  ---
+  duration_ms: 2.286375
+  type: 'test'
+  ...
+# Subtest: sliding on top: flush wall ends, shared aperture and persistence
+ok 52 - sliding on top: flush wall ends, shared aperture and persistence
+  ---
+  duration_ms: 11.878875
+  type: 'test'
+  ...
+# Subtest: bifold on top: flush wall ends, shared aperture and persistence
+ok 53 - bifold on top: flush wall ends, shared aperture and persistence
+  ---
+  duration_ms: 1.94075
+  type: 'test'
+  ...
+# Subtest: passage on top: flush wall ends, shared aperture and persistence
+ok 54 - passage on top: flush wall ends, shared aperture and persistence
+  ---
+  duration_ms: 1.750875
+  type: 'test'
+  ...
+# Subtest: sliding on right: flush wall ends, shared aperture and persistence
+ok 55 - sliding on right: flush wall ends, shared aperture and persistence
+  ---
+  duration_ms: 0.653542
+  type: 'test'
+  ...
+# Subtest: bifold on right: flush wall ends, shared aperture and persistence
+ok 56 - bifold on right: flush wall ends, shared aperture and persistence
+  ---
+  duration_ms: 0.644708
+  type: 'test'
+  ...
+# Subtest: passage on right: flush wall ends, shared aperture and persistence
+ok 57 - passage on right: flush wall ends, shared aperture and persistence
+  ---
+  duration_ms: 1.91825
+  type: 'test'
+  ...
+# Subtest: sliding on bottom: flush wall ends, shared aperture and persistence
+ok 58 - sliding on bottom: flush wall ends, shared aperture and persistence
+  ---
+  duration_ms: 0.907084
+  type: 'test'
+  ...
+# Subtest: bifold on bottom: flush wall ends, shared aperture and persistence
+ok 59 - bifold on bottom: flush wall ends, shared aperture and persistence
+  ---
+  duration_ms: 0.593291
+  type: 'test'
+  ...
+# Subtest: passage on bottom: flush wall ends, shared aperture and persistence
+ok 60 - passage on bottom: flush wall ends, shared aperture and persistence
+  ---
+  duration_ms: 0.867291
+  type: 'test'
+  ...
+# Subtest: sliding on left: flush wall ends, shared aperture and persistence
+ok 61 - sliding on left: flush wall ends, shared aperture and persistence
+  ---
+  duration_ms: 7.538084
+  type: 'test'
+  ...
+# Subtest: bifold on left: flush wall ends, shared aperture and persistence
+ok 62 - bifold on left: flush wall ends, shared aperture and persistence
+  ---
+  duration_ms: 0.685042
+  type: 'test'
+  ...
+# Subtest: passage on left: flush wall ends, shared aperture and persistence
+ok 63 - passage on left: flush wall ends, shared aperture and persistence
+  ---
+  duration_ms: 0.501083
+  type: 'test'
+  ...
+# Subtest: partial wall elsewhere does not demand a gap at an open join; occupied interval still does
+ok 64 - partial wall elsewhere does not demand a gap at an open join; occupied interval still does
+  ---
+  duration_ms: 0.318792
+  type: 'test'
+  ...
+# Subtest: explicit opposite swing leaves may share one opening; accidental duplicates and wrong pairing are rejected
+ok 65 - explicit opposite swing leaves may share one opening; accidental duplicates and wrong pairing are rejected
+  ---
+  duration_ms: 2.184708
+  type: 'test'
+  ...
+# Subtest: physical print dimensions respect scale and reject cropped pages
+ok 66 - physical print dimensions respect scale and reject cropped pages
+  ---
+  duration_ms: 0.596125
+  type: 'test'
+  ...
+# Subtest: export names distinguish project, layout, date and representation with safe characters
+ok 67 - export names distinguish project, layout, date and representation with safe characters
+  ---
+  duration_ms: 2.559792
+  type: 'test'
+  ...
+# Subtest: portrait and tall-house fit leaves 40 mm after page margins for title, legend and ruler
+ok 68 - portrait and tall-house fit leaves 40 mm after page margins for title, legend and ruler
+  ---
+  duration_ms: 0.10975
+  type: 'test'
+  ...
+# Subtest: complete sample round trip retains all geometry, settings and furniture
+ok 69 - complete sample round trip retains all geometry, settings and furniture
+  ---
+  duration_ms: 3.842417
+  type: 'test'
+  ...
+# Subtest: edited geometry, decimal units and furniture are independent of template
+ok 70 - edited geometry, decimal units and furniture are independent of template
+  ---
+  duration_ms: 1.19475
+  type: 'test'
+  ...
+# Subtest: legacy import requires explicit template confirmation
+ok 71 - legacy import requires explicit template confirmation
+  ---
+  duration_ms: 1.38175
+  type: 'test'
+  ...
+# Subtest: legacy foreign rooms cannot silently acquire the sample geometry
+ok 72 - legacy foreign rooms cannot silently acquire the sample geometry
+  ---
+  duration_ms: 0.534334
+  type: 'test'
+  ...
+# Subtest: bad JSON, future versions and unknown formats are distinguished
+ok 73 - bad JSON, future versions and unknown formats are distinguished
+  ---
+  duration_ms: 0.374875
+  type: 'test'
+  ...
+# Subtest: reject broken references, invalid dimensions and unsafe render attributes
+ok 74 - reject broken references, invalid dimensions and unsafe render attributes
+  ---
+  duration_ms: 2.62175
+  type: 'test'
+  ...
+# Subtest: standalone custom project fixture validates and does not depend on sample rooms
+ok 75 - standalone custom project fixture validates and does not depend on sample rooms
+  ---
+  duration_ms: 1.740125
+  type: 'test'
+  ...
+# Subtest: legacy edits to removable external/low walls remain importable
+ok 76 - legacy edits to removable external/low walls remain importable
+  ---
+  duration_ms: 0.32625
+  type: 'test'
+  ...
+# Subtest: file rejection and legacy cancellation leave memory and saved data unchanged
+ok 77 - file rejection and legacy cancellation leave memory and saved data unchanged
+  ---
+  duration_ms: 8.16675
+  type: 'test'
+  ...
+# Subtest: legacy backup happens before replacement and failed backup prevents replacement
+ok 78 - legacy backup happens before replacement and failed backup prevents replacement
+  ---
+  duration_ms: 3.457625
+  type: 'test'
+  ...
+# Subtest: unreadable storage is backed up before overwrite, and legacy key is untouched
+ok 79 - unreadable storage is backed up before overwrite, and legacy key is untouched
+  ---
+  duration_ms: 1.334875
+  type: 'test'
+  ...
+# Subtest: backup failure blocks overwrite; quota failure is returned without false success
+ok 80 - backup failure blocks overwrite; quota failure is returned without false success
+  ---
+  duration_ms: 1.317875
+  type: 'test'
+  ...
+# Subtest: existing recovery keys are not overwritten and serialization preserves decimals
+ok 81 - existing recovery keys are not overwritten and serialization preserves decimals
+  ---
+  duration_ms: 2.226167
+  type: 'test'
+  ...
+# Subtest: mutation notifies once with the current project; unchanged operations do not commit
+ok 82 - mutation notifies once with the current project; unchanged operations do not commit
+  ---
+  duration_ms: 2.386666
+  type: 'test'
+  ...
+# Subtest: drag previews have one history entry, cancellation restores without committing
+ok 83 - drag previews have one history entry, cancellation restores without committing
+  ---
+  duration_ms: 1.865375
+  type: 'test'
+  ...
+# Subtest: import undo/redo restores complete geometry and new edits clear redo
+ok 84 - import undo/redo restores complete geometry and new edits clear redo
+  ---
+  duration_ms: 1.053375
+  type: 'test'
+  ...
+# Subtest: subscriptions can be removed; failed mutations roll back; render reads do not alter timestamps
+ok 85 - subscriptions can be removed; failed mutations roll back; render reads do not alter timestamps
+  ---
+  duration_ms: 0.740292
+  type: 'test'
+  ...
+# Subtest: stored 3D mode survives pending engine initialization and layer changes
+ok 86 - stored 3D mode survives pending engine initialization and layer changes
+  ---
+  duration_ms: 0.404292
+  type: 'test'
+  ...
+# Subtest: reference calibration anchors the first point and round-trips exact scale
+ok 87 - reference calibration anchors the first point and round-trips exact scale
+  ---
+  duration_ms: 3.446709
+  type: 'test'
+  ...
+# Subtest: rectangle geometry keeps net area, decimal dimensions and non-overlapping wall corners
+ok 88 - rectangle geometry keeps net area, decimal dimensions and non-overlapping wall corners
+  ---
+  duration_ms: 4.909958
+  type: 'test'
+  ...
+# Subtest: all sixteen door wall/hinge/swing combinations produce matching hinge and perpendicular directions
+ok 89 - all sixteen door wall/hinge/swing combinations produce matching hinge and perpendicular directions
+  ---
+  duration_ms: 4.200375
+  type: 'test'
+  ...
+# Subtest: multiple apertures split stable wall intervals without filling door/window holes
+ok 90 - multiple apertures split stable wall intervals without filling door/window holes
+  ---
+  duration_ms: 0.26175
+  type: 'test'
+  ...
+# Subtest: invalid parameters, unsafe IDs, wrong fields, overlaps, shrink and height changes are rejected atomically
+ok 91 - invalid parameters, unsafe IDs, wrong fields, overlaps, shrink and height changes are rejected atomically
+  ---
+  duration_ms: 1.052458
+  type: 'test'
+  ...
+# Subtest: v2 validates generated snapshots and project-wide opening IDs; decimal tolerance is bounded
+ok 92 - v2 validates generated snapshots and project-wide opening IDs; decimal tolerance is bounded
+  ---
+  duration_ms: 1.029083
+  type: 'test'
+  ...
+# Subtest: v1 independent room migration retains IDs, decimals, timestamps, wall references and preferences
+ok 93 - v1 independent room migration retains IDs, decimals, timestamps, wall references and preferences
+  ---
+  duration_ms: 0.386041
+  type: 'test'
+  ...
+# Subtest: storage respects strict v2/v1/legacy priority and preserves source keys on migration and failure
+ok 94 - storage respects strict v2/v1/legacy priority and preserves source keys on migration and failure
+  ---
+  duration_ms: 0.436583
+  type: 'test'
+  ...
+# Subtest: save rejects mismatched rectangle before writing or recovery backup
+ok 95 - save rejects mismatched rectangle before writing or recovery backup
+  ---
+  duration_ms: 0.117125
+  type: 'test'
+  ...
+# Subtest: room changes and opening transactions preserve furniture, measurements, IDs and complete undo/redo state
+ok 96 - room changes and opening transactions preserve furniture, measurements, IDs and complete undo/redo state
+  ---
+  duration_ms: 1.078458
+  type: 'test'
+  ...
+# Subtest: checked-in v2 rectangle fixture round-trips and remains structurally editable
+ok 97 - checked-in v2 rectangle fixture round-trips and remains structurally editable
+  ---
+  duration_ms: 0.718958
+  type: 'test'
+  ...
+# Subtest: decimal millimetre arithmetic accepts a mathematically exact 1 mm gap without rounding input
+ok 98 - decimal millimetre arithmetic accepts a mathematically exact 1 mm gap without rounding input
+  ---
+  duration_ms: 0.236583
+  type: 'test'
+  ...
+# Subtest: Euclidean footprint gaps distinguish contact, 1 mm overlap, and actual 45/90 degree rectangles
+ok 99 - Euclidean footprint gaps distinguish contact, 1 mm overlap, and actual 45/90 degree rectangles
+  ---
+  duration_ms: 5.374708
+  type: 'test'
+  ...
+# Subtest: target ±1 mm: straight 1000 mm net corridor accepts 999/1000, rejects 1001
+ok 100 - target ±1 mm: straight 1000 mm net corridor accepts 999/1000, rejects 1001
+  ---
+  duration_ms: 7.961666
+  type: 'test'
+  ...
+# Subtest: a 1 mm thin obstacle between free grid nodes blocks the continuous sweep
+ok 101 - a 1 mm thin obstacle between free grid nodes blocks the continuous sweep
+  ---
+  duration_ms: 3.887625
+  type: 'test'
+  ...
+# Subtest: solid furniture separates spaces; rug is walkable; explicit solid rug blocks
+ok 102 - solid furniture separates spaces; rug is walkable; explicit solid rug blocks
+  ---
+  duration_ms: 7.376875
+  type: 'test'
+  ...
+# Subtest: floor union admits open boundaries and rejects point contact, gaps and outside slabs
+ok 103 - floor union admits open boundaries and rejects point contact, gaps and outside slabs
+  ---
+  duration_ms: 3.041667
+  type: 'test'
+  ...
+# Subtest: rotated narrow diagonal route and translated coordinates retain conservative continuous checks
+ok 104 - rotated narrow diagonal route and translated coordinates retain conservative continuous checks
+  ---
+  duration_ms: 4.307833
+  type: 'test'
+  ...
+# Subtest: wall and diagonal distances use real edges; separated closed partitions suppress gap advisories
+ok 105 - wall and diagonal distances use real edges; separated closed partitions suppress gap advisories
+  ---
+  duration_ms: 0.761958
+  type: 'test'
+  ...
+# Subtest: explicit fully contained nesting exempts one pair but never opens the container footprint
+ok 106 - explicit fully contained nesting exempts one pair but never opens the container footprint
+  ---
+  duration_ms: 1.443167
+  type: 'test'
+  ...
+# Subtest: swing/open/closed, retracted slider, unknown bifold and passages have different blockers
+ok 107 - swing/open/closed, retracted slider, unknown bifold and passages have different blockers
+  ---
+  duration_ms: 6.069167
+  type: 'test'
+  ...
+# Subtest: invalid/missing settings and over-budget grids return unknown; no standing point never passes
+ok 108 - invalid/missing settings and over-budget grids return unknown; no standing point never passes
+  ---
+  duration_ms: 4.429541
+  type: 'test'
+  ...
+# Subtest: settings and footprint assumptions validate, save, reimport and undo/redo without changing geometry
+ok 109 - settings and footprint assumptions validate, save, reimport and undo/redo without changing geometry
+  ---
+  duration_ms: 1.431709
+  type: 'test'
+  ...
+# Subtest: same production passage and spacing logic covers Jacobsen, CMU and corrected Plan F without fixture branches
+ok 110 - same production passage and spacing logic covers Jacobsen, CMU and corrected Plan F without fixture branches
+  ---
+  duration_ms: 73.478042
+  type: 'test'
+  ...
+# Subtest: a real narrow passage opening blocks even when both rooms have ample standing area
+ok 111 - a real narrow passage opening blocks even when both rooms have ample standing area
+  ---
+  duration_ms: 6.522708
+  type: 'test'
+  ...
+# Subtest: concave notch and overlapping floor unions keep their true exterior and reject invalid outlines
+ok 112 - concave notch and overlapping floor unions keep their true exterior and reject invalid outlines
+  ---
+  duration_ms: 0.250875
+  type: 'test'
+  ...
+# Subtest: strict imperial and explicit metric parsing matrix
+ok 113 - strict imperial and explicit metric parsing matrix
+  ---
+  duration_ms: 3.4135
+  type: 'test'
+  ...
+# Subtest: parser rejects complete invalid strings rather than prefixes
+ok 114 - parser rejects complete invalid strings rather than prefixes
+  ---
+  duration_ms: 0.157708
+  type: 'test'
+  ...
+# Subtest: display rounding, carry, reduced fractions, tiny lengths, area and negative zero
+ok 115 - display rounding, carry, reduced fractions, tiny lengths, area and negative zero
+  ---
+  duration_ms: 0.109625
+  type: 'test'
+  ...
+# Subtest: editing precision and untouched float preservation across 10000 deterministic values
+ok 116 - editing precision and untouched float preservation across 10000 deterministic values
+  ---
+  duration_ms: 29.297208
+  type: 'test'
+  ...
+# Subtest: unit transactions preserve geometry, support no-op and ordered undo/redo and v2 validation
+ok 117 - unit transactions preserve geometry, support no-op and ordered undo/redo and v2 validation
+  ---
+  duration_ms: 4.8155
+  type: 'test'
+  ...
+# Subtest: steps and exact wall snap preserve physical priority in both modes
+ok 118 - steps and exact wall snap preserve physical priority in both modes
+  ---
+  duration_ms: 0.208584
+  type: 'test'
+  ...
+# Subtest: v1 and legacy unit compatibility retains imperial and defaults absent legacy units
+ok 119 - v1 and legacy unit compatibility retains imperial and defaults absent legacy units
+  ---
+  duration_ms: 1.927083
+  type: 'test'
+  ...
+# Subtest: explicit four sides and offset use independent dimensions, following item rotation and resize
+ok 120 - explicit four sides and offset use independent dimensions, following item rotation and resize
+  ---
+  duration_ms: 0.819709
+  type: 'test'
+  ...
+# Subtest: contact is clear; 1 mm overlap and fixed/solid footprints need review, regardless of name or height
+ok 121 - contact is clear; 1 mm overlap and fixed/solid footprints need review, regardless of name or height
+  ---
+  duration_ms: 4.374125
+  type: 'test'
+  ...
+# Subtest: owner excluded, declared parent still blocks use; zones may overlap without concurrent use claims
+ok 122 - owner excluded, declared parent still blocks use; zones may overlap without concurrent use claims
+  ---
+  duration_ms: 0.788625
+  type: 'test'
+  ...
+# Subtest: shared open floor unions, concave notches and actual diagonal edges avoid bounding-box conclusions
+ok 123 - shared open floor unions, concave notches and actual diagonal edges avoid bounding-box conclusions
+  ---
+  duration_ms: 0.659625
+  type: 'test'
+  ...
+# Subtest: door planning assumptions update explicit zone conflicts; ground owner never disables its zone
+ok 124 - door planning assumptions update explicit zone conflicts; ground owner never disables its zone
+  ---
+  duration_ms: 0.376875
+  type: 'test'
+  ...
+# Subtest: parameters survive store undo/redo, unrelated unit edits, JSON and v1 without saving derived results
+ok 125 - parameters survive store undo/redo, unrelated unit edits, JSON and v1 without saving derived results
+  ---
+  duration_ms: 1.1355
+  type: 'test'
+  ...
+# Subtest: invalid zone sizes, sides, kinds, duplicate IDs and budgets reject imports while older files remain valid
+ok 126 - invalid zone sizes, sides, kinds, duplicate IDs and budgets reject imports while older files remain valid
+  ---
+  duration_ms: 0.730125
+  type: 'test'
+  ...
+# Subtest: continuous native sweep blocks 1 mm obstacles, concave floor excursions and diagonal collision even with free endpoints
+ok 127 - continuous native sweep blocks 1 mm obstacles, concave floor excursions and diagonal collision even with free endpoints
+  ---
+  duration_ms: 0.265542
+  type: 'test'
+  ...
+# Subtest: removed walls retain stable original obstacle identifiers
+ok 128 - removed walls retain stable original obstacle identifiers
+  ---
+  duration_ms: 0.316709
+  type: 'test'
+  ...
+# Subtest: same zone logic runs on Jacobsen, CMU, corrected Plan F without changing models
+ok 129 - same zone logic runs on Jacobsen, CMU, corrected Plan F without changing models
+  ---
+  duration_ms: 24.121167
+  type: 'test'
+  ...
+# Subtest: same whole-floor audit handles twelve-space single-wide and eight-space apartment with explicit source uncertainty
+ok 130 - same whole-floor audit handles twelve-space single-wide and eight-space apartment with explicit source uncertainty
+  ---
+  duration_ms: 53.123292
+  type: 'test'
+  ...
+# Subtest: single-wide diagonal cuts, mixed openings and declared sink nesting roundtrip without dropping shape or mode
+ok 131 - single-wide diagonal cuts, mixed openings and declared sink nesting roundtrip without dropping shape or mode
+  ---
+  duration_ms: 19.721791
+  type: 'test'
+  ...
+# Subtest: shared whole-floor audit catches unlisted fixture overlap and native geometry rejects a closet expansion atomically
+ok 132 - shared whole-floor audit catches unlisted fixture overlap and native geometry rejects a closet expansion atomically
+  ---
+  duration_ms: 7.381708
+  type: 'test'
+  ...
+1..132
+# tests 132
+# suites 0
+# pass 132
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 292.772416

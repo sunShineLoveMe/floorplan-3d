@@ -1,0 +1,78 @@
+{
+  "passed": true,
+  "build": "cd24d1281a92a43a",
+  "groups": [
+    {
+      "id": "cmu",
+      "passed": true,
+      "buildBefore": "cd24d1281a92a43a",
+      "buildAfter": "cd24d1281a92a43a",
+      "startedAt": "2026-10-03T02:41:46.401Z",
+      "finishedAt": "2026-10-03T02:42:22.889Z",
+      "exitCode": 0
+    },
+    {
+      "id": "jacobsen",
+      "passed": true,
+      "buildBefore": "cd24d1281a92a43a",
+      "buildAfter": "cd24d1281a92a43a",
+      "startedAt": "2026-10-03T02:41:46.399Z",
+      "finishedAt": "2026-10-03T02:42:28.429Z",
+      "exitCode": 0
+    },
+    {
+      "id": "plan-f",
+      "passed": true,
+      "buildBefore": "cd24d1281a92a43a",
+      "buildAfter": "cd24d1281a92a43a",
+      "startedAt": "2026-10-03T02:42:28.430Z",
+      "finishedAt": "2026-10-03T02:42:43.770Z",
+      "exitCode": 0
+    },
+    {
+      "id": "diagonal",
+      "passed": true,
+      "buildBefore": "cd24d1281a92a43a",
+      "buildAfter": "cd24d1281a92a43a",
+      "startedAt": "2026-10-03T02:42:28.429Z",
+      "finishedAt": "2026-10-03T02:43:18.841Z",
+      "exitCode": 0
+    },
+    {
+      "id": "na",
+      "passed": true,
+      "buildBefore": "cd24d1281a92a43a",
+      "buildAfter": "cd24d1281a92a43a",
+      "startedAt": "2026-10-03T02:43:18.841Z",
+      "finishedAt": "2026-10-03T02:43:42.231Z",
+      "exitCode": 0
+    },
+    {
+      "id": "obstacles",
+      "passed": true,
+      "buildBefore": "cd24d1281a92a43a",
+      "buildAfter": "cd24d1281a92a43a",
+      "startedAt": "2026-10-03T02:43:18.842Z",
+      "finishedAt": "2026-10-03T02:43:43.693Z",
+      "exitCode": 0
+    },
+    {
+      "id": "labels",
+      "passed": true,
+      "buildBefore": "cd24d1281a92a43a",
+      "buildAfter": "cd24d1281a92a43a",
+      "startedAt": "2026-10-03T02:43:43.694Z",
+      "finishedAt": "2026-10-03T02:43:45.771Z",
+      "exitCode": 0
+    },
+    {
+      "id": "reference",
+      "passed": true,
+      "buildBefore": "cd24d1281a92a43a",
+      "buildAfter": "cd24d1281a92a43a",
+      "startedAt": "2026-10-03T02:43:43.693Z",
+      "finishedAt": "2026-10-03T02:44:12.674Z",
+      "exitCode": 0
+    }
+  ]
+}

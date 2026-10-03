@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "verification": "sample points only",
+  "cases": [
+    {
+      "name": "jacobsen",
+      "input": "joystick",
+      "passed": true,
+      "sampleCount": 31,
+      "minimumFloorBoundaryDistanceMm": 961.440999977035,
+      "minimumSolidDistanceMm": 221.20000000000005,
+      "failedSamples": []
+    },
+    {
+      "name": "cmu",
+      "input": "joystick",
+      "passed": true,
+      "sampleCount": 31,
+      "minimumFloorBoundaryDistanceMm": 245.40000000000018,
+      "minimumSolidDistanceMm": 240.53116222227814,
+      "failedSamples": []
+    },
+    {
+      "name": "plan-f",
+      "input": "joystick",
+      "passed": true,
+      "sampleCount": 31,
+      "minimumFloorBoundaryDistanceMm": 388.6725576124659,
+      "minimumSolidDistanceMm": 232.60000000000036,
+      "failedSamples": []
+    }
+  ]
+}

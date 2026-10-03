@@ -1,0 +1,13 @@
+{
+  "start": [
+    1500,
+    1500
+  ],
+  "actual": [
+    7392.8800000667625,
+    1500
+  ],
+  "netFloorRightMm": 3000,
+  "outside": true,
+  "observation": "Passive runtime position observation only; original movement code and native W key unchanged"
+}

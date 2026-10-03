@@ -1,0 +1,663 @@
+{
+  "id": "jacobsen-whole-floor-scenario",
+  "name": "Jacobsen whole-floor workflow - assumed details",
+  "scope": "Whole-floor workflow scenario inspired by ISW-4521, not a measured reconstruction or complete source acceptance",
+  "source": "tests/fixtures/floorplans/originals/jacobsen-isw-4521/original.pdf",
+  "sourceSha256": "420bb3c5a38f37a8b41a2206f3d2bdc3c07e6248544cc70bcb641a62d8bf24cb",
+  "labelledDimensions": {
+    "master": [
+      10,
+      10
+    ],
+    "dining": [
+      9,
+      7
+    ],
+    "living": [
+      12.5,
+      12.333333333333334
+    ],
+    "bedroom-two": [
+      8.666666666666666,
+      9.333333333333334
+    ]
+  },
+  "nominalSourceDimensions": {
+    "widthFt": 52,
+    "depthFt": 13.333333333333334,
+    "roundedAreaSqFt": 693,
+    "approximate": true
+  },
+  "assumptions": [
+    "All room origins, adjacency offsets and subdivision into circulation/closet/laundry/bath spaces",
+    "Kitchen/bath corner cut dimensions and decomposition into a shared diagonal corner space",
+    "All wall thicknesses, wall segments and ceiling height",
+    "All opening widths/offsets/heights/modes and swing directions",
+    "Furniture dimensions and positions are test selections, not source inventory"
+  ],
+  "unknownSourceDimensions": [
+    "Kitchen exact net outline",
+    "Bath One outline, diagonal endpoints and clearance",
+    "Bath Two net dimensions",
+    "Closet and laundry dimensions",
+    "Door/window schedules and optional bay",
+    "Wall thicknesses and ceiling height",
+    "Exact surveyed external dimensions"
+  ],
+  "reference": {
+    "previewSize": [
+      1427,
+      1143
+    ],
+    "points": [
+      [
+        190,
+        510
+      ],
+      [
+        1126,
+        510
+      ]
+    ],
+    "distance": "52 ft",
+    "scope": "Approximate nominal overall span, not measurement of internal geometry"
+  },
+  "invalidRoomEdit": {
+    "room": "master-closet",
+    "width": 8.5
+  },
+  "allowedOverlaps": [
+    {
+      "names": [
+        "Kitchen counter",
+        "Kitchen sink"
+      ],
+      "reason": "Sink is contained in the counter footprint; plan-only nesting, no vertical clearance claim"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "master",
+      "name": "Master Bedroom",
+      "x": 0,
+      "y": 0,
+      "width": 10,
+      "depth": 10,
+      "walls": [
+        6,
+        4,
+        4,
+        6
+      ]
+    },
+    {
+      "id": "master-closet",
+      "name": "Master closet",
+      "x": 0,
+      "y": 10.333333333333334,
+      "width": 7.333333333333333,
+      "depth": 2,
+      "walls": [
+        4,
+        4,
+        6,
+        6
+      ]
+    },
+    {
+      "id": "laundry",
+      "name": "Laundry",
+      "x": 7.666666666666667,
+      "y": 10.333333333333334,
+      "width": 2.3333333333333335,
+      "depth": 2,
+      "walls": [
+        4,
+        4,
+        6,
+        4
+      ]
+    },
+    {
+      "id": "dining",
+      "name": "Dining",
+      "x": 10.333333333333334,
+      "y": 0,
+      "width": 9,
+      "depth": 7,
+      "walls": [
+        6,
+        0,
+        4,
+        4
+      ],
+      "segments": {
+        "bottom": [
+          [
+            0,
+            7.666666666666667,
+            8
+          ]
+        ]
+      }
+    },
+    {
+      "id": "central",
+      "name": "Central circulation",
+      "x": 19.333333333333332,
+      "y": 0,
+      "width": 9.833333333333334,
+      "depth": 7,
+      "walls": [
+        6,
+        4,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "bath-one",
+      "name": "Bath One",
+      "x": 10.333333333333334,
+      "y": 7.333333333333333,
+      "width": 7.666666666666667,
+      "depth": 5,
+      "walls": [
+        4,
+        4,
+        6,
+        4
+      ],
+      "segments": {
+        "right": [
+          [
+            0,
+            3.1580711874576997,
+            8
+          ]
+        ]
+      }
+    },
+    {
+      "id": "kitchen",
+      "name": "Kitchen",
+      "x": 18.333333333333332,
+      "y": 7,
+      "width": 10.833333333333334,
+      "depth": 5.333333333333333,
+      "walls": [
+        0,
+        4,
+        6,
+        4
+      ],
+      "notch": {
+        "corner": "bottom-left",
+        "width": 2,
+        "depth": 2,
+        "shape": "diagonal",
+        "wallThickness": 0.3333333333333333
+      }
+    },
+    {
+      "id": "bath-wing",
+      "name": "Bath One corner",
+      "x": 18,
+      "y": 10.491404520791033,
+      "width": 1.8419288125423017,
+      "depth": 1.8419288125423017,
+      "walls": [
+        0,
+        0,
+        6,
+        0
+      ],
+      "notch": {
+        "corner": "top-right",
+        "width": 1.8319288125423017,
+        "depth": 1.8319288125423017,
+        "shape": "diagonal",
+        "wallThickness": 0
+      }
+    },
+    {
+      "id": "living",
+      "name": "Living",
+      "x": 29.5,
+      "y": 0,
+      "width": 12.5,
+      "depth": 12.333333333333334,
+      "walls": [
+        6,
+        4,
+        6,
+        4
+      ]
+    },
+    {
+      "id": "bedroom-two",
+      "name": "Bedroom Two",
+      "x": 42.333333333333336,
+      "y": 0,
+      "width": 8.666666666666666,
+      "depth": 9.333333333333334,
+      "walls": [
+        6,
+        6,
+        4,
+        4
+      ]
+    },
+    {
+      "id": "bath-two",
+      "name": "Bath Two",
+      "x": 42.333333333333336,
+      "y": 9.666666666666666,
+      "width": 5,
+      "depth": 2.6666666666666665,
+      "walls": [
+        4,
+        4,
+        6,
+        4
+      ]
+    },
+    {
+      "id": "bedroom-two-closet",
+      "name": "Bedroom Two closet",
+      "x": 47.666666666666664,
+      "y": 9.666666666666666,
+      "width": 3.3333333333333335,
+      "depth": 2.6666666666666665,
+      "walls": [
+        4,
+        6,
+        6,
+        4
+      ]
+    }
+  ],
+  "openings": [
+    {
+      "id": "master-door",
+      "room": "master",
+      "side": "right",
+      "type": "door",
+      "offset": 0.5,
+      "width": 2.5,
+      "hinge": "end",
+      "swing": "inward"
+    },
+    {
+      "id": "master-closet-door",
+      "room": "master-closet",
+      "side": "top",
+      "type": "door",
+      "offset": 1,
+      "width": 5,
+      "hinge": "start",
+      "swing": "inward",
+      "mode": "bifold"
+    },
+    {
+      "id": "laundry-door",
+      "room": "laundry",
+      "side": "top",
+      "type": "door",
+      "offset": 0.1,
+      "width": 2,
+      "hinge": "start",
+      "swing": "inward",
+      "mode": "passage"
+    },
+    {
+      "id": "bath-one-door",
+      "room": "bath-one",
+      "side": "top",
+      "type": "door",
+      "offset": 4.5,
+      "width": 2.5,
+      "hinge": "end",
+      "swing": "inward"
+    },
+    {
+      "id": "central-entry",
+      "room": "central",
+      "side": "top",
+      "type": "door",
+      "offset": 1,
+      "width": 3,
+      "hinge": "start",
+      "swing": "outward"
+    },
+    {
+      "id": "central-living",
+      "room": "central",
+      "side": "right",
+      "type": "door",
+      "offset": 3,
+      "width": 3,
+      "hinge": "start",
+      "swing": "inward",
+      "mode": "passage"
+    },
+    {
+      "id": "kitchen-living",
+      "room": "kitchen",
+      "side": "right",
+      "type": "door",
+      "offset": 1,
+      "width": 3,
+      "hinge": "start",
+      "swing": "inward",
+      "mode": "passage"
+    },
+    {
+      "id": "living-entry",
+      "room": "living",
+      "side": "top",
+      "type": "door",
+      "offset": 8,
+      "width": 3,
+      "hinge": "start",
+      "swing": "outward"
+    },
+    {
+      "id": "bedroom-two-door",
+      "room": "bedroom-two",
+      "side": "left",
+      "type": "door",
+      "offset": 6.5,
+      "width": 2.5,
+      "hinge": "start",
+      "swing": "inward"
+    },
+    {
+      "id": "bath-two-door",
+      "room": "bath-two",
+      "side": "top",
+      "type": "door",
+      "offset": 2.5,
+      "width": 2,
+      "hinge": "end",
+      "swing": "inward",
+      "mode": "sliding"
+    },
+    {
+      "id": "bedroom-two-closet-door",
+      "room": "bedroom-two-closet",
+      "side": "top",
+      "type": "door",
+      "offset": 0.15,
+      "width": 3,
+      "hinge": "start",
+      "swing": "inward",
+      "mode": "bifold"
+    },
+    {
+      "id": "master-window",
+      "room": "master",
+      "side": "left",
+      "type": "window",
+      "offset": 2,
+      "width": 4,
+      "height": 3
+    },
+    {
+      "id": "dining-window",
+      "room": "dining",
+      "side": "top",
+      "type": "window",
+      "offset": 4,
+      "width": 3,
+      "height": 3
+    },
+    {
+      "id": "living-window-top",
+      "room": "living",
+      "side": "top",
+      "type": "window",
+      "offset": 2,
+      "width": 4,
+      "height": 3
+    },
+    {
+      "id": "living-window-bottom",
+      "room": "living",
+      "side": "bottom",
+      "type": "window",
+      "offset": 3,
+      "width": 4,
+      "height": 3
+    },
+    {
+      "id": "bedroom-two-window",
+      "room": "bedroom-two",
+      "side": "right",
+      "type": "window",
+      "offset": 2,
+      "width": 4,
+      "height": 3
+    },
+    {
+      "id": "kitchen-window",
+      "room": "kitchen",
+      "side": "bottom",
+      "type": "window",
+      "offset": 7,
+      "width": 2,
+      "height": 3
+    },
+    {
+      "id": "bath-two-window",
+      "room": "bath-two",
+      "side": "bottom",
+      "type": "window",
+      "offset": 1,
+      "width": 2,
+      "height": 2
+    }
+  ],
+  "furniture": [
+    {
+      "room": "master",
+      "type": "bed",
+      "name": "Queen - test mattress",
+      "x": 3.5,
+      "y": 5,
+      "w": 5,
+      "d": 6.666666666666667,
+      "rot": 0
+    },
+    {
+      "room": "master",
+      "type": "desk",
+      "name": "Master desk",
+      "x": 8.2,
+      "y": 7.8,
+      "w": 2.5,
+      "d": 1.5,
+      "rot": 0
+    },
+    {
+      "room": "master-closet",
+      "type": "wardrobe",
+      "name": "Master storage",
+      "x": 3.5,
+      "y": 11.6,
+      "w": 6,
+      "d": 1.4,
+      "rot": 0
+    },
+    {
+      "room": "laundry",
+      "type": "washer",
+      "name": "Laundry unit",
+      "x": 8.8333,
+      "y": 11.5,
+      "w": 1.75,
+      "d": 1.5,
+      "rot": 0
+    },
+    {
+      "room": "dining",
+      "type": "table",
+      "name": "Dining table",
+      "x": 16.8,
+      "y": 3.4,
+      "w": 3,
+      "d": 2.5,
+      "rot": 0
+    },
+    {
+      "room": "bath-one",
+      "type": "bathtub",
+      "name": "54 inch tub - test",
+      "x": 12,
+      "y": 9.8,
+      "w": 2.5,
+      "d": 4.5,
+      "rot": 0
+    },
+    {
+      "room": "bath-one",
+      "type": "toilet",
+      "name": "Bath One toilet",
+      "x": 14.4,
+      "y": 11,
+      "w": 1.4,
+      "d": 2.2,
+      "rot": 0
+    },
+    {
+      "room": "bath-one",
+      "type": "vanity",
+      "name": "Bath One vanity",
+      "x": 16.7,
+      "y": 11.1,
+      "w": 1.8,
+      "d": 1.5,
+      "rot": 0
+    },
+    {
+      "room": "kitchen",
+      "type": "fridge",
+      "name": "Kitchen fridge",
+      "x": 28,
+      "y": 8.5,
+      "w": 2.2,
+      "d": 2.2,
+      "rot": 0
+    },
+    {
+      "room": "kitchen",
+      "type": "counter",
+      "name": "Kitchen counter",
+      "x": 25,
+      "y": 11.2,
+      "w": 5,
+      "d": 2,
+      "rot": 0
+    },
+    {
+      "room": "kitchen",
+      "type": "ksink",
+      "name": "Kitchen sink",
+      "x": 25.8,
+      "y": 11.2,
+      "w": 2,
+      "d": 1.5,
+      "rot": 0
+    },
+    {
+      "room": "kitchen",
+      "type": "stove",
+      "name": "Kitchen stove",
+      "x": 21.5,
+      "y": 9.0,
+      "w": 2.3,
+      "d": 1.5,
+      "rot": 30
+    },
+    {
+      "room": "living",
+      "type": "sofa",
+      "name": "Living couch",
+      "x": 33.5,
+      "y": 9.5,
+      "w": 6,
+      "d": 2.5,
+      "rot": 0
+    },
+    {
+      "room": "living",
+      "type": "tvstand",
+      "name": "Media console",
+      "x": 34,
+      "y": 1.5,
+      "w": 5,
+      "d": 1.2,
+      "rot": 0
+    },
+    {
+      "room": "living",
+      "type": "table",
+      "name": "Coffee table",
+      "x": 33.5,
+      "y": 6.2,
+      "w": 3,
+      "d": 1.5,
+      "rot": 0
+    },
+    {
+      "room": "bedroom-two",
+      "type": "bed",
+      "name": "Twin XL - test mattress",
+      "x": 46.6,
+      "y": 4.6,
+      "w": 3.1666666666666665,
+      "d": 6.666666666666667,
+      "rot": 0
+    },
+    {
+      "room": "bedroom-two",
+      "type": "desk",
+      "name": "Bedroom Two desk",
+      "x": 49.5,
+      "y": 2,
+      "w": 2,
+      "d": 1.5,
+      "rot": 0
+    },
+    {
+      "room": "bath-two",
+      "type": "vanity",
+      "name": "Bath Two vanity",
+      "x": 43.4,
+      "y": 10.55,
+      "w": 1.5,
+      "d": 1.3,
+      "rot": 0
+    },
+    {
+      "room": "bath-two",
+      "type": "toilet",
+      "name": "Bath Two toilet",
+      "x": 46.2,
+      "y": 11,
+      "w": 1.3,
+      "d": 2,
+      "rot": 0
+    },
+    {
+      "room": "bedroom-two-closet",
+      "type": "wardrobe",
+      "name": "Bedroom Two storage",
+      "x": 49.333,
+      "y": 11.6,
+      "w": 2.5,
+      "d": 1.3,
+      "rot": 0
+    }
+  ]
+}

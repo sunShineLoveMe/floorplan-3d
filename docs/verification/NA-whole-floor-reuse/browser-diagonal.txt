@@ -1,0 +1,43 @@
+PASS jacobsen-kitchen: rooms and unequal-angle cuts created through the same forms
+PASS jacobsen-kitchen: straight openings and fixed column validated; cut-corner column rejected atomically
+PASS jacobsen-kitchen: exact net areas, disjoint footprint, clear furniture/swings and native label bounds passed
+PASS jacobsen-kitchen: furniture in cut region warns and correction clears it
+PASS jacobsen-kitchen: invalid cut, excessive diagonal thickness and opening on removed wall rejected atomically
+PASS jacobsen-kitchen: clear furniture and undo retain angled structures
+PASS jacobsen-kitchen: real JSON/2D exports, reload and import preserve the editable model
+PASS jacobsen-kitchen: WebGL, 3D export and cutaway passed
+PASS jacobsen-kitchen: actual Letter print preview exported
+PASS jacobsen-kitchen: 390px reusable cut form reachable without horizontal overflow
+PASS mirrored-entry: rooms and unequal-angle cuts created through the same forms
+PASS mirrored-entry: straight openings and fixed column validated; cut-corner column rejected atomically
+PASS mirrored-entry: exact net areas, disjoint footprint, clear furniture/swings and native label bounds passed
+PASS mirrored-entry: furniture in cut region warns and correction clears it
+PASS mirrored-entry: swing/diagonal conflict locates the room and exact undo restores it
+PASS mirrored-entry: invalid cut, excessive diagonal thickness and opening on removed wall rejected atomically
+PASS mirrored-entry: cut removal returns to rectangular geometry; exact undo restores the diagonal
+PASS mirrored-entry: clear furniture and undo retain angled structures
+PASS mirrored-entry: real JSON/2D exports, reload and import preserve the editable model
+PASS mirrored-entry: WebGL, 3D export and cutaway passed
+PASS mirrored-entry: actual Letter print preview exported
+PASS mirrored-entry: 390px reusable cut form reachable without horizontal overflow
+PASS compact-bedroom: rooms and unequal-angle cuts created through the same forms
+PASS compact-bedroom: straight openings and fixed column validated; cut-corner column rejected atomically
+PASS compact-bedroom: exact net areas, disjoint footprint, clear furniture/swings and native label bounds passed
+PASS compact-bedroom: furniture in cut region warns and correction clears it
+PASS compact-bedroom: invalid cut, excessive diagonal thickness and opening on removed wall rejected atomically
+PASS compact-bedroom: cut removal returns to rectangular geometry; exact undo restores the diagonal
+PASS compact-bedroom: clear furniture and undo retain angled structures
+PASS compact-bedroom: real JSON/2D exports, reload and import preserve the editable model
+PASS compact-bedroom: WebGL, 3D export and cutaway passed
+PASS compact-bedroom: actual Letter print preview exported
+PASS compact-bedroom: 390px reusable cut form reachable without horizontal overflow
+PASS shared-kitchen-bath: rooms and unequal-angle cuts created through the same forms
+PASS shared-kitchen-bath: straight openings and fixed column validated; cut-corner column rejected atomically
+PASS shared-kitchen-bath: exact net areas, disjoint footprint, clear furniture/swings and native label bounds passed
+PASS shared-kitchen-bath: furniture in cut region warns and correction clears it
+PASS shared-kitchen-bath: invalid cut, excessive diagonal thickness and opening on removed wall rejected atomically
+PASS shared-kitchen-bath: clear furniture and undo retain angled structures
+PASS shared-kitchen-bath: real JSON/2D exports, reload and import preserve the editable model
+PASS shared-kitchen-bath: WebGL, 3D export and cutaway passed
+PASS shared-kitchen-bath: actual Letter print preview exported
+PASS shared-kitchen-bath: 390px reusable cut form reachable without horizontal overflow

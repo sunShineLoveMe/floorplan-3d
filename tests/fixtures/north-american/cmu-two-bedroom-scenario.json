@@ -484,5 +484,27 @@
       "w": 1.4,
       "d": 2
     }
-  ]
+  ],
+  "reference": {
+    "previewSize": [
+      1600,
+      1036
+    ],
+    "points": [
+      [
+        589,
+        178
+      ],
+      [
+        794,
+        178
+      ]
+    ],
+    "distance": "10 ft 10 in",
+    "scope": "Approximate labelled small-bedroom span"
+  },
+  "invalidRoomEdit": {
+    "room": "closet",
+    "width": 3
+  }
 }

@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "build": "4717cfe4e8ffc12a",
+  "issue": "DV-006",
+  "originalSourceAcceptanceScope": "Prior manually modelled single floor; geometry and all other furniture preserved",
+  "correctionMm": 76.2,
+  "oldY": 2743.2000000000003,
+  "newY": 2667,
+  "rooms": 7,
+  "furniture": 12,
+  "geometryUnchanged": true,
+  "allOtherFurnitureUnchanged": true,
+  "potentialFloorConflicts": 0,
+  "potentialDoorConflicts": 0,
+  "potentialFixedConflicts": 0,
+  "checks": [
+    "original warning and property locator",
+    "3 in correction with unchanged structure and other furniture",
+    "exact undo/redo",
+    "real JSON/2D export",
+    "reload and JSON import",
+    "WebGL/3D export",
+    "actual A3 print PDF"
+  ],
+  "errors": [],
+  "timestamp": "2026-10-03T03:37:01.701Z"
+}

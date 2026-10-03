@@ -1,0 +1,23 @@
+PASS floor keyboard end=3731.2999996900553,1999.9999999999975
+PASS floor-open keyboard end=2756.3199998140335,1500
+PASS wall keyboard end=2277.639999938011,1999.999999999998
+PASS furniture keyboard end=1778.6999999999998,1999.999999999998
+PASS fixed keyboard end=2000,1723.500000309944
+PASS diagonal keyboard end=2000,413.8000000000002
+PASS swing keyboard end=2256.3200001239775,1999.9999999999975
+FAIL sliding keyboard end=2296.1,1999.9999999999975
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: sliding keyboard failed movement/block/release
+    at file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t06-walk.mjs:23:340 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v22.22.3

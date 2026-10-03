@@ -10,9 +10,11 @@
 
 当前分支为 `feat/ui-refactor`，NA-001～012 及后续 P0 两批修复已完成，提交与远程同步状态以 Git 为准。新用户默认 English / Feet & inches；支持 PDF/图片参考底图标定、单层矩形多房间与共享墙门窗、门扇冲突提示、项目化导出及打印。已将前两批修复推送至 `25faa07`；本批新增局部墙段与半高墙，见 [墙段验收](docs/NA-wall-segments-verification-2026-10-02.md)。支持每侧墙厚与开放边界，公开住宅设计图的简化手工建模见 [P0 真实图纸验收](docs/NA-real-house-verification-2026-10-02.md)；前轮逐项结果见 [北美问题修复验收](docs/NA-fixes-verification-2026-10-02.md)。未合并、未部署。
 
-新增独立矩形固定障碍物编辑、净面积扣除和家具 / 平开门冲突复核，见 [固定障碍物验收](docs/NA-fixed-obstacles-verification-2026-10-02.md)。后续已验证 CMU 两卧的 8 空间组合流程并修复紧凑家具标签越界，见 [整户组合与标签复测](docs/NA-apartment-composition-verification-2026-10-02.md)。补充细部为测试假设，原公寓完整尺寸仍未验收；斜切角已完成四个方向、不同斜率及跨户型复用，通用地面检查补充修正 Plan F 橱柜越界，见 [斜切角与 Plan F 复测](docs/NA-diagonal-cuts-verification-2026-10-03.md)。新改动为本地工作区状态；下一步继续 Jacobsen 全屋组合并保留未知尺寸。
+新增独立矩形固定障碍物编辑、净面积扣除和家具 / 平开门冲突复核，见 [固定障碍物验收](docs/NA-fixed-obstacles-verification-2026-10-02.md)。后续已验证 CMU 两卧的 8 空间组合流程并修复紧凑家具标签越界，见 [整户组合与标签复测](docs/NA-apartment-composition-verification-2026-10-02.md)。补充细部为测试假设，原公寓完整尺寸仍未验收；斜切角已完成四个方向、不同斜率及跨户型复用，通用地面检查补充修正 Plan F 橱柜越界，见 [斜切角与 Plan F 复测](docs/NA-diagonal-cuts-verification-2026-10-03.md)。以上已验收内容已推送至 `ea09df0`。后续 Jacobsen 12 空间 / 20 家具的全屋测试已复用同一流程，DV-007 的 3D 标签避让完成两户型复测，见 [全屋复用验收](docs/NA-whole-floor-reuse-verification-2026-10-03.md)；此后新增改动为本地状态，原图未知尺寸继续保留。
 
 本轮前端 UI 计划的实现项（UI-000～210）已完成，内部任务走查与回归通过；外部首次用户试用尚未执行。布局、草稿保护、搜索、视图设置与验收边界见 [UI 最终交付](docs/UI-final-delivery.md)。
+
+T06 两批已完成占地间距、显式嵌套、目标净宽路径、可调整家具使用区与持续行走 / 摇杆碰撞复核，见 [最新验收](docs/T06-use-zones-verification-2026-10-03.md)。使用区采用显式平面规划假设；本地未提交 / 未推送。
 
 ## 快速启动
 
@@ -31,11 +33,16 @@ npm start
 
 | 文档 | 内容 |
 | --- | --- |
+| [T07 下一窗口交接](docs/T07-save-recovery-handoff-2026-10-03.md) | 保存状态、失败备份、覆盖保护、损坏恢复、多窗口冲突与验收要求 |
 | [UI 最终交付](docs/UI-final-delivery.md) | UI-060～210 结果、43 组浏览器检查、内部走查与未执行项 |
 | [P0 墙段与半高墙验收](docs/NA-wall-segments-verification-2026-10-02.md) | 局部通道、共享墙合并、半高墙、逐项复测与后续任务 |
 | [户型原始图纸测试素材库](tests/fixtures/floorplans/README.md) | 18 份原始 PDF/JPG/PNG、可搜索预览、实际场景来源及后续深入测试顺序 |
 | [多样化图纸标定与 Studio 房间验收](docs/NA-diverse-floorplans-verification-2026-10-02.md) | 必填长度、预览缩放、无尺寸保护、房间摆放和真实导出；完整公寓仍待验收 |
 | [整户组合与紧凑标签复测](docs/NA-apartment-composition-verification-2026-10-02.md) | CMU 8 空间组合、DV-004 修复、回导与打印；测试假设及后续斜切角复测 |
+| [全屋组合复用与 3D 标签复测](docs/NA-whole-floor-reuse-verification-2026-10-03.md) | Jacobsen 12 空间 / CMU 8 空间共用流程、DV-007、107 项测试与完整实测范围限制 |
+| [T06 第二批验收](docs/T06-use-zones-verification-2026-10-03.md) | 显式家具使用区、原生持续键盘 / 摇杆碰撞、独立几何 / PDF、跨户型与未测范围 |
+| [T06 第一批验收](docs/T06-clearance-verification-2026-10-03.md) | 占地间距、规划路径、漫游起点、跨户型证据与下一批使用区 |
+| [T06 新窗口交接](docs/T06-clearance-handoff-2026-10-03.md) | 原始接续基线、实施顺序、跨户型复测矩阵与最新验收导航 |
 | [斜切角跨户型复用与 Plan F 补充验收](docs/NA-diagonal-cuts-verification-2026-10-03.md) | 四角 / 不同斜率、共享边界、通用越界提示、DV-005 / DV-006 和实际导出 |
 | [四套完整户型验收](docs/NA-complete-houses-verification-2026-10-02.md) | B 完整验收及 A/C/F 三图复测、可回导模型和真实导出 |
 | [P0 真实图纸验收](docs/NA-real-house-verification-2026-10-02.md) | 公开住宅 PDF、开放空间与墙厚修复、简化模型和剩余能力缺口 |

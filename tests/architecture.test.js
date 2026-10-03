@@ -168,3 +168,16 @@ test('diagonal walls extrude their exact footprints and retain polygon walk coll
   walls.forEach((wall,i)=>{close(wall.geometry.parameters.options.depth,cut);assert.deepEqual(wall.geometry.shape.points,project.geometry.diagonalWalls[i].poly.map(([x,y])=>[wx(x),-wz(y)]));});
  }
 });
+
+test('visible sliding and folded leaves have colliders matching their actual displayed footprints',async()=>{
+ const createArchitecture=await loadArchitecture();
+ for(const mode of ['sliding','bifold'])for(const side of ['top','right','bottom','left']){
+  const rooms={r:{name:'Test',mat:'wood'}},geometry=generateRoomGeometry({kind:'rectangle',roomId:'r',width:4000,depth:4000,height:2800,wallThickness:120,openings:[{id:'opening',type:'door',mode,wallId:side,offset:500,width:1200,height:2100,...(mode==='bifold'?{swing:'inward'}:{})}]},rooms),project={geometry,rooms,demolished:[]},groups={archFloor:new Group(),archUp:new Group(),lampG:new Group(),doors:[],colliders:[]};
+  const box=(w,h,d,m,x=0,y=0,z=0)=>{const o=new Mesh(new BoxGeometry(w,h,d),m);o.position.set(x,y+h/2,z);return o;};
+  createArchitecture({store:{getProject:()=>project},opt:{cut:2.8,mode:'walk'},space:{wx:v=>v/1000,wz:v=>v/1000},groups,materials:{mat:color=>({color}),floorMat:()=>({})},primitives:{box,metal:()=>({})}}).build();
+  if(mode==='bifold'){
+   const leaves=groups.archUp.children.filter(o=>o.material?.color==='#efe6d8'),colliders=groups.colliders.filter(c=>c.poly);assert.equal(colliders.length,4);
+   leaves.forEach((leaf,i)=>{const poly=colliders[i].poly;close(poly.reduce((s,p)=>s+p[0]/4,0),leaf.position.x);close(poly.reduce((s,p)=>s+p[1]/4,0),leaf.position.z);close(Math.hypot(poly[1][0]-poly[0][0],poly[1][1]-poly[0][1]),.3);});
+  }else{const expectedWalls=geometry.walls.length;assert.equal(groups.colliders.length,expectedWalls+2);}
+ }
+});

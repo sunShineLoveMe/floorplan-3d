@@ -1,0 +1,242 @@
+{
+  "zones": [
+    {
+      "furnitureId": "fmursdbz330",
+      "zoneId": "uz-c0d20c63-eacd-4902-87ce-4e68bd78229e",
+      "kind": "bed-side",
+      "side": "left",
+      "widthMm": 617.123456,
+      "depthMm": 600,
+      "offsetMm": 100,
+      "poly": [
+        [
+          -295.20000000000005,
+          1315.4382719999999
+        ],
+        [
+          304.79999999999995,
+          1315.4382719999999
+        ],
+        [
+          304.79999999999995,
+          1932.5617280000001
+        ],
+        [
+          -295.20000000000005,
+          1932.5617280000001
+        ]
+      ],
+      "outsideMm2": 182174.84421120014,
+      "status": "conflict",
+      "conflicts": [
+        {
+          "kind": "floor",
+          "id": "net-floor",
+          "name": "Outside net floor",
+          "overlapMm2": 182174.84421120014
+        },
+        {
+          "kind": "wall",
+          "id": "wall-7",
+          "name": "Wall",
+          "overlapMm2": 15813.287347199977
+        }
+      ]
+    },
+    {
+      "furnitureId": "fmursdbz330",
+      "zoneId": "uz-232a6d7f-5f4e-4825-86bb-a382062d9b5e",
+      "kind": "bed-side",
+      "side": "right",
+      "widthMm": 600,
+      "depthMm": 600,
+      "offsetMm": 0,
+      "poly": [
+        [
+          1828.8,
+          1224
+        ],
+        [
+          2428.8,
+          1224
+        ],
+        [
+          2428.8,
+          1824
+        ],
+        [
+          1828.8,
+          1824
+        ]
+      ],
+      "outsideMm2": 0,
+      "status": "clear",
+      "conflicts": []
+    },
+    {
+      "furnitureId": "fmursdcam31",
+      "zoneId": "uz-9db1d444-746d-4d7b-93f5-d306f3976942",
+      "kind": "seating",
+      "side": "bottom",
+      "widthMm": 617.123456,
+      "depthMm": 600,
+      "offsetMm": 100,
+      "poly": [
+        [
+          2290.7982719999995,
+          2606.04
+        ],
+        [
+          2907.921728,
+          2606.04
+        ],
+        [
+          2907.921728,
+          3206.04
+        ],
+        [
+          2290.7982719999995,
+          3206.04
+        ]
+      ],
+      "outsideMm2": 10366.881093121134,
+      "status": "conflict",
+      "conflicts": [
+        {
+          "kind": "floor",
+          "id": "net-floor",
+          "name": "Outside net floor",
+          "overlapMm2": 10366.881093121134
+        },
+        {
+          "kind": "wall",
+          "id": "wall-4",
+          "name": "Wall",
+          "overlapMm2": 7770.543564800173
+        },
+        {
+          "kind": "wall",
+          "id": "wall-8",
+          "name": "Wall",
+          "overlapMm2": 2596.3375283200294
+        }
+      ]
+    },
+    {
+      "furnitureId": "fmursdcks32",
+      "zoneId": "uz-319b9948-3fa8-4bb0-a081-f9335b406f87",
+      "kind": "cabinet",
+      "side": "right",
+      "widthMm": 617.123456,
+      "depthMm": 600,
+      "offsetMm": 100,
+      "poly": [
+        [
+          1981.2,
+          3327.1182719999997
+        ],
+        [
+          2581.2,
+          3327.1182719999997
+        ],
+        [
+          2581.2,
+          3944.241728
+        ],
+        [
+          1981.2,
+          3944.241728
+        ]
+      ],
+      "outsideMm2": 154924.5403648005,
+      "status": "conflict",
+      "conflicts": [
+        {
+          "kind": "floor",
+          "id": "net-floor",
+          "name": "Outside net floor",
+          "overlapMm2": 154924.5403648005
+        },
+        {
+          "kind": "wall",
+          "id": "wall-8",
+          "name": "Wall",
+          "overlapMm2": 43899.50356480107
+        },
+        {
+          "kind": "wall",
+          "id": "wall-9",
+          "name": "Wall",
+          "overlapMm2": 54193.43999999855
+        },
+        {
+          "kind": "wall",
+          "id": "wall-12",
+          "name": "Wall",
+          "overlapMm2": 37246.560000002384
+        },
+        {
+          "kind": "furniture",
+          "id": "fmursdcw533",
+          "name": "Laundry unit",
+          "overlapMm2": 63243.140590358526
+        }
+      ]
+    },
+    {
+      "furnitureId": "fmursdcw533",
+      "zoneId": "uz-0c80f203-58d9-4c88-9af8-391484fac3d7",
+      "kind": "appliance",
+      "side": "top",
+      "widthMm": 617.123456,
+      "depthMm": 600,
+      "offsetMm": 100,
+      "poly": [
+        [
+          2483.8281119999997,
+          2676.6000000000004
+        ],
+        [
+          3100.951568,
+          2676.6000000000004
+        ],
+        [
+          3100.951568,
+          3276.6000000000004
+        ],
+        [
+          2483.8281119999997,
+          3276.6000000000004
+        ]
+      ],
+      "outsideMm2": 38996.732799999416,
+      "status": "conflict",
+      "conflicts": [
+        {
+          "kind": "floor",
+          "id": "net-floor",
+          "name": "Outside net floor",
+          "overlapMm2": 38996.732799999416
+        },
+        {
+          "kind": "wall",
+          "id": "wall-2",
+          "name": "Wall",
+          "overlapMm2": 19666.21235519834
+        },
+        {
+          "kind": "wall",
+          "id": "wall-5",
+          "name": "Wall",
+          "overlapMm2": 12605.671308800578
+        },
+        {
+          "kind": "wall",
+          "id": "wall-11",
+          "name": "Wall",
+          "overlapMm2": 6724.849136000499
+        }
+      ]
+    }
+  ]
+}

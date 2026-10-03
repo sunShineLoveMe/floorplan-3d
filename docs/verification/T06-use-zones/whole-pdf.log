@@ -1,0 +1,26 @@
+[
+  {
+    "id": "cmu-two-bedroom-scenario",
+    "build": "4717cfe4e8ffc12a",
+    "pages": 1,
+    "widthPt": 1191.1199951171875,
+    "heightPt": 841.9199829101562,
+    "netSqFt": 575.9097222222222,
+    "rulerLengthPt": 283.5,
+    "sha256": "ffbe12102a95d7b2ba6c58ea8d3e1dfeb74eb76423caab5657cf28085861fea3",
+    "sourceWholePlanAccepted": false,
+    "physicalPrinterTested": false
+  },
+  {
+    "id": "jacobsen-whole-floor-scenario",
+    "build": "4717cfe4e8ffc12a",
+    "pages": 1,
+    "widthPt": 1191.1199951171875,
+    "heightPt": 841.9199829101562,
+    "netSqFt": 604.2702757189178,
+    "rulerLengthPt": 283.5,
+    "sha256": "1bea5d025a5836d58050003b5baac17f1711362efc9edb634b06525535ee0aa6",
+    "sourceWholePlanAccepted": false,
+    "physicalPrinterTested": false
+  }
+]

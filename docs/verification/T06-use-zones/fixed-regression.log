@@ -1,0 +1,8 @@
+PASS Blank dimensions reject atomically; two independently editable columns deduct exactly 2 sq ft
+PASS Overlap, outside-room, over-height and clipping resize reject without changing geometry
+PASS Moving a column into a swing warns and locates the room; correction clears the warning
+PASS Fixed structures collide with furniture, remain visible with furniture hidden, and clear on correction
+PASS Delete undo/redo and clear-furniture undo preserve fixed structural geometry
+PASS Studio JSON/PNG/3D/Letter PDF, reload/import and 390px obstacle form passed
+PASS Second official PDF: labelled small bedroom, two assumed columns, Twin XL and exports passed
+PASS Four complete houses import with exact original geometry and no phantom obstacles

@@ -1,0 +1,109 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "passed": true,
+      "id": "jacobsen-kitchen",
+      "build": "99d1b59cfcbe9cdb",
+      "sourceScope": "Inspired by the source angled kitchen boundary. Every local room/cut/fixture dimension below is an engineering assumption.",
+      "sourceWholePlanAccepted": false,
+      "checks": [
+        "rooms and unequal-angle cuts created through the same forms",
+        "straight openings and fixed column validated; cut-corner column rejected atomically",
+        "exact net areas, disjoint footprint, clear furniture/swings and native label bounds passed",
+        "furniture in cut region warns and correction clears it",
+        "invalid cut, excessive diagonal thickness and opening on removed wall rejected atomically",
+        "clear furniture and undo retain angled structures",
+        "real JSON/2D exports, reload and import preserve the editable model",
+        "WebGL, 3D export and cutaway passed",
+        "actual Letter print preview exported",
+        "390px reusable cut form reachable without horizontal overflow"
+      ],
+      "rooms": 2,
+      "furniture": 3,
+      "netM2": 15.05,
+      "footprintM2": 17.4,
+      "errors": [],
+      "timestamp": "2026-10-03T03:35:19.682Z"
+    },
+    {
+      "passed": true,
+      "id": "mirrored-entry",
+      "build": "99d1b59cfcbe9cdb",
+      "sourceScope": "Synthetic translated entry layout, unequal cut depths; all dimensions are test selections.",
+      "sourceWholePlanAccepted": false,
+      "checks": [
+        "rooms and unequal-angle cuts created through the same forms",
+        "straight openings and fixed column validated; cut-corner column rejected atomically",
+        "exact net areas, disjoint footprint, clear furniture/swings and native label bounds passed",
+        "furniture in cut region warns and correction clears it",
+        "swing/diagonal conflict locates the room and exact undo restores it",
+        "invalid cut, excessive diagonal thickness and opening on removed wall rejected atomically",
+        "cut removal returns to rectangular geometry; exact undo restores the diagonal",
+        "clear furniture and undo retain angled structures",
+        "real JSON/2D exports, reload and import preserve the editable model",
+        "WebGL, 3D export and cutaway passed",
+        "actual Letter print preview exported",
+        "390px reusable cut form reachable without horizontal overflow"
+      ],
+      "rooms": 1,
+      "furniture": 2,
+      "netM2": 13.97,
+      "footprintM2": 15.89085,
+      "errors": [],
+      "timestamp": "2026-10-03T03:35:35.466Z"
+    },
+    {
+      "passed": true,
+      "id": "compact-bedroom",
+      "build": "4717cfe4e8ffc12a",
+      "sourceScope": "Synthetic compact bedroom with a different cut angle; all dimensions are test selections.",
+      "sourceWholePlanAccepted": false,
+      "checks": [
+        "rooms and unequal-angle cuts created through the same forms",
+        "straight openings and fixed column validated; cut-corner column rejected atomically",
+        "exact net areas, disjoint footprint, clear furniture/swings and native label bounds passed",
+        "furniture in cut region warns and correction clears it",
+        "invalid cut, excessive diagonal thickness and opening on removed wall rejected atomically",
+        "cut removal returns to rectangular geometry; exact undo restores the diagonal",
+        "clear furniture and undo retain angled structures",
+        "real JSON/2D exports, reload and import preserve the editable model",
+        "WebGL, 3D export and cutaway passed",
+        "actual Letter print preview exported",
+        "390px reusable cut form reachable without horizontal overflow"
+      ],
+      "rooms": 1,
+      "furniture": 2,
+      "netM2": 10.07,
+      "footprintM2": 11.603801549770626,
+      "errors": [],
+      "timestamp": "2026-10-03T03:35:50.599Z"
+    },
+    {
+      "passed": true,
+      "id": "shared-kitchen-bath",
+      "build": "4717cfe4e8ffc12a",
+      "sourceScope": "Synthetic adjoining kitchen/bath plus connecting hall; bounding boxes overlap but net floors do not. All dimensions are test selections.",
+      "sourceWholePlanAccepted": false,
+      "checks": [
+        "rooms and unequal-angle cuts created through the same forms",
+        "straight openings and fixed column validated; cut-corner column rejected atomically",
+        "exact net areas, disjoint footprint, clear furniture/swings and native label bounds passed",
+        "furniture in cut region warns and correction clears it",
+        "invalid cut, excessive diagonal thickness and opening on removed wall rejected atomically",
+        "clear furniture and undo retain angled structures",
+        "real JSON/2D exports, reload and import preserve the editable model",
+        "WebGL, 3D export and cutaway passed",
+        "actual Letter print preview exported",
+        "390px reusable cut form reachable without horizontal overflow"
+      ],
+      "rooms": 3,
+      "furniture": 2,
+      "netM2": 14.899999999999999,
+      "footprintM2": 17.663099740034465,
+      "errors": [],
+      "timestamp": "2026-10-03T03:36:03.095Z"
+    }
+  ],
+  "timestamp": "2026-10-03T03:36:03.102Z"
+}

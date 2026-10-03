@@ -1,0 +1,5 @@
+{
+  "error": "ReferenceError: filter is not defined\n    at file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t06-use-zones.mjs:28:3",
+  "checks": [],
+  "errors": []
+}

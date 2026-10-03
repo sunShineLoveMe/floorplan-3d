@@ -1,0 +1,1105 @@
+{
+  "passed": true,
+  "build": "cd24d1281a92a43a",
+  "branch": "feat/ui-refactor",
+  "pushedBaseCommit": "ea09df0db7c17d8429d8a042f4f9f7ab0c07c075",
+  "remoteBaseVerified": true,
+  "unitTests": 107,
+  "wholeFloorScenarios": [
+    {
+      "id": "jacobsen-whole-floor-scenario",
+      "browserChecks": 11,
+      "labelProjectionChecks": 6,
+      "audit": {
+        "spaces": 12,
+        "connectedSpaces": 12,
+        "structuralGridInches": 3,
+        "furniture": 20,
+        "fixedObstacles": 0,
+        "swingDoors": 5,
+        "bifoldDoors": 2,
+        "slidingDoors": 1,
+        "passages": 3,
+        "windows": 7,
+        "potentialDoorConflicts": 0,
+        "potentialFixedConflicts": 0,
+        "usableSqFt": 604.2702757189178,
+        "scenarioFootprintSqFt": 693.1830473785413,
+        "potentialFloorConflicts": 0,
+        "diagonalWallCount": 1,
+        "sourceWholeApartmentAccepted": false,
+        "sourceWholePlanAccepted": false
+      },
+      "sourceWholePlanAccepted": false
+    },
+    {
+      "id": "cmu-two-bedroom-scenario",
+      "browserChecks": 11,
+      "labelProjectionChecks": 6,
+      "audit": {
+        "spaces": 8,
+        "connectedSpaces": 8,
+        "structuralGridInches": 3,
+        "furniture": 14,
+        "fixedObstacles": 7,
+        "swingDoors": 4,
+        "bifoldDoors": 1,
+        "slidingDoors": 0,
+        "passages": 1,
+        "windows": 6,
+        "potentialDoorConflicts": 0,
+        "potentialFixedConflicts": 0,
+        "usableSqFt": 575.9097222222221,
+        "scenarioFootprintSqFt": 639.2430555555554,
+        "potentialFloorConflicts": 0,
+        "diagonalWallCount": 0,
+        "sourceWholeApartmentAccepted": false,
+        "sourceWholePlanAccepted": false
+      },
+      "sourceWholePlanAccepted": false
+    }
+  ],
+  "totalWholeFloorBrowserChecks": 22,
+  "total3dProjectionChecks": 12,
+  "regressions": {
+    "diagonal": 43,
+    "planFCorrection": 7,
+    "NA": 12,
+    "fixedObstacles": 8,
+    "reference": 8,
+    "compactLabelVariants": 9
+  },
+  "pdfExportsChecked": 2,
+  "sourceEslintPassed": true,
+  "syntax": {
+    "passed": true,
+    "files": [
+      "src/core/door-clearance.js",
+      "src/core/editor-state.js",
+      "src/core/floor-clearance.js",
+      "src/core/geometry.js",
+      "src/core/obstacle-clearance.js",
+      "src/core/polygons.js",
+      "src/core/project-store.js",
+      "src/core/units.js",
+      "src/data/catalogs.js",
+      "src/data/default-project.js",
+      "src/data/house-editor.js",
+      "src/data/project-data.js",
+      "src/data/reference-plan.js",
+      "src/data/room-editor.js",
+      "src/data/sample-template.js",
+      "src/editor2d/defs.js",
+      "src/editor2d/editor.js",
+      "src/editor2d/furniture-labels.js",
+      "src/editor2d/furniture-symbols.js",
+      "src/editor2d/interactions.js",
+      "src/editor2d/renderer.js",
+      "src/editor2d/room-labels.js",
+      "src/editor2d/snapping.js",
+      "src/editor2d/viewport.js",
+      "src/main.js",
+      "src/services/downloads.js",
+      "src/services/export-names.js",
+      "src/services/print-plan.js",
+      "src/services/project-files.js",
+      "src/services/storage.js",
+      "src/ui/dom.js",
+      "src/ui/door-clearance.js",
+      "src/ui/drawers.js",
+      "src/ui/file-menu.js",
+      "src/ui/furniture-library.js",
+      "src/ui/i18n.js",
+      "src/ui/input-drafts.js",
+      "src/ui/length-field.js",
+      "src/ui/lifecycle.js",
+      "src/ui/notifications.js",
+      "src/ui/project-actions.js",
+      "src/ui/property-panel.js",
+      "src/ui/reference-plan.js",
+      "src/ui/room-editor.js",
+      "src/ui/toolbar.js",
+      "src/viewer3d/architecture.js",
+      "src/viewer3d/framing.js",
+      "src/viewer3d/furniture.js",
+      "src/viewer3d/materials.js",
+      "src/viewer3d/navigation.js",
+      "src/viewer3d/random.js",
+      "src/viewer3d/resources.js",
+      "src/viewer3d/viewer.js",
+      "tests/apartment-scenario.test.js",
+      "tests/architecture.test.js",
+      "tests/browser-3d-interactions.cjs",
+      "tests/browser-apartment-composition.mjs",
+      "tests/browser-compact-labels.mjs",
+      "tests/browser-comparison.cjs",
+      "tests/browser-complete-houses.mjs",
+      "tests/browser-diagonal-cuts.mjs",
+      "tests/browser-failures.cjs",
+      "tests/browser-fixed-obstacles.mjs",
+      "tests/browser-floorplan-corpus.mjs",
+      "tests/browser-house-review.mjs",
+      "tests/browser-local-reload.mjs",
+      "tests/browser-na-fixes.mjs",
+      "tests/browser-plan-f-clearance.mjs",
+      "tests/browser-real-house.mjs",
+      "tests/browser-reference-usability.mjs",
+      "tests/browser-regression.cjs",
+      "tests/browser-t02-doors.cjs",
+      "tests/browser-t02-storage.cjs",
+      "tests/browser-t02.cjs",
+      "tests/browser-t03-3d.cjs",
+      "tests/browser-t03.cjs",
+      "tests/browser-ui-baseline.cjs",
+      "tests/browser-ui-controls.cjs",
+      "tests/browser-ui-errors.cjs",
+      "tests/browser-ui-final.cjs",
+      "tests/browser-ui-performance.cjs",
+      "tests/browser-ui-project-bar.cjs",
+      "tests/browser-ui-properties.cjs",
+      "tests/browser-ui-prototype.cjs",
+      "tests/browser-ui-resources.cjs",
+      "tests/browser-ui-touch.cjs",
+      "tests/browser-ui-workspace.cjs",
+      "tests/browser-wall-segments.mjs",
+      "tests/complete-houses.test.js",
+      "tests/diagonal-cuts.test.js",
+      "tests/door-clearance.test.js",
+      "tests/eslint.config.js",
+      "tests/fixed-obstacles.test.js",
+      "tests/framing.test.js",
+      "tests/furniture-labels.test.js",
+      "tests/helpers/3d-label-audit.mjs",
+      "tests/helpers/audit-apartment-scenario.js",
+      "tests/helpers/audit-house.js",
+      "tests/helpers/diagonal-fixture.js",
+      "tests/helpers/house-fixture.js",
+      "tests/helpers/svg-label-audit.mjs",
+      "tests/house-editor.test.js",
+      "tests/lifecycle.test.js",
+      "tests/na-fixes/Integration.mjs",
+      "tests/na-fixes/NA-002.mjs",
+      "tests/na-fixes/NA-003.mjs",
+      "tests/na-fixes/NA-004.mjs",
+      "tests/na-fixes/NA-005.mjs",
+      "tests/na-fixes/NA-006.mjs",
+      "tests/na-fixes/NA-007.mjs",
+      "tests/na-fixes/NA-008.mjs",
+      "tests/na-fixes/NA-009.mjs",
+      "tests/na-fixes/NA-010.mjs",
+      "tests/na-fixes/NA-011.mjs",
+      "tests/na-fixes/NA-012.mjs",
+      "tests/notched-rooms.test.js",
+      "tests/opening-modes.test.js",
+      "tests/print-plan.test.js",
+      "tests/project-data.test.js",
+      "tests/project-services.test.js",
+      "tests/project-store.test.js",
+      "tests/reference-plan.test.js",
+      "tests/room-editor.test.js",
+      "tests/units.test.js",
+      "tests/whole-floor-scenario.test.js"
+    ],
+    "pythonSyntaxPassed": true
+  },
+  "diffCheckPassed": true,
+  "closedIssues": [
+    "DV-007 P2: projected 3D room labels overlap"
+  ],
+  "beforeLabelBuild": "84212b2d0f37c16a",
+  "sourceOriginalsUnchanged": [
+    {
+      "id": "san-diego-plan-b",
+      "sha256": "bb55e87e8a7c5f63316c019c840693e22f8bcfc63bf6777710cbc5d9848c9502"
+    },
+    {
+      "id": "san-diego-plan-a",
+      "sha256": "89c21a906886ee7fb10d3911bf16899021e8f1e3d7bf63604e5dd8033aff6759"
+    },
+    {
+      "id": "san-diego-plan-c",
+      "sha256": "c5d7ba3bc8c5ee7ddd31223ab146058aca79d9dd27d2322520a85c911416a0e6"
+    },
+    {
+      "id": "san-diego-plan-f",
+      "sha256": "89dbbd8f7977d772df44a4eea1a0ec35d795d9830538e3aa1e29f8d5bfe10bdc"
+    },
+    {
+      "id": "hillside-studio-a1",
+      "sha256": "c67db77f48cfb877e4765a3f779bcdf4a45b779a6f4f04df23d1b65d2b68a89d"
+    },
+    {
+      "id": "hillside-corner-b5",
+      "sha256": "e95496af4f396b35ab3087f9d373a798699f8e11221c6268f456dc04e4f1228e"
+    },
+    {
+      "id": "cmu-fairfax-studio",
+      "sha256": "12dbc086f2368cf36784e754fecce8ca78386d33ac743afff0561804573ba293"
+    },
+    {
+      "id": "cmu-fairfax-two-bedroom",
+      "sha256": "bdef8e9000ff1a9a0f857aa584f0a7fdfa8e095f4a36637a943301530bb60e76"
+    },
+    {
+      "id": "cmu-fairfax-one-bedroom-jpeg",
+      "sha256": "a80336a75ea8b6bda92b1ed28dd890cc459ba66dc820410e6d4445397f17687c"
+    },
+    {
+      "id": "imprint-a1",
+      "sha256": "2ce5e76bbc9de2aeac1a4b618c68487d100afa18f9d4c3f08cfa6514f441099c"
+    },
+    {
+      "id": "zag-b4-image",
+      "sha256": "6f9f682391633640f5eebc5afcd8ffa3120344f38d66511de2bfdb39299bfead"
+    },
+    {
+      "id": "zag-live-work",
+      "sha256": "c5ccb799af5fdaadcf8f9b9d888806a8cfaad33cdce7252c7acb3f55ae45d0b6"
+    },
+    {
+      "id": "remington-b-basement",
+      "sha256": "e16dd52d694199f0376c7e0f845e18d7fde9f19ed890b4abd264f7e7bfae1980"
+    },
+    {
+      "id": "jacobsen-isw-4521",
+      "sha256": "420bb3c5a38f37a8b41a2206f3d2bdc3c07e6248544cc70bcb641a62d8bf24cb"
+    },
+    {
+      "id": "regent-unit-l",
+      "sha256": "09931c68a4b4fc5299926100c0541e9b643ccc53324860990ad3b59043b7f518"
+    },
+    {
+      "id": "newmark-umbria",
+      "sha256": "c40d44e5b93f0376299d85748d511c2546d70ffb18146a4a2768116fcc7bf731"
+    },
+    {
+      "id": "toronto-dawes-west-floor6",
+      "sha256": "2ce0311dfcb3a4006d3d202618af54ed9a1cff2ad1f44ee534aa1fc7feaf01a7"
+    },
+    {
+      "id": "loc-norvelt-house-types",
+      "sha256": "f5518648530cf2fd2f9126886e01729b754a677608874f7dc2a2f308301f13ea"
+    }
+  ],
+  "priorBatchArtifactHashesUnchanged": [
+    {
+      "folder": "NA-fixed-obstacles",
+      "checkedArtifacts": 73,
+      "unchanged": true
+    },
+    {
+      "folder": "NA-apartment-composition",
+      "checkedArtifacts": 90,
+      "unchanged": true
+    },
+    {
+      "folder": "NA-diagonal-cuts",
+      "checkedArtifacts": 142,
+      "unchanged": true
+    }
+  ],
+  "sourceWholeJacobsenAccepted": false,
+  "sourceWholeCMUAccepted": false,
+  "newFullSourceModelsAccepted": 0,
+  "limitations": [
+    "Unlabelled details are explicit engineering assumptions",
+    "Structure connectivity excludes furniture/person radius and passage width",
+    "No vertical clearance, diagonal openings or multi-floor acceptance",
+    "No Safari/Edge/physical mobile or printer checks",
+    "3D PNG excludes CSS room labels"
+  ],
+  "delivery": {
+    "priorScopeCommittedAndPushed": true,
+    "currentScopeCommitted": false,
+    "currentScopePushed": false,
+    "merged": false,
+    "deployed": false,
+    "original8086ServicePreserved": true,
+    "original8086Build": "cd24d1281a92a43a",
+    "owned8095ServiceStopped": true
+  },
+  "visualReviewPassed": true,
+  "artifacts": [
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/browser-cmu.txt",
+      "bytes": 1440,
+      "sha256": "6e9215319ec4cc21a0228495e4999e2f9c13a8ab71d4fe4bcd7b153d5cfbb026"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/browser-diagonal.txt",
+      "bytes": 3740,
+      "sha256": "5da0a80cb0a500f34b0d0c01fd7dc9acd1ef6f4bfadfd669ccb411f2c012aaa1"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/browser-jacobsen.txt",
+      "bytes": 1675,
+      "sha256": "6f225ee74ac2506d013ea18ae4221ae59264fbffeb1887c395b83b9f9392202b"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/browser-labels.txt",
+      "bytes": 36,
+      "sha256": "b810f235c4ec9327e4037e3f23e7435a608a1b0a7e5585d6338f645f485fa223"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/browser-na.txt",
+      "bytes": 259,
+      "sha256": "50b484362d39e6d2b6fb3c790e8e682fd6c54e7c074251429b7b69280728e7fb"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/browser-obstacles.txt",
+      "bytes": 740,
+      "sha256": "cc2ae6bd7d7cae994ed0c0043428de78ca03adb40cc84df6aae3b251ddc548c3"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/browser-plan-f.txt",
+      "bytes": 33,
+      "sha256": "ac00564e0aca1fc2b17aed1a49122adec34008126e6a63f9e96295c34796e813"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/browser-reference.txt",
+      "bytes": 782,
+      "sha256": "4a4accf3666d1c1c28d1eec4f08f0fcc315c82892807862a0a23082c86863d95"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/cmu/3d-label-results.json",
+      "bytes": 14927,
+      "sha256": "223a6b243346b25fff75d3d5da351ebf963929c9b5cd7cb3838f26b17b91b2a8"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/cmu/browser-results.json",
+      "bytes": 9528,
+      "sha256": "750d6b7039e0e54962e363de21ba174f43e49ccca828537e9ee102a8131646d5"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/cmu/complete-2d-screen.png",
+      "bytes": 251470,
+      "sha256": "3ac24ca4578129ffc78d5b8b589ec626179889dee3bd24a7b30718753e21153e"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/cmu/complete-2d.png",
+      "bytes": 1047450,
+      "sha256": "5bb838bd9d27aa4f91652c28ae33073c1a8dbde6826408cb86f162b31d7ab93c"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/cmu/complete-3d-cutaway.png",
+      "bytes": 237176,
+      "sha256": "375eb3763b40166c34a31305513bc88df8abb8aa00577d9a584157e3117277c4"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/cmu/complete-3d-screen.png",
+      "bytes": 208854,
+      "sha256": "c4d486c0d146252bc7f3ee1ed67a8c1ac1fd234bfb5c207e03ec7125ebae28d0"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/cmu/complete-3d.png",
+      "bytes": 135196,
+      "sha256": "7b97d32afc3812b09a0b9be87b8f78c9e77c73946e313603d770e0d7c630551c"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/cmu/complete-print.pdf",
+      "bytes": 1360844,
+      "sha256": "1ebc8325498f7812dff142923712d9d5731b44f159935a9b3881610b2b147b13"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/cmu/complete-project.json",
+      "bytes": 246514,
+      "sha256": "d47f1a45726b7b8dc6984473f139284a8857eefdc0a2cd1f506a27b6c1d4973a"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/cmu/labels-after.png",
+      "bytes": 217942,
+      "sha256": "93d765ecfa70625b18a8fc63b3fb0af3d96f7420551eb414183e63bdeb7640bb"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/cmu/labels-before.png",
+      "bytes": 236433,
+      "sha256": "97695f03646bbc3bd43b384b76a941bf4743252ecb0f4c55231216b2dc9c2f33"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/cmu/labels-mobile.png",
+      "bytes": 82473,
+      "sha256": "fb49e80cd528dce13520659a35905667c3055d47f892444c42d3cee3dd2364d9"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/cmu/labels-room-focus.png",
+      "bytes": 424148,
+      "sha256": "a675827986717e04a6f401db100d96d23e21f3826ad5737696c8268abc4f31e4"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/cmu/mobile-opening.png",
+      "bytes": 65193,
+      "sha256": "6771af53b1eff9d86a1482dcb1943c6b62453d03d33d91c4dee0eecdf7346690"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/cmu/print-preview.png",
+      "bytes": 145423,
+      "sha256": "45b8f4529cdbdfb51f9dcaa86fa0c3334e437a16759a9ee49d0ba150d894451f"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/cmu/print-render.png",
+      "bytes": 199103,
+      "sha256": "7b225ed6c8a98cbe8c7fa2e74bab88f2efae39c28686aaac3020c0642a6152af"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/browser-results.json",
+      "bytes": 5184,
+      "sha256": "f4e2c321ff1433fe86ef766a8584c2770e07b70c3b39f9516a167f7e8b305766"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/compact-bedroom/2d-screen.png",
+      "bytes": 164105,
+      "sha256": "93c83e406c1f863ea9e65224897b54ccb28e908f146f123fbca3d8db656d3961"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/compact-bedroom/2d.png",
+      "bytes": 457298,
+      "sha256": "6d6232880135918971e1f127ef28c7adafd83384ddd91a22206b2b6e17d92ae0"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/compact-bedroom/3d-cutaway.png",
+      "bytes": 167957,
+      "sha256": "33f1cd343f93cc791448714c80919099cd41a05ddd3ece59a1bbd9019f0e4ed9"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/compact-bedroom/3d.png",
+      "bytes": 58178,
+      "sha256": "a27707e6e157ad589d458c640d7eb6f578b707a441ecf71d86afb6966dba0e24"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/compact-bedroom/browser-results.json",
+      "bytes": 1177,
+      "sha256": "1e02a72d33ea5d633dd7fa8feee39e7b8cb9612d6ba654ce85e540401e7680dc"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/compact-bedroom/mobile-cut-form.png",
+      "bytes": 59621,
+      "sha256": "7d236630e5cffa30363f5d30a7012f464ad66a11b8ed29aae3308ac51add365b"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/compact-bedroom/outside-floor-warning.png",
+      "bytes": 239539,
+      "sha256": "d546b98e1f7ad352526b5f09bc0f426161c027d2d1d8bb8d351f4d1e0c7ced1f"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/compact-bedroom/print.pdf",
+      "bytes": 187916,
+      "sha256": "f9cc51754c6abc43cb70b7620d7028710fe78499c7e090a664caef0f33299cd3"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/compact-bedroom/project.json",
+      "bytes": 6712,
+      "sha256": "74daa830a3ee81ebdc681ae84d77fd439bce2caa405244f6acd89186a92ad791"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/jacobsen-kitchen/2d-screen.png",
+      "bytes": 175291,
+      "sha256": "d323db4c6e247e9284c8ef953269b9035d039da54c4709c7fb58a0328098ca77"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/jacobsen-kitchen/2d.png",
+      "bytes": 471529,
+      "sha256": "de2abe6481c430f07660652f2ac686e8d142a17fb7aa085734ed6c6bee47d082"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/jacobsen-kitchen/3d-cutaway.png",
+      "bytes": 187653,
+      "sha256": "828c6e5bdef0ffa4bf5950f18c7c7f036d4886453e3f3e501dc2af3ccc822066"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/jacobsen-kitchen/3d.png",
+      "bytes": 76646,
+      "sha256": "62cf281c0ea646ed75d64d4dd12d09ec63ce3cea54436d97b8f79d7a2f9e1472"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/jacobsen-kitchen/browser-results.json",
+      "bytes": 1112,
+      "sha256": "95ffcac3c8e62af969b967277c25c5b8126b0bd3de65b0c63587a3d537c3f6a7"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/jacobsen-kitchen/mobile-cut-form.png",
+      "bytes": 60528,
+      "sha256": "ccc7023550f0563229cc311272496e2d378ceb55c92a39aeae82469ef4a29148"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/jacobsen-kitchen/outside-floor-warning.png",
+      "bytes": 332680,
+      "sha256": "275564a703757c180a10bfe149ea20fdc687048c863333085fde29e48fb0ffb7"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/jacobsen-kitchen/print.pdf",
+      "bytes": 279760,
+      "sha256": "7d9de210c58199abd6d6bf637c365713e8c69ac438a0a6a60011c11be2262fd4"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/jacobsen-kitchen/project.json",
+      "bytes": 156974,
+      "sha256": "852e19fdc513b02cc5fdaa3bc863280e1e5b3856a4c6c3f4fbaec87294bbddf2"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/mirrored-entry/2d-screen.png",
+      "bytes": 161819,
+      "sha256": "9bd000b0fe47eba1400728ef20e3be3739402095c00f963453dd456548a4b0c7"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/mirrored-entry/2d.png",
+      "bytes": 470191,
+      "sha256": "0552612e69521557079038cdc50a6070b7ed636bdb593d8de1beef3817e99125"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/mirrored-entry/3d-cutaway.png",
+      "bytes": 178829,
+      "sha256": "7234ebf3836968ee6467d7a00c8255fe22c140ef5c6377baf080f3bc46156a59"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/mirrored-entry/3d.png",
+      "bytes": 74754,
+      "sha256": "7929df62558adf789b3bdcb44bb5eae65115a57a618c1d8c75104f3098ad9a8a"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/mirrored-entry/browser-results.json",
+      "bytes": 1242,
+      "sha256": "f527173c55480aa4868d581e3655d317fb36b54c51014ac8315d61db8dd25c2f"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/mirrored-entry/door-diagonal-warning.png",
+      "bytes": 222807,
+      "sha256": "753679ec3e822b260324c5e56b2bf65f8ba33704328235cd755edf2f009fd1cd"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/mirrored-entry/mobile-cut-form.png",
+      "bytes": 58874,
+      "sha256": "bce78fd59e8669dee12fef8215c072ea6b24afb9b2a723c433eb9d1877d61237"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/mirrored-entry/outside-floor-warning.png",
+      "bytes": 232613,
+      "sha256": "0181b13efd85a0b88a874e3fc5cee8082007190e90206ea58549f083e6b6d5fc"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/mirrored-entry/print.pdf",
+      "bytes": 181742,
+      "sha256": "3171de97da1b6ac95830221766863aaff4abae649188d3190b2108997b04f115"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/mirrored-entry/project.json",
+      "bytes": 6722,
+      "sha256": "5b50344a8e21036e0a8b0450694574db86e1b31f84fdbd11e4612ad859e4bcf4"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/shared-kitchen-bath/2d-screen.png",
+      "bytes": 163130,
+      "sha256": "09fb65d5f9ff10060bb1a075ef9aefb24aa6ff03768cd35d8b305b4cc4ea2444"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/shared-kitchen-bath/2d.png",
+      "bytes": 493463,
+      "sha256": "dfc53d2f5cec3efaaec4c9c77e84120e14aa268c0b0814e6023d39396482bc1d"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/shared-kitchen-bath/3d-cutaway.png",
+      "bytes": 180356,
+      "sha256": "d850e8a7a3ae8c8c71e5f1c5f24eab9097befd7c1c2e6e4837a29d74e1c38eb5"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/shared-kitchen-bath/3d.png",
+      "bytes": 62510,
+      "sha256": "f8e275e14984c1dfd0d26a6c8b120f1ba5263a15096298e9561a9379e444948b"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/shared-kitchen-bath/browser-results.json",
+      "bytes": 1156,
+      "sha256": "c36848fc59c19f8bb3629b9f105e17e2a6b6fbf7156f169d93633cba0e914fb5"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/shared-kitchen-bath/mobile-cut-form.png",
+      "bytes": 58601,
+      "sha256": "91f2c02839746fca9720bbdae04c85b98116cfc243f3c8536cf445db8d486df7"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/shared-kitchen-bath/outside-floor-warning.png",
+      "bytes": 237038,
+      "sha256": "97818d142155e406b85340499874cf87f2e220869c9d101847b067320e7dc27a"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/shared-kitchen-bath/print.pdf",
+      "bytes": 458335,
+      "sha256": "8aeeaf3e8b6b1c6f71c0e07c582a2d3986aebb2c521fe2add3af3a828cc8a603"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/diagonal-regression/shared-kitchen-bath/project.json",
+      "bytes": 14585,
+      "sha256": "7064667997cacf9d47a2d089798fcdbadae1e1e79c8ccec634b06e153f2f5b1b"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/jacobsen/3d-label-results.json",
+      "bytes": 22327,
+      "sha256": "98ce22db7ccf31dff3a4a80d7bd625f3534176552563e8585f2dc0103cea6252"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/jacobsen/browser-results.json",
+      "bytes": 12771,
+      "sha256": "96d8ea075a4593b4eded4054a628b8bc203048952b38b9a424cf988d0e67f689"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/jacobsen/complete-2d-screen.png",
+      "bytes": 227278,
+      "sha256": "2abe906a68b82dd862026f6c4ac5735d3e133287eae3ac5f6cf9a09667b40972"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/jacobsen/complete-2d.png",
+      "bytes": 527652,
+      "sha256": "cdea242fcfe19d521a842c863107e5bb364e34afe4f883f36c3d6186d7ca84f9"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/jacobsen/complete-3d-cutaway.png",
+      "bytes": 214211,
+      "sha256": "7d8fa169414096459c64c83829f81f095b15cd112c920ffb58c7822a44313af6"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/jacobsen/complete-3d-screen.png",
+      "bytes": 193066,
+      "sha256": "70d30f4751b4325a6eafc48fe99519037ee7b983870128b2602e27705c6d0efc"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/jacobsen/complete-3d.png",
+      "bytes": 114550,
+      "sha256": "c8cf3e68fbb4cf97a358f7f1b1964f7ab264d1c0088a4b350efb5775349cea72"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/jacobsen/complete-print.pdf",
+      "bytes": 1885429,
+      "sha256": "5c8eda34f6f2f1eaaf0d39190e5d67189232873ff5ac2e5d2d9a83a611364d8d"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/jacobsen/complete-project.json",
+      "bytes": 195214,
+      "sha256": "d7126880e65a6894c88c085fc8dea10392db213c4290df5f1bae9812d3dae25c"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/jacobsen/labels-after.png",
+      "bytes": 194793,
+      "sha256": "0b65b5d8d4e1d1e5048d6012e1f9a3599cdf0e2b5410db3d0c55005b112315f0"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/jacobsen/labels-before.png",
+      "bytes": 213389,
+      "sha256": "effbefb741c1239cbe5955b2e8986f0506198afc836a28c4d6ed1d67d1e7615b"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/jacobsen/labels-mobile.png",
+      "bytes": 72644,
+      "sha256": "5bcf82f984facd1cb3705c7fe9dfa1ecfe7db29dd157d464a0f2cce84f03ca47"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/jacobsen/labels-room-focus.png",
+      "bytes": 291649,
+      "sha256": "dde4dae87b1b04ca52b3bed747ba0f854084f2562fc8281d2be5fa1e4c075470"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/jacobsen/mobile-opening.png",
+      "bytes": 64509,
+      "sha256": "7e05530d0972df05c1ece5609628389fcd0ba754e60981147ed64c9bc6cb1d4b"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/jacobsen/print-preview.png",
+      "bytes": 175373,
+      "sha256": "47e1c3efccb91bce277711e09b44d715e18295d6e6b67b6d2745466b49886189"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/jacobsen/print-render.png",
+      "bytes": 220687,
+      "sha256": "4f9d29258c1c835509f17e229df0cc6aec117e4cf5c7e560988ba346ffbace31"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/label-regression/compact-bedroom-print.pdf",
+      "bytes": 253384,
+      "sha256": "0aed801ed9071e7cc820668e058021a1e5701195a9a0b6b3685ba4989836300e"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/label-regression/label-after.json",
+      "bytes": 2353,
+      "sha256": "542ec686258934799b8eebeacce31d5220730395a4c300cfbc94fc3af61e71e8"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/label-regression/label-after.png",
+      "bytes": 153844,
+      "sha256": "cc13356486004953fc5c97ad34591c7ea83b82c868f848ed108c02710fbf5100"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-001.json",
+      "bytes": 99,
+      "sha256": "8bccc82e1fa09c7e945fb5ede4e36504f832cf4ec0cd3baf98363d2a324d3c83"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-001.png",
+      "bytes": 144369,
+      "sha256": "d0d308ae462b6a1d2cf3988e5deefda8029d352ed4cf823d5b0c6a4ef318f93f"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-002-project.json",
+      "bytes": 62958,
+      "sha256": "0537150545c7657d96128d688f8f821340298a9d3e2f36824368732506bb97be"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-002.json",
+      "bytes": 99,
+      "sha256": "68bc43e96c02b887b6abd28c1e97d24497e2f2f728b89c0cf58ab7aeb4778630"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-002.png",
+      "bytes": 162047,
+      "sha256": "72568003e0440cd6aa204922a33f4fe4ca66133996a8d7d7e16e593ec50e97f7"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-003-mobile.png",
+      "bytes": 54800,
+      "sha256": "5ab67a57a3625c97df2c43451bfaaa9bea2a4996cec2665ea5e2b2c0487c4b06"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-003.json",
+      "bytes": 99,
+      "sha256": "59e8c810dd3330babae5f83eb63bb9fe4cfa567723ed8687ede73be1ec5fcd56"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-004-resources.json",
+      "bytes": 8272,
+      "sha256": "592f59db174888c8086c6332cba15c6296fcf9bbf2e9f0858ec87878e339e56e"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-004.json",
+      "bytes": 99,
+      "sha256": "d56dae5f3f1472350fb071e5de14174af9df6a0e05871d4b5f5d7cd0671b5f43"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-004.png",
+      "bytes": 162926,
+      "sha256": "6fd5a850d1c0e80c15b291ffb8f20f50d3f6e18bd64333bc8ee7c1b305ce974f"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-005.json",
+      "bytes": 99,
+      "sha256": "bab70c99a2f7278c8dc193fa1428f1c6ba522ab9e81ed6dbb06eb28bd91bf7d4"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-005.png",
+      "bytes": 214951,
+      "sha256": "8e0cf6e9fa6d7911117e0254226fb11d66cec07c470811db342d1dcfa7dbe742"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-006-blocked.png",
+      "bytes": 219291,
+      "sha256": "a1c8a50f0d80d5e1fefb4bbe412b641847375e99b371fb748b1c88daad0d0644"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-006.json",
+      "bytes": 99,
+      "sha256": "17ee2fe76674a7d1b1c924d5c86c5ba1f82942da8d2c716da65a9383c228bd7e"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-007-export.png",
+      "bytes": 454488,
+      "sha256": "41d9598f04f859f1b0b2b9a3701aad6ee7673dfaae0dcccb05f0349db2504bad"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-007.json",
+      "bytes": 99,
+      "sha256": "297a0b56aaca356bfc221b4af0d9432c1f562cb5636c65107ecf2f134fdfc6af"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-007.png",
+      "bytes": 214723,
+      "sha256": "4fcb3984434c239af54e60133f4f1d445276fd650edef9985b762a07680ecf96"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-008-fit.png",
+      "bytes": 306910,
+      "sha256": "bdc2b0b0f8a55f213b00dde035a68e24ea9660642d7a3a90b494c9d056f91c22"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-008-initial-3d.png",
+      "bytes": 306607,
+      "sha256": "e7bbc2fb7e8df703eaf1f292f961c637e48cc43b6ec5c7e4e3527a4045504d78"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-008-iso.png",
+      "bytes": 306607,
+      "sha256": "e7bbc2fb7e8df703eaf1f292f961c637e48cc43b6ec5c7e4e3527a4045504d78"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-008.json",
+      "bytes": 99,
+      "sha256": "17c17173e973ea30ab3f9b847986371e0c87ba5d7361d42b9deac5619d1197ec"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-009.json",
+      "bytes": 99,
+      "sha256": "078edcf1b780c946fae8c57415093b6c93db4e319382e5761f92ed1e4ca46f01"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-009.png",
+      "bytes": 240156,
+      "sha256": "395c90fc2abae695bba6967242ef079bef2f4df49589806bf5b4c91dc6610dae"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-010.json",
+      "bytes": 99,
+      "sha256": "3513891fcf6c7cf8a5f6a0cfeb2eda04d72e22c638179763897a09f2a7eab301"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-010.png",
+      "bytes": 194479,
+      "sha256": "74b06c9be62c6f8a5dc9fce9ee15fdb0e6ddca754cbdff6d1af3d30384d8f13e"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-011.json",
+      "bytes": 99,
+      "sha256": "497dc102fbabd37ac3489c9a06f1a3786b8c7f939ab96bf2a96d4aa8eb3b1f6b"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-011.png",
+      "bytes": 191786,
+      "sha256": "726fb124019217522dc01c87d728d37fe92b69bb59c6f8ec48ff4f80a9d53339"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-012-2D.png",
+      "bytes": 664526,
+      "sha256": "3c9b9932e762a9d2a13db5bf3b2bb4ef3d9f12208d297a104f5adb06a2056bfc"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-012-3D.png",
+      "bytes": 244880,
+      "sha256": "af439d997dd3fc34ec2261115f2242da29322ecad44e89b2487f1b2b6702ae49"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-012-downloads.json",
+      "bytes": 218,
+      "sha256": "61a518212122970775879b6fe5a89567e36ebe5253c1771513edfdeca7467c1b"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-012-print-100.pdf",
+      "bytes": 111266,
+      "sha256": "1232c7e188c0874341f5e666767948f49f3e48b462ef5dd08c59da53867b3ff1"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-012-project.json",
+      "bytes": 3710,
+      "sha256": "9f7d7a3c073701e981b220ba1088b3a9bf4ee86d4f75b7202c7403e206dcf986"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/na-regression/NA-012.json",
+      "bytes": 99,
+      "sha256": "7e957467281932e7ba4da832f816f8b1abbaa0bb84f806c94a28cd219e4fbf13"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/obstacle-regression/bedroom-two-2d-screen.png",
+      "bytes": 201810,
+      "sha256": "8c1b39a13a875708a7b709c6a53d85a7f2270ad2377a8d0646bac9a2b3e65b7d"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/obstacle-regression/bedroom-two-2d.png",
+      "bytes": 384115,
+      "sha256": "95315c2ce96f8cba6378d3edbb020b4b02eea439ea889070ba503d059c7e5a46"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/obstacle-regression/bedroom-two-3d-screen.png",
+      "bytes": 182472,
+      "sha256": "641cb10b30e6260ce7f49fd1787477049d41253166fcbd459790ff4d03d3cf52"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/obstacle-regression/bedroom-two-3d.png",
+      "bytes": 52149,
+      "sha256": "0d57c936fc837a93131eb4cec5afbf33803ef377aaf0422e08d296bf07aac1b4"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/obstacle-regression/bedroom-two-print.pdf",
+      "bytes": 253131,
+      "sha256": "dfe565f29455406f1f50ed6b86422832d0f675daae202756b6dbce92fb4f77a6"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/obstacle-regression/bedroom-two-project.json",
+      "bytes": 219081,
+      "sha256": "24cc9a8b99f6b6427ce2483e5d1062eb16c54fe3047e0378316fd5b314b5607d"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/obstacle-regression/browser-results.json",
+      "bytes": 1443,
+      "sha256": "b5bf20d1e9717f346bb398e577ae0cce7a796a2e351df5343b87f74a89ca25a9"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/obstacle-regression/door-column-conflict.png",
+      "bytes": 212371,
+      "sha256": "c7496ffffff206695114a27eca310f95bb9e67c852a0d0b2f3b5e752e14d5777"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/obstacle-regression/furniture-column-conflict.png",
+      "bytes": 210347,
+      "sha256": "56a97cd220fc80f7dbbc948a22ad25ddd134efe65b68e3f46b8093a6362f38ae"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/obstacle-regression/legacy-plan-a.png",
+      "bytes": 229460,
+      "sha256": "98d931495a3c7ac9d4e71131682e5ba5747398b2c976e6dcf13d7ae92a369574"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/obstacle-regression/legacy-plan-b.png",
+      "bytes": 189529,
+      "sha256": "98595dbfa43c27ea70e54634c2ea04c20688f9552e76bdecccc5120dc2a21c1f"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/obstacle-regression/legacy-plan-c.png",
+      "bytes": 244757,
+      "sha256": "e82826a2eb7407d38de29cf94f13cec9e3961d3e00200378d428ad7bdcb6885e"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/obstacle-regression/legacy-plan-f.png",
+      "bytes": 221815,
+      "sha256": "9e36a7e68afe52b0f5750c37f0b400e3519dcda32bc0970c6007bca389d8c336"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/obstacle-regression/mobile-obstacle-form.png",
+      "bytes": 74431,
+      "sha256": "fb35c02ccd6234677e322a48671f9b9161043e7a75b1019e5c81384940f3b668"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/obstacle-regression/studio-2d-screen.png",
+      "bytes": 154577,
+      "sha256": "0198920b82a9288ac65cb3d80a524ed0cd967371917471085dfe1928bc46ae8e"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/obstacle-regression/studio-2d.png",
+      "bytes": 411341,
+      "sha256": "af2e26f0dd7351d4ddeef097dd8d134332f7eb6cd8884562331d8e8b009890ce"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/obstacle-regression/studio-3d-screen.png",
+      "bytes": 170622,
+      "sha256": "1d62b8a00c6cea7ced8e692fc53e47e770c45761fb386bfac79caf2dd70b24bf"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/obstacle-regression/studio-3d.png",
+      "bytes": 94817,
+      "sha256": "08bdf036a58bb920094c04c60df71e8e4ee8fb0e687bdae906b8996790989cb5"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/obstacle-regression/studio-print.pdf",
+      "bytes": 231211,
+      "sha256": "0a54d018dfce939024e7d4685676343dfb3e2ea9458350b278cfa94a29219c75"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/obstacle-regression/studio-project.json",
+      "bytes": 101824,
+      "sha256": "2e543ed35c7238e4a328e7eafa4dd5d259ef46d6a24942cd00160cd9bf349b26"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/pdf-check.txt",
+      "bytes": 774,
+      "sha256": "094c87278048a6af82d7e2d9983b32a362f53d351fe8fe7e2e31a1f80ac1da9a"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/pdf-results.json",
+      "bytes": 857,
+      "sha256": "b7aedb462751a22cfc16bec558c3ef8b33f372b5329a776d1543d110e4443b43"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/plan-f-regression/2d.png",
+      "bytes": 725348,
+      "sha256": "a18dd1fcd056353ddd3243f28ec36459b0f0ac3eba5368a324c31b4e2421c686"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/plan-f-regression/3d.png",
+      "bytes": 156913,
+      "sha256": "435a202781b9d54690e2df6de44b461ec55e0c457c561effe7021293e1ec803f"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/plan-f-regression/before-warning.png",
+      "bytes": 234285,
+      "sha256": "43bcc3b2489be88ac33a416aeb646796c5ee3b2be525d8718ca545e6f367f193"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/plan-f-regression/browser-results.json",
+      "bytes": 777,
+      "sha256": "3133286bc694b8411909d4d12eb752c1895be650e456bd6c8ceab8ca2e544e3c"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/plan-f-regression/corrected-screen.png",
+      "bytes": 216727,
+      "sha256": "24c6b205dadbefe6b17c007bd1552522ca0eb7afb041fd5be8d50718a8e390fc"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/plan-f-regression/print.pdf",
+      "bytes": 1411657,
+      "sha256": "7b574a1265306604ec6e2a060e69f7bb86d6fe09de5917cdf48650fedeaf0648"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/plan-f-regression/project.json",
+      "bytes": 800987,
+      "sha256": "208d8bec3c565b42b13d7a45563e6538142b05bc5965b6de6e410f33151e2138"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/reference-regression/browser-results.json",
+      "bytes": 1592,
+      "sha256": "8f665c8d13a541bc767da05d59179da7168aff2eb27a27f51add4e98468fb7be"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/reference-regression/distance-rejected.png",
+      "bytes": 156969,
+      "sha256": "00e1ff542b44ab0365f8bc64fc1e281105f0d73a46fcbf17847ebd9473225041"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/reference-regression/mobile-preview.png",
+      "bytes": 126023,
+      "sha256": "bcdaa7043ea3ca0eaaf4499fe8cbec58132e67a115d84cb866b2e1b219195027"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/reference-regression/studio-room-2d-screen.png",
+      "bytes": 204705,
+      "sha256": "740053b9de9d997a7b971c8c4ede6a9e4f76e35552c9df3fb60377752e428782"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/reference-regression/studio-room-2d.png",
+      "bytes": 412476,
+      "sha256": "564c764b135ded380c3134520bf847d53eeff5e8b639003395992e1804be7f95"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/reference-regression/studio-room-3d-screen.png",
+      "bytes": 216852,
+      "sha256": "e1c5a22958d82f5ee755d2f96ffd3417cd77c89341bd4878bc1323908d248d3b"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/reference-regression/studio-room-3d.png",
+      "bytes": 93857,
+      "sha256": "489c7ece85e04b103692f9f2368411bc5b9a6f60b5e49702ca0e711bdda05757"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/reference-regression/studio-room-print.pdf",
+      "bytes": 235503,
+      "sha256": "f096b3ce6a6f031ab635ce1b4917aee1f5fa5151b2b6b2cadea98e1c662e3cf6"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/reference-regression/studio-room-project.json",
+      "bytes": 100179,
+      "sha256": "2f2807c7e1e46372408ad22cf54f991262c9178305d1e2b188db18da92705c96"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/reference-regression/studio-zoom-calibration.png",
+      "bytes": 149543,
+      "sha256": "e555e7da89795a5fac3f0127969aae8ff276b6d37f28976017e87fb7f6e3f896"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/run-results.json",
+      "bytes": 2097,
+      "sha256": "55c95a1ea0c2c81b1833b868c5dcf4b585da04dfdb14f8b72477e2dcd4b57f68"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/syntax-results.json",
+      "bytes": 4350,
+      "sha256": "5e95e38042965e74236a51c200c3d0134dea5661f91408c5adc376034a0c9b94"
+    },
+    {
+      "path": "docs/verification/NA-whole-floor-reuse/unit-tests.txt",
+      "bytes": 25221,
+      "sha256": "d84bfb16213d080d00d065a840ac43e811eae6b9ebd263f0b5f334f836da7ca0"
+    }
+  ],
+  "timestamp": "2026-10-03T02:47:47.374021+00:00"
+}

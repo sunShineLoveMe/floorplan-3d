@@ -1,0 +1,171 @@
+{
+  "passed": true,
+  "build": null,
+  "verification": "sample points only",
+  "caseCount": 18,
+  "sampleCount": 558,
+  "cases": [
+    {
+      "name": "floor",
+      "input": "keyboard",
+      "passed": true,
+      "sampleCount": 31,
+      "minimumFloorBoundaryDistanceMm": 267.13999993801104,
+      "minimumSolidDistanceMm": 267.13999993801104,
+      "failedSamples": []
+    },
+    {
+      "name": "floor-open",
+      "input": "keyboard",
+      "passed": true,
+      "sampleCount": 31,
+      "minimumFloorBoundaryDistanceMm": 251.4799998760227,
+      "minimumSolidDistanceMm": 1500.0,
+      "failedSamples": []
+    },
+    {
+      "name": "wall",
+      "input": "keyboard",
+      "passed": true,
+      "sampleCount": 31,
+      "minimumFloorBoundaryDistanceMm": 1000.0,
+      "minimumSolidDistanceMm": 245.24000024795532,
+      "failedSamples": []
+    },
+    {
+      "name": "furniture",
+      "input": "keyboard",
+      "passed": true,
+      "sampleCount": 31,
+      "minimumFloorBoundaryDistanceMm": 1000.0,
+      "minimumSolidDistanceMm": 237.60669408295453,
+      "failedSamples": []
+    },
+    {
+      "name": "fixed",
+      "input": "keyboard",
+      "passed": true,
+      "sampleCount": 31,
+      "minimumFloorBoundaryDistanceMm": 1249.5,
+      "minimumSolidDistanceMm": 226.139999938011,
+      "failedSamples": []
+    },
+    {
+      "name": "diagonal",
+      "input": "keyboard",
+      "passed": true,
+      "sampleCount": 31,
+      "minimumFloorBoundaryDistanceMm": 249.43758434171642,
+      "minimumSolidDistanceMm": 249.43758434171642,
+      "failedSamples": []
+    },
+    {
+      "name": "swing",
+      "input": "keyboard",
+      "passed": true,
+      "sampleCount": 31,
+      "minimumFloorBoundaryDistanceMm": 1000.0,
+      "minimumSolidDistanceMm": 1000.0,
+      "failedSamples": []
+    },
+    {
+      "name": "sliding",
+      "input": "keyboard",
+      "passed": true,
+      "sampleCount": 31,
+      "minimumFloorBoundaryDistanceMm": 1000.0,
+      "minimumSolidDistanceMm": 1000.0,
+      "failedSamples": []
+    },
+    {
+      "name": "bifold",
+      "input": "keyboard",
+      "passed": true,
+      "sampleCount": 31,
+      "minimumFloorBoundaryDistanceMm": 800.0,
+      "minimumSolidDistanceMm": 800.0000000000001,
+      "failedSamples": []
+    },
+    {
+      "name": "floor",
+      "input": "joystick",
+      "passed": true,
+      "sampleCount": 31,
+      "minimumFloorBoundaryDistanceMm": 222.84799983978334,
+      "minimumSolidDistanceMm": 222.84799983978334,
+      "failedSamples": []
+    },
+    {
+      "name": "floor-open",
+      "input": "joystick",
+      "passed": true,
+      "sampleCount": 31,
+      "minimumFloorBoundaryDistanceMm": 220.39999989986427,
+      "minimumSolidDistanceMm": 1500.0,
+      "failedSamples": []
+    },
+    {
+      "name": "wall",
+      "input": "joystick",
+      "passed": true,
+      "sampleCount": 31,
+      "minimumFloorBoundaryDistanceMm": 1000.0,
+      "minimumSolidDistanceMm": 239.4119999265672,
+      "failedSamples": []
+    },
+    {
+      "name": "furniture",
+      "input": "joystick",
+      "passed": true,
+      "sampleCount": 31,
+      "minimumFloorBoundaryDistanceMm": 1000.0,
+      "minimumSolidDistanceMm": 226.78796044206806,
+      "failedSamples": []
+    },
+    {
+      "name": "fixed",
+      "input": "joystick",
+      "passed": true,
+      "sampleCount": 31,
+      "minimumFloorBoundaryDistanceMm": 1249.5,
+      "minimumSolidDistanceMm": 220.1640000200273,
+      "failedSamples": []
+    },
+    {
+      "name": "diagonal",
+      "input": "joystick",
+      "passed": true,
+      "sampleCount": 31,
+      "minimumFloorBoundaryDistanceMm": 232.6545751497096,
+      "minimumSolidDistanceMm": 232.65457514970953,
+      "failedSamples": []
+    },
+    {
+      "name": "swing",
+      "input": "joystick",
+      "passed": true,
+      "sampleCount": 31,
+      "minimumFloorBoundaryDistanceMm": 1000.0,
+      "minimumSolidDistanceMm": 1000.0,
+      "failedSamples": []
+    },
+    {
+      "name": "sliding",
+      "input": "joystick",
+      "passed": true,
+      "sampleCount": 31,
+      "minimumFloorBoundaryDistanceMm": 1000.0,
+      "minimumSolidDistanceMm": 1000.0,
+      "failedSamples": []
+    },
+    {
+      "name": "bifold",
+      "input": "joystick",
+      "passed": true,
+      "sampleCount": 31,
+      "minimumFloorBoundaryDistanceMm": 800.0,
+      "minimumSolidDistanceMm": 800.0000000000001,
+      "failedSamples": []
+    }
+  ]
+}
