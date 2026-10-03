@@ -2,7 +2,7 @@
 
 日期：2026-10-03。T07 本批已完成本地实现与复测。最终资源构建 `0a797fe1d69e03fd`，142 / 142 自动化测试、46 项新增原生浏览器检查、150 项既有原生流程回归通过；3D 标签另有 12 项细项核验，属于全屋检查的展开，不重复加入总数。完整机器结果见 [final-results.json](verification/T07-save-recovery/final-results.json)。
 
-接续 `feat/ui-refactor` 当前工作区；HEAD 与远程分支均核对为 `7abfb7100fa3bdd40f20ebe8fd70f3da0067dfb4`。本批未提交、未推送、未合并、未部署。既有 8086 服务保留；验收在本批 8095 服务和隔离 Chrome 上下文运行，没有操作用户常用浏览器的工程。未读取或修改无关 `aws-tokyo-wireguard.yaml`。原始 [交接](T07-save-recovery-handoff-2026-10-03.md)、T06、所有原图和历史产物保留。
+接续 `feat/ui-refactor` 当前工作区；验收时 HEAD 与远程基线均核对为 `7abfb7100fa3bdd40f20ebe8fd70f3da0067dfb4`。用户后续授权推送后，代码与全部验收证据已提交为 `5bbc32c` 并推送至 `origin/feat/ui-refactor`，已用 `git ls-remote` 核对；后续文档同步提交以 Git 为准。未合并、未部署。既有 8086 服务保留；验收在本批 8095 服务和隔离 Chrome 上下文运行，没有操作用户常用浏览器的工程。未读取或修改无关 `aws-tokyo-wireguard.yaml`。原始 [交接](T07-save-recovery-handoff-2026-10-03.md)、T06、所有原图和历史产物保留。
 
 ## 问题、影响与修复
 

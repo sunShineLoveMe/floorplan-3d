@@ -1,6 +1,6 @@
 # T07 新窗口交接：保存、备份与恢复可靠性
 
-**完成导航（2026-10-03）：** T07 本批已在 `feat/ui-refactor` 当前工作区完成本地实现和复测，见 [T07 验收](T07-save-recovery-verification-2026-10-03.md)与 [机器结果](verification/T07-save-recovery/final-results.json)。本批未提交、未推送、未合并、未部署。以下内容是实施前交接历史，不应再按“尚未实施 T07”重复开工。下一窗口先读取最新验收和 Git 工作区。
+**完成导航（2026-10-03）：** T07 本批已在 `feat/ui-refactor` 当前工作区完成实现和复测，见 [T07 验收](T07-save-recovery-verification-2026-10-03.md)与 [机器结果](verification/T07-save-recovery/final-results.json)。代码与证据已推送至 `5bbc32c`，文档同步提交以 Git 为准；未合并、未部署。下一任务见 [T04 第一批路线图](roadmap.md)。以下内容是实施前交接历史，不应再按“尚未实施 T07”重复开工。下一窗口先读取最新验收和 Git 工作区。
 
 日期：2026-10-03。下一批实施 T07，先保护已有布局成果，再继续高度、复杂家具运动或更多图纸建模。本文件交接下一窗口的工作，本窗口没有实施 T07。
 
