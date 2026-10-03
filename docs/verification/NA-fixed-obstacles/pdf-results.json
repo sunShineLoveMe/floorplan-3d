@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "case": "studio",
+      "pages": 1,
+      "widthPt": 792.0,
+      "heightPt": 612.0,
+      "rulerLengthPt": 283.5,
+      "usableSqFt": 227.4166666666666,
+      "obstacles": 3,
+      "sha256": "253302fd7dbc9b6ade6585989685ee9ccaaee83030e92f59c66395c846086097",
+      "physicalPrinterTested": false
+    },
+    {
+      "case": "bedroom-two",
+      "pages": 1,
+      "widthPt": 792.0,
+      "heightPt": 612.0,
+      "rulerLengthPt": 283.5,
+      "usableSqFt": 90.08333333333333,
+      "obstacles": 2,
+      "sha256": "e46a5909851debba4ed2418bd0aa5b2e0ce24d7d3127e51bd79e29adeb85001b",
+      "physicalPrinterTested": false
+    }
+  ]
+}

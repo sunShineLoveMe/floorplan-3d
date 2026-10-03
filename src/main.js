@@ -40,7 +40,7 @@ export function createApplication(){
   const files=createFileMenu({store,ui,downloads,isSwitching:()=>switching,toast,loaded,cancelInteraction:()=>{editor.cancel();viewer?.cancel();}});
   roomEditor=createRoomEditor({store,ui,actions,cancelInteraction:()=>{editor.cancel();viewer?.cancel();},exportProject:files.exportProject,isSwitching:()=>switching,toast});
   actions.deleteOpening=roomEditor.remove;
-  clearance=createDoorClearance({store,locate:async id=>{if(!id)return;if(mode.is3D())await setView('2d');const f=actions.getF(id);if(!f)return;actions.select({kind:'furn',id});drawers.drawer('panel',true);const v=editor.viewport.view,svg=$('#plan');v.x0=f.cx-svg.clientWidth/2/v.s;v.y0=f.cy-svg.clientHeight/2/v.s;editor.viewport.applyView();}});
+  clearance=createDoorClearance({store,locateObstacle:async o=>{if(mode.is3D())await setView('2d');actions.select({kind:'room',id:o.roomId});drawers.drawer('panel',true);const v=editor.viewport.view,svg=$('#plan');v.x0=(o.rect[0]+o.rect[2])/2-svg.clientWidth/2/v.s;v.y0=(o.rect[1]+o.rect[3])/2-svg.clientHeight/2/v.s;editor.viewport.applyView();},locate:async id=>{if(!id)return;if(mode.is3D())await setView('2d');const f=actions.getF(id);if(!f)return;actions.select({kind:'furn',id});drawers.drawer('panel',true);const v=editor.viewport.view,svg=$('#plan');v.x0=f.cx-svg.clientWidth/2/v.s;v.y0=f.cy-svg.clientHeight/2/v.s;editor.viewport.applyView();}});
   reference=createReferencePlan({store,fitView:editor.viewport.fitView,cancelInteraction:()=>{editor.cancel();viewer?.cancel();},toast});
   function update(){clearance?.update();reference?.update();library.update();editor.viewport.applyView();editor.update();panel.update();roomEditor?.update();toolbar.update();viewer?.sync();}
   let saveOK=null;

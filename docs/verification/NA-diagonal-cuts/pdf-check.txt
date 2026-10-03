@@ -1,0 +1,86 @@
+[
+  {
+    "id": "jacobsen-kitchen",
+    "pages": 1,
+    "widthPt": 792.0,
+    "heightPt": 612.0,
+    "netM2": 15.05,
+    "footprintM2": 17.4,
+    "diagonalWalls": 1,
+    "rulerLengthPt": 283.5,
+    "sha256": "6742838bbc8494c24f81f7e43b96cbf060c741808a933d80bcd138f5e9bd74ea",
+    "sourceWholePlanAccepted": false,
+    "physicalPrinterTested": false
+  },
+  {
+    "id": "mirrored-entry",
+    "pages": 1,
+    "widthPt": 792.0,
+    "heightPt": 612.0,
+    "netM2": 13.97,
+    "footprintM2": 15.89085,
+    "diagonalWalls": 1,
+    "rulerLengthPt": 283.5,
+    "sha256": "44965270085e7880482e9f0d9ef87cab9dd83eb0665b9b9321fdf8c69486ec7d",
+    "sourceWholePlanAccepted": false,
+    "physicalPrinterTested": false
+  },
+  {
+    "id": "compact-bedroom",
+    "pages": 1,
+    "widthPt": 792.0,
+    "heightPt": 612.0,
+    "netM2": 10.07,
+    "footprintM2": 11.603801549770623,
+    "diagonalWalls": 1,
+    "rulerLengthPt": 283.5,
+    "sha256": "531cf12507634cb9c921fb59cfc526a0ae462a5d5fd1c010e40ad48bea805657",
+    "sourceWholePlanAccepted": false,
+    "physicalPrinterTested": false
+  },
+  {
+    "id": "shared-kitchen-bath",
+    "pages": 1,
+    "widthPt": 792.0,
+    "heightPt": 612.0,
+    "netM2": 14.899999999999999,
+    "footprintM2": 17.663099740034465,
+    "diagonalWalls": 2,
+    "rulerLengthPt": 283.5,
+    "sha256": "506f589bdb643da9e88fa9a01bfe05378e57d3f810b4948e6bab404120aba055",
+    "sourceWholePlanAccepted": false,
+    "physicalPrinterTested": false
+  }
+]
+[
+  {
+    "id": "plan-f-correction",
+    "pages": 1,
+    "widthPt": 1191.1199951171875,
+    "heightPt": 841.9199829101562,
+    "netM2": 49.45796559999999,
+    "rulerLengthPt": 283.5,
+    "sha256": "a84d5a5565430b27c1687560a2a0d86a2c86e18309dc98bb654f4924494a75d6",
+    "physicalPrinterTested": false
+  },
+  {
+    "id": "cmu-regression",
+    "pages": 1,
+    "widthPt": 1191.1199951171875,
+    "heightPt": 841.9199829101562,
+    "netM2": 53.50376395999999,
+    "rulerLengthPt": 283.5,
+    "sha256": "b1e304b80728f178ba2bd67c3d06312415b0b197466d6977f37a9a1f4ec3c85f",
+    "physicalPrinterTested": false
+  },
+  {
+    "id": "label-regression",
+    "pages": 1,
+    "widthPt": 792.0,
+    "heightPt": 612.0,
+    "netM2": 8.36901552,
+    "rulerLengthPt": 283.5,
+    "sha256": "0a045fdd29e54c71559dc565fe5e2d394ba5f77a582cc54bc71eabe817ff1000",
+    "physicalPrinterTested": false
+  }
+]

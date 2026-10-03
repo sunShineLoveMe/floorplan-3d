@@ -1,0 +1,10 @@
+Final build: a105f6dde4ed890c
+QA: temporary Chrome profiles, http://127.0.0.1:8095/; user service on 8086 preserved.
+Label baseline: 2aa67ee25a57fedc; final: a105f6dde4ed890c.
+Initial wrapping test detected overestimated separator spacing; corrected whitespace/bullet width estimates, then 94/94 passed.
+The native glyph measurement supplies the final fit for actual fonts.
+An additional NA run to record before/after build markers initially omitted PLAYWRIGHT_MODULE and stopped before browser launch. Repeated with the existing runtime path: 12/12 passed.
+All supplemental CMU detail dimensions are test assumptions; sourceWholeApartmentAccepted remains false.
+PDFs rendered and inspected; no physical printer or other-browser test.
+Commands: npm test; npm run build; source ESLint using tests/eslint.config.js; node --check for added/changed scripts; git diff --check.
+Browser scripts use PLAYWRIGHT_MODULE, TEST_URL and distinct output folders. PDF QA: /tmp/floorplan-audit-tools/bin/python scripts/check-apartment-exports.py.

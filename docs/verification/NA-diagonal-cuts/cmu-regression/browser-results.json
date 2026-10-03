@@ -1,0 +1,392 @@
+{
+  "passed": true,
+  "sourceWholeApartmentAccepted": false,
+  "scope": "Whole-apartment workflow scenario, not a measured reconstruction or complete source acceptance",
+  "assumptions": [
+    "All room origins and adjacency offsets",
+    "Kitchen circulation width; closet, hall and bathroom dimensions",
+    "Corner notch and columns: sizes, locations and height",
+    "All wall thicknesses, floor ceiling height, door/window sizes, offsets and operating modes",
+    "Furniture dimensions and placement are test selections, not source inventory"
+  ],
+  "unknownSourceDimensions": [
+    "Closet width/depth",
+    "Hall width/depth",
+    "Bathroom width/depth",
+    "Kitchen outline and circulation beyond labelled rectangle",
+    "Columns and wall returns",
+    "Door/window schedules",
+    "Wall thicknesses and floor height"
+  ],
+  "labels": [
+    {
+      "id": "fmur7ahe127",
+      "name": "Twin XL - test mattress",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -327.97269287109384,
+          -273.1014099121094
+        ],
+        [
+          327.97274169921866,
+          -273.1014099121094
+        ],
+        [
+          327.97274169921866,
+          273.1014099121094
+        ],
+        [
+          -327.97269287109384,
+          273.1014099121094
+        ]
+      ],
+      "displayed": "Twin XL -testmattress",
+      "lines": 3
+    },
+    {
+      "id": "fmur7ahwl28",
+      "name": "Small desk - test",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -189.79259338378915,
+          -221.37640991210856
+        ],
+        [
+          189.79239807128897,
+          -221.37640991210856
+        ],
+        [
+          189.79239807128897,
+          221.3764587402352
+        ],
+        [
+          -189.79259338378915,
+          221.3764587402352
+        ]
+      ],
+      "displayed": "Smalldesk -test",
+      "lines": 3
+    },
+    {
+      "id": "fmur7aifs30",
+      "name": "Fridge - test",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -205.04154663085956,
+          -189.10139770507817
+        ],
+        [
+          205.0416442871092,
+          -189.10139770507817
+        ],
+        [
+          205.0416442871092,
+          189.10142211914058
+        ],
+        [
+          -205.04154663085956,
+          189.10142211914058
+        ]
+      ],
+      "displayed": "Fridge- test",
+      "lines": 2
+    },
+    {
+      "id": "fmur7aipp31",
+      "name": "Kitchen counter - test",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -220.05597839355323,
+          -221.37638549804683
+        ],
+        [
+          220.05617370605614,
+          -221.37638549804683
+        ],
+        [
+          220.05617370605614,
+          221.37648315429692
+        ],
+        [
+          -220.05597839355323,
+          221.37648315429692
+        ]
+      ],
+      "displayed": "Kitch…count…- tes…",
+      "lines": 3
+    },
+    {
+      "id": "fmur7aiy332",
+      "name": "Lower counter - test",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -220.05617370605705,
+          -221.37653198242197
+        ],
+        [
+          220.05597839355232,
+          -221.37653198242197
+        ],
+        [
+          220.05597839355232,
+          221.37633666992178
+        ],
+        [
+          -220.05617370605705,
+          221.37633666992178
+        ]
+      ],
+      "displayed": "Lowercount…- tes…",
+      "lines": 3
+    },
+    {
+      "id": "fmur7aj8y33",
+      "name": "Sofa - test",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -216.06785583496094,
+          -189.10160522460774
+        ],
+        [
+          216.06785583496094,
+          -189.10160522460774
+        ],
+        [
+          216.06785583496094,
+          189.101214599611
+        ],
+        [
+          -216.06785583496094,
+          189.101214599611
+        ]
+      ],
+      "displayed": "Sofa -test",
+      "lines": 2
+    },
+    {
+      "id": "fmur7ajkx34",
+      "name": "Dining table - test",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -225.92101440429724,
+          -273.1015075683599
+        ],
+        [
+          225.9212097167965,
+          -273.1015075683599
+        ],
+        [
+          225.9212097167965,
+          273.10131225585883
+        ],
+        [
+          -225.92101440429724,
+          273.10131225585883
+        ]
+      ],
+      "displayed": "Diningtable -test",
+      "lines": 3
+    },
+    {
+      "id": "fmur7ajv835",
+      "name": "Queen - test mattress",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -422.5170593261719,
+          -189.10146850585807
+        ],
+        [
+          422.5170593261719,
+          -189.10146850585807
+        ],
+        [
+          422.5170593261719,
+          189.10135131836068
+        ],
+        [
+          -422.5170593261719,
+          189.10135131836068
+        ]
+      ],
+      "displayed": "Queen - testmattress",
+      "lines": 2
+    },
+    {
+      "id": "fmur7ak6u36",
+      "name": "Desk - test",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -197.29984130859384,
+          -148.2242462158174
+        ],
+        [
+          197.29964599609366,
+          -148.2242462158174
+        ],
+        [
+          197.29964599609366,
+          148.22463684082322
+        ],
+        [
+          -197.29984130859384,
+          148.22463684082322
+        ]
+      ],
+      "displayed": "Desk -test",
+      "lines": 2
+    },
+    {
+      "id": "fmur7akil37",
+      "name": "Wardrobe - test",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -232.02080078125005,
+          -148.22483215331886
+        ],
+        [
+          232.02070312499995,
+          -148.22483215331886
+        ],
+        [
+          232.02070312499995,
+          148.22405090332177
+        ],
+        [
+          -232.02080078125005,
+          148.22405090332177
+        ]
+      ],
+      "displayed": "Wardr…- tes…",
+      "lines": 2
+    },
+    {
+      "id": "fmur7akuk38",
+      "name": "Tub - test",
+      "rotation": 90,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -189.10129272460836,
+          189.32349853515643
+        ],
+        [
+          -189.10129272460836,
+          -189.32310791015607
+        ],
+        [
+          189.1015270996104,
+          -189.32310791015607
+        ],
+        [
+          189.1015270996104,
+          189.32349853515643
+        ]
+      ],
+      "displayed": "Tub -test",
+      "lines": 2
+    },
+    {
+      "id": "fmur7al5d39",
+      "name": "Vanity - test",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -130.90756225585756,
+          -114.92214660644368
+        ],
+        [
+          130.9075622558612,
+          -114.92214660644368
+        ],
+        [
+          130.9075622558612,
+          114.92175598144695
+        ],
+        [
+          -130.90756225585756,
+          114.92175598144695
+        ]
+      ],
+      "displayed": "Vanity- test",
+      "lines": 2
+    },
+    {
+      "id": "fmur7alfw40",
+      "name": "Toilet - test",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -115.65841156005717,
+          -111.26474151611183
+        ],
+        [
+          115.65852874756001,
+          -111.26474151611183
+        ],
+        [
+          115.65852874756001,
+          111.26396026611474
+        ],
+        [
+          -115.65841156005717,
+          111.26396026611474
+        ]
+      ],
+      "displayed": "Toilet- test",
+      "lines": 2
+    }
+  ],
+  "build": "84212b2d0f37c16a",
+  "audit": {
+    "spaces": 8,
+    "connectedSpaces": 8,
+    "structuralGridInches": 3,
+    "furniture": 14,
+    "fixedObstacles": 7,
+    "swingDoors": 4,
+    "bifoldDoors": 1,
+    "passages": 1,
+    "windows": 6,
+    "potentialDoorConflicts": 0,
+    "potentialFixedConflicts": 0,
+    "usableSqFt": 575.9097222222221,
+    "scenarioFootprintSqFt": 639.2430555555555,
+    "sourceWholeApartmentAccepted": false
+  },
+  "checks": [
+    "official PDF rendered and approximately calibrated to the labelled small bedroom",
+    "eight scenario spaces, corner notch, shared open boundaries and seven fixed structures created through forms",
+    "all scheduled swing/sliding/bifold doors and windows created through opening forms",
+    "scenario net areas, rotated furniture fit, zero conflicts, eight-space structural connectivity and rendered glyph bounds passed",
+    "door mode edit, passage symbol, conditional fields and exact undo/redo passed",
+    "closet expansion into kitchen is rejected without changing the composite model",
+    "actual JSON download, refresh and import preserve full geometry, fixtures and calibrated reference",
+    "full house WebGL and 3D PNG export passed",
+    "real print-preview page and PDF generated with net and footprint area",
+    "390px mobile opening controls reachable without dialog overflow"
+  ],
+  "errors": [],
+  "timestamp": "2026-10-02T16:52:13.106Z"
+}

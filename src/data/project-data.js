@@ -35,10 +35,22 @@ import {validateRoomEditor,generateRoomGeometry,geometryMatches,GEOMETRY_TOLERAN
       check(Math.abs(area)>0,'polygon area');
       check(r.at===undefined || point(r.at),'room label');
       check(r.counted===undefined || typeof r.counted==='boolean','room counted');
+      check(r.usableAreaM2===undefined || positive(r.usableAreaM2)&&r.usableAreaM2<=Math.abs(area)/2e6,'usable floor area');
     });
+    if(g.obstacles!==undefined){
+      const obstacles=list(g.obstacles,'fixed obstacles',300);unique(obstacles,'fixed obstacle IDs');
+      check(p.version===2&&p.roomEditor?.kind==='house','Fixed obstacles require an editable house.');
+      obstacles.forEach(o=>check(rect(o.rect)&&rooms.some(r=>r.id===o.roomId)&&str(o.name)&&o.name.trim()&&positive(o.height)&&o.height<=g.height,'fixed obstacle'));
+    }
     list(g.walls,'walls').forEach(w=>check(Array.isArray(w) && w.length===5 && rect(w.slice(0,4)) && ['b','e','n','low'].includes(w[4]),'wall'));
     if(g.wallHeights!==undefined)check(Array.isArray(g.wallHeights)&&g.wallHeights.length===g.walls.length&&g.wallHeights.every(h=>positive(h)&&h<=g.height),'wall heights');
     if(g.floorSlabs!==undefined)list(g.floorSlabs,'floor slabs').forEach(r=>check(rect(r),'floor slab'));
+    if(g.floorPolygons!==undefined||g.diagonalWalls!==undefined){
+      check(p.version===2&&p.roomEditor?.kind==='house','Polygonal structures require an editable house.');
+      const polygon=poly=>Array.isArray(poly)&&poly.length>=3&&poly.length<=20&&poly.every(point)&&Math.abs(poly.reduce((s,a,i)=>{const b=poly[(i+1)%poly.length];return s+a[0]*b[1]-b[0]*a[1];},0))>0;
+      if(g.floorPolygons!==undefined){check(g.floorSlabs===undefined,'Use one footprint representation.');list(g.floorPolygons,'floor polygons').forEach(poly=>check(polygon(poly),'floor polygon'));}
+      if(g.diagonalWalls!==undefined)list(g.diagonalWalls,'diagonal walls').forEach(w=>check(str(w.id)&&rooms.some(r=>r.id===w.roomId)&&polygon(w.poly)&&Array.isArray(w.inner)&&w.inner.length===2&&w.inner.every(point)&&positive(w.height)&&w.height<=g.height,'diagonal wall'));
+    }
     if(g.passages!==undefined)list(g.passages,'passages').forEach(p=>check(rect(p.rect)&&rooms.some(r=>r.id===p.roomId),'passage'));
     list(g.windows,'windows').forEach(w=>check(rect(w.rect) && num(w.sill) && w.sill>=0 && positive(w.head) && w.head>w.sill && w.head<=g.height+GEOMETRY_TOLERANCE,'window'));
     list(g.doors,'doors').forEach(d=>{
@@ -67,7 +79,7 @@ import {validateRoomEditor,generateRoomGeometry,geometryMatches,GEOMETRY_TOLERAN
         check(Object.values(p.rooms).every(r=>r.name.trim().length>0),'room name');
         check(!p.templateId,'rectangle templateId');
         check(p.demolished.length===0,'rectangle demolished');
-        const ids=[p.id,p.layout.id,...Object.keys(p.rooms),...p.furniture.map(f=>f.id),...editor.openings.map(o=>o.id)];
+        const ids=[p.id,p.layout.id,...Object.keys(p.rooms),...p.furniture.map(f=>f.id),...editor.openings.map(o=>o.id),...(house?editor.rooms.flatMap(r=>(r.obstacles||[]).map(o=>o.id)):[])];
         check(new Set(ids).size===ids.length,'project-wide IDs');
         check(geometryMatches(g,(house?generateHouseGeometry:generateRoomGeometry)(editor,p.rooms)),'roomEditor / geometry mismatch');
       }

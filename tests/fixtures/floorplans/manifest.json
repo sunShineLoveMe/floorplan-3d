@@ -197,7 +197,10 @@
       "unitsInSource": [
         "ft",
         "in"
-      ]
+      ],
+      "latestAcceptanceEvidence": "../../../docs/verification/NA-diagonal-cuts/plan-f-correction/browser-results.json",
+      "latestEditableModel": "../../../docs/verification/NA-diagonal-cuts/plan-f-correction/project.json",
+      "acceptanceFollowup": "2026-10-03: DV-006 counter moved 3 in out of pony-wall footprint; structure and other furniture preserved. Original acceptance artifacts retained."
     },
     {
       "id": "hillside-studio-a1",

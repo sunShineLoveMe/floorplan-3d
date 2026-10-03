@@ -1,0 +1,357 @@
+{
+  "units": "mm",
+  "scope": "Reusable engineering layouts with explicit test dimensions; no complete source-plan acceptance",
+  "cases": [
+    {
+      "id": "jacobsen-kitchen",
+      "name": "Kitchen and dining - assumed details",
+      "source": "tests/fixtures/floorplans/originals/jacobsen-isw-4521/original.pdf",
+      "sourceSha256": "420bb3c5a38f37a8b41a2206f3d2bdc3c07e6248544cc70bcb641a62d8bf24cb",
+      "sourceScope": "Inspired by the source angled kitchen boundary. Every local room/cut/fixture dimension below is an engineering assumption.",
+      "rooms": [
+        {
+          "id": "kitchen",
+          "name": "Kitchen",
+          "x": 0,
+          "y": 0,
+          "width": 2700,
+          "depth": 3000,
+          "notch": {
+            "corner": "bottom-left",
+            "width": 900,
+            "depth": 1200,
+            "shape": "diagonal",
+            "wallThickness": 120
+          },
+          "obstacles": [
+            {
+              "id": "column",
+              "name": "Test column",
+              "x": 2600,
+              "y": 0,
+              "width": 100,
+              "depth": 100,
+              "height": 2800
+            }
+          ]
+        },
+        {
+          "id": "dining",
+          "name": "Dining",
+          "x": 2820,
+          "y": 0,
+          "width": 2500,
+          "depth": 3000
+        }
+      ],
+      "openings": [
+        {
+          "room": "kitchen",
+          "side": "right",
+          "type": "door",
+          "offset": 400,
+          "width": 900,
+          "hinge": "end",
+          "swing": "inward"
+        },
+        {
+          "room": "kitchen",
+          "side": "top",
+          "type": "window",
+          "offset": 1400,
+          "width": 800
+        }
+      ],
+      "furniture": [
+        {
+          "type": "fridge",
+          "name": "Test fridge",
+          "cx": 1300,
+          "cy": 500,
+          "w": 600,
+          "d": 600,
+          "rot": 0
+        },
+        {
+          "type": "desk",
+          "name": "Test counter",
+          "cx": 1600,
+          "cy": 2200,
+          "w": 700,
+          "d": 500,
+          "rot": 30
+        },
+        {
+          "type": "table",
+          "name": "Test dining table",
+          "cx": 4000,
+          "cy": 1500,
+          "w": 1000,
+          "d": 700,
+          "rot": 45
+        }
+      ],
+      "reference": {
+        "previewSize": [
+          1427,
+          1143
+        ],
+        "points": [
+          [
+            190,
+            510
+          ],
+          [
+            1126,
+            510
+          ]
+        ],
+        "distance": "52 ft",
+        "scope": "Approximate nominal overall span; not calibration of the assumed local kitchen dimensions"
+      }
+    },
+    {
+      "id": "mirrored-entry",
+      "name": "Apartment entry - synthetic test",
+      "sourceScope": "Synthetic translated entry layout, unequal cut depths; all dimensions are test selections.",
+      "rooms": [
+        {
+          "id": "entry",
+          "name": "Entry",
+          "x": -1400,
+          "y": 750,
+          "width": 4200,
+          "depth": 3400,
+          "notch": {
+            "corner": "top-left",
+            "width": 1200,
+            "depth": 500,
+            "shape": "diagonal",
+            "wallThickness": 180
+          },
+          "obstacles": [
+            {
+              "id": "column",
+              "name": "Test column",
+              "x": 4100,
+              "y": 0,
+              "width": 100,
+              "depth": 100,
+              "height": 2800
+            }
+          ]
+        }
+      ],
+      "openings": [
+        {
+          "room": "entry",
+          "side": "bottom",
+          "type": "door",
+          "offset": 500,
+          "width": 850,
+          "hinge": "start",
+          "swing": "inward"
+        },
+        {
+          "room": "entry",
+          "side": "right",
+          "type": "window",
+          "offset": 500,
+          "width": 1000
+        }
+      ],
+      "furniture": [
+        {
+          "type": "desk",
+          "name": "Test bench",
+          "cx": 600,
+          "cy": 2950,
+          "w": 1000,
+          "d": 400,
+          "rot": -35
+        },
+        {
+          "type": "wardrobe",
+          "name": "Test cabinet",
+          "cx": 1800,
+          "cy": 2500,
+          "w": 600,
+          "d": 600,
+          "rot": 0
+        }
+      ],
+      "doorCollisionProbe": {
+        "openingIndex": 0,
+        "offset": 100,
+        "width": 4000
+      }
+    },
+    {
+      "id": "compact-bedroom",
+      "name": "Clipped bedroom - synthetic test",
+      "sourceScope": "Synthetic compact bedroom with a different cut angle; all dimensions are test selections.",
+      "rooms": [
+        {
+          "id": "bedroom",
+          "name": "Bedroom",
+          "x": 0,
+          "y": 0,
+          "width": 3500,
+          "depth": 3000,
+          "notch": {
+            "corner": "bottom-right",
+            "width": 1200,
+            "depth": 700,
+            "shape": "diagonal",
+            "wallThickness": 100
+          },
+          "obstacles": [
+            {
+              "id": "column",
+              "name": "Test column",
+              "x": 3400,
+              "y": 0,
+              "width": 100,
+              "depth": 100,
+              "height": 2800
+            }
+          ]
+        }
+      ],
+      "openings": [
+        {
+          "room": "bedroom",
+          "side": "top",
+          "type": "door",
+          "offset": 1900,
+          "width": 700,
+          "hinge": "end",
+          "swing": "inward"
+        },
+        {
+          "room": "bedroom",
+          "side": "left",
+          "type": "window",
+          "offset": 600,
+          "width": 1200
+        }
+      ],
+      "furniture": [
+        {
+          "type": "bed",
+          "name": "Twin XL - test mattress",
+          "cx": 1000,
+          "cy": 1700,
+          "w": 965.2,
+          "d": 2032,
+          "rot": 0
+        },
+        {
+          "type": "desk",
+          "name": "Test desk",
+          "cx": 2700,
+          "cy": 1600,
+          "w": 600,
+          "d": 450,
+          "rot": 45
+        }
+      ]
+    },
+    {
+      "id": "shared-kitchen-bath",
+      "name": "Shared diagonal boundary - synthetic test",
+      "sourceScope": "Synthetic adjoining kitchen/bath plus connecting hall; bounding boxes overlap but net floors do not. All dimensions are test selections.",
+      "rooms": [
+        {
+          "id": "kitchen",
+          "name": "Kitchen",
+          "x": 2400,
+          "y": 0,
+          "width": 2700,
+          "depth": 3000,
+          "notch": {
+            "corner": "bottom-left",
+            "width": 900,
+            "depth": 900,
+            "shape": "diagonal",
+            "wallThickness": 120
+          },
+          "obstacles": [
+            {
+              "id": "column",
+              "name": "Test column",
+              "x": 2600,
+              "y": 0,
+              "width": 100,
+              "depth": 100,
+              "height": 2800
+            }
+          ]
+        },
+        {
+          "id": "bath",
+          "name": "Bath",
+          "x": 0,
+          "y": 2269.7056274847714,
+          "width": 3300,
+          "depth": 1800,
+          "notch": {
+            "corner": "top-right",
+            "width": 900,
+            "depth": 900,
+            "shape": "diagonal",
+            "wallThickness": 120
+          }
+        },
+        {
+          "id": "hall",
+          "name": "Hall",
+          "x": 3420,
+          "y": 3120,
+          "width": 1680,
+          "depth": 1000
+        }
+      ],
+      "openings": [
+        {
+          "room": "kitchen",
+          "side": "bottom",
+          "type": "door",
+          "offset": 1200,
+          "width": 800,
+          "hinge": "start",
+          "swing": "inward"
+        },
+        {
+          "room": "bath",
+          "side": "right",
+          "type": "door",
+          "offset": 1000,
+          "width": 700,
+          "hinge": "start",
+          "swing": "inward"
+        }
+      ],
+      "furniture": [
+        {
+          "type": "fridge",
+          "name": "Test fridge",
+          "cx": 4000,
+          "cy": 1400,
+          "w": 700,
+          "d": 600,
+          "rot": 0
+        },
+        {
+          "type": "vanity",
+          "name": "Test vanity",
+          "cx": 1500,
+          "cy": 3400,
+          "w": 500,
+          "d": 400,
+          "rot": 0
+        }
+      ]
+    }
+  ]
+}

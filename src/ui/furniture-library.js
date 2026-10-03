@@ -2,7 +2,7 @@ import {formatLengthMm,formatAreaM2} from '../core/units.js';
 import {$} from '../ui/dom.js';
 import {COARSE,TAP,narrow,esc} from '../ui/dom.js';
 import {tr,nm,LANG} from '../ui/i18n.js';
-import {bbox,area} from '../core/geometry.js';
+import {bbox,roomArea} from '../core/geometry.js';
 import {LIB,matchesFurniture} from '../data/catalogs.js';
 import {furnSVG} from '../editor2d/furniture-symbols.js';
 import {createScope} from './lifecycle.js';
@@ -39,7 +39,7 @@ function buildRooms(){
   const project=store.getProject(),rooms=project.geometry.rooms.filter(r=>r.counted!==false);
   const next=JSON.stringify([LANG,project.units.display,project.rooms,project.geometry.rooms,ui.sel]);
   if(next===roomSignature)return;roomSignature=next;
-  $('#roomList').innerHTML=rooms.map(r=>`<button data-room="${esc(r.id)}" class="${ui.sel?.kind==='room'&&ui.sel.id===r.id?'on':''}"><span>${esc(nm(project.rooms[r.id].name))}</span><small>${formatAreaM2(area(r.poly),project.units.display)}</small></button>`).join('')+ (rooms.length?`<button data-room="__all"><span>${tr('全屋','Whole home')}</span><small>${formatAreaM2(rooms.reduce((sum,r)=>sum+area(r.poly),0),project.units.display)}</small></button>`:`<p class="hint">${tr('当前方案没有房间','No rooms in this plan')}</p>`);
+  $('#roomList').innerHTML=rooms.map(r=>`<button data-room="${esc(r.id)}" class="${ui.sel?.kind==='room'&&ui.sel.id===r.id?'on':''}"><span>${esc(nm(project.rooms[r.id].name))}</span><small>${formatAreaM2(roomArea(r),project.units.display)}</small></button>`).join('')+ (rooms.length?`<button data-room="__all"><span>${tr('全屋','Whole home')}</span><small>${formatAreaM2(rooms.reduce((sum,r)=>sum+roomArea(r),0),project.units.display)}</small></button>`:`<p class="hint">${tr('当前方案没有房间','No rooms in this plan')}</p>`);
 }
 scope.on($('#roomList'),'click',e=>{
   const button=e.target.closest('[data-room]');if(!button)return;

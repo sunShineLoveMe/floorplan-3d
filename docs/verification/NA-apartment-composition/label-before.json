@@ -1,0 +1,60 @@
+{
+  "build": "2aa67ee25a57fedc",
+  "observedOverflow": true,
+  "labels": [
+    {
+      "id": "fmur2nq4s4",
+      "name": "Twin XL · mattress footprint",
+      "rotation": 0,
+      "withinFootprint": false,
+      "corners": [
+        [
+          -1132.0007080078128,
+          -119.96919403076186
+        ],
+        [
+          1132.0007568359372,
+          -119.96919403076186
+        ],
+        [
+          1132.0007568359372,
+          119.96914520263658
+        ],
+        [
+          -1132.0007080078128,
+          119.96914520263658
+        ]
+      ],
+      "displayed": "Twin XL · mattress footprint",
+      "lines": 0
+    },
+    {
+      "id": "fmur2nq6n5",
+      "name": "Assumed 3 ft wardrobe",
+      "rotation": 0,
+      "withinFootprint": false,
+      "corners": [
+        [
+          -664.8292602539063,
+          -83.31192016601631
+        ],
+        [
+          664.8290649414062,
+          -83.31192016601631
+        ],
+        [
+          664.8290649414062,
+          83.31192016601494
+        ],
+        [
+          -664.8292602539063,
+          83.31192016601494
+        ]
+      ],
+      "displayed": "Assumed 3 ft wardrobe",
+      "lines": 0
+    }
+  ],
+  "errors": [],
+  "timestamp": "2026-10-02T15:04:31.458Z"
+}

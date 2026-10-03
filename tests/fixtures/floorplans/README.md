@@ -16,7 +16,7 @@
 
 18 份文件已通过 SHA-256 / 文件解析检查、选定页内容人工检查，以及应用真实 `Import drawing` 界面的读取和选页测试。取消导入后原项目完全保持不变。目录图片、筛选、搜索及 390 px 布局通过浏览器检查。验证构建为 `58cd1dedbb49c3ad`。
 
-**新增 14 份尚未完成完整户型验收。** CMU Fairfax Studio 已完成近似标定及标注矩形房间的摆放、保存回导和导出流程；柱子与其余空间未被完整建模。Hillside A1/B5、Imprint A1 和 ZAG B4 已验证无长度时的标定拒绝与项目保护。最新结果见 [多样化图纸验收](../../../docs/NA-diverse-floorplans-verification-2026-10-02.md)。试读结论仅表示文件能加载，不能据此判定斜墙、多层、缺少尺寸等内容已经被产品完整支持。前四套 A1 的既有模型与导出证据见 [四套验收记录](../../../docs/NA-complete-houses-verification-2026-10-02.md)。
+**新增 14 份尚未完成完整户型验收。** CMU Fairfax Studio 已完成近似标定及标注矩形房间的摆放、保存回导和导出流程；柱子与其余空间未被完整建模。Hillside A1/B5、Imprint A1 和 ZAG B4 已验证无长度时的标定拒绝与项目保护。固定矩形障碍物已补，并用 Studio 和两卧小卧室验证独立柱、面积扣除、家具与平开门冲突、保存回导和导出；柱和门窗细部为明确测试假设，整套公寓仍未验收，见 [固定障碍物验收](../../../docs/NA-fixed-obstacles-verification-2026-10-02.md)。后续 CMU 两卧 8 空间组合与紧凑家具标签复测通过，见 [整户组合记录](../../../docs/NA-apartment-composition-verification-2026-10-02.md)；补充尺寸仍为假设，完整原图验收数量保持 4 份。下一项为 Jacobsen 斜向厨房边界。参考图结果见 [多样化图纸验收](../../../docs/NA-diverse-floorplans-verification-2026-10-02.md)。试读结论仅表示文件能加载，不能据此判定斜墙、多层、缺少尺寸等内容已经被产品完整支持。前四套 A1 的既有模型与导出证据见 [四套验收记录](../../../docs/NA-complete-houses-verification-2026-10-02.md)。
 
 ## 素材目录
 
@@ -88,3 +88,8 @@ PLAYWRIGHT_MODULE=/absolute/path/to/node_modules/playwright TEST_URL=http://127.
 ```
 
 仅采集无需登录的公开发布文件。营销图、大学示例布局、历史档案和规划申请图不是同一种尺寸证据，已在清单中区分；本库不将它们称为当前房屋的实测施工图。原版权说明保留，公开访问不等于已获得公开再分发许可。采集验收清单中的交付状态为提交前的历史快照；后续交付范围见 [本批交付记录](../../../docs/NA-delivery-2026-10-02.md)。无法采集的 Marysville 文件返回 HTTP 403，已用 Jacobsen 同类方案替代，记录见 [不可用来源](unavailable-sources.json)。
+
+
+## 2026-10-03 可复用斜切与补充复核
+
+单角斜切已支持四个方向和不同斜率，四套局部 / 合成场景共用编辑、面积、冲突和导出；这些场景不计作原房屋完整验收。Jacobsen 全屋组合与细部尺寸仍待核对。Plan F 原手工模型的橱柜 3 in 越界已修正，最新模型及复测见 [斜切角与 Plan F 补充验收](../../../docs/NA-diagonal-cuts-verification-2026-10-03.md)。18 份原图不变；4 套既有单层手工模型与其余 14 份待完整验收资料的数量不变。

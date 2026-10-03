@@ -7,4 +7,7 @@ const norm = a => ((Math.round(a) % 360) + 360) % 360;
 function hex2rgb(h){ h = h.replace('#',''); if (h.length===3) h = h.split('').map(c=>c+c).join(''); const n = parseInt(h,16); return [(n>>16)&255,(n>>8)&255,n&255]; }
 function shade(h,k){ const f = v => Math.max(0,Math.min(255,Math.round(k>1 ? v+(255-v)*(k-1)*2 : v*k))); return '#'+hex2rgb(h).map(v=>f(v).toString(16).padStart(2,'0')).join(''); }
 
-export {area,perim,bbox,aabb,fmt,norm,hex2rgb,shade};
+const roomArea = room => room.usableAreaM2 ?? area(room.poly);
+const footprintArea = geometry => geometry.floorPolygons?.reduce((sum,p)=>sum+area(p),0) ?? geometry.floorSlabs?.reduce((sum,r)=>sum+(r[2]-r[0])*(r[3]-r[1])/1e6,0);
+
+export {footprintArea,roomArea,area,perim,bbox,aabb,fmt,norm,hex2rgb,shade};

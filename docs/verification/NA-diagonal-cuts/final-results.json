@@ -1,0 +1,914 @@
+{
+  "passed": true,
+  "build": "84212b2d0f37c16a",
+  "branch": "feat/ui-refactor",
+  "baseCommit": "a54283f4b979f2d8f507c751e6e7db55fbef4bf9",
+  "unitTests": 104,
+  "diagonalBrowserChecks": 43,
+  "planFCorrection": 7,
+  "composition": 10,
+  "fixedObstacles": 8,
+  "reference": 8,
+  "naRegressions": 12,
+  "labelNameRotationChecks": 9,
+  "pdfExportsChecked": 7,
+  "sourceEslintPassed": true,
+  "jsSyntaxFiles": 123,
+  "diffCheckPassed": true,
+  "completeHouseGeometryCompatibility": {
+    "passed": true,
+    "cases": [
+      {
+        "id": "b",
+        "path": "docs/verification/NA-complete-houses/plan-b/complete-project.json",
+        "geometryUnchanged": true,
+        "originalPotentialFloorConflicts": 0,
+        "warningNames": []
+      },
+      {
+        "id": "a",
+        "path": "docs/verification/NA-complete-houses/plan-a/complete-project.json",
+        "geometryUnchanged": true,
+        "originalPotentialFloorConflicts": 0,
+        "warningNames": []
+      },
+      {
+        "id": "c",
+        "path": "docs/verification/NA-complete-houses/plan-c/complete-project.json",
+        "geometryUnchanged": true,
+        "originalPotentialFloorConflicts": 0,
+        "warningNames": []
+      },
+      {
+        "id": "f",
+        "path": "docs/verification/NA-complete-houses/plan-f/complete-project.json",
+        "geometryUnchanged": true,
+        "originalPotentialFloorConflicts": 1,
+        "warningNames": [
+          "Kitchen south counter"
+        ]
+      }
+    ],
+    "latestPlanFCorrectedFloorConflicts": 0
+  },
+  "sourceOriginalsUnchanged": [
+    {
+      "id": "san-diego-plan-b",
+      "sha256": "bb55e87e8a7c5f63316c019c840693e22f8bcfc63bf6777710cbc5d9848c9502",
+      "bytes": 10327642
+    },
+    {
+      "id": "san-diego-plan-a",
+      "sha256": "89c21a906886ee7fb10d3911bf16899021e8f1e3d7bf63604e5dd8033aff6759",
+      "bytes": 10140640
+    },
+    {
+      "id": "san-diego-plan-c",
+      "sha256": "c5d7ba3bc8c5ee7ddd31223ab146058aca79d9dd27d2322520a85c911416a0e6",
+      "bytes": 10357525
+    },
+    {
+      "id": "san-diego-plan-f",
+      "sha256": "89dbbd8f7977d772df44a4eea1a0ec35d795d9830538e3aa1e29f8d5bfe10bdc",
+      "bytes": 10103499
+    },
+    {
+      "id": "hillside-studio-a1",
+      "sha256": "c67db77f48cfb877e4765a3f779bcdf4a45b779a6f4f04df23d1b65d2b68a89d",
+      "bytes": 988750
+    },
+    {
+      "id": "hillside-corner-b5",
+      "sha256": "e95496af4f396b35ab3087f9d373a798699f8e11221c6268f456dc04e4f1228e",
+      "bytes": 117317
+    },
+    {
+      "id": "cmu-fairfax-studio",
+      "sha256": "12dbc086f2368cf36784e754fecce8ca78386d33ac743afff0561804573ba293",
+      "bytes": 42688
+    },
+    {
+      "id": "cmu-fairfax-two-bedroom",
+      "sha256": "bdef8e9000ff1a9a0f857aa584f0a7fdfa8e095f4a36637a943301530bb60e76",
+      "bytes": 4847347
+    },
+    {
+      "id": "cmu-fairfax-one-bedroom-jpeg",
+      "sha256": "a80336a75ea8b6bda92b1ed28dd890cc459ba66dc820410e6d4445397f17687c",
+      "bytes": 61785
+    },
+    {
+      "id": "imprint-a1",
+      "sha256": "2ce5e76bbc9de2aeac1a4b618c68487d100afa18f9d4c3f08cfa6514f441099c",
+      "bytes": 83924
+    },
+    {
+      "id": "zag-b4-image",
+      "sha256": "6f9f682391633640f5eebc5afcd8ffa3120344f38d66511de2bfdb39299bfead",
+      "bytes": 135002
+    },
+    {
+      "id": "zag-live-work",
+      "sha256": "c5ccb799af5fdaadcf8f9b9d888806a8cfaad33cdce7252c7acb3f55ae45d0b6",
+      "bytes": 123672
+    },
+    {
+      "id": "remington-b-basement",
+      "sha256": "e16dd52d694199f0376c7e0f845e18d7fde9f19ed890b4abd264f7e7bfae1980",
+      "bytes": 35109
+    },
+    {
+      "id": "jacobsen-isw-4521",
+      "sha256": "420bb3c5a38f37a8b41a2206f3d2bdc3c07e6248544cc70bcb641a62d8bf24cb",
+      "bytes": 1440245
+    },
+    {
+      "id": "regent-unit-l",
+      "sha256": "09931c68a4b4fc5299926100c0541e9b643ccc53324860990ad3b59043b7f518",
+      "bytes": 194958
+    },
+    {
+      "id": "newmark-umbria",
+      "sha256": "c40d44e5b93f0376299d85748d511c2546d70ffb18146a4a2768116fcc7bf731",
+      "bytes": 1035137
+    },
+    {
+      "id": "toronto-dawes-west-floor6",
+      "sha256": "2ce0311dfcb3a4006d3d202618af54ed9a1cff2ad1f44ee534aa1fc7feaf01a7",
+      "bytes": 10459475
+    },
+    {
+      "id": "loc-norvelt-house-types",
+      "sha256": "f5518648530cf2fd2f9126886e01729b754a677608874f7dc2a2f308301f13ea",
+      "bytes": 366016
+    }
+  ],
+  "priorBatchArtifactsUnchanged": [
+    {
+      "record": "docs/verification/NA-fixed-obstacles/final-results.json",
+      "checkedArtifacts": 73,
+      "unchanged": true
+    },
+    {
+      "record": "docs/verification/NA-apartment-composition/final-results.json",
+      "checkedArtifacts": 90,
+      "unchanged": true
+    }
+  ],
+  "closedEngineeringIssues": [
+    "DV-005: reusable one-corner diagonal cut",
+    "DV-006: Plan F counter moved 3 in out of pony-wall footprint"
+  ],
+  "sourceWholeJacobsenAccepted": false,
+  "sourceWholeCMUAccepted": false,
+  "acceptedPriorSingleFloorSourceModels": 4,
+  "newFullSourceModelsAccepted": 0,
+  "scope": "Four reusable local/synthetic angled layouts; corrected prior Plan F furniture layout; existing flows regressed on the same build",
+  "limits": [
+    "one corner cut per room",
+    "no arbitrary polygons/multiple cuts/diagonal openings/multiple floors",
+    "no human passage-width or vertical clearance certification",
+    "no complete Jacobsen source-house dimensions accepted",
+    "no Safari/Edge/physical devices or printer checks"
+  ],
+  "visualReview": {
+    "passed": true,
+    "reviewed": [
+      "compact bedroom 2D and 3D cutaway",
+      "four diagonal cases 3D exports",
+      "kitchen/entry/shared-boundary PDF renderings",
+      "Plan F corrected A3 PDF",
+      "CMU A3 PDF"
+    ]
+  },
+  "delivery": {
+    "committed": false,
+    "pushed": false,
+    "merged": false,
+    "deployed": false,
+    "originalService": {
+      "url": "http://127.0.0.1:8086/",
+      "pid": 20514,
+      "build": "84212b2d0f37c16a",
+      "httpStatus": 200,
+      "preserved": true
+    },
+    "ownedQAService": {
+      "port": 8095,
+      "stopped": true
+    }
+  },
+  "artifacts": [
+    {
+      "path": "docs/verification/NA-diagonal-cuts/browser-cmu.txt",
+      "bytes": 1283,
+      "sha256": "76ea06d362bb38dc8fe7eb68519e4d4b8652c3b7a058839166984dcf91d34df4"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/browser-diagonal.txt",
+      "bytes": 3740,
+      "sha256": "5da0a80cb0a500f34b0d0c01fd7dc9acd1ef6f4bfadfd669ccb411f2c012aaa1"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/browser-labels.txt",
+      "bytes": 36,
+      "sha256": "b810f235c4ec9327e4037e3f23e7435a608a1b0a7e5585d6338f645f485fa223"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/browser-na.txt",
+      "bytes": 259,
+      "sha256": "50b484362d39e6d2b6fb3c790e8e682fd6c54e7c074251429b7b69280728e7fb"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/browser-obstacles.txt",
+      "bytes": 740,
+      "sha256": "cc2ae6bd7d7cae994ed0c0043428de78ca03adb40cc84df6aae3b251ddc548c3"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/browser-plan-f.txt",
+      "bytes": 33,
+      "sha256": "ac00564e0aca1fc2b17aed1a49122adec34008126e6a63f9e96295c34796e813"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/browser-reference.txt",
+      "bytes": 782,
+      "sha256": "4a4accf3666d1c1c28d1eec4f08f0fcc315c82892807862a0a23082c86863d95"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/browser-results.json",
+      "bytes": 5184,
+      "sha256": "87a44d537ee136f3dce67ee3e0c207634b44ccf7b2aa90d35a927b317911ecc4"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/cmu-regression/browser-results.json",
+      "bytes": 9169,
+      "sha256": "aaf53fcd67f10143d93caac1b1e948bc14c81f3f495c9b6fc6cc7bb49848ef24"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/cmu-regression/complete-2d-screen.png",
+      "bytes": 251429,
+      "sha256": "d57eb76b66438eb5714e27509fde1beaf580761963a98bf378c71494d76af384"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/cmu-regression/complete-2d.png",
+      "bytes": 1047450,
+      "sha256": "5bb838bd9d27aa4f91652c28ae33073c1a8dbde6826408cb86f162b31d7ab93c"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/cmu-regression/complete-3d-cutaway.png",
+      "bytes": 236433,
+      "sha256": "97695f03646bbc3bd43b384b76a941bf4743252ecb0f4c55231216b2dc9c2f33"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/cmu-regression/complete-3d-screen.png",
+      "bytes": 209427,
+      "sha256": "0d4d342bd1d00a498869711f27d39ecfda7c228282a5ff48c63dc6170d4511c3"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/cmu-regression/complete-3d.png",
+      "bytes": 135196,
+      "sha256": "7b97d32afc3812b09a0b9be87b8f78c9e77c73946e313603d770e0d7c630551c"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/cmu-regression/complete-print.pdf",
+      "bytes": 1360840,
+      "sha256": "b1e304b80728f178ba2bd67c3d06312415b0b197466d6977f37a9a1f4ec3c85f"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/cmu-regression/complete-project.json",
+      "bytes": 246514,
+      "sha256": "e1969bc1eb61f9146d898b5ee6c519021a815fc54d5b5ffcdb090a113179e134"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/cmu-regression/mobile-opening.png",
+      "bytes": 65202,
+      "sha256": "a0e8c9ec75905b155232eca66b0e166dac8bcac3338d5767ae727399501bb0de"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/cmu-regression/print-preview.png",
+      "bytes": 145318,
+      "sha256": "b6d35004301ff4d468d6c1c7c668f222b53ba1c424e742eddae716c3ab0d5791"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/cmu-regression/regression-print-render.png",
+      "bytes": 199065,
+      "sha256": "98c690b863955702bf1c0a58fae40224a2704348b6a243f554355c1c0df188ec"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/compact-bedroom/2d-screen.png",
+      "bytes": 163146,
+      "sha256": "90cbe7a11a33195465fef53ce426da73496af922288254c560398755ff752dd9"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/compact-bedroom/2d.png",
+      "bytes": 457298,
+      "sha256": "6d6232880135918971e1f127ef28c7adafd83384ddd91a22206b2b6e17d92ae0"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/compact-bedroom/3d-cutaway.png",
+      "bytes": 167957,
+      "sha256": "33f1cd343f93cc791448714c80919099cd41a05ddd3ece59a1bbd9019f0e4ed9"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/compact-bedroom/3d.png",
+      "bytes": 58178,
+      "sha256": "a27707e6e157ad589d458c640d7eb6f578b707a441ecf71d86afb6966dba0e24"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/compact-bedroom/browser-results.json",
+      "bytes": 1177,
+      "sha256": "1f549a0db15109eca5189ae748deaa0700bf8d927599f39760d63f7db59dbce9"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/compact-bedroom/mobile-cut-form.png",
+      "bytes": 59636,
+      "sha256": "8992dd915e9c89283829f5c9c1a753052c9a87ec5d0fde9c563418b224ef1e0b"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/compact-bedroom/outside-floor-warning.png",
+      "bytes": 239674,
+      "sha256": "4dc6f41ce2e8f6aa13320c711eb4e1e243534fb21c517811e4a97130a18cc5b0"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/compact-bedroom/print-render.png",
+      "bytes": 93999,
+      "sha256": "4bf725936ba9dc4134cffdd591f2ed8c181fbf465b1b43b951daeb970251ace3"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/compact-bedroom/print.pdf",
+      "bytes": 188096,
+      "sha256": "531cf12507634cb9c921fb59cfc526a0ae462a5d5fd1c010e40ad48bea805657"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/compact-bedroom/project.json",
+      "bytes": 6712,
+      "sha256": "3ac882b34f17d2209a28f265622f5647153e99471c1e6100e8aa5812bd686e1c"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/compatibility-results.json",
+      "bytes": 980,
+      "sha256": "27b30730cf615f119ee5b81068e6d6a59375528ed745720ada7346e31625cc11"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/jacobsen-kitchen/2d-screen.png",
+      "bytes": 175291,
+      "sha256": "d323db4c6e247e9284c8ef953269b9035d039da54c4709c7fb58a0328098ca77"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/jacobsen-kitchen/2d.png",
+      "bytes": 471529,
+      "sha256": "de2abe6481c430f07660652f2ac686e8d142a17fb7aa085734ed6c6bee47d082"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/jacobsen-kitchen/3d-cutaway.png",
+      "bytes": 187653,
+      "sha256": "828c6e5bdef0ffa4bf5950f18c7c7f036d4886453e3f3e501dc2af3ccc822066"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/jacobsen-kitchen/3d.png",
+      "bytes": 76646,
+      "sha256": "62cf281c0ea646ed75d64d4dd12d09ec63ce3cea54436d97b8f79d7a2f9e1472"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/jacobsen-kitchen/browser-results.json",
+      "bytes": 1112,
+      "sha256": "d91a5077f14a3ba4b5c34b4666dc59522beacc8077a5a6974f931e6b5e8709a4"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/jacobsen-kitchen/mobile-cut-form.png",
+      "bytes": 60524,
+      "sha256": "44b308cc2c9702ea4f5efce9bec1219aea47ac68fd268f02d6afd866a21f9904"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/jacobsen-kitchen/outside-floor-warning.png",
+      "bytes": 332709,
+      "sha256": "cd0ebf39129d1a115ba62b4bc34980eb7e9bd1faa0de8cf98b6bc2bf31e661a1"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/jacobsen-kitchen/print-render.png",
+      "bytes": 118613,
+      "sha256": "3f57210ccd4542c78ab6f71ada82623b7a308adc95e3705a2c50b87608798bd5"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/jacobsen-kitchen/print.pdf",
+      "bytes": 279762,
+      "sha256": "6742838bbc8494c24f81f7e43b96cbf060c741808a933d80bcd138f5e9bd74ea"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/jacobsen-kitchen/project.json",
+      "bytes": 156974,
+      "sha256": "ccc762e0365af9cc06f746e2fd15b16d85ca632f102b45eb9938a04cacfe513a"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/label-regression/compact-bedroom-print.pdf",
+      "bytes": 253386,
+      "sha256": "0a045fdd29e54c71559dc565fe5e2d394ba5f77a582cc54bc71eabe817ff1000"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/label-regression/label-after.json",
+      "bytes": 2353,
+      "sha256": "9042f36234eb7c1ac41106da94263c0b631a727cbc289cd10e55e38425daf154"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/label-regression/label-after.png",
+      "bytes": 153852,
+      "sha256": "e1f7a88fb93883fc8c67ee6022b2ed19f3db3012ea238290a0f74d37e60d113f"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/label-regression/regression-print-render.png",
+      "bytes": 88766,
+      "sha256": "d173fac0d2faf7a8027eea15d9c803ed95a6bc9a7d0b98d4e466b4518736382c"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/mirrored-entry/2d-screen.png",
+      "bytes": 161858,
+      "sha256": "3a1e0db7c5c896422a958c0cf874822b476c658b1e781a14540359ab250d6672"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/mirrored-entry/2d.png",
+      "bytes": 470191,
+      "sha256": "0552612e69521557079038cdc50a6070b7ed636bdb593d8de1beef3817e99125"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/mirrored-entry/3d-cutaway.png",
+      "bytes": 178829,
+      "sha256": "7234ebf3836968ee6467d7a00c8255fe22c140ef5c6377baf080f3bc46156a59"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/mirrored-entry/3d.png",
+      "bytes": 74754,
+      "sha256": "7929df62558adf789b3bdcb44bb5eae65115a57a618c1d8c75104f3098ad9a8a"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/mirrored-entry/browser-results.json",
+      "bytes": 1242,
+      "sha256": "17088c837f3ab641199da353ce7b53900d27b208a05be81cd26bc7a949671391"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/mirrored-entry/door-diagonal-warning.png",
+      "bytes": 219771,
+      "sha256": "5395e1ba09ff9eba23b7d5e75740ea4bf68123f29c61c9d547a72d332e44696f"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/mirrored-entry/mobile-cut-form.png",
+      "bytes": 58785,
+      "sha256": "c4ee0d583a667af718d772ee3bfee4d6efef37aebe3c81f5e57ca1f277ee12a5"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/mirrored-entry/outside-floor-warning.png",
+      "bytes": 232636,
+      "sha256": "fd12338531ae914b2b4713c87a2e71cbee207bbfe137728b89562e3934de1263"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/mirrored-entry/print-render.png",
+      "bytes": 96430,
+      "sha256": "41647aa4c5c8c5b8a4cd92eb103da57d618385fdbf58f4617bf384911e558165"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/mirrored-entry/print.pdf",
+      "bytes": 182139,
+      "sha256": "44965270085e7880482e9f0d9ef87cab9dd83eb0665b9b9321fdf8c69486ec7d"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/mirrored-entry/project.json",
+      "bytes": 6722,
+      "sha256": "307f4b754857d9e7e8273781dd147c59765d030486fdbc5a0b2881216fbc3b7e"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-001.json",
+      "bytes": 99,
+      "sha256": "3c8954820db8e0972f1644a2b4265101722c95bcf693ebbb6877ecbe81bc4f4f"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-001.png",
+      "bytes": 144627,
+      "sha256": "e9b7bec5297e72358f5831b8c515420c49f65510d637b59dc844b76410e09c4f"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-002-project.json",
+      "bytes": 62958,
+      "sha256": "068be834323e75d45e373701b056e49b9c1e015ff40a75e482b446c94085980b"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-002.json",
+      "bytes": 99,
+      "sha256": "cb01a504472ec08914f2bf2163e4057c2646bd2a0d483758d4ec33b19ed82d17"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-002.png",
+      "bytes": 159011,
+      "sha256": "4be3f39b948d83f2400e5f3a3ae0dc8225986bea4c0b68ba46751e569b0bd1e5"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-003-mobile.png",
+      "bytes": 54892,
+      "sha256": "218b6e7a5e44a9440ae944f847970cadc9b93d3f557e5af2efa16c0eed9556ef"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-003.json",
+      "bytes": 99,
+      "sha256": "24c570426fb903c26612084200abc2bfb97b2c65e744f05f29c8e6e3ef216349"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-004-resources.json",
+      "bytes": 8272,
+      "sha256": "50815a4ff252fe1e44c1d9e8f48c1da3a58ae7c56d64bcd17ee1f8ca563f6316"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-004.json",
+      "bytes": 99,
+      "sha256": "cc0c5891fcab39359efa65f1178c0376b6fa50ef7ce49a8813c5a6fc6dee887a"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-004.png",
+      "bytes": 161658,
+      "sha256": "d6a12080f6e18fa1635ab263135f4abc9a4d5ac69e81d566ca769dcc89521a31"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-005.json",
+      "bytes": 99,
+      "sha256": "088026df746cf966a1b27a926fab4db772bc0cdf6e5b191289112b4475088e51"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-005.png",
+      "bytes": 217420,
+      "sha256": "4204fe774d2de9c4e1103e4afa75706ae785cb9fc80580aef3cfe63e9e171d5a"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-006-blocked.png",
+      "bytes": 220822,
+      "sha256": "03a53e11f129dc00a2990a96ebba73eb3c7363271b14f6dbb0dd9c55673f1875"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-006.json",
+      "bytes": 99,
+      "sha256": "f5dc942d1f65a90916bfd762a1656ccea0a6571538a1ed8075552e8ad7fe7a14"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-007-export.png",
+      "bytes": 454488,
+      "sha256": "41d9598f04f859f1b0b2b9a3701aad6ee7673dfaae0dcccb05f0349db2504bad"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-007.json",
+      "bytes": 99,
+      "sha256": "c14650c830ec8a056011d0827b5539c1e075e938a1df43cb37512260727d02ef"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-007.png",
+      "bytes": 213156,
+      "sha256": "e3e7e48d5e33d92fb780b743aede7fb6fdc68a60bb6f244a8ae17f6943a4936c"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-008-fit.png",
+      "bytes": 306910,
+      "sha256": "bdc2b0b0f8a55f213b00dde035a68e24ea9660642d7a3a90b494c9d056f91c22"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-008-initial-3d.png",
+      "bytes": 306607,
+      "sha256": "e7bbc2fb7e8df703eaf1f292f961c637e48cc43b6ec5c7e4e3527a4045504d78"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-008-iso.png",
+      "bytes": 306607,
+      "sha256": "e7bbc2fb7e8df703eaf1f292f961c637e48cc43b6ec5c7e4e3527a4045504d78"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-008.json",
+      "bytes": 99,
+      "sha256": "69a0849a59bf410f901e007b9c1add1140394d228ac74a2b080cba04668a868a"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-009.json",
+      "bytes": 99,
+      "sha256": "cc2150f29a9b2a2cfdecaf16dee1af821163a48ac756794a08cbab61581f69bb"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-009.png",
+      "bytes": 240156,
+      "sha256": "e81433294f514980ea331e64cf5fe9eff51610701e9cb8277a4b525eb91af852"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-010.json",
+      "bytes": 99,
+      "sha256": "7de9d2f41485b8f8c595cfb8d57ab92871fa3f255268c3a284301b021a91e19c"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-010.png",
+      "bytes": 194479,
+      "sha256": "74b06c9be62c6f8a5dc9fce9ee15fdb0e6ddca754cbdff6d1af3d30384d8f13e"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-011.json",
+      "bytes": 99,
+      "sha256": "22d27b6cf9483ef5163b228dc56d03bef41df15606fb38f1dc4e5b57c7ee4e9e"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-011.png",
+      "bytes": 194833,
+      "sha256": "e2bf38628e42ced22adf6d8453fef9c0cd6995affef44deda17c044498433252"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-012-2D.png",
+      "bytes": 664526,
+      "sha256": "3c9b9932e762a9d2a13db5bf3b2bb4ef3d9f12208d297a104f5adb06a2056bfc"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-012-3D.png",
+      "bytes": 244880,
+      "sha256": "af439d997dd3fc34ec2261115f2242da29322ecad44e89b2487f1b2b6702ae49"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-012-downloads.json",
+      "bytes": 218,
+      "sha256": "e4e3fbd3086872b6aab211c38e0fa2fe7b44115b2fde109077219eede3fd2c32"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-012-print-100.pdf",
+      "bytes": 111353,
+      "sha256": "0a396d6309a785c63b963bed75d91feb0c8aea7114694ecfa93c6e27a71df89d"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-012-project.json",
+      "bytes": 3710,
+      "sha256": "12fe7e79fe0ffa2fb9a5c6766f89ce7865bbca3154f861919249e21dfb8d7b9f"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/NA-012.json",
+      "bytes": 99,
+      "sha256": "30f593dd99aadc121bfef52763faa11213e1719d48df16a120e080bf4d9657cb"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/na-regression/run-results.json",
+      "bytes": 227,
+      "sha256": "3e4edda1f64f5641bfb9db34d61cfca1dd925a4df6c720b3ca125023b27a668f"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/obstacle-regression/bedroom-two-2d-screen.png",
+      "bytes": 201811,
+      "sha256": "d62e941afdcac3f47395569ebf4f2ac057d1d017057fc514f149d4188fd3e161"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/obstacle-regression/bedroom-two-2d.png",
+      "bytes": 384115,
+      "sha256": "95315c2ce96f8cba6378d3edbb020b4b02eea439ea889070ba503d059c7e5a46"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/obstacle-regression/bedroom-two-3d-screen.png",
+      "bytes": 182472,
+      "sha256": "641cb10b30e6260ce7f49fd1787477049d41253166fcbd459790ff4d03d3cf52"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/obstacle-regression/bedroom-two-3d.png",
+      "bytes": 52345,
+      "sha256": "fdcea6519716adc204ea289993ab00c522d804cfae376163e2e58af2a825ba2e"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/obstacle-regression/bedroom-two-print.pdf",
+      "bytes": 253152,
+      "sha256": "c2c0772532f3665bfdd748935c537c0d655911c4b9a7caf609d5ecdd2dc4b356"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/obstacle-regression/bedroom-two-project.json",
+      "bytes": 219081,
+      "sha256": "8a5ffd4dcbab6ec520a9ff4ee0636a3b8f347d50ef64e25cafdfaf35f27dbdea"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/obstacle-regression/browser-results.json",
+      "bytes": 1443,
+      "sha256": "6ce31c9af5ef9e2c9ceb4726a340c08e57f4e2196349b0c5218d677b46b2d38f"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/obstacle-regression/door-column-conflict.png",
+      "bytes": 209482,
+      "sha256": "71672f1809894673ec486bb8f0c71fbcd4dec521aab3d6192b9c057137190d3f"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/obstacle-regression/furniture-column-conflict.png",
+      "bytes": 210347,
+      "sha256": "56a97cd220fc80f7dbbc948a22ad25ddd134efe65b68e3f46b8093a6362f38ae"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/obstacle-regression/legacy-plan-a.png",
+      "bytes": 229494,
+      "sha256": "ebc7d4b6330c008bc17578b50cb7146931001396f962aced159f4ff688d67e81"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/obstacle-regression/legacy-plan-b.png",
+      "bytes": 189529,
+      "sha256": "98595dbfa43c27ea70e54634c2ea04c20688f9552e76bdecccc5120dc2a21c1f"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/obstacle-regression/legacy-plan-c.png",
+      "bytes": 244757,
+      "sha256": "e82826a2eb7407d38de29cf94f13cec9e3961d3e00200378d428ad7bdcb6885e"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/obstacle-regression/legacy-plan-f.png",
+      "bytes": 221843,
+      "sha256": "7a0cb466cb9ab7ed5c23f3638a660fb6e4357cd6842d740c557e1c3799031677"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/obstacle-regression/mobile-obstacle-form.png",
+      "bytes": 74440,
+      "sha256": "cf31e8cb928325e69d5f57b8725ce0a404d12ea3d873dbcc2b3c1f2a67edbf6c"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/obstacle-regression/studio-2d-screen.png",
+      "bytes": 154577,
+      "sha256": "0198920b82a9288ac65cb3d80a524ed0cd967371917471085dfe1928bc46ae8e"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/obstacle-regression/studio-2d.png",
+      "bytes": 411341,
+      "sha256": "af2e26f0dd7351d4ddeef097dd8d134332f7eb6cd8884562331d8e8b009890ce"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/obstacle-regression/studio-3d-screen.png",
+      "bytes": 170622,
+      "sha256": "1d62b8a00c6cea7ced8e692fc53e47e770c45761fb386bfac79caf2dd70b24bf"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/obstacle-regression/studio-3d.png",
+      "bytes": 94817,
+      "sha256": "08bdf036a58bb920094c04c60df71e8e4ee8fb0e687bdae906b8996790989cb5"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/obstacle-regression/studio-print.pdf",
+      "bytes": 231475,
+      "sha256": "a683d0d32d5e4d7ba7c922b13d7663ddef3e98098306208bfeca49d083752e56"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/obstacle-regression/studio-project.json",
+      "bytes": 101824,
+      "sha256": "c78cd2e3c7b7f3436ebfeb12bb82adc76ac6941c58a1b4e3c3260f89e72fb55a"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/pdf-check.txt",
+      "bytes": 2332,
+      "sha256": "7cae70b454ddc536744e00ed3d73b9d012dce948877d3a0df735d80d5a256304"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/pdf-results.json",
+      "bytes": 2557,
+      "sha256": "c9490dea8fe6def34ca66a7d352ae0ec1e27fcf0c5aa211410d3279f99483fa5"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/plan-f-correction/2d.png",
+      "bytes": 725348,
+      "sha256": "a18dd1fcd056353ddd3243f28ec36459b0f0ac3eba5368a324c31b4e2421c686"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/plan-f-correction/3d.png",
+      "bytes": 156913,
+      "sha256": "435a202781b9d54690e2df6de44b461ec55e0c457c561effe7021293e1ec803f"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/plan-f-correction/before-warning.png",
+      "bytes": 234285,
+      "sha256": "43bcc3b2489be88ac33a416aeb646796c5ee3b2be525d8718ca545e6f367f193"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/plan-f-correction/browser-results.json",
+      "bytes": 777,
+      "sha256": "24dafa8287984fb2bc86bf8e1f1ccf2db0d73912e2f155eba1978d94a5239e57"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/plan-f-correction/corrected-screen.png",
+      "bytes": 217760,
+      "sha256": "03ebfb9bfb4fc7b118e71572668f0fcba5983fe8a9a739648b09c4ab17dc3fbb"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/plan-f-correction/print.pdf",
+      "bytes": 1411462,
+      "sha256": "a84d5a5565430b27c1687560a2a0d86a2c86e18309dc98bb654f4924494a75d6"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/plan-f-correction/project.json",
+      "bytes": 800987,
+      "sha256": "b3b29a5a0666beebe6ebae3284dae3d62dbf3926ef591cfe12946d0cc8d21b75"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/plan-f-correction/regression-print-render.png",
+      "bytes": 225195,
+      "sha256": "997ec90ac88c4c9bd0ad9c588e661f865c0237192f0a9416033256b2312b8f1a"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/reference-regression/browser-results.json",
+      "bytes": 1592,
+      "sha256": "ce42b2b31e985c4864d1f417c4845ed5e5f5bc1e9f73e3d0a8016b7cb00b9080"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/reference-regression/distance-rejected.png",
+      "bytes": 156969,
+      "sha256": "00e1ff542b44ab0365f8bc64fc1e281105f0d73a46fcbf17847ebd9473225041"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/reference-regression/mobile-preview.png",
+      "bytes": 126019,
+      "sha256": "28e986462913bf27c0aed3e85d92ea41b5044abac5f1b8d1242b1557fde948de"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/reference-regression/studio-room-2d-screen.png",
+      "bytes": 204174,
+      "sha256": "b6803268c802db7cfb50f5b4eb5e8b35bf0d7cd2229f1b536c94a4a02c14dec4"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/reference-regression/studio-room-2d.png",
+      "bytes": 412476,
+      "sha256": "564c764b135ded380c3134520bf847d53eeff5e8b639003395992e1804be7f95"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/reference-regression/studio-room-3d-screen.png",
+      "bytes": 216852,
+      "sha256": "e1c5a22958d82f5ee755d2f96ffd3417cd77c89341bd4878bc1323908d248d3b"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/reference-regression/studio-room-3d.png",
+      "bytes": 93857,
+      "sha256": "489c7ece85e04b103692f9f2368411bc5b9a6f60b5e49702ca0e711bdda05757"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/reference-regression/studio-room-print.pdf",
+      "bytes": 235779,
+      "sha256": "b3e8a49dba3546b93a769feb87419f876472718bb07465ca77f75e9c67035a18"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/reference-regression/studio-room-project.json",
+      "bytes": 100179,
+      "sha256": "688d4947b1da049320a4f5f697c7445330cb2069436215f94e00980633011ddb"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/reference-regression/studio-zoom-calibration.png",
+      "bytes": 149543,
+      "sha256": "e555e7da89795a5fac3f0127969aae8ff276b6d37f28976017e87fb7f6e3f896"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/run-results.json",
+      "bytes": 1842,
+      "sha256": "8914deb38974174d48840991f95ea415b0c64b64fee4f53528ac2bc2643d1bb9"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/shared-kitchen-bath/2d-screen.png",
+      "bytes": 163122,
+      "sha256": "42373fd825f6d66fb2525cca4f0d62a5ca2f17271029686c2eddb4f90edad307"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/shared-kitchen-bath/2d.png",
+      "bytes": 493463,
+      "sha256": "dfc53d2f5cec3efaaec4c9c77e84120e14aa268c0b0814e6023d39396482bc1d"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/shared-kitchen-bath/3d-cutaway.png",
+      "bytes": 180356,
+      "sha256": "d850e8a7a3ae8c8c71e5f1c5f24eab9097befd7c1c2e6e4837a29d74e1c38eb5"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/shared-kitchen-bath/3d.png",
+      "bytes": 62510,
+      "sha256": "f8e275e14984c1dfd0d26a6c8b120f1ba5263a15096298e9561a9379e444948b"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/shared-kitchen-bath/browser-results.json",
+      "bytes": 1156,
+      "sha256": "318f1c0181bd4a43f354a29449dc8f7213b7c4eb5ae143bf25bd4315dcc43da9"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/shared-kitchen-bath/mobile-cut-form.png",
+      "bytes": 58514,
+      "sha256": "b79cb0c67a55d7deb747027260f06ca1182911999933d80c2a2034c5840caae5"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/shared-kitchen-bath/outside-floor-warning.png",
+      "bytes": 237069,
+      "sha256": "a99700490a20a802040cf262998af5be02a7eb4b06c1ca235570fc66955c9b89"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/shared-kitchen-bath/print-render.png",
+      "bytes": 104270,
+      "sha256": "ec62cfaecab2b3143609e282c552e2a021c2ae34d848a749ad7217120040399b"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/shared-kitchen-bath/print.pdf",
+      "bytes": 458633,
+      "sha256": "506f589bdb643da9e88fa9a01bfe05378e57d3f810b4948e6bab404120aba055"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/shared-kitchen-bath/project.json",
+      "bytes": 14585,
+      "sha256": "97fa0916654789bcecb999cbfa1b4f40d15952ce3b16b69632ff6290cd33483a"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/syntax-results.json",
+      "bytes": 4238,
+      "sha256": "4c3c6a16980052fd5a30a6d2e991999306af6a62ffb6e22b70c1b3b57c12d812"
+    },
+    {
+      "path": "docs/verification/NA-diagonal-cuts/unit-tests.txt",
+      "bytes": 24324,
+      "sha256": "e52e5eff042ae48d191580bf7d03a6a5b878d947b2f3cc3b8340b5799863d665"
+    }
+  ],
+  "timestamp": "2026-10-02T16:57:31.667598+00:00"
+}

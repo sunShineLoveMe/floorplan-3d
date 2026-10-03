@@ -5,7 +5,7 @@ import {clone,validate,updateRectangleProject} from '../data/project-data.js';
 import {$} from '../ui/dom.js';
 import {COARSE,esc} from '../ui/dom.js';
 import {tr,nm,LANG} from '../ui/i18n.js';
-import {area,perim,bbox,norm} from '../core/geometry.js';
+import {footprintArea,roomArea,perim,bbox,norm} from '../core/geometry.js';
 import {MATS,CATALOGS} from '../data/catalogs.js';
 export function createPropertyPanel({store,ui,actions,drawers,is3D,flyToRoom,toast}){
 const {select,rotateSel,deleteSel,duplicateSel,getF}=actions;
@@ -45,11 +45,11 @@ function overviewPanel(){
   const rows = store.getProject().geometry.rooms.map(r => {
     const st = store.getProject().rooms[r.id];
     return `<tr class="click" data-room="${r.id}"><td><span class="sw" style="background:${MATS[st.mat].sw}"></span>${esc(nm(st.name))}${r.counted===false?' <span class="muted">*</span>':''}</td>
-      <td class="r">${surface(area(r.poly))}</td></tr>`;
+      <td class="r">${surface(roomArea(r))}</td></tr>`;
   }).join('');
-  const tot = store.getProject().geometry.rooms.filter(r => r.counted !== false).reduce((a,r) => a + area(r.poly), 0);
+  const tot = store.getProject().geometry.rooms.filter(r => r.counted !== false).reduce((a,r) => a + roomArea(r), 0);
   const byMat = {};
-  store.getProject().geometry.rooms.forEach(r => { const m = store.getProject().rooms[r.id].mat; byMat[m] = (byMat[m]||0) + area(r.poly); });
+  store.getProject().geometry.rooms.forEach(r => { const m = store.getProject().rooms[r.id].mat; byMat[m] = (byMat[m]||0) + roomArea(r); });
   let cost = 0;
   const matRows = Object.entries(byMat).map(([m,a]) => { const c = a*MATS[m].price*1.05; cost += c;
     return `<tr><td><span class="sw" style="background:${MATS[m].sw}"></span>${nm(MATS[m].name)}</td><td class="r">${surface(a)}</td><td class="r">¥${Math.round(c).toLocaleString()}</td></tr>`; }).join('');
@@ -59,7 +59,7 @@ function overviewPanel(){
   <section><h3>${tr('房间面积','Room Areas')} <small>${tr('点击查看 / 更换地面','Click to view / change flooring')}</small></h3>
     <table>${rows}</table>
     <div class="total"><span>${tr('套内使用面积','Net floor area')}</span><b>${surface(tot)}</b></div>
-    ${store.getProject().geometry.floorSlabs?`<div class="total"><span>${tr('外轮廓面积（含墙体）','Footprint area (includes walls)')}</span><b>${surface(store.getProject().geometry.floorSlabs.reduce((sum,r)=>sum+(r[2]-r[0])*(r[3]-r[1])/1e6,0))}</b></div>`:''}
+    ${footprintArea(store.getProject().geometry)!==undefined?`<div class="total"><span>${tr('外轮廓面积（含墙体）','Footprint area (includes walls)')}</span><b>${surface(footprintArea(store.getProject().geometry))}</b></div>`:''}
     <div class="muted" style="font-size:11px;margin-top:4px">${tr('* 飘窗不计入使用面积；面积按墙体内净尺寸计算','* Bay windows are excluded; areas use net inner wall dimensions')}</div></section>
   ${LANG==='zh'&&store.getProject().units.display==='metric'?`<section><h3>${tr('地面材料估算','Flooring Estimate')} <small>${tr('含 5% 损耗，示例价：人民币/平方米','incl. 5% waste; example prices: CNY/m²')}</small></h3>
     <table>${matRows}</table>
@@ -116,7 +116,7 @@ function renderFab(){
 }
 
 function roomPanel(r){
-  const st = store.getProject().rooms[r.id], a = area(r.poly), [x0,y0,x1,y1] = bbox(r.poly), inside = store.getProject().furniture.filter(f => f.cx>x0&&f.cx<x1&&f.cy>y0&&f.cy<y1);
+  const st = store.getProject().rooms[r.id], a = roomArea(r), [x0,y0,x1,y1] = bbox(r.poly), inside = store.getProject().furniture.filter(f => f.cx>x0&&f.cx<x1&&f.cy>y0&&f.cy<y1);
   const mats = Object.entries(MATS).map(([k,m]) => `<button class="mat ${k===st.mat?'on':''}" data-mat="${k}"><i style="background:${m.sw}"></i><span>${nm(m.name)}</span></button>`).join('');
   return `<section><h3>${tr('房间','Room')}</h3>
     <button class="btn" id="roomDimensions">${tr('编辑净尺寸 / 门窗','Edit dimensions / openings')}</button><div class="form"><label class="full">${tr('名称','Name')}<input id="rName" maxlength="500" value="${esc(nm(st.name))}"></label></div>

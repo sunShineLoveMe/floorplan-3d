@@ -1,4 +1,5 @@
 import {formatAreaM2} from '../core/units.js';
+import {circleIntersectsPolygon} from '../core/polygons.js';
 import {$} from '../ui/dom.js';
 import {createNavigation} from './navigation.js';
 import {createMaterials} from './materials.js';
@@ -12,7 +13,7 @@ import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
 import {CSS2DRenderer,CSS2DObject} from 'three/addons/renderers/CSS2DRenderer.js';
 import {COARSE,TAP,esc} from '../ui/dom.js';
 import {tr,nm} from '../ui/i18n.js';
-import {area} from '../core/geometry.js';
+import {roomArea} from '../core/geometry.js';
 import {createScope} from '../ui/lifecycle.js';
 export function createViewer3D({store,ui,view,actions,snapMove,closeDrawers,onChange}){
 const scope=createScope();
@@ -164,7 +165,7 @@ function buildLabels(){
   labelG.children.slice().forEach(o => { o.element.remove(); labelG.remove(o); });
   store.getProject().geometry.rooms.filter(r => r.at&&!store.getProject().rooms[r.id].labelHidden).forEach(r => {
     const el = document.createElement('div'); el.className = 'rlabel';
-    el.innerHTML = `${esc(nm(store.getProject().rooms[r.id].name))}<small>${formatAreaM2(area(r.poly),store.getProject().units.display)}</small>`;
+    el.innerHTML = `${esc(nm(store.getProject().rooms[r.id].name))}<small>${formatAreaM2(roomArea(r),store.getProject().units.display)}</small>`;
     const o = new CSS2DObject(el); o.position.set(wx(r.at[0]), opt.cut + .15, wz(r.at[1])); o.visible = labelG.visible; labelG.add(o);
   });
 
@@ -375,7 +376,10 @@ function setMode(m){
   archUp.traverse(o => { if (o.userData.walkOnly) o.visible = m === 'walk'; });
 }
 function blocked(x, z, r = .22){
-  for (const [x0, z0, x1, z1] of colliders) if (x > x0 - r && x < x1 + r && z > z0 - r && z < z1 + r) return true;
+  for (const collider of colliders){
+    if(collider.poly){if(circleIntersectsPolygon(x,z,r,collider.poly))return true;}
+    else{const [x0,z0,x1,z1]=collider;if(x>x0-r&&x<x1+r&&z>z0-r&&z<z1+r)return true;}
+  }
   for (const d of doors){
     const a = d.pivot.rotation.y, px = d.pivot.position.x, pz = d.pivot.position.z, ex = px + Math.cos(a)*d.length, ez = pz - Math.sin(a)*d.length;
     const t = clamp01(((x-px)*(ex-px) + (z-pz)*(ez-pz)) / ((ex-px)**2 + (ez-pz)**2));

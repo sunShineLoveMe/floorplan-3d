@@ -15,6 +15,7 @@ function wallBox([x0, y0, x1, y1], yb, yt, m){
     const p = o.geometry.parameters, sh = Math.min(.12, yt), sk = new THREE.Mesh(new THREE.BoxGeometry(p.width + .02, sh, p.depth + .02), skirtMat);
     sk.position.set(o.position.x, sh/2, o.position.z); sk.userData.walkOnly = true; sk.visible = opt.mode === 'walk'; archUp.add(sk);
   }
+  return o;
 }
 function shapeOf(poly, flip){ const s = new THREE.Shape(); poly.forEach(([x, y], i) => s[i ? 'lineTo' : 'moveTo'](wx(x), flip ? wz(y) : -wz(y))); return s; }
 
@@ -24,12 +25,15 @@ function build(){
   (store.getProject().geometry.floorSlabs||[]).forEach(([x0,y0,x1,y1])=>{
     const slab=new THREE.Mesh(new THREE.ShapeGeometry(shapeOf([[x0,y0],[x1,y0],[x1,y1],[x0,y1]])).rotateX(-Math.PI/2),floorMat(store.getProject().rooms[store.getProject().geometry.rooms[0].id].mat));slab.receiveShadow=true;archFloor.add(slab);
   });
+  (store.getProject().geometry.floorPolygons||[]).forEach(poly=>{
+    const slab=new THREE.Mesh(new THREE.ShapeGeometry(shapeOf(poly)).rotateX(-Math.PI/2),floorMat(store.getProject().rooms[store.getProject().geometry.rooms[0].id].mat));slab.receiveShadow=true;archFloor.add(slab);
+  });
   store.getProject().geometry.rooms.forEach(r => {
     const m = floorMat(store.getProject().rooms[r.id].mat), bay = r.counted === false;
     const geo = bay ? new THREE.ExtrudeGeometry(shapeOf(r.poly), {depth:.45, bevelEnabled:false}) : new THREE.ShapeGeometry(shapeOf(r.poly));
     geo.rotateX(-Math.PI/2);
     const fl = new THREE.Mesh(geo, bay ? [m, mat('#e9e4da')] : m);
-    fl.receiveShadow = true;if(store.getProject().geometry.floorSlabs)fl.position.y=.001; fl.userData.room = r.id;
+    fl.receiveShadow = true;if(store.getProject().geometry.floorSlabs||store.getProject().geometry.floorPolygons)fl.position.y=.001; fl.userData.room = r.id;
     if (bay){ fl.castShadow = true; archUp.add(fl); } else archFloor.add(fl);
     // 天花：法线朝下，只在室内仰视时可见
     const cg = new THREE.ShapeGeometry(shapeOf(r.poly, true)); cg.rotateX(Math.PI/2);
@@ -46,6 +50,19 @@ function build(){
     if (store.getProject().demolished.includes('w'+i)) return;
     wallBox(w, 0, Math.min(top, M(store.getProject().geometry.wallHeights?.[i] ?? (w[4] === 'low' ? 1000 : H*1000))));
     colliders.push([wx(w[0]), wz(w[1]), wx(w[2]), wz(w[3])]);
+  });
+  (store.getProject().geometry.diagonalWalls||[]).forEach(w=>{
+    const yt=Math.min(top,M(w.height));
+    if(yt>0){
+      const geometry=new THREE.ExtrudeGeometry(shapeOf(w.poly),{depth:yt,bevelEnabled:false});geometry.rotateX(-Math.PI/2);
+      const mesh=new THREE.Mesh(geometry,[capMat,wallMat]);mesh.castShadow=mesh.receiveShadow=true;mesh.userData.diagonalWallId=w.id;mesh.userData.room=w.roomId;archUp.add(mesh);
+      const edges=new THREE.LineSegments(new THREE.EdgesGeometry(geometry),edgeMat);edges.userData.walkOnly=true;edges.visible=opt.mode==='walk';archUp.add(edges);
+    }
+    colliders.push({poly:w.poly.map(([x,y])=>[wx(x),wz(y)])});
+  });
+  (store.getProject().geometry.obstacles||[]).forEach(o=>{
+    const mesh=wallBox(o.rect,0,Math.min(top,M(o.height)));if(mesh){mesh.userData.obstacleId=o.id;mesh.userData.room=o.roomId;}
+    colliders.push([wx(o.rect[0]),wz(o.rect[1]),wx(o.rect[2]),wz(o.rect[3])]);
   });
   // 门洞、飘窗洞口上方过梁
   [...store.getProject().geometry.doors, ...store.getProject().geometry.slides, ...store.getProject().geometry.lintels].map(d=>[d.rect,M(d.height)])

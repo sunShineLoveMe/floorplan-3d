@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "case": "complete",
+      "pages": 1,
+      "widthPt": 1191.1199951171875,
+      "heightPt": 841.9199829101562,
+      "usableSqFt": 575.9097222222222,
+      "rulerLengthPt": 283.5,
+      "sha256": "22c3b28c292be48a27368f4de9a2b2d6c553210f74d7bc9a41fb5ffb27cc8d11",
+      "physicalPrinterTested": false
+    },
+    {
+      "case": "compact-bedroom",
+      "pages": 1,
+      "widthPt": 792.0,
+      "heightPt": 612.0,
+      "usableSqFt": 90.08333333333333,
+      "rulerLengthPt": 283.5,
+      "sha256": "ec70c34eda7eb4ef787592dfdd7017ba12d6dff58a29e60babe990f865181d2c",
+      "physicalPrinterTested": false
+    }
+  ]
+}

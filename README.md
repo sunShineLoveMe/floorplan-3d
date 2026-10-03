@@ -6,9 +6,11 @@
 
 ## 当前进度
 
-截至 **2026-10-02**，T01 / T01.1 已完成，**T02 / T03 已在当前工作区完成**：可输入矩形房间净尺寸、添加和编辑门窗、摆家具、同步查看 2D/3D，并保存为可继续编辑的 v2 项目；兼容读取 v1 和原无版本旧文件。支持严格英尺/英寸输入、项目单位切换及全站尺寸显示。验证与未测范围见 [T03 验收记录](docs/T03-verification.md)。
+截至 **2026-10-03**，T01 / T01.1 已完成，**T02 / T03 已在当前工作区完成**：可输入矩形房间净尺寸、添加和编辑门窗、摆家具、同步查看 2D/3D，并保存为可继续编辑的 v2 项目；兼容读取 v1 和原无版本旧文件。支持严格英尺/英寸输入、项目单位切换及全站尺寸显示。验证与未测范围见 [T03 验收记录](docs/T03-verification.md)。
 
 当前分支为 `feat/ui-refactor`，NA-001～012 及后续 P0 两批修复已完成，提交与远程同步状态以 Git 为准。新用户默认 English / Feet & inches；支持 PDF/图片参考底图标定、单层矩形多房间与共享墙门窗、门扇冲突提示、项目化导出及打印。已将前两批修复推送至 `25faa07`；本批新增局部墙段与半高墙，见 [墙段验收](docs/NA-wall-segments-verification-2026-10-02.md)。支持每侧墙厚与开放边界，公开住宅设计图的简化手工建模见 [P0 真实图纸验收](docs/NA-real-house-verification-2026-10-02.md)；前轮逐项结果见 [北美问题修复验收](docs/NA-fixes-verification-2026-10-02.md)。未合并、未部署。
+
+新增独立矩形固定障碍物编辑、净面积扣除和家具 / 平开门冲突复核，见 [固定障碍物验收](docs/NA-fixed-obstacles-verification-2026-10-02.md)。后续已验证 CMU 两卧的 8 空间组合流程并修复紧凑家具标签越界，见 [整户组合与标签复测](docs/NA-apartment-composition-verification-2026-10-02.md)。补充细部为测试假设，原公寓完整尺寸仍未验收；斜切角已完成四个方向、不同斜率及跨户型复用，通用地面检查补充修正 Plan F 橱柜越界，见 [斜切角与 Plan F 复测](docs/NA-diagonal-cuts-verification-2026-10-03.md)。新改动为本地工作区状态；下一步继续 Jacobsen 全屋组合并保留未知尺寸。
 
 本轮前端 UI 计划的实现项（UI-000～210）已完成，内部任务走查与回归通过；外部首次用户试用尚未执行。布局、草稿保护、搜索、视图设置与验收边界见 [UI 最终交付](docs/UI-final-delivery.md)。
 
@@ -33,6 +35,8 @@ npm start
 | [P0 墙段与半高墙验收](docs/NA-wall-segments-verification-2026-10-02.md) | 局部通道、共享墙合并、半高墙、逐项复测与后续任务 |
 | [户型原始图纸测试素材库](tests/fixtures/floorplans/README.md) | 18 份原始 PDF/JPG/PNG、可搜索预览、实际场景来源及后续深入测试顺序 |
 | [多样化图纸标定与 Studio 房间验收](docs/NA-diverse-floorplans-verification-2026-10-02.md) | 必填长度、预览缩放、无尺寸保护、房间摆放和真实导出；完整公寓仍待验收 |
+| [整户组合与紧凑标签复测](docs/NA-apartment-composition-verification-2026-10-02.md) | CMU 8 空间组合、DV-004 修复、回导与打印；测试假设及后续斜切角复测 |
+| [斜切角跨户型复用与 Plan F 补充验收](docs/NA-diagonal-cuts-verification-2026-10-03.md) | 四角 / 不同斜率、共享边界、通用越界提示、DV-005 / DV-006 和实际导出 |
 | [四套完整户型验收](docs/NA-complete-houses-verification-2026-10-02.md) | B 完整验收及 A/C/F 三图复测、可回导模型和真实导出 |
 | [P0 真实图纸验收](docs/NA-real-house-verification-2026-10-02.md) | 公开住宅 PDF、开放空间与墙厚修复、简化模型和剩余能力缺口 |
 | [北美问题修复验收](docs/NA-fixes-verification-2026-10-02.md) | 12 项修复、逐项复测、实际 JSON/PNG/PDF 与未测范围 |

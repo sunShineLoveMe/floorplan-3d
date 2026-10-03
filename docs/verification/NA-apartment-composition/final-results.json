@@ -1,0 +1,519 @@
+{
+  "passed": true,
+  "build": "a105f6dde4ed890c",
+  "branch": "feat/ui-refactor",
+  "baseCommit": "a54283f4b979f2d8f507c751e6e7db55fbef4bf9",
+  "unitTests": 94,
+  "compositionBrowserChecks": 10,
+  "labelNameRotationChecks": 9,
+  "naRegressions": 12,
+  "referenceBrowserChecks": 8,
+  "fixedObstacleBrowserChecks": 8,
+  "completeHouseCompatibility": 4,
+  "eslintSource": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "syntaxChecks": true,
+  "diffCheck": true,
+  "sourceOriginalsUnchanged": 18,
+  "priorBatchArtifactHashesUnchanged": 73,
+  "pdfCheck": {
+    "passed": true,
+    "results": [
+      {
+        "case": "complete",
+        "pages": 1,
+        "widthPt": 1191.1199951171875,
+        "heightPt": 841.9199829101562,
+        "usableSqFt": 575.9097222222222,
+        "rulerLengthPt": 283.5,
+        "sha256": "22c3b28c292be48a27368f4de9a2b2d6c553210f74d7bc9a41fb5ffb27cc8d11",
+        "physicalPrinterTested": false
+      },
+      {
+        "case": "compact-bedroom",
+        "pages": 1,
+        "widthPt": 792.0,
+        "heightPt": 612.0,
+        "usableSqFt": 90.08333333333333,
+        "rulerLengthPt": 283.5,
+        "sha256": "ec70c34eda7eb4ef787592dfdd7017ba12d6dff58a29e60babe990f865181d2c",
+        "physicalPrinterTested": false
+      }
+    ]
+  },
+  "scope": "Eight-space composition with explicit test assumptions and compact furniture-label repair",
+  "sourceWholeApartmentAccepted": false,
+  "closedIssues": [
+    "DV-004 P2 furniture-name label overflow"
+  ],
+  "completedEngineeringScopes": [
+    "DV-003 rectangular fixed structures",
+    "DV-003 whole-apartment composition workflow"
+  ],
+  "openIssues": [
+    "CMU unknown detail dimensions: complete source acceptance pending",
+    "DV-005 P1 Jacobsen angled kitchen boundary unsupported"
+  ],
+  "delivery": {
+    "newBatchCommitted": false,
+    "newBatchPushed": false,
+    "merged": false,
+    "deployed": false,
+    "priorCalibrationBatchPushed": "a54283f"
+  },
+  "artifacts": [
+    {
+      "path": "docs/verification/NA-apartment-composition/browser-results.json",
+      "bytes": 9169,
+      "sha256": "aa00570252a6629cbb55e92d122b8bf368b59a027892f28429ca1440ed041512"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/compact-bedroom-print-render.png",
+      "bytes": 87250,
+      "sha256": "272e72232b5238f480d8bf702e2a6fec00c4b964401983de9d1bb0d0aaf2b421"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/compact-bedroom-print.pdf",
+      "bytes": 252471,
+      "sha256": "ec70c34eda7eb4ef787592dfdd7017ba12d6dff58a29e60babe990f865181d2c"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/complete-2d-screen.png",
+      "bytes": 251777,
+      "sha256": "089b45c4a4fe459160b6cb0b70b1a4dc6eae25af15a2d53bc0bfa9d1035607ad"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/complete-2d.png",
+      "bytes": 1047450,
+      "sha256": "5bb838bd9d27aa4f91652c28ae33073c1a8dbde6826408cb86f162b31d7ab93c"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/complete-3d-cutaway.png",
+      "bytes": 236655,
+      "sha256": "f887ebf866ab9639d44e6fb23ec9d4afc4d68ec297673928d2aceab81de297b2"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/complete-3d-screen.png",
+      "bytes": 208188,
+      "sha256": "f35e47e625f1d37c820727a2fd560d4be77c8b9a4892e55f900bd826357586fd"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/complete-3d.png",
+      "bytes": 135196,
+      "sha256": "7b97d32afc3812b09a0b9be87b8f78c9e77c73946e313603d770e0d7c630551c"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/complete-print-render.png",
+      "bytes": 198020,
+      "sha256": "739c4d73d893b0f4bf8162a908f990ac65c0306f4546da68734e8912eba89144"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/complete-print.pdf",
+      "bytes": 1360199,
+      "sha256": "22c3b28c292be48a27368f4de9a2b2d6c553210f74d7bc9a41fb5ffb27cc8d11"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/complete-project.json",
+      "bytes": 246514,
+      "sha256": "e4fe993a7a1a38c9553984745472b561f1322991b571de5184a21b42189503ee"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/composition-browser.txt",
+      "bytes": 1283,
+      "sha256": "76ea06d362bb38dc8fe7eb68519e4d4b8652c3b7a058839166984dcf91d34df4"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/eslint.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/label-after.json",
+      "bytes": 2353,
+      "sha256": "96d3487c63d9b842c2bef393a74ef1e6a85e25415c863a89bfe8eec48de090d9"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/label-after.png",
+      "bytes": 153844,
+      "sha256": "cc13356486004953fc5c97ad34591c7ea83b82c868f848ed108c02710fbf5100"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/label-before.json",
+      "bytes": 1233,
+      "sha256": "aaff93c0eb0fb1472db12114a0787fb4c4f899021991bddd91ec43a474e8d641"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/label-before.png",
+      "bytes": 154900,
+      "sha256": "6529c66ee6d51d93ad1aafb29a565f798011b6b01a2e700e5a9dfe311fcc8b74"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/label-browser.txt",
+      "bytes": 36,
+      "sha256": "b810f235c4ec9327e4037e3f23e7435a608a1b0a7e5585d6338f645f485fa223"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/mobile-opening.png",
+      "bytes": 65202,
+      "sha256": "dcb763b9ebc00a1550df5f8411314bd7cb0d1bfa90d04a4381b1e2eeb0bb0f99"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-001.json",
+      "bytes": 99,
+      "sha256": "6c450c68527824dc445960486b819de6273ad26b49552938a8b6b038a3f5bf2a"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-001.png",
+      "bytes": 143203,
+      "sha256": "94ce55d7ed4447e296250c31b6c58276d76f666c68a7a336abbfd5467cb7f42d"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-002-project.json",
+      "bytes": 62958,
+      "sha256": "69392d445fa0b95d7da96431f712e42aae0850b845e2b7822b27345e5acb4a5f"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-002.json",
+      "bytes": 99,
+      "sha256": "93dec047849d8fba257e2bd482622b19368ab4a183d52694b7a43e0aaec69e65"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-002.png",
+      "bytes": 164628,
+      "sha256": "151802194d3ac7c5579310dbf6f8c6a94bfffa95c4a16a435cb3d4f544790d63"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-003-mobile.png",
+      "bytes": 54319,
+      "sha256": "26795e6fa32a95fe9f672ad924c93ae102bcd4dc0641053b837f95a2da2f2255"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-003.json",
+      "bytes": 99,
+      "sha256": "6134eb3a596f45c405e8217935558e7ef96682ac8ed00c5e62e891d7ddd84c91"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-004-resources.json",
+      "bytes": 7963,
+      "sha256": "3978b1ae7ea5ffd4f241fa30ee8bcad0e8d198345e376d8aac780d014e689f7a"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-004.json",
+      "bytes": 99,
+      "sha256": "75c09cee35a87c1d4d2ebff16e35cc10aae6d0b6f3fc13e6b587486d7e75cdd4"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-004.png",
+      "bytes": 159600,
+      "sha256": "b10f596440ae1c3e72cba094648675d3da9782b30339f24fb844f326ec9f86d1"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-005.json",
+      "bytes": 99,
+      "sha256": "937bc58ed84bcbba690aa24a571e5d2dd6ff6d13d980a32615945531875b0527"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-005.png",
+      "bytes": 214951,
+      "sha256": "8e0cf6e9fa6d7911117e0254226fb11d66cec07c470811db342d1dcfa7dbe742"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-006-blocked.png",
+      "bytes": 220640,
+      "sha256": "11b3cabe4d452cb146929fb6130d4044510bb2e4e90236968cdaa2a75b373fd4"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-006.json",
+      "bytes": 99,
+      "sha256": "70f8bf71a899df0861fc3a18ba17b5f4e0b7d095fa6231054bcde38456bb4319"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-007-export.png",
+      "bytes": 454488,
+      "sha256": "41d9598f04f859f1b0b2b9a3701aad6ee7673dfaae0dcccb05f0349db2504bad"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-007.json",
+      "bytes": 99,
+      "sha256": "0387c0623072a71e2bb31ca8d46a0a78bf0ebcbc31a027268a42f093875d5691"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-007.png",
+      "bytes": 214723,
+      "sha256": "4fcb3984434c239af54e60133f4f1d445276fd650edef9985b762a07680ecf96"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-008-fit.png",
+      "bytes": 306910,
+      "sha256": "bdc2b0b0f8a55f213b00dde035a68e24ea9660642d7a3a90b494c9d056f91c22"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-008-initial-3d.png",
+      "bytes": 306607,
+      "sha256": "e7bbc2fb7e8df703eaf1f292f961c637e48cc43b6ec5c7e4e3527a4045504d78"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-008-iso.png",
+      "bytes": 306607,
+      "sha256": "e7bbc2fb7e8df703eaf1f292f961c637e48cc43b6ec5c7e4e3527a4045504d78"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-008.json",
+      "bytes": 99,
+      "sha256": "46bafe9face8b53fb113619e97a8e54218e58b2fbe757bde2bc466b25e42a01e"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-009.json",
+      "bytes": 99,
+      "sha256": "d2fb9e1dd4ddc73472f74de880e86fd0af5410f3e010dcf450df252d9986f465"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-009.png",
+      "bytes": 240666,
+      "sha256": "1a4f28f76e7c0a060ddf4eb1775f24c239610abfd736a7ba390bae1b1c232d97"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-010.json",
+      "bytes": 99,
+      "sha256": "3c07a9faa35c88bbf22cc313aa33ca50cd19a6c46c339cd92209ab1b81290a04"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-010.png",
+      "bytes": 195100,
+      "sha256": "9706172d595118021aec0d5cef15b8fb1408e08bb0b96c75db2b058d70daee52"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-011.json",
+      "bytes": 99,
+      "sha256": "da5900f2a5e6042e111ccd3e17ce65ae5ef9e9edd403b2202bfcf1d874479686"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-011.png",
+      "bytes": 194120,
+      "sha256": "b1f3b3bf6c614bbd7e1942270160d8d1e809d70a1ac9cb5913554be723bbc39f"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-012-2D.png",
+      "bytes": 664526,
+      "sha256": "3c9b9932e762a9d2a13db5bf3b2bb4ef3d9f12208d297a104f5adb06a2056bfc"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-012-3D.png",
+      "bytes": 244880,
+      "sha256": "af439d997dd3fc34ec2261115f2242da29322ecad44e89b2487f1b2b6702ae49"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-012-downloads.json",
+      "bytes": 218,
+      "sha256": "5c51a3850e82d57e1a4e500ca35847dd4a592bc59b4339a0222af93081cbf1d0"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-012-print-100.pdf",
+      "bytes": 111074,
+      "sha256": "dd2b9bd76763c219247ead7b3c9f3c77b0e12eaad81fb2939e38840e4bfde41d"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-012-project.json",
+      "bytes": 3710,
+      "sha256": "752411288227f34f76cf544f58e4b6851dbfc970911b98252f64a10d518796d1"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/NA-012.json",
+      "bytes": 99,
+      "sha256": "9ebc0b1d37d95d0531e9411f8d1fc2ca153c7c8fddeb329adb773fa48e310f73"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression/run-results.json",
+      "bytes": 214,
+      "sha256": "3369ce9de48d45bbd1603fcc407e70683cbbe82d0e80a763051f5563529f2cb5"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/na-regression.txt",
+      "bytes": 259,
+      "sha256": "50b484362d39e6d2b6fb3c790e8e682fd6c54e7c074251429b7b69280728e7fb"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/obstacle-regression/bedroom-two-2d-screen.png",
+      "bytes": 201811,
+      "sha256": "d62e941afdcac3f47395569ebf4f2ac057d1d017057fc514f149d4188fd3e161"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/obstacle-regression/bedroom-two-2d.png",
+      "bytes": 384115,
+      "sha256": "95315c2ce96f8cba6378d3edbb020b4b02eea439ea889070ba503d059c7e5a46"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/obstacle-regression/bedroom-two-3d-screen.png",
+      "bytes": 182472,
+      "sha256": "641cb10b30e6260ce7f49fd1787477049d41253166fcbd459790ff4d03d3cf52"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/obstacle-regression/bedroom-two-3d.png",
+      "bytes": 52291,
+      "sha256": "5a51588a093045b658c3720dc25d9d8b8c65b48adfd869b3d10409f3aadf6e65"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/obstacle-regression/bedroom-two-print.pdf",
+      "bytes": 252533,
+      "sha256": "0e4adc16f7cf2a6b0cbaf5e9928f29cb166d5bfb5e9dd4c0d3febe7bbdaf9891"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/obstacle-regression/bedroom-two-project.json",
+      "bytes": 219081,
+      "sha256": "9f4bae11df43c72e3c47e1fd4239b0e9f12becc71d786eab55b1a53e049b6d56"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/obstacle-regression/browser-results.json",
+      "bytes": 1443,
+      "sha256": "7eaeb3b2b43df5bde4c3f4265d6fc38018980541e4a529c374c9570fca7ad46a"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/obstacle-regression/door-column-conflict.png",
+      "bytes": 212861,
+      "sha256": "6d1954aecd60ffbf498e2e7eae6d9ef5c48f94e53cce3a05465f8b6f3b4ff701"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/obstacle-regression/furniture-column-conflict.png",
+      "bytes": 204059,
+      "sha256": "83b95a9519fb8901dac25bd72cef0097ab1e97b6af5dab8bbd386655fe7cc45a"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/obstacle-regression/legacy-plan-a.png",
+      "bytes": 229494,
+      "sha256": "ebc7d4b6330c008bc17578b50cb7146931001396f962aced159f4ff688d67e81"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/obstacle-regression/legacy-plan-b.png",
+      "bytes": 190141,
+      "sha256": "86180d0209c60d6cc308fddb48db1a1b737e4459bb4f506a9c73e6d9f9a0b429"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/obstacle-regression/legacy-plan-c.png",
+      "bytes": 244757,
+      "sha256": "e82826a2eb7407d38de29cf94f13cec9e3961d3e00200378d428ad7bdcb6885e"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/obstacle-regression/legacy-plan-f.png",
+      "bytes": 200827,
+      "sha256": "11fcfa27c1e5d3d9011d9fe3960d1283b69c49e070d8958a90f4a23020f9f8ac"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/obstacle-regression/mobile-obstacle-form.png",
+      "bytes": 74434,
+      "sha256": "db1af76c9df70b8b32a4ac44deb9ae6394d82ea0b8a1dc53cb0c92b02c94d4f4"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/obstacle-regression/studio-2d-screen.png",
+      "bytes": 154577,
+      "sha256": "0198920b82a9288ac65cb3d80a524ed0cd967371917471085dfe1928bc46ae8e"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/obstacle-regression/studio-2d.png",
+      "bytes": 411341,
+      "sha256": "af2e26f0dd7351d4ddeef097dd8d134332f7eb6cd8884562331d8e8b009890ce"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/obstacle-regression/studio-3d-screen.png",
+      "bytes": 170622,
+      "sha256": "1d62b8a00c6cea7ced8e692fc53e47e770c45761fb386bfac79caf2dd70b24bf"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/obstacle-regression/studio-3d.png",
+      "bytes": 94817,
+      "sha256": "08bdf036a58bb920094c04c60df71e8e4ee8fb0e687bdae906b8996790989cb5"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/obstacle-regression/studio-print.pdf",
+      "bytes": 230510,
+      "sha256": "c5489b99197e94236c90458f82b023e009d7df8803198840379221b6edceb7fb"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/obstacle-regression/studio-project.json",
+      "bytes": 101824,
+      "sha256": "157a0e50270688c579f5264b9d1a71c2fe6f685d36832cac964a8dcff4bd08c8"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/obstacle-regression.txt",
+      "bytes": 740,
+      "sha256": "cc2ae6bd7d7cae994ed0c0043428de78ca03adb40cc84df6aae3b251ddc548c3"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/pdf-results.json",
+      "bytes": 664,
+      "sha256": "331390278b4cd6a1839d0aa868cf2f7f205d3934ae8197a3cf34c5c63746f82e"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/print-preview.png",
+      "bytes": 144551,
+      "sha256": "50ba2e614346c0d706b16f6009b0d5023a27c8fa045d8d0555755f7d4fe956d4"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/reference-regression/browser-results.json",
+      "bytes": 1592,
+      "sha256": "0ff5b533e8ad5dc1f5234def4109ac1df991c5029957883c2aa5675f45093088"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/reference-regression/distance-rejected.png",
+      "bytes": 156969,
+      "sha256": "00e1ff542b44ab0365f8bc64fc1e281105f0d73a46fcbf17847ebd9473225041"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/reference-regression/mobile-preview.png",
+      "bytes": 126004,
+      "sha256": "5df81d3427bf7e59034c99dcd8c34ffb3644b2e2cc8bbd669cc074eea25d4975"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/reference-regression/studio-room-2d-screen.png",
+      "bytes": 204372,
+      "sha256": "bc0d79546c5ca708aa4de55d165c9ed31ac96deac067c009d421574fdb373bda"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/reference-regression/studio-room-2d.png",
+      "bytes": 412476,
+      "sha256": "564c764b135ded380c3134520bf847d53eeff5e8b639003395992e1804be7f95"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/reference-regression/studio-room-3d-screen.png",
+      "bytes": 217760,
+      "sha256": "18e058914643f14d527895a76c69c1f47c5dbe7cdda3e0ce173968f8bbe90b19"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/reference-regression/studio-room-3d.png",
+      "bytes": 93857,
+      "sha256": "489c7ece85e04b103692f9f2368411bc5b9a6f60b5e49702ca0e711bdda05757"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/reference-regression/studio-room-print.pdf",
+      "bytes": 234935,
+      "sha256": "c5c8b1f64eb291f8dd9f8667037b4a614a3bdfa592ec235f32338b5d616a81ff"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/reference-regression/studio-room-project.json",
+      "bytes": 100179,
+      "sha256": "9704ac2bf290b93a36f2ffc7c4d252d3e30124bef06271b7d9e5090169cd6fa5"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/reference-regression/studio-zoom-calibration.png",
+      "bytes": 149491,
+      "sha256": "986aeba1acb9bd324d1bd8e9e4e52c3221b0262fb9a6647b5b149971675d3a59"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/reference-regression.txt",
+      "bytes": 782,
+      "sha256": "4a4accf3666d1c1c28d1eec4f08f0fcc315c82892807862a0a23082c86863d95"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/run-notes.txt",
+      "bytes": 1031,
+      "sha256": "c12d6a07cb6038cab2cd74f362e3adc67e69f83f12f746c9a057779a41595df1"
+    },
+    {
+      "path": "docs/verification/NA-apartment-composition/unit-tests.txt",
+      "bytes": 21436,
+      "sha256": "8b757553b7335fd2fde7fff2d23f039f4c3c9acf49e546bb9139eece84020106"
+    }
+  ],
+  "timestamp": "2026-10-02T15:56:04.215132+00:00"
+}

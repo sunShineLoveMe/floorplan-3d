@@ -1,0 +1,116 @@
+{
+  "build": "84212b2d0f37c16a",
+  "observedOverflow": false,
+  "labels": [
+    {
+      "id": "fmur2nq4s4",
+      "name": "Twin XL · mattress footprint",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -320.5425781250003,
+          -264.64187011718764
+        ],
+        [
+          320.5426269531247,
+          -264.64187011718764
+        ],
+        [
+          320.5426269531247,
+          264.64182128906236
+        ],
+        [
+          -320.5425781250003,
+          264.64182128906236
+        ]
+      ],
+      "displayed": "Twin XL ·mattressfootprint",
+      "lines": 3
+    },
+    {
+      "id": "fmur2nq6n5",
+      "name": "Assumed 3 ft wardrobe",
+      "rotation": 0,
+      "withinFootprint": true,
+      "corners": [
+        [
+          -248.84239807128915,
+          -229.6159210205085
+        ],
+        [
+          248.84220275878897,
+          -229.6159210205085
+        ],
+        [
+          248.84220275878897,
+          229.61592102050713
+        ],
+        [
+          -248.84239807128915,
+          229.61592102050713
+        ]
+      ],
+      "displayed": "Assum…3 ftwardr…",
+      "lines": 3
+    }
+  ],
+  "rotations": [
+    {
+      "rotation": 0,
+      "nameLength": 28,
+      "withinFootprint": true,
+      "fullNamePreserved": true
+    },
+    {
+      "rotation": 0,
+      "nameLength": 500,
+      "withinFootprint": true,
+      "fullNamePreserved": true
+    },
+    {
+      "rotation": 0,
+      "nameLength": 220,
+      "withinFootprint": true,
+      "fullNamePreserved": true
+    },
+    {
+      "rotation": 45,
+      "nameLength": 28,
+      "withinFootprint": true,
+      "fullNamePreserved": true
+    },
+    {
+      "rotation": 45,
+      "nameLength": 500,
+      "withinFootprint": true,
+      "fullNamePreserved": true
+    },
+    {
+      "rotation": 45,
+      "nameLength": 220,
+      "withinFootprint": true,
+      "fullNamePreserved": true
+    },
+    {
+      "rotation": 90,
+      "nameLength": 28,
+      "withinFootprint": true,
+      "fullNamePreserved": true
+    },
+    {
+      "rotation": 90,
+      "nameLength": 500,
+      "withinFootprint": true,
+      "fullNamePreserved": true
+    },
+    {
+      "rotation": 90,
+      "nameLength": 220,
+      "withinFootprint": true,
+      "fullNamePreserved": true
+    }
+  ],
+  "errors": [],
+  "timestamp": "2026-10-02T16:52:46.797Z"
+}

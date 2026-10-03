@@ -1,7 +1,7 @@
 import {$} from '../ui/dom.js';
 import {TAP} from '../ui/dom.js';
 import {formatLengthMm,formatAreaM2,unitStepMm} from '../core/units.js';
-import {area,norm} from '../core/geometry.js';
+import {roomArea,norm} from '../core/geometry.js';
 import {createScope} from '../ui/lifecycle.js';
 export function createInteractions({store,ui,svg,viewport,renderer,snapping,actions,drawers,mode,setTool,toggleFullscreen,undo,redo}){
 const scope=createScope();
@@ -15,7 +15,7 @@ let drag = null, pinch = null, lastPoint=null, hoverRoom=null;
 function updateStatus(){
  if(lastPoint){$('#cx').textContent=formatLengthMm(lastPoint.x,store.getProject().units.display);$('#cy').textContent=formatLengthMm(lastPoint.y,store.getProject().units.display);}
  const room=store.getProject().geometry.rooms.find(r=>r.id===hoverRoom);
- $('#hover').textContent=room?store.getProject().rooms[room.id].name+' '+formatAreaM2(area(room.poly),store.getProject().units.display):'';
+ $('#hover').textContent=room?store.getProject().rooms[room.id].name+' '+formatAreaM2(roomArea(room),store.getProject().units.display):'';
 }
 const touches = new Map();                     // 当前按在平面图上的手指
 const svgXY = (x, y) => { const r = svg.getBoundingClientRect(); return [x - r.left, y - r.top]; };

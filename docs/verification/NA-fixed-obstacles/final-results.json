@@ -1,0 +1,425 @@
+{
+  "passed": true,
+  "build": "2aa67ee25a57fedc",
+  "branch": "feat/ui-refactor",
+  "baseCommit": "a54283f4b979f2d8f507c751e6e7db55fbef4bf9",
+  "unitTests": 89,
+  "fixedObstacleBrowserChecks": 8,
+  "naRegressions": 12,
+  "referenceBrowserChecks": 8,
+  "completeHouseCompatibility": 4,
+  "eslintSource": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "syntaxChecks": true,
+  "diffCheck": true,
+  "sourceOriginalsUnchanged": 18,
+  "pdfCheck": {
+    "passed": true,
+    "results": [
+      {
+        "case": "studio",
+        "pages": 1,
+        "widthPt": 792.0,
+        "heightPt": 612.0,
+        "rulerLengthPt": 283.5,
+        "usableSqFt": 227.4166666666666,
+        "obstacles": 3,
+        "sha256": "253302fd7dbc9b6ade6585989685ee9ccaaee83030e92f59c66395c846086097",
+        "physicalPrinterTested": false
+      },
+      {
+        "case": "bedroom-two",
+        "pages": 1,
+        "widthPt": 792.0,
+        "heightPt": 612.0,
+        "rulerLengthPt": 283.5,
+        "usableSqFt": 90.08333333333333,
+        "obstacles": 2,
+        "sha256": "e46a5909851debba4ed2418bd0aa5b2e0ce24d7d3127e51bd79e29adeb85001b",
+        "physicalPrinterTested": false
+      }
+    ]
+  },
+  "scope": "Rectangular fixed obstacle engineering and two labelled rooms; whole CMU apartments not accepted",
+  "openIssues": [
+    "DV-003 remaining full apartment composition and unknown detail dimensions",
+    "DV-004 P2 furniture-name label exceeds footprint in small bedroom"
+  ],
+  "delivery": {
+    "newBatchCommitted": false,
+    "newBatchPushed": false,
+    "merged": false,
+    "deployed": false,
+    "priorCalibrationBatchPushed": "a54283f"
+  },
+  "artifacts": [
+    {
+      "path": "docs/verification/NA-fixed-obstacles/bedroom-two-2d-screen.png",
+      "bytes": 202993,
+      "sha256": "48511c564e2c85b33864e6c3795d49e5d2c0c96fe47be0707607cef58305fcd0"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/bedroom-two-2d.png",
+      "bytes": 389162,
+      "sha256": "01a8a19102bd8f33296896f20c51c990d4d6f46c9c9b3ea8de12d4e97823c7fb"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/bedroom-two-3d-screen.png",
+      "bytes": 182472,
+      "sha256": "641cb10b30e6260ce7f49fd1787477049d41253166fcbd459790ff4d03d3cf52"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/bedroom-two-3d.png",
+      "bytes": 52175,
+      "sha256": "bc2a0523961ffd590abd4208136aa59366556c2bab1537455329018891ff8ad6"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/bedroom-two-print-render.png",
+      "bytes": 88870,
+      "sha256": "e9980bedeb041c99486a06969dcd52fd1aacfe3b3f586da24965ecd34f7db31a"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/bedroom-two-print.pdf",
+      "bytes": 251851,
+      "sha256": "e46a5909851debba4ed2418bd0aa5b2e0ce24d7d3127e51bd79e29adeb85001b"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/bedroom-two-project.json",
+      "bytes": 219081,
+      "sha256": "18ec472c25d6b97ca986d4eff560a5caeacd86b1c0ffac723694d2f2929eea47"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/browser-results.json",
+      "bytes": 1443,
+      "sha256": "de22098b3d32d6f9b6aa83be844852880684f15f6a9290f2894895ed0dd758cb"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/browser-run.txt",
+      "bytes": 740,
+      "sha256": "cc2ae6bd7d7cae994ed0c0043428de78ca03adb40cc84df6aae3b251ddc548c3"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/door-column-conflict.png",
+      "bytes": 214482,
+      "sha256": "9ae94ba6c7d40f9bc93a2c2ea3a62e0e647149a95f69e9a8c4f92f673608eac0"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/furniture-column-conflict.png",
+      "bytes": 206344,
+      "sha256": "37f7e61a187d8453b0ca1d4a6358da187787197d99f83c292ad76947c42eedfa"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/legacy-plan-a.png",
+      "bytes": 232407,
+      "sha256": "5f95a59bdac38bbfb8371db18c8fd7a6006675c04a048bf7388483706a28d142"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/legacy-plan-b.png",
+      "bytes": 191932,
+      "sha256": "b05555bf67631b986e116ff60d280da2ec39a2d474d48a8b0aab192658ca6d19"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/legacy-plan-c.png",
+      "bytes": 249142,
+      "sha256": "4cba5441190f24bfd93c4832ce278e28162f9e6c4bd686eb20fcab252d6a8763"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/legacy-plan-f.png",
+      "bytes": 203942,
+      "sha256": "6f4bc5a192036aa18c5c50cdacfb8c050386bf655ac668f55cd235c3a65259dd"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/lint-run.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/mobile-obstacle-form.png",
+      "bytes": 74721,
+      "sha256": "ec352bb333bcf41d9b2e941d52f595dc5a340b03c22b0e8701704e333e665e25"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/pdf-results.json",
+      "bytes": 677,
+      "sha256": "6b4135074797b163a6ee6643b81ffcd87d166c0b94f5f3f9892999c40e0889f1"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/reference-regression/browser-results.json",
+      "bytes": 1592,
+      "sha256": "0e27c8d30024fdc85a04489ea63e987e3315deedfb2c14094069c5c97f97decd"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/reference-regression/distance-rejected.png",
+      "bytes": 156986,
+      "sha256": "f21d87ff609ffe705bc77c489974b54daf868a75ee3965be934bbe673d1c8c98"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/reference-regression/mobile-preview.png",
+      "bytes": 125998,
+      "sha256": "401515c61d848ff87b8df31046da26e1b4a342804ff44b4ec87725126856bfb8"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/reference-regression/studio-room-2d-screen.png",
+      "bytes": 205890,
+      "sha256": "6fc86332a1d4d28950c1b05c2c00bca44b1f2d4aea6d5ec4bf5b7032272d7c1d"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/reference-regression/studio-room-2d.png",
+      "bytes": 415370,
+      "sha256": "b630c294a1c711b12ff429860e745187907b11c4ad2016c50052830efa9fcbe3"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/reference-regression/studio-room-3d-screen.png",
+      "bytes": 217760,
+      "sha256": "18e058914643f14d527895a76c69c1f47c5dbe7cdda3e0ce173968f8bbe90b19"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/reference-regression/studio-room-3d.png",
+      "bytes": 93857,
+      "sha256": "489c7ece85e04b103692f9f2368411bc5b9a6f60b5e49702ca0e711bdda05757"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/reference-regression/studio-room-print.pdf",
+      "bytes": 233975,
+      "sha256": "c8e5c3a7f3a4518cfb1e7eca8c72c30f4427098797a26142c28dcb02f6499389"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/reference-regression/studio-room-project.json",
+      "bytes": 100179,
+      "sha256": "94aeb483adf88c49404c9bbff49a23d06e7d18de313ce7eb6696fe84a7e77bc5"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/reference-regression/studio-zoom-calibration.png",
+      "bytes": 149565,
+      "sha256": "32b4fbe432d4125d56730af74b949cc5332496d04b7d288ff922b597c81b6373"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/reference-run.txt",
+      "bytes": 782,
+      "sha256": "4a4accf3666d1c1c28d1eec4f08f0fcc315c82892807862a0a23082c86863d95"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-001.json",
+      "bytes": 99,
+      "sha256": "da15e93cf07877ab5904700b991a1856e24e9c7d577bb60d7e8de9afa45594b4"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-001.png",
+      "bytes": 146618,
+      "sha256": "678d8050b227e27231057c102256aacd1dd7a2efac32fb3b0776451d28b1f9f5"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-002-project.json",
+      "bytes": 62958,
+      "sha256": "81582c95e62b258f6b9608a0bd1086a8c7f7defb844bdc341711ae210b2f9a56"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-002.json",
+      "bytes": 99,
+      "sha256": "3e19c59a54eec23196b4a2bff843981969409d9bc00e3c60678301fe07822fce"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-002.png",
+      "bytes": 164166,
+      "sha256": "825e3ca0b0889a1f873303ae58e4c12cc861e8cd4d11a1e08cec166a95741277"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-003-mobile.png",
+      "bytes": 54678,
+      "sha256": "cb8537c4f3bd7fd660dc75ce1980478628e713810676adca4a7e157cde7fc49f"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-003.json",
+      "bytes": 99,
+      "sha256": "417f9c76df85fe91d154ade6eca1bc6b60ca3b46d8502f4e0af236001f3ddb80"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-004-resources.json",
+      "bytes": 7783,
+      "sha256": "e49a082643572d88ee05703bf706c39bf45f6a71aee51722c7379e6009f65f47"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-004.json",
+      "bytes": 99,
+      "sha256": "071a965ba57c35ae71bdd945d7108d0fee1a509c8595f23b258d81ed1117fa5f"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-004.png",
+      "bytes": 159772,
+      "sha256": "f147e5130358a8d10cdced7fb487a1c0d857ae48471902e22369f72ba38abb76"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-005.json",
+      "bytes": 99,
+      "sha256": "40168e88b1771566347a4182f63b2003de93735220249e2a667c522d58a72d1b"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-005.png",
+      "bytes": 215246,
+      "sha256": "c9a8924dc8e26b7432a3bc49dabad3e96e77a7029a82f1a5391c61ef9f8beacb"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-006-blocked.png",
+      "bytes": 220772,
+      "sha256": "9415ec9c3d64883028535161396366613fdc07e2bd0a73d00d5e84478cd7f55b"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-006.json",
+      "bytes": 99,
+      "sha256": "3eccbd7c5f88f0754a4198e69bf4e9489fba61db77b60eac0779d58380cf5cb1"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-007-export.png",
+      "bytes": 461117,
+      "sha256": "bdfb984b6d44b7cd9e049dfdcc4b9e98c6133e1d7eee933f018d03752a2223c7"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-007.json",
+      "bytes": 99,
+      "sha256": "d3bad485cc758de9a6c6d3ad21a1846fd7a2a3f552a4bf470cd84fc9ccea7b29"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-007.png",
+      "bytes": 215418,
+      "sha256": "d6f801b25c42ce89bca7aef790c00c044300b8accb397b83e6430bf02554c674"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-008-fit.png",
+      "bytes": 306910,
+      "sha256": "bdc2b0b0f8a55f213b00dde035a68e24ea9660642d7a3a90b494c9d056f91c22"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-008-initial-3d.png",
+      "bytes": 306607,
+      "sha256": "e7bbc2fb7e8df703eaf1f292f961c637e48cc43b6ec5c7e4e3527a4045504d78"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-008-iso.png",
+      "bytes": 306607,
+      "sha256": "e7bbc2fb7e8df703eaf1f292f961c637e48cc43b6ec5c7e4e3527a4045504d78"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-008.json",
+      "bytes": 99,
+      "sha256": "c42ba1b63d74e00c004cc16a5cbaef57fbe9b45a828fe153663676aa083c81f9"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-009.json",
+      "bytes": 99,
+      "sha256": "83b45e415c1935d0e386a191798e57fbd2a6e34df65c4c49adacde4e69284465"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-009.png",
+      "bytes": 240722,
+      "sha256": "efd3b2cb5cc05e0406bc950c41c0493a520b2a3da1bc0bb3573355cc31b65a95"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-010.json",
+      "bytes": 99,
+      "sha256": "6a30046cbb54dbe407a03ab51020fd233a4822a9b230397e7d4cc1417d3b70c1"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-010.png",
+      "bytes": 195100,
+      "sha256": "9706172d595118021aec0d5cef15b8fb1408e08bb0b96c75db2b058d70daee52"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-011.json",
+      "bytes": 99,
+      "sha256": "f309e66eec5b1772c3f130a2ca4f4361d44235b32aa11aa216f7dd3448eec311"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-011.png",
+      "bytes": 194120,
+      "sha256": "b1f3b3bf6c614bbd7e1942270160d8d1e809d70a1ac9cb5913554be723bbc39f"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-012-2D.png",
+      "bytes": 664526,
+      "sha256": "3c9b9932e762a9d2a13db5bf3b2bb4ef3d9f12208d297a104f5adb06a2056bfc"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-012-3D.png",
+      "bytes": 244880,
+      "sha256": "af439d997dd3fc34ec2261115f2242da29322ecad44e89b2487f1b2b6702ae49"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-012-downloads.json",
+      "bytes": 218,
+      "sha256": "923c7875a12cdbd525990524793efc1bb3dc93968b28ca2fb20b93c141be053b"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-012-print-100.pdf",
+      "bytes": 110265,
+      "sha256": "7a2fcc8fd053f79bdb74bf31fae642bb33a38140b66bbe898ce5f78cf47cee51"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-012-project.json",
+      "bytes": 3710,
+      "sha256": "fd543edf75ec5925346618a45e1647110169daa70659990a28f2ff45dfcd6dc8"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression/NA-012.json",
+      "bytes": 99,
+      "sha256": "f3af1e39b0398b85f591de5ac62370021ec7b510db7358e8700eeebb96fbd0d5"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/regression-run.txt",
+      "bytes": 259,
+      "sha256": "50b484362d39e6d2b6fb3c790e8e682fd6c54e7c074251429b7b69280728e7fb"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/source-integrity.json",
+      "bytes": 2837,
+      "sha256": "0908ca68010b6459b8d15b4fa6394b5736847c638daac3beda28f103acd6321f"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/studio-2d-screen.png",
+      "bytes": 156341,
+      "sha256": "64d4b83dda0bfff6d36ba185274057d0d137363b5772de5e553841cd547871a1"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/studio-2d.png",
+      "bytes": 414336,
+      "sha256": "d20a622c04cdae7379168d66849d6435034211acc2d55b2d42acb8db74c271af"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/studio-3d-screen.png",
+      "bytes": 170622,
+      "sha256": "1d62b8a00c6cea7ced8e692fc53e47e770c45761fb386bfac79caf2dd70b24bf"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/studio-3d.png",
+      "bytes": 94817,
+      "sha256": "08bdf036a58bb920094c04c60df71e8e4ee8fb0e687bdae906b8996790989cb5"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/studio-print-render.png",
+      "bytes": 107764,
+      "sha256": "d878d540d3155f60ef386623cdfae4cd59f8513a37e70c3322ae0df6c7b4f10c"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/studio-print.pdf",
+      "bytes": 230019,
+      "sha256": "253302fd7dbc9b6ade6585989685ee9ccaaee83030e92f59c66395c846086097"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/studio-project.json",
+      "bytes": 101824,
+      "sha256": "4c98c6f6a80fb8dc0d5f123e525d5fe1a63ea8c55ba8f97f88c8ea15d61c79e7"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/unit-run.txt",
+      "bytes": 20240,
+      "sha256": "a4fa4ec6425e9d75ab79f22799c8ba1aae9fb6522e5a9ac422e4cb6eeadf6e05"
+    },
+    {
+      "path": "docs/verification/NA-fixed-obstacles/run-notes.md",
+      "bytes": 1666,
+      "sha256": "f88e33f5e3e868ad2d0019308a1d7ed92ec547dc33432aabec87f252b47f9d67"
+    }
+  ],
+  "timestamp": "2026-10-02T14:46:30.817526+00:00"
+}

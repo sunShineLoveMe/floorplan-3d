@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "id": "b",
+      "path": "docs/verification/NA-complete-houses/plan-b/complete-project.json",
+      "geometryUnchanged": true,
+      "originalPotentialFloorConflicts": 0,
+      "warningNames": []
+    },
+    {
+      "id": "a",
+      "path": "docs/verification/NA-complete-houses/plan-a/complete-project.json",
+      "geometryUnchanged": true,
+      "originalPotentialFloorConflicts": 0,
+      "warningNames": []
+    },
+    {
+      "id": "c",
+      "path": "docs/verification/NA-complete-houses/plan-c/complete-project.json",
+      "geometryUnchanged": true,
+      "originalPotentialFloorConflicts": 0,
+      "warningNames": []
+    },
+    {
+      "id": "f",
+      "path": "docs/verification/NA-complete-houses/plan-f/complete-project.json",
+      "geometryUnchanged": true,
+      "originalPotentialFloorConflicts": 1,
+      "warningNames": [
+        "Kitchen south counter"
+      ]
+    }
+  ],
+  "latestPlanFCorrectedFloorConflicts": 0
+}

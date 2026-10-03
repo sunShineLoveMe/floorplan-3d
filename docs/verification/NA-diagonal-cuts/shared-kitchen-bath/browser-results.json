@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "id": "shared-kitchen-bath",
+  "build": "84212b2d0f37c16a",
+  "sourceScope": "Synthetic adjoining kitchen/bath plus connecting hall; bounding boxes overlap but net floors do not. All dimensions are test selections.",
+  "sourceWholePlanAccepted": false,
+  "checks": [
+    "rooms and unequal-angle cuts created through the same forms",
+    "straight openings and fixed column validated; cut-corner column rejected atomically",
+    "exact net areas, disjoint footprint, clear furniture/swings and native label bounds passed",
+    "furniture in cut region warns and correction clears it",
+    "invalid cut, excessive diagonal thickness and opening on removed wall rejected atomically",
+    "clear furniture and undo retain angled structures",
+    "real JSON/2D exports, reload and import preserve the editable model",
+    "WebGL, 3D export and cutaway passed",
+    "actual Letter print preview exported",
+    "390px reusable cut form reachable without horizontal overflow"
+  ],
+  "rooms": 3,
+  "furniture": 2,
+  "netM2": 14.899999999999999,
+  "footprintM2": 17.663099740034465,
+  "errors": [],
+  "timestamp": "2026-10-02T16:51:43.600Z"
+}

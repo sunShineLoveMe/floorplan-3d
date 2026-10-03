@@ -1,0 +1,96 @@
+{
+  "passed": true,
+  "count": 18,
+  "sources": [
+    {
+      "id": "san-diego-plan-b",
+      "sha256": "bb55e87e8a7c5f63316c019c840693e22f8bcfc63bf6777710cbc5d9848c9502",
+      "unchanged": true
+    },
+    {
+      "id": "san-diego-plan-a",
+      "sha256": "89c21a906886ee7fb10d3911bf16899021e8f1e3d7bf63604e5dd8033aff6759",
+      "unchanged": true
+    },
+    {
+      "id": "san-diego-plan-c",
+      "sha256": "c5d7ba3bc8c5ee7ddd31223ab146058aca79d9dd27d2322520a85c911416a0e6",
+      "unchanged": true
+    },
+    {
+      "id": "san-diego-plan-f",
+      "sha256": "89dbbd8f7977d772df44a4eea1a0ec35d795d9830538e3aa1e29f8d5bfe10bdc",
+      "unchanged": true
+    },
+    {
+      "id": "hillside-studio-a1",
+      "sha256": "c67db77f48cfb877e4765a3f779bcdf4a45b779a6f4f04df23d1b65d2b68a89d",
+      "unchanged": true
+    },
+    {
+      "id": "hillside-corner-b5",
+      "sha256": "e95496af4f396b35ab3087f9d373a798699f8e11221c6268f456dc04e4f1228e",
+      "unchanged": true
+    },
+    {
+      "id": "cmu-fairfax-studio",
+      "sha256": "12dbc086f2368cf36784e754fecce8ca78386d33ac743afff0561804573ba293",
+      "unchanged": true
+    },
+    {
+      "id": "cmu-fairfax-two-bedroom",
+      "sha256": "bdef8e9000ff1a9a0f857aa584f0a7fdfa8e095f4a36637a943301530bb60e76",
+      "unchanged": true
+    },
+    {
+      "id": "cmu-fairfax-one-bedroom-jpeg",
+      "sha256": "a80336a75ea8b6bda92b1ed28dd890cc459ba66dc820410e6d4445397f17687c",
+      "unchanged": true
+    },
+    {
+      "id": "imprint-a1",
+      "sha256": "2ce5e76bbc9de2aeac1a4b618c68487d100afa18f9d4c3f08cfa6514f441099c",
+      "unchanged": true
+    },
+    {
+      "id": "zag-b4-image",
+      "sha256": "6f9f682391633640f5eebc5afcd8ffa3120344f38d66511de2bfdb39299bfead",
+      "unchanged": true
+    },
+    {
+      "id": "zag-live-work",
+      "sha256": "c5ccb799af5fdaadcf8f9b9d888806a8cfaad33cdce7252c7acb3f55ae45d0b6",
+      "unchanged": true
+    },
+    {
+      "id": "remington-b-basement",
+      "sha256": "e16dd52d694199f0376c7e0f845e18d7fde9f19ed890b4abd264f7e7bfae1980",
+      "unchanged": true
+    },
+    {
+      "id": "jacobsen-isw-4521",
+      "sha256": "420bb3c5a38f37a8b41a2206f3d2bdc3c07e6248544cc70bcb641a62d8bf24cb",
+      "unchanged": true
+    },
+    {
+      "id": "regent-unit-l",
+      "sha256": "09931c68a4b4fc5299926100c0541e9b643ccc53324860990ad3b59043b7f518",
+      "unchanged": true
+    },
+    {
+      "id": "newmark-umbria",
+      "sha256": "c40d44e5b93f0376299d85748d511c2546d70ffb18146a4a2768116fcc7bf731",
+      "unchanged": true
+    },
+    {
+      "id": "toronto-dawes-west-floor6",
+      "sha256": "2ce0311dfcb3a4006d3d202618af54ed9a1cff2ad1f44ee534aa1fc7feaf01a7",
+      "unchanged": true
+    },
+    {
+      "id": "loc-norvelt-house-types",
+      "sha256": "f5518648530cf2fd2f9126886e01729b754a677608874f7dc2a2f308301f13ea",
+      "unchanged": true
+    }
+  ]
+}

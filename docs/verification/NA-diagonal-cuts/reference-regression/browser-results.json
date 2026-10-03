@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "build": "84212b2d0f37c16a",
+  "checks": [
+    "P0: blank, floor-area, zero and negative distance rejected without project changes",
+    "P1: 4x preview, scrolling, source-pixel endpoints and labelled 19 ft 9 in calibration passed",
+    "P0: four undimensioned PDF/JPG/PNG imports require a length; cancellation retains calibrated project",
+    "P0: PDF page change clears old distance and endpoints and resets preview zoom",
+    "P1: 390px preview zoom/scroll/fit and actual calibration preserve source coordinates without outer overflow",
+    "Studio labelled rectangle: Queen footprint, door conflict/clearance and three non-overlapping interior objects passed",
+    "Studio rectangle actual JSON/2D downloads, reload/import and exact edit undo/redo passed",
+    "Studio rectangle 3D PNG and actual US Letter print-preview PDF exported"
+  ],
+  "errors": [],
+  "calibration": {
+    "label": "19 ft 9 in",
+    "mm": 6019.8,
+    "sourcePixels": [
+      900,
+      1132
+    ],
+    "sourceEndpoints": [
+      [
+        194,
+        354
+      ],
+      [
+        725,
+        354
+      ]
+    ],
+    "mmPerPixel": 11.335244065867704,
+    "otherLabel": "11 ft 8 in",
+    "approximateVerticalSpanPixels": 321,
+    "inferredVerticalMm": 3638.613345143533
+  },
+  "room": {
+    "scope": "Labelled Studio rectangle only; source apartment is NOT fully accepted",
+    "netSqFt": 230.41666666666663,
+    "furniture": 3,
+    "doorDimensionsAssumed": true,
+    "heightAndWallThicknessAssumed": true,
+    "pillarsExcludedFromModel": true
+  },
+  "timestamp": "2026-10-02T16:52:44.804Z"
+}

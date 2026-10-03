@@ -1,19 +1,22 @@
+import {furnitureLabel} from './furniture-labels.js';
+import {floorConflicts} from '../core/floor-clearance.js';
 import {placeRoomLabels} from './room-labels.js';
+import {obstacleConflicts} from '../core/obstacle-clearance.js';
 import {doorConflicts} from '../core/door-clearance.js';
 import {formatLengthMm,formatAreaM2,gridSizeMm} from '../core/units.js';
 import {$} from '../ui/dom.js';
 import {COARSE,esc} from '../ui/dom.js';
 import {tr,nm} from '../ui/i18n.js';
-import {area,aabb} from '../core/geometry.js';
+import {roomArea,aabb} from '../core/geometry.js';
 import {furnSVG} from './furniture-symbols.js';
 export function createRenderer({store,ui,view}){
 const length=(mm,style='feet')=>esc(formatLengthMm(mm,store.getProject().units.display,{style}));
 const getF = id => store.getProject().furniture.find(f=>f.id===id);
-const NOLABEL = ['plant','floorlamp','sidetable','barstool','beanbag'];
 function renderRooms(){
   const reference=store.getProject().referencePlan;
   $('#gReference').innerHTML=reference?.visible?`<image href="${esc(reference.src)}" x="${reference.x}" y="${reference.y}" width="${reference.pixelWidth*reference.mmPerPixel}" height="${reference.pixelHeight*reference.mmPerPixel}" opacity="${reference.opacity}"/>`:'';
   let s = (store.getProject().geometry.floorSlabs||[]).map(([x0,y0,x1,y1])=>`<rect data-floor-slab x="${x0}" y="${y0}" width="${x1-x0}" height="${y1-y0}" fill="url(#m-${store.getProject().rooms[store.getProject().geometry.rooms[0].id].mat})" fill-opacity="${reference?.visible?.35:1}" pointer-events="none"/>`).join('');
+  s+=(store.getProject().geometry.floorPolygons||[]).map(poly=>`<polygon data-floor-polygon points="${poly.map(p=>p.join(',')).join(' ')}" fill="url(#m-${store.getProject().rooms[store.getProject().geometry.rooms[0].id].mat})" fill-opacity="${reference?.visible?.35:1}" pointer-events="none"/>`).join('');
   store.getProject().geometry.rooms.forEach(r => s += `<polygon class="room" data-room="${r.id}" points="${r.poly.map(p=>p.join(',')).join(' ')}" fill="url(#m-${store.getProject().rooms[r.id].mat})" fill-opacity="${store.getProject().referencePlan?.visible?.35:1}"/>`);
   const sill = ([a,b,c,d]) => `<rect x="${a}" y="${b}" width="${c-a}" height="${d-b}" fill="#e2dacb" stroke="#b9b0a0" stroke-width="1" vector-effect="non-scaling-stroke" pointer-events="none"/>`;
   store.getProject().geometry.doors.forEach(d => s += sill(d.rect)); store.getProject().geometry.slides.forEach(d => s += sill(d.rect));
@@ -24,11 +27,17 @@ function renderFurn(){
   const g = $('#gFurn');
   g.setAttribute('display', ui.layers.furn ? 'inline' : 'none');
   g.innerHTML = store.getProject().furniture.map(f => {
-    const fs = Math.max(80, Math.min(170, Math.min(f.w,f.d)*.2));
-    const label = Math.min(f.w,f.d) >= 380 && !NOLABEL.includes(f.type)
-      ? `<text transform="rotate(${-f.rot})" font-size="${fs}" text-anchor="middle" dominant-baseline="central" fill="#4a443c" opacity=".8" pointer-events="none">${esc(nm(f.name))}</text>` : '';
-    return `<g class="furn" data-fid="${f.id}" transform="translate(${f.cx} ${f.cy}) rotate(${f.rot})">${furnSVG(f.type,f.w,f.d,f.color)}${label}</g>`;
+    const layout=furnitureLabel(f,nm(f.name));
+    const label=layout?`<text data-furniture-label transform="rotate(${-f.rot})" font-size="${layout.font}" text-anchor="middle" dominant-baseline="central" fill="#4a443c" opacity=".8" pointer-events="none">${layout.lines.map((line,i)=>`<tspan x="0" y="${(i-(layout.lines.length-1)/2)*layout.font*1.2}">${esc(line)}</tspan>`).join('')}</text>`:'';
+    return `<g class="furn" data-fid="${f.id}" aria-label="${esc(nm(f.name))}" transform="translate(${f.cx} ${f.cy}) rotate(${f.rot})"><title>${esc(nm(f.name))}</title>${furnSVG(f.type,f.w,f.d,f.color)}${label}</g>`;
   }).join('');
+  // Measure real font glyphs after attachment, including all wrapped lines.
+  g.querySelectorAll('[data-furniture-label]').forEach(text=>{
+    const f=getF(text.parentElement.dataset.fid),b=text.getBBox(),a=f.rot*Math.PI/180,c=Math.abs(Math.cos(a)),s=Math.abs(Math.sin(a));
+    const width=2*Math.max(Math.abs(b.x),Math.abs(b.x+b.width)),height=2*Math.max(Math.abs(b.y),Math.abs(b.y+b.height));
+    const margin=Math.min(f.w,f.d)*.04,scale=Math.min(1,(f.w-2*margin)/(c*width+s*height||1),(f.d-2*margin)/(s*width+c*height||1));
+    text.setAttribute('transform',`rotate(${-f.rot}) scale(${scale})`);
+  });
 }
 
 function renderWalls(){
@@ -38,9 +47,12 @@ function renderWalls(){
     let ex = k==='low' ? 'stroke="#8f897d" stroke-width="1" vector-effect="non-scaling-stroke"' : '';
     if (dem){ fill = 'rgba(198,91,58,.12)'; ex = 'stroke="#c65b3a" stroke-width="1.2" stroke-dasharray="5 3" vector-effect="non-scaling-stroke"'; }
     return `<rect class="wall" data-wall="${id}" style="${store.getProject().roomEditor ? 'pointer-events:all;cursor:pointer' : ''}" x="${x0}" y="${y0}" width="${x1-x0}" height="${y1-y0}" fill="${fill}" ${ex}/>`;
-  }).join('');
+  }).join('')+(store.getProject().geometry.diagonalWalls||[]).map(w=>`<polygon data-diagonal-wall="${esc(w.id)}" points="${w.poly.map(p=>p.join(',')).join(' ')}" fill="#a7a195" pointer-events="none"><title>${tr('斜向边界','Diagonal boundary')} · ${length(Math.hypot(w.inner[1][0]-w.inner[0][0],w.inner[1][1]-w.inner[0][1]))}</title></polygon>`).join('');
 }
 
+function renderObstacles(){
+ $('#gObstacles').innerHTML=(store.getProject().geometry.obstacles||[]).map(o=>{const [x,y,x1,y1]=o.rect;return `<rect data-obstacle="${o.id}" data-room="${o.roomId}" x="${x}" y="${y}" width="${x1-x}" height="${y1-y}" fill="#80796d" stroke="#514b41" stroke-width="1" vector-effect="non-scaling-stroke" style="cursor:pointer"><title>${esc(o.name)} · ${length(x1-x)} × ${length(y1-y)} · ${tr('高','height')} ${length(o.height)}</title></rect>`;}).join('');
+}
 function renderOpenings(){
   const WS = 'stroke="#4f7394" stroke-width="1" vector-effect="non-scaling-stroke"';
   let s = '';
@@ -83,13 +95,13 @@ function renderOpenings(){
 }
 
 function renderWarnings(){
- const conflicts=doorConflicts(store.getProject()),doors=[...new Set(conflicts.map(c=>c.door))];
- $('#gWarnings').innerHTML=doors.map(d=>{const [x,y]=d.h,ox=x+d.o[0]*d.len,oy=y+d.o[1]*d.len,cx=x+d.c[0]*d.len,cy=y+d.c[1]*d.len,sweep=d.o[0]*d.c[1]-d.o[1]*d.c[0]>0?1:0;return `<path d="M${x} ${y}L${ox} ${oy}A${d.len} ${d.len} 0 0 ${sweep} ${cx} ${cy}Z" fill="#d7442633" stroke="#b5351b" stroke-width="2" vector-effect="non-scaling-stroke"/>`;}).join('');
+ const floor=floorConflicts(store.getProject()),fixed=obstacleConflicts(store.getProject()),conflicts=doorConflicts(store.getProject()),doors=[...new Set([...conflicts,...fixed.filter(c=>c.kind==='door'),...floor.filter(c=>c.kind==='door')].map(c=>c.door))];
+ $('#gWarnings').innerHTML=doors.map(d=>{const [x,y]=d.h,ox=x+d.o[0]*d.len,oy=y+d.o[1]*d.len,cx=x+d.c[0]*d.len,cy=y+d.c[1]*d.len,sweep=d.o[0]*d.c[1]-d.o[1]*d.c[0]>0?1:0;return `<path d="M${x} ${y}L${ox} ${oy}A${d.len} ${d.len} 0 0 ${sweep} ${cx} ${cy}Z" fill="#d7442633" stroke="#b5351b" stroke-width="2" vector-effect="non-scaling-stroke"/>`;}).join('')+[...new Set(fixed.map(c=>c.obstacle))].map(o=>{const [x,y,x1,y1]=o.rect;return `<rect data-obstacle-warning="${o.id}" x="${x}" y="${y}" width="${x1-x}" height="${y1-y}" fill="#d7442633" stroke="#b5351b" stroke-width="2" vector-effect="non-scaling-stroke"/>`;}).join('')+floor.filter(c=>c.furnitureId).map(c=>{const f=getF(c.furnitureId);return `<rect data-floor-warning="${esc(f.id)}" x="${-f.w/2}" y="${-f.d/2}" width="${f.w}" height="${f.d}" transform="translate(${f.cx} ${f.cy}) rotate(${f.rot})" fill="#d7442620" stroke="#b5351b" stroke-width="2" vector-effect="non-scaling-stroke" pointer-events="none"/>`;}).join('');
 }
 function renderLabels(){
   const g = $('#gLabels');
   g.setAttribute('display', ui.layers.labels ? 'inline' : 'none');
-  g.innerHTML = placeRoomLabels(store.getProject(),nm,poly=>formatAreaM2(area(poly),store.getProject().units.display)).map(label=>{
+  g.innerHTML = placeRoomLabels(store.getProject(),nm,(poly,r)=>formatAreaM2(roomArea(r),store.getProject().units.display)).map(label=>{
     const {x,y,font,small}=label,halo='stroke="#fbf9f4" stroke-width="35" paint-order="stroke" stroke-linejoin="round"';
     return `<g data-label-room="${label.id}"><text x="${x}" y="${y}" font-size="${font}" font-weight="600" text-anchor="middle" fill="#2b2824" ${halo}>${esc(label.name)}</text><text x="${x}" y="${y+font}" font-size="${small}" text-anchor="middle" fill="#7d7366" ${halo}>${esc(label.area)}</text></g>`;
   }).join('');
@@ -109,7 +121,7 @@ function renderDims(){
   };
   const g = $('#gDims');
   const geometry=store.getProject().geometry;let dimensions=geometry.dimensions;
-  if(geometry.floorSlabs){const slabs=geometry.floorSlabs,x0=Math.min(...slabs.map(r=>r[0])),y0=Math.min(...slabs.map(r=>r[1])),x1=Math.max(...slabs.map(r=>r[2])),y1=Math.max(...slabs.map(r=>r[3]));dimensions=dimensions.filter(d=>d.at<=(d.horizontal?y0:x0)-150);dimensions=[...dimensions,{horizontal:true,at:y0-700,start:x0,segments:[x1-x0]},{horizontal:false,at:x0-700,start:y0,segments:[y1-y0]}];}
+  if(geometry.floorSlabs||geometry.floorPolygons){const slabs=geometry.floorSlabs||geometry.floorPolygons.map(p=>[Math.min(...p.map(v=>v[0])),Math.min(...p.map(v=>v[1])),Math.max(...p.map(v=>v[0])),Math.max(...p.map(v=>v[1]))]),x0=Math.min(...slabs.map(r=>r[0])),y0=Math.min(...slabs.map(r=>r[1])),x1=Math.max(...slabs.map(r=>r[2])),y1=Math.max(...slabs.map(r=>r[3]));dimensions=dimensions.filter(d=>d.at<=(d.horizontal?y0:x0)-150);dimensions=[...dimensions,{horizontal:true,at:y0-700,start:x0,segments:[x1-x0]},{horizontal:false,at:x0-700,start:y0,segments:[y1-y0]}];}
   g.innerHTML = dimensions.map(d=>chain(d.horizontal,d.at,d.start,d.segments)).join('');
   g.setAttribute('display', ui.layers.dims ? 'inline' : 'none');
 }
@@ -186,5 +198,5 @@ function renderSel(){
 }
 
 
-return {update(){renderOpenings();renderDims();renderGrid();renderRooms();renderFurn();renderWalls();renderWarnings();renderLabels();renderMeasure();renderSel();},renderFurn,renderSel,renderMeasure,renderOpenings,renderDims};
+return {update(){renderOpenings();renderDims();renderGrid();renderRooms();renderFurn();renderWalls();renderObstacles();renderWarnings();renderLabels();renderMeasure();renderSel();},renderFurn,renderSel,renderMeasure,renderOpenings,renderDims};
 }

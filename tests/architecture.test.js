@@ -24,8 +24,8 @@ class BoxGeometry {
     this.parameters={width,height,depth};BoxGeometry.count++;
   }
 }
-class Shape {moveTo(){} lineTo(){}}
-class Geometry {rotateX(){return this;}}
+class Shape {constructor(){this.points=[];}moveTo(x,y){this.points=[[x,y]];}lineTo(x,y){this.points.push([x,y]);}}
+class Geometry {constructor(shape,options){this.shape=shape;this.parameters={options};}rotateX(){return this;}}
 const THREE={Group,Mesh,BoxGeometry,Shape,ShapeGeometry:Geometry,ExtrudeGeometry:Geometry,CylinderGeometry:Geometry,SphereGeometry:Geometry,EdgesGeometry:Geometry,LineSegments:Mesh,PointLight:Group};
 
 async function loadArchitecture(){
@@ -139,5 +139,32 @@ test('folding leaves face the selected room on every wall, reverse for outward f
   const leaves=groups.archUp.children.filter(o=>o.material?.color==='#efe6d8');assert.equal(leaves.length,4);assert.equal(groups.doors.length,0);
   const vertical=['left','right'].includes(side),face=['right','bottom'].includes(side)?3:0,normal=(['top','left'].includes(side)?1:-1)*(swing==='inward'?1:-1);
   for(const leaf of leaves){close(leaf.geometry.parameters.width,.3);close(leaf.geometry.parameters.height,Math.min(cut,2.032));close((vertical?leaf.position.x:leaf.position.z)-face,normal*1.2*.12);assert.ok(Math.abs(vertical?Math.sin(leaf.rotation.y):Math.cos(leaf.rotation.y))<.3);}
+ }
+});
+
+test('fixed obstacles produce exact meshes, cutaway heights and persistent walk colliders',async()=>{
+ const {asHouse}=await import('../src/data/house-editor.js'),{createRectangleProject,updateRectangleProject}=await import('../src/data/project-data.js');
+ const createArchitecture=await loadArchitecture(),base=createRectangleProject(),e=asHouse(base.roomEditor);
+ e.rooms[0].obstacles=[{id:'column',name:'Column',x:500,y:1000,width:300,depth:400,height:2800},{id:'bulkhead',name:'Low intrusion',x:0,y:0,width:200,depth:500,height:900}];
+ const project=updateRectangleProject(base,e);
+ for(const cut of [0,.5,1.5,2.8]){
+  const groups={archFloor:new Group(),archUp:new Group(),lampG:new Group(),doors:[],colliders:[]};
+  createArchitecture({store:{getProject:()=>project},opt:{cut,mode:'orbit'},space:{wx:v=>(v-2000)/1000,wz:v=>(v-1500)/1000},groups,materials:{mat:()=>({}),floorMat:()=>({})},primitives:{box:()=>{},metal:()=>({})}}).build();
+  const meshes=groups.archUp.children.filter(o=>o.userData.obstacleId);assert.equal(meshes.length,cut?2:0);
+  for(const mesh of meshes){const o=project.geometry.obstacles.find(o=>o.id===mesh.userData.obstacleId);close(mesh.geometry.parameters.height,Math.min(cut,o.height/1000));close(mesh.geometry.parameters.width,(o.rect[2]-o.rect[0])/1000);assert.equal(mesh.userData.room,'room-1');}
+  assert.ok(groups.colliders.some(c=>c.every((v,i)=>Math.abs(v-[-1.5,-.5,-1.2,-.1][i])<1e-12)));
+ }
+});
+
+test('diagonal walls extrude their exact footprints and retain polygon walk colliders at every cut height',async()=>{
+ const {asHouse}=await import('../src/data/house-editor.js'),{createRectangleProject,updateRectangleProject}=await import('../src/data/project-data.js');
+ const createArchitecture=await loadArchitecture();
+ for(const corner of ['top-left','top-right','bottom-left','bottom-right'])for(const cut of [0,.5,2.8]){
+  const base=createRectangleProject(),e=asHouse(base.roomEditor);e.rooms[0].notch={corner,width:1200,depth:700,shape:'diagonal',wallThickness:150};const project=updateRectangleProject(base,e);
+  const groups={archFloor:new Group(),archUp:new Group(),lampG:new Group(),doors:[],colliders:[]},wx=v=>(v-2000)/1000,wz=v=>(v-1500)/1000;
+  createArchitecture({store:{getProject:()=>project},opt:{cut,mode:'orbit'},space:{wx,wz},groups,materials:{mat:()=>({}),floorMat:()=>({})},primitives:{box:()=>{},metal:()=>({})}}).build();
+  const walls=groups.archUp.children.filter(o=>o.userData.diagonalWallId),polygons=groups.colliders.filter(c=>c.poly);
+  assert.equal(walls.length,cut?project.geometry.diagonalWalls.length:0);assert.deepEqual(polygons.map(c=>c.poly),project.geometry.diagonalWalls.map(w=>w.poly.map(([x,y])=>[wx(x),wz(y)])));
+  walls.forEach((wall,i)=>{close(wall.geometry.parameters.options.depth,cut);assert.deepEqual(wall.geometry.shape.points,project.geometry.diagonalWalls[i].poly.map(([x,y])=>[wx(x),-wz(y)]));});
  }
 });

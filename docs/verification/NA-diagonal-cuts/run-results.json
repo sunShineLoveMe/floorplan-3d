@@ -1,0 +1,69 @@
+{
+  "passed": true,
+  "build": "84212b2d0f37c16a",
+  "groups": [
+    {
+      "id": "plan-f",
+      "passed": true,
+      "buildBefore": "84212b2d0f37c16a",
+      "buildAfter": "84212b2d0f37c16a",
+      "startedAt": "2026-10-02T16:50:51.882Z",
+      "finishedAt": "2026-10-02T16:51:06.123Z",
+      "exitCode": 0
+    },
+    {
+      "id": "diagonal",
+      "passed": true,
+      "buildBefore": "84212b2d0f37c16a",
+      "buildAfter": "84212b2d0f37c16a",
+      "startedAt": "2026-10-02T16:50:51.880Z",
+      "finishedAt": "2026-10-02T16:51:43.680Z",
+      "exitCode": 0
+    },
+    {
+      "id": "na",
+      "passed": true,
+      "buildBefore": "84212b2d0f37c16a",
+      "buildAfter": "84212b2d0f37c16a",
+      "startedAt": "2026-10-02T16:51:43.680Z",
+      "finishedAt": "2026-10-02T16:52:06.392Z",
+      "exitCode": 0
+    },
+    {
+      "id": "cmu",
+      "passed": true,
+      "buildBefore": "84212b2d0f37c16a",
+      "buildAfter": "84212b2d0f37c16a",
+      "startedAt": "2026-10-02T16:51:43.681Z",
+      "finishedAt": "2026-10-02T16:52:13.206Z",
+      "exitCode": 0
+    },
+    {
+      "id": "obstacles",
+      "passed": true,
+      "buildBefore": "84212b2d0f37c16a",
+      "buildAfter": "84212b2d0f37c16a",
+      "startedAt": "2026-10-02T16:52:13.206Z",
+      "finishedAt": "2026-10-02T16:52:37.123Z",
+      "exitCode": 0
+    },
+    {
+      "id": "reference",
+      "passed": true,
+      "buildBefore": "84212b2d0f37c16a",
+      "buildAfter": "84212b2d0f37c16a",
+      "startedAt": "2026-10-02T16:52:13.207Z",
+      "finishedAt": "2026-10-02T16:52:44.890Z",
+      "exitCode": 0
+    },
+    {
+      "id": "labels",
+      "passed": true,
+      "buildBefore": "84212b2d0f37c16a",
+      "buildAfter": "84212b2d0f37c16a",
+      "startedAt": "2026-10-02T16:52:44.890Z",
+      "finishedAt": "2026-10-02T16:52:46.883Z",
+      "exitCode": 0
+    }
+  ]
+}

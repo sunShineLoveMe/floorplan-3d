@@ -10,7 +10,7 @@
 |---|---|---|---|---|
 | DV-001 | P0 | 导入图纸，选择两点，不填写距离即可应用。旧字段默认 `10' 0"`，导致未确认尺寸的图纸被赋予比例 | 距离默认空白；必须填写有效正长度。提示无长度参照时先补尺寸，不能用面积或家具图片推算 | 空白、`644 sq ft`、零和负值均拒绝且项目未变化；四份无尺寸 PDF/JPG/PNG 取消后保留原方案和底图。PDF 换页清空旧距离、端点和预览倍率。见 [旧状态](verification/NA-reference-usability/before-results.json)与[新结果](verification/NA-reference-usability/browser-results.json) |
 | DV-002 | P1 | CMU 原 PDF 是 450×566 位图；旧对话框缩为约 382 px 宽且无法放大，小字和端点难以操作。实测没有横向溢出 | 增加预览放大、缩小、适应；在独立区域滚动；缩放只改变显示尺寸，标定仍按原像素坐标 | 桌面 4 倍放大、滚动两点标定通过；390 px 宽下缩放、滚动、适应、实际标定和撤销通过。见 [放大标定](verification/NA-reference-usability/studio-zoom-calibration.png)、[窄屏](verification/NA-reference-usability/mobile-preview.png) |
-| DV-003 | P1 | Studio 内有多个柱凸入、厨房和入口有不同边界，单个矩形或单角缺口不能直接表示完整净地面；原图没有柱宽深和全部门窗尺寸 | 作为后续完整户型问题登记；本轮保留未知，不猜测细部尺寸 | 待后续验证多处固定障碍物或矩形拆分的表达方式，以及所需尺寸录入和家具冲突提示。当前仅完成标注矩形房间流程验收 |
+| DV-003 | P1 | Studio 内有多个柱凸入、厨房和入口有不同边界，单个矩形或单角缺口不能直接表示完整净地面；原图没有柱宽深和全部门窗尺寸 | 后续已补独立矩形固定障碍物编辑、面积扣除及家具 / 平开门冲突；未知细部仍不猜测 | 两例标注房间见 [固定障碍物验收](NA-fixed-obstacles-verification-2026-10-02.md)；CMU 两卧整户组合工程流程亦通过 [后续复测](NA-apartment-composition-verification-2026-10-02.md)，补充尺寸为假设，原图完整尺寸仍未验收 |
 
 DV-001 的旧状态在构建 `58cd1dedbb49c3ad` 复现，选择两点后未输入距离仍写入参考图。初步判断的“预览溢出”经实际指标排除，最终 DV-002 定义为缺少放大与滚动操作。
 
@@ -31,4 +31,4 @@ DV-001 的旧状态在构建 `58cd1dedbb49c3ad` 复现，选择两点后未输�
 - [可回导 JSON](verification/NA-reference-usability/studio-room-project.json)、[2D PNG](verification/NA-reference-usability/studio-room-2d.png)、[3D PNG](verification/NA-reference-usability/studio-room-3d.png)、[US Letter PDF](verification/NA-reference-usability/studio-room-print.pdf)。PDF 为横向单页，100 mm 矢量比例尺已检查；[PDF 检查](verification/NA-reference-usability/pdf-results.json)不代替实体打印机量测。
 - 使用独立的 8095 来源和临时 Chrome profile，未写入用户原浏览器方案。Safari、Edge、实体触屏与建筑净宽规范不在本轮范围。旧构建中间检查和脚本调试记录不替代最终结果，见 [运行说明](verification/NA-reference-usability/run-notes.md)。
 
-下一任务按 DV-003 推进：先确定柱凸入和多处固定障碍物的可编辑表达，再用 CMU 两卧公寓验证小卧室、衣柜及门口占地；继续按优先级逐项修复并复测。本记录和机器清单中的交付状态为验收完成时、提交前的快照；后续远程同步以 Git 为准。未合并或部署。
+DV-003 的后续工程子项、CMU 两卧小卧室及整户组合流程已完成复测；DV-004 标签越界已关闭。见 [整户组合与标签复测](NA-apartment-composition-verification-2026-10-02.md)，下一步推进 Jacobsen 斜向厨房边界（DV-005，P1）。本记录和机器清单中的交付状态为验收完成时、提交前的快照；后续远程同步以 Git 为准。未合并或部署。
