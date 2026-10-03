@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "baseline": false,
+  "build": "1891ea7378a262e2",
+  "checks": [
+    "use-zone add and undo retain unrelated height draft",
+    "duplicate receives committed height; original draft returns after copy undo",
+    "delete, undo and reselect restore original height draft",
+    "replacement cancel preserves cached draft; confirmed same-ID import discards it"
+  ],
+  "copyUndoPreserved": true
+}

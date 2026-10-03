@@ -1,0 +1,172 @@
+{
+  "format": "floorplan-3d",
+  "version": 2,
+  "id": "p-murw7x60-ltcpmiit",
+  "name": "My room",
+  "createdAt": "2026-10-03T04:29:44.232Z",
+  "updatedAt": "2026-10-03T04:29:44.232Z",
+  "units": {
+    "internal": "mm",
+    "display": "metric"
+  },
+  "layout": {
+    "id": "layout-p-murw7x60-ltcpmiit",
+    "name": "Layout A"
+  },
+  "view": {
+    "mode": "2d",
+    "layers": {
+      "dims": true,
+      "labels": true,
+      "furn": true,
+      "grid": false,
+      "bearing": false,
+      "wallSnap": true
+    }
+  },
+  "roomEditor": null,
+  "geometry": {
+    "height": 2800,
+    "origin": [
+      2000,
+      2000
+    ],
+    "bounds": {
+      "x": -1220,
+      "y": -1220,
+      "w": 6440,
+      "h": 6440
+    },
+    "rooms": [
+      {
+        "id": "room-1",
+        "name": "My room",
+        "mat": "wood",
+        "poly": [
+          [
+            0,
+            0
+          ],
+          [
+            4000,
+            0
+          ],
+          [
+            4000,
+            4000
+          ],
+          [
+            0,
+            4000
+          ]
+        ],
+        "at": [
+          2000,
+          2000
+        ]
+      }
+    ],
+    "walls": [
+      [
+        -120,
+        -120,
+        4120,
+        0,
+        "n"
+      ],
+      [
+        4000,
+        0,
+        4120,
+        4000,
+        "n"
+      ],
+      [
+        -120,
+        4000,
+        4120,
+        4120,
+        "n"
+      ],
+      [
+        -120,
+        0,
+        0,
+        4000,
+        "n"
+      ]
+    ],
+    "wallIds": [
+      "room-1--top",
+      "room-1--right",
+      "room-1--bottom",
+      "room-1--left"
+    ],
+    "floorSlabs": [
+      [
+        -120,
+        -120,
+        4120,
+        4120
+      ]
+    ],
+    "doors": [],
+    "windows": [],
+    "slides": [
+      {
+        "id": "test-slide",
+        "name": "Slide",
+        "rect": [
+          2500,
+          500,
+          2620,
+          3500
+        ],
+        "v": true,
+        "height": 2100,
+        "style": "sliding",
+        "wallId": "test--right",
+        "swing": "inward"
+      }
+    ],
+    "lintels": [],
+    "dimensions": [
+      {
+        "horizontal": true,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          4000
+        ]
+      },
+      {
+        "horizontal": false,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          4000
+        ]
+      }
+    ],
+    "walkStart": {
+      "position": [
+        1000,
+        2000
+      ],
+      "target": [
+        3500,
+        2000
+      ]
+    },
+    "entry": null
+  },
+  "furniture": [],
+  "rooms": {
+    "room-1": {
+      "name": "My room",
+      "mat": "wood"
+    }
+  },
+  "demolished": [],
+  "measures": []
+}

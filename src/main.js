@@ -31,7 +31,7 @@ export function createApplication(){
   const notifications=createNotifications(),{toast}=notifications,drawers=createDrawers();
   let reference,clearance,passage,useZones;
   let viewer=null,viewerPromise=null,viewMode='2d',switching=false,toolbar,editor,panel,roomEditor,library;
-  const mode={is3D:()=>viewMode==='3d',setView,walking:()=>viewer?.walking() || false};
+  const mode={is3D:()=>viewMode==='3d',setView,walking:()=>viewer?.walking() || false,cancelInteraction:()=>{editor?.cancel();viewer?.cancel();}};
   const actions=createProjectActions({store,ui,toast,onSelection:()=>{editor?.renderer.renderSel();panel?.update();roomEditor?.update();library?.update();}});
   actions.showStructure=()=>{if(store.getProject().roomEditor){const r=store.getProject().roomEditor;actions.select({kind:'wall',id:r.kind==='house'?(ui.activeRoom||r.rooms[0].id)+'--'+(ui.lastWall||'top'):ui.lastWall||'top'});}drawers.drawer('panel',true);$('#structurePanel').hidden=false;$('aside.right').scrollTop=0;};
   const undo=()=>{if(switching)return;editor.cancel();viewer?.cancel();if(!store.undo()) toast(tr('没有可撤销的操作','Nothing to undo'));};
@@ -42,8 +42,8 @@ export function createApplication(){
   toolbar=createToolbar({store,ui,viewport:editor.viewport,drawers,mode,undo,redo,clearLayout:actions.clearLayout,renderMeasure:editor.renderer.renderMeasure,toast,cancelInteraction:()=>{editor.cancel();viewer?.cancel();}});
   const downloads=createDownloads({store,ui,svg:$('#plan'),is3D:mode.is3D,shot:name=>viewer?.shot(name),prepare3D:async()=>{await setView('3d');if(!mode.is3D())throw Error('3D unavailable');}});
   let files;
-  const protection=createProjectProtection({store,exportProject:()=>files.exportProject(),toast});
-  const replace=(project,options)=>{editor.cancel();viewer?.cancel();ui.sel=null;store.replaceProject(project,options);};
+  const protection=createProjectProtection({store,exportProject:()=>files.exportProject(),toast,discardDrafts:()=>panel.resetDrafts()});
+  const replace=(project,options)=>{editor.cancel();viewer?.cancel();ui.sel=null;store.replaceProject(project,options);panel.resetDrafts();};
   files=createFileMenu({store,ui,downloads,isSwitching:()=>switching,toast,loaded,protection,cancelInteraction:()=>{editor.cancel();viewer?.cancel();}});
   roomEditor=createRoomEditor({store,ui,actions,cancelInteraction:()=>{editor.cancel();viewer?.cancel();},exportProject:files.exportProject,isSwitching:()=>switching,toast});
   actions.deleteOpening=roomEditor.remove;

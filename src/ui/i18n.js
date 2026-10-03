@@ -1,7 +1,7 @@
 const LANG_KEY = 'huxing-lang';
 let LANG = (() => { try { return localStorage.getItem(LANG_KEY) === 'zh' ? 'zh' : 'en'; } catch { return 'en'; } })();
 const tr = (zh, en) => LANG === 'en' ? en : zh;
-// 内置的房间 / 材料 / 家具名称存的是中文；英文界面下显示译名，用户自己改过的名称原样显示
+// Translate only known catalog labels. Restored/edited entity names have no reliable provenance.
 const NAMES_EN = {
   '主卧室':'Primary Bedroom', '主卫浴':'Primary Bath', '小孩房':"Kids' Room", '客卫浴':'Guest Bath', '洗衣阳台':'Laundry Balcony',
   '子女房':"Children's Room", '厨房':'Kitchen', '餐厅':'Dining', '过道':'Hallway', '客厅':'Living Room', '休闲阳台':'Leisure Balcony',
@@ -22,7 +22,7 @@ const NAMES_EN = {
   '蒸烤箱高柜':'Oven Tower', '烘干机':'Dryer', '空气净化器':'Air Purifier', '长书桌':'Long Desk', '办公椅':'Office Chair',
   '大书架':'Large Bookshelf', '立式钢琴':'Upright Piano', '跑步机':'Treadmill', '阅读椅':'Reading Chair', '茶桌':'Tea Table', '休闲椅':'Lounge Chair',
 };
-const nm = s => LANG === 'en' ? (NAMES_EN[s] ?? s) : s;
+const nm = (s, catalog = false) => catalog && LANG === 'en' ? (NAMES_EN[s] ?? s) : s;
 // 静态文案：元素上写 data-en / data-en-title，中文原文首次切换时存进 dataset
 function applyStaticLang(){
   document.documentElement.lang = tr('zh-CN', 'en');
@@ -30,6 +30,7 @@ function applyStaticLang(){
   document.querySelectorAll('[data-en]').forEach(el => { el.dataset.zh ??= el.textContent; el.textContent = tr(el.dataset.zh, el.dataset.en); });
   document.querySelectorAll('[data-en-title]').forEach(el => { el.dataset.zhTitle ??= el.title; el.title = tr(el.dataset.zhTitle, el.dataset.enTitle); });
   document.querySelectorAll('[data-en-short]').forEach(el=>{el.dataset.zhShort??=el.dataset.short;el.dataset.short=tr(el.dataset.zhShort,el.dataset.enShort);});
+  document.querySelectorAll('[data-en-aria-label]').forEach(el=>{el.dataset.zhAriaLabel??=el.getAttribute('aria-label');el.setAttribute('aria-label',tr(el.dataset.zhAriaLabel,el.dataset.enAriaLabel));});
   document.getElementById('langBtn').textContent = tr('EN', '中文');
 }
 

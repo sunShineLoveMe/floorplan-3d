@@ -1,0 +1,23 @@
+{
+  "build": "c50d00016a1f6eae",
+  "checks": [
+    "all-types: 606 real mesh envelopes / centers / floor / rotated projections / finite geometry",
+    "production geometry contract for all types and legal size extremes",
+    "absence survives name and unit changes",
+    "imperial height and undo/redo",
+    "zero, negative, malformed, imperial overflow and range errors cannot commit; Escape unlocks",
+    "unrelated rerender preserves invalid draft, focus and caret",
+    "replacement cancel preserves height draft; actual backup excludes it",
+    "unchanged approximate display preserves exact height and width across units",
+    "explicit blank clears to absence with undo/redo; thin height accepted",
+    "copy is independent; delete/edit/copy undo recover exact heights",
+    "rotated-independent: 1 real mesh envelopes / centers / floor / rotated projections / finite geometry",
+    "2D pose, 3D view and selection keep dimensions and center",
+    "optional height, units, errors, draft focus, clearing and precise history",
+    "failed persisted bytes stay intact, committed height downloads, retry and refresh match",
+    "height save failure, real memory backup, retry and refresh"
+  ],
+  "errors": [],
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 800.0999999999999\n- 800.1\n      ^\n\n    at file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t04-furniture-dimensions.mjs:53:174\n    at async run (file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t04-furniture-dimensions.mjs:23:323)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t04-furniture-dimensions.mjs:50:48",
+  "meshSamples": 607
+}

@@ -1,0 +1,183 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "file": "precise-metric.json",
+      "passed": true,
+      "wholeProjectEqualExceptExplicitEdits": true
+    },
+    {
+      "file": "precise-imperial.json",
+      "passed": true,
+      "wholeProjectEqualExceptExplicitEdits": true
+    },
+    {
+      "file": "jacobsen-roundtrip.json",
+      "passed": true,
+      "changedPaths": [
+        ".furniture[20].cx",
+        ".furniture[20].cy",
+        ".geometry.rooms[0].name",
+        ".rooms.room-1.name",
+        ".updatedAt"
+      ],
+      "allOtherValuesRetained": true
+    },
+    {
+      "file": "jacobsen-2d.png",
+      "passed": true,
+      "decoded": true,
+      "width": 3200,
+      "height": 1111,
+      "sampleColors": 1425,
+      "extrema": [
+        [
+          43,
+          255
+        ],
+        [
+          40,
+          255
+        ],
+        [
+          27,
+          255
+        ]
+      ]
+    },
+    {
+      "file": "jacobsen-3d.png",
+      "passed": true,
+      "decoded": true,
+      "width": 856,
+      "height": 846,
+      "sampleColors": 1439,
+      "extrema": [
+        [
+          0,
+          240
+        ],
+        [
+          3,
+          240
+        ],
+        [
+          3,
+          239
+        ]
+      ]
+    },
+    {
+      "file": "cmu-roundtrip.json",
+      "passed": true,
+      "changedPaths": [
+        ".furniture[14].cx",
+        ".furniture[14].cy",
+        ".geometry.rooms[0].name",
+        ".rooms.room-1.name",
+        ".updatedAt"
+      ],
+      "allOtherValuesRetained": true
+    },
+    {
+      "file": "cmu-2d.png",
+      "passed": true,
+      "decoded": true,
+      "width": 3200,
+      "height": 4493,
+      "sampleColors": 1998,
+      "extrema": [
+        [
+          22,
+          255
+        ],
+        [
+          40,
+          255
+        ],
+        [
+          27,
+          255
+        ]
+      ]
+    },
+    {
+      "file": "cmu-3d.png",
+      "passed": true,
+      "decoded": true,
+      "width": 856,
+      "height": 846,
+      "sampleColors": 1775,
+      "extrema": [
+        [
+          0,
+          241
+        ],
+        [
+          6,
+          241
+        ],
+        [
+          6,
+          239
+        ]
+      ]
+    },
+    {
+      "file": "plan-f-roundtrip.json",
+      "passed": true,
+      "changedPaths": [
+        ".furniture[12].cx",
+        ".furniture[12].cy",
+        ".geometry.rooms[0].name",
+        ".rooms.room-1.name",
+        ".updatedAt"
+      ],
+      "allOtherValuesRetained": true
+    },
+    {
+      "file": "plan-f-2d.png",
+      "passed": true,
+      "decoded": true,
+      "width": 3200,
+      "height": 2522,
+      "sampleColors": 1875,
+      "extrema": [
+        [
+          22,
+          255
+        ],
+        [
+          40,
+          255
+        ],
+        [
+          36,
+          255
+        ]
+      ]
+    },
+    {
+      "file": "plan-f-3d.png",
+      "passed": true,
+      "decoded": true,
+      "width": 856,
+      "height": 846,
+      "sampleColors": 1905,
+      "extrema": [
+        [
+          0,
+          248
+        ],
+        [
+          0,
+          247
+        ],
+        [
+          0,
+          247
+        ]
+      ]
+    }
+  ]
+}

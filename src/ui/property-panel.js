@@ -15,7 +15,8 @@ const {drawer,closeDrawers}=drawers;
 const mutate=fn=>store.mutate(fn);
 const length=(mm,style='feet')=>formatLengthMm(mm,store.getProject().units.display,{style});
 const surface=m2=>formatAreaM2(m2,store.getProject().units.display);
-let signature,context,lastEntity={};
+let signature,context,lastEntity={},draftProjectId;
+const heightDrafts=new Map();
 function syncUnitLock(){
  if(document.querySelector('dialog[open]'))return;
  const locked=!!document.activeElement?.matches('#panel [data-length], #passagePanel [data-length]')||!!document.querySelector('#panel [data-length][aria-invalid=true], #passagePanel [data-length][aria-invalid=true]');
@@ -29,7 +30,20 @@ function renderPanel(){
   const key=project.id+':'+(ui.sel?.kind||'none')+':'+(ui.sel?.id||'')+':'+project.units.display;
   const next=JSON.stringify([LANG,key,project.furniture,project.rooms,project.geometry,project.measures,project.demolished]);
   if(next===signature)return;
-  const drafts=key===context?captureInputs(p):[],prior=lastEntity;
+  const previousInputs=captureInputs(p),prior=lastEntity;
+  const heightDraft=previousInputs.find(d=>d.id==='fH');
+  if(context&&heightDraft){
+    if(heightDraft.dirty)heightDrafts.set(context,{draft:heightDraft,saved:prior.height});
+    else heightDrafts.delete(context);
+  }
+  if(draftProjectId!==project.id){heightDrafts.clear();draftProjectId=project.id;}
+  // Switching to a duplicate never applies the original item's draft. Undoing
+  // copy/delete can recover it only for that item and unchanged saved height.
+  const drafts=key===context?previousInputs:[],cached=heightDrafts.get(key);
+  const retainedHeight=key!==context&&cached&&cached.saved===current.height;
+  if(cached&&cached.saved!==current.height)heightDrafts.delete(key);
+  else if(key!==context&&cached)drafts.push({...cached.draft,focused:false});
+  while(heightDrafts.size>150)heightDrafts.delete(heightDrafts.keys().next().value);
   const detailsOpen=p.querySelector('#projectDetails')?.open||false;
   signature=next;context=key;lastEntity=JSON.parse(JSON.stringify(current));
   const details=`<details id="projectDetails"><summary class="btn">${tr('项目详情 / 高级','Project details / Advanced')}</summary>${overviewPanel()}</details>`;
@@ -39,8 +53,9 @@ function renderPanel(){
   else {p.innerHTML=`<section class="empty-properties"><h3>${tr('属性','Properties')}</h3><p class="muted">${tr('选择房间、家具或门窗，查看并修改属性。','Select a room, furniture item or opening to edit its properties.')}</p><button class="btn" id="openRoomSettings">${tr('房间设置 / 门窗','Room settings / openings')}</button></section>`+details;$('#openRoomSettings').onclick=()=>actions.showStructure();}
   bindOverview();
   p.querySelector('#projectDetails').open=detailsOpen;
-  const fields={fName:'name',fW:'w',fD:'d',fX:'cx',fY:'cy',fR:'rot',fC:'color',rName:'name'};
+  const fields={fName:'name',fW:'w',fD:'d',fH:'height',fX:'cx',fY:'cy',fR:'rot',fC:'color',rName:'name'};
   restoreInputs(p,drafts,id=>{
+    if(id==='fH'&&retainedHeight)return true;
     const zoneField=/^zUi(\d+)(Width|Depth|Offset)$/.exec(id);
     if(!zoneField)return prior[fields[id]]===current[fields[id]];
     const before=prior.useZones?.[+zoneField[1]],after=current.useZones?.[+zoneField[1]],field={Width:'widthMm',Depth:'depthMm',Offset:'offsetMm'}[zoneField[2]];
@@ -51,7 +66,7 @@ function renderPanel(){
 function overviewPanel(){
   const rows = store.getProject().geometry.rooms.map(r => {
     const st = store.getProject().rooms[r.id];
-    return `<tr class="click" data-room="${r.id}"><td><span class="sw" style="background:${MATS[st.mat].sw}"></span>${esc(nm(st.name))}${r.counted===false?' <span class="muted">*</span>':''}</td>
+    return `<tr class="click" data-room="${r.id}"><td><button type="button" class="btn" data-select-room="${r.id}"><span class="sw" style="background:${MATS[st.mat].sw}"></span>${esc(nm(st.name))}</button>${r.counted===false?' <span class="muted">*</span>':''}</td>
       <td class="r">${surface(roomArea(r))}</td></tr>`;
   }).join('');
   const tot = store.getProject().geometry.rooms.filter(r => r.counted !== false).reduce((a,r) => a + roomArea(r), 0);
@@ -59,7 +74,7 @@ function overviewPanel(){
   store.getProject().geometry.rooms.forEach(r => { const m = store.getProject().rooms[r.id].mat; byMat[m] = (byMat[m]||0) + roomArea(r); });
   let cost = 0;
   const matRows = Object.entries(byMat).map(([m,a]) => { const c = a*MATS[m].price*1.05; cost += c;
-    return `<tr><td><span class="sw" style="background:${MATS[m].sw}"></span>${nm(MATS[m].name)}</td><td class="r">${surface(a)}</td><td class="r">¥${Math.round(c).toLocaleString()}</td></tr>`; }).join('');
+    return `<tr><td><span class="sw" style="background:${MATS[m].sw}"></span>${nm(MATS[m].name,true)}</td><td class="r">${surface(a)}</td><td class="r">¥${Math.round(c).toLocaleString()}</td></tr>`; }).join('');
   const dem = store.getProject().demolished.map(id => store.getProject().geometry.walls[+id.slice(1)]);
   const demLen = dem.reduce((a,w) => a + Math.max(w[2]-w[0], w[3]-w[1]), 0) / 1000;
   return `
@@ -124,7 +139,7 @@ function renderFab(){
 
 function roomPanel(r){
   const st = store.getProject().rooms[r.id], a = roomArea(r), [x0,y0,x1,y1] = bbox(r.poly), inside = store.getProject().furniture.filter(f => f.cx>x0&&f.cx<x1&&f.cy>y0&&f.cy<y1);
-  const mats = Object.entries(MATS).map(([k,m]) => `<button class="mat ${k===st.mat?'on':''}" data-mat="${k}"><i style="background:${m.sw}"></i><span>${nm(m.name)}</span></button>`).join('');
+  const mats = Object.entries(MATS).map(([k,m]) => `<button class="mat ${k===st.mat?'on':''}" data-mat="${k}"><i style="background:${m.sw}"></i><span>${nm(m.name,true)}</span></button>`).join('');
   return `<section><h3>${tr('房间','Room')}</h3>
     <button class="btn" id="roomDimensions">${tr('编辑净尺寸 / 门窗','Edit dimensions / openings')}</button><div class="form"><label class="full">${tr('名称','Name')}<input id="rName" maxlength="500" value="${esc(nm(st.name))}"></label></div>
     <label><input type="checkbox" id="hideRoomLabel" ${st.labelHidden?'checked':''}>${tr('隐藏此房间标签（含导出图）','Hide this room label (also in exports)')}</label><div class="stats" style="margin-top:10px">
@@ -136,7 +151,7 @@ function roomPanel(r){
   <section><h3>${tr('地面材料','Flooring')}</h3><div class="mats">${mats}</div>
     </section>
   <section><h3>${tr('房间内家具','Furniture in room')} <small>${tr(`${inside.length} 件`, `${inside.length} items`)}</small></h3>
-    <table>${inside.map(f => `<tr class="click" data-fid="${f.id}"><td>${esc(nm(f.name))}</td><td class="r muted">${length(f.w,'inches')} × ${length(f.d,'inches')}</td></tr>`).join('') || `<tr><td class="muted">${tr('暂无','None')}</td></tr>`}</table>
+    <table>${inside.map(f => `<tr class="click" data-fid="${f.id}"><td><button type="button" class="btn" data-select-furniture="${f.id}">${esc(nm(f.name))}</button></td><td class="r muted">${length(f.w,'inches')} × ${length(f.d,'inches')}</td></tr>`).join('') || `<tr><td class="muted">${tr('暂无','None')}</td></tr>`}</table>
     <div class="actions"><button class="btn" id="back">${tr('← 返回总览','← Back to overview')}</button></div></section>`;
 }
 function bindRoomPanel(){
@@ -162,6 +177,8 @@ function furnPanel(f){
       <h4 class="field-group">${tr('尺寸','Size')}</h4>
       ${lengthField('fW',tr('宽','Width'),f.w,store.getProject().units.display)}
       ${lengthField('fD',tr('深','Depth'),f.d,store.getProject().units.display)}
+      ${lengthField('fH',tr('高度（可选）','Height (optional)'),f.height,store.getProject().units.display)}
+      <p class="full muted">${tr('预设仅为示例。请填厂商完整外廓宽 / 深 / 高；不会推断来源。高度留空并离开字段恢复未指定，可撤销；未指定高度仅为造型示例。3D 包含装饰，按完整外廓缩放；以地面为底部，不表示实际安装高度。','Presets are examples. Enter the manufacturer’s full outer width, depth and height; dimensions are not verified. Leave height blank and leave the field to restore Unspecified (undoable). Unspecified height is a visual example. 3D includes decorative parts scaled within the outer dimensions, with its base at floor level; mounting elevation is not represented.')}</p>
       <h4 class="field-group">${tr('位置（家具中心）','Position (item center)')}</h4>
       ${lengthField('fX',tr('中心','Center')+' X',f.cx,store.getProject().units.display)}
       ${lengthField('fY',tr('中心','Center')+' Y',f.cy,store.getProject().units.display)}
@@ -181,17 +198,17 @@ function furnPanel(f){
       <button class="btn" id="aTop">${tr('置于顶层','Bring to front')}</button><button class="btn" id="aBot">${tr('置于底层','Send to back')}</button>
       <button class="btn danger" id="aDel">${tr('删除家具','Delete item')}</button><button class="btn" id="back">${tr('← 返回','← Back')}</button>
     </div></section>
-  <section class="muted" style="font-size:12px">${tr('拖动家具移动；拖动上方圆点旋转；拖动右下角方块调整尺寸。开启「贴墙吸附」后靠近墙面会自动贴齐。', 'Drag to move; drag the top dot to rotate; drag the bottom-right square to resize. With "Wall snap" on, items snap flush to nearby walls.')}</section>`;
+  <section class="muted" style="font-size:12px">${tr('拖动家具移动；上方圆点旋转；右下方块改尺寸。墙吸附仅影响拖动贴墙，关闭后仍按单位网格移动（公制 10 mm，英制 1/4 in）。中心 X/Y 输入精确保留，不吸附。', 'Drag to move; the top dot rotates; the bottom-right square resizes. Wall snap aligns dragged items to nearby wall edges. Off keeps the movement grid (Metric 10 mm; Imperial 1/4 in). Center X/Y inputs keep exact values without snapping.')}</section>`;
 }
 function bindFurnPanel(f){
   const upd = (fn) => mutate(() => { const g = getF(f.id); if (g) fn(g); });
   bindUseZoneFields(f,store.getProject().units.display,upd,syncUnitLock);
   $('#fName').onchange = e => upd(g => g.name = e.target.value.trim() || g.name);
-  for(const [id,key] of [['fW','w'],['fD','d'],['fX','cx'],['fY','cy']]){
-    const input=$('#'+id),binding=bindLengthField(input,f[key],store.getProject().units.display,()=>['w','d'].includes(key)?[50,1e7]:[-1e7,1e7]);
+  for(const [id,key] of [['fW','w'],['fD','d'],['fH','height'],['fX','cx'],['fY','cy']]){
+    const input=$('#'+id),binding=bindLengthField(input,f[key],store.getProject().units.display,()=>key==='height'?[Number.MIN_VALUE,1e7]:['w','d'].includes(key)?[50,1e7]:[-1e7,1e7],{optional:key==='height'});
     input.onfocus=()=>{ $('#projectUnits').disabled=true;$('#unitLock').textContent=tr('结束尺寸编辑后可切换','Finish dimension editing to change units'); };
     input.onblur=syncUnitLock;
-    input.onchange=()=>{const result=binding.read();if(result.ok)upd(g=>g[key]=result.mm);};
+    input.onchange=()=>{const result=binding.read();if(result.ok&&result.mm!==f[key])upd(g=>{if(result.mm===undefined)delete g[key];else g[key]=result.mm;});};
     input.onkeydown=e=>{if(e.key==='Escape'){e.preventDefault();binding.reset();input.blur();}if(e.key==='Enter'){e.preventDefault();input.blur();}};
   }
   $('#fPassage').onchange=e=>upd(g=>g.clearance={...g.clearance,mode:e.target.value});
@@ -207,5 +224,5 @@ function bindFurnPanel(f){
 }
 
 
-return {update:renderPanel,dispose(){ $("#panel").replaceChildren(); $("#fab").replaceChildren(); }};
+return {update:renderPanel,resetDrafts(){heightDrafts.clear();context=signature=undefined;renderPanel();},dispose(){heightDrafts.clear(); $("#panel").replaceChildren(); $("#fab").replaceChildren(); }};
 }

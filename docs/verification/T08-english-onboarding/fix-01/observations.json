@@ -1,0 +1,20 @@
+{
+  "help": "Plan with your measurements\n\nThe starting Living room is an editable 12 ft × 10 ft × 8 ft example. You can edit it directly; you do not need to create another room.\n\nRoom and openings\n\nLibrary → Room → Room / openings → Edit dimensions / position. Enter net inside width, depth and ceiling height. Add room extends this floor; New project replaces the entire project after review. Cancel keeps your project.\n\nChoose a wall with its listed start → end direction. Door/window offset is from that start corner to the near edge of the opening, along the arrow.\n\nFurniture and position\n\nSearch the library and click, Enter or Space to add. In Properties enter the full product outer width and depth; mattress presets exclude the frame. Leave unknown height blank. Unspecified 3D height is only a visual example. Names you enter or restore are kept as written.\n\nCenter X/Y locates the item center in the plan, without snapping. Wall snap only affects dragging; Off still keeps the movement grid (Metric 10 mm; Feet & inches 1/4 in). Rotation is editable in Properties.\n\nReview the remaining space\n\nProperties shows door swing conflicts, Passage & spacing and Furniture use zones. Adjust dimensions or center position, then recheck. Targets and use zones are planning assumptions. A clear plan does not verify actual door motion, height clearance, simultaneous use or building-code compliance.\n\nSave, reopen and back up\n\nCheck the save status in the header or Export / File. Saved on this device means this browser’s site data, with no cloud copy. If saving fails, use Export this window (.json) and Retry device save. Export plan JSON creates an independent backup; check the downloaded file. Open project (.json) restores it after replacement review.\n\nReference drawing and output\n\nImport reference drawing (PDF / image) adds a drawing to calibrate and model manually; it does not restore project JSON or recognize rooms automatically. Export image downloads the current PNG; Export / File also offers Print / Save PDF.\n\nDrag furniture onto the plan · scroll to zoom · drag empty space to pan · T for 3D\n\nEscape closes Help and returns focus. Reopen Help whenever you need it. Keyboard shortcuts act on the canvas; form fields keep their own keys.\n\nClose Help",
+  "newLabel": "New project",
+  "name": "客厅",
+  "draft": "unknown",
+  "bounds": {
+    "x": 8,
+    "y": 216,
+    "width": 304,
+    "height": 248
+  },
+  "existingFurnitureRow": {
+    "tag": "TR",
+    "tabIndex": -1,
+    "children": [
+      "TD",
+      "TD"
+    ]
+  }
+}

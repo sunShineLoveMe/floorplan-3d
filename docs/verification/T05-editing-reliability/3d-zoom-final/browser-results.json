@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "baseline": false,
+  "build": "cd2cb1233220bc6e",
+  "browser": "154.0.8037.97",
+  "checks": [
+    {
+      "name": "12 native WebGL wall/grid samples with complete Undo/Redo",
+      "detail": {
+        "samples": 12
+      }
+    },
+    {
+      "name": "C02 native 3D top-view snapping in both units and 0/90/37 degree footprints"
+    }
+  ],
+  "failures": [],
+  "errors": [],
+  "exceptionKinds": {
+    "captureLoss": "native mouse down/move plus browser releasePointerCapture API, actual lostpointercapture event"
+  }
+}

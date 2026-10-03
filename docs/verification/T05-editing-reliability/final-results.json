@@ -1,0 +1,153 @@
+{
+  "passed": true,
+  "batch": "T05 editing reliability",
+  "date": "2026-10-03",
+  "build": "cd2cb1233220bc6e",
+  "browser": "Chromium 154.0.8037.97",
+  "workspace": {
+    "branch": "feat/ui-refactor",
+    "head": "b0b679750aa08346d34f44fd49ac3dd029e85e01",
+    "remoteHeadVerified": "b0b679750aa08346d34f44fd49ac3dd029e85e01",
+    "continuedExistingWorkspace": true,
+    "committed": false,
+    "pushed": false,
+    "merged": false,
+    "deployed": false,
+    "forbiddenFileReadOrModified": false
+  },
+  "confirmedDefects": [
+    {
+      "id": "T05-001",
+      "priority": "P1",
+      "resolved": true
+    },
+    {
+      "id": "T05-002",
+      "priority": "P1",
+      "resolved": true
+    },
+    {
+      "id": "T05-003",
+      "priority": "P1",
+      "resolved": true
+    },
+    {
+      "id": "T05-004",
+      "priority": "P1",
+      "resolved": true
+    },
+    {
+      "id": "T05-005",
+      "priority": "P1",
+      "resolved": true
+    },
+    {
+      "id": "T05-006",
+      "priority": "P1",
+      "resolved": true
+    },
+    {
+      "id": "T05-007",
+      "priority": "P2",
+      "resolved": true
+    }
+  ],
+  "unitTests": {
+    "passed": 144,
+    "failed": 0,
+    "path": "unit-tests.txt"
+  },
+  "browserReports": [
+    {
+      "path": "final-02/browser-results.json",
+      "build": "cd2cb1233220bc6e",
+      "checks": 31,
+      "passed": true,
+      "classification": "native operations with explicitly labelled supplemental exception sequences"
+    },
+    {
+      "path": "3d-zoom-final/browser-results.json",
+      "build": "cd2cb1233220bc6e",
+      "checks": 2,
+      "passed": true,
+      "classification": "native browser operations"
+    },
+    {
+      "path": "t04-final-02/browser-results.json",
+      "build": "cd2cb1233220bc6e",
+      "checks": 30,
+      "passed": true,
+      "classification": "native browser operations"
+    },
+    {
+      "path": "height-drafts-final-02/browser-results.json",
+      "build": "cd2cb1233220bc6e",
+      "checks": 4,
+      "passed": true,
+      "classification": "native browser operations"
+    },
+    {
+      "path": "height-interactions-final-02/browser-results.json",
+      "build": "cd2cb1233220bc6e",
+      "checks": 4,
+      "passed": true,
+      "classification": "native browser operations"
+    },
+    {
+      "path": "t07-final-02/browser-results.json",
+      "build": "cd2cb1233220bc6e",
+      "checks": 46,
+      "passed": true,
+      "classification": "native browser operations"
+    },
+    {
+      "path": "use-zones-final-02/browser-results.json",
+      "build": "cd2cb1233220bc6e",
+      "checks": 27,
+      "passed": true,
+      "classification": "native browser operations"
+    }
+  ],
+  "registeredBrowserChecks": 144,
+  "t05RegisteredChecks": 33,
+  "regressionRegisteredChecks": 111,
+  "nativeSnapSamples": {
+    "2d": 24,
+    "3d": 24,
+    "rotations": [
+      0,
+      90,
+      37
+    ],
+    "units": [
+      "metric",
+      "imperial"
+    ],
+    "cameraZoomRuns": 2
+  },
+  "nativeResizeFrameSamples": 6,
+  "cancellationSequences": 15,
+  "meshSamples": 656,
+  "independentDownloads": "independent-download-results.json",
+  "independentDownloadChecks": 11,
+  "exceptionClassification": {
+    "captureLoss": "Native mouse down/move with browser releasePointerCapture API; actual lostpointercapture event, not physical hardware loss",
+    "pointercancelAndBlur": "DOM synthetic supplements after native pointer gestures",
+    "secondTouch": "CDP simulated touch, not physical device acceptance",
+    "contenteditable": "Supplemental DOM setup with native keyboard",
+    "preferencesDuringPreview": "Supplemental UI click during held native mouse gesture"
+  },
+  "runtime": {
+    "isolatedContextsClosed": true,
+    "own8095ServiceStopped": true,
+    "existing8086Preserved": true
+  },
+  "unverified": [
+    "Safari / Edge",
+    "physical touch devices / printers and different GPU",
+    "strict simultaneous storage writes and long sessions",
+    "arbitrary perspective/zoom constant screen tolerance, exact diagonal wall snap",
+    "real door/drawer motion, elevation, vertical collisions, concurrent use and regulations",
+    "original residential full measured dimensions"
+  ]
+}

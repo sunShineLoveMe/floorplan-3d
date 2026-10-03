@@ -1,0 +1,7 @@
+{
+  "passed": false,
+  "superseded": true,
+  "completedEarlierBuild": true,
+  "build": "77191c98b6d7e980",
+  "reason": "Completed before latest native right-button defect fix; retained, excluded from final count."
+}

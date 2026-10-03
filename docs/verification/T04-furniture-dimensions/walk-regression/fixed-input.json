@@ -1,0 +1,197 @@
+{
+  "format": "floorplan-3d",
+  "version": 2,
+  "id": "p-murw7fis-b7rtis1c",
+  "name": "My room",
+  "createdAt": "2026-10-03T04:29:21.364Z",
+  "updatedAt": "2026-10-03T04:29:21.364Z",
+  "units": {
+    "internal": "mm",
+    "display": "metric"
+  },
+  "layout": {
+    "id": "layout-p-murw7fis-b7rtis1c",
+    "name": "Layout A"
+  },
+  "view": {
+    "mode": "2d",
+    "layers": {
+      "dims": true,
+      "labels": true,
+      "furn": true,
+      "grid": false,
+      "bearing": false,
+      "wallSnap": true
+    }
+  },
+  "roomEditor": {
+    "kind": "house",
+    "floorSlab": true,
+    "height": 2800,
+    "wallThickness": 120,
+    "rooms": [
+      {
+        "id": "room-1",
+        "x": 0,
+        "y": 0,
+        "width": 4000,
+        "depth": 4000,
+        "obstacles": [
+          {
+            "id": "thin",
+            "name": "Thin test column",
+            "x": 0,
+            "y": 1500,
+            "width": 4000,
+            "depth": 1,
+            "height": 2800
+          }
+        ]
+      }
+    ],
+    "openings": []
+  },
+  "geometry": {
+    "height": 2800,
+    "origin": [
+      2000,
+      2000
+    ],
+    "bounds": {
+      "x": -1220,
+      "y": -1220,
+      "w": 6440,
+      "h": 6440
+    },
+    "rooms": [
+      {
+        "id": "room-1",
+        "name": "My room",
+        "mat": "wood",
+        "poly": [
+          [
+            0,
+            0
+          ],
+          [
+            4000,
+            0
+          ],
+          [
+            4000,
+            4000
+          ],
+          [
+            0,
+            4000
+          ]
+        ],
+        "at": [
+          2000,
+          2750.5
+        ],
+        "usableAreaM2": 15.996
+      }
+    ],
+    "obstacles": [
+      {
+        "id": "thin",
+        "roomId": "room-1",
+        "name": "Thin test column",
+        "rect": [
+          0,
+          1500,
+          4000,
+          1501
+        ],
+        "height": 2800
+      }
+    ],
+    "walls": [
+      [
+        -120,
+        -120,
+        4120,
+        0,
+        "n"
+      ],
+      [
+        4000,
+        0,
+        4120,
+        4000,
+        "n"
+      ],
+      [
+        -120,
+        4000,
+        4120,
+        4120,
+        "n"
+      ],
+      [
+        -120,
+        0,
+        0,
+        4000,
+        "n"
+      ]
+    ],
+    "wallIds": [
+      "room-1--top",
+      "room-1--right",
+      "room-1--bottom",
+      "room-1--left"
+    ],
+    "floorSlabs": [
+      [
+        -120,
+        -120,
+        4120,
+        4120
+      ]
+    ],
+    "doors": [],
+    "windows": [],
+    "slides": [],
+    "lintels": [],
+    "dimensions": [
+      {
+        "horizontal": true,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          4000
+        ]
+      },
+      {
+        "horizontal": false,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          4000
+        ]
+      }
+    ],
+    "walkStart": {
+      "position": [
+        2000,
+        2750.5
+      ],
+      "target": [
+        2000,
+        1750.5
+      ]
+    },
+    "entry": null
+  },
+  "furniture": [],
+  "rooms": {
+    "room-1": {
+      "name": "My room",
+      "mat": "wood"
+    }
+  },
+  "demolished": [],
+  "measures": []
+}

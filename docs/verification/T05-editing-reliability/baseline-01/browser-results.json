@@ -1,0 +1,554 @@
+{
+  "passed": false,
+  "baseline": true,
+  "build": "1891ea7378a262e2",
+  "browser": "154.0.8037.97",
+  "checks": [
+    {
+      "name": "C01 exact centers, no-op fields, negative mm, imperial conversion and reviewed roundtrip"
+    },
+    {
+      "name": "C06 unchanged room Apply does not insert a history entry"
+    }
+  ],
+  "failures": [
+    {
+      "name": "C03 small resize does not expand an unchanged width to 100 mm",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n100 !== 50\n\n    at file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t05-editing-reliability.mjs:28:335\n    at async test (file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t05-editing-reliability.mjs:22:395)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t05-editing-reliability.mjs:27:1",
+      "state": {
+        "format": "floorplan-3d",
+        "version": 2,
+        "id": "p-murwa4pu-9e9d1vvq",
+        "name": "My room",
+        "createdAt": "2026-10-03T04:31:27.330Z",
+        "updatedAt": "2026-10-03T09:47:34.418Z",
+        "units": {
+          "internal": "mm",
+          "display": "metric"
+        },
+        "layout": {
+          "id": "layout-p-murwa4pu-9e9d1vvq",
+          "name": "Layout A"
+        },
+        "view": {
+          "mode": "2d",
+          "layers": {
+            "dims": true,
+            "labels": true,
+            "furn": true,
+            "grid": false,
+            "bearing": false,
+            "wallSnap": true
+          }
+        },
+        "roomEditor": {
+          "kind": "rectangle",
+          "roomId": "room-1",
+          "width": 5000,
+          "depth": 4000,
+          "height": 2800,
+          "wallThickness": 120,
+          "openings": []
+        },
+        "geometry": {
+          "height": 2800,
+          "origin": [
+            2500,
+            2000
+          ],
+          "bounds": {
+            "x": -720,
+            "y": -720,
+            "w": 6440,
+            "h": 5440
+          },
+          "rooms": [
+            {
+              "id": "room-1",
+              "name": "My room",
+              "mat": "wood",
+              "poly": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  5000,
+                  0
+                ],
+                [
+                  5000,
+                  4000
+                ],
+                [
+                  0,
+                  4000
+                ]
+              ],
+              "at": [
+                2500,
+                2000
+              ]
+            }
+          ],
+          "walls": [
+            [
+              -120,
+              -120,
+              5120,
+              0,
+              "n"
+            ],
+            [
+              5000,
+              0,
+              5120,
+              4000,
+              "n"
+            ],
+            [
+              -120,
+              4000,
+              5120,
+              4120,
+              "n"
+            ],
+            [
+              -120,
+              0,
+              0,
+              4000,
+              "n"
+            ]
+          ],
+          "wallIds": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ],
+          "doors": [],
+          "windows": [],
+          "slides": [],
+          "lintels": [],
+          "dimensions": [
+            {
+              "horizontal": true,
+              "at": -420,
+              "start": 0,
+              "segments": [
+                5000
+              ]
+            },
+            {
+              "horizontal": false,
+              "at": -420,
+              "start": 0,
+              "segments": [
+                4000
+              ]
+            }
+          ],
+          "walkStart": {
+            "position": [
+              2500,
+              2800
+            ],
+            "target": [
+              2500,
+              1200
+            ]
+          },
+          "entry": null
+        },
+        "furniture": [
+          {
+            "id": "dimension-test",
+            "type": "bed",
+            "name": "Outer dimensions - test parameters",
+            "w": 100,
+            "d": 210,
+            "cx": 2425,
+            "cy": 2075,
+            "rot": 0,
+            "color": "#c9d6df",
+            "height": 876.123456789
+          }
+        ],
+        "rooms": {
+          "room-1": {
+            "name": "My room",
+            "mat": "wood"
+          }
+        },
+        "demolished": [],
+        "measures": []
+      },
+      "screenshot": "docs/verification/T05-editing-reliability/baseline-01/01-failure.png"
+    },
+    {
+      "name": "C04 actual pointer capture loss cancels 2D preview and the next gesture works",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n... Skipped lines\n\n  {\n    createdAt: '2026-10-03T04:31:27.330Z',\n    demolished: [],\n    format: 'floorplan-3d',\n    furniture: [\n      {\n        color: '#c9d6df',\n+       cx: 2670,\n+       cy: 1350,\n-       cx: 2400,\n-       cy: 2000,\n        d: 2032.987654321,\n        height: 876.123456789,\n        id: 'dimension-test',\n        name: 'Outer dimensions - test parameters',\n        rot: 0,\n...\n    },\n+   updatedAt: '2026-10-03T09:47:35.134Z',\n-   updatedAt: '2026-10-03T09:47:34.842Z',\n    version: 2,\n    view: {\n      layers: {\n        bearing: false,\n        dims: true,\n\n    at exact (file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t05-editing-reliability.mjs:11:27)\n    at file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t05-editing-reliability.mjs:31:441\n    at async test (file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t05-editing-reliability.mjs:22:395)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t05-editing-reliability.mjs:30:1",
+      "state": {
+        "format": "floorplan-3d",
+        "version": 2,
+        "id": "p-murwa4pu-9e9d1vvq",
+        "name": "My room",
+        "createdAt": "2026-10-03T04:31:27.330Z",
+        "updatedAt": "2026-10-03T09:47:35.134Z",
+        "units": {
+          "internal": "mm",
+          "display": "metric"
+        },
+        "layout": {
+          "id": "layout-p-murwa4pu-9e9d1vvq",
+          "name": "Layout A"
+        },
+        "view": {
+          "mode": "2d",
+          "layers": {
+            "dims": true,
+            "labels": true,
+            "furn": true,
+            "grid": false,
+            "bearing": false,
+            "wallSnap": true
+          }
+        },
+        "roomEditor": {
+          "kind": "rectangle",
+          "roomId": "room-1",
+          "width": 5000,
+          "depth": 4000,
+          "height": 2800,
+          "wallThickness": 120,
+          "openings": []
+        },
+        "geometry": {
+          "height": 2800,
+          "origin": [
+            2500,
+            2000
+          ],
+          "bounds": {
+            "x": -720,
+            "y": -720,
+            "w": 6440,
+            "h": 5440
+          },
+          "rooms": [
+            {
+              "id": "room-1",
+              "name": "My room",
+              "mat": "wood",
+              "poly": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  5000,
+                  0
+                ],
+                [
+                  5000,
+                  4000
+                ],
+                [
+                  0,
+                  4000
+                ]
+              ],
+              "at": [
+                2500,
+                2000
+              ]
+            }
+          ],
+          "walls": [
+            [
+              -120,
+              -120,
+              5120,
+              0,
+              "n"
+            ],
+            [
+              5000,
+              0,
+              5120,
+              4000,
+              "n"
+            ],
+            [
+              -120,
+              4000,
+              5120,
+              4120,
+              "n"
+            ],
+            [
+              -120,
+              0,
+              0,
+              4000,
+              "n"
+            ]
+          ],
+          "wallIds": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ],
+          "doors": [],
+          "windows": [],
+          "slides": [],
+          "lintels": [],
+          "dimensions": [
+            {
+              "horizontal": true,
+              "at": -420,
+              "start": 0,
+              "segments": [
+                5000
+              ]
+            },
+            {
+              "horizontal": false,
+              "at": -420,
+              "start": 0,
+              "segments": [
+                4000
+              ]
+            }
+          ],
+          "walkStart": {
+            "position": [
+              2500,
+              2800
+            ],
+            "target": [
+              2500,
+              1200
+            ]
+          },
+          "entry": null
+        },
+        "furniture": [
+          {
+            "id": "dimension-test",
+            "type": "bed",
+            "name": "Outer dimensions - test parameters",
+            "w": 1524.123456789,
+            "d": 2032.987654321,
+            "cx": 2670,
+            "cy": 1350,
+            "rot": 0,
+            "color": "#c9d6df",
+            "height": 876.123456789
+          }
+        ],
+        "rooms": {
+          "room-1": {
+            "name": "My room",
+            "mat": "wood"
+          }
+        },
+        "demolished": [],
+        "measures": []
+      },
+      "screenshot": "docs/verification/T05-editing-reliability/baseline-01/02-failure.png"
+    },
+    {
+      "name": "C05 Properties and library button focus isolate model shortcuts",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n... Skipped lines\n\n  {\n    createdAt: '2026-10-03T04:31:27.330Z',\n    demolished: [],\n    format: 'floorplan-3d',\n    furniture: [\n      {\n        color: '#c9d6df',\n+       cx: 2410,\n-       cx: 2400,\n        cy: 2000,\n        d: 2032.987654321,\n        height: 876.123456789,\n        id: 'dimension-test',\n        name: 'Outer dimensions - test parameters',\n+       rot: 90,\n-       rot: 0,\n        type: 'bed',\n        w: 1524.123456789\n      },\n+     {\n+       color: '#c9d6df',\n+       cx: 2610,\n+       cy: 2200,\n+       d: 2032.987654321,\n+       height: 876.123456789,\n+       id: 'fmus7kos31',\n+       name: 'Outer dimensions - test parameters',\n+       rot: 90,\n+       type: 'bed',\n+       w: 1524.123456789\n+     }\n    ],\n    geometry: {\n      bounds: {\n        h: 5440,\n        w: 6440,\n...\n    },\n+   updatedAt: '2026-10-03T09:47:35.667Z',\n-   updatedAt: '2026-10-03T09:47:35.538Z',\n    version: 2,\n    view: {\n      layers: {\n        bearing: false,\n        dims: true,\n\n    at exact (file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t05-editing-reliability.mjs:11:27)\n    at file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t05-editing-reliability.mjs:34:175\n    at async test (file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t05-editing-reliability.mjs:22:395)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t05-editing-reliability.mjs:33:1",
+      "state": {
+        "format": "floorplan-3d",
+        "version": 2,
+        "id": "p-murwa4pu-9e9d1vvq",
+        "name": "My room",
+        "createdAt": "2026-10-03T04:31:27.330Z",
+        "updatedAt": "2026-10-03T09:47:35.667Z",
+        "units": {
+          "internal": "mm",
+          "display": "metric"
+        },
+        "layout": {
+          "id": "layout-p-murwa4pu-9e9d1vvq",
+          "name": "Layout A"
+        },
+        "view": {
+          "mode": "2d",
+          "layers": {
+            "dims": true,
+            "labels": true,
+            "furn": true,
+            "grid": false,
+            "bearing": false,
+            "wallSnap": true
+          }
+        },
+        "roomEditor": {
+          "kind": "rectangle",
+          "roomId": "room-1",
+          "width": 5000,
+          "depth": 4000,
+          "height": 2800,
+          "wallThickness": 120,
+          "openings": []
+        },
+        "geometry": {
+          "height": 2800,
+          "origin": [
+            2500,
+            2000
+          ],
+          "bounds": {
+            "x": -720,
+            "y": -720,
+            "w": 6440,
+            "h": 5440
+          },
+          "rooms": [
+            {
+              "id": "room-1",
+              "name": "My room",
+              "mat": "wood",
+              "poly": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  5000,
+                  0
+                ],
+                [
+                  5000,
+                  4000
+                ],
+                [
+                  0,
+                  4000
+                ]
+              ],
+              "at": [
+                2500,
+                2000
+              ]
+            }
+          ],
+          "walls": [
+            [
+              -120,
+              -120,
+              5120,
+              0,
+              "n"
+            ],
+            [
+              5000,
+              0,
+              5120,
+              4000,
+              "n"
+            ],
+            [
+              -120,
+              4000,
+              5120,
+              4120,
+              "n"
+            ],
+            [
+              -120,
+              0,
+              0,
+              4000,
+              "n"
+            ]
+          ],
+          "wallIds": [
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ],
+          "doors": [],
+          "windows": [],
+          "slides": [],
+          "lintels": [],
+          "dimensions": [
+            {
+              "horizontal": true,
+              "at": -420,
+              "start": 0,
+              "segments": [
+                5000
+              ]
+            },
+            {
+              "horizontal": false,
+              "at": -420,
+              "start": 0,
+              "segments": [
+                4000
+              ]
+            }
+          ],
+          "walkStart": {
+            "position": [
+              2500,
+              2800
+            ],
+            "target": [
+              2500,
+              1200
+            ]
+          },
+          "entry": null
+        },
+        "furniture": [
+          {
+            "id": "dimension-test",
+            "type": "bed",
+            "name": "Outer dimensions - test parameters",
+            "w": 1524.123456789,
+            "d": 2032.987654321,
+            "cx": 2410,
+            "cy": 2000,
+            "rot": 90,
+            "color": "#c9d6df",
+            "height": 876.123456789
+          },
+          {
+            "id": "fmus7kos31",
+            "type": "bed",
+            "name": "Outer dimensions - test parameters",
+            "w": 1524.123456789,
+            "d": 2032.987654321,
+            "cx": 2610,
+            "cy": 2200,
+            "rot": 90,
+            "color": "#c9d6df",
+            "height": 876.123456789
+          }
+        ],
+        "rooms": {
+          "room-1": {
+            "name": "My room",
+            "mat": "wood"
+          }
+        },
+        "demolished": [],
+        "measures": []
+      },
+      "screenshot": "docs/verification/T05-editing-reliability/baseline-01/03-failure.png"
+    }
+  ],
+  "errors": [],
+  "exceptionKinds": {
+    "captureLoss": "native mouse down/move plus browser releasePointerCapture API, actual lostpointercapture event"
+  }
+}

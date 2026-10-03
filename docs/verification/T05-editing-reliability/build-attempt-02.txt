@@ -1,0 +1,5 @@
+
+> build
+> node scripts/version-assets.mjs
+
+Asset version: f357dd05044fac1a

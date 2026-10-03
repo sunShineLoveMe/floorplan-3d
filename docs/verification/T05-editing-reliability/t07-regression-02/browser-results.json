@@ -1,0 +1,84 @@
+{
+  "passed": true,
+  "build": "5ad470a1b6ba2946",
+  "browser": "154.0.8037.97",
+  "checks": [
+    "reload recognizes successful device save",
+    "units and undo/redo autosave exact committed revision",
+    "successful device save has no leave confirmation",
+    "normal committed saves, refresh and undo/redo reflect actual persisted data",
+    "undo to exact persisted revision stays saved even while writes are denied",
+    "real memory backup includes edits missing from device copy",
+    "unpersisted committed change triggers leave protection",
+    "retry succeeds and reload restores downloaded memory revision",
+    "quota failure preserves stored bytes, actual memory download and retry restoration",
+    "SecurityError on device write follows the same safe retry path",
+    "v1 migration source and failed migration retry reflect real device persistence",
+    "drag preview stays out of device copy and committed JSON export; Escape restores exact model",
+    "cancel preserves invalid property draft and unit lock",
+    "replacement undo/redo preserves prior project exactly",
+    "legal import can back up and cancel without changing selection, units, history or invalid drafts",
+    "invalid / oversized / future files preserve current bytes",
+    "invalid, unsupported and oversized files never offer replacement; late read is rejected",
+    "new-project backup leaves entered form values intact",
+    "new project replacement uses existing reviewed form and exact undo/redo",
+    "new project retains form on backup, cancellation keeps old data; sample reset is protected and undoable",
+    "editing fallback never overwrites original without recovery choice",
+    "actual corrupt-original download is byte exact",
+    "recovery-copy write failure prevents primary overwrite",
+    "main-write failure preserves original and successful archive",
+    "successful explicit recovery preserves old keys and all archive attempts",
+    "corrupt v2 original download, explicit recovery, archive failures and recovery copies",
+    "explicit older v1 recovery requires review and preserves corrupt higher-priority original",
+    "valid legacy device source is preserved until an explicit original-sample restore",
+    "corrupt v1 exports its own original, never falls back to valid legacy, and recovers safely",
+    "legacy file confirmation and current backup precede actual original download and migration",
+    "storage event and synchronous prewrite comparison block stale write",
+    "both versions really download while primary bytes stay unchanged",
+    "third-window change invalidates already reviewed overwrite choice",
+    "load other version replaces memory through undoable store transaction",
+    "conflict backup failure blocks primary overwrite",
+    "explicit overwrite first retains exact other version in recovery archive",
+    "valid recovery copy can be reviewed and restored",
+    "same-origin pages block stale writes, export both versions, load or explicitly archive and overwrite",
+    "390px recovery actions and replacement review stay reachable without horizontal overflow",
+    "jacobsen: shared save, 2D/3D, export, refresh and actual file reimport preserve full project fields",
+    "cmu: shared save, 2D/3D, export, refresh and actual file reimport preserve full project fields",
+    "plan-f: shared save, 2D/3D, export, refresh and actual file reimport preserve full project fields",
+    "diagonal-compact-bedroom: shared save, 2D/3D, export, refresh and actual file reimport preserve full project fields",
+    "diagonal-jacobsen-kitchen: shared save, 2D/3D, export, refresh and actual file reimport preserve full project fields",
+    "diagonal-mirrored-entry: shared save, 2D/3D, export, refresh and actual file reimport preserve full project fields",
+    "diagonal-shared-kitchen-bath: shared save, 2D/3D, export, refresh and actual file reimport preserve full project fields"
+  ],
+  "errors": [],
+  "sourceFiles": [
+    [
+      "jacobsen",
+      "docs/verification/T06-use-zones/jacobsen/complete-project.json"
+    ],
+    [
+      "cmu",
+      "docs/verification/T06-use-zones/cmu/complete-project.json"
+    ],
+    [
+      "plan-f",
+      "docs/verification/T06-use-zones/plan-f/complete-project.json"
+    ],
+    [
+      "diagonal-compact-bedroom",
+      "docs/verification/T06-use-zones/diagonal-compact-bedroom/complete-project.json"
+    ],
+    [
+      "diagonal-jacobsen-kitchen",
+      "docs/verification/T06-use-zones/diagonal-jacobsen-kitchen/complete-project.json"
+    ],
+    [
+      "diagonal-mirrored-entry",
+      "docs/verification/T06-use-zones/diagonal-mirrored-entry/complete-project.json"
+    ],
+    [
+      "diagonal-shared-kitchen-bath",
+      "docs/verification/T06-use-zones/diagonal-shared-kitchen-bath/complete-project.json"
+    ]
+  ]
+}

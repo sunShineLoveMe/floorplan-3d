@@ -1,0 +1,54 @@
+{
+  "320": {
+    "overflow": false,
+    "help": {
+      "x": 162.890625,
+      "y": 72.5,
+      "width": 49.71875,
+      "height": 40,
+      "top": 72.5,
+      "right": 212.609375,
+      "bottom": 112.5,
+      "left": 162.890625
+    }
+  },
+  "390": {
+    "overflow": false,
+    "help": {
+      "x": 232.890625,
+      "y": 90.5,
+      "width": 49.71875,
+      "height": 40,
+      "top": 90.5,
+      "right": 282.609375,
+      "bottom": 130.5,
+      "left": 232.890625
+    }
+  },
+  "1024": {
+    "overflow": false,
+    "help": {
+      "x": 432.703125,
+      "y": 73.5,
+      "width": 66.765625,
+      "height": 40,
+      "top": 73.5,
+      "right": 499.46875,
+      "bottom": 113.5,
+      "left": 432.703125
+    }
+  },
+  "build": "cd2cb1233220bc6e",
+  "browser": "154.0.8037.97",
+  "help": "Drag furniture onto the plan · scroll to zoom · drag empty space to pan · T for 3D\n\nAdd with a click, edit size and position in Properties. Measure by clicking two points; fit with F. Escape closes menus or cancels selection.",
+  "newLabel": "New room plan",
+  "roomFocus": {
+    "tag": "BUTTON",
+    "text": "Edit dimensions / position"
+  },
+  "fName": "Twin · mattress footprint",
+  "nameRaw": "客厅",
+  "nameDisplay": "Living Room",
+  "nameLabel": "Living Room",
+  "draft": "unknown"
+}

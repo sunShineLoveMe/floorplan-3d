@@ -1,0 +1,470 @@
+[
+  {
+    "unit": "metric",
+    "rot": 0,
+    "on": false,
+    "before": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400,
+      "cy": 1276.4938271605001,
+      "rot": 0,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "after": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400,
+      "cy": 1040,
+      "rot": 0,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "points": {
+      "start": {
+        "x": 698.7078927975729,
+        "y": 479.7758990566967
+      },
+      "end": {
+        "x": 698.7079115912454,
+        "y": 459.1215915375233
+      }
+    }
+  },
+  {
+    "unit": "metric",
+    "rot": 0,
+    "on": true,
+    "before": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400,
+      "cy": 1276.4938271605001,
+      "rot": 0,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "after": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400,
+      "cy": 1016.4938271605,
+      "rot": 0,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "points": {
+      "start": {
+        "x": 698.7078927975729,
+        "y": 479.7758990566967
+      },
+      "end": {
+        "x": 698.7079115912454,
+        "y": 459.1215915375233
+      }
+    }
+  },
+  {
+    "unit": "metric",
+    "rot": 90,
+    "on": false,
+    "before": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400,
+      "cy": 1022.0617283945002,
+      "rot": 90,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "after": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400,
+      "cy": 780,
+      "rot": 90,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "points": {
+      "start": {
+        "x": 698.7079143096954,
+        "y": 456.13400616419386
+      },
+      "end": {
+        "x": 698.707933103281,
+        "y": 435.47979427823276
+      }
+    }
+  },
+  {
+    "unit": "metric",
+    "rot": 90,
+    "on": true,
+    "before": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400,
+      "cy": 1022.0617283945002,
+      "rot": 90,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "after": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400,
+      "cy": 762.0617283945002,
+      "rot": 90,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "points": {
+      "start": {
+        "x": 698.7079143096954,
+        "y": 456.13400616419386
+      },
+      "end": {
+        "x": 698.707933103281,
+        "y": 435.47979427823276
+      }
+    }
+  },
+  {
+    "unit": "metric",
+    "rot": 37,
+    "on": false,
+    "before": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400,
+      "cy": 1530.4282628312767,
+      "rot": 37,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "after": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400,
+      "cy": 1290,
+      "rot": 37,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "points": {
+      "start": {
+        "x": 698.7078713274282,
+        "y": 503.3716581186413
+      },
+      "end": {
+        "x": 698.7078901211876,
+        "y": 482.7172551526493
+      }
+    }
+  },
+  {
+    "unit": "metric",
+    "rot": 37,
+    "on": true,
+    "before": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400,
+      "cy": 1530.4282628312767,
+      "rot": 37,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "after": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400,
+      "cy": 1270.4282628312767,
+      "rot": 37,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "points": {
+      "start": {
+        "x": 698.7078713274282,
+        "y": 503.3716581186413
+      },
+      "end": {
+        "x": 698.7078901211876,
+        "y": 482.7172551526493
+      }
+    }
+  },
+  {
+    "unit": "imperial",
+    "rot": 0,
+    "on": false,
+    "before": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400,
+      "cy": 1276.4938271605001,
+      "rot": 0,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "after": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400.2999999999997,
+      "cy": 1035.05,
+      "rot": 0,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "points": {
+      "start": {
+        "x": 698.7078927975729,
+        "y": 479.7758990566967
+      },
+      "end": {
+        "x": 698.7079115912454,
+        "y": 459.1215915375233
+      }
+    }
+  },
+  {
+    "unit": "imperial",
+    "rot": 0,
+    "on": true,
+    "before": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400,
+      "cy": 1276.4938271605001,
+      "rot": 0,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "after": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400.2999999999997,
+      "cy": 1016.4938271605,
+      "rot": 0,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "points": {
+      "start": {
+        "x": 698.7078927975729,
+        "y": 479.7758990566967
+      },
+      "end": {
+        "x": 698.7079115912454,
+        "y": 459.1215915375233
+      }
+    }
+  },
+  {
+    "unit": "imperial",
+    "rot": 90,
+    "on": false,
+    "before": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400,
+      "cy": 1022.0617283945002,
+      "rot": 90,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "after": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400.2999999999997,
+      "cy": 781.05,
+      "rot": 90,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "points": {
+      "start": {
+        "x": 698.7079143096954,
+        "y": 456.13400616419386
+      },
+      "end": {
+        "x": 698.707933103281,
+        "y": 435.47979427823276
+      }
+    }
+  },
+  {
+    "unit": "imperial",
+    "rot": 90,
+    "on": true,
+    "before": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400,
+      "cy": 1022.0617283945002,
+      "rot": 90,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "after": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400.2999999999997,
+      "cy": 762.0617283945002,
+      "rot": 90,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "points": {
+      "start": {
+        "x": 698.7079143096954,
+        "y": 456.13400616419386
+      },
+      "end": {
+        "x": 698.707933103281,
+        "y": 435.47979427823276
+      }
+    }
+  },
+  {
+    "unit": "imperial",
+    "rot": 37,
+    "on": false,
+    "before": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400,
+      "cy": 1530.4282628312767,
+      "rot": 37,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "after": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400.2999999999997,
+      "cy": 1289.05,
+      "rot": 37,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "points": {
+      "start": {
+        "x": 698.7078713274282,
+        "y": 503.3716581186413
+      },
+      "end": {
+        "x": 698.7078901211876,
+        "y": 482.7172551526493
+      }
+    }
+  },
+  {
+    "unit": "imperial",
+    "rot": 37,
+    "on": true,
+    "before": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400,
+      "cy": 1530.4282628312767,
+      "rot": 37,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "after": {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400.2999999999997,
+      "cy": 1270.4282628312767,
+      "rot": 37,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    },
+    "points": {
+      "start": {
+        "x": 698.7078713274282,
+        "y": 503.3716581186413
+      },
+      "end": {
+        "x": 698.7078901211876,
+        "y": 482.7172551526493
+      }
+    }
+  }
+]

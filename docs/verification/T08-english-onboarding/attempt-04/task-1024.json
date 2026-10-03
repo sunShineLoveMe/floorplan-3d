@@ -1,0 +1,213 @@
+{
+  "format": "floorplan-3d",
+  "version": 2,
+  "id": "p-muse8jv5-3pvujx77",
+  "name": "Living room",
+  "createdAt": "2026-10-03T12:54:06.737Z",
+  "updatedAt": "2026-10-03T12:54:07.528Z",
+  "units": {
+    "internal": "mm",
+    "display": "imperial"
+  },
+  "layout": {
+    "id": "layout-p-muse8jv5-3pvujx77",
+    "name": "Layout A"
+  },
+  "view": {
+    "mode": "2d",
+    "layers": {
+      "dims": true,
+      "labels": true,
+      "furn": true,
+      "grid": false,
+      "bearing": false,
+      "wallSnap": true
+    }
+  },
+  "roomEditor": {
+    "kind": "rectangle",
+    "roomId": "room-1",
+    "width": 3657.6,
+    "depth": 3048,
+    "height": 2438.4,
+    "wallThickness": 120,
+    "openings": [
+      {
+        "id": "opening-fmuse8k6a1",
+        "type": "door",
+        "wallId": "top",
+        "offset": 609.6,
+        "width": 914.4,
+        "height": 2133.6,
+        "hinge": "start",
+        "swing": "inward"
+      }
+    ]
+  },
+  "geometry": {
+    "height": 2438.4,
+    "origin": [
+      1828.8,
+      1524
+    ],
+    "bounds": {
+      "x": -720,
+      "y": -720,
+      "w": 5097.6,
+      "h": 4488
+    },
+    "rooms": [
+      {
+        "id": "room-1",
+        "name": "Small-screen bedroom",
+        "mat": "wood",
+        "poly": [
+          [
+            0,
+            0
+          ],
+          [
+            3657.6,
+            0
+          ],
+          [
+            3657.6,
+            3048
+          ],
+          [
+            0,
+            3048
+          ]
+        ],
+        "at": [
+          1828.8,
+          1524
+        ]
+      }
+    ],
+    "walls": [
+      [
+        -120,
+        -120,
+        609.6,
+        0,
+        "n"
+      ],
+      [
+        1524,
+        -120,
+        3777.6,
+        0,
+        "n"
+      ],
+      [
+        3657.6,
+        0,
+        3777.6,
+        3048,
+        "n"
+      ],
+      [
+        -120,
+        3048,
+        3777.6,
+        3168,
+        "n"
+      ],
+      [
+        -120,
+        0,
+        0,
+        3048,
+        "n"
+      ]
+    ],
+    "wallIds": [
+      "top",
+      "top",
+      "right",
+      "bottom",
+      "left"
+    ],
+    "doors": [
+      {
+        "id": "opening-fmuse8k6a1",
+        "wallId": "top",
+        "rect": [
+          609.6,
+          -120,
+          1524,
+          0
+        ],
+        "h": [
+          609.6,
+          0
+        ],
+        "c": [
+          1,
+          0
+        ],
+        "o": [
+          0,
+          1
+        ],
+        "len": 914.4,
+        "height": 2133.6,
+        "name": "opening-fmuse8k6a1"
+      }
+    ],
+    "windows": [],
+    "slides": [],
+    "lintels": [],
+    "dimensions": [
+      {
+        "horizontal": true,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          3657.6
+        ]
+      },
+      {
+        "horizontal": false,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          3048
+        ]
+      }
+    ],
+    "walkStart": {
+      "position": [
+        1828.8,
+        2133.6
+      ],
+      "target": [
+        1828.8,
+        914.4
+      ]
+    },
+    "entry": null
+  },
+  "furniture": [
+    {
+      "id": "fmuse8k842",
+      "type": "bed",
+      "name": "Queen · mattress footprint",
+      "cx": 1981.1999999999998,
+      "cy": 1778,
+      "w": 1527.175,
+      "d": 2041.5249999999999,
+      "rot": 0,
+      "color": "#c9d6df"
+    }
+  ],
+  "rooms": {
+    "room-1": {
+      "name": "Small-screen bedroom",
+      "mat": "wood"
+    }
+  },
+  "demolished": [],
+  "measures": []
+}

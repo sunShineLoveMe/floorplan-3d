@@ -1,0 +1,33 @@
+ M README.md
+ M docs/roadmap.md
+ M docs/usage.md
+ M index.html
+ M src/editor2d/interactions.js
+ M src/main.js
+ M src/ui/dom.js
+ M src/ui/length-field.js
+ M src/ui/project-protection.js
+ M src/ui/property-panel.js
+ M src/ui/toolbar.js
+ M src/viewer3d/furniture.js
+ M src/viewer3d/viewer.js
+ M tests/browser-t06-use-zones.mjs
+ M tests/browser-t07-save-recovery.mjs
+ M tests/project-data.test.js
+?? aws-tokyo-wireguard.yaml
+?? docs/T04-furniture-dimensions-handoff-2026-10-03.md
+?? docs/T04-furniture-dimensions-verification-2026-10-03.md
+?? docs/T05-editing-reliability-handoff-2026-10-03.md
+?? docs/T05-editing-reliability-verification-2026-10-03.md
+?? docs/verification/T04-furniture-dimensions/
+?? docs/verification/T05-editing-reliability/
+?? scripts/check-editing-reliability-exports.py
+?? tests/browser-t04-baseline.mjs
+?? tests/browser-t04-drafts.mjs
+?? tests/browser-t04-furniture-dimensions.mjs
+?? tests/browser-t04-interactions.mjs
+?? tests/browser-t05-editing-reliability.mjs
+?? tests/helpers/furniture-mesh-audit.js
+b0b679750aa08346d34f44fd49ac3dd029e85e01
+COMMAND   PID  USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+Python  20514 chris    3u  IPv4 0x55945a5a22b418da      0t0  TCP 127.0.0.1:8086 (LISTEN)

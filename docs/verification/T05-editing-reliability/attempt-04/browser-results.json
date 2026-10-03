@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "baseline": false,
+  "build": "f357dd05044fac1a",
+  "browser": "154.0.8037.97",
+  "checks": [
+    {
+      "name": "C04 simulated CDP second touch cancels 2D and 3D single-finger transactions"
+    },
+    {
+      "name": "jacobsen: room edit/delete atomic recovery, source retention and real JSON/2D/3D PNG/390px"
+    },
+    {
+      "name": "C07/C09 jacobsen: shared gestures, room/opening associations, downloads and 390px"
+    },
+    {
+      "name": "cmu: room edit/delete atomic recovery, source retention and real JSON/2D/3D PNG/390px"
+    },
+    {
+      "name": "C07/C09 cmu: shared gestures, room/opening associations, downloads and 390px"
+    },
+    {
+      "name": "plan-f: room edit/delete atomic recovery, source retention and real JSON/2D/3D PNG/390px"
+    },
+    {
+      "name": "C07/C09 plan-f: shared gestures, room/opening associations, downloads and 390px"
+    }
+  ],
+  "failures": [],
+  "errors": [],
+  "exceptionKinds": {
+    "captureLoss": "native mouse down/move plus browser releasePointerCapture API, actual lostpointercapture event"
+  }
+}

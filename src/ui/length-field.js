@@ -5,7 +5,7 @@ export function lengthField(id,label,mm,display){
  const value=mm===undefined?'':display==='imperial'?formatLengthMm(mm,display).replace(/^≈ /,''):formatEditLengthMm(mm,display);
  return `<label>${label} (${defaultLengthUnit(display)})<input type="text" id="${id}" name="${id}" data-length autocomplete="off" placeholder="${display==='imperial'?esc(`12' 6" / 150 in`):'800 mm / 80 cm'}" aria-describedby="${id}-feedback" value="${esc(value)}">${display==='imperial'?`<small class="length-example">${tr('支持 12\' 6" 或 150 in。显示近似值，未改字段保留原精度。','Enter 12\' 6" or 150 in. Display is approximate; unchanged fields keep exact stored values.')}</small>`:''}<small id="${id}-feedback" class="length-feedback" aria-live="polite"></small></label>`;
 }
-export function bindLengthField(input,mm,display,limits=()=>[-Infinity,Infinity]){
+export function bindLengthField(input,mm,display,limits=()=>[-Infinity,Infinity],{optional=false}={}){
  const original=input.value,feedback=document.getElementById(input.id+'-feedback');
  function guidance(){
   const [min,max]=limits();
@@ -15,6 +15,7 @@ export function bindLengthField(input,mm,display,limits=()=>[-Infinity,Infinity]
  }
  function reject(message){input.setAttribute('aria-invalid','true');feedback.textContent=message+' '+guidance();}
  function read(){
+  if(optional&&!input.value.trim()){input.setAttribute('aria-invalid','false');feedback.textContent=tr('未指定；3D 高度仅为造型示例。','Unspecified; 3D height is a visual example.');return {ok:true,mm:undefined};}
   const result=readLengthDraft(input.value,original,mm,display),[min,max]=limits();
   const valid=result.ok&&result.mm>=min&&result.mm<=max;
   feedback.textContent=valid?formatLengthMm(result.mm,display):

@@ -1,0 +1,139 @@
+{
+  "build": "c7311da35e079840",
+  "browser": "154.0.8037.97",
+  "visibleFields": [
+    {
+      "id": "projectUnits",
+      "label": "Project units",
+      "describedby": null
+    },
+    {
+      "id": "furnitureSearch",
+      "label": "Search furniture",
+      "describedby": null
+    },
+    {
+      "id": "furnitureCategory",
+      "label": "CategoryAll categoriesBedroomLiving RoomDining & KitchenBathroomAppliancesStudy & Leisure",
+      "describedby": null
+    },
+    {
+      "id": "fName",
+      "label": "Name",
+      "describedby": null
+    },
+    {
+      "id": "fW",
+      "label": "Width (in)Enter 12' 6\" or 150 in. Display is approximate; unchanged fields keep exact stored values.3' 2\"",
+      "describedby": "fW-feedback"
+    },
+    {
+      "id": "fD",
+      "label": "Depth (in)Enter 12' 6\" or 150 in. Display is approximate; unchanged fields keep exact stored values.6' 3\"",
+      "describedby": "fD-feedback"
+    },
+    {
+      "id": "fH",
+      "label": "Height (optional) (in)Enter 12' 6\" or 150 in. Display is approximate; unchanged fields keep exact stored values.Unspecified; 3D height is a visual example.",
+      "describedby": "fH-feedback"
+    },
+    {
+      "id": "fX",
+      "label": "Center X (in)Enter 12' 6\" or 150 in. Display is approximate; unchanged fields keep exact stored values.6' 0\"",
+      "describedby": "fX-feedback"
+    },
+    {
+      "id": "fY",
+      "label": "Center Y (in)Enter 12' 6\" or 150 in. Display is approximate; unchanged fields keep exact stored values.5' 0\"",
+      "describedby": "fY-feedback"
+    },
+    {
+      "id": "fPassage",
+      "label": "Passage footprintSolid obstacleFloor covering (walkable)",
+      "describedby": null
+    },
+    {
+      "id": "fContainer",
+      "label": "Explicitly nested inNone",
+      "describedby": null
+    },
+    {
+      "id": "useZoneKind",
+      "label": "Add purposeBed-side accessSeating useCabinet-door envelopeAppliance use",
+      "describedby": null
+    },
+    {
+      "id": "fR",
+      "label": "Rotation (°)",
+      "describedby": null
+    },
+    {
+      "id": "fC",
+      "label": "Color",
+      "describedby": null
+    }
+  ],
+  "tokens": {
+    "surface": "#ffffff",
+    "text-primary": "#202823",
+    "text-secondary": "#59645d",
+    "text-muted": "#626d65",
+    "brand": "#245c4b",
+    "brand-soft": "#eaf2ee",
+    "danger": "#b42318",
+    "border-control": "#7c877f",
+    "canvas-bg": "#ecefeb"
+  },
+  "contrast": [
+    {
+      "fg": "text-primary",
+      "bg": "surface",
+      "ratio": 15.116594313795394,
+      "min": 4.5
+    },
+    {
+      "fg": "text-secondary",
+      "bg": "surface",
+      "ratio": 6.166132009120798,
+      "min": 4.5
+    },
+    {
+      "fg": "text-muted",
+      "bg": "surface",
+      "ratio": 5.391933468779913,
+      "min": 4.5
+    },
+    {
+      "fg": "brand",
+      "bg": "brand-soft",
+      "ratio": 6.8085455372218755,
+      "min": 4.5
+    },
+    {
+      "fg": "surface",
+      "bg": "brand",
+      "ratio": 7.756312803542301,
+      "min": 4.5
+    },
+    {
+      "fg": "danger",
+      "bg": "surface",
+      "ratio": 6.57428861557707,
+      "min": 4.5
+    },
+    {
+      "fg": "border-control",
+      "bg": "surface",
+      "ratio": 3.7306356158208063,
+      "min": 3
+    },
+    {
+      "fg": "brand",
+      "bg": "canvas-bg",
+      "ratio": 6.6899327697463695,
+      "min": 3
+    }
+  ],
+  "scope": "Sampled UI color tokens and visible field labels, not exhaustive contrast or screen-reader certification",
+  "passed": true
+}

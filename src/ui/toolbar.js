@@ -1,5 +1,5 @@
 import {$} from '../ui/dom.js';
-import {COARSE} from './dom.js';
+import {COARSE,textEditing} from './dom.js';
 import {tr} from './i18n.js';
 import {formatAreaM2} from '../core/units.js';
 import {roomArea} from '../core/geometry.js';
@@ -10,7 +10,7 @@ const {zoomCenter,fitView,setRatio}=viewport;
 const {drawer,syncPaneBtns}=drawers;
 const setView=m=>mode.setView(m);
 function updateHeader(){
-  $('#projectName').textContent=store.getProject().name==='三室两厅两卫 · 装修设计' ? tr(store.getProject().name,'3BR 2LR 2BA · Interior Design') : store.getProject().name;
+  $('#projectName').textContent=store.getProject().name;
   if(document.activeElement!==$('#fileName'))$('#fileName').value=store.getProject().name;if(document.activeElement!==$('#layoutName'))$('#layoutName').value=store.getProject().layout.name;
   $('#fileProjectName').textContent=$('#projectName').textContent;$('#fileProjectName').title=$('#projectName').textContent;
   const tot = store.getProject().geometry.rooms.filter(r => r.counted !== false).reduce((a,r) => a + roomArea(r), 0);
@@ -88,10 +88,14 @@ const menus = [...document.querySelectorAll('header details,.view-settings,.help
 menus.forEach(menu=>{
   scope.on(menu,'toggle',()=>{if(menu.open)menus.forEach(other=>{if(other!==menu)other.open=false;});});
   scope.on(menu,'pointerdown',e=>e.stopPropagation());
-  scope.on(menu,'keydown',e=>{if(e.key!=='Escape')e.stopPropagation();});
+  scope.on(menu,'keydown',e=>{
+    if(!textEditing(e.target)&&(e.ctrlKey||e.metaKey)&&['z','y','d'].includes(e.key.toLowerCase()))e.preventDefault();
+    if(e.key!=='Escape')e.stopPropagation();
+  });
 });
+scope.on($('[data-help-close]'),'click',()=>{const menu=$('.help-menu');menu.open=false;menu.querySelector('summary').focus();});
 scope.on(document,'pointerdown',e=>menus.forEach(menu=>{if(menu.open&&!menu.contains(e.target))menu.open=false;}));
-scope.on(document,'keydown',e=>{if(e.key==='Escape'){const open=menus.find(menu=>menu.open);if(open){open.open=false;open.querySelector('summary').focus();e.preventDefault();e.stopImmediatePropagation();}else if(!document.querySelector('dialog[open]')&&!e.target.closest('input,select,textarea')&&drawers.escapeDrawer()){e.preventDefault();e.stopImmediatePropagation();}}},{capture:true});
+scope.on(document,'keydown',e=>{if(e.key==='Escape'){const open=menus.find(menu=>menu.open);if(open){open.open=false;open.querySelector('summary').focus();e.preventDefault();e.stopImmediatePropagation();}else if(!document.querySelector('dialog[open]')&&!textEditing(e.target)&&drawers.escapeDrawer()){e.preventDefault();e.stopImmediatePropagation();}}},{capture:true});
 for (const query of ['(max-width:1223px)','(max-width:899px)']) scope.on(matchMedia(query), 'change', () => drawer(null));
 document.querySelectorAll('[data-close-pane]').forEach(button=>scope.on(button,'click',()=>{drawer(button.dataset.closePane,false);$(button.dataset.closePane==='lib'?'#tgLib':'#tgPanel').focus();}));
 drawer(null);                                  // 恢复上次的面板收起状态

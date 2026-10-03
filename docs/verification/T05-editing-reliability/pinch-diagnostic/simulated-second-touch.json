@@ -1,0 +1,64 @@
+[
+  {
+    "mode": "2d",
+    "before": [
+      {
+        "id": "dimension-test",
+        "type": "bed",
+        "name": "Outer dimensions - test parameters",
+        "w": 1524.123456789,
+        "d": 2032.987654321,
+        "cx": 2400,
+        "cy": 2000,
+        "rot": 0,
+        "color": "#c9d6df",
+        "height": 876.123456789
+      }
+    ],
+    "after": [
+      {
+        "id": "dimension-test",
+        "type": "bed",
+        "name": "Outer dimensions - test parameters",
+        "w": 1524.123456789,
+        "d": 2032.987654321,
+        "cx": 2400,
+        "cy": 2000,
+        "rot": 0,
+        "color": "#c9d6df",
+        "height": 876.123456789
+      }
+    ]
+  },
+  {
+    "mode": "3d",
+    "before": [
+      {
+        "id": "dimension-test",
+        "type": "bed",
+        "name": "Outer dimensions - test parameters",
+        "w": 1524.123456789,
+        "d": 2032.987654321,
+        "cx": 2400,
+        "cy": 2000,
+        "rot": 0,
+        "color": "#c9d6df",
+        "height": 876.123456789
+      }
+    ],
+    "after": [
+      {
+        "id": "dimension-test",
+        "type": "bed",
+        "name": "Outer dimensions - test parameters",
+        "w": 1524.123456789,
+        "d": 2032.987654321,
+        "cx": 2400,
+        "cy": 2000,
+        "rot": 0,
+        "color": "#c9d6df",
+        "height": 876.123456789
+      }
+    ]
+  }
+]

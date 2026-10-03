@@ -1,0 +1,30 @@
+{
+  "before": [
+    {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 50,
+      "d": 60,
+      "cx": 2400,
+      "cy": 2000,
+      "rot": 0,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    }
+  ],
+  "after": [
+    {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 100,
+      "d": 210,
+      "cx": 2425,
+      "cy": 2075,
+      "rot": 0,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    }
+  ]
+}

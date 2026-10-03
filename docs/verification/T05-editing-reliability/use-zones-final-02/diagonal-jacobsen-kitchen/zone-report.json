@@ -1,0 +1,107 @@
+{
+  "zones": [
+    {
+      "furnitureId": "furniture-0",
+      "zoneId": "zone-0",
+      "kind": "appliance",
+      "side": "bottom",
+      "widthMm": 600,
+      "depthMm": 600,
+      "offsetMm": 0,
+      "poly": [
+        [
+          1000,
+          800
+        ],
+        [
+          1600,
+          800
+        ],
+        [
+          1600,
+          1400
+        ],
+        [
+          1000,
+          1400
+        ]
+      ],
+      "outsideMm2": 0,
+      "status": "clear",
+      "conflicts": []
+    },
+    {
+      "furnitureId": "furniture-1",
+      "zoneId": "zone-1",
+      "kind": "appliance",
+      "side": "bottom",
+      "widthMm": 600,
+      "depthMm": 600,
+      "offsetMm": 0,
+      "poly": [
+        [
+          1215.1923788646684,
+          2266.5063509461097
+        ],
+        [
+          1734.8076211353316,
+          2566.5063509461097
+        ],
+        [
+          1434.8076211353316,
+          3086.121593216773
+        ],
+        [
+          915.1923788646684,
+          2786.121593216773
+        ]
+      ],
+      "outsideMm2": 8564.331699490547,
+      "status": "conflict",
+      "conflicts": [
+        {
+          "kind": "floor",
+          "id": "net-floor",
+          "name": "Outside net floor",
+          "overlapMm2": 8564.331699490547
+        },
+        {
+          "kind": "wall",
+          "id": "wall-4",
+          "name": "Wall",
+          "overlapMm2": 8564.331699490547
+        }
+      ]
+    },
+    {
+      "furnitureId": "furniture-2",
+      "zoneId": "zone-2",
+      "kind": "appliance",
+      "side": "bottom",
+      "widthMm": 600,
+      "depthMm": 600,
+      "offsetMm": 0,
+      "poly": [
+        [
+          3540.3805922287443,
+          1535.3553390593274
+        ],
+        [
+          3964.644660940673,
+          1959.6194077712557
+        ],
+        [
+          3540.3805922287447,
+          2383.8834764831845
+        ],
+        [
+          3116.1165235168155,
+          1959.6194077712562
+        ]
+      ],
+      "outsideMm2": 0,
+      "status": "clear",
+      "conflicts": []
+    }
+  ]
+}

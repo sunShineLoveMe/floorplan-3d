@@ -1,0 +1,8 @@
+{
+  "baseline": true,
+  "build": "c50d00016a1f6eae",
+  "checks": [
+    "use-zone add and undo retain unrelated height draft"
+  ],
+  "copyUndoPreserved": false
+}

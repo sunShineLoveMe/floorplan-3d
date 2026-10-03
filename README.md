@@ -14,7 +14,9 @@
 
 本轮前端 UI 计划的实现项（UI-000～210）已完成，内部任务走查与回归通过；外部首次用户试用尚未执行。布局、草稿保护、搜索、视图设置与验收边界见 [UI 最终交付](docs/UI-final-delivery.md)。
 
-T06 两批已完成占地间距、显式嵌套、目标净宽路径、可调整家具使用区与持续行走 / 摇杆碰撞复核，见 [最新验收](docs/T06-use-zones-verification-2026-10-03.md)。使用区采用显式平面规划假设；代码与验收证据已推送至 `999181e`，未合并、未部署。T07 保存、备份与恢复本批已完成实现，含保存失败重试、替换前备份 / 取消、原文恢复及同源多窗口冲突保护，见 [T07 验收](docs/T07-save-recovery-verification-2026-10-03.md)。本批代码与验收证据已推送至 `5bbc32c`，未合并、未部署。下一批是 T04 家具真实外廓与高度编辑，见 [路线图](docs/roadmap.md)。
+T06 两批已完成占地间距、显式嵌套、目标净宽路径、可调整家具使用区与持续行走 / 摇杆碰撞复核，见 [最新验收](docs/T06-use-zones-verification-2026-10-03.md)。使用区采用显式平面规划假设；代码与验收证据已推送至 `999181e`，未合并、未部署。T07 保存、备份与恢复本批已完成实现，含保存失败重试、替换前备份 / 取消、原文恢复及同源多窗口冲突保护，见 [T07 验收](docs/T07-save-recovery-verification-2026-10-03.md)。本批代码与验收证据已推送至 `5bbc32c`，未合并、未部署。T04 第一批已完成可选高度与 2D / 3D 真实网格外廓一致性，见 [T04 验收](docs/T04-furniture-dimensions-verification-2026-10-03.md)；当前为本地未提交改动。后续自定义类型、真实门运动与高度避让见 [路线图](docs/roadmap.md)。
+
+T08 已补齐可关闭 / 重开的 Help、首次入口提示、New project 命名和键盘重新选择；工程名称按原文显示。内部验收及未测范围见 [T08 验收](docs/T08-english-onboarding-verification-2026-10-03.md)，[T03 / T08 试用协议](docs/T08-user-trial-protocol.md)已准备，外部试用未执行。本批仅本地未提交，未推送、合并或部署。
 
 ## 快速启动
 
@@ -33,6 +35,10 @@ npm start
 
 | 文档 | 内容 |
 | --- | --- |
+| [T08 验收](docs/T08-english-onboarding-verification-2026-10-03.md) / [试用协议](docs/T08-user-trial-protocol.md) | 可重开帮助、英文术语、名称与键盘修复、内部走查；外部试用未执行 |
+| [T05 编辑可靠性验收](docs/T05-editing-reliability-verification-2026-10-03.md) | 7 项交互问题修复、精确中心、墙吸附、焦点、手势取消和结构历史；本地交付 |
+| [T05 原始任务书](docs/T05-editing-reliability-handoff-2026-10-03.md) | 接续约束、检查矩阵与实施前记录 |
+| [T04 第一批交接](docs/T04-furniture-dimensions-handoff-2026-10-03.md) | 家具可选高度、实际外廓、2D / 3D 尺寸一致性与跨户型验收 |
 | [T07 验收](docs/T07-save-recovery-verification-2026-10-03.md) | 保存、真实下载、失败恢复、替换保护及双窗口验收 |
 | [T07 原始交接](docs/T07-save-recovery-handoff-2026-10-03.md) | 实施前基线、目标与完成导航 |
 | [UI 最终交付](docs/UI-final-delivery.md) | UI-060～210 结果、43 组浏览器检查、内部走查与未执行项 |

@@ -1,0 +1,140 @@
+{
+  "format": "floorplan-3d",
+  "version": 2,
+  "id": "p-murtwt5k-90435woi",
+  "name": "My room",
+  "createdAt": "2026-10-03T03:25:06.584Z",
+  "updatedAt": "2026-10-03T03:25:06.584Z",
+  "units": {
+    "internal": "mm",
+    "display": "metric"
+  },
+  "layout": {
+    "id": "layout-p-murtwt5k-90435woi",
+    "name": "Layout A"
+  },
+  "view": {
+    "mode": "2d",
+    "layers": {
+      "dims": true,
+      "labels": true,
+      "furn": true,
+      "grid": false,
+      "bearing": false,
+      "wallSnap": true
+    }
+  },
+  "roomEditor": null,
+  "geometry": {
+    "height": 2800,
+    "origin": [
+      1500,
+      1500
+    ],
+    "bounds": {
+      "x": -720,
+      "y": -720,
+      "w": 4440,
+      "h": 4440
+    },
+    "rooms": [
+      {
+        "id": "open",
+        "name": "Open edge",
+        "mat": "wood",
+        "poly": [
+          [
+            0,
+            0
+          ],
+          [
+            3000,
+            0
+          ],
+          [
+            3000,
+            3000
+          ],
+          [
+            0,
+            3000
+          ]
+        ],
+        "at": [
+          1500,
+          1500
+        ]
+      }
+    ],
+    "walls": [
+      [
+        -120,
+        -120,
+        3000,
+        0,
+        "n"
+      ],
+      [
+        -120,
+        3000,
+        3000,
+        3120,
+        "n"
+      ],
+      [
+        -120,
+        0,
+        0,
+        3000,
+        "n"
+      ]
+    ],
+    "wallIds": [
+      "open--top",
+      "open--bottom",
+      "open--left"
+    ],
+    "doors": [],
+    "windows": [],
+    "slides": [],
+    "lintels": [],
+    "dimensions": [
+      {
+        "horizontal": true,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          3000
+        ]
+      },
+      {
+        "horizontal": false,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          3000
+        ]
+      }
+    ],
+    "walkStart": {
+      "position": [
+        1500,
+        1500
+      ],
+      "target": [
+        5000,
+        1500
+      ]
+    },
+    "entry": null
+  },
+  "furniture": [],
+  "rooms": {
+    "open": {
+      "name": "Open edge",
+      "mat": "wood"
+    }
+  },
+  "demolished": [],
+  "measures": []
+}

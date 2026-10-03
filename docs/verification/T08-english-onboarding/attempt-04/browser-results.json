@@ -1,0 +1,65 @@
+{
+  "passed": false,
+  "build": "c7311da35e079840",
+  "browser": "154.0.8037.97",
+  "url": "http://127.0.0.1:8095/",
+  "checks": [
+    "fresh English / imperial defaults, no persisted project",
+    "Help is optional; open / close changes no project or storage",
+    "keyboard room editing commits net dimensions",
+    "keyboard door wall-start offset, width and height",
+    "invalid English length retains input, associated feedback and committed width",
+    "full fractional frame dimensions and unknown height; native positioning produces visible conflict",
+    "keyboard conflict correction, rotation, Undo / Redo",
+    "keyboard download really lands on disk; refresh preserves exact saved data",
+    "actual JSON file upload and Continue replacement restore frame and unknown height",
+    "empty-device keyboard task: own room, door, Queen frame, error, conflict, save and restore",
+    "dictionary-matching custom name stays raw in editor, label and accessible name",
+    "Help keys cannot edit model; opening/closing retains invalid height draft and exact saved revision",
+    "en/zh × metric/imperial preserves internal dimensions, height and user name",
+    "height draft survives delete / Undo / keyboard-accessible reselection",
+    "dictionary-matching room name and all project bytes survive language switch",
+    "language / units / exact names / Help and height drafts stay independent",
+    "existing metric project and Chinese preference survive reload",
+    "new/add/JSON cancellation preserves entire project and cached draft",
+    "English invalid JSON, empty search and separate reference / project restore paths",
+    "new project / Add room / replacement cancellation and errors use distinct scopes",
+    "1440x1000: Help bounds, Escape focus, no page overflow and reachable room controls",
+    "1024x768: Help bounds, Escape focus, no page overflow and reachable room controls",
+    "390x844: Help bounds, Escape focus, no page overflow and reachable room controls",
+    "320x568: Help bounds, Escape focus, no page overflow and reachable room controls",
+    "390x320: Help bounds, Escape focus, no page overflow and reachable room controls",
+    "720x500: Help bounds, Escape focus, no page overflow and reachable room controls",
+    "reduced-motion CSS and visible keyboard focus; 720 px reflow is viewport-only, not browser zoom",
+    "desktop, narrow, low-height and reduced-motion layout / keyboard focus",
+    "1024 px: own room / door / frame / correction / save / restore task",
+    "injected storage failure has English recovery actions; disk backup contains unsaved edits; retry succeeds",
+    "real same-origin second window exposes conflict review and no false save success",
+    "save failure and multi-window conflict: English states, feedback and actual backup",
+    "corrupt saved data preserves original and offers explicit English recovery",
+    "older project file keeps values through visible replacement review",
+    "jacobsen: full project roundtrip incl. provenance and unknown measurements",
+    "jacobsen: shared Help, names, keyboard reselection, units, 2D/3D and disk JSON/PNG",
+    "cmu: full project roundtrip incl. provenance and unknown measurements",
+    "cmu: shared Help, names, keyboard reselection, units, 2D/3D and disk JSON/PNG",
+    "plan-f: full project roundtrip incl. provenance and unknown measurements",
+    "plan-f: shared Help, names, keyboard reselection, units, 2D/3D and disk JSON/PNG"
+  ],
+  "failures": [
+    {
+      "name": "390 px: own room / door / frame / correction / save / restore task",
+      "error": "locator.waitFor: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#lib .item').first() to be visible\u001b[22m\n\u001b[2m    28 × locator resolved to hidden <div class=\"item\" tabindex=\"0\" role=\"button\" data-key=\"0:0\" title=\"Twin · mattress footprint · 38 in × 75 in · Click or drag to add\">…</div>\u001b[22m\n\n    at ready (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t08-english-onboarding.mjs:11:54)\n    at /Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t08-english-onboarding.mjs:83:190\n    at async scenario (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t08-english-onboarding.mjs:15:394)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t08-english-onboarding.mjs:79:35"
+    },
+    {
+      "name": "320 px: own room / door / frame / correction / save / restore task",
+      "error": "locator.waitFor: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#lib .item').first() to be visible\u001b[22m\n\u001b[2m    28 × locator resolved to hidden <div class=\"item\" tabindex=\"0\" role=\"button\" data-key=\"0:0\" title=\"Twin · mattress footprint · 38 in × 75 in · Click or drag to add\">…</div>\u001b[22m\n\n    at ready (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t08-english-onboarding.mjs:11:54)\n    at /Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t08-english-onboarding.mjs:83:190\n    at async scenario (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t08-english-onboarding.mjs:15:394)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t08-english-onboarding.mjs:79:35"
+    }
+  ],
+  "errors": [],
+  "limitations": [
+    "File chooser uses setInputFiles; normal actions use native mouse/keyboard",
+    "Storage quota failure is injected",
+    "CSS viewport reflow is not actual 200% browser zoom",
+    "No screen-reader or external participant trial"
+  ]
+}

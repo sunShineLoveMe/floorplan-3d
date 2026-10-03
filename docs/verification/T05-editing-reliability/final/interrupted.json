@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "interrupted": true,
+  "build": "77191c98b6d7e980",
+  "reason": "Native right-button 3D drag reproduced a further defect; stopped before production fix and final rerun."
+}

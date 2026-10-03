@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "build": "c50d00016a1f6eae",
+  "checks": [
+    "native 2D drag preserves explicit height and exact undo",
+    "native 3D visible mesh picking reaches original furniture through normalized group",
+    "native 3D drag keeps physical size, center history and exact undo",
+    "3D cancel and return to 2D retain exact item center and height"
+  ],
+  "errors": [],
+  "before": [
+    {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400,
+      "cy": 2000,
+      "rot": 0,
+      "color": "#c9d6df",
+      "height": 876.123456789
+    }
+  ],
+  "hit": [
+    705,
+    584
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "visible": [
+    "room-1",
+    "room-fmuqkq7bv1",
+    "room-fmuqkq7q32",
+    "room-fmuqkq80x4",
+    "room-fmuqkq8kd5",
+    "room-fmuqkq8x96"
+  ],
+  "hidden": [
+    "room-fmuqkq7vd3"
+  ],
+  "labels": [
+    {
+      "id": "room-1",
+      "name": "Bedroom closet20.33 sq ft",
+      "visible": true,
+      "left": 586.3601684570312,
+      "top": 364.2804870605469,
+      "right": 755.6570434570312,
+      "bottom": 388.2804870605469
+    },
+    {
+      "id": "room-fmuqkq7bv1",
+      "name": "Bedroom99.97 sq ft",
+      "visible": true,
+      "left": 558.4881591796875,
+      "top": 418.76361083984375,
+      "right": 688.1287841796875,
+      "bottom": 442.76361083984375
+    },
+    {
+      "id": "room-fmuqkq7q32",
+      "name": "Bath57.00 sq ft",
+      "visible": true,
+      "left": 692.5059204101562,
+      "top": 443.31158447265625,
+      "right": 795.2559204101562,
+      "bottom": 467.31158447265625
+    },
+    {
+      "id": "room-fmuqkq7vd3",
+      "name": "Laundry9.76 sq ft",
+      "visible": false,
+      "left": 770.3641357421875,
+      "top": 442.5588684082031,
+      "right": 888.6610107421875,
+      "bottom": 466.5588684082031
+    },
+    {
+      "id": "room-fmuqkq80x4",
+      "name": "Kitchen88.58 sq ft",
+      "visible": true,
+      "left": 819.311279296875,
+      "top": 506.6926574707031,
+      "right": 941.561279296875,
+      "bottom": 530.692626953125
+    },
+    {
+      "id": "room-fmuqkq8kd5",
+      "name": "Living184.69 sq ft",
+      "visible": true,
+      "left": 629.7293701171875,
+      "top": 558.661376953125,
+      "right": 747.1668701171875,
+      "bottom": 582.661376953125
+    },
+    {
+      "id": "room-fmuqkq8x96",
+      "name": "Dining72.01 sq ft",
+      "visible": true,
+      "left": 752.214111328125,
+      "top": 620.194091796875,
+      "right": 864.573486328125,
+      "bottom": 644.194091796875
+    }
+  ]
+}

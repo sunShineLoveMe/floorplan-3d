@@ -3,7 +3,7 @@ import {tr} from './i18n.js';
 import {createScope} from './lifecycle.js';
 
 /** One review dialog; cancellation never changes the store or editor selection. */
-export function createProjectProtection({store,exportProject,toast}){
+export function createProjectProtection({store,exportProject,toast,discardDrafts=()=>{}}){
   const scope=createScope(),dialog=document.createElement('dialog');
   dialog.id='protectionDialog';dialog.className='room-dialog';dialog.setAttribute('aria-labelledby','protectionTitle');document.body.append(dialog);
   let opener;
@@ -24,7 +24,7 @@ export function createProjectProtection({store,exportProject,toast}){
     const before=JSON.stringify(store.getCommittedProject());
     return show({title:label||tr('替换当前工程','Replace current project'),message:message||tr('将替换全部房间、结构、家具、底图、尺寸和单位偏好。已自动保存的旧工程不是独立备份。有效字段在离开焦点时提交；未提交草稿和拖动预览会在继续后放弃。请先导出备份；取消保留当前工程。','Replaces all rooms, structures, furniture, drawing, dimensions and unit preferences. Autosave is not an independent backup of your old project. Valid fields commit on blur; remaining drafts and drag previews are discarded only if you continue. Export a backup first, or cancel to keep this project.'),extra:`<p>${tr('当前','Current')}: <b>${esc(store.getCommittedProject().name)}</b><br>${tr('替换为','Replace with')}: <b>${esc(next.name)}</b></p>`,actions:[{label:tr('继续替换','Continue replacement'),run:()=>{
       if(before!==JSON.stringify(store.getCommittedProject()))throw Error(tr('工程已变化，请重新开始替换。','The project changed. Start the replacement again.'));
-      beforeReplace();onReplace(next);afterReplace();
+      beforeReplace();onReplace(next);discardDrafts();afterReplace();
     }}]});
   }
   return {show,replace,dispose(){scope.dispose();dialog.remove();}};

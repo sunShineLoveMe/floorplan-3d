@@ -1,0 +1,211 @@
+{
+  "zones": [
+    {
+      "furnitureId": "fmuqkqb5o20",
+      "zoneId": "uz-1516d613-8749-4469-ba11-4b9bdbf39779",
+      "kind": "appliance",
+      "side": "top",
+      "widthMm": 617.123456,
+      "depthMm": 600,
+      "offsetMm": 100,
+      "poly": [
+        [
+          5582.638272,
+          -371.4
+        ],
+        [
+          6199.7617279999995,
+          -371.4
+        ],
+        [
+          6199.7617279999995,
+          228.60000000000002
+        ],
+        [
+          5582.638272,
+          228.60000000000002
+        ]
+      ],
+      "outsideMm2": 323249.26625279954,
+      "status": "conflict",
+      "conflicts": [
+        {
+          "kind": "floor",
+          "id": "net-floor",
+          "name": "Outside net floor",
+          "overlapMm2": 323249.26625279954
+        },
+        {
+          "kind": "wall",
+          "id": "wall-12",
+          "name": "Wall",
+          "overlapMm2": 94049.61469439996
+        }
+      ]
+    },
+    {
+      "furnitureId": "fmuqkqcaz25",
+      "zoneId": "uz-c5bbeb51-ed58-4152-b598-fe0f0a42892b",
+      "kind": "cabinet",
+      "side": "right",
+      "widthMm": 617.123456,
+      "depthMm": 600,
+      "offsetMm": 100,
+      "poly": [
+        [
+          3048,
+          248.63827200000003
+        ],
+        [
+          3648,
+          248.63827200000003
+        ],
+        [
+          3648,
+          865.7617280000001
+        ],
+        [
+          3048,
+          865.7617280000001
+        ]
+      ],
+      "outsideMm2": 83344.86312960018,
+      "status": "conflict",
+      "conflicts": [
+        {
+          "kind": "floor",
+          "id": "net-floor",
+          "name": "Outside net floor",
+          "overlapMm2": 83344.86312960018
+        },
+        {
+          "kind": "wall",
+          "id": "wall-1",
+          "name": "Wall",
+          "overlapMm2": 52157.55156479939
+        },
+        {
+          "kind": "wall",
+          "id": "wall-3",
+          "name": "Wall",
+          "overlapMm2": 30967.679999999702
+        },
+        {
+          "kind": "wall",
+          "id": "wall-5",
+          "name": "Wall",
+          "overlapMm2": 219.63156480016187
+        },
+        {
+          "kind": "furniture",
+          "id": "fmuqkqagp17",
+          "name": "Bath shower 72x30 in",
+          "overlapMm2": 182174.84421120025
+        }
+      ]
+    },
+    {
+      "furnitureId": "fmuqkqcjf26",
+      "zoneId": "uz-9d868ce6-98c4-4426-adb7-44afb6eac7dd",
+      "kind": "bed-side",
+      "side": "left",
+      "widthMm": 617.123456,
+      "depthMm": 600,
+      "offsetMm": 100,
+      "poly": [
+        [
+          314.4000000000001,
+          2153.638272
+        ],
+        [
+          914.4000000000001,
+          2153.638272
+        ],
+        [
+          914.4000000000001,
+          2770.7617280000004
+        ],
+        [
+          314.4000000000001,
+          2770.7617280000004
+        ]
+      ],
+      "outsideMm2": 0,
+      "status": "clear",
+      "conflicts": []
+    },
+    {
+      "furnitureId": "fmuqkqcjf26",
+      "zoneId": "uz-c5b043d8-a11a-44cb-b8a4-6e56041b6f14",
+      "kind": "bed-side",
+      "side": "right",
+      "widthMm": 600,
+      "depthMm": 600,
+      "offsetMm": 0,
+      "poly": [
+        [
+          2438.4,
+          2062.2000000000003
+        ],
+        [
+          3038.4,
+          2062.2000000000003
+        ],
+        [
+          3038.4,
+          2662.2000000000003
+        ],
+        [
+          2438.4,
+          2662.2000000000003
+        ]
+      ],
+      "outsideMm2": 0,
+      "status": "clear",
+      "conflicts": []
+    },
+    {
+      "furnitureId": "fmuqkqcsp27",
+      "zoneId": "uz-17186d7a-c214-4d2c-80c6-545356e00485",
+      "kind": "seating",
+      "side": "bottom",
+      "widthMm": 617.123456,
+      "depthMm": 600,
+      "offsetMm": 100,
+      "poly": [
+        [
+          3753.838272,
+          6217.919999999999
+        ],
+        [
+          4370.961728,
+          6217.919999999999
+        ],
+        [
+          4370.961728,
+          6817.919999999999
+        ],
+        [
+          3753.838272,
+          6817.919999999999
+        ]
+      ],
+      "outsideMm2": 351464.1506611183,
+      "status": "conflict",
+      "conflicts": [
+        {
+          "kind": "floor",
+          "id": "net-floor",
+          "name": "Outside net floor",
+          "overlapMm2": 351464.1506611183
+        },
+        {
+          "kind": "wall",
+          "id": "wall-19",
+          "name": "Wall",
+          "overlapMm2": 94049.6146943979
+        }
+      ]
+    }
+  ]
+}

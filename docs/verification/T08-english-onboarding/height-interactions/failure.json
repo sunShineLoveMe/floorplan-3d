@@ -1,0 +1,7 @@
+{
+  "checks": [
+    "native 2D drag preserves explicit height and exact undo"
+  ],
+  "errors": [],
+  "error": "page.waitForFunction: Timeout 30000ms exceeded.\n    at /Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t04-interactions.mjs:10:54"
+}

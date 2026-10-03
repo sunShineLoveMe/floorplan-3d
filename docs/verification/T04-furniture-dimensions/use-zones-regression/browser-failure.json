@@ -1,0 +1,28 @@
+{
+  "error": "locator.click: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-zone-locate=\"0\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button class=\"btn\" data-zone-locate=\"0\">Unknown fixture · Cabinet-door envelope · 600 mm …</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    39 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at /Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t06-use-zones.mjs:53:468",
+  "checks": [
+    "jacobsen: explicit four purposes, opposite bed sides, exact dimensions and 2D conflicts",
+    "jacobsen: zone locator selects its owner and centers the 2D envelope",
+    "jacobsen: move, 45 degree rotation, both dimensions and undo/redo update anchors",
+    "jacobsen: invalid size blocked and unit switching preserves millimetre precision",
+    "jacobsen: duplicated zones edit independently; zone/item deletion and restoration update results",
+    "jacobsen: refresh, JSON roundtrip, overlay visibility and actual PNG/PDF exports",
+    "jacobsen: sustained native keyboard walk stays on free floor and stops on release",
+    "cmu: explicit four purposes, opposite bed sides, exact dimensions and 2D conflicts",
+    "cmu: zone locator selects its owner and centers the 2D envelope",
+    "cmu: move, 45 degree rotation, both dimensions and undo/redo update anchors",
+    "cmu: invalid size blocked and unit switching preserves millimetre precision",
+    "cmu: duplicated zones edit independently; zone/item deletion and restoration update results",
+    "cmu: refresh, JSON roundtrip, overlay visibility and actual PNG/PDF exports",
+    "cmu: sustained native keyboard walk stays on free floor and stops on release",
+    "plan-f: explicit four purposes, opposite bed sides, exact dimensions and 2D conflicts",
+    "plan-f: zone locator selects its owner and centers the 2D envelope",
+    "plan-f: move, 45 degree rotation, both dimensions and undo/redo update anchors",
+    "plan-f: invalid size blocked and unit switching preserves millimetre precision",
+    "plan-f: duplicated zones edit independently; zone/item deletion and restoration update results",
+    "plan-f: refresh, JSON roundtrip, overlay visibility and actual PNG/PDF exports",
+    "plan-f: sustained native keyboard walk stays on free floor and stops on release",
+    "known blocker: move, walkable assumption, delete and undo distinguish clear/conflict without name inference"
+  ],
+  "errors": []
+}

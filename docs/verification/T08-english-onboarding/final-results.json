@@ -1,0 +1,190 @@
+{
+  "passed": true,
+  "batch": "T08 English onboarding",
+  "date": "2026-10-03",
+  "build": "c7311da35e079840",
+  "browser": "Chromium 154.0.8037.97",
+  "workspace": {
+    "branch": "feat/ui-refactor",
+    "head": "b0b679750aa08346d34f44fd49ac3dd029e85e01",
+    "remoteHeadVerified": "b0b679750aa08346d34f44fd49ac3dd029e85e01",
+    "continuedExistingWorkspace": true,
+    "committed": false,
+    "pushed": false,
+    "merged": false,
+    "deployed": false,
+    "forbiddenFileReadOrModified": false
+  },
+  "confirmedDefects": [
+    {
+      "id": "T08-001",
+      "priority": "P2",
+      "resolved": true
+    },
+    {
+      "id": "T08-002",
+      "priority": "P2",
+      "resolved": true
+    },
+    {
+      "id": "T08-003",
+      "priority": "P2",
+      "resolved": true
+    },
+    {
+      "id": "T08-004",
+      "priority": "P2",
+      "resolved": true
+    },
+    {
+      "id": "T08-005",
+      "priority": "P1",
+      "resolved": true
+    },
+    {
+      "id": "T08-006",
+      "priority": "P2",
+      "resolved": true
+    }
+  ],
+  "unitTests": {
+    "passed": 145,
+    "failed": 0,
+    "path": "unit-tests.txt"
+  },
+  "browserReports": [
+    {
+      "path": "attempt-06/browser-results.json",
+      "build": "c7311da35e079840",
+      "checks": 42,
+      "passed": true
+    },
+    {
+      "path": "t04-regression/browser-results.json",
+      "build": "c7311da35e079840",
+      "checks": 30,
+      "passed": true
+    },
+    {
+      "path": "height-drafts/browser-results.json",
+      "build": "c7311da35e079840",
+      "checks": 4,
+      "passed": true
+    },
+    {
+      "path": "height-interactions-retest/browser-results.json",
+      "build": "c7311da35e079840",
+      "checks": 4,
+      "passed": true
+    },
+    {
+      "path": "t05-regression/browser-results.json",
+      "build": "c7311da35e079840",
+      "checks": 31,
+      "passed": true
+    },
+    {
+      "path": "t07-regression/browser-results.json",
+      "build": "c7311da35e079840",
+      "checks": 46,
+      "passed": true
+    }
+  ],
+  "registeredBrowserChecks": 157,
+  "t08RegisteredChecks": 42,
+  "regressionRegisteredChecks": 115,
+  "independentDownloadChecks": 23,
+  "independentDownloadReports": [
+    "independent-download-results.json",
+    "t05-independent-download-results.json"
+  ],
+  "accessibilitySamples": {
+    "path": "accessibility-01/results.json",
+    "visibleFieldLabels": 14,
+    "themeColorPairs": 8,
+    "certification": false
+  },
+  "internalWalkthrough": {
+    "externalParticipant": false,
+    "freshDevice": true,
+    "desktopKeyboardWorkflow": true,
+    "widthsWithFullWorkflow": [
+      1440,
+      1024,
+      390,
+      320
+    ],
+    "lowHeightViewport": [
+      390,
+      320
+    ],
+    "projectBackupRestored": true
+  },
+  "externalUserTrial": {
+    "executed": false,
+    "participants": 0,
+    "plannedParticipants": "5–8",
+    "protocol": "../../T08-user-trial-protocol.md"
+  },
+  "exceptionClassification": {
+    "filePicker": "setInputFiles; visible replacement review",
+    "quotaFailure": "injected Storage.setItem failure",
+    "savedDataSetup": "isolated localStorage initialization for old/corrupt preference cases",
+    "t05SupplementalSequences": "synthetic pointercancel/blur, CDP simulated touch, and contenteditable setup; native normal input",
+    "layoutReflow": "CSS viewport only; not actual browser zoom"
+  },
+  "failedAttemptsPreserved": [
+    "baseline-01",
+    "attempt-01",
+    "attempt-02",
+    "attempt-04",
+    "attempt-05",
+    "height-interactions"
+  ],
+  "intermediatePass": "attempt-03/browser-results.json",
+  "threeDLoadFailures": {
+    "attempts": [
+      "attempt-05",
+      "height-interactions"
+    ],
+    "exactCauseConfirmed": false,
+    "existing2dFallbackVisible": true,
+    "isolatedRetestPassed": true
+  },
+  "runtime": {
+    "isolatedContextsClosed": true,
+    "own8095ServiceStopped": true,
+    "existing8086Preserved": true,
+    "preserved8086Pid": 20514
+  },
+  "unverified": [
+    "External first-user trial",
+    "Safari / Edge",
+    "Physical mobile/touch/GPU",
+    "Screen reader / OS high contrast / actual browser 200% zoom",
+    "Long sessions / strict simultaneous storage writes",
+    "T09 high-resolution dimensioned output",
+    "Real door/drawer motion, elevation, vertical clearance, concurrent use and regulations",
+    "Original full residential measured dimensions"
+  ],
+  "environment": {
+    "node": "v22.22.3",
+    "python": "bundled runtime 26.904.11930 with Pillow",
+    "rendering": "Chrome headless / SwiftShader",
+    "testUrl": "http://127.0.0.1:8095/"
+  },
+  "commands": [
+    "npm test",
+    "npm run build",
+    "node /Users/chris/.npm/_npx/515228b7c8d004a2/node_modules/eslint/bin/eslint.js src --config tests/eslint.config.js",
+    "TEST_URL=http://127.0.0.1:8095/ T08_TEST_OUT=docs/verification/T08-english-onboarding/attempt-06 node tests/browser-t08-english-onboarding.mjs",
+    "TEST_URL=http://127.0.0.1:8095/ T04_TEST_OUT=docs/verification/T08-english-onboarding/t04-regression node tests/browser-t04-furniture-dimensions.mjs",
+    "TEST_URL=http://127.0.0.1:8095/ DRAFT_TEST_OUT=docs/verification/T08-english-onboarding/height-drafts node tests/browser-t04-drafts.mjs",
+    "TEST_URL=http://127.0.0.1:8095/ T04_INTERACTION_OUT=docs/verification/T08-english-onboarding/height-interactions-retest node tests/browser-t04-interactions.mjs",
+    "TEST_URL=http://127.0.0.1:8095/ T05_TEST_OUT=docs/verification/T08-english-onboarding/t05-regression node tests/browser-t05-editing-reliability.mjs",
+    "TEST_URL=http://127.0.0.1:8095/ T07_TEST_OUT=docs/verification/T08-english-onboarding/t07-regression node tests/browser-t07-save-recovery.mjs",
+    "/Users/chris/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 scripts/check-onboarding-exports.py docs/verification/T08-english-onboarding/attempt-06",
+    "/Users/chris/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 scripts/check-editing-reliability-exports.py docs/verification/T08-english-onboarding/t05-export-check",
+    "git diff --check"
+  ]
+}

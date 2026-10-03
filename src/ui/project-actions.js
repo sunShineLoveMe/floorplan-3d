@@ -42,11 +42,11 @@ function pushOut(f){
 }
 function addItem(it, x, y){
   const step=unitStepMm(store.getProject().units.display);
-  const [type,name,w,d,color] = it, f = F(type,name,Math.round(x/step)*step,Math.round(y/step)*step,w,d,0,color);
+  const [type,name,w,d,color] = it, f = F(type,nm(name,true),Math.round(x/step)*step,Math.round(y/step)*step,w,d,0,color);
   pushOut(f);
   ui.sel = {kind:'furn', id:f.id};
   mutate(() => type==='rug' ? store.getProject().furniture.unshift(f) : store.getProject().furniture.push(f));
-  toast(tr(`已添加「${name}」${formatLengthMm(w,store.getProject().units.display,{style:'inches'})} × ${formatLengthMm(d,store.getProject().units.display,{style:'inches'})}`, `Added "${nm(name)}" ${formatLengthMm(w,store.getProject().units.display,{style:'inches'})} × ${formatLengthMm(d,store.getProject().units.display,{style:'inches'})}`));
+  toast(tr(`已添加「${name}」${formatLengthMm(w,store.getProject().units.display,{style:'inches'})} × ${formatLengthMm(d,store.getProject().units.display,{style:'inches'})}`, `Added "${nm(name,true)}" ${formatLengthMm(w,store.getProject().units.display,{style:'inches'})} × ${formatLengthMm(d,store.getProject().units.display,{style:'inches'})}`));
 }
 function toggleWall(id){
   if(store.getProject().roomEditor) return toast(tr('矩形房间的生成墙体不可拆除，请编辑房间或门窗。','Generated rectangle walls cannot be removed. Edit the room or openings.'));

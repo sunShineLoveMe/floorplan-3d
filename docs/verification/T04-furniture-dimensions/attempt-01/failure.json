@@ -1,0 +1,11 @@
+{
+  "build": "c50d00016a1f6eae",
+  "checks": [
+    "all-types: 606 real mesh envelopes / centers / floor / rotated projections / finite geometry",
+    "production geometry contract for all types and legal size extremes",
+    "absence survives name and unit changes"
+  ],
+  "errors": [],
+  "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#svg')\u001b[22m\n\n    at key (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t04-furniture-dimensions.mjs:16:51)\n    at /Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t04-furniture-dimensions.mjs:35:95\n    at async run (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t04-furniture-dimensions.mjs:23:323)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t04-furniture-dimensions.mjs:32:2",
+  "meshSamples": 606
+}

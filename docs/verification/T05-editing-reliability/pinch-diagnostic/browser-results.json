@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "baseline": false,
+  "build": "77191c98b6d7e980",
+  "browser": "154.0.8037.97",
+  "checks": [
+    {
+      "name": "C04 simulated CDP second touch cancels 2D and 3D single-finger transactions"
+    }
+  ],
+  "failures": [],
+  "errors": [],
+  "exceptionKinds": {
+    "captureLoss": "native mouse down/move plus browser releasePointerCapture API, actual lostpointercapture event"
+  }
+}

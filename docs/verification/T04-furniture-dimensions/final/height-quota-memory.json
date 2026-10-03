@@ -1,0 +1,169 @@
+{
+  "format": "floorplan-3d",
+  "version": 2,
+  "id": "p-murw946w-70o9rhb1",
+  "name": "My room",
+  "createdAt": "2026-10-03T04:30:39.992Z",
+  "updatedAt": "2026-10-03T04:30:40.213Z",
+  "units": {
+    "internal": "mm",
+    "display": "metric"
+  },
+  "layout": {
+    "id": "layout-p-murw946w-70o9rhb1",
+    "name": "Layout A"
+  },
+  "view": {
+    "mode": "2d",
+    "layers": {
+      "dims": true,
+      "labels": true,
+      "furn": true,
+      "grid": false,
+      "bearing": false,
+      "wallSnap": true
+    }
+  },
+  "roomEditor": {
+    "kind": "rectangle",
+    "roomId": "room-1",
+    "width": 5000,
+    "depth": 4000,
+    "height": 2800,
+    "wallThickness": 120,
+    "openings": []
+  },
+  "geometry": {
+    "height": 2800,
+    "origin": [
+      2500,
+      2000
+    ],
+    "bounds": {
+      "x": -720,
+      "y": -720,
+      "w": 6440,
+      "h": 5440
+    },
+    "rooms": [
+      {
+        "id": "room-1",
+        "name": "My room",
+        "mat": "wood",
+        "poly": [
+          [
+            0,
+            0
+          ],
+          [
+            5000,
+            0
+          ],
+          [
+            5000,
+            4000
+          ],
+          [
+            0,
+            4000
+          ]
+        ],
+        "at": [
+          2500,
+          2000
+        ]
+      }
+    ],
+    "walls": [
+      [
+        -120,
+        -120,
+        5120,
+        0,
+        "n"
+      ],
+      [
+        5000,
+        0,
+        5120,
+        4000,
+        "n"
+      ],
+      [
+        -120,
+        4000,
+        5120,
+        4120,
+        "n"
+      ],
+      [
+        -120,
+        0,
+        0,
+        4000,
+        "n"
+      ]
+    ],
+    "wallIds": [
+      "top",
+      "right",
+      "bottom",
+      "left"
+    ],
+    "doors": [],
+    "windows": [],
+    "slides": [],
+    "lintels": [],
+    "dimensions": [
+      {
+        "horizontal": true,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          5000
+        ]
+      },
+      {
+        "horizontal": false,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          4000
+        ]
+      }
+    ],
+    "walkStart": {
+      "position": [
+        2500,
+        2800
+      ],
+      "target": [
+        2500,
+        1200
+      ]
+    },
+    "entry": null
+  },
+  "furniture": [
+    {
+      "id": "dimension-test",
+      "type": "bed",
+      "name": "Outer dimensions - test parameters",
+      "w": 1524.123456789,
+      "d": 2032.987654321,
+      "cx": 2400,
+      "cy": 2000,
+      "rot": 0,
+      "color": "#c9d6df",
+      "height": 654.987654321
+    }
+  ],
+  "rooms": {
+    "room-1": {
+      "name": "My room",
+      "mat": "wood"
+    }
+  },
+  "demolished": [],
+  "measures": []
+}

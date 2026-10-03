@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "baseline": false,
+  "build": "5ad470a1b6ba2946",
+  "browser": "154.0.8037.97",
+  "checks": [
+    {
+      "name": "C05 field/search/select/modal/menu focus and native canvas model shortcuts"
+    },
+    {
+      "name": "C08 preferences during native preview and no-op gesture save only committed data"
+    },
+    {
+      "name": "C07 add/move/delete room restores openings, fixed obstacles and furniture atomically"
+    },
+    {
+      "name": "native measurement history stays separate from furniture editing"
+    },
+    {
+      "name": "door add/edit/delete recover stable IDs and exact full project"
+    },
+    {
+      "name": "window add/edit/delete recover stable IDs and exact full project"
+    },
+    {
+      "name": "C07 rectangle room, new project, door/window Apply/delete and atomic Undo/Redo"
+    }
+  ],
+  "failures": [],
+  "errors": [],
+  "exceptionKinds": {
+    "captureLoss": "native mouse down/move plus browser releasePointerCapture API, actual lostpointercapture event"
+  }
+}

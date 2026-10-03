@@ -1,0 +1,22 @@
+{
+  "result": "passed",
+  "source": "/Users/chris/Downloads/CUA T08 native test-Layout A-2026-10-03-210926-project.json",
+  "sha256": "0b3e778ba974270cad2651e5ba17484f7edfa8253733a455345cfe9b538cb957",
+  "room_mm": [
+    3657.6,
+    3048,
+    2438.4
+  ],
+  "door_mm": [
+    609.6,
+    914.4,
+    2133.6
+  ],
+  "furniture_mm": {
+    "w": 1527.175,
+    "d": 2041.5249999999999,
+    "cx": 1981.1999999999998,
+    "cy": 1778
+  },
+  "height": "unspecified"
+}

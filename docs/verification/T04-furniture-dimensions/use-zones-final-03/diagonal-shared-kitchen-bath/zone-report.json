@@ -1,0 +1,77 @@
+{
+  "zones": [
+    {
+      "furnitureId": "furniture-0",
+      "zoneId": "zone-0",
+      "kind": "appliance",
+      "side": "bottom",
+      "widthMm": 600,
+      "depthMm": 600,
+      "offsetMm": 0,
+      "poly": [
+        [
+          3700,
+          1700
+        ],
+        [
+          4300,
+          1700
+        ],
+        [
+          4300,
+          2300
+        ],
+        [
+          3700,
+          2300
+        ]
+      ],
+      "outsideMm2": 0,
+      "status": "clear",
+      "conflicts": []
+    },
+    {
+      "furnitureId": "furniture-1",
+      "zoneId": "zone-1",
+      "kind": "appliance",
+      "side": "bottom",
+      "widthMm": 600,
+      "depthMm": 600,
+      "offsetMm": 0,
+      "poly": [
+        [
+          1200,
+          3600
+        ],
+        [
+          1800,
+          3600
+        ],
+        [
+          1800,
+          4200
+        ],
+        [
+          1200,
+          4200
+        ]
+      ],
+      "outsideMm2": 78176.62350913789,
+      "status": "conflict",
+      "conflicts": [
+        {
+          "kind": "floor",
+          "id": "net-floor",
+          "name": "Outside net floor",
+          "overlapMm2": 78176.62350913789
+        },
+        {
+          "kind": "wall",
+          "id": "wall-8",
+          "name": "Wall",
+          "overlapMm2": 72000
+        }
+      ]
+    }
+  ]
+}

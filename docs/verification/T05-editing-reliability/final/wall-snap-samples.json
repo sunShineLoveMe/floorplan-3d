@@ -1,0 +1,218 @@
+[
+  {
+    "unit": "metric",
+    "rot": 0,
+    "zoom": 0,
+    "on": false,
+    "raw": 1036.4937050901876,
+    "expected": 1040,
+    "actual": 1040
+  },
+  {
+    "unit": "metric",
+    "rot": 0,
+    "zoom": 0,
+    "on": true,
+    "raw": 1036.4937050901876,
+    "expected": 1016.4938271605,
+    "actual": 1016.4938271605
+  },
+  {
+    "unit": "metric",
+    "rot": 0,
+    "zoom": 2,
+    "on": false,
+    "raw": 1036.4939492308126,
+    "expected": 1040,
+    "actual": 1040
+  },
+  {
+    "unit": "metric",
+    "rot": 0,
+    "zoom": 2,
+    "on": true,
+    "raw": 1036.4939492308126,
+    "expected": 1016.4938271605,
+    "actual": 1016.4938271605
+  },
+  {
+    "unit": "metric",
+    "rot": 90,
+    "zoom": 0,
+    "on": false,
+    "raw": 782.0618504648127,
+    "expected": 780,
+    "actual": 780
+  },
+  {
+    "unit": "metric",
+    "rot": 90,
+    "zoom": 0,
+    "on": true,
+    "raw": 782.0618504648127,
+    "expected": 762.0617283945002,
+    "actual": 762.0617283945002
+  },
+  {
+    "unit": "metric",
+    "rot": 90,
+    "zoom": 2,
+    "on": false,
+    "raw": 782.0616673593439,
+    "expected": 780,
+    "actual": 780
+  },
+  {
+    "unit": "metric",
+    "rot": 90,
+    "zoom": 2,
+    "on": true,
+    "raw": 782.0616673593439,
+    "expected": 762.0617283945002,
+    "actual": 762.0617283945002
+  },
+  {
+    "unit": "metric",
+    "rot": 37,
+    "zoom": 0,
+    "on": false,
+    "raw": 1290.4281407609642,
+    "expected": 1290,
+    "actual": 1290
+  },
+  {
+    "unit": "metric",
+    "rot": 37,
+    "zoom": 0,
+    "on": true,
+    "raw": 1290.4281407609642,
+    "expected": 1270.4282628312767,
+    "actual": 1270.4282628312767
+  },
+  {
+    "unit": "metric",
+    "rot": 37,
+    "zoom": 2,
+    "on": false,
+    "raw": 1290.4283849015892,
+    "expected": 1290,
+    "actual": 1290
+  },
+  {
+    "unit": "metric",
+    "rot": 37,
+    "zoom": 2,
+    "on": true,
+    "raw": 1290.4283849015892,
+    "expected": 1270.4282628312767,
+    "actual": 1270.4282628312767
+  },
+  {
+    "unit": "imperial",
+    "rot": 0,
+    "zoom": 0,
+    "on": false,
+    "raw": 1036.4937050901876,
+    "expected": 1035.05,
+    "actual": 1035.05
+  },
+  {
+    "unit": "imperial",
+    "rot": 0,
+    "zoom": 0,
+    "on": true,
+    "raw": 1036.4937050901876,
+    "expected": 1016.4938271605,
+    "actual": 1016.4938271605
+  },
+  {
+    "unit": "imperial",
+    "rot": 0,
+    "zoom": 2,
+    "on": false,
+    "raw": 1036.4939492308126,
+    "expected": 1035.05,
+    "actual": 1035.05
+  },
+  {
+    "unit": "imperial",
+    "rot": 0,
+    "zoom": 2,
+    "on": true,
+    "raw": 1036.4939492308126,
+    "expected": 1016.4938271605,
+    "actual": 1016.4938271605
+  },
+  {
+    "unit": "imperial",
+    "rot": 90,
+    "zoom": 0,
+    "on": false,
+    "raw": 782.0618504648127,
+    "expected": 781.05,
+    "actual": 781.05
+  },
+  {
+    "unit": "imperial",
+    "rot": 90,
+    "zoom": 0,
+    "on": true,
+    "raw": 782.0618504648127,
+    "expected": 762.0617283945002,
+    "actual": 762.0617283945002
+  },
+  {
+    "unit": "imperial",
+    "rot": 90,
+    "zoom": 2,
+    "on": false,
+    "raw": 782.0616673593439,
+    "expected": 781.05,
+    "actual": 781.05
+  },
+  {
+    "unit": "imperial",
+    "rot": 90,
+    "zoom": 2,
+    "on": true,
+    "raw": 782.0616673593439,
+    "expected": 762.0617283945002,
+    "actual": 762.0617283945002
+  },
+  {
+    "unit": "imperial",
+    "rot": 37,
+    "zoom": 0,
+    "on": false,
+    "raw": 1290.4281407609642,
+    "expected": 1289.05,
+    "actual": 1289.05
+  },
+  {
+    "unit": "imperial",
+    "rot": 37,
+    "zoom": 0,
+    "on": true,
+    "raw": 1290.4281407609642,
+    "expected": 1270.4282628312767,
+    "actual": 1270.4282628312767
+  },
+  {
+    "unit": "imperial",
+    "rot": 37,
+    "zoom": 2,
+    "on": false,
+    "raw": 1290.4283849015892,
+    "expected": 1289.05,
+    "actual": 1289.05
+  },
+  {
+    "unit": "imperial",
+    "rot": 37,
+    "zoom": 2,
+    "on": true,
+    "raw": 1290.4283849015892,
+    "expected": 1270.4282628312767,
+    "actual": 1270.4282628312767
+  }
+]

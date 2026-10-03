@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "baseline": false,
+  "build": "5ad470a1b6ba2946",
+  "browser": "154.0.8037.97",
+  "checks": [
+    {
+      "name": "C01 exact centers, no-op fields, negative mm, imperial conversion and reviewed roundtrip"
+    },
+    {
+      "name": "C03 small resize does not expand an unchanged width to 100 mm"
+    },
+    {
+      "name": "C04 actual pointer capture loss cancels 2D preview and the next gesture works"
+    },
+    {
+      "name": "C05 Properties and library button focus isolate model shortcuts"
+    },
+    {
+      "name": "C06 unchanged room Apply does not insert a history entry"
+    },
+    {
+      "name": "C04 model shortcut during 2D drag cancels preview before rotation"
+    },
+    {
+      "name": "C04 actual pointer capture loss cancels 3D preview and restores orbit"
+    },
+    {
+      "name": "C02 Wall snap is reachable in 3D"
+    }
+  ],
+  "failures": [],
+  "errors": [],
+  "exceptionKinds": {
+    "captureLoss": "native mouse down/move plus browser releasePointerCapture API, actual lostpointercapture event"
+  }
+}

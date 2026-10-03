@@ -1,0 +1,42 @@
+ M README.md
+ M docs/architecture.md
+ M docs/roadmap.md
+ M docs/usage.md
+ M index.html
+ M src/editor2d/interactions.js
+ M src/main.js
+ M src/ui/dom.js
+ M src/ui/furniture-library.js
+ M src/ui/i18n.js
+ M src/ui/length-field.js
+ M src/ui/project-actions.js
+ M src/ui/project-protection.js
+ M src/ui/property-panel.js
+ M src/ui/toolbar.js
+ M src/viewer3d/furniture.js
+ M src/viewer3d/viewer.js
+ M styles/workspace.css
+ M tests/browser-t06-use-zones.mjs
+ M tests/browser-t07-save-recovery.mjs
+ M tests/project-data.test.js
+?? aws-tokyo-wireguard.yaml
+?? docs/T04-furniture-dimensions-handoff-2026-10-03.md
+?? docs/T04-furniture-dimensions-verification-2026-10-03.md
+?? docs/T05-editing-reliability-handoff-2026-10-03.md
+?? docs/T05-editing-reliability-verification-2026-10-03.md
+?? docs/T08-english-onboarding-handoff-2026-10-03.md
+?? docs/T08-english-onboarding-verification-2026-10-03.md
+?? docs/T08-user-trial-protocol.md
+?? docs/verification/T04-furniture-dimensions/
+?? docs/verification/T05-editing-reliability/
+?? docs/verification/T08-english-onboarding/
+?? scripts/check-editing-reliability-exports.py
+?? scripts/check-onboarding-exports.py
+?? tests/browser-t04-baseline.mjs
+?? tests/browser-t04-drafts.mjs
+?? tests/browser-t04-furniture-dimensions.mjs
+?? tests/browser-t04-interactions.mjs
+?? tests/browser-t05-editing-reliability.mjs
+?? tests/browser-t08-english-onboarding.mjs
+?? tests/helpers/furniture-mesh-audit.js
+?? tests/i18n.test.js

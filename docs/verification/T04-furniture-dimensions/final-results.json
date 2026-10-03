@@ -1,0 +1,97 @@
+{
+  "passed": true,
+  "batch": "T04 optional furniture height and complete mesh dimensions",
+  "date": "2026-10-03",
+  "build": "1891ea7378a262e2",
+  "workspace": {
+    "branch": "feat/ui-refactor",
+    "head": "b0b679750aa08346d34f44fd49ac3dd029e85e01",
+    "remoteHeadVerified": "b0b679750aa08346d34f44fd49ac3dd029e85e01",
+    "continuedExistingWorkspace": true,
+    "committed": false,
+    "pushed": false,
+    "merged": false,
+    "deployed": false,
+    "forbiddenFileReadOrModified": false,
+    "priorFixturesAndEvidenceUnchangedAgainstHead": true
+  },
+  "unitTests": {
+    "passed": 144,
+    "failed": 0,
+    "path": "unit-tests.txt"
+  },
+  "nativeBrowserReports": [
+    {
+      "path": "final-02/browser-results.json",
+      "checks": 30,
+      "build": "1891ea7378a262e2",
+      "traceBuilds": [],
+      "passed": true
+    },
+    {
+      "path": "drafts-final-02/browser-results.json",
+      "checks": 4,
+      "build": "1891ea7378a262e2",
+      "traceBuilds": [],
+      "passed": true
+    },
+    {
+      "path": "interactions-final/browser-results.json",
+      "checks": 4,
+      "build": "1891ea7378a262e2",
+      "traceBuilds": [],
+      "passed": true
+    },
+    {
+      "path": "t07-final-02/browser-results.json",
+      "checks": 46,
+      "build": "1891ea7378a262e2",
+      "traceBuilds": [],
+      "passed": true
+    },
+    {
+      "path": "use-zones-final-03/browser-results.json",
+      "checks": 27,
+      "build": "1891ea7378a262e2",
+      "traceBuilds": [],
+      "passed": true
+    },
+    {
+      "path": "walk-regression/walk-results.json",
+      "checks": 18,
+      "build": null,
+      "traceBuilds": [
+        "c50d00016a1f6eae"
+      ],
+      "passed": true
+    },
+    {
+      "path": "height-joystick/browser-results.json",
+      "checks": 3,
+      "build": "c50d00016a1f6eae",
+      "traceBuilds": [],
+      "passed": true
+    }
+  ],
+  "nativeRegisteredChecks": 132,
+  "meshSamples": 656,
+  "meshTypes": 45,
+  "meshToleranceMm": 1e-05,
+  "maxMeasuredDimensionErrorMm": 3.725290298461914e-09,
+  "meshCoordinateFrame": "Expected declared item center and rotation, visible mesh vertices including decorative geometry; world bounds recorded separately.",
+  "independentDownloads": "independent-download-results.json",
+  "beforeAfterDimensions": "before-after-dimensions.json",
+  "unverified": [
+    "Safari / Edge",
+    "physical touch devices and printers",
+    "strict simultaneous storage writes",
+    "real door / drawer sweeps",
+    "vertical collisions, mounting elevation, concurrent use and regulations",
+    "original complete source dimensions; existing source acceptance remains false"
+  ],
+  "runtime": {
+    "isolatedChromeContextsClosed": true,
+    "own8095ServiceStopped": true,
+    "existing8086Preserved": true
+  }
+}

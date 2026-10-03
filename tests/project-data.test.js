@@ -67,3 +67,15 @@ test('legacy edits to removable external/low walls remain importable',()=>{
  const old={furniture:project.furniture,rooms:project.rooms,demolished:['w2'],measures:[]};
  assert.deepEqual(Data.read(JSON.stringify(old),template,catalogs,true).project.demolished,['w2']);
 });
+test('optional furniture height retains absence and exact thin/tall values across v2, v1 and legacy',()=>{
+ const p=structuredClone(project);delete p.furniture[0].height;p.furniture[1].height=.125678912345;p.furniture[2].height=9999999.98765;
+ for(const input of [p,{...p,version:1},{furniture:p.furniture,rooms:p.rooms,demolished:p.demolished,measures:p.measures}]){
+  const restored=Data.read(JSON.stringify(input),template,catalogs,true).project;
+  assert.equal(Object.hasOwn(restored.furniture[0],'height'),false);assert.equal(restored.furniture[1].height,p.furniture[1].height);assert.equal(restored.furniture[2].height,p.furniture[2].height);
+ }
+});
+test('optional furniture height rejects null, zero, negatives, nonfinite and out of existing range',()=>{
+ for(const height of [null,0,-.01,NaN,Infinity,1e7+.1,'800']){
+  const p=structuredClone(project);p.furniture[0].height=height;assert.throws(()=>Data.validate(p,catalogs),{code:'INVALID_PROJECT'});
+ }
+});

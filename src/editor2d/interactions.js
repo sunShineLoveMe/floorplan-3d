@@ -1,5 +1,5 @@
 import {$} from '../ui/dom.js';
-import {TAP} from '../ui/dom.js';
+import {TAP,blocksModelShortcuts} from '../ui/dom.js';
 import {formatLengthMm,formatAreaM2,unitStepMm} from '../core/units.js';
 import {roomArea,norm} from '../core/geometry.js';
 import {createScope} from '../ui/lifecycle.js';
@@ -10,7 +10,7 @@ const {renderFurn,renderSel,renderMeasure}=renderer;
 const {snapMove,snapPoint}=snapping;
 const {getF,select,rotateSel,deleteSel,duplicateSel,toggleWall}=actions;
 const {drawer,closeDrawers}=drawers;
-const snap=()=>store.begin(),commit=b=>store.commit(b),mutate=fn=>store.mutate(fn);
+const snap=()=>store.begin(),commit=()=>store.commit(),mutate=fn=>store.mutate(fn);
 let drag = null, pinch = null, lastPoint=null, hoverRoom=null;
 function updateStatus(){
  if(lastPoint){$('#cx').textContent=formatLengthMm(lastPoint.x,store.getProject().units.display);$('#cy').textContent=formatLengthMm(lastPoint.y,store.getProject().units.display);}
@@ -24,9 +24,10 @@ function pinchInfo(){
   return {d:Math.max(1, Math.hypot(b.x-a.x, b.y-a.y)), c:svgXY((a.x+b.x)/2, (a.y+b.y)/2)};
 }
 // 结束当前拖动：移动过的家具记入撤销栈
-function endDrag(cancel){
+function endDrag(cancel, keepCapture=false){
   const d = drag; drag = null; svg.classList.remove('panning');
   if (!d) return;
+  if(!keepCapture && svg.hasPointerCapture(d.pid)) svg.releasePointerCapture(d.pid);
   if (d.kind === 'measure'){
     if (cancel){ ui.mA = ui.mCur = null; renderMeasure(); return; }
     if (d.moved && ui.mA && ui.mCur && Math.hypot(ui.mCur.x-ui.mA.x, ui.mCur.y-ui.mA.y) > 20){
@@ -48,7 +49,7 @@ scope.on(svg, 'pointerdown', e => {
     touches.set(e.pointerId, {x:e.clientX, y:e.clientY});
     svg.setPointerCapture(e.pointerId);
     if (touches.size >= 2){                    // 第二根手指落下：取消单指操作，进入双指缩放 / 平移
-      endDrag(true);
+      endDrag(true,true); // Both captured fingers now belong to the pinch gesture.
       const {d, c} = pinchInfo();
       pinch = {d, c, s:view.s, px:view.x0 + c[0]/view.s, py:view.y0 + c[1]/view.s};
       return;
@@ -58,7 +59,7 @@ scope.on(svg, 'pointerdown', e => {
   const p = toMM(e), t = e.target;
   if (ui.tool === 'measure'){
     const q = snapPoint(p, e.shiftKey);
-    if (!ui.mA){ ui.mA = q; ui.mCur = q; drag = {kind:'measure', sx:e.clientX, sy:e.clientY, moved:false}; svg.setPointerCapture(e.pointerId); }
+    if (!ui.mA){ ui.mA = q; ui.mCur = q; drag = {kind:'measure', pid:e.pointerId, sx:e.clientX, sy:e.clientY, moved:false}; svg.setPointerCapture(e.pointerId); }
     else { const a = ui.mA; ui.mA = null; ui.mCur = null; if (Math.hypot(q.x-a.x, q.y-a.y) > 20) mutate(() => store.getProject().measures.push({a, b:q})); }
     renderMeasure(); return;
   }
@@ -79,6 +80,7 @@ scope.on(svg, 'pointerdown', e => {
     const room = t.closest('[data-room]');
     drag = {kind:'pan', sx:e.clientX, sy:e.clientY, x0:view.x0, y0:view.y0, room:room && room.dataset.room, moved:false};
   }
+  if(drag){drag.pid=e.pointerId;drag.start={...getF(drag.id)};drag.point={x:p.x,y:p.y};}
   svg.setPointerCapture(e.pointerId);
 });
 
@@ -99,6 +101,7 @@ scope.on(svg, 'pointermove', e => {
     return;
   }
   const far = Math.hypot(e.clientX-drag.sx, e.clientY-drag.sy) >= TAP;
+  if(e.pointerId!==drag.pid)return;
   if (drag.kind === 'measure'){
     if (far) drag.moved = true;
     ui.mCur = snapPoint(p, e.shiftKey); renderMeasure(); return;
@@ -118,13 +121,14 @@ scope.on(svg, 'pointermove', e => {
     let a = Math.atan2(p.y-f.cy, p.x-f.cx)*180/Math.PI + 90;
     f.rot = norm(e.shiftKey ? a : Math.round(a/15)*15);
   } else if (drag.kind === 'size'){
-    const a = f.rot*Math.PI/180, c = Math.cos(a), s = Math.sin(a);
-    const dx = p.x-f.cx, dy = p.y-f.cy, lx = dx*c + dy*s, ly = -dx*s + dy*c;
-    const ax = -f.w/2, ay = -f.d/2;
+    const start=drag.start,a = start.rot*Math.PI/180, c = Math.cos(a), s = Math.sin(a);
+    const dx = p.x-drag.point.x, dy = p.y-drag.point.y, lx = dx*c + dy*s, ly = -dx*s + dy*c;
     const step=unitStepMm(store.getProject().units.display);
-    const nw = Math.max(100, Math.round((lx-ax)/step)*step), nd = Math.max(100, Math.round((ly-ay)/step)*step);
-    const mx = ax + nw/2, my = ay + nd/2;
-    f.cx += mx*c - my*s; f.cy += mx*s + my*c; f.w = nw; f.d = nd;
+    // Preserve a stationary axis exactly, including imported sub-minimum sizes.
+    const nw = Math.abs(lx)<1e-8?start.w:Math.max(Math.min(50,start.w), Math.round((start.w+lx)/step)*step);
+    const nd = Math.abs(ly)<1e-8?start.d:Math.max(Math.min(50,start.d), Math.round((start.d+ly)/step)*step);
+    const mx=(nw-start.w)/2,my=(nd-start.d)/2;
+    f.cx = start.cx + mx*c - my*s; f.cy = start.cy + mx*s + my*c; f.w = nw; f.d = nd;
   }
   });
   renderFurn(); renderSel();
@@ -133,10 +137,11 @@ scope.on(svg, 'pointermove', e => {
 function onPointerEnd(e){
   touches.delete(e.pointerId);
   if (pinch){ if (touches.size < 2) pinch = null; return; }   // 双指结束后，剩下的手指不再触发操作
-  endDrag(e.type === 'pointercancel');
+  if(drag?.pid===e.pointerId)endDrag(e.type !== 'pointerup');
 }
 scope.on(svg, 'pointerup', onPointerEnd);
 scope.on(svg, 'pointercancel', onPointerEnd);
+scope.on(svg, 'lostpointercapture', onPointerEnd);
 // 阻止 iPad Safari 把双指手势当成整页缩放
 ['gesturestart','gesturechange','gestureend'].forEach(t => scope.on(document, t, e => e.preventDefault()));
 
@@ -151,9 +156,10 @@ scope.on(svg, 'contextmenu', e => { if (ui.tool==='measure'){ e.preventDefault()
 
 /* ======================= 键盘 ======================= */
 scope.on(document, 'keydown', e => {
-  if (e.target.closest('input,select,textarea,[contenteditable=true]') || document.querySelector('dialog[open]')) return;
+  if (blocksModelShortcuts(e) || document.querySelector('dialog[open]')) return;
   if (mode.walking()) return;
   const mod = e.metaKey || e.ctrlKey, k = e.key.toLowerCase();
+  if(mod&&k==='d'||!mod&&(['r','delete','backspace'].includes(k)||k.startsWith('arrow')))mode.cancelInteraction();
   if (mod && k === 'z'){ e.preventDefault(); e.shiftKey ? redo() : undo(); return; }
   if (mod && k === 'y'){ e.preventDefault(); redo(); return; }
   if (mod && k === 'd'){ e.preventDefault(); duplicateSel(); return; }

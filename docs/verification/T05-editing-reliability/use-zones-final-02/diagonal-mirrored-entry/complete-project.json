@@ -1,0 +1,419 @@
+{
+  "format": "floorplan-3d",
+  "version": 2,
+  "id": "p-mus82100-qmcye058",
+  "name": "Apartment entry - synthetic test",
+  "createdAt": "2026-10-03T10:01:04.656Z",
+  "updatedAt": "2026-10-03T10:01:04.735Z",
+  "units": {
+    "internal": "mm",
+    "display": "imperial"
+  },
+  "layout": {
+    "id": "layout-p-mus82100-qmcye058",
+    "name": "Layout A"
+  },
+  "view": {
+    "mode": "2d",
+    "layers": {
+      "dims": true,
+      "labels": true,
+      "furn": true,
+      "grid": false,
+      "bearing": false,
+      "wallSnap": true
+    }
+  },
+  "roomEditor": {
+    "kind": "house",
+    "floorSlab": true,
+    "height": 2800,
+    "wallThickness": 120,
+    "rooms": [
+      {
+        "id": "entry",
+        "name": "Entry",
+        "x": -1400,
+        "y": 750,
+        "width": 4200,
+        "depth": 3400,
+        "notch": {
+          "corner": "top-left",
+          "width": 1200,
+          "depth": 500,
+          "shape": "diagonal",
+          "wallThickness": 180
+        },
+        "obstacles": [
+          {
+            "id": "column",
+            "name": "Test column",
+            "x": 4100,
+            "y": 0,
+            "width": 100,
+            "depth": 100,
+            "height": 2800
+          }
+        ]
+      }
+    ],
+    "openings": [
+      {
+        "id": "opening-0",
+        "roomId": "entry",
+        "wallId": "entry--bottom",
+        "type": "door",
+        "offset": 500,
+        "width": 850,
+        "height": 2000,
+        "hinge": "start",
+        "swing": "inward"
+      },
+      {
+        "id": "opening-1",
+        "roomId": "entry",
+        "wallId": "entry--right",
+        "type": "window",
+        "offset": 500,
+        "width": 1000,
+        "height": 1000,
+        "sill": 900
+      }
+    ]
+  },
+  "geometry": {
+    "height": 2800,
+    "origin": [
+      700,
+      2450
+    ],
+    "bounds": {
+      "x": -2620,
+      "y": -470,
+      "w": 6640,
+      "h": 5840
+    },
+    "rooms": [
+      {
+        "id": "entry",
+        "name": "Entry",
+        "mat": "wood",
+        "poly": [
+          [
+            -200,
+            750
+          ],
+          [
+            2800,
+            750
+          ],
+          [
+            2800,
+            4150
+          ],
+          [
+            -1400,
+            4150
+          ],
+          [
+            -1400,
+            1250
+          ]
+        ],
+        "at": [
+          472,
+          2250
+        ],
+        "usableAreaM2": 13.97
+      }
+    ],
+    "obstacles": [
+      {
+        "id": "column",
+        "roomId": "entry",
+        "name": "Test column",
+        "rect": [
+          2700,
+          750,
+          2800,
+          850
+        ],
+        "height": 2800
+      }
+    ],
+    "walls": [
+      [
+        -200,
+        630,
+        2920,
+        750,
+        "n"
+      ],
+      [
+        2800,
+        750,
+        2920,
+        1250,
+        "n"
+      ],
+      [
+        2800,
+        2250,
+        2920,
+        4150,
+        "n"
+      ],
+      [
+        -1520,
+        4150,
+        -900,
+        4270,
+        "n"
+      ],
+      [
+        -50,
+        4150,
+        2920,
+        4270,
+        "n"
+      ],
+      [
+        -1520,
+        1250,
+        -1400,
+        4150,
+        "n"
+      ]
+    ],
+    "wallIds": [
+      "entry--top",
+      "entry--right",
+      "entry--right",
+      "entry--bottom",
+      "entry--bottom",
+      "entry--left"
+    ],
+    "diagonalWalls": [
+      {
+        "id": "entry--diagonal",
+        "roomId": "entry",
+        "poly": [
+          [
+            -200,
+            750
+          ],
+          [
+            -1400,
+            1250
+          ],
+          [
+            -1520,
+            1250
+          ],
+          [
+            -1520,
+            1105
+          ],
+          [
+            -668,
+            750
+          ]
+        ],
+        "inner": [
+          [
+            -1400,
+            1250
+          ],
+          [
+            -200,
+            750
+          ]
+        ],
+        "height": 2800
+      },
+      {
+        "id": "entry--diagonal",
+        "roomId": "entry",
+        "poly": [
+          [
+            -380,
+            630
+          ],
+          [
+            -200,
+            630
+          ],
+          [
+            -200,
+            750
+          ],
+          [
+            -668,
+            750
+          ]
+        ],
+        "inner": [
+          [
+            -1400,
+            1250
+          ],
+          [
+            -200,
+            750
+          ]
+        ],
+        "height": 2800
+      }
+    ],
+    "floorPolygons": [
+      [
+        [
+          -380,
+          630
+        ],
+        [
+          2920,
+          630
+        ],
+        [
+          2920,
+          4270
+        ],
+        [
+          -1520,
+          4270
+        ],
+        [
+          -1520,
+          1105
+        ]
+      ]
+    ],
+    "doors": [
+      {
+        "id": "opening-0",
+        "wallId": "entry--bottom",
+        "rect": [
+          -900,
+          4150,
+          -50,
+          4270
+        ],
+        "h": [
+          -900,
+          4150
+        ],
+        "c": [
+          1,
+          0
+        ],
+        "o": [
+          0,
+          -1
+        ],
+        "len": 850,
+        "height": 2000,
+        "name": "opening-0",
+        "roomId": "entry"
+      }
+    ],
+    "windows": [
+      {
+        "id": "opening-1",
+        "wallId": "entry--right",
+        "rect": [
+          2800,
+          1250,
+          2920,
+          2250
+        ],
+        "sill": 900,
+        "head": 1900,
+        "roomId": "entry"
+      }
+    ],
+    "slides": [],
+    "lintels": [],
+    "dimensions": [
+      {
+        "horizontal": true,
+        "at": 330,
+        "start": -1400,
+        "segments": [
+          4200
+        ]
+      },
+      {
+        "horizontal": false,
+        "at": -1820,
+        "start": 750,
+        "segments": [
+          3400
+        ]
+      }
+    ],
+    "walkStart": {
+      "position": [
+        472,
+        2250
+      ],
+      "target": [
+        472,
+        1250
+      ]
+    },
+    "entry": null
+  },
+  "furniture": [
+    {
+      "type": "desk",
+      "name": "Test bench",
+      "cx": 600,
+      "cy": 2950,
+      "w": 1000,
+      "d": 400,
+      "rot": -35,
+      "id": "furniture-0",
+      "color": "#ddd6c8",
+      "useZones": [
+        {
+          "id": "zone-0",
+          "kind": "appliance",
+          "side": "bottom",
+          "widthMm": 600,
+          "depthMm": 600,
+          "offsetMm": 0
+        }
+      ]
+    },
+    {
+      "type": "wardrobe",
+      "name": "Test cabinet",
+      "cx": 1800,
+      "cy": 2500,
+      "w": 600,
+      "d": 600,
+      "rot": 0,
+      "id": "furniture-1",
+      "color": "#ddd6c8",
+      "useZones": [
+        {
+          "id": "zone-1",
+          "kind": "appliance",
+          "side": "bottom",
+          "widthMm": 600,
+          "depthMm": 600,
+          "offsetMm": 0
+        }
+      ]
+    }
+  ],
+  "rooms": {
+    "entry": {
+      "name": "Entry",
+      "mat": "wood"
+    }
+  },
+  "demolished": [],
+  "measures": []
+}

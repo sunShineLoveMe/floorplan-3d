@@ -12,13 +12,13 @@ import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {PointerLockControls} from 'three/addons/controls/PointerLockControls.js';
 import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
 import {CSS2DRenderer,CSS2DObject} from 'three/addons/renderers/CSS2DRenderer.js';
-import {COARSE,TAP,esc} from '../ui/dom.js';
+import {COARSE,TAP,esc,blocksModelShortcuts} from '../ui/dom.js';
 import {tr,nm} from '../ui/i18n.js';
 import {roomArea} from '../core/geometry.js';
 import {createScope} from '../ui/lifecycle.js';
 export function createViewer3D({store,ui,view,actions,snapMove,closeDrawers,onChange}){
 const scope=createScope();
-const {getF,select}=actions; const snap=()=>store.begin(),commit=b=>store.commit(b);
+const {getF,select}=actions; const snap=()=>store.begin(),commit=()=>store.commit();
 const stage = $('#stage'), host = $('#view3d');
 let [OX, OY] = store.getProject().geometry.origin, H = store.getProject().geometry.height/1000;
 const FOV = 45;       // 原点与层高由当前项目提供
@@ -100,7 +100,8 @@ function init(){
   // 在父元素上用捕获阶段监听，赶在 OrbitControls 之前关掉它，避免同时旋转镜头
   let fdrag = null;
   scope.on(host, 'pointerdown', e => {
-    if (modalOpen() || e.target !== cv || !e.isPrimary || anim || opt.mode !== 'orbit' || ui.sel?.kind !== 'furn') return;
+    if(fdrag && e.pointerId!==fdrag.pid){cancelGesture();return;}
+    if (modalOpen() || e.target !== cv || e.button!==0 || !e.isPrimary || anim || opt.mode !== 'orbit' || ui.sel?.kind !== 'furn') return;
     const h = pick(e), f = h?.fid === ui.sel.id && getF(h.fid), g = f && groundAt(e.clientX, e.clientY);
     if (!g) return;
     fdrag = {id:f.id, pid:e.pointerId, sx:e.clientX, sy:e.clientY, ox:g.x - f.cx, oy:g.y - f.cy, before:snap(), moved:false};
@@ -118,9 +119,10 @@ function init(){
     if (!fdrag || e.pointerId !== fdrag.pid) return;
     const d = fdrag; fdrag = null; orbit.enabled = opt.mode==='orbit'; cv.style.cursor = '';
     if(cv.hasPointerCapture(d.pid)) cv.releasePointerCapture(d.pid);
-    if (e.type === 'pointercancel'){store.cancel();buildFurn();} else commit(d.before);
+    if (e.type !== 'pointerup'){store.cancel();buildFurn();} else commit(d.before);
   };
   scope.on(cv, 'pointerup', endF); scope.on(cv, 'pointercancel', endF);
+  scope.on(cv, 'lostpointercapture', endF);
   cancelGesture=()=>{
     if(fdrag) endF({pointerId:fdrag.pid,type:'pointercancel'});
     downAt=null;
@@ -441,7 +443,7 @@ function stepWalk(dt){
   if (canWalkSegment([p.x,p.z],[p.x,p.z+mv.z])) p.z += mv.z;
 }
 scope.on(window, 'keydown', e => {
-  if (!active || modalOpen() || e.target.closest('input,select,textarea,[contenteditable=true]')) return;
+  if (!active || modalOpen() || blocksModelShortcuts(e)) return;
   keys[e.code] = true;
   if(opt.mode==='walk' && e.code==='Escape'){walkCtl.unlock();if(touchWalk){stopTouchWalk();$('#walkOverlay').style.display='flex';}}
   if (opt.mode === 'walk' && e.code === 'KeyE'){ const h = pick(); if (h?.door && h.dist < 2.5) h.door.open = !h.door.open; }

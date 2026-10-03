@@ -1,0 +1,4 @@
+{
+  "passed": false,
+  "reason": "Stopped own verification processes after targeted draft test found a restoration predicate defect; rerun follows the fix."
+}

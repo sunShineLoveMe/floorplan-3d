@@ -1,0 +1,194 @@
+{
+  "format": "floorplan-3d",
+  "version": 2,
+  "id": "t01-custom",
+  "name": "T01 custom geometry",
+  "createdAt": "2026-09-30T02:31:01.564Z",
+  "updatedAt": "2026-09-30T02:31:01.564Z",
+  "units": {
+    "internal": "mm",
+    "display": "metric"
+  },
+  "layout": {
+    "id": "layout-1",
+    "name": "Layout A"
+  },
+  "view": {
+    "mode": "2d",
+    "layers": {
+      "dims": true,
+      "labels": true,
+      "furn": true,
+      "grid": false,
+      "bearing": false,
+      "wallSnap": true
+    }
+  },
+  "geometry": {
+    "height": 2600,
+    "origin": [
+      1524,
+      1828.8
+    ],
+    "bounds": {
+      "x": -800,
+      "y": -800,
+      "w": 4648,
+      "h": 5257.6
+    },
+    "entry": null,
+    "rooms": [
+      {
+        "id": "bedroom",
+        "name": "T01 Test Bedroom",
+        "mat": "wood",
+        "poly": [
+          [
+            0,
+            0
+          ],
+          [
+            3048,
+            0
+          ],
+          [
+            3048,
+            3657.6
+          ],
+          [
+            0,
+            3657.6
+          ]
+        ],
+        "at": [
+          1524,
+          1828.8
+        ]
+      }
+    ],
+    "walls": [
+      [
+        0,
+        -120,
+        1000,
+        0,
+        "e"
+      ],
+      [
+        2000,
+        -120,
+        3048,
+        0,
+        "e"
+      ],
+      [
+        3048,
+        -120,
+        3168,
+        3777.6,
+        "e"
+      ],
+      [
+        -120,
+        3657.6,
+        3048,
+        3777.6,
+        "e"
+      ],
+      [
+        -120,
+        -120,
+        0,
+        2000,
+        "e"
+      ],
+      [
+        -120,
+        2812.8,
+        0,
+        3657.6,
+        "e"
+      ]
+    ],
+    "windows": [
+      {
+        "rect": [
+          1000,
+          -120,
+          2000,
+          0
+        ],
+        "sill": 900,
+        "head": 2100
+      }
+    ],
+    "doors": [
+      {
+        "name": "Door",
+        "rect": [
+          -120,
+          2000,
+          0,
+          2812.8
+        ],
+        "h": [
+          0,
+          2812.8
+        ],
+        "c": [
+          0,
+          -1
+        ],
+        "o": [
+          1,
+          0
+        ],
+        "len": 812.8,
+        "height": 2100
+      }
+    ],
+    "slides": [],
+    "lintels": [],
+    "dimensions": [
+      {
+        "horizontal": true,
+        "at": -400,
+        "start": 0,
+        "segments": [
+          3048
+        ]
+      },
+      {
+        "horizontal": false,
+        "at": 3500,
+        "start": 0,
+        "segments": [
+          3657.6
+        ]
+      }
+    ]
+  },
+  "furniture": [
+    {
+      "id": "bed-1",
+      "type": "bed",
+      "name": "Test Bed",
+      "cx": 1200,
+      "cy": 1200,
+      "w": 1625.6,
+      "d": 2133.6,
+      "height": 1100,
+      "rot": 15.5,
+      "color": "#c9d6df"
+    }
+  ],
+  "rooms": {
+    "bedroom": {
+      "name": "T01 Test Bedroom",
+      "mat": "wood"
+    }
+  },
+  "demolished": [],
+  "measures": [],
+  "roomEditor": null
+}

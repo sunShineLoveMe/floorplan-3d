@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "sourceFieldComparisons": 3,
+  "images": [
+    {
+      "file": "docs/verification/T04-furniture-dimensions/final-02/jacobsen-2d.png",
+      "dimensions": [
+        3200,
+        1111
+      ],
+      "validPng": true
+    },
+    {
+      "file": "docs/verification/T04-furniture-dimensions/final-02/jacobsen-3d.png",
+      "dimensions": [
+        856,
+        846
+      ],
+      "validPng": true
+    },
+    {
+      "file": "docs/verification/T04-furniture-dimensions/final-02/cmu-2d.png",
+      "dimensions": [
+        3200,
+        4493
+      ],
+      "validPng": true
+    },
+    {
+      "file": "docs/verification/T04-furniture-dimensions/final-02/cmu-3d.png",
+      "dimensions": [
+        856,
+        846
+      ],
+      "validPng": true
+    },
+    {
+      "file": "docs/verification/T04-furniture-dimensions/final-02/plan-f-2d.png",
+      "dimensions": [
+        3200,
+        2522
+      ],
+      "validPng": true
+    },
+    {
+      "file": "docs/verification/T04-furniture-dimensions/final-02/plan-f-3d.png",
+      "dimensions": [
+        856,
+        846
+      ],
+      "validPng": true
+    }
+  ]
+}

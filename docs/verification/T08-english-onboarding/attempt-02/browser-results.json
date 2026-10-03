@@ -1,0 +1,57 @@
+{
+  "passed": false,
+  "build": "c7311da35e079840",
+  "browser": "154.0.8037.97",
+  "url": "http://127.0.0.1:8095/",
+  "checks": [
+    "fresh English / imperial defaults, no persisted project",
+    "Help is optional; open / close changes no project or storage",
+    "keyboard room editing commits net dimensions",
+    "keyboard door wall-start offset, width and height",
+    "invalid English length retains input, associated feedback and committed width",
+    "dictionary-matching custom name stays raw in editor, label and accessible name",
+    "Help keys cannot edit model; opening/closing retains invalid height draft and exact saved revision",
+    "en/zh × metric/imperial preserves internal dimensions, height and user name",
+    "height draft survives delete / Undo / keyboard-accessible reselection",
+    "dictionary-matching room name and all project bytes survive language switch",
+    "language / units / exact names / Help and height drafts stay independent",
+    "existing metric project and Chinese preference survive reload",
+    "new/add/JSON cancellation preserves entire project and cached draft",
+    "1440x1000: Help bounds, Escape focus, no page overflow and reachable room controls",
+    "1024x768: Help bounds, Escape focus, no page overflow and reachable room controls",
+    "390x844: Help bounds, Escape focus, no page overflow and reachable room controls",
+    "320x568: Help bounds, Escape focus, no page overflow and reachable room controls",
+    "390x320: Help bounds, Escape focus, no page overflow and reachable room controls",
+    "720x500: Help bounds, Escape focus, no page overflow and reachable room controls",
+    "reduced-motion CSS and visible keyboard focus; 720 px reflow is viewport-only, not browser zoom",
+    "desktop, narrow, low-height and reduced-motion layout / keyboard focus",
+    "injected storage failure has English recovery actions; disk backup contains unsaved edits; retry succeeds",
+    "real same-origin second window exposes conflict review and no false save success",
+    "save failure and multi-window conflict: English states, feedback and actual backup",
+    "corrupt saved data preserves original and offers explicit English recovery",
+    "older project file keeps values through visible replacement review",
+    "jacobsen: full project roundtrip incl. provenance and unknown measurements",
+    "jacobsen: shared Help, names, keyboard reselection, units, 2D/3D and disk JSON/PNG",
+    "cmu: full project roundtrip incl. provenance and unknown measurements",
+    "cmu: shared Help, names, keyboard reselection, units, 2D/3D and disk JSON/PNG",
+    "plan-f: full project roundtrip incl. provenance and unknown measurements",
+    "plan-f: shared Help, names, keyboard reselection, units, 2D/3D and disk JSON/PNG"
+  ],
+  "failures": [
+    {
+      "name": "empty-device keyboard task: own room, door, Queen frame, error, conflict, save and restore",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 2041.5249999999999\n- 2041.525\n         ^\n\n    at file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t08-english-onboarding.mjs:45:71\n    at async scenario (file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t08-english-onboarding.mjs:15:394)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t08-english-onboarding.mjs:35:1"
+    },
+    {
+      "name": "new project / Add room / replacement cancellation and errors use distinct scopes",
+      "error": "locator.fill: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#furnitureSearch')\u001b[22m\n\u001b[2m    - locator resolved to <input type=\"search\" autocomplete=\"off\" id=\"furnitureSearch\" placeholder=\"Search this furniture library\"/>\u001b[22m\n\u001b[2m    - fill(\"no-match-xyz\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    24 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at /Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t08-english-onboarding.mjs:68:77\n    at async scenario (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t08-english-onboarding.mjs:15:394)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t08-english-onboarding.mjs:65:1"
+    }
+  ],
+  "errors": [],
+  "limitations": [
+    "File chooser uses setInputFiles; normal actions use native mouse/keyboard",
+    "Storage quota failure is injected",
+    "CSS viewport reflow is not actual 200% browser zoom",
+    "No screen-reader or external participant trial"
+  ]
+}

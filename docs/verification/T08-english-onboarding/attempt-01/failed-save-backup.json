@@ -1,0 +1,179 @@
+{
+  "format": "floorplan-3d",
+  "version": 2,
+  "id": "p-muse3qj1-5op4tioe",
+  "name": "Living room",
+  "createdAt": "2026-10-03T12:50:22.093Z",
+  "updatedAt": "2026-10-03T12:50:22.302Z",
+  "units": {
+    "internal": "mm",
+    "display": "imperial"
+  },
+  "layout": {
+    "id": "layout-p-muse3qj1-5op4tioe",
+    "name": "Layout A"
+  },
+  "view": {
+    "mode": "2d",
+    "layers": {
+      "dims": true,
+      "labels": true,
+      "furn": true,
+      "grid": false,
+      "bearing": false,
+      "wallSnap": true
+    }
+  },
+  "roomEditor": {
+    "kind": "rectangle",
+    "roomId": "room-1",
+    "width": 3657.6,
+    "depth": 3048,
+    "height": 2438.4,
+    "wallThickness": 120,
+    "openings": []
+  },
+  "geometry": {
+    "height": 2438.4,
+    "origin": [
+      1828.8,
+      1524
+    ],
+    "bounds": {
+      "x": -720,
+      "y": -720,
+      "w": 5097.6,
+      "h": 4488
+    },
+    "rooms": [
+      {
+        "id": "room-1",
+        "name": "Living room",
+        "mat": "wood",
+        "poly": [
+          [
+            0,
+            0
+          ],
+          [
+            3657.6,
+            0
+          ],
+          [
+            3657.6,
+            3048
+          ],
+          [
+            0,
+            3048
+          ]
+        ],
+        "at": [
+          1828.8,
+          1524
+        ]
+      }
+    ],
+    "walls": [
+      [
+        -120,
+        -120,
+        3777.6,
+        0,
+        "n"
+      ],
+      [
+        3657.6,
+        0,
+        3777.6,
+        3048,
+        "n"
+      ],
+      [
+        -120,
+        3048,
+        3777.6,
+        3168,
+        "n"
+      ],
+      [
+        -120,
+        0,
+        0,
+        3048,
+        "n"
+      ]
+    ],
+    "wallIds": [
+      "top",
+      "right",
+      "bottom",
+      "left"
+    ],
+    "doors": [],
+    "windows": [],
+    "slides": [],
+    "lintels": [],
+    "dimensions": [
+      {
+        "horizontal": true,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          3657.6
+        ]
+      },
+      {
+        "horizontal": false,
+        "at": -420,
+        "start": 0,
+        "segments": [
+          3048
+        ]
+      }
+    ],
+    "walkStart": {
+      "position": [
+        1828.8,
+        2133.6
+      ],
+      "target": [
+        1828.8,
+        914.4
+      ]
+    },
+    "entry": null
+  },
+  "furniture": [
+    {
+      "id": "fmuse3qmj1",
+      "type": "bed",
+      "name": "Twin · mattress footprint",
+      "cx": 1828.8,
+      "cy": 1524,
+      "w": 965.1999999999999,
+      "d": 1905,
+      "rot": 0,
+      "color": "#c9d6df"
+    },
+    {
+      "id": "fmuse3qou2",
+      "type": "bed",
+      "name": "Twin · mattress footprint",
+      "cx": 1828.8,
+      "cy": 1524,
+      "w": 965.1999999999999,
+      "d": 1905,
+      "rot": 0,
+      "color": "#c9d6df"
+    }
+  ],
+  "rooms": {
+    "room-1": {
+      "name": "Living room",
+      "mat": "wood"
+    }
+  },
+  "demolished": [],
+  "measures": []
+}

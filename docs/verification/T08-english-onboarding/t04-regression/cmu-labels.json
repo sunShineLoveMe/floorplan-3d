@@ -1,0 +1,88 @@
+{
+  "visible": [
+    "room-1",
+    "room-fmursd6cf3",
+    "room-fmursd7hx6",
+    "room-fmursd81a9",
+    "room-fmursd8kc13",
+    "room-fmursd8ry14"
+  ],
+  "hidden": [
+    "room-fmursd70t4",
+    "room-fmursd7az5"
+  ],
+  "labels": [
+    {
+      "id": "room-1",
+      "name": "Bedroom Two91.08 sq ft",
+      "visible": true,
+      "left": 654.86181640625,
+      "top": 386.8089599609375,
+      "right": 811.18994140625,
+      "bottom": 410.8089599609375
+    },
+    {
+      "id": "room-fmursd6cf3",
+      "name": "Kitchen46.22 sq ft",
+      "visible": true,
+      "left": 781.3027954101562,
+      "top": 432.8234558105469,
+      "right": 903.2090454101562,
+      "bottom": 456.8234558105469
+    },
+    {
+      "id": "room-fmursd70t4",
+      "name": "Kitchen circulation23.25 sq ft",
+      "visible": false,
+      "left": 785.2158203125,
+      "top": 449.09375,
+      "right": 972.3095703125,
+      "bottom": 473.09375
+    },
+    {
+      "id": "room-fmursd7az5",
+      "name": "Closet6.00 sq ft",
+      "visible": false,
+      "left": 733.3065185546875,
+      "top": 441.800048828125,
+      "right": 841.8377685546875,
+      "bottom": 465.800048828125
+    },
+    {
+      "id": "room-fmursd7hx6",
+      "name": "Living195.00 sq ft",
+      "visible": true,
+      "left": 666.07470703125,
+      "top": 493.86083984375,
+      "right": 783.10595703125,
+      "bottom": 517.86083984375
+    },
+    {
+      "id": "room-fmursd81a9",
+      "name": "Bedroom One146.12 sq ft",
+      "visible": true,
+      "left": 517.0933227539062,
+      "top": 577.8199462890625,
+      "right": 677.5308227539062,
+      "bottom": 601.8199462890625
+    },
+    {
+      "id": "room-fmursd8kc13",
+      "name": "Hall25.00 sq ft",
+      "visible": true,
+      "left": 694.8890380859375,
+      "top": 602.626708984375,
+      "right": 794.3421630859375,
+      "bottom": 626.626708984375
+    },
+    {
+      "id": "room-fmursd8ry14",
+      "name": "Bathroom43.23 sq ft",
+      "visible": true,
+      "left": 632.963623046875,
+      "top": 666.8482666015625,
+      "right": 767.588623046875,
+      "bottom": 690.8482666015625
+    }
+  ]
+}

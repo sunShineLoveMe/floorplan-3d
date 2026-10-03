@@ -1,8 +1,12 @@
 import * as THREE from 'three';
 import {RoundedBoxGeometry} from 'three/addons/geometries/RoundedBoxGeometry.js';
+import {LIB} from '../data/catalogs.js';
 import {rng} from './random.js';
 export function createFurnitureFactory({mat,wx,wz,glassMat,frameMat}){
 const M=v=>v/1000;
+// Use a bounded example when requested dimensions cannot safely construct the
+// decorative geometry. The final vertex envelope always uses the exact input.
+const examples=new Map(LIB.flatMap(c=>c.items).map(i=>[i[0],[M(i[2]),M(i[3])]]));
 const asMat = m => typeof m === 'string' ? mat(m) : m;
 const sh = o => { o.castShadow = o.receiveShadow = true; return o; };
 const mesh = (geo, m) => sh(new THREE.Mesh(geo, asMat(m)));
@@ -101,7 +105,9 @@ const plate = (g, r, x, y, z) => g.add(lathe([[0, 0], [r*.6, 0], [r*.72, .008], 
 
 /* ======================= 家具模型（局部坐标：背面朝 -z） ======================= */
 function buildFurniture(f){
-  const g = new THREE.Group(), w = M(f.w), d = M(f.d), c = f.color || '#ddd', bz = -d/2, R = rng(Math.round(f.w*7 + f.d*13 + f.cx + f.cy));
+  const example=examples.get(f.type)||[1,1];
+  const safe=(v,reference)=>v>=reference*.8&&v<=reference*2?v:reference;
+  const g = new THREE.Group(), w = safe(M(f.w),example[0]), d = safe(M(f.d),example[1]), c = f.color || '#ddd', bz = -d/2, R = rng(Math.round(f.w*7 + f.d*13 + f.cx + f.cy));
   switch (f.type){
     case 'bed': {
       const fr = woodM('#8d7258'), fab = fabric(c), fh = .3, mt = .22, top = fh + mt, n = Math.max(3, Math.round(w/.28)), sw = (w - .04)/n;
@@ -581,10 +587,13 @@ function buildFurniture(f){
     }
     default: g.add(box(w, .8, d, c));
   }
-  if(f.height!==undefined){
-    const bounds=new THREE.Box3().setFromObject(g), naturalHeight=bounds.max.y-bounds.min.y;
-    if(naturalHeight>0) g.scale.y=M(f.height)/naturalHeight;
-  }
+  // Precise mesh vertices include rotated arms, frames and decorative parts.
+  // Normalize before the item's world pose, keeping its footprint center and
+  // floor base fixed. No derived values are written into project data.
+  const bounds=new THREE.Box3().setFromObject(g,true), size=bounds.getSize(new THREE.Vector3()),center=bounds.getCenter(new THREE.Vector3());
+  const shape=new THREE.Group();shape.add(...g.children);g.add(shape);
+  shape.scale.set(M(f.w)/size.x,f.height===undefined?1:M(f.height)/size.y,M(f.d)/size.z);
+  shape.position.set(-center.x*shape.scale.x,-bounds.min.y*shape.scale.y,-center.z*shape.scale.z);
   g.position.set(wx(f.cx), 0, wz(f.cy));
   g.rotation.y = -f.rot * Math.PI/180;       // 平面顺时针旋转 → 绕 Y 轴负向
   g.userData.fid = f.id;

@@ -1,0 +1,128 @@
+{
+  "visible": [
+    "room-1",
+    "room-fmursd6dg1",
+    "room-fmursd6p33",
+    "room-fmursd71b4",
+    "room-fmursd7hx6",
+    "room-fmursd8038",
+    "room-fmursd86p9",
+    "room-fmursd8ch10"
+  ],
+  "hidden": [
+    "room-fmursd6ht2",
+    "room-fmursd75f5",
+    "room-fmursd7u27",
+    "room-fmursd8u211"
+  ],
+  "labels": [
+    {
+      "id": "room-1",
+      "name": "Master Bedroom100.00 sq ft",
+      "visible": true,
+      "left": 439.54425048828125,
+      "top": 406.13494873046875,
+      "right": 618.7786254882812,
+      "bottom": 430.13494873046875
+    },
+    {
+      "id": "room-fmursd6dg1",
+      "name": "Master closet14.67 sq ft",
+      "visible": true,
+      "left": 397.9464111328125,
+      "top": 444.4372253417969,
+      "right": 553.1495361328125,
+      "bottom": 468.4372253417969
+    },
+    {
+      "id": "room-fmursd6ht2",
+      "name": "Laundry4.67 sq ft",
+      "visible": false,
+      "left": 461.24530029296875,
+      "top": 467.41131591796875,
+      "right": 579.7453002929688,
+      "bottom": 491.41131591796875
+    },
+    {
+      "id": "room-fmursd6p33",
+      "name": "Dining63.00 sq ft",
+      "visible": true,
+      "left": 567.0576171875,
+      "top": 437.3556823730469,
+      "right": 681.7919921875,
+      "bottom": 461.3556823730469
+    },
+    {
+      "id": "room-fmursd71b4",
+      "name": "Central circulation68.83 sq ft",
+      "visible": true,
+      "left": 618.6571655273438,
+      "top": 479.3692321777344,
+      "right": 804.6415405273438,
+      "bottom": 503.3692321777344
+    },
+    {
+      "id": "room-fmursd75f5",
+      "name": "Bath One38.33 sq ft",
+      "visible": false,
+      "left": 512.7372436523438,
+      "top": 480.57122802734375,
+      "right": 644.0497436523438,
+      "bottom": 504.57122802734375
+    },
+    {
+      "id": "room-fmursd7hx6",
+      "name": "Kitchen55.78 sq ft",
+      "visible": true,
+      "left": 601.624267578125,
+      "top": 522.5450439453125,
+      "right": 722.796142578125,
+      "bottom": 546.5450439453125
+    },
+    {
+      "id": "room-fmursd7u27",
+      "name": "Bath One corner1.71 sq ft",
+      "visible": false,
+      "left": 527.8367309570312,
+      "top": 515.7508544921875,
+      "right": 690.8211059570312,
+      "bottom": 539.7508544921875
+    },
+    {
+      "id": "room-fmursd8038",
+      "name": "Living154.17 sq ft",
+      "visible": true,
+      "left": 753.6497802734375,
+      "top": 556.2982177734375,
+      "right": 868.5872802734375,
+      "bottom": 580.2982177734375
+    },
+    {
+      "id": "room-fmursd86p9",
+      "name": "Bedroom Two80.89 sq ft",
+      "visible": true,
+      "left": 857.9058837890625,
+      "top": 600.9397583007812,
+      "right": 1015.8746337890625,
+      "bottom": 624.9397583007812
+    },
+    {
+      "id": "room-fmursd8ch10",
+      "name": "Bath Two13.33 sq ft",
+      "visible": true,
+      "left": 818.021240234375,
+      "top": 648.6171264648438,
+      "right": 948.005615234375,
+      "bottom": 672.6171264648438
+    },
+    {
+      "id": "room-fmursd8u211",
+      "name": "Bedroom Two closet8.89 sq ft",
+      "visible": false,
+      "left": 839.4197998046875,
+      "top": 675.0514526367188,
+      "right": 1030.3104248046875,
+      "bottom": 699.0514526367188
+    }
+  ]
+}

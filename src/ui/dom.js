@@ -7,4 +7,7 @@ const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 
-export {$,COARSE,TAP,narrow,paneOverlay,PX_MM,esc};
+// Model shortcuts belong to the canvas; text and surrounding UI keep their keys.
+const textEditing = target => target?.isContentEditable || !!target?.closest('input,select,textarea,[role="textbox"]');
+const blocksModelShortcuts = e => e.defaultPrevented || textEditing(e.target) || !!e.target?.closest('aside,header,nav,details,dialog');
+export {$,COARSE,TAP,narrow,paneOverlay,PX_MM,esc,textEditing,blocksModelShortcuts};
