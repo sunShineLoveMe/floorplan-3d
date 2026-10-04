@@ -1,0 +1,74 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "file": "task-backup.json",
+      "passed": true,
+      "unknownHeightRemainsAbsent": true
+    },
+    {
+      "file": "task-1024.json",
+      "passed": true,
+      "unknownHeightRemainsAbsent": true
+    },
+    {
+      "file": "task-390.json",
+      "passed": true,
+      "unknownHeightRemainsAbsent": true
+    },
+    {
+      "file": "task-320.json",
+      "passed": true,
+      "unknownHeightRemainsAbsent": true
+    },
+    {
+      "file": "jacobsen-roundtrip.json",
+      "passed": true,
+      "allSourceFieldsPreservedExceptExplicit2dViewAndUpdatedAt": true
+    },
+    {
+      "file": "jacobsen-2d.png",
+      "passed": true,
+      "decoded": true,
+      "width": 3200,
+      "height": 1159,
+      "sampleColors": 1368
+    },
+    {
+      "file": "cmu-roundtrip.json",
+      "passed": true,
+      "allSourceFieldsPreservedExceptExplicit2dViewAndUpdatedAt": true
+    },
+    {
+      "file": "cmu-2d.png",
+      "passed": true,
+      "decoded": true,
+      "width": 2300,
+      "height": 3200,
+      "sampleColors": 1840
+    },
+    {
+      "file": "plan-f-roundtrip.json",
+      "passed": true,
+      "allSourceFieldsPreservedExceptExplicit2dViewAndUpdatedAt": true
+    },
+    {
+      "file": "plan-f-2d.png",
+      "passed": true,
+      "decoded": true,
+      "width": 3199,
+      "height": 2538,
+      "sampleColors": 1799
+    },
+    {
+      "file": "corrupt-original.json",
+      "passed": true,
+      "originalBytesPreserved": true
+    },
+    {
+      "file": "failed-save-backup.json",
+      "passed": true,
+      "unsavedEditsIncluded": true
+    }
+  ]
+}

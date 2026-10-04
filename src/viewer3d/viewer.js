@@ -15,9 +15,10 @@ import {CSS2DRenderer,CSS2DObject} from 'three/addons/renderers/CSS2DRenderer.js
 import {COARSE,TAP,esc,blocksModelShortcuts} from '../ui/dom.js';
 import {tr,nm} from '../ui/i18n.js';
 import {roomArea} from '../core/geometry.js';
+import {rasterSize} from '../services/output-layout.js';
 import {createScope} from '../ui/lifecycle.js';
-export function createViewer3D({store,ui,view,actions,snapMove,closeDrawers,onChange}){
-const scope=createScope();
+export function createViewer3D({store,ui,view,actions,snapMove,closeDrawers,onChange,onFailure}){
+const scope=createScope(),exportUrls=new Set();
 const {getF,select}=actions; const snap=()=>store.begin(),commit=()=>store.commit();
 const stage = $('#stage'), host = $('#view3d');
 let [OX, OY] = store.getProject().geometry.origin, H = store.getProject().geometry.height/1000;
@@ -49,7 +50,9 @@ function buildArch(){
 /* ======================= 初始化 ======================= */
 function init(){
   if (inited) return;
-  renderer = new THREE.WebGLRenderer({antialias:true, preserveDrawingBuffer:true});
+  try{renderer = new THREE.WebGLRenderer({antialias:true, preserveDrawingBuffer:true});}
+  catch(cause){throw Object.assign(new Error('WebGL initialization failed',{cause}),{kind:'webgl'});}
+  scope.on(renderer.domElement,'webglcontextlost',e=>{e.preventDefault();onFailure(Object.assign(new Error('WebGL context lost'),{kind:'context'}));});
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
   renderer.setSize(SW(), SH());
   renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -515,19 +518,53 @@ function loop(){
   layoutLabels();
 }
 
-function shot(name){ const a = document.createElement('a'); a.download=name; a.href = renderer.domElement.toDataURL('image/png'); a.click(); }
+async function shot(name,longEdge=3200){
+  if(!active||renderer.getContext().isContextLost())throw Error('3D unavailable');
+  const size=renderer.getSize(new THREE.Vector2()),pixelRatio=renderer.getPixelRatio(),{width,height}=rasterSize({w:size.x,h:size.y},longEdge);
+  const canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;
+  const ctx=canvas.getContext('2d');if(!ctx)throw Error('Canvas unavailable');
+  // Reuse this renderer and camera; restore its display size even when export fails.
+  const selectionVisible=selHelper?.visible;
+  try{
+    if(selHelper)selHelper.visible=false;
+    renderer.setPixelRatio(1);renderer.setSize(width,height,false);renderer.render(scene,camera);
+    ctx.drawImage(renderer.domElement,0,0);
+  }finally{
+    if(selHelper)selHelper.visible=selectionVisible;
+    renderer.setPixelRatio(pixelRatio);renderer.setSize(size.x,size.y,false);renderer.render(scene,camera);
+  }
+  labelRenderer.render(scene,camera);layoutLabels();
+  const hostRect=host.getBoundingClientRect();ctx.save();ctx.scale(width/size.x,height/size.y);
+  for(const label of labelG.children){
+    const el=label.element,r=el.getBoundingClientRect(),style=getComputedStyle(el);
+    if(!label.visible||style.visibility==='hidden'||style.display==='none'||!r.width)continue;
+    const x=r.left-hostRect.left,y=r.top-hostRect.top;
+    ctx.fillStyle=style.backgroundColor;ctx.fillRect(x,y,r.width,r.height);
+    ctx.strokeStyle=style.borderTopColor;ctx.lineWidth=1;ctx.strokeRect(x,y,r.width,r.height);
+    const textX=x+parseFloat(style.paddingLeft)+1,textY=y+r.height/2;
+    ctx.textBaseline='middle';ctx.font=`${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;ctx.fillStyle=style.color;
+    const text=el.firstChild.textContent;ctx.fillText(text,textX,textY);
+    const small=el.querySelector('small'),smallStyle=getComputedStyle(small),smallX=textX+ctx.measureText(text).width+parseFloat(smallStyle.marginLeft);
+    ctx.font=`${smallStyle.fontWeight} ${smallStyle.fontSize} ${smallStyle.fontFamily}`;ctx.fillStyle=smallStyle.color;ctx.fillText(small.textContent,smallX,textY);
+  }
+  ctx.restore();
+  const blob=await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(Error('PNG generation failed')),'image/png'));
+  if(scope.disposed)throw Error('3D unavailable');
+  const url=URL.createObjectURL(blob),a=document.createElement('a');a.download=name;a.href=url;exportUrls.add(url);a.click();scope.timeout(()=>{URL.revokeObjectURL(url);exportUrls.delete(url);},1000);
+}
+
 
 function relang(){ syncWalkTexts(); if (inited) buildLabels(); }
 
 function dispose(){
   if(scope.disposed)return;
-  cancelGesture();active=false;scope.dispose();cancelAnimationFrame(raf);raf=0;
+  cancelGesture();active=false;scope.dispose();exportUrls.forEach(url=>URL.revokeObjectURL(url));exportUrls.clear();cancelAnimationFrame(raf);raf=0;
   if(anim){const resolve=anim.res;anim=null;resolve();}fly=null;
   store.cancel();walkCtl?.unlock();walkCtl?.dispose();orbit?.dispose();stopTouchWalk();
   if(scene){const geometries=new Set();scene.traverse(o=>{if(o.geometry)geometries.add(o.geometry);if(o.element)o.element.remove();});geometries.forEach(g=>g.dispose());scene.clear();}
   // Shared cache materials are released once here, never while rebuilding a mesh.
   materials.dispose();glassMat?.dispose();edgeMat.dispose();skirtMat.dispose();ground?.material.dispose();selHelper?.material.dispose();sun?.shadow?.map?.dispose();environmentTarget?.dispose();
-  renderer?.dispose();renderer?.domElement.remove();labelRenderer?.domElement.remove();
+  renderer?.dispose();renderer?.forceContextLoss();renderer?.domElement.remove();labelRenderer?.domElement.remove();
   for(const id of ['walkOverlay','walkExit','vIso','vTop','fit3d']) $('#'+id).onclick=null;
   $('#sun').oninput=null;document.querySelectorAll('#modes3d button,[data-cut],[data-t]').forEach(b=>b.onclick=null);
   $('#walkOverlay').style.display='none';$('#cross').style.display='none';

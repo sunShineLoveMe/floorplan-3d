@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "commitBeforeT09": "833a2babda4d6a237d59b254cde45b7f3aafa8e9",
+  "t09Uncommitted": true,
+  "build": "f35a2cebc21e75fd",
+  "reports": {
+    "final-chromium-03": {
+      "passed": true,
+      "build": "f35a2cebc21e75fd",
+      "checks": 10,
+      "uncaughtErrors": 0,
+      "diskChecks": 14
+    },
+    "final-webkit-02": {
+      "passed": true,
+      "build": "f35a2cebc21e75fd",
+      "checks": 10,
+      "uncaughtErrors": 0,
+      "diskChecks": 14
+    },
+    "t08-regression": {
+      "passed": true,
+      "build": "f35a2cebc21e75fd",
+      "checks": 42,
+      "uncaughtErrors": 0
+    },
+    "t04-regression": {
+      "passed": true,
+      "build": "f35a2cebc21e75fd",
+      "checks": 4,
+      "uncaughtErrors": 0
+    }
+  },
+  "node": {
+    "tests": 147,
+    "passed": 147
+  },
+  "vendorFilesVerified": 7,
+  "limits": [
+    "Edge and physical mobile not tested",
+    "Safari native scope: single-room 3D, image downloads, refresh",
+    "Historical T08 3D root cause not reproduced"
+  ],
+  "safari": [
+    "safari-native/disk-results.json",
+    "safari-native-final/disk-results.json"
+  ]
+}

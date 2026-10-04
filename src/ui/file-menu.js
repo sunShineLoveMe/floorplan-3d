@@ -13,7 +13,7 @@ const unsubscribe=store.subscribe(()=>{revision++;});
 $('#exportPng').onclick=async()=>{
  const button=$('#exportPng');if(button.disabled)return;
  button.disabled=true;button.setAttribute('aria-busy','true');
- try{await exportPNG($('#exportView').value);if(!scope.disposed)toast(tr('图片已生成，下载已启动','Image generated. Download started.'));}
+ try{await exportPNG($('#exportView').value,Number($('#exportResolution').value));if(!scope.disposed)toast(tr('图片已生成，下载已启动','Image generated. Download started.'));}
  catch{if(!scope.disposed)toast(tr('图片生成失败，请重试或导出项目 JSON','Image export failed. Retry or export the project JSON.'));}
  finally{if(!scope.disposed){button.disabled=false;button.setAttribute('aria-busy','false');}}
 };

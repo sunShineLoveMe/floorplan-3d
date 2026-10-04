@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "build": "f35a2cebc21e75fd",
+  "safariVersion": "27.0",
+  "checks": [
+    {
+      "file": "native-2D.png",
+      "originalFilename": "Safari T09 native-Layout A-2026-10-03-213158-2D.png",
+      "width": 3200,
+      "height": 2826,
+      "alphaMin": 252,
+      "nonOpaquePixels": 4179,
+      "nonOpaqueFraction": 0.0004621151804670913,
+      "sha256": "ea7a5542364ae9e53a5d183f7e4bfc1530acc74f3e8f57a58972ca43352257e1",
+      "passed": true
+    },
+    {
+      "file": "opaque-control.png",
+      "originalFilename": "T09-Safari-opaque-control.png",
+      "width": 800,
+      "height": 600,
+      "alphaMin": 252,
+      "nonOpaquePixels": 542,
+      "nonOpaqueFraction": 0.0011291666666666668,
+      "sha256": "5ab3d2e88ada7d8c5d340d4c4a9858961436ab2b7679a601131ef0f26de395f8",
+      "passed": true
+    }
+  ],
+  "observation": "The opaque standalone canvas control also has sparse alpha perturbations. Not a continuous transparent border.",
+  "interpretation": "Consistent with Safari private-browsing canvas noise; browser privacy settings were not modified."
+}

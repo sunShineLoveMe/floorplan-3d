@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "safariVersion": "27.0",
+  "build": "78db820f3c1a78e0",
+  "checks": [
+    {
+      "file": "native-2D.png",
+      "originalFilename": "Safari T09 native-Layout A-2026-10-03-212620-2D.png",
+      "width": 3686,
+      "height": 3255,
+      "sha256": "53878c9bc473a3d7dc3980d89f4a11873ef298df7b1384468a95057ebbbe621e",
+      "passed": true
+    },
+    {
+      "file": "native-3D.png",
+      "originalFilename": "Safari T09 native-Layout A-2026-10-03-212256-3D.png",
+      "width": 3200,
+      "height": 2204,
+      "sha256": "7aa2c15b398e3432c8af4e1272e947f5585e807175335b48324a21d3611a745a",
+      "passed": true
+    }
+  ],
+  "method": "Native Safari private window via cua_repl; files copied only after browser download completed",
+  "limitations": [
+    "Basic single-room 3D and image export; not full Safari interaction or device coverage"
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "passed": false,
+  "engine": "chromium",
+  "browser": "154.0.8037.97",
+  "build": "56b2fc7e6912d19e",
+  "checks": [
+    "jacobsen complete 2D / labelled 3D download and repeated switching",
+    "cmu complete 2D / labelled 3D download and repeated switching",
+    "plan-f complete 2D / labelled 3D download and repeated switching",
+    "portrait complete image, extreme ratio and outside measurement / furniture bounds",
+    "3D exports visible CSS labels and honors hidden labels",
+    "WebGL constructor failure leaves 2D usable and Retry 3D recreates one canvas",
+    "WebGL context loss returns to 2D, retains model and retries",
+    "3D module request timeout leaves 2D and allows retry after delayed response",
+    "small touch viewport exports image and preserves dimensions"
+  ],
+  "failures": [
+    {
+      "name": "failed PNG encoding reports failure, restores renderer and allows retry",
+      "error": "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Image generation failed/. Input:\n\n'Image export failed. Retry or export the project JSON.'\n\n    at file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t09-output-stability.mjs:49:217\n    at async scenario (file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t09-output-stability.mjs:10:965)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t09-output-stability.mjs:46:1"
+    }
+  ],
+  "diagnostics": [
+    {
+      "name": "jacobsen complete 2D / labelled 3D download and repeated switching",
+      "type": "warning",
+      "text": "[.WebGL-0x10c000d0200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "name": "jacobsen complete 2D / labelled 3D download and repeated switching",
+      "type": "warning",
+      "text": "[.WebGL-0x10c000d0200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "name": "jacobsen complete 2D / labelled 3D download and repeated switching",
+      "type": "warning",
+      "text": "[.WebGL-0x10c000d0200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "name": "jacobsen complete 2D / labelled 3D download and repeated switching",
+      "type": "warning",
+      "text": "[.WebGL-0x10c000d0200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+    },
+    {
+      "name": "WebGL constructor failure leaves 2D usable and Retry 3D recreates one canvas",
+      "type": "error",
+      "text": "THREE.WebGLRenderer: Error creating WebGL context."
+    },
+    {
+      "name": "WebGL constructor failure leaves 2D usable and Retry 3D recreates one canvas",
+      "type": "error",
+      "text": "3D initialization failed: Error: WebGL initialization failed\n    at init (http://127.0.0.1:8095/src/viewer3d/viewer.js?v=56b2fc7e6912d19e:54:36)\n    at Object.enter (http://127.0.0.1:8095/src/viewer3d/viewer.js?v=56b2fc7e6912d19e:252:3)\n    at Object.setView (http://127.0.0.1:8095/src/main.js?v=56b2fc7e6912d19e:107:92)"
+    },
+    {
+      "name": "WebGL context loss returns to 2D, retains model and retries",
+      "type": "error",
+      "text": "3D initialization failed: Error: WebGL context lost\n    at HTMLCanvasElement.<anonymous> (http://127.0.0.1:8095/src/viewer3d/viewer.js?v=56b2fc7e6912d19e:55:98)"
+    },
+    {
+      "name": "WebGL context loss returns to 2D, retains model and retries",
+      "type": "warning",
+      "text": "THREE.WebGLRenderer: WEBGL_lose_context extension not supported."
+    },
+    {
+      "name": "3D module request timeout leaves 2D and allows retry after delayed response",
+      "type": "error",
+      "text": "3D initialization failed: Error: 3D load timed out\n    at http://127.0.0.1:8095/src/main.js?v=56b2fc7e6912d19e:104:88"
+    }
+  ],
+  "limitations": [
+    "Fault injection covers request timeout, constructor failure and WEBGL_lose_context",
+    "Chromium uses SwiftShader; automated WebKit is separate from installed Safari; physical mobile/Edge remain separate"
+  ]
+}

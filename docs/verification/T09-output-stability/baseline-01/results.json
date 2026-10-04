@@ -1,0 +1,52 @@
+{
+  "build": "c7311da35e079840",
+  "browser": "154.0.8037.97",
+  "results": [
+    {
+      "name": "jacobsen",
+      "cycle": 1,
+      "ok": true
+    },
+    {
+      "name": "jacobsen",
+      "cycle": 2,
+      "ok": true
+    },
+    {
+      "name": "jacobsen",
+      "cycle": 3,
+      "ok": true
+    },
+    {
+      "name": "cmu",
+      "cycle": 1,
+      "ok": true
+    },
+    {
+      "name": "cmu",
+      "cycle": 2,
+      "ok": true
+    },
+    {
+      "name": "cmu",
+      "cycle": 3,
+      "ok": true
+    },
+    {
+      "name": "plan-f",
+      "cycle": 1,
+      "ok": true
+    },
+    {
+      "name": "plan-f",
+      "cycle": 2,
+      "ok": true
+    },
+    {
+      "name": "plan-f",
+      "cycle": 3,
+      "ok": true
+    }
+  ],
+  "oldPngFormula": "W=3200; H=round(3200*bounds.h/bounds.w)"
+}

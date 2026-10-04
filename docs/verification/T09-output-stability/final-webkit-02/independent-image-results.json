@@ -1,0 +1,95 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "file": "jacobsen-2d.png",
+      "width": 4800,
+      "height": 1739,
+      "passed": true
+    },
+    {
+      "file": "cmu-2d.png",
+      "width": 2937,
+      "height": 4085,
+      "passed": true
+    },
+    {
+      "file": "plan-f-2d.png",
+      "width": 3889,
+      "height": 3085,
+      "passed": true
+    },
+    {
+      "file": "tall-2d.png",
+      "width": 761,
+      "height": 4800,
+      "passed": true
+    },
+    {
+      "file": "jacobsen-3d.png",
+      "width": 3200,
+      "height": 3162,
+      "passed": true
+    },
+    {
+      "file": "cmu-3d.png",
+      "width": 3200,
+      "height": 3162,
+      "passed": true
+    },
+    {
+      "file": "plan-f-3d.png",
+      "width": 3200,
+      "height": 3162,
+      "passed": true
+    },
+    {
+      "file": "label-on.png",
+      "width": 3200,
+      "height": 3162,
+      "passed": true
+    },
+    {
+      "file": "label-off.png",
+      "width": 3200,
+      "height": 3162,
+      "passed": true
+    },
+    {
+      "file": "context-loss-2d.png",
+      "width": 3200,
+      "height": 2826,
+      "passed": true
+    },
+    {
+      "file": "encoding-retry.png",
+      "width": 3200,
+      "height": 3162,
+      "passed": true
+    },
+    {
+      "file": "mobile-2d.png",
+      "width": 3200,
+      "height": 2826,
+      "passed": true
+    },
+    {
+      "file": "tall-2d.svg",
+      "allVisibleGlyphBoundsIncluded": true,
+      "passed": true
+    },
+    {
+      "files": [
+        "label-on.png",
+        "label-off.png"
+      ],
+      "localizedLabelDifference": [
+        1317,
+        1268,
+        1884,
+        1363
+      ],
+      "passed": true
+    }
+  ]
+}

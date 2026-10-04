@@ -1,0 +1,69 @@
+{
+  "passed": true,
+  "engine": "chromium",
+  "browser": "154.0.8037.97",
+  "build": "78db820f3c1a78e0",
+  "checks": [
+    "jacobsen complete 2D / labelled 3D download and repeated switching",
+    "cmu complete 2D / labelled 3D download and repeated switching",
+    "plan-f complete 2D / labelled 3D download and repeated switching",
+    "portrait complete image, extreme ratio and outside measurement / furniture bounds",
+    "3D exports visible CSS labels and honors hidden labels",
+    "WebGL constructor failure leaves 2D usable and Retry 3D recreates one canvas",
+    "WebGL context loss returns to 2D, retains model and retries",
+    "3D module request timeout leaves 2D and allows retry after delayed response",
+    "small touch viewport exports image and preserves dimensions"
+  ],
+  "failures": [],
+  "diagnostics": [
+    {
+      "name": "jacobsen complete 2D / labelled 3D download and repeated switching",
+      "type": "warning",
+      "text": "[.WebGL-0x11c000ca200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "name": "jacobsen complete 2D / labelled 3D download and repeated switching",
+      "type": "warning",
+      "text": "[.WebGL-0x11c000ca200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "name": "jacobsen complete 2D / labelled 3D download and repeated switching",
+      "type": "warning",
+      "text": "[.WebGL-0x11c000ca200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "name": "jacobsen complete 2D / labelled 3D download and repeated switching",
+      "type": "warning",
+      "text": "[.WebGL-0x11c000ca200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+    },
+    {
+      "name": "WebGL constructor failure leaves 2D usable and Retry 3D recreates one canvas",
+      "type": "error",
+      "text": "THREE.WebGLRenderer: Error creating WebGL context."
+    },
+    {
+      "name": "WebGL constructor failure leaves 2D usable and Retry 3D recreates one canvas",
+      "type": "error",
+      "text": "3D initialization failed: Error: WebGL initialization failed\n    at init (http://127.0.0.1:8095/src/viewer3d/viewer.js?v=78db820f3c1a78e0:54:36)\n    at Object.enter (http://127.0.0.1:8095/src/viewer3d/viewer.js?v=78db820f3c1a78e0:252:3)\n    at Object.setView (http://127.0.0.1:8095/src/main.js?v=78db820f3c1a78e0:107:92)"
+    },
+    {
+      "name": "WebGL context loss returns to 2D, retains model and retries",
+      "type": "error",
+      "text": "3D initialization failed: Error: WebGL context lost\n    at HTMLCanvasElement.<anonymous> (http://127.0.0.1:8095/src/viewer3d/viewer.js?v=78db820f3c1a78e0:55:98)"
+    },
+    {
+      "name": "WebGL context loss returns to 2D, retains model and retries",
+      "type": "warning",
+      "text": "THREE.WebGLRenderer: WEBGL_lose_context extension not supported."
+    },
+    {
+      "name": "3D module request timeout leaves 2D and allows retry after delayed response",
+      "type": "error",
+      "text": "3D initialization failed: Error: 3D load timed out\n    at http://127.0.0.1:8095/src/main.js?v=78db820f3c1a78e0:104:88"
+    }
+  ],
+  "limitations": [
+    "Fault injection covers request timeout, constructor failure and WEBGL_lose_context",
+    "Chromium SwiftShader; physical GPU/mobile and Safari/Edge remain separate"
+  ]
+}

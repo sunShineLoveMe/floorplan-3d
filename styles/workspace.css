@@ -142,3 +142,5 @@
 .onboarding-entry{margin:8px 12px}
 @media(max-width:700px){.help-pop{position:fixed;left:8px;right:8px;top:216px;width:auto;max-width:none;max-height:calc(100dvh - 232px)}}
 @media(max-width:700px) and (max-height:450px){.help-pop{top:136px;max-height:calc(100dvh - 152px)}}
+#viewError {display:flex;gap:8px;align-items:center;flex-wrap:wrap;max-width:100%;padding:6px 10px;background:var(--color-surface);border:1px solid var(--color-border);font-size:12px;}
+#viewError[hidden] {display:none;}

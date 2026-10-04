@@ -1,0 +1,84 @@
+{
+  "passed": false,
+  "engine": "chromium",
+  "browser": "154.0.8037.97",
+  "build": "78db820f3c1a78e0",
+  "checks": [
+    "3D module request timeout leaves 2D and allows retry after delayed response"
+  ],
+  "failures": [
+    {
+      "name": "jacobsen complete 2D / labelled 3D download and repeated switching",
+      "error": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#exportPng') to be visible\u001b[22m\n\u001b[2m    54 × locator resolved to hidden <button class=\"btn\" id=\"exportPng\" data-zh=\"导出图片\" aria-busy=\"false\" data-en=\"Export image\">Export image</button>\u001b[22m\n\n    at image (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t09-output-stability.mjs:12:369)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t09-output-stability.mjs:20:2\n    at async scenario (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t09-output-stability.mjs:10:640)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t09-output-stability.mjs:16:47"
+    },
+    {
+      "name": "cmu complete 2D / labelled 3D download and repeated switching",
+      "error": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#exportPng') to be visible\u001b[22m\n\u001b[2m    53 × locator resolved to hidden <button class=\"btn\" id=\"exportPng\" data-zh=\"导出图片\" aria-busy=\"false\" data-en=\"Export image\">Export image</button>\u001b[22m\n\n    at image (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t09-output-stability.mjs:12:369)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t09-output-stability.mjs:20:2\n    at async scenario (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t09-output-stability.mjs:10:640)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t09-output-stability.mjs:16:47"
+    },
+    {
+      "name": "plan-f complete 2D / labelled 3D download and repeated switching",
+      "error": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#exportPng') to be visible\u001b[22m\n\u001b[2m    53 × locator resolved to hidden <button class=\"btn\" id=\"exportPng\" data-zh=\"导出图片\" aria-busy=\"false\" data-en=\"Export image\">Export image</button>\u001b[22m\n\n    at image (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t09-output-stability.mjs:12:369)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t09-output-stability.mjs:20:2\n    at async scenario (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t09-output-stability.mjs:10:640)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t09-output-stability.mjs:16:47"
+    },
+    {
+      "name": "portrait complete image, extreme ratio and outside measurement / furniture bounds",
+      "error": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#protectionDialog [data-choice]').filter({ hasText: 'Continue replacement' }) to be visible\u001b[22m\n\n    at uploadProject (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/helpers/project-protection.mjs:4:98)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t09-output-stability.mjs:27:69\n    at async scenario (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t09-output-stability.mjs:10:640)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t09-output-stability.mjs:25:1"
+    },
+    {
+      "name": "3D exports visible CSS labels and honors hidden labels",
+      "error": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#exportPng') to be visible\u001b[22m\n\u001b[2m    54 × locator resolved to hidden <button class=\"btn\" id=\"exportPng\" data-zh=\"导出图片\" aria-busy=\"false\" data-en=\"Export image\">Export image</button>\u001b[22m\n\n    at image (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t09-output-stability.mjs:12:369)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t09-output-stability.mjs:33:62\n    at async scenario (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t09-output-stability.mjs:10:640)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t09-output-stability.mjs:32:1"
+    },
+    {
+      "name": "WebGL constructor failure leaves 2D usable and Retry 3D recreates one canvas",
+      "error": "page.evaluate: TypeError: Cannot convert undefined or null to object\n    at eval (eval at evaluate (:311:30), <anonymous>:1:71)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at model (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t09-output-stability.mjs:14:19)\n    at original (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t09-output-stability.mjs:37:21)\n    at scenario (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t09-output-stability.mjs:10:646)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t09-output-stability.mjs:36:1"
+    },
+    {
+      "name": "WebGL context loss returns to 2D, retains model and retries",
+      "error": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#exportPng') to be visible\u001b[22m\n\u001b[2m    54 × locator resolved to hidden <button class=\"btn\" id=\"exportPng\" data-zh=\"导出图片\" aria-busy=\"false\" data-en=\"Export image\">Export image</button>\u001b[22m\n\n    at image (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t09-output-stability.mjs:12:369)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t09-output-stability.mjs:41:427\n    at async scenario (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t09-output-stability.mjs:10:640)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t09-output-stability.mjs:40:1"
+    },
+    {
+      "name": "small touch viewport exports image and preserves dimensions",
+      "error": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#exportPng') to be visible\u001b[22m\n\u001b[2m    54 × locator resolved to hidden <button class=\"btn\" id=\"exportPng\" data-zh=\"导出图片\" aria-busy=\"false\" data-en=\"Export image\">Export image</button>\u001b[22m\n\n    at image (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t09-output-stability.mjs:12:369)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t09-output-stability.mjs:47:50\n    at async scenario (/Users/chris/Documents/项目/AI家装/floorplan-3d/tests/browser-t09-output-stability.mjs:10:640)\n    at async file:///Users/chris/Documents/%E9%A1%B9%E7%9B%AE/AI%E5%AE%B6%E8%A3%85/floorplan-3d/tests/browser-t09-output-stability.mjs:46:1"
+    }
+  ],
+  "diagnostics": [
+    {
+      "name": "3D exports visible CSS labels and honors hidden labels",
+      "type": "warning",
+      "text": "[.WebGL-0x10c000dbc00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "name": "3D exports visible CSS labels and honors hidden labels",
+      "type": "warning",
+      "text": "[.WebGL-0x10c000dbc00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "name": "3D exports visible CSS labels and honors hidden labels",
+      "type": "warning",
+      "text": "[.WebGL-0x10c000dbc00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "name": "3D exports visible CSS labels and honors hidden labels",
+      "type": "warning",
+      "text": "[.WebGL-0x10c000dbc00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+    },
+    {
+      "name": "WebGL context loss returns to 2D, retains model and retries",
+      "type": "error",
+      "text": "3D initialization failed: Error: WebGL context lost\n    at HTMLCanvasElement.<anonymous> (http://127.0.0.1:8095/src/viewer3d/viewer.js?v=78db820f3c1a78e0:55:98)"
+    },
+    {
+      "name": "WebGL context loss returns to 2D, retains model and retries",
+      "type": "warning",
+      "text": "THREE.WebGLRenderer: WEBGL_lose_context extension not supported."
+    },
+    {
+      "name": "3D module request timeout leaves 2D and allows retry after delayed response",
+      "type": "error",
+      "text": "3D initialization failed: Error: 3D load timed out\n    at http://127.0.0.1:8095/src/main.js?v=78db820f3c1a78e0:104:88"
+    }
+  ],
+  "limitations": [
+    "Fault injection covers request timeout, constructor failure and WEBGL_lose_context",
+    "Chromium SwiftShader; physical GPU/mobile and Safari/Edge remain separate"
+  ]
+}
