@@ -1,0 +1,53 @@
+Browser tab: 1, Title: "Floor Plan Designer", URL: "http://127.0.0.1:8787/".
+1 AXWebArea Floor Plan Designer, URL: 127.0.0.1:8787/
+	2 container
+		3 container paneBtns
+			4 button (collapsed) ◧ Library Library, Help: Show library ( [ ), ID: tgLib, Secondary Actions: Expand
+				5 text ◧ Library
+				6 text Library
+			7 button (collapsed) Properties ◨ Props, Help: Show properties ( ] ), ID: tgPanel, Secondary Actions: Expand
+				8 text Properties ◨
+				9 text Props
+		10 button (disabled) Undo, Help: Undo (Ctrl+Z), ID: undo
+		11 button (disabled) Redo, Help: Redo (Ctrl+Shift+Z), ID: redo
+		12 button (collapsed) Settings ▾ ⚙︎, Help: Settings, Secondary Actions: Expand
+			13 text Settings ▾
+			14 text ⚙︎
+		15 container
+			16 button (collapsed) Export / File ▾ Export ▾, Help: Export / File, Secondary Actions: Expand
+				17 text Export / File ▾
+				18 text Export ▾
+		19 container Editor tools
+			20 container Description: View mode, Help: Switch 2D / 3D (T), ID: viewSeg
+				21 checkbox 2D Layout, Value: 1
+				22 checkbox 3D View, Value: 0
+			23 button (collapsed) Help ▾, Secondary Actions: Expand
+				24 text Help ▾
+			25 button (collapsed) View options ▾, Secondary Actions: Expand
+				26 text View options ▾
+			27 container
+				28 text Units
+				29 pop up button (collapsed, settable) Description: Project units, Value: Feet & inches, ID: projectUnits, Secondary Actions: Expand
+					30 menu
+						31 Metric
+						32 (selected) Feet & inches
+			33 button 中文, Help: Switch language, ID: langBtn
+		34 container stage
+			35 container Canvas tools
+				36 container tools
+					37 checkbox Select, Help: Select / Move (V), Value: 1
+					38 checkbox Measure, Help: Measure (M), Value: 0
+					39 checkbox Demolish, Help: Demolish non-bearing walls (X), Value: 0
+				40 button Description: Zoom out, ID: zoomOut
+				41 button Description: Zoom in, ID: zoomIn
+				42 button Fit view, Help: Fit to window (F), ID: fit
+				43 checkbox Wall snap, Help: Snap to wall edges while dragging; off keeps the unit grid, Value: 1
+			44 image plan
+				45 text Living room
+				46 text 120.00 sq ft
+				47 text 12' 0"
+				48 text 10' 0"
+			49 container scalebar
+				50 text 2' 0"
+
+The focused UI element is 1 AXWebArea Floor Plan Designer, URL: 127.0.0.1:8787/

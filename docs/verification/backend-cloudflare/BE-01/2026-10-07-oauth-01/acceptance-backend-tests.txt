@@ -1,0 +1,171 @@
+
+> test
+> tsx --test tests/*.test.ts
+
+TAP version 13
+# Subtest: v2 rectangle round-trip preserves domain and millimetres
+ok 1 - v2 rectangle round-trip preserves domain and millimetres
+  ---
+  duration_ms: 1.369083
+  type: 'test'
+  ...
+# Subtest: v1 custom round-trip preserves domain and millimetres
+ok 2 - v1 custom round-trip preserves domain and millimetres
+  ---
+  duration_ms: 0.482542
+  type: 'test'
+  ...
+# Subtest: Umbria round-trip preserves domain and millimetres
+ok 3 - Umbria round-trip preserves domain and millimetres
+  ---
+  duration_ms: 22.550334
+  type: 'test'
+  ...
+# Subtest: raster becomes an asset ID, explicit bytes required on restore
+ok 4 - raster becomes an asset ID, explicit bytes required on restore
+  ---
+  duration_ms: 0.9255
+  type: 'test'
+  ...
+# Subtest: unknown fields are stripped at every structured boundary; authorization fields rejected
+ok 5 - unknown fields are stripped at every structured boundary; authorization fields rejected
+  ---
+  duration_ms: 0.751333
+  type: 'test'
+  ...
+# Subtest: bad geometry, malformed container and deeply nested input fail closed
+ok 6 - bad geometry, malformed container and deeply nested input fail closed
+  ---
+  duration_ms: 0.526333
+  type: 'test'
+  ...
+# Subtest: fresh initialization, auth schema and business upgrade preserve existing users
+ok 7 - fresh initialization, auth schema and business upgrade preserve existing users
+  ---
+  duration_ms: 310.079792
+  type: 'test'
+  ...
+# Subtest: session required, signed cookie verified and forged owner cannot authorize
+ok 8 - session required, signed cookie verified and forged owner cannot authorize
+  ---
+  duration_ms: 156.614792
+  type: 'test'
+  ...
+# Subtest: wrong and missing Origin writes fail; private responses cannot be shared-cached
+ok 9 - wrong and missing Origin writes fail; private responses cannot be shared-cached
+  ---
+  duration_ms: 35.476042
+  type: 'test'
+  ...
+# 2026-10-07T04:02:02.983Z ERROR [Better Auth]: State not found undefined
+# Subtest: cross-site Google callback reaches OAuth state validation; other cross-site requests stay rejected
+ok 10 - cross-site Google callback reaches OAuth state validation; other cross-site requests stay rejected
+  ---
+  duration_ms: 39.285625
+  type: 'test'
+  ...
+# Subtest: create / authorized read / list / cross-account save and receipt boundaries
+ok 11 - create / authorized read / list / cross-account save and receipt boundaries
+  ---
+  duration_ms: 346.088375
+  type: 'test'
+  ...
+# Subtest: same revision concurrent mutations commit once, zero-row loser has no receipt/version
+ok 12 - same revision concurrent mutations commit once, zero-row loser has no receipt/version
+  ---
+  duration_ms: 210.093542
+  type: 'test'
+  ...
+# Subtest: same mutation concurrent requests and lost response retries never increment twice
+ok 13 - same mutation concurrent requests and lost response retries never increment twice
+  ---
+  duration_ms: 224.579666
+  type: 'test'
+  ...
+# Subtest: concurrent creates with one mutation yield one server-generated project
+ok 14 - concurrent creates with one mutation yield one server-generated project
+  ---
+  duration_ms: 83.261208
+  type: 'test'
+  ...
+# Subtest: R2 write failure changes no D1 pointer or successful receipt
+ok 15 - R2 write failure changes no D1 pointer or successful receipt
+  ---
+  duration_ms: 109.154208
+  type: 'test'
+  ...
+# Subtest: D1 failure after actual UPDATE rolls back pointer, version, quota and receipt; retry succeeds
+ok 16 - D1 failure after actual UPDATE rolls back pointer, version, quota and receipt; retry succeeds
+  ---
+  duration_ms: 206.898292
+  type: 'test'
+  ...
+# Subtest: D1 commit succeeded but transport throws; original mutation resolves on retry
+ok 17 - D1 commit succeeded but transport throws; original mutation resolves on retry
+  ---
+  duration_ms: 138.008667
+  type: 'test'
+  ...
+# Subtest: body limits / malformed JSON / storage and project quotas reject without false success
+ok 18 - body limits / malformed JSON / storage and project quotas reject without false success
+  ---
+  duration_ms: 178.19625
+  type: 'test'
+  ...
+# Subtest: schema rejects cross-owner versions, duplicate receipts and asset foreign ownership
+ok 19 - schema rejects cross-owner versions, duplicate receipts and asset foreign ownership
+  ---
+  duration_ms: 41.091333
+  type: 'test'
+  ...
+# Subtest: ready raster permission, private download, calibrated snapshot and missing object behavior
+ok 20 - ready raster permission, private download, calibrated snapshot and missing object behavior
+  ---
+  duration_ms: 222.617167
+  type: 'test'
+  ...
+# Subtest: expired receipt requires resync, never replayed as a new mutation
+ok 21 - expired receipt requires resync, never replayed as a new mutation
+  ---
+  duration_ms: 71.855083
+  type: 'test'
+  ...
+# Subtest: signout invalidates the original server session, session expiry also fails closed
+ok 22 - signout invalidates the original server session, session expiry also fails closed
+  ---
+  duration_ms: 136.90525
+  type: 'test'
+  ...
+# Subtest: concurrent different-project saves cannot overrun the shared committed quota
+ok 23 - concurrent different-project saves cannot overrun the shared committed quota
+  ---
+  duration_ms: 165.87225
+  type: 'test'
+  ...
+# Subtest: deleted projects never accept stale saves or replay successful receipts
+ok 24 - deleted projects never accept stale saves or replay successful receipts
+  ---
+  duration_ms: 156.115
+  type: 'test'
+  ...
+# Subtest: server-issued HTTPS session cookie carries Secure / HttpOnly / SameSite
+ok 25 - server-issued HTTPS session cookie carries Secure / HttpOnly / SameSite
+  ---
+  duration_ms: 4.917042
+  type: 'test'
+  ...
+# Subtest: forced zero-row CAS batch writes no version, quota increment or success receipt
+ok 26 - forced zero-row CAS batch writes no version, quota increment or success receipt
+  ---
+  duration_ms: 156.211208
+  type: 'test'
+  ...
+1..26
+# tests 26
+# suites 0
+# pass 26
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3591.670709

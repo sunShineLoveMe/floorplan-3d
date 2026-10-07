@@ -1,0 +1,4 @@
+{
+  "status": 404,
+  "body": "{\"message\":\"Provider not found\",\"code\":\"PROVIDER_NOT_FOUND\"}"
+}

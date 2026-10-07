@@ -1,0 +1,73 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "floorplan-cloudflare",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-07-30",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "assets": {
+    "directory": "dist/assets",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/api",
+      "/api/*"
+    ],
+    "not_found_handling": "404-page"
+  },
+  "env": {
+    "development": {
+      "name": "floorplan-development",
+      "workers_dev": true,
+      "vars": {
+        "ENVIRONMENT": "development",
+        "APP_ORIGIN": "https://floorplan-development.juneandrao.workers.dev"
+      },
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "floorplan-development",
+          "database_id": "b4b72f97-5634-4556-bb32-e2690ac4a96e",
+          "migrations_dir": "migrations"
+        }
+      ],
+      "r2_buckets": [
+        {
+          "binding": "BUCKET",
+          "bucket_name": "floorplan-development-private"
+        }
+      ],
+      "observability": {
+        "enabled": true,
+        "head_sampling_rate": 1,
+        "logs": {
+          "invocation_logs": false
+        }
+      },
+      "preview_urls": false
+    },
+    "production": {
+      "name": "floorplan-production",
+      "workers_dev": false,
+      "vars": {
+        "ENVIRONMENT": "production",
+        "APP_ORIGIN": "https://replace-before-deploy.invalid"
+      },
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "floorplan-production",
+          "database_id": "00000000-0000-0000-0000-000000000000",
+          "migrations_dir": "migrations"
+        }
+      ],
+      "r2_buckets": [
+        {
+          "binding": "BUCKET",
+          "bucket_name": "floorplan-production-private"
+        }
+      ]
+    }
+  },
+  "account_id": "fc237f83b491fe04cbfbd57c5f9ba812"
+}

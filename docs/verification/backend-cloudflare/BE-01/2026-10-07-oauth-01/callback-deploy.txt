@@ -1,0 +1,21 @@
+
+ ⛅️ wrangler 4.148.0
+────────────────────
+🌀 Building list of assets...
+✨ Read 95 files from the assets directory /Users/chris/Documents/项目/AI家装/floorplan-3d/server/dist/assets
+🌀 Starting asset upload...
+No updated asset files to upload. Proceeding with deployment...
+Total Upload: 1985.94 KiB / gzip: 364.86 KiB
+Worker Startup Time: 55 ms
+Your Worker has access to the following bindings:
+Binding                                                           Resource                  
+env.DB (floorplan-development)                                    D1 Database               
+env.BUCKET (floorplan-development-private)                        R2 Bucket                 
+env.ASSETS                                                        Assets                    
+env.ENVIRONMENT ("development")                                   Environment Variable      
+env.APP_ORIGIN ("https://floorplan-development.juneand...")       Environment Variable      
+
+Uploaded floorplan-development (6.15 sec)
+Deployed floorplan-development triggers (0.82 sec)
+  https://floorplan-development.juneandrao.workers.dev
+Current Version ID: 901e3b8e-1203-41d3-9729-7284e9701372

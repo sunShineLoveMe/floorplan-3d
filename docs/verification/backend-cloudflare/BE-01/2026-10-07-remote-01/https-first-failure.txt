@@ -1,0 +1,7 @@
+2026-10-07 first development HTTPS check
+Node v22.22.3: ERR_SSL_SSL/TLS_ALERT_HANDSHAKE_FAILURE
+curl default and configured local HTTP proxy: SSL alert handshake failure (exit 35)
+Chrome and Codex browser: ERR_SSL_VERSION_OR_CIPHER_MISMATCH
+Cloudflare UI shows workers.dev URL enabled; no pending certificate status shown.
+System DNS returns local proxy fake IP 198.18.0.128; Cloudflare DoH returns 172.67.201.6 and 104.21.85.19. An address override retaining TLS hostname verification also failed.
+Cause remains unresolved; no certificate checks were disabled and no global network settings changed.

@@ -1,0 +1,62 @@
+{
+  "origin": "https://floorplan-development.juneandrao.workers.dev",
+  "at": "2026-10-07T03:47:43.036Z",
+  "rows": [
+    {
+      "path": "/",
+      "status": 200,
+      "contentType": "text/html",
+      "cache": "public, max-age=0, must-revalidate",
+      "body": "<!doctype html>\n<html lang=\"zh-CN\" data-build=\"f35a2cebc21e75fd\">\n<head>\n<meta c"
+    },
+    {
+      "path": "/api/health",
+      "status": 200,
+      "contentType": "application/json",
+      "cache": "private, no-store",
+      "body": "{\"status\":\"ok\",\"environment\":\"development\",\"contract\":1}"
+    },
+    {
+      "path": "/api/me",
+      "status": 401,
+      "contentType": "application/json",
+      "cache": "private, no-store",
+      "body": "{\"error\":{\"code\":\"SESSION_REQUIRED\",\"requestId\":\"ee751f17-5d84-40ce-b622-a6f6a5c38f80\"}}"
+    },
+    {
+      "path": "/api/projects",
+      "status": 401,
+      "contentType": "application/json",
+      "cache": "private, no-store",
+      "body": "{\"error\":{\"code\":\"SESSION_REQUIRED\",\"requestId\":\"b0fba5f8-bad3-4ca0-89c1-167bc3f6bd24\"}}"
+    },
+    {
+      "path": "/cloud-development",
+      "status": 200,
+      "contentType": "text/html",
+      "cache": "public, max-age=0, must-revalidate",
+      "body": "<!doctype html>\n<html lang=\"en\">\n<head><meta charset=\"utf-8\"><meta name=\"viewpor"
+    },
+    {
+      "path": "/docs/roadmap.md",
+      "status": 404,
+      "contentType": "application/json",
+      "cache": null,
+      "body": "{\"error\":{\"code\":\"NOT_FOUND\"}}"
+    },
+    {
+      "path": "/server/package.json",
+      "status": 404,
+      "contentType": "application/json",
+      "cache": null,
+      "body": "{\"error\":{\"code\":\"NOT_FOUND\"}}"
+    },
+    {
+      "path": "/.dev.vars.development",
+      "status": 404,
+      "contentType": "application/json",
+      "cache": null,
+      "body": "{\"error\":{\"code\":\"NOT_FOUND\"}}"
+    }
+  ]
+}

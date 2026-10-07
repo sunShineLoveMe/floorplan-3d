@@ -1,0 +1,59 @@
+[
+  {
+    "path": "/",
+    "status": 200,
+    "cacheControl": "public, max-age=0, must-revalidate",
+    "response": null
+  },
+  {
+    "path": "/api/health",
+    "status": 200,
+    "cacheControl": "private, no-store",
+    "response": {
+      "status": "ok",
+      "environment": "development",
+      "contract": 1
+    }
+  },
+  {
+    "path": "/api/me",
+    "status": 401,
+    "cacheControl": "private, no-store",
+    "response": {
+      "error": {
+        "code": "SESSION_REQUIRED",
+        "requestId": "5c1869b6-35f1-4e06-a46e-15511338fe6d"
+      }
+    }
+  },
+  {
+    "path": "/docs/roadmap.md",
+    "status": 404,
+    "cacheControl": null,
+    "response": {
+      "error": {
+        "code": "NOT_FOUND"
+      }
+    }
+  },
+  {
+    "path": "/server/package.json",
+    "status": 404,
+    "cacheControl": null,
+    "response": {
+      "error": {
+        "code": "NOT_FOUND"
+      }
+    }
+  },
+  {
+    "path": "/.dev.vars.development",
+    "status": 404,
+    "cacheControl": null,
+    "response": {
+      "error": {
+        "code": "NOT_FOUND"
+      }
+    }
+  }
+]

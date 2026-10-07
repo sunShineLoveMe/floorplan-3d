@@ -1,0 +1,35 @@
+{
+  "name": "floorplan-cloudflare",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.22.3"
+  },
+  "scripts": {
+    "dev": "npm run assets && wrangler dev --env development",
+    "assets": "tsx scripts/build-assets.mjs",
+    "typecheck": "tsc --noEmit",
+    "build": "npm run assets && wrangler deploy --env development --dry-run --outdir dist/worker",
+    "test": "tsx --test tests/*.test.ts",
+    "migrate:local": "wrangler d1 migrations apply floorplan-development --local --env development",
+    "auth:generate": "auth generate --config scripts/auth-schema.ts --output dist/auth-schema.sql --yes",
+    "test:worker": "npm run build && tsx scripts/smoke-worker.ts"
+  },
+  "dependencies": {
+    "better-auth": "1.7.7",
+    "hono": "4.13.13"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20261007.1",
+    "@types/node": "22.19.15",
+    "auth": "1.7.7",
+    "miniflare": "4.20260730.0",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3",
+    "wrangler": "4.148.0"
+  },
+  "overrides": {
+    "sharp": "0.35.5",
+    "undici": "7.29.1"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "branch": "feat/ui-refactor",
+  "head": "6ff58d74a29c1cdf7a2d14da625b618949facd76",
+  "date": "2026-10-07",
+  "timezone": "Asia/Shanghai",
+  "preexistingModified": [
+    "README.md",
+    "docs/roadmap.md",
+    "scripts/serve.py",
+    "tests/browser-t08-english-onboarding.mjs",
+    "tests/browser-t09-output-stability.mjs"
+  ],
+  "preexistingUntrackedExcluded": "aws-tokyo-wireguard.yaml",
+  "preservation": "No reset/clean/stash, no cloud resources created, no push/merge/deploy"
+}

@@ -1,0 +1,56 @@
+{
+  "checks": [
+    {
+      "path": "/cloud-development.html",
+      "status": 200,
+      "bytes": 1620,
+      "hashMatched": true
+    },
+    {
+      "path": "/cloud-acceptance.js",
+      "status": 200,
+      "bytes": 7685,
+      "hashMatched": true
+    },
+    {
+      "path": "/cloud-acceptance-fixtures.js",
+      "status": 200,
+      "bytes": 1059711,
+      "hashMatched": true
+    },
+    {
+      "path": "/docs/roadmap.md",
+      "status": 404,
+      "expected": 404
+    },
+    {
+      "path": "/server/package.json",
+      "status": 404,
+      "expected": 404
+    },
+    {
+      "path": "/.dev.vars.development",
+      "status": 404,
+      "expected": 404
+    },
+    {
+      "path": "/tests/fixtures/north-american/newmark-umbria-P0-scenario.json",
+      "status": 404,
+      "expected": 404
+    }
+  ],
+  "samples": [
+    {
+      "name": "Umbria",
+      "containerBytes": 46863,
+      "createEnvelopeBytes": 46976,
+      "limitBytes": 1048576
+    },
+    {
+      "name": "near-body-limit",
+      "containerBytes": 1012793,
+      "createEnvelopeBytes": 1012915,
+      "limitBytes": 1048576
+    }
+  ]
+}

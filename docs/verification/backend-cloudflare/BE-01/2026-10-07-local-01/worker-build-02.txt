@@ -1,0 +1,23 @@
+
+> build
+> npm run assets && wrangler deploy --env development --dry-run --outdir dist/worker
+
+
+> assets
+> node scripts/build-assets.mjs
+
+Static allowlist: index.html, src/, styles/, vendor/
+
+ ⛅️ wrangler 4.148.0
+────────────────────
+✨ Read 95 files from the assets directory /Users/chris/Documents/项目/AI家装/floorplan-3d/server/dist/assets
+Total Upload: 1985.83 KiB / gzip: 364.82 KiB
+Your Worker has access to the following bindings:
+Binding                                              Resource                  
+env.DB (floorplan-development)                       D1 Database               
+env.BUCKET (floorplan-development-private)           R2 Bucket                 
+env.ASSETS                                           Assets                    
+env.ENVIRONMENT ("development")                      Environment Variable      
+env.APP_ORIGIN ("http://127.0.0.1:8787")             Environment Variable      
+
+--dry-run: exiting now.

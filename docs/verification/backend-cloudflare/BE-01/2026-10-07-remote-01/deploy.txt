@@ -1,0 +1,108 @@
+
+ ⛅️ wrangler 4.148.0
+────────────────────
+🌀 Building list of assets...
+✨ Read 95 files from the assets directory /Users/chris/Documents/项目/AI家装/floorplan-3d/server/dist/assets
+🌀 Starting asset upload...
+🌀 Found 77 new or modified static assets to upload. Proceeding with upload...
++ /src/core/editor-state.js
++ /src/ui/notifications.js
++ /src/ui/input-drafts.js
++ /src/ui/dom.js
++ /src/services/project-files.js
++ /src/core/geometry.js
++ /src/editor2d/snapping.js
++ /cloud-development.js
++ /src/core/use-zones.js
++ /src/editor2d/defs.js
++ /src/core/project-store.js
++ /src/data/default-project.js
++ /src/ui/door-clearance.js
++ /src/ui/i18n.js
++ /src/ui/project-actions.js
++ /vendor/three/examples/jsm/geometries/RoundedBoxGeometry.js
++ /src/ui/file-menu.js
++ /src/editor2d/furniture-symbols.js
++ /src/ui/save-recovery.js
++ /src/ui/reference-plan.js
++ /src/editor2d/interactions.js
++ /src/core/spatial-clearance.js
++ /src/editor2d/renderer.js
++ /index.html
++ /src/viewer3d/viewer.js
++ /vendor/pdfjs/pdf.worker.min.mjs
++ /src/viewer3d/resources.js
++ /src/services/export-names.js
++ /src/services/output-layout.js
++ /src/core/obstacle-clearance.js
++ /src/ui/lifecycle.js
++ /styles/tokens.css
++ /src/core/door-clearance.js
++ /src/editor2d/furniture-labels.js
++ /src/editor2d/room-labels.js
++ /src/ui/drawers.js
++ /src/core/polygons.js
++ /src/services/storage.js
++ /vendor/three/examples/jsm/environments/RoomEnvironment.js
++ /src/viewer3d/materials.js
++ /vendor/three/examples/jsm/renderers/CSS2DRenderer.js
++ /src/services/print-plan.js
++ /src/data/room-editor.js
++ /src/ui/toolbar.js
++ /styles/controls.css
++ /src/viewer3d/architecture.js
++ /src/main.js
++ /styles/workspace.css
++ /src/data/house-editor.js
++ /vendor/three/examples/jsm/controls/OrbitControls.js
++ /src/viewer3d/furniture.js
++ /vendor/three/build/three.module.js
++ /src/viewer3d/random.js
++ /cloud-development.html
++ /src/data/reference-plan.js
++ /vendor/three/LICENSE
++ /src/core/floor-clearance.js
++ /src/editor2d/editor.js
++ /src/viewer3d/framing.js
++ /src/editor2d/viewport.js
++ /src/viewer3d/navigation.js
++ /src/ui/length-field.js
++ /src/ui/project-protection.js
++ /vendor/three/examples/jsm/controls/PointerLockControls.js
++ /src/services/downloads.js
++ /src/core/units.js
++ /src/data/catalogs.js
++ /src/data/sample-template.js
++ /src/ui/use-zones.js
++ /src/ui/passage-clearance.js
++ /src/ui/furniture-library.js
++ /vendor/pdfjs/LICENSE
++ /src/data/project-data.js
++ /styles/app.css
++ /src/ui/property-panel.js
++ /src/ui/room-editor.js
++ /vendor/pdfjs/pdf.min.mjs
+Uploaded 25 of 77 assets
+Uploaded 51 of 77 assets
+Uploaded 77 of 77 assets
+✨ Success! Uploaded 77 files (3.14 sec)
+
+Total Upload: 1985.83 KiB / gzip: 364.82 KiB
+Worker Startup Time: 58 ms
+Your Worker has access to the following bindings:
+Binding                                                           Resource                  
+env.DB (floorplan-development)                                    D1 Database               
+env.BUCKET (floorplan-development-private)                        R2 Bucket                 
+env.ASSETS                                                        Assets                    
+env.ENVIRONMENT ("development")                                   Environment Variable      
+env.APP_ORIGIN ("https://floorplan-development.juneand...")       Environment Variable      
+
+Uploaded floorplan-development (8.53 sec)
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mBecause your 'workers.dev' route is enabled and your 'preview_urls' setting is not in your Wrangler file, Preview URLs will be enabled for this deployment by default.[0m
+
+  To override this setting, you can disable Preview URLs by explicitly setting 'preview_urls = false' in your Wrangler file.
+
+
+Deployed floorplan-development triggers (0.72 sec)
+  https://floorplan-development.juneandrao.workers.dev
+Current Version ID: d1847b23-abae-42d0-89a5-4c9b07b01f42

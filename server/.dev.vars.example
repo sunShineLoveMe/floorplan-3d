@@ -1,0 +1,7 @@
+# Copy to .dev.vars.development; generate a random secret of at least 32 characters.
+BETTER_AUTH_SECRET=replace-with-a-random-secret-at-least-32-characters
+GOOGLE_CLIENT_ID=replace-with-google-client-id
+GOOGLE_CLIENT_SECRET=replace-with-google-client-secret
+
+# Local development overrides the remote HTTPS origin.
+APP_ORIGIN=http://127.0.0.1:8787

@@ -1,0 +1,10 @@
+{
+  "node_modules/better-auth": "1.7.7",
+  "node_modules/hono": "4.13.13",
+  "node_modules/miniflare": "4.20260730.0",
+  "node_modules/sharp": "0.35.5",
+  "node_modules/tsx": "4.23.15",
+  "node_modules/typescript": "6.0.3",
+  "node_modules/undici": "7.29.1",
+  "node_modules/wrangler": "4.148.0"
+}

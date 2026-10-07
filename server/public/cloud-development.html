@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cloud development check</title><link rel="stylesheet" href="/styles/tokens.css"></head>
+<body style="font-family:system-ui;max-width:680px;margin:48px auto;padding:24px">
+<h1>Cloud development check</h1>
+<p>Google sign-in is used for private cloud projects. The floor plan editor remains available without an account.</p>
+<p><a href="/">Open floor plan editor</a></p>
+<button id="signin">Continue with Google</button> <button id="signout">Sign out</button> <button id="refresh">Refresh session</button>
+<p id="status" role="status">Checking session…</p>
+<hr>
+<h2>BE-01 development acceptance</h2>
+<p>Run after Google sign-in. Creates two synthetic test projects and keeps their snapshots for inspection (about 6 MiB). Repeated runs consume the development account quota. Results exclude cookies and project content.</p>
+<button id="run">Run save acceptance</button> <button id="download" disabled>Download report</button>
+<p>To check another account's access, enter the project and mutation IDs from its report.</p>
+<label>Other account project ID <input id="other-project" size="40"></label><br>
+<label>Other account mutation ID <input id="other-mutation" size="40"></label><br>
+<button id="isolation">Check account isolation</button>
+<p id="progress" role="status"></p>
+<pre id="report" style="white-space:pre-wrap;overflow-wrap:anywhere"></pre>
+<script type="module" src="/cloud-development.js"></script>
+<script type="module" src="/cloud-acceptance.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+
+> test:worker
+> npm run build && tsx scripts/smoke-worker.ts
+
+
+> build
+> npm run assets && wrangler deploy --env development --dry-run --outdir dist/worker
+
+
+> assets
+> tsx scripts/build-assets.mjs
+
+Static allowlist: editor, cloud development checks, generated synthetic samples, src/, styles/, vendor/
+
+ ⛅️ wrangler 4.148.0
+────────────────────
+✨ Read 97 files from the assets directory /private/var/folders/8w/h36d1fcn6ml5s55b2r3c918h0000gn/T/floorplan-backend-delivery-ld86z8fu/server/dist/assets
+Total Upload: 1985.94 KiB / gzip: 364.86 KiB
+Your Worker has access to the following bindings:
+Binding                                                           Resource                  
+env.DB (floorplan-development)                                    D1 Database               
+env.BUCKET (floorplan-development-private)                        R2 Bucket                 
+env.ASSETS                                                        Assets                    
+env.ENVIRONMENT ("development")                                   Environment Variable      
+env.APP_ORIGIN ("https://floorplan-development.juneand...")       Environment Variable      
+
+--dry-run: exiting now.
+{
+  "bundledWorkerPassed": true,
+  "samples": [
+    {
+      "name": "Umbria",
+      "requests": 25,
+      "snapshotBytes": 46863,
+      "failures": 0
+    },
+    {
+      "name": "near-body-limit",
+      "requests": 5,
+      "snapshotBytes": 1012793,
+      "failures": 0
+    }
+  ],
+  "cpuMeasured": false
+}

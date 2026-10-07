@@ -1,0 +1,21 @@
+{
+  "kind": "real-session-save",
+  "startedAt": "2026-10-07T04:03:16.884Z",
+  "origin": "https://floorplan-development.juneandrao.workers.dev",
+  "cpuMeasured": false,
+  "meteringScope": "D1 commit batch only; excludes auth and preflight queries",
+  "samples": [],
+  "checks": [
+    {
+      "label": "trusted signed-in session",
+      "status": 401,
+      "expected": 200,
+      "pass": false,
+      "requestId": "31271f38-4f7c-4a00-81a2-32e94ca6ba31",
+      "code": "SESSION_REQUIRED"
+    }
+  ],
+  "passed": false,
+  "failure": "trusted signed-in session: HTTP 401",
+  "finishedAt": "2026-10-07T04:03:17.086Z"
+}

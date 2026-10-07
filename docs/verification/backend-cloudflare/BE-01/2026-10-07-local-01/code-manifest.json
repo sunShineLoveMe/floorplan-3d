@@ -1,0 +1,18 @@
+{
+  "migrations/0001_auth.sql": "55995dca64087f9b5a184d60c324be6a7793d4c2b0e169690473a707a0b61e80",
+  "migrations/0002_projects.sql": "40224054fcf590a6fd6f43a232341f89aca43a58abe2a46f5139128c0f5bbf2e",
+  "public/cloud-development.html": "70ca0587d1f46b0b0d657565933c3e0fce8f25e97fc4f9443af5dd693147c0aa",
+  "public/cloud-development.js": "c085c926d238c5ee46aa0a48b020176bf4333d7319ce59ed28f41a31f3224102",
+  "scripts/auth-schema.ts": "df31b951851bc23e2bf29e7abacc4d83832eac680864c838467cda867393e0ce",
+  "scripts/build-assets.mjs": "8eb49094d54bdea41adf1618522bf6afd8d6b7ed14f4d962e61ec77b520af0b0",
+  "scripts/smoke-worker.ts": "c893fd9c75d2801a946406603abffe62865d39202d1e519d737a6f9312309b24",
+  "src/auth.ts": "21a5d248d793a504fbd9fb90dae35c6d967c949f8db0a1252b35f34dc826ec70",
+  "src/container.ts": "583ef874dedf21da8ae6692948d9a79416ef999a4ddad1b91d454a7404ce0da4",
+  "src/errors.ts": "d07371e9d864b5de8b9a6d1237c17704787d02eedecc672fbebc744055a71432",
+  "src/index.ts": "95ef289889d08d1593fe2910bfd77e2bc8a4bdc3a1de952c161762df6f01a086",
+  "src/limits.ts": "22cad1cd6d1d8cddd12abf8f386ba41754b79cb63795234c1c5bb166d14ce4c9",
+  "src/projects.ts": "cc3aeb2e29e4ca07dfaf16c374a6e508e1911184e7b7569d3ec384d6ae073330",
+  "src/types.ts": "a6e7a2cb8648972cf5bc6ed5951a19c05c3cbca756775aea31416d84d32cabd9",
+  "tests/container.test.ts": "830c126c416c98d81e7164ae3b29048aa9d16e16e07329e68e9e159d1a589dcf",
+  "tests/integration.test.ts": "f8f24dce194d2e534ce36297ab343495c1851f852c575a56bc9b3f7aea405b08"
+}

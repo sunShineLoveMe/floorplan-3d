@@ -1,0 +1,140 @@
+
+> test
+> tsx --test tests/*.test.ts
+
+TAP version 13
+# Subtest: v2 rectangle round-trip preserves domain and millimetres
+ok 1 - v2 rectangle round-trip preserves domain and millimetres
+  ---
+  duration_ms: 1.3185
+  type: 'test'
+  ...
+# Subtest: v1 custom round-trip preserves domain and millimetres
+ok 2 - v1 custom round-trip preserves domain and millimetres
+  ---
+  duration_ms: 0.447042
+  type: 'test'
+  ...
+# Subtest: Umbria round-trip preserves domain and millimetres
+ok 3 - Umbria round-trip preserves domain and millimetres
+  ---
+  duration_ms: 23.67275
+  type: 'test'
+  ...
+# Subtest: raster becomes an asset ID, explicit bytes required on restore
+ok 4 - raster becomes an asset ID, explicit bytes required on restore
+  ---
+  duration_ms: 0.906834
+  type: 'test'
+  ...
+# Subtest: unknown fields are stripped at every structured boundary; authorization fields rejected
+ok 5 - unknown fields are stripped at every structured boundary; authorization fields rejected
+  ---
+  duration_ms: 0.873083
+  type: 'test'
+  ...
+# Subtest: bad geometry, malformed container and deeply nested input fail closed
+ok 6 - bad geometry, malformed container and deeply nested input fail closed
+  ---
+  duration_ms: 0.485125
+  type: 'test'
+  ...
+# Subtest: fresh initialization, auth schema and business upgrade preserve existing users
+ok 7 - fresh initialization, auth schema and business upgrade preserve existing users
+  ---
+  duration_ms: 276.481333
+  type: 'test'
+  ...
+# Subtest: session required, signed cookie verified and forged owner cannot authorize
+ok 8 - session required, signed cookie verified and forged owner cannot authorize
+  ---
+  duration_ms: 144.695834
+  type: 'test'
+  ...
+# Subtest: wrong and missing Origin writes fail; private responses cannot be shared-cached
+ok 9 - wrong and missing Origin writes fail; private responses cannot be shared-cached
+  ---
+  duration_ms: 38.954375
+  type: 'test'
+  ...
+# Subtest: create / authorized read / list / cross-account save and receipt boundaries
+ok 10 - create / authorized read / list / cross-account save and receipt boundaries
+  ---
+  duration_ms: 335.403792
+  type: 'test'
+  ...
+# Subtest: same revision concurrent mutations commit once, zero-row loser has no receipt/version
+ok 11 - same revision concurrent mutations commit once, zero-row loser has no receipt/version
+  ---
+  duration_ms: 185.860375
+  type: 'test'
+  ...
+# Subtest: same mutation concurrent requests and lost response retries never increment twice
+ok 12 - same mutation concurrent requests and lost response retries never increment twice
+  ---
+  duration_ms: 187.890375
+  type: 'test'
+  ...
+# Subtest: concurrent creates with one mutation yield one server-generated project
+ok 13 - concurrent creates with one mutation yield one server-generated project
+  ---
+  duration_ms: 71.660791
+  type: 'test'
+  ...
+# Subtest: R2 write failure changes no D1 pointer or successful receipt
+ok 14 - R2 write failure changes no D1 pointer or successful receipt
+  ---
+  duration_ms: 124.527542
+  type: 'test'
+  ...
+# Subtest: D1 failure after actual UPDATE rolls back pointer, version, quota and receipt; retry succeeds
+ok 15 - D1 failure after actual UPDATE rolls back pointer, version, quota and receipt; retry succeeds
+  ---
+  duration_ms: 149.162833
+  type: 'test'
+  ...
+# Subtest: D1 commit succeeded but transport throws; original mutation resolves on retry
+ok 16 - D1 commit succeeded but transport throws; original mutation resolves on retry
+  ---
+  duration_ms: 130.556042
+  type: 'test'
+  ...
+# Subtest: body limits / malformed JSON / storage and project quotas reject without false success
+ok 17 - body limits / malformed JSON / storage and project quotas reject without false success
+  ---
+  duration_ms: 175.808083
+  type: 'test'
+  ...
+# Subtest: schema rejects cross-owner versions, duplicate receipts and asset foreign ownership
+ok 18 - schema rejects cross-owner versions, duplicate receipts and asset foreign ownership
+  ---
+  duration_ms: 47.905375
+  type: 'test'
+  ...
+# Subtest: ready raster permission, private download, calibrated snapshot and missing object behavior
+ok 19 - ready raster permission, private download, calibrated snapshot and missing object behavior
+  ---
+  duration_ms: 204.270459
+  type: 'test'
+  ...
+# Subtest: expired receipt requires resync, never replayed as a new mutation
+ok 20 - expired receipt requires resync, never replayed as a new mutation
+  ---
+  duration_ms: 63.749708
+  type: 'test'
+  ...
+# Subtest: signout invalidates the original server session, session expiry also fails closed
+ok 21 - signout invalidates the original server session, session expiry also fails closed
+  ---
+  duration_ms: 135.265542
+  type: 'test'
+  ...
+1..21
+# tests 21
+# suites 0
+# pass 21
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2851.195834

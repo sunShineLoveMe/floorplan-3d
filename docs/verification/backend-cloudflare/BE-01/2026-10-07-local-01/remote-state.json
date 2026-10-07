@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-07",
+  "accountSelectedInBrowser": true,
+  "developmentD1": {"name":"floorplan-development","id":"b4b72f97-5634-4556-bb32-e2690ac4a96e","created":true,"migrationsApplied":false},
+  "r2": {"subscriptionActive":false,"bucketCreated":false,"userActionPending":true},
+  "wrangler": {"authenticated":false,"authorizationConfirmationPending":true,"firstOAuthCallbackTimedOut":true},
+  "googleOAuth": {"configured":false,"realAccountIsolationVerified":false},
+  "workerDeployed": false,
+  "remoteCpuMeasured": false
+}

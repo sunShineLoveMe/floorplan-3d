@@ -1,0 +1,38 @@
+[
+  {
+    "name": "callback missing state",
+    "status": 302,
+    "expected": 302,
+    "pass": true,
+    "cacheControl": null,
+    "setsCookie": false,
+    "redirect": "https://floorplan-development.juneandrao.workers.dev/api/auth/error?error=state_not_found"
+  },
+  {
+    "name": "private cross-site",
+    "status": 403,
+    "expected": 403,
+    "pass": true,
+    "cacheControl": "private, no-store",
+    "setsCookie": false,
+    "redirect": null
+  },
+  {
+    "name": "unauthenticated same-origin",
+    "status": 401,
+    "expected": 401,
+    "pass": true,
+    "cacheControl": "private, no-store",
+    "setsCookie": false,
+    "redirect": null
+  },
+  {
+    "name": "sign-in wrong origin",
+    "status": 403,
+    "expected": 403,
+    "pass": true,
+    "cacheControl": "private, no-store",
+    "setsCookie": false,
+    "redirect": null
+  }
+]

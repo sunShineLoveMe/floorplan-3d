@@ -1,0 +1,18 @@
+{
+  "bundledWorkerPassed": true,
+  "samples": [
+    {
+      "name": "Umbria",
+      "requests": 25,
+      "snapshotBytes": 46863,
+      "failures": 0
+    },
+    {
+      "name": "near-body-limit",
+      "requests": 5,
+      "snapshotBytes": 1012793,
+      "failures": 0
+    }
+  ],
+  "cpuMeasured": false
+}

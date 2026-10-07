@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "providerConfigured": true,
+  "authorizationHost": "accounts.google.com",
+  "redirectUri": "https://floorplan-development.juneandrao.workers.dev/api/auth/callback/google",
+  "scopes": [
+    "email",
+    "profile",
+    "openid"
+  ],
+  "statePresent": true,
+  "setsStateCookie": true,
+  "realGoogleLoginVerified": false
+}

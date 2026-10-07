@@ -1,0 +1,151 @@
+{
+  "runtime": "local bundled workerd + D1 + R2",
+  "cpuMeasured": false,
+  "oauthProviderContacted": false,
+  "samples": [
+    {
+      "name": "Umbria",
+      "requests": 25,
+      "failures": 0,
+      "snapshotBytes": 46863,
+      "firstLocalWallClockMs": 31.96474999999998,
+      "continuousLocalWallClockP95Ms": 16.941374999999994,
+      "continuousLocalWallClockP99Ms": 17.3343329999999,
+      "meteringScope": "D1 commit batch only; excludes auth, reads, preflight and receipt lookup",
+      "commitBatchMetering": [
+        {
+          "rowsRead": 6,
+          "rowsWritten": 15
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        }
+      ]
+    },
+    {
+      "name": "near-body-limit",
+      "requests": 5,
+      "failures": 0,
+      "snapshotBytes": 1012793,
+      "firstLocalWallClockMs": 28.37845799999991,
+      "continuousLocalWallClockP95Ms": 26.783249999999953,
+      "continuousLocalWallClockP99Ms": 26.783249999999953,
+      "meteringScope": "D1 commit batch only; excludes auth, reads, preflight and receipt lookup",
+      "commitBatchMetering": [
+        {
+          "rowsRead": 7,
+          "rowsWritten": 13
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        },
+        {
+          "rowsRead": 6,
+          "rowsWritten": 10
+        }
+      ]
+    }
+  ]
+}

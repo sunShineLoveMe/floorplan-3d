@@ -20,6 +20,8 @@ T08 已补齐可关闭 / 重开的 Help、首次入口提示、New project 命�
 
 T09 第一批已补齐 3D 故障提示 / 重试、完整边界高清 PNG 和 3D 房间标签，见 [T09 验收](docs/T09-output-stability-verification-2026-10-03.md)。该批实现与证据随当前分支归档，提交及远程同步状态以 Git 为准；Edge 与实机移动端仍待验收。
 
+2026-10-07 后端 BE-01 开发基础已实现：`server/` 使用 Hono / Better Auth / D1 / 私有 R2，Google OAuth client 和开发 Worker 已配置；回调及未登录拒绝通过，后端 26/26。真实 Google A/B 登录、远程保存及 CPU 验收尚未完成，BE-02 未开始。配置与证据见 [开发环境配置](docs/backend-cloudflare-configuration-2026-10-07.md) / [OAuth 接续报告](docs/verification/backend-cloudflare/BE-01/2026-10-07-oauth-01/report.md)。
+
 ## 快速启动
 
 在项目目录运行，需要 Python 3：
@@ -37,6 +39,8 @@ npm start
 
 | 文档 | 内容 |
 | --- | --- |
+| [Cloudflare 后端开发环境配置](docs/backend-cloudflare-configuration-2026-10-07.md) | Worker / D1 / 私有 R2 / Google OAuth / Secrets；配置、验收证据和剩余出口 |
+| [Cloudflare 后端任务清单](docs/backend-task-checklist-cloudflare-2026-10-07.md) | BE-01～04 实施顺序与验收门槛；BE-01 真实环境出口待完成 |
 | [T09 输出与稳定性验收](docs/T09-output-stability-verification-2026-10-03.md) | 高清完整图片、故障恢复、Chrome / WebKit 与 Safari 本机下载；未测边界 |
 | [T08 验收](docs/T08-english-onboarding-verification-2026-10-03.md) / [试用协议](docs/T08-user-trial-protocol.md) | 可重开帮助、英文术语、名称与键盘修复、内部走查；外部试用未执行 |
 | [T05 编辑可靠性验收](docs/T05-editing-reliability-verification-2026-10-03.md) | 7 项交互问题修复、精确中心、墙吸附、焦点、手势取消和结构历史；本地交付 |

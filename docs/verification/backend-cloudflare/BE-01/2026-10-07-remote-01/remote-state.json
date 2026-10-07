@@ -1,0 +1,38 @@
+{
+  "at": "2026-10-07T03:48:36.820263+00:00",
+  "accountId": "fc237f83b491fe04cbfbd57c5f9ba812",
+  "worker": "floorplan-development",
+  "origin": "https://floorplan-development.juneandrao.workers.dev",
+  "versionId": "3d6d92d6-542e-4ea6-b3d2-cc560a13f543",
+  "d1": {
+    "name": "floorplan-development",
+    "id": "b4b72f97-5634-4556-bb32-e2690ac4a96e",
+    "migrations": [
+      "0001_auth.sql",
+      "0002_projects.sql"
+    ]
+  },
+  "r2": {
+    "name": "floorplan-development-private",
+    "activated": true,
+    "created": true,
+    "publicAccess": false,
+    "location": "APAC",
+    "storageClass": "Standard"
+  },
+  "wranglerAuthenticated": true,
+  "remoteSessionSecretConfigured": true,
+  "googleOAuthConfigured": false,
+  "workerDeployed": true,
+  "httpsVerified": true,
+  "remoteSaveVerified": false,
+  "cpuMeasured": false,
+  "httpsFailure": "Initial TLS failure was reproduced and preserved; later normal HTTPS succeeded without bypass or network configuration changes; initial cause not confirmed",
+  "productionDeployed": false,
+  "previousVersionId": "d1847b23-abae-42d0-89a5-4c9b07b01f42",
+  "previewUrlsEnabled": false,
+  "automaticInvocationLogs": false,
+  "httpsInitialFailureResolved": true,
+  "httpSmokePassed": true,
+  "nativeChromeEditorVerified": true
+}
