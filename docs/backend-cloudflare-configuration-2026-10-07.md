@@ -6,7 +6,7 @@
 
 开发 Worker、D1、私有 R2、独立 session secret、Google OAuth Web client 和静态资源发布已配置完成。HTTPS 可访问；线上基础路由、未登录拒绝、禁止资源 404、Google provider 初始化及回调 state 拒绝已验证。Google 应用保持外部测试模式；测试用户配置、真实登录、账号隔离、云保存和 CPU 验收仍待完成，BE-01 尚未通过批次出口。
 
-交付分支为 `feat/ui-refactor`，实施前基线 HEAD 为 `6ff58d74a29c1cdf7a2d14da625b618949facd76`。本次按用户授权提交并同步后端实现、必要 fixture 与文档；后续实际提交及远程状态按 Git 同步记录确认。本项目的 `production` 环境未部署。
+交付分支为 `feat/ui-refactor`，实施前基线 HEAD 为 `6ff58d74a29c1cdf7a2d14da625b618949facd76`。后端实现、必要 fixture 与文档已按用户授权提交为 [`dea8868`](https://github.com/sunShineLoveMe/floorplan-3d/commit/dea8868fdb02f350fb78e75264b999b0aa43c647)，并于 2026-10-07 推送至 `origin/feat/ui-refactor`；`git ls-remote` 已确认远程 SHA 一致。验证及范围见 [Git 交付记录](verification/backend-cloudflare/BE-01/2026-10-07-git-01/report.md)。原 T09 / Umbria 前端改动继续留在本机工作区。本次 Git 同步没有新增 Worker 部署；本项目的 `production` 环境未部署。
 
 ## 云资源与绑定
 
